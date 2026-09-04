@@ -228,62 +228,27 @@
     "href": "projects/stock-disclosures.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?"
+    "text": "This project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThe page selects one successfully extracted House disclosure as an example of how the original PTR becomes structured transaction data.\nThe example changes once per day when the site is rebuilt.\n\n\n\nDistrict: CA50  Disclosure ID: 20022633  Source year: 2023  Transactions extracted: 1\n\n Open official House PDF \n\n\n \n\n\n\n\n\n\n\n\n\nThe original disclosure above is the source document. The table beneath it shows the structured transaction records extracted from that same PTR.\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe searchable table below contains the structured transaction records produced from the House PTR archive.\nFor the public-facing table, rows marked high QA review are excluded, malformed or future dates are removed, and the newest valid transactions appear first.\nUse the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   },
   {
-    "objectID": "projects/stock-disclosures.html#question",
-    "href": "projects/stock-disclosures.html#question",
+    "objectID": "projects/stock-disclosures.html#featured-ptr",
+    "href": "projects/stock-disclosures.html#featured-ptr",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?"
+    "text": "The page selects one successfully extracted House disclosure as an example of how the original PTR becomes structured transaction data.\nThe example changes once per day when the site is rebuilt.\n\n\n\nDistrict: CA50  Disclosure ID: 20022633  Source year: 2023  Transactions extracted: 1\n\n Open official House PDF \n\n\n \n\n\n\n\n\n\n\n\n\nThe original disclosure above is the source document. The table beneath it shows the structured transaction records extracted from that same PTR."
   },
   {
-    "objectID": "projects/stock-disclosures.html#why-it-matters",
-    "href": "projects/stock-disclosures.html#why-it-matters",
+    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
+    "href": "projects/stock-disclosures.html#explore-the-transactions",
     "title": "Politician Stock Disclosures",
-    "section": "Why It Matters",
-    "text": "Why It Matters\nFinancial disclosures are public records, but the underlying documents can be difficult to search, compare, and analyze at scale."
+    "section": "",
+    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe searchable table below contains the structured transaction records produced from the House PTR archive.\nFor the public-facing table, rows marked high QA review are excluded, malformed or future dates are removed, and the newest valid transactions appear first.\nUse the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date."
   },
   {
-    "objectID": "projects/stock-disclosures.html#data",
-    "href": "projects/stock-disclosures.html#data",
+    "objectID": "projects/stock-disclosures.html#data-source",
+    "href": "projects/stock-disclosures.html#data-source",
     "title": "Politician Stock Disclosures",
-    "section": "Data",
-    "text": "Data\nAdd the disclosure sources, date range, and any supporting datasets here."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#what-i-did",
-    "href": "projects/stock-disclosures.html#what-i-did",
-    "title": "Politician Stock Disclosures",
-    "section": "What I Did",
-    "text": "What I Did\n\nCollected disclosure records.\nParsed and cleaned transaction information.\nStandardized politicians, assets, tickers, and dates.\nBuilt analysis or visualization tools around the resulting data."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#methods",
-    "href": "projects/stock-disclosures.html#methods",
-    "title": "Politician Stock Disclosures",
-    "section": "Methods",
-    "text": "Methods\nPython R PDF Parsing Public Records Data Cleaning Visualization"
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#results",
-    "href": "projects/stock-disclosures.html#results",
-    "title": "Politician Stock Disclosures",
-    "section": "Results",
-    "text": "Results\nAdd your strongest visualization or screenshot here.\nThen explain the most important thing someone should learn from it."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#my-contribution",
-    "href": "projects/stock-disclosures.html#my-contribution",
-    "title": "Politician Stock Disclosures",
-    "section": "My Contribution",
-    "text": "My Contribution\nBe explicit here about what you personally built, analyzed, researched, or designed, especially if this was collaborative."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#links",
-    "href": "projects/stock-disclosures.html#links",
-    "title": "Politician Stock Disclosures",
-    "section": "Links",
-    "text": "Links\nCode · Live project link when available"
+    "section": "",
+    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   }
 ]
