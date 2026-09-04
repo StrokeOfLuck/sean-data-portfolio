@@ -1,0 +1,41 @@
+---
+title: "Politician Stock Disclosures"
+description: "Structuring and analyzing congressional financial-disclosure data."
+---
+
+## Question
+
+What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?
+
+## Why It Matters
+
+Financial disclosures are public records, but the underlying documents can be difficult to search, compare, and analyze at scale.
+
+## Data
+
+Add the disclosure sources, date range, and any supporting datasets here.
+
+## What I Did
+
+1. Collected disclosure records.
+2. Parsed and cleaned transaction information.
+3. Standardized politicians, assets, tickers, and dates.
+4. Built analysis or visualization tools around the resulting data.
+
+## Methods
+
+`Python` `R` `PDF Parsing` `Public Records` `Data Cleaning` `Visualization`
+
+## Results
+
+**Add your strongest visualization or screenshot here.**
+
+Then explain the most important thing someone should learn from it.
+
+## My Contribution
+
+Be explicit here about what **you personally built, analyzed, researched, or designed**, especially if this was collaborative.
+
+## Links
+
+[Code](https://github.com/YOUR-USERNAME) · Live project link when available

@@ -1,0 +1,27 @@
+project:
+  type: website
+
+website:
+  title: "Sean Ryan"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Work
+      - href: about.qmd
+        text: About
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME
+        aria-label: GitHub
+
+  page-footer:
+    center: "Sean Ryan"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    smooth-scroll: true

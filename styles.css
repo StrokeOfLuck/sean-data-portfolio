@@ -1,0 +1,22 @@
+/* Minimal portfolio styling */
+
+body {
+  font-size: 1.05rem;
+}
+
+.quarto-title h1 {
+  font-weight: 700;
+}
+
+.project-grid h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.35rem;
+}
+
+.project-grid p {
+  max-width: 760px;
+}
+
+a {
+  text-underline-offset: 3px;
+}

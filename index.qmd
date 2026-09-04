@@ -1,0 +1,50 @@
+---
+title: "Sean Ryan"
+subtitle: "Data Journalism · Digital Investigations · Civic Technology"
+page-layout: full
+title-block-banner: false
+---
+
+I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
+
+## Selected Work
+
+::: {.project-grid}
+
+### Politician Stock Disclosures
+
+**Public records · data cleaning · civic technology**
+
+Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.
+
+[View project →](projects/stock-disclosures.qmd)
+
+### Political Text Analysis
+
+**NLP · political data · event analysis**
+
+Using computational text analysis to examine political rhetoric around real-world events.
+
+[View project →](projects/political-text-analysis.qmd)
+
+### Visual AI & Internet Research
+
+**Digital methods · computer vision · online research**
+
+Research exploring visual AI and internet culture using computational methods.
+
+[View project →](projects/visual-ai.qmd)
+
+### Raleigh Micromobility
+
+**GIS · public data · reporting**
+
+Examining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.
+
+[View project →](projects/micromobility.qmd)
+
+:::
+
+## What I Work With
+
+Python · R · GIS · NLP · Network Analysis · Public Records · Data Visualization · Web Data · APIs

@@ -1,0 +1,38 @@
+---
+title: "Political Text Analysis"
+description: "Computational analysis of political rhetoric around real-world events."
+---
+
+## Question
+
+Write the specific research question in one sentence.
+
+## Data
+
+Describe the political text corpus and the event or reference dataset.
+
+## Approach
+
+Explain the workflow in normal language before showing code:
+
+1. Collect the text.
+2. Clean and structure it.
+3. Define the event windows or comparison groups.
+4. Apply the text-analysis method.
+5. Visualize and interpret the results.
+
+## Methods
+
+`Python` `R` `NLP` `Text Analysis` `Event Data`
+
+## Results
+
+Add 1–3 strong visualizations and explain what each one actually shows.
+
+## Limitations
+
+Briefly explain what the analysis can and cannot establish.
+
+## Links
+
+[Code](https://github.com/YOUR-USERNAME)

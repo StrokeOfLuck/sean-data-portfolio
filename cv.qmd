@@ -1,0 +1,30 @@
+---
+title: "CV"
+toc: false
+---
+
+A concise CV will go here.
+
+For now, include:
+
+## Education
+
+**NC State University**  
+B.S., Interdisciplinary Studies  
+Focus: nonprofit studies, technology, and community development
+
+## Selected Projects
+
+- Politician Stock Disclosures
+- Political Text Analysis
+- Visual AI & Internet Research
+- Raleigh Micromobility / GIS
+
+## Technical Tools
+
+Python, R, GIS, APIs, NLP, network analysis, data visualization
+
+## Links
+
+- GitHub: [github.com/YOUR-USERNAME](https://github.com/YOUR-USERNAME)
+- Email: YOUR-EMAIL

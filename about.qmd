@@ -1,0 +1,20 @@
+---
+title: "About"
+---
+
+I'm interested in the intersection of **data journalism, digital investigations, civic technology, and public-interest research**.
+
+My work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.
+
+I am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question.
+
+## Interests
+
+- Data journalism
+- Digital investigations and OSINT
+- Political and government data
+- Computational text analysis
+- Network analysis
+- GIS and spatial analysis
+- Civic technology
+- Data visualization
