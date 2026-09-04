@@ -1,0 +1,289 @@
+[
+  {
+    "objectID": "projects/visual-ai.html",
+    "href": "projects/visual-ai.html",
+    "title": "Visual AI & Internet Research",
+    "section": "",
+    "text": "Explain the project and the question you were investigating."
+  },
+  {
+    "objectID": "projects/visual-ai.html#research-context",
+    "href": "projects/visual-ai.html#research-context",
+    "title": "Visual AI & Internet Research",
+    "section": "",
+    "text": "Explain the project and the question you were investigating."
+  },
+  {
+    "objectID": "projects/visual-ai.html#data-methods",
+    "href": "projects/visual-ai.html#data-methods",
+    "title": "Visual AI & Internet Research",
+    "section": "Data & Methods",
+    "text": "Data & Methods\nDescribe the platforms, image collections, computational methods, or digital-methods tools used."
+  },
+  {
+    "objectID": "projects/visual-ai.html#analysis",
+    "href": "projects/visual-ai.html#analysis",
+    "title": "Visual AI & Internet Research",
+    "section": "Analysis",
+    "text": "Analysis\nUse screenshots and visualizations heavily here. Keep the prose concise."
+  },
+  {
+    "objectID": "projects/visual-ai.html#what-i-learned",
+    "href": "projects/visual-ai.html#what-i-learned",
+    "title": "Visual AI & Internet Research",
+    "section": "What I Learned",
+    "text": "What I Learned\nExplain what worked, what did not, and what you would change in a future version."
+  },
+  {
+    "objectID": "projects/visual-ai.html#methods",
+    "href": "projects/visual-ai.html#methods",
+    "title": "Visual AI & Internet Research",
+    "section": "Methods",
+    "text": "Methods\nDigital Methods Visual Analysis Internet Research Computational Research"
+  },
+  {
+    "objectID": "projects/visual-ai.html#links",
+    "href": "projects/visual-ai.html#links",
+    "title": "Visual AI & Internet Research",
+    "section": "Links",
+    "text": "Links\nAdd poster, presentation, code, or project materials when appropriate."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html",
+    "href": "projects/political-text-analysis.html",
+    "title": "Political Text Analysis",
+    "section": "",
+    "text": "Write the specific research question in one sentence."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#question",
+    "href": "projects/political-text-analysis.html#question",
+    "title": "Political Text Analysis",
+    "section": "",
+    "text": "Write the specific research question in one sentence."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#data",
+    "href": "projects/political-text-analysis.html#data",
+    "title": "Political Text Analysis",
+    "section": "Data",
+    "text": "Data\nDescribe the political text corpus and the event or reference dataset."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#approach",
+    "href": "projects/political-text-analysis.html#approach",
+    "title": "Political Text Analysis",
+    "section": "Approach",
+    "text": "Approach\nExplain the workflow in normal language before showing code:\n\nCollect the text.\nClean and structure it.\nDefine the event windows or comparison groups.\nApply the text-analysis method.\nVisualize and interpret the results."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#methods",
+    "href": "projects/political-text-analysis.html#methods",
+    "title": "Political Text Analysis",
+    "section": "Methods",
+    "text": "Methods\nPython R NLP Text Analysis Event Data"
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#results",
+    "href": "projects/political-text-analysis.html#results",
+    "title": "Political Text Analysis",
+    "section": "Results",
+    "text": "Results\nAdd 1–3 strong visualizations and explain what each one actually shows."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#limitations",
+    "href": "projects/political-text-analysis.html#limitations",
+    "title": "Political Text Analysis",
+    "section": "Limitations",
+    "text": "Limitations\nBriefly explain what the analysis can and cannot establish."
+  },
+  {
+    "objectID": "projects/political-text-analysis.html#links",
+    "href": "projects/political-text-analysis.html#links",
+    "title": "Political Text Analysis",
+    "section": "Links",
+    "text": "Links\nCode"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\nPolitician Stock Disclosures\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nVisual AI & Internet Research\nDigital methods · computer vision · online research\nResearch exploring visual AI and internet culture using computational methods.\nView project →\n\n\nRaleigh Micromobility\nGIS · public data · reporting\nExamining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.\nView project →"
+  },
+  {
+    "objectID": "index.html#what-i-work-with",
+    "href": "index.html#what-i-work-with",
+    "title": "Sean Ryan",
+    "section": "What I Work With",
+    "text": "What I Work With\nPython · R · GIS · NLP · Network Analysis · Public Records · Data Visualization · Web Data · APIs"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
+    "section": "",
+    "text": "A concise CV will go here.\nFor now, include:"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "CV",
+    "section": "Education",
+    "text": "Education\nNC State University\nB.S., Interdisciplinary Studies\nFocus: nonprofit studies, technology, and community development"
+  },
+  {
+    "objectID": "cv.html#selected-projects",
+    "href": "cv.html#selected-projects",
+    "title": "CV",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nPolitician Stock Disclosures\nPolitical Text Analysis\nVisual AI & Internet Research\nRaleigh Micromobility / GIS"
+  },
+  {
+    "objectID": "cv.html#technical-tools",
+    "href": "cv.html#technical-tools",
+    "title": "CV",
+    "section": "Technical Tools",
+    "text": "Technical Tools\nPython, R, GIS, APIs, NLP, network analysis, data visualization"
+  },
+  {
+    "objectID": "cv.html#links",
+    "href": "cv.html#links",
+    "title": "CV",
+    "section": "Links",
+    "text": "Links\n\nGitHub: github.com/YOUR-USERNAME\nEmail: YOUR-EMAIL"
+  },
+  {
+    "objectID": "projects/micromobility.html",
+    "href": "projects/micromobility.html",
+    "title": "Raleigh Micromobility",
+    "section": "",
+    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+  },
+  {
+    "objectID": "projects/micromobility.html#question",
+    "href": "projects/micromobility.html#question",
+    "title": "Raleigh Micromobility",
+    "section": "",
+    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+  },
+  {
+    "objectID": "projects/micromobility.html#reporting-data",
+    "href": "projects/micromobility.html#reporting-data",
+    "title": "Raleigh Micromobility",
+    "section": "Reporting & Data",
+    "text": "Reporting & Data\nDescribe the public datasets, interviews, GIS layers, surveys, or other reporting used."
+  },
+  {
+    "objectID": "projects/micromobility.html#analysis",
+    "href": "projects/micromobility.html#analysis",
+    "title": "Raleigh Micromobility",
+    "section": "Analysis",
+    "text": "Analysis\nAdd maps and other visuals here."
+  },
+  {
+    "objectID": "projects/micromobility.html#methods",
+    "href": "projects/micromobility.html#methods",
+    "title": "Raleigh Micromobility",
+    "section": "Methods",
+    "text": "Methods\nGIS Public Data Reporting Transportation"
+  },
+  {
+    "objectID": "projects/micromobility.html#findings",
+    "href": "projects/micromobility.html#findings",
+    "title": "Raleigh Micromobility",
+    "section": "Findings",
+    "text": "Findings\nSummarize the strongest findings in a few concise paragraphs or bullets."
+  },
+  {
+    "objectID": "projects/micromobility.html#links",
+    "href": "projects/micromobility.html#links",
+    "title": "Raleigh Micromobility",
+    "section": "Links",
+    "text": "Links\nAdd the published story, map, source repository, or methodology when available."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html",
+    "href": "projects/stock-disclosures.html",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?"
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#question",
+    "href": "projects/stock-disclosures.html#question",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?"
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#why-it-matters",
+    "href": "projects/stock-disclosures.html#why-it-matters",
+    "title": "Politician Stock Disclosures",
+    "section": "Why It Matters",
+    "text": "Why It Matters\nFinancial disclosures are public records, but the underlying documents can be difficult to search, compare, and analyze at scale."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#data",
+    "href": "projects/stock-disclosures.html#data",
+    "title": "Politician Stock Disclosures",
+    "section": "Data",
+    "text": "Data\nAdd the disclosure sources, date range, and any supporting datasets here."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#what-i-did",
+    "href": "projects/stock-disclosures.html#what-i-did",
+    "title": "Politician Stock Disclosures",
+    "section": "What I Did",
+    "text": "What I Did\n\nCollected disclosure records.\nParsed and cleaned transaction information.\nStandardized politicians, assets, tickers, and dates.\nBuilt analysis or visualization tools around the resulting data."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#methods",
+    "href": "projects/stock-disclosures.html#methods",
+    "title": "Politician Stock Disclosures",
+    "section": "Methods",
+    "text": "Methods\nPython R PDF Parsing Public Records Data Cleaning Visualization"
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#results",
+    "href": "projects/stock-disclosures.html#results",
+    "title": "Politician Stock Disclosures",
+    "section": "Results",
+    "text": "Results\nAdd your strongest visualization or screenshot here.\nThen explain the most important thing someone should learn from it."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#my-contribution",
+    "href": "projects/stock-disclosures.html#my-contribution",
+    "title": "Politician Stock Disclosures",
+    "section": "My Contribution",
+    "text": "My Contribution\nBe explicit here about what you personally built, analyzed, researched, or designed, especially if this was collaborative."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#links",
+    "href": "projects/stock-disclosures.html#links",
+    "title": "Politician Stock Disclosures",
+    "section": "Links",
+    "text": "Links\nCode · Live project link when available"
+  }
+]
