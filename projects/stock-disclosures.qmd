@@ -3,9 +3,6 @@ title: "Politician Stock Disclosures"
 subtitle: "U.S. House Periodic Transaction Reports"
 page-layout: full
 
-resources:
-  - projects/assets/featured-ptr.pdf
-
 format:
   html:
     toc: false
@@ -14,7 +11,6 @@ execute:
   echo: false
   warning: false
   message: false
-  execute-dir: project
 ---
 
 <style>
@@ -22,7 +18,7 @@ execute:
   font-size: 0.9rem;
 }
 
-/* Featured PTR information card */
+/* Featured PTR */
 .ptr-feature {
   border: 1px solid #444;
   border-radius: 10px;
@@ -43,7 +39,7 @@ execute:
   margin-top: 0.5rem;
 }
 
-/* Embedded PDF */
+/* Embedded PTR */
 .ptr-pdf {
   width: 100%;
   margin: 1.5rem 0 2rem 0;
@@ -56,25 +52,79 @@ execute:
   border-radius: 8px;
   background: white;
 }
+
+/* Clean summary bar */
+.explore-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 1.5rem 0 2rem 0;
+  border-top: 1px solid #3b3b3b;
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.explore-stat {
+  padding: 1.2rem 1.4rem;
+  border-right: 1px solid #3b3b3b;
+}
+
+.explore-stat:last-child {
+  border-right: none;
+}
+
+.explore-stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  margin-bottom: 0.35rem;
+}
+
+.explore-stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Responsive stats */
+@media (max-width: 800px) {
+  .explore-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .explore-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .explore-stat {
+    border-bottom: 1px solid #3b3b3b;
+  }
+}
+
+@media (max-width: 500px) {
+  .explore-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .explore-stat {
+    border-right: none;
+  }
+}
 </style>
 
 ```{r}
 library(readr)
 library(dplyr)
 library(DT)
-library(jsonlite)
 
 data_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_transactions_web.csv"
-
-metadata_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_metadata.json"
 
 ptr <- read_csv(
   data_path,
   show_col_types = FALSE
 )
-
-meta <- fromJSON(metadata_path)
 ```
+
+::: {.column-page}
 
 This project turns official U.S. House **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed.
 
@@ -85,29 +135,18 @@ The page selects one successfully extracted House disclosure as an example of ho
 The example changes once per day when the site is rebuilt.
 
 ```{r}
-# Create a real Date variable so malformed dates do not get selected.
-
-candidate_rows <- ptr |>
+featured_pool <- ptr |>
   mutate(
     parsed_transaction_date = as.Date(
       transaction_date,
       format = "%Y-%m-%d"
+    ),
+    qa_norm = tolower(
+      trimws(
+        coalesce(review_level, "")
+      )
     )
   ) |>
-  filter(
-    !is.na(filing_id),
-    !is.na(source_year),
-    !is.na(original_pdf_url),
-    original_pdf_url != "",
-    !is.na(parsed_transaction_date),
-    parsed_transaction_date >= as.Date("2021-01-01"),
-    parsed_transaction_date <= Sys.Date()
-  )
-
-# Summarize by PTR filing.
-# Only use filings that contain no rows marked high QA review.
-
-candidate_filings <- candidate_rows |>
   group_by(
     filing_id,
     source_year,
@@ -117,23 +156,35 @@ candidate_filings <- candidate_rows |>
   ) |>
   summarise(
     transactions = n(),
-    all_non_high_review = all(
-      is.na(review_level) | review_level != "high"
+
+    any_high_review = any(
+      qa_norm == "high"
     ),
+
+    has_valid_date = any(
+      !is.na(parsed_transaction_date) &
+      parsed_transaction_date >= as.Date("2021-01-01") &
+      parsed_transaction_date <= Sys.Date()
+    ),
+
     .groups = "drop"
   ) |>
-  filter(all_non_high_review)
+  filter(
+    !is.na(filing_id),
+    !is.na(source_year),
+    !is.na(original_pdf_url),
+    original_pdf_url != "",
+    !any_high_review,
+    has_valid_date
+  )
 
-if (nrow(candidate_filings) == 0) {
+if (nrow(featured_pool) == 0) {
   stop("No suitable featured PTR filings were found.")
 }
 
-# The date is used as the seed so the example changes once per day,
-# rather than changing every time the document is previewed.
-
 set.seed(as.integer(Sys.Date()))
 
-featured_info <- candidate_filings |>
+featured_info <- featured_pool |>
   slice_sample(n = 1)
 
 featured <- ptr |>
@@ -147,44 +198,6 @@ featured_name <- featured_info$politician[[1]]
 featured_district <- featured_info$state_district[[1]]
 featured_id <- featured_info$filing_id[[1]]
 featured_year <- featured_info$source_year[[1]]
-```
-
-```{r}
-# Locate the matching PDF in the existing Google Drive archive.
-
-pdf_source <- file.path(
-  "G:/My Drive/Congressional Trading Data/House_PTRs/01 Official House PTR PDFs",
-  as.character(featured_year),
-  paste0(featured_id, ".pdf")
-)
-
-# Because this Quarto page lives inside projects/,
-# place its public PDF in projects/assets/.
-
-dir.create(
-  "projects/assets",
-  showWarnings = FALSE,
-  recursive = TRUE
-)
-
-pdf_destination <- "projects/assets/featured-ptr.pdf"
-
-if (!file.exists(pdf_source)) {
-  stop(
-    paste(
-      "Featured PTR PDF was not found at:",
-      pdf_source
-    )
-  )
-}
-
-invisible(
-  file.copy(
-    pdf_source,
-    pdf_destination,
-    overwrite = TRUE
-  )
-)
 ```
 
 ```{r, results='asis'}
@@ -225,7 +238,9 @@ cat(
   '<div class="ptr-pdf">',
 
   '<iframe ',
-  'src="assets/featured-ptr.pdf#view=FitH" ',
+  'src="',
+  featured_pdf_url,
+  '#view=FitH" ',
   'title="Featured House PTR" ',
   'width="100%" ',
   'height="850px">',
@@ -254,6 +269,7 @@ datatable(
   featured_table,
   rownames = FALSE,
   filter = "none",
+  width = "100%",
   options = list(
     dom = "t",
     paging = FALSE,
@@ -269,31 +285,188 @@ The original disclosure above is the source document. The table beneath it shows
 
 ## Explore the transactions
 
-The searchable table below contains the structured transaction records produced from the House PTR archive.
-
-For the public-facing table, rows marked **high QA review** are excluded, malformed dates are removed, and the newest valid transactions appear first.
-
-Use the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date.
-
-::: {.column-page}
-
 ```{r}
-display_data <- ptr |>
+explore_data <- ptr |>
   mutate(
     parsed_transaction_date = as.Date(
       transaction_date,
       format = "%Y-%m-%d"
+    ),
+
+    qa_norm = tolower(
+      trimws(
+        coalesce(review_level, "")
+      )
     )
   ) |>
   filter(
-    is.na(review_level) | review_level != "high",
+    qa_norm != "high",
     !is.na(parsed_transaction_date),
     parsed_transaction_date >= as.Date("2021-01-01"),
     parsed_transaction_date <= Sys.Date()
   ) |>
   arrange(
     desc(parsed_transaction_date)
-  ) |>
+  )
+
+representatives_count <- n_distinct(
+  explore_data$politician[
+    !is.na(explore_data$politician) &
+    explore_data$politician != ""
+  ]
+)
+
+assets_count <- n_distinct(
+  explore_data$asset_v8_2_cleaned[
+    !is.na(explore_data$asset_v8_2_cleaned) &
+    explore_data$asset_v8_2_cleaned != ""
+  ]
+)
+
+disclosures_count <- n_distinct(
+  explore_data$filing_id[
+    !is.na(explore_data$filing_id) &
+    explore_data$filing_id != ""
+  ]
+)
+
+transactions_count <- nrow(explore_data)
+```
+
+```{r, results='asis'}
+cat(
+  '<div class="explore-stats">',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Representatives</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  representatives_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Assets</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  assets_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Disclosures</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  disclosures_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Transactions</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  transactions_count,
+  '">0</div>',
+  '</div>',
+
+  '</div>'
+)
+```
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const statSection = document.querySelector(".explore-stats");
+
+  if (!statSection) {
+    return;
+  }
+
+  let hasAnimated = false;
+
+  function animateValue(element) {
+
+    const target = Number(element.dataset.target);
+
+    // Slower overall animation
+    const duration = 3000;
+
+    const startTime = performance.now();
+
+    function update(currentTime) {
+
+      const elapsed = currentTime - startTime;
+
+      const progress = Math.min(
+        elapsed / duration,
+        1
+      );
+
+      /*
+        Ease-in animation:
+        starts very slowly,
+        then accelerates toward the end.
+      */
+      const eased =
+        Math.pow(progress, 2.4);
+
+      const value = Math.floor(
+        target * eased
+      );
+
+      element.textContent =
+        value.toLocaleString();
+
+      if (progress < 1) {
+
+        requestAnimationFrame(update);
+
+      } else {
+
+        element.textContent =
+          target.toLocaleString();
+
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver(
+    function(entries) {
+
+      entries.forEach(function(entry) {
+
+        if (
+          entry.isIntersecting &&
+          !hasAnimated
+        ) {
+
+          hasAnimated = true;
+
+          document
+            .querySelectorAll(".count-up")
+            .forEach(animateValue);
+
+          observer.disconnect();
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.35
+    }
+  );
+
+  observer.observe(statSection);
+});
+</script>
+
+The searchable table below contains the structured transaction records produced from the House PTR archive.
+
+For the public-facing table, rows marked **high QA review** are excluded, malformed or future dates are removed, and the newest valid transactions appear first.
+
+Use the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date.
+
+```{r}
+display_data <- explore_data |>
   transmute(
     Politician = politician,
     District = state_district,
@@ -305,9 +478,13 @@ display_data <- ptr |>
     Type = transaction_type,
     Amount = amount_category,
     `QA review` = review_level,
+
     `House PDF` = ifelse(
-      is.na(original_pdf_url) | original_pdf_url == "",
+      is.na(original_pdf_url) |
+      original_pdf_url == "",
+
       "",
+
       paste0(
         '<a href="',
         original_pdf_url,
@@ -324,16 +501,22 @@ datatable(
   rownames = FALSE,
   escape = FALSE,
   width = "100%",
+
   options = list(
     pageLength = 10,
-    lengthMenu = c(10, 25, 50, 100),
+
+    lengthMenu = c(
+      10,
+      25,
+      50,
+      100
+    ),
+
     scrollX = TRUE,
     scrollCollapse = TRUE,
     autoWidth = TRUE,
     searchHighlight = TRUE,
 
-    # Third displayed column is Transaction date.
-    # DataTables uses zero-based column numbering.
     order = list(
       list(2, "desc")
     )
@@ -341,10 +524,10 @@ datatable(
 )
 ```
 
-:::
-
 ## Data source
 
 The source records are official U.S. House Periodic Transaction Reports.
 
 Each displayed transaction retains the original House disclosure URL when available.
+
+:::
