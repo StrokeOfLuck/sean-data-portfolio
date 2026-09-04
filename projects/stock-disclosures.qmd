@@ -15,12 +15,14 @@ execute:
 
 <style>
 
-/* Hide Quarto's default narrow title */
+/* =========================================================
+   PAGE
+   ========================================================= */
+
 .quarto-title-block {
   display: none;
 }
 
-/* Main page width */
 .wide-shell {
   width: min(1750px, calc(100vw - 32px));
   margin-left: auto;
@@ -161,7 +163,9 @@ execute:
 
 .filing-search {
   width: 100%;
+
   padding-left: 1.2rem;
+
   border-left: 1px solid #444;
 }
 
@@ -306,17 +310,6 @@ execute:
   margin: 0;
 }
 
-/*
-  Very tall intentionally.
-
-  The House PTR is US Letter shaped and Firefox's
-  built-in PDF viewer also uses vertical space
-  for its toolbar.
-
-  Combined with page-fit below, this should remove
-  the tiny remaining scroll on most one-page PTRs.
-*/
-
 .ptr-pdf-viewer {
   display: block;
 
@@ -353,8 +346,7 @@ execute:
 .explore-stat {
   padding: 1.2rem 1.4rem;
 
-  border-right:
-    1px solid #3b3b3b;
+  border-right: 1px solid #3b3b3b;
 }
 
 .explore-stat:last-child {
@@ -377,6 +369,84 @@ execute:
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
+}
+
+
+/* =========================================================
+   SUBTLE DEBUG TOGGLE
+   ========================================================= */
+
+.debug-control {
+  display: none;
+
+  clear: left;
+
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  font-size: 0.72rem;
+}
+
+.debug-toggle {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  opacity: 0.65;
+
+  transition: opacity 0.15s ease;
+}
+
+.debug-toggle:hover {
+  opacity: 1;
+}
+
+.debug-toggle input {
+  width: 13px;
+  height: 13px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  accent-color: #6ea8fe;
+}
+
+.debug-toggle strong {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.debug-toggle span {
+  opacity: 0.7;
+}
+
+
+/* High-QA rows in debug mode */
+table.dataTable tbody tr.qa-high-row td {
+  background: rgba(214, 153, 52, 0.10);
+}
+
+.qa-high-badge {
+  display: inline-block;
+
+  padding: 0.1rem 0.35rem;
+
+  border: 1px solid rgba(214, 153, 52, 0.65);
+  border-radius: 999px;
+
+  background: rgba(214, 153, 52, 0.10);
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
 }
 
 
@@ -427,8 +497,7 @@ execute:
   }
 
   .explore-stats {
-    grid-template-columns:
-      repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .ptr-pdf-viewer {
@@ -625,7 +694,6 @@ ptr_prepared <- ptr |>
 
 # Politician Stock Disclosures {.project-main-title}
 
-
 <div class="project-subtitle">U.S. House Periodic Transaction Reports</div>
 
 
@@ -809,12 +877,9 @@ featured_json <- toJSON(
 
 <div class="featured-card">
 
-
 <div class="featured-info">
 
-
 <h3 id="featured-name"></h3>
-
 
 <div class="featured-meta">
 
@@ -831,12 +896,10 @@ featured_json <- toJSON(
 
 <div class="featured-controls">
 
-
 <div class="featured-actions">
 <button type="button" class="ptr-button" id="random-ptr-button">Show another PTR</button>
 <a class="ptr-button" id="featured-pdf-link" href="#" target="_blank" rel="noopener">Open original House PDF</a>
 </div>
-
 
 <div class="filing-search">
 <label for="filing-id-search">Find by Filing ID</label>
@@ -844,101 +907,60 @@ featured_json <- toJSON(
 <div id="filing-search-message" class="filing-search-message"></div>
 </div>
 
-
 </div>
 
-
 </div>
-
 
 
 <div class="featured-extract">
 
-
 <h3>Extracted transactions</h3>
-
 
 <div class="featured-table-wrap">
 
-
 <table class="featured-table">
 
-
 <thead>
-
 <tr>
-
 <th>Owner</th>
-
 <th>Asset</th>
-
 <th>Ticker</th>
-
 <th>Type</th>
-
 <th>Date</th>
-
 <th>Amount</th>
-
 </tr>
-
 </thead>
-
 
 <tbody id="featured-table-body"></tbody>
 
-
 </table>
 
+</div>
 
 </div>
 
-
 </div>
-
-
-</div>
-
 
 
 <div class="ptr-pdf-section">
 
-
 <div class="ptr-pdf-header">
-
 <h3>Original House PTR</h3>
-
 </div>
 
-
-<object
-  id="featured-pdf-viewer"
-  class="ptr-pdf-viewer"
-  type="application/pdf">
-
+<object id="featured-pdf-viewer" class="ptr-pdf-viewer" type="application/pdf">
 
 <div class="pdf-fallback">
 
 Your browser could not display this PDF inline.
 
-<a
-  id="featured-pdf-fallback-link"
-  href="#"
-  target="_blank"
-  rel="noopener">
-
-Open the original House PDF
-
-</a>
+<a id="featured-pdf-fallback-link" href="#" target="_blank" rel="noopener">Open the original House PDF</a>
 
 </div>
-
 
 </object>
 
-
 </div>
-
 
 
 ```{r, results='asis'}
@@ -956,15 +978,10 @@ cat(
 
 (function () {
 
-
-  let currentIndex =
-    -1;
+  let currentIndex = -1;
 
 
-  function cleanValue(
-    value
-  ) {
-
+  function cleanValue(value) {
 
     if (
       value === null ||
@@ -973,23 +990,16 @@ cat(
     ) {
 
       return "";
-
     }
 
-
-    return String(
-      value
-    );
+    return String(value);
   }
 
 
   const eligibleRandomIndices =
     allFeaturedPTRs
       .map(
-        function(
-          item,
-          index
-        ) {
+        function(item, index) {
 
           return item.eligible_random
             ? index
@@ -997,9 +1007,7 @@ cat(
         }
       )
       .filter(
-        function(
-          index
-        ) {
+        function(index) {
 
           return index !== null;
         }
@@ -1008,15 +1016,11 @@ cat(
 
   function randomIndex() {
 
-
     const pool =
       eligibleRandomIndices.length > 0
         ? eligibleRandomIndices
         : allFeaturedPTRs.map(
-            function(
-              item,
-              index
-            ) {
+            function(item, index) {
 
               return index;
             }
@@ -1045,8 +1049,7 @@ cat(
         ];
 
     } while (
-      nextIndex ===
-        currentIndex
+      nextIndex === currentIndex
     );
 
 
@@ -1054,22 +1057,17 @@ cat(
   }
 
 
-  function updatePDF(
-    url
-  ) {
-
+  function updatePDF(url) {
 
     const viewer =
       document.getElementById(
         "featured-pdf-viewer"
       );
 
-
     const mainLink =
       document.getElementById(
         "featured-pdf-link"
       );
-
 
     const fallbackLink =
       document.getElementById(
@@ -1077,12 +1075,8 @@ cat(
       );
 
 
-    mainLink.href =
-      url;
-
-
-    fallbackLink.href =
-      url;
+    mainLink.href = url;
+    fallbackLink.href = url;
 
 
     viewer.removeAttribute(
@@ -1091,34 +1085,23 @@ cat(
 
 
     window.setTimeout(
-
       function() {
 
-
         viewer.setAttribute(
-
           "data",
-
           url +
           "#page=1&zoom=page-fit"
-
         );
 
       },
-
       20
-
     );
   }
 
 
-  function renderFeaturedPTR(
-    index
-  ) {
+  function renderFeaturedPTR(index) {
 
-
-    currentIndex =
-      index;
+    currentIndex = index;
 
 
     const item =
@@ -1227,7 +1210,6 @@ cat(
       transactions.length === 0
     ) {
 
-
       const row =
         document.createElement(
           "tr"
@@ -1240,9 +1222,7 @@ cat(
         );
 
 
-      cell.colSpan =
-        6;
-
+      cell.colSpan = 6;
 
       cell.className =
         "featured-empty";
@@ -1261,15 +1241,11 @@ cat(
         row
       );
 
-
     } else {
 
 
       transactions.forEach(
-
-        function(
-          transaction
-        ) {
+        function(transaction) {
 
 
           const row =
@@ -1279,27 +1255,17 @@ cat(
 
 
           const values = [
-
             transaction.Owner,
-
             transaction.Asset,
-
             transaction.Ticker,
-
             transaction.Type,
-
             transaction.Date,
-
             transaction.Amount
-
           ];
 
 
           values.forEach(
-
-            function(
-              value
-            ) {
+            function(value) {
 
 
               const cell =
@@ -1337,7 +1303,6 @@ cat(
 
   function showRandomPTR() {
 
-
     const index =
       randomIndex();
 
@@ -1349,7 +1314,6 @@ cat(
 
 
   function loadFilingID() {
-
 
     const input =
       document.getElementById(
@@ -1376,7 +1340,6 @@ cat(
       !requestedID
     ) {
 
-
       message.textContent =
         "Enter a Filing ID.";
 
@@ -1387,16 +1350,12 @@ cat(
 
     const index =
       allFeaturedPTRs.findIndex(
-
-        function(
-          item
-        ) {
+        function(item) {
 
 
           return String(
             item.filing_id
-          ) ===
-            requestedID;
+          ) === requestedID;
         }
       );
 
@@ -1404,7 +1363,6 @@ cat(
     if (
       index === -1
     ) {
-
 
       message.textContent =
         "Filing ID not found in this dataset.";
@@ -1426,7 +1384,6 @@ cat(
 
   function initializePTRFeature() {
 
-
     const randomButton =
       document.getElementById(
         "random-ptr-button"
@@ -1445,40 +1402,31 @@ cat(
       );
 
 
-    randomButton
-      .addEventListener(
-        "click",
-        showRandomPTR
-      );
+    randomButton.addEventListener(
+      "click",
+      showRandomPTR
+    );
 
 
-    searchButton
-      .addEventListener(
-        "click",
-        loadFilingID
-      );
+    searchButton.addEventListener(
+      "click",
+      loadFilingID
+    );
 
 
-    searchInput
-      .addEventListener(
+    searchInput.addEventListener(
+      "keydown",
+      function(event) {
 
-        "keydown",
 
-        function(
-          event
+        if (
+          event.key === "Enter"
         ) {
 
-
-          if (
-            event.key ===
-            "Enter"
-          ) {
-
-
-            loadFilingID();
-          }
+          loadFilingID();
         }
-      );
+      }
+    );
 
 
     showRandomPTR();
@@ -1486,30 +1434,22 @@ cat(
 
 
   if (
-    document.readyState ===
-      "loading"
+    document.readyState === "loading"
   ) {
-
 
     document.addEventListener(
       "DOMContentLoaded",
       initializePTRFeature
     );
 
-
   } else {
-
 
     initializePTRFeature();
   }
 
-
 })();
 
 </script>
-
-
-The random example uses clean filings, while the **Filing ID lookup can load any filing represented in the dataset**. This makes the page useful for both demonstrating the extraction and checking individual source records.
 
 
 ---
@@ -1519,11 +1459,9 @@ The random example uses clean filings, while the **Filing ID lookup can load any
 
 
 ```{r}
-explore_data <-
+explore_all <-
   ptr_prepared |>
   filter(
-
-    qa_norm != "high",
 
     !is.na(
       parsed_transaction_date
@@ -1545,14 +1483,21 @@ explore_data <-
   )
 
 
+explore_clean <-
+  explore_all |>
+  filter(
+    qa_norm != "high"
+  )
+
+
 representatives_count <-
   n_distinct(
 
-    explore_data$politician[
+    explore_clean$politician[
       !is.na(
-        explore_data$politician
+        explore_clean$politician
       ) &
-      explore_data$politician != ""
+      explore_clean$politician != ""
     ]
 
   )
@@ -1561,11 +1506,11 @@ representatives_count <-
 assets_count <-
   n_distinct(
 
-    explore_data$asset_v8_2_cleaned[
+    explore_clean$asset_v8_2_cleaned[
       !is.na(
-        explore_data$asset_v8_2_cleaned
+        explore_clean$asset_v8_2_cleaned
       ) &
-      explore_data$asset_v8_2_cleaned != ""
+      explore_clean$asset_v8_2_cleaned != ""
     ]
 
   )
@@ -1574,11 +1519,11 @@ assets_count <-
 disclosures_count <-
   n_distinct(
 
-    explore_data$filing_id[
+    explore_clean$filing_id[
       !is.na(
-        explore_data$filing_id
+        explore_clean$filing_id
       ) &
-      explore_data$filing_id != ""
+      explore_clean$filing_id != ""
     ]
 
   )
@@ -1586,7 +1531,7 @@ disclosures_count <-
 
 transactions_count <-
   nrow(
-    explore_data
+    explore_clean
   )
 ```
 
@@ -1596,58 +1541,33 @@ cat(
 
   '<div class="explore-stats">',
 
-
   '<div class="explore-stat">',
-
-  '<div class="explore-stat-label">',
-  'Representatives',
-  '</div>',
-
+  '<div class="explore-stat-label">Representatives</div>',
   '<div class="explore-stat-number count-up" data-target="',
   representatives_count,
   '">0</div>',
-
   '</div>',
-
 
   '<div class="explore-stat">',
-
-  '<div class="explore-stat-label">',
-  'Assets',
-  '</div>',
-
+  '<div class="explore-stat-label">Assets</div>',
   '<div class="explore-stat-number count-up" data-target="',
   assets_count,
   '">0</div>',
-
   '</div>',
-
 
   '<div class="explore-stat">',
-
-  '<div class="explore-stat-label">',
-  'Disclosures',
-  '</div>',
-
+  '<div class="explore-stat-label">Disclosures</div>',
   '<div class="explore-stat-number count-up" data-target="',
   disclosures_count,
   '">0</div>',
-
   '</div>',
-
 
   '<div class="explore-stat">',
-
-  '<div class="explore-stat-label">',
-  'Transactions',
-  '</div>',
-
+  '<div class="explore-stat-label">Transactions</div>',
   '<div class="explore-stat-number count-up" data-target="',
   transactions_count,
   '">0</div>',
-
   '</div>',
-
 
   '</div>'
 
@@ -1658,11 +1578,8 @@ cat(
 <script>
 
 document.addEventListener(
-
   "DOMContentLoaded",
-
   function() {
-
 
     const statSection =
       document.querySelector(
@@ -1686,7 +1603,6 @@ document.addEventListener(
       element
     ) {
 
-
       const target =
         Number(
           element.dataset.target
@@ -1705,7 +1621,6 @@ document.addEventListener(
         currentTime
       ) {
 
-
         const elapsed =
           currentTime -
           startTime;
@@ -1713,12 +1628,9 @@ document.addEventListener(
 
         const progress =
           Math.min(
-
             elapsed /
             duration,
-
             1
-
           );
 
 
@@ -1731,10 +1643,8 @@ document.addEventListener(
 
         const value =
           Math.floor(
-
             target *
             eased
-
           );
 
 
@@ -1746,14 +1656,11 @@ document.addEventListener(
           progress < 1
         ) {
 
-
           requestAnimationFrame(
             update
           );
 
-
         } else {
-
 
           element.textContent =
             target.toLocaleString();
@@ -1769,24 +1676,15 @@ document.addEventListener(
 
     const observer =
       new IntersectionObserver(
-
-        function(
-          entries
-        ) {
-
+        function(entries) {
 
           entries.forEach(
-
-            function(
-              entry
-            ) {
-
+            function(entry) {
 
               if (
                 entry.isIntersecting &&
                 !hasAnimated
               ) {
-
 
                 hasAnimated =
                   true;
@@ -1810,7 +1708,6 @@ document.addEventListener(
         {
           threshold: 0.35
         }
-
       );
 
 
@@ -1823,18 +1720,19 @@ document.addEventListener(
 </script>
 
 
-The searchable table below contains the structured transaction records produced from the House PTR archive.
-
-For this table, rows marked **high QA review** are excluded, malformed or future dates are removed, and the newest valid transactions appear first.
-
-Because this page also works as a source-checking and debugging view, **Filing ID is the first column** so any transaction can be traced directly back to its original PTR.
+The table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.
 
 Use the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.
 
 
+<div id="debug-control" class="debug-control">
+<label class="debug-toggle" for="debug-mode-toggle"><input type="checkbox" id="debug-mode-toggle"><strong>Debug mode</strong><span>Include high-QA records</span></label>
+</div>
+
+
 ```{r}
 display_data <-
-  explore_data |>
+  explore_all |>
   transmute(
 
     `Filing ID` =
@@ -1868,7 +1766,7 @@ display_data <-
       amount_display,
 
     `QA review` =
-      review_level,
+      qa_norm,
 
     `House PDF` =
       original_pdf_url
@@ -1888,6 +1786,59 @@ datatable(
 
   width =
     "100%",
+
+  callback =
+    JS(
+
+      "var checkbox = document.getElementById('debug-mode-toggle');",
+
+      "var debugControl = document.getElementById('debug-control');",
+
+      "var wrapper = $(table.table().container());",
+
+      "var info = wrapper.find('.dataTables_info');",
+
+      "if (debugControl && info.length) {",
+
+      "  $(debugControl).insertAfter(info);",
+
+      "  $(debugControl).show();",
+
+      "}",
+
+      "function applyDebugMode() {",
+
+      "  if (!checkbox) return;",
+
+      "  if (checkbox.checked) {",
+
+      "    table.column(10).visible(true);",
+
+      "    table.column(10).search('', true, false, true);",
+
+      "    table.draw();",
+
+      "  } else {",
+
+      "    table.column(10).search('^(?!high$).*$', true, false, true);",
+
+      "    table.column(10).visible(false);",
+
+      "    table.draw();",
+
+      "  }",
+
+      "}",
+
+      "if (checkbox) {",
+
+      "  checkbox.addEventListener('change', applyDebugMode);",
+
+      "  applyDebugMode();",
+
+      "}"
+
+    ),
 
   options =
     list(
@@ -1912,10 +1863,6 @@ datatable(
       autoWidth =
         TRUE,
 
-      # Filing ID = 0
-      # Politician = 1
-      # District = 2
-      # Transaction date = 3
       order =
         list(
           list(
@@ -1924,9 +1871,60 @@ datatable(
           )
         ),
 
-      # House PDF = column 11
+      rowCallback =
+        JS(
+
+          "function(row, data) {",
+
+          "  var qa = String(data[10] || '').toLowerCase().trim();",
+
+          "  if (qa === 'high') {",
+
+          "    $(row).addClass('qa-high-row');",
+
+          "  } else {",
+
+          "    $(row).removeClass('qa-high-row');",
+
+          "  }",
+
+          "}"
+
+        ),
+
       columnDefs =
         list(
+
+          list(
+
+            targets =
+              10,
+
+            visible =
+              FALSE,
+
+            render =
+              JS(
+
+                "function(data, type, row, meta) {",
+
+                "  if (type !== 'display') return data;",
+
+                "  if (!data) return '';",
+
+                "  if (String(data).toLowerCase().trim() === 'high') {",
+
+                "    return '<span class=\"qa-high-badge\">High</span>';",
+
+                "  }",
+
+                "  return data;",
+
+                "}"
+
+              )
+
+          ),
 
           list(
 
