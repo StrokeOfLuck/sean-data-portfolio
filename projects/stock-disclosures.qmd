@@ -14,57 +14,347 @@ execute:
 ---
 
 <style>
+
+/* Hide Quarto's default narrow title */
+.quarto-title-block {
+  display: none;
+}
+
+/* Main page width */
+.wide-shell {
+  width: min(1750px, calc(100vw - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-main-title {
+  margin-bottom: 0.2rem;
+}
+
+.project-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
 .dataTables_wrapper {
   font-size: 0.9rem;
 }
 
-/* Featured PTR */
-.ptr-feature {
+
+/* =========================================================
+   FEATURED PTR
+   ========================================================= */
+
+.featured-card {
+  display: grid;
+
+  grid-template-columns:
+    minmax(560px, 0.9fr)
+    minmax(0, 1.1fr);
+
   border: 1px solid #444;
   border-radius: 10px;
-  padding: 1.5rem;
-  margin: 1rem 0 1.5rem 0;
+  overflow: hidden;
+
+  margin: 1.25rem 0;
 }
 
-.ptr-feature h3 {
-  margin-top: 0;
+.featured-info {
+  padding: 1.5rem;
+  border-right: 1px solid #444;
+}
+
+.featured-info h3 {
+  margin: 0 0 1.2rem 0;
+}
+
+.featured-meta {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1.35rem;
+}
+
+.featured-meta-row {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.featured-meta-label {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FEATURED CONTROLS
+   ========================================================= */
+
+.featured-controls {
+  display: grid;
+
+  grid-template-columns:
+    240px minmax(250px, 1fr);
+
+  gap: 1.25rem;
+
+  align-items: start;
+
+  max-width: 590px;
+
+  margin-top: 1rem;
+}
+
+.featured-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 0.65rem;
+
+  width: 240px;
 }
 
 .ptr-button {
-  display: inline-block;
-  padding: 0.55rem 0.9rem;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 240px;
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 0 0.9rem;
+
   border: 1px solid #6ea8fe;
   border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
   text-decoration: none;
-  margin-top: 0.5rem;
+  text-align: center;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+  font: inherit;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
-/* Embedded PTR */
-.ptr-pdf {
-  width: 100%;
-  margin: 1.5rem 0 2rem 0;
+.ptr-button:hover {
+  border-color: #9bc2ff;
+  background: rgba(110, 168, 254, 0.08);
+  transform: translateY(-1px);
 }
 
-.ptr-pdf iframe {
+
+/* =========================================================
+   FILING ID SEARCH
+   ========================================================= */
+
+.filing-search {
   width: 100%;
-  min-height: 850px;
+  padding-left: 1.2rem;
+  border-left: 1px solid #444;
+}
+
+.filing-search label {
+  display: block;
+
+  margin-bottom: 0.55rem;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  opacity: 0.75;
+}
+
+.filing-search-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr) 72px;
+
+  width: 100%;
+}
+
+.filing-search-row input {
+  width: 100%;
+  min-width: 0;
+
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 0 0.7rem;
+
+  border: 1px solid #555;
+  border-right: none;
+
+  border-radius: 6px 0 0 6px;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+}
+
+.filing-search-row input:focus {
+  outline: none;
+  border-color: #6ea8fe;
+}
+
+.filing-search-row button {
+  height: 44px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #6ea8fe;
+
+  border-radius: 0 6px 6px 0;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  white-space: nowrap;
+}
+
+.filing-search-row button:hover {
+  background: rgba(110, 168, 254, 0.08);
+}
+
+.filing-search-message {
+  min-height: 1rem;
+
+  margin-top: 0.45rem;
+
+  font-size: 0.75rem;
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   FEATURED EXTRACTION TABLE
+   ========================================================= */
+
+.featured-extract {
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.featured-extract h3 {
+  margin: 0 0 1rem 0;
+}
+
+.featured-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.featured-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+.featured-table th,
+.featured-table td {
+  text-align: left;
+  vertical-align: top;
+
+  padding: 0.6rem 0.45rem;
+
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.featured-table th {
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.featured-empty {
+  opacity: 0.65;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   PDF VIEWER
+   ========================================================= */
+
+.ptr-pdf-section {
+  margin: 1.5rem 0 3rem 0;
+}
+
+.ptr-pdf-header {
+  margin-bottom: 0.8rem;
+}
+
+.ptr-pdf-header h3 {
+  margin: 0;
+}
+
+/*
+  Very tall intentionally.
+
+  The House PTR is US Letter shaped and Firefox's
+  built-in PDF viewer also uses vertical space
+  for its toolbar.
+
+  Combined with page-fit below, this should remove
+  the tiny remaining scroll on most one-page PTRs.
+*/
+
+.ptr-pdf-viewer {
+  display: block;
+
+  width: 100%;
+  height: 2200px;
+
   border: 1px solid #444;
   border-radius: 8px;
-  background: white;
+
+  background: #181818;
 }
 
-/* Clean summary bar */
+.pdf-fallback {
+  padding: 1rem;
+}
+
+
+/* =========================================================
+   EXPLORE SUMMARY
+   ========================================================= */
+
 .explore-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
   margin: 1.5rem 0 2rem 0;
+
   border-top: 1px solid #3b3b3b;
   border-bottom: 1px solid #3b3b3b;
 }
 
 .explore-stat {
   padding: 1.2rem 1.4rem;
-  border-right: 1px solid #3b3b3b;
+
+  border-right:
+    1px solid #3b3b3b;
 }
 
 .explore-stat:last-child {
@@ -73,9 +363,13 @@ execute:
 
 .explore-stat-label {
   font-size: 0.72rem;
+
   text-transform: uppercase;
+
   letter-spacing: 0.08em;
+
   opacity: 0.55;
+
   margin-bottom: 0.35rem;
 }
 
@@ -85,22 +379,65 @@ execute:
   line-height: 1;
 }
 
-/* Responsive stats */
-@media (max-width: 800px) {
-  .explore-stats {
-    grid-template-columns: repeat(2, 1fr);
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+  .featured-card {
+    grid-template-columns: 1fr;
   }
 
-  .explore-stat:nth-child(2) {
+  .featured-info {
     border-right: none;
+    border-bottom: 1px solid #444;
   }
 
-  .explore-stat {
-    border-bottom: 1px solid #3b3b3b;
+  .ptr-pdf-viewer {
+    height: 1500px;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .wide-shell {
+    width: calc(100vw - 24px);
+  }
+
+  .featured-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-actions {
+    width: 100%;
+  }
+
+  .ptr-button {
+    width: 100%;
+  }
+
+  .filing-search {
+    padding-left: 0;
+    padding-top: 1rem;
+
+    border-left: none;
+    border-top: 1px solid #444;
+  }
+
+  .explore-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .ptr-pdf-viewer {
+    height: 1100px;
   }
 }
 
 @media (max-width: 500px) {
+
   .explore-stats {
     grid-template-columns: 1fr;
   }
@@ -108,45 +445,203 @@ execute:
   .explore-stat {
     border-right: none;
   }
+
+  .featured-meta-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ptr-pdf-viewer {
+    height: 900px;
+  }
 }
+
 </style>
+
 
 ```{r}
 library(readr)
 library(dplyr)
 library(DT)
+library(jsonlite)
+
 
 data_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_transactions_web.csv"
+
 
 ptr <- read_csv(
   data_path,
   show_col_types = FALSE
 )
+
+
+if (!"amount_min" %in% names(ptr)) {
+  ptr$amount_min <- NA_real_
+}
+
+
+if (!"amount_max" %in% names(ptr)) {
+  ptr$amount_max <- NA_real_
+}
+
+
+ptr_prepared <- ptr |>
+  mutate(
+
+    filing_id =
+      as.character(
+        filing_id
+      ),
+
+    parsed_transaction_date =
+      as.Date(
+        transaction_date,
+        format = "%Y-%m-%d"
+      ),
+
+    qa_norm =
+      tolower(
+        trimws(
+          coalesce(
+            review_level,
+            ""
+          )
+        )
+      ),
+
+    owner_display =
+      case_when(
+
+        is.na(owner) |
+          trimws(owner) == "" ~
+            "Self",
+
+        toupper(
+          trimws(owner)
+        ) == "SP" ~
+          "Spouse",
+
+        toupper(
+          trimws(owner)
+        ) == "JT" ~
+          "Joint",
+
+        toupper(
+          trimws(owner)
+        ) == "DC" ~
+          "Dependent child",
+
+        TRUE ~
+          owner
+      ),
+
+    amount_min_num =
+      suppressWarnings(
+        as.numeric(
+          gsub(
+            "[^0-9.]",
+            "",
+            as.character(
+              amount_min
+            )
+          )
+        )
+      ),
+
+    amount_max_num =
+      suppressWarnings(
+        as.numeric(
+          gsub(
+            "[^0-9.]",
+            "",
+            as.character(
+              amount_max
+            )
+          )
+        )
+      ),
+
+    amount_display =
+      case_when(
+
+        !is.na(amount_category) &
+          trimws(amount_category) != "" ~
+            amount_category,
+
+        !is.na(amount_max_num) &
+          amount_max_num <= 1000 ~
+            paste0(
+              "Up to $",
+              format(
+                amount_max_num,
+                big.mark = ",",
+                scientific = FALSE,
+                trim = TRUE
+              )
+            ),
+
+        !is.na(amount_min_num) &
+          !is.na(amount_max_num) ~
+            paste0(
+              "$",
+              format(
+                amount_min_num,
+                big.mark = ",",
+                scientific = FALSE,
+                trim = TRUE
+              ),
+              " - $",
+              format(
+                amount_max_num,
+                big.mark = ",",
+                scientific = FALSE,
+                trim = TRUE
+              )
+            ),
+
+        !is.na(amount_max_num) ~
+          paste0(
+            "Up to $",
+            format(
+              amount_max_num,
+              big.mark = ",",
+              scientific = FALSE,
+              trim = TRUE
+            )
+          ),
+
+        TRUE ~
+          ""
+      )
+
+  )
 ```
 
-::: {.column-page}
+
+::: {.column-screen}
+
+::: {.wide-shell}
+
+
+# Politician Stock Disclosures {.project-main-title}
+
+
+<div class="project-subtitle">U.S. House Periodic Transaction Reports</div>
+
 
 This project turns official U.S. House **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed.
 
+
 ## Featured PTR
 
-The page selects one successfully extracted House disclosure as an example of how the original PTR becomes structured transaction data.
 
-The example changes once per day when the site is rebuilt.
+This section randomly selects one successfully extracted House filing from the dataset.
+
+Use **Show another PTR** to pick another clean example, or enter a **Filing ID** to inspect a specific source disclosure.
+
 
 ```{r}
-featured_pool <- ptr |>
-  mutate(
-    parsed_transaction_date = as.Date(
-      transaction_date,
-      format = "%Y-%m-%d"
-    ),
-    qa_norm = tolower(
-      trimws(
-        coalesce(review_level, "")
-      )
-    )
-  ) |>
+filing_summary <- ptr_prepared |>
   group_by(
     filing_id,
     source_year,
@@ -155,379 +650,1325 @@ featured_pool <- ptr |>
     original_pdf_url
   ) |>
   summarise(
-    transactions = n(),
 
-    any_high_review = any(
-      qa_norm == "high"
-    ),
+    transaction_count =
+      n(),
 
-    has_valid_date = any(
-      !is.na(parsed_transaction_date) &
-      parsed_transaction_date >= as.Date("2021-01-01") &
-      parsed_transaction_date <= Sys.Date()
-    ),
+    any_high_review =
+      any(
+        qa_norm == "high"
+      ),
 
-    .groups = "drop"
+    all_dates_valid =
+      all(
+        !is.na(
+          parsed_transaction_date
+        ) &
+          parsed_transaction_date >=
+            as.Date("2021-01-01") &
+          parsed_transaction_date <=
+            Sys.Date()
+      ),
+
+    .groups =
+      "drop"
   ) |>
   filter(
+
     !is.na(filing_id),
+    filing_id != "",
+
     !is.na(source_year),
+
+    !is.na(politician),
+    politician != "",
+
     !is.na(original_pdf_url),
-    original_pdf_url != "",
-    !any_high_review,
-    has_valid_date
+    original_pdf_url != ""
+
   )
 
-if (nrow(featured_pool) == 0) {
-  stop("No suitable featured PTR filings were found.")
+
+if (
+  nrow(
+    filing_summary
+  ) == 0
+) {
+
+  stop(
+    "No PTR filings were found."
+  )
 }
 
-set.seed(as.integer(Sys.Date()))
 
-featured_info <- featured_pool |>
-  slice_sample(n = 1)
+featured_items <- lapply(
 
-featured <- ptr |>
-  filter(
-    filing_id == featured_info$filing_id[[1]],
-    source_year == featured_info$source_year[[1]]
-  )
+  seq_len(
+    nrow(
+      filing_summary
+    )
+  ),
 
-featured_pdf_url <- featured_info$original_pdf_url[[1]]
-featured_name <- featured_info$politician[[1]]
-featured_district <- featured_info$state_district[[1]]
-featured_id <- featured_info$filing_id[[1]]
-featured_year <- featured_info$source_year[[1]]
+  function(i) {
+
+    filing_info <-
+      filing_summary[
+        i,
+        ,
+        drop = FALSE
+      ]
+
+
+    filing_rows <-
+      ptr_prepared |>
+      filter(
+
+        filing_id ==
+          filing_info$filing_id[[1]],
+
+        source_year ==
+          filing_info$source_year[[1]]
+
+      ) |>
+      arrange(
+
+        desc(
+          parsed_transaction_date
+        )
+
+      ) |>
+      transmute(
+
+        Owner =
+          owner_display,
+
+        Asset =
+          asset_v8_2_cleaned,
+
+        Ticker =
+          ticker_v8_2_cleaned,
+
+        Type =
+          transaction_type,
+
+        Date =
+          transaction_date,
+
+        Amount =
+          amount_display
+
+      )
+
+
+    list(
+
+      politician =
+        filing_info$politician[[1]],
+
+      district =
+        filing_info$state_district[[1]],
+
+      filing_id =
+        filing_info$filing_id[[1]],
+
+      year =
+        as.character(
+          filing_info$source_year[[1]]
+        ),
+
+      pdf_url =
+        filing_info$original_pdf_url[[1]],
+
+      transaction_count =
+        nrow(
+          filing_rows
+        ),
+
+      eligible_random =
+        (
+          !filing_info$any_high_review[[1]] &&
+          filing_info$all_dates_valid[[1]]
+        ),
+
+      transactions =
+        filing_rows
+
+    )
+  }
+)
+
+
+featured_json <- toJSON(
+  featured_items,
+  auto_unbox = TRUE,
+  dataframe = "rows",
+  na = "null"
+)
 ```
+
+
+<div class="featured-card">
+
+
+<div class="featured-info">
+
+
+<h3 id="featured-name"></h3>
+
+
+<div class="featured-meta">
+
+<div class="featured-meta-row"><span class="featured-meta-label">District</span><span id="featured-district"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Filing ID</span><span id="featured-filing-id"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Source year</span><span id="featured-year"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Transactions</span><span id="featured-count"></span></div>
+
+</div>
+
+
+<div class="featured-controls">
+
+
+<div class="featured-actions">
+<button type="button" class="ptr-button" id="random-ptr-button">Show another PTR</button>
+<a class="ptr-button" id="featured-pdf-link" href="#" target="_blank" rel="noopener">Open original House PDF</a>
+</div>
+
+
+<div class="filing-search">
+<label for="filing-id-search">Find by Filing ID</label>
+<div class="filing-search-row"><input id="filing-id-search" type="text" inputmode="numeric" placeholder="e.g. 20020359"><button id="filing-id-search-button" type="button">Load</button></div>
+<div id="filing-search-message" class="filing-search-message"></div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="featured-extract">
+
+
+<h3>Extracted transactions</h3>
+
+
+<div class="featured-table-wrap">
+
+
+<table class="featured-table">
+
+
+<thead>
+
+<tr>
+
+<th>Owner</th>
+
+<th>Asset</th>
+
+<th>Ticker</th>
+
+<th>Type</th>
+
+<th>Date</th>
+
+<th>Amount</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="featured-table-body"></tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="ptr-pdf-section">
+
+
+<div class="ptr-pdf-header">
+
+<h3>Original House PTR</h3>
+
+</div>
+
+
+<object
+  id="featured-pdf-viewer"
+  class="ptr-pdf-viewer"
+  type="application/pdf">
+
+
+<div class="pdf-fallback">
+
+Your browser could not display this PDF inline.
+
+<a
+  id="featured-pdf-fallback-link"
+  href="#"
+  target="_blank"
+  rel="noopener">
+
+Open the original House PDF
+
+</a>
+
+</div>
+
+
+</object>
+
+
+</div>
+
+
 
 ```{r, results='asis'}
 cat(
-  '<div class="ptr-feature">',
-
-  '<h3>',
-  featured_name,
-  '</h3>',
-
-  '<p>',
-
-  '<strong>District:</strong> ',
-  featured_district,
-  '<br>',
-
-  '<strong>Disclosure ID:</strong> ',
-  featured_id,
-  '<br>',
-
-  '<strong>Source year:</strong> ',
-  featured_year,
-  '<br>',
-
-  '<strong>Transactions extracted:</strong> ',
-  nrow(featured),
-
-  '</p>',
-
-  '<a class="ptr-button" href="',
-  featured_pdf_url,
-  '" target="_blank" rel="noopener">',
-  'Open official House PDF',
-  '</a>',
-
-  '</div>',
-
-  '<div class="ptr-pdf">',
-
-  '<iframe ',
-  'src="',
-  featured_pdf_url,
-  '#view=FitH" ',
-  'title="Featured House PTR" ',
-  'width="100%" ',
-  'height="850px">',
-
-  '</iframe>',
-
-  '</div>'
+  '<script>',
+  'const allFeaturedPTRs = ',
+  featured_json,
+  ';',
+  '</script>'
 )
 ```
 
-### Extracted transactions from this PTR
 
-```{r}
-featured_table <- featured |>
-  transmute(
-    Owner = owner,
-    Asset = asset_v8_2_cleaned,
-    Ticker = ticker_v8_2_cleaned,
-    Type = transaction_type,
-    `Transaction date` = transaction_date,
-    Amount = amount_category,
-    `QA review` = review_level
-  )
+<script>
 
-datatable(
-  featured_table,
-  rownames = FALSE,
-  filter = "none",
-  width = "100%",
-  options = list(
-    dom = "t",
-    paging = FALSE,
-    ordering = FALSE,
-    autoWidth = TRUE
-  )
-)
-```
+(function () {
 
-The original disclosure above is the source document. The table beneath it shows the structured transaction records extracted from that same PTR.
+
+  let currentIndex =
+    -1;
+
+
+  function cleanValue(
+    value
+  ) {
+
+
+    if (
+      value === null ||
+      value === undefined ||
+      value === "NA"
+    ) {
+
+      return "";
+
+    }
+
+
+    return String(
+      value
+    );
+  }
+
+
+  const eligibleRandomIndices =
+    allFeaturedPTRs
+      .map(
+        function(
+          item,
+          index
+        ) {
+
+          return item.eligible_random
+            ? index
+            : null;
+        }
+      )
+      .filter(
+        function(
+          index
+        ) {
+
+          return index !== null;
+        }
+      );
+
+
+  function randomIndex() {
+
+
+    const pool =
+      eligibleRandomIndices.length > 0
+        ? eligibleRandomIndices
+        : allFeaturedPTRs.map(
+            function(
+              item,
+              index
+            ) {
+
+              return index;
+            }
+          );
+
+
+    if (
+      pool.length <= 1
+    ) {
+
+      return pool[0];
+    }
+
+
+    let nextIndex;
+
+
+    do {
+
+      nextIndex =
+        pool[
+          Math.floor(
+            Math.random() *
+            pool.length
+          )
+        ];
+
+    } while (
+      nextIndex ===
+        currentIndex
+    );
+
+
+    return nextIndex;
+  }
+
+
+  function updatePDF(
+    url
+  ) {
+
+
+    const viewer =
+      document.getElementById(
+        "featured-pdf-viewer"
+      );
+
+
+    const mainLink =
+      document.getElementById(
+        "featured-pdf-link"
+      );
+
+
+    const fallbackLink =
+      document.getElementById(
+        "featured-pdf-fallback-link"
+      );
+
+
+    mainLink.href =
+      url;
+
+
+    fallbackLink.href =
+      url;
+
+
+    viewer.removeAttribute(
+      "data"
+    );
+
+
+    window.setTimeout(
+
+      function() {
+
+
+        viewer.setAttribute(
+
+          "data",
+
+          url +
+          "#page=1&zoom=page-fit"
+
+        );
+
+      },
+
+      20
+
+    );
+  }
+
+
+  function renderFeaturedPTR(
+    index
+  ) {
+
+
+    currentIndex =
+      index;
+
+
+    const item =
+      allFeaturedPTRs[
+        index
+      ];
+
+
+    document
+      .getElementById(
+        "featured-name"
+      )
+      .textContent =
+        cleanValue(
+          item.politician
+        );
+
+
+    document
+      .getElementById(
+        "featured-district"
+      )
+      .textContent =
+        cleanValue(
+          item.district
+        );
+
+
+    document
+      .getElementById(
+        "featured-filing-id"
+      )
+      .textContent =
+        cleanValue(
+          item.filing_id
+        );
+
+
+    document
+      .getElementById(
+        "featured-year"
+      )
+      .textContent =
+        cleanValue(
+          item.year
+        );
+
+
+    document
+      .getElementById(
+        "featured-count"
+      )
+      .textContent =
+        Number(
+          item.transaction_count
+        ).toLocaleString();
+
+
+    document
+      .getElementById(
+        "filing-id-search"
+      )
+      .value =
+        cleanValue(
+          item.filing_id
+        );
+
+
+    document
+      .getElementById(
+        "filing-search-message"
+      )
+      .textContent =
+        "";
+
+
+    const tbody =
+      document.getElementById(
+        "featured-table-body"
+      );
+
+
+    tbody.innerHTML =
+      "";
+
+
+    let transactions =
+      item.transactions;
+
+
+    if (
+      transactions &&
+      !Array.isArray(
+        transactions
+      )
+    ) {
+
+      transactions = [
+        transactions
+      ];
+    }
+
+
+    if (
+      !transactions ||
+      transactions.length === 0
+    ) {
+
+
+      const row =
+        document.createElement(
+          "tr"
+        );
+
+
+      const cell =
+        document.createElement(
+          "td"
+        );
+
+
+      cell.colSpan =
+        6;
+
+
+      cell.className =
+        "featured-empty";
+
+
+      cell.textContent =
+        "No extracted transaction rows.";
+
+
+      row.appendChild(
+        cell
+      );
+
+
+      tbody.appendChild(
+        row
+      );
+
+
+    } else {
+
+
+      transactions.forEach(
+
+        function(
+          transaction
+        ) {
+
+
+          const row =
+            document.createElement(
+              "tr"
+            );
+
+
+          const values = [
+
+            transaction.Owner,
+
+            transaction.Asset,
+
+            transaction.Ticker,
+
+            transaction.Type,
+
+            transaction.Date,
+
+            transaction.Amount
+
+          ];
+
+
+          values.forEach(
+
+            function(
+              value
+            ) {
+
+
+              const cell =
+                document.createElement(
+                  "td"
+                );
+
+
+              cell.textContent =
+                cleanValue(
+                  value
+                );
+
+
+              row.appendChild(
+                cell
+              );
+            }
+          );
+
+
+          tbody.appendChild(
+            row
+          );
+        }
+      );
+    }
+
+
+    updatePDF(
+      item.pdf_url
+    );
+  }
+
+
+  function showRandomPTR() {
+
+
+    const index =
+      randomIndex();
+
+
+    renderFeaturedPTR(
+      index
+    );
+  }
+
+
+  function loadFilingID() {
+
+
+    const input =
+      document.getElementById(
+        "filing-id-search"
+      );
+
+
+    const message =
+      document.getElementById(
+        "filing-search-message"
+      );
+
+
+    const requestedID =
+      input.value
+        .trim()
+        .replace(
+          /\D/g,
+          ""
+        );
+
+
+    if (
+      !requestedID
+    ) {
+
+
+      message.textContent =
+        "Enter a Filing ID.";
+
+
+      return;
+    }
+
+
+    const index =
+      allFeaturedPTRs.findIndex(
+
+        function(
+          item
+        ) {
+
+
+          return String(
+            item.filing_id
+          ) ===
+            requestedID;
+        }
+      );
+
+
+    if (
+      index === -1
+    ) {
+
+
+      message.textContent =
+        "Filing ID not found in this dataset.";
+
+
+      return;
+    }
+
+
+    message.textContent =
+      "";
+
+
+    renderFeaturedPTR(
+      index
+    );
+  }
+
+
+  function initializePTRFeature() {
+
+
+    const randomButton =
+      document.getElementById(
+        "random-ptr-button"
+      );
+
+
+    const searchButton =
+      document.getElementById(
+        "filing-id-search-button"
+      );
+
+
+    const searchInput =
+      document.getElementById(
+        "filing-id-search"
+      );
+
+
+    randomButton
+      .addEventListener(
+        "click",
+        showRandomPTR
+      );
+
+
+    searchButton
+      .addEventListener(
+        "click",
+        loadFilingID
+      );
+
+
+    searchInput
+      .addEventListener(
+
+        "keydown",
+
+        function(
+          event
+        ) {
+
+
+          if (
+            event.key ===
+            "Enter"
+          ) {
+
+
+            loadFilingID();
+          }
+        }
+      );
+
+
+    showRandomPTR();
+  }
+
+
+  if (
+    document.readyState ===
+      "loading"
+  ) {
+
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initializePTRFeature
+    );
+
+
+  } else {
+
+
+    initializePTRFeature();
+  }
+
+
+})();
+
+</script>
+
+
+The random example uses clean filings, while the **Filing ID lookup can load any filing represented in the dataset**. This makes the page useful for both demonstrating the extraction and checking individual source records.
+
 
 ---
 
+
 ## Explore the transactions
 
+
 ```{r}
-explore_data <- ptr |>
-  mutate(
-    parsed_transaction_date = as.Date(
-      transaction_date,
-      format = "%Y-%m-%d"
+explore_data <-
+  ptr_prepared |>
+  filter(
+
+    qa_norm != "high",
+
+    !is.na(
+      parsed_transaction_date
     ),
 
-    qa_norm = tolower(
-      trimws(
-        coalesce(review_level, "")
-      )
-    )
-  ) |>
-  filter(
-    qa_norm != "high",
-    !is.na(parsed_transaction_date),
-    parsed_transaction_date >= as.Date("2021-01-01"),
-    parsed_transaction_date <= Sys.Date()
+    parsed_transaction_date >=
+      as.Date("2021-01-01"),
+
+    parsed_transaction_date <=
+      Sys.Date()
+
   ) |>
   arrange(
-    desc(parsed_transaction_date)
+
+    desc(
+      parsed_transaction_date
+    )
+
   )
 
-representatives_count <- n_distinct(
-  explore_data$politician[
-    !is.na(explore_data$politician) &
-    explore_data$politician != ""
-  ]
-)
 
-assets_count <- n_distinct(
-  explore_data$asset_v8_2_cleaned[
-    !is.na(explore_data$asset_v8_2_cleaned) &
-    explore_data$asset_v8_2_cleaned != ""
-  ]
-)
+representatives_count <-
+  n_distinct(
 
-disclosures_count <- n_distinct(
-  explore_data$filing_id[
-    !is.na(explore_data$filing_id) &
-    explore_data$filing_id != ""
-  ]
-)
+    explore_data$politician[
+      !is.na(
+        explore_data$politician
+      ) &
+      explore_data$politician != ""
+    ]
 
-transactions_count <- nrow(explore_data)
+  )
+
+
+assets_count <-
+  n_distinct(
+
+    explore_data$asset_v8_2_cleaned[
+      !is.na(
+        explore_data$asset_v8_2_cleaned
+      ) &
+      explore_data$asset_v8_2_cleaned != ""
+    ]
+
+  )
+
+
+disclosures_count <-
+  n_distinct(
+
+    explore_data$filing_id[
+      !is.na(
+        explore_data$filing_id
+      ) &
+      explore_data$filing_id != ""
+    ]
+
+  )
+
+
+transactions_count <-
+  nrow(
+    explore_data
+  )
 ```
+
 
 ```{r, results='asis'}
 cat(
+
   '<div class="explore-stats">',
 
+
   '<div class="explore-stat">',
-  '<div class="explore-stat-label">Representatives</div>',
+
+  '<div class="explore-stat-label">',
+  'Representatives',
+  '</div>',
+
   '<div class="explore-stat-number count-up" data-target="',
   representatives_count,
   '">0</div>',
+
   '</div>',
 
+
   '<div class="explore-stat">',
-  '<div class="explore-stat-label">Assets</div>',
+
+  '<div class="explore-stat-label">',
+  'Assets',
+  '</div>',
+
   '<div class="explore-stat-number count-up" data-target="',
   assets_count,
   '">0</div>',
+
   '</div>',
 
+
   '<div class="explore-stat">',
-  '<div class="explore-stat-label">Disclosures</div>',
+
+  '<div class="explore-stat-label">',
+  'Disclosures',
+  '</div>',
+
   '<div class="explore-stat-number count-up" data-target="',
   disclosures_count,
   '">0</div>',
+
   '</div>',
 
+
   '<div class="explore-stat">',
-  '<div class="explore-stat-label">Transactions</div>',
+
+  '<div class="explore-stat-label">',
+  'Transactions',
+  '</div>',
+
   '<div class="explore-stat-number count-up" data-target="',
   transactions_count,
   '">0</div>',
+
   '</div>',
 
+
   '</div>'
+
 )
 ```
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const statSection = document.querySelector(".explore-stats");
+document.addEventListener(
 
-  if (!statSection) {
-    return;
-  }
+  "DOMContentLoaded",
 
-  let hasAnimated = false;
+  function() {
 
-  function animateValue(element) {
 
-    const target = Number(element.dataset.target);
-
-    // Slower overall animation
-    const duration = 3000;
-
-    const startTime = performance.now();
-
-    function update(currentTime) {
-
-      const elapsed = currentTime - startTime;
-
-      const progress = Math.min(
-        elapsed / duration,
-        1
+    const statSection =
+      document.querySelector(
+        ".explore-stats"
       );
 
-      /*
-        Ease-in animation:
-        starts very slowly,
-        then accelerates toward the end.
-      */
-      const eased =
-        Math.pow(progress, 2.4);
 
-      const value = Math.floor(
-        target * eased
-      );
+    if (
+      !statSection
+    ) {
 
-      element.textContent =
-        value.toLocaleString();
+      return;
+    }
 
-      if (progress < 1) {
 
-        requestAnimationFrame(update);
+    let hasAnimated =
+      false;
 
-      } else {
+
+    function animateValue(
+      element
+    ) {
+
+
+      const target =
+        Number(
+          element.dataset.target
+        );
+
+
+      const duration =
+        4000;
+
+
+      const startTime =
+        performance.now();
+
+
+      function update(
+        currentTime
+      ) {
+
+
+        const elapsed =
+          currentTime -
+          startTime;
+
+
+        const progress =
+          Math.min(
+
+            elapsed /
+            duration,
+
+            1
+
+          );
+
+
+        const eased =
+          Math.pow(
+            progress,
+            2.5
+          );
+
+
+        const value =
+          Math.floor(
+
+            target *
+            eased
+
+          );
+
 
         element.textContent =
-          target.toLocaleString();
+          value.toLocaleString();
 
-      }
-    }
-
-    requestAnimationFrame(update);
-  }
-
-  const observer = new IntersectionObserver(
-    function(entries) {
-
-      entries.forEach(function(entry) {
 
         if (
-          entry.isIntersecting &&
-          !hasAnimated
+          progress < 1
         ) {
 
-          hasAnimated = true;
 
-          document
-            .querySelectorAll(".count-up")
-            .forEach(animateValue);
+          requestAnimationFrame(
+            update
+          );
 
-          observer.disconnect();
+
+        } else {
+
+
+          element.textContent =
+            target.toLocaleString();
+        }
+      }
+
+
+      requestAnimationFrame(
+        update
+      );
+    }
+
+
+    const observer =
+      new IntersectionObserver(
+
+        function(
+          entries
+        ) {
+
+
+          entries.forEach(
+
+            function(
+              entry
+            ) {
+
+
+              if (
+                entry.isIntersecting &&
+                !hasAnimated
+              ) {
+
+
+                hasAnimated =
+                  true;
+
+
+                document
+                  .querySelectorAll(
+                    ".count-up"
+                  )
+                  .forEach(
+                    animateValue
+                  );
+
+
+                observer.disconnect();
+              }
+            }
+          );
+        },
+
+        {
+          threshold: 0.35
         }
 
-      });
+      );
 
-    },
-    {
-      threshold: 0.35
-    }
-  );
 
-  observer.observe(statSection);
-});
+    observer.observe(
+      statSection
+    );
+  }
+);
+
 </script>
+
 
 The searchable table below contains the structured transaction records produced from the House PTR archive.
 
-For the public-facing table, rows marked **high QA review** are excluded, malformed or future dates are removed, and the newest valid transactions appear first.
+For this table, rows marked **high QA review** are excluded, malformed or future dates are removed, and the newest valid transactions appear first.
 
-Use the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date.
+Because this page also works as a source-checking and debugging view, **Filing ID is the first column** so any transaction can be traced directly back to its original PTR.
+
+Use the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.
+
 
 ```{r}
-display_data <- explore_data |>
+display_data <-
+  explore_data |>
   transmute(
-    Politician = politician,
-    District = state_district,
-    `Transaction date` = transaction_date,
-    `Notification date` = notification_date,
-    Owner = owner,
-    Asset = asset_v8_2_cleaned,
-    Ticker = ticker_v8_2_cleaned,
-    Type = transaction_type,
-    Amount = amount_category,
-    `QA review` = review_level,
 
-    `House PDF` = ifelse(
-      is.na(original_pdf_url) |
-      original_pdf_url == "",
+    `Filing ID` =
+      filing_id,
 
-      "",
+    Politician =
+      politician,
 
-      paste0(
-        '<a href="',
-        original_pdf_url,
-        '" target="_blank" rel="noopener">',
-        'View PDF',
-        '</a>'
-      )
-    )
+    District =
+      state_district,
+
+    `Transaction date` =
+      transaction_date,
+
+    `Notification date` =
+      notification_date,
+
+    Owner =
+      owner_display,
+
+    Asset =
+      asset_v8_2_cleaned,
+
+    Ticker =
+      ticker_v8_2_cleaned,
+
+    Type =
+      transaction_type,
+
+    Amount =
+      amount_display,
+
+    `QA review` =
+      review_level,
+
+    `House PDF` =
+      original_pdf_url
+
   )
+
 
 datatable(
+
   display_data,
-  filter = "top",
-  rownames = FALSE,
-  escape = FALSE,
-  width = "100%",
 
-  options = list(
-    pageLength = 10,
+  filter =
+    "top",
 
-    lengthMenu = c(
-      10,
-      25,
-      50,
-      100
-    ),
+  rownames =
+    FALSE,
 
-    scrollX = TRUE,
-    scrollCollapse = TRUE,
-    autoWidth = TRUE,
-    searchHighlight = TRUE,
+  width =
+    "100%",
 
-    order = list(
-      list(2, "desc")
+  options =
+    list(
+
+      pageLength =
+        10,
+
+      lengthMenu =
+        c(
+          10,
+          25,
+          50,
+          100
+        ),
+
+      scrollX =
+        TRUE,
+
+      scrollCollapse =
+        TRUE,
+
+      autoWidth =
+        TRUE,
+
+      # Filing ID = 0
+      # Politician = 1
+      # District = 2
+      # Transaction date = 3
+      order =
+        list(
+          list(
+            3,
+            "desc"
+          )
+        ),
+
+      # House PDF = column 11
+      columnDefs =
+        list(
+
+          list(
+
+            targets =
+              11,
+
+            orderable =
+              FALSE,
+
+            render =
+              JS(
+
+                "function(data, type, row, meta) {",
+
+                "  if (type !== 'display') return data;",
+
+                "  if (!data) return '';",
+
+                "  return '<a href=\"' + data + '\" target=\"_blank\" rel=\"noopener\">View PDF</a>';",
+
+                "}"
+
+              )
+
+          )
+
+        )
+
     )
-  )
+
 )
 ```
 
+
 ## Data source
+
 
 The source records are official U.S. House Periodic Transaction Reports.
 
 Each displayed transaction retains the original House disclosure URL when available.
+
+
+:::
 
 :::
