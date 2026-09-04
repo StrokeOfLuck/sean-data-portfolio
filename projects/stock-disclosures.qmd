@@ -1,41 +1,350 @@
 ---
 title: "Politician Stock Disclosures"
-description: "Structuring and analyzing congressional financial-disclosure data."
+subtitle: "U.S. House Periodic Transaction Reports"
+page-layout: full
+
+resources:
+  - projects/assets/featured-ptr.pdf
+
+format:
+  html:
+    toc: false
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  execute-dir: project
 ---
 
-## Question
+<style>
+.dataTables_wrapper {
+  font-size: 0.9rem;
+}
 
-What can congressional stock-trading disclosures tell us when the underlying records are turned into usable, structured data?
+/* Featured PTR information card */
+.ptr-feature {
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem 0 1.5rem 0;
+}
 
-## Why It Matters
+.ptr-feature h3 {
+  margin-top: 0;
+}
 
-Financial disclosures are public records, but the underlying documents can be difficult to search, compare, and analyze at scale.
+.ptr-button {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #6ea8fe;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
 
-## Data
+/* Embedded PDF */
+.ptr-pdf {
+  width: 100%;
+  margin: 1.5rem 0 2rem 0;
+}
 
-Add the disclosure sources, date range, and any supporting datasets here.
+.ptr-pdf iframe {
+  width: 100%;
+  min-height: 850px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: white;
+}
+</style>
 
-## What I Did
+```{r}
+library(readr)
+library(dplyr)
+library(DT)
+library(jsonlite)
 
-1. Collected disclosure records.
-2. Parsed and cleaned transaction information.
-3. Standardized politicians, assets, tickers, and dates.
-4. Built analysis or visualization tools around the resulting data.
+data_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_transactions_web.csv"
 
-## Methods
+metadata_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_metadata.json"
 
-`Python` `R` `PDF Parsing` `Public Records` `Data Cleaning` `Visualization`
+ptr <- read_csv(
+  data_path,
+  show_col_types = FALSE
+)
 
-## Results
+meta <- fromJSON(metadata_path)
+```
 
-**Add your strongest visualization or screenshot here.**
+This project turns official U.S. House **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed.
 
-Then explain the most important thing someone should learn from it.
+## Featured PTR
 
-## My Contribution
+The page selects one successfully extracted House disclosure as an example of how the original PTR becomes structured transaction data.
 
-Be explicit here about what **you personally built, analyzed, researched, or designed**, especially if this was collaborative.
+The example changes once per day when the site is rebuilt.
 
-## Links
+```{r}
+# Create a real Date variable so malformed dates do not get selected.
 
-[Code](https://github.com/YOUR-USERNAME) · Live project link when available
+candidate_rows <- ptr |>
+  mutate(
+    parsed_transaction_date = as.Date(
+      transaction_date,
+      format = "%Y-%m-%d"
+    )
+  ) |>
+  filter(
+    !is.na(filing_id),
+    !is.na(source_year),
+    !is.na(original_pdf_url),
+    original_pdf_url != "",
+    !is.na(parsed_transaction_date),
+    parsed_transaction_date >= as.Date("2021-01-01"),
+    parsed_transaction_date <= Sys.Date()
+  )
+
+# Summarize by PTR filing.
+# Only use filings that contain no rows marked high QA review.
+
+candidate_filings <- candidate_rows |>
+  group_by(
+    filing_id,
+    source_year,
+    politician,
+    state_district,
+    original_pdf_url
+  ) |>
+  summarise(
+    transactions = n(),
+    all_non_high_review = all(
+      is.na(review_level) | review_level != "high"
+    ),
+    .groups = "drop"
+  ) |>
+  filter(all_non_high_review)
+
+if (nrow(candidate_filings) == 0) {
+  stop("No suitable featured PTR filings were found.")
+}
+
+# The date is used as the seed so the example changes once per day,
+# rather than changing every time the document is previewed.
+
+set.seed(as.integer(Sys.Date()))
+
+featured_info <- candidate_filings |>
+  slice_sample(n = 1)
+
+featured <- ptr |>
+  filter(
+    filing_id == featured_info$filing_id[[1]],
+    source_year == featured_info$source_year[[1]]
+  )
+
+featured_pdf_url <- featured_info$original_pdf_url[[1]]
+featured_name <- featured_info$politician[[1]]
+featured_district <- featured_info$state_district[[1]]
+featured_id <- featured_info$filing_id[[1]]
+featured_year <- featured_info$source_year[[1]]
+```
+
+```{r}
+# Locate the matching PDF in the existing Google Drive archive.
+
+pdf_source <- file.path(
+  "G:/My Drive/Congressional Trading Data/House_PTRs/01 Official House PTR PDFs",
+  as.character(featured_year),
+  paste0(featured_id, ".pdf")
+)
+
+# Because this Quarto page lives inside projects/,
+# place its public PDF in projects/assets/.
+
+dir.create(
+  "projects/assets",
+  showWarnings = FALSE,
+  recursive = TRUE
+)
+
+pdf_destination <- "projects/assets/featured-ptr.pdf"
+
+if (!file.exists(pdf_source)) {
+  stop(
+    paste(
+      "Featured PTR PDF was not found at:",
+      pdf_source
+    )
+  )
+}
+
+invisible(
+  file.copy(
+    pdf_source,
+    pdf_destination,
+    overwrite = TRUE
+  )
+)
+```
+
+```{r, results='asis'}
+cat(
+  '<div class="ptr-feature">',
+
+  '<h3>',
+  featured_name,
+  '</h3>',
+
+  '<p>',
+
+  '<strong>District:</strong> ',
+  featured_district,
+  '<br>',
+
+  '<strong>Disclosure ID:</strong> ',
+  featured_id,
+  '<br>',
+
+  '<strong>Source year:</strong> ',
+  featured_year,
+  '<br>',
+
+  '<strong>Transactions extracted:</strong> ',
+  nrow(featured),
+
+  '</p>',
+
+  '<a class="ptr-button" href="',
+  featured_pdf_url,
+  '" target="_blank" rel="noopener">',
+  'Open official House PDF',
+  '</a>',
+
+  '</div>',
+
+  '<div class="ptr-pdf">',
+
+  '<iframe ',
+  'src="assets/featured-ptr.pdf#view=FitH" ',
+  'title="Featured House PTR" ',
+  'width="100%" ',
+  'height="850px">',
+
+  '</iframe>',
+
+  '</div>'
+)
+```
+
+### Extracted transactions from this PTR
+
+```{r}
+featured_table <- featured |>
+  transmute(
+    Owner = owner,
+    Asset = asset_v8_2_cleaned,
+    Ticker = ticker_v8_2_cleaned,
+    Type = transaction_type,
+    `Transaction date` = transaction_date,
+    Amount = amount_category,
+    `QA review` = review_level
+  )
+
+datatable(
+  featured_table,
+  rownames = FALSE,
+  filter = "none",
+  options = list(
+    dom = "t",
+    paging = FALSE,
+    ordering = FALSE,
+    autoWidth = TRUE
+  )
+)
+```
+
+The original disclosure above is the source document. The table beneath it shows the structured transaction records extracted from that same PTR.
+
+---
+
+## Explore the transactions
+
+The searchable table below contains the structured transaction records produced from the House PTR archive.
+
+For the public-facing table, rows marked **high QA review** are excluded, malformed dates are removed, and the newest valid transactions appear first.
+
+Use the search box or column filters to look for a politician, ticker, asset, district, transaction type, or date.
+
+::: {.column-page}
+
+```{r}
+display_data <- ptr |>
+  mutate(
+    parsed_transaction_date = as.Date(
+      transaction_date,
+      format = "%Y-%m-%d"
+    )
+  ) |>
+  filter(
+    is.na(review_level) | review_level != "high",
+    !is.na(parsed_transaction_date),
+    parsed_transaction_date >= as.Date("2021-01-01"),
+    parsed_transaction_date <= Sys.Date()
+  ) |>
+  arrange(
+    desc(parsed_transaction_date)
+  ) |>
+  transmute(
+    Politician = politician,
+    District = state_district,
+    `Transaction date` = transaction_date,
+    `Notification date` = notification_date,
+    Owner = owner,
+    Asset = asset_v8_2_cleaned,
+    Ticker = ticker_v8_2_cleaned,
+    Type = transaction_type,
+    Amount = amount_category,
+    `QA review` = review_level,
+    `House PDF` = ifelse(
+      is.na(original_pdf_url) | original_pdf_url == "",
+      "",
+      paste0(
+        '<a href="',
+        original_pdf_url,
+        '" target="_blank" rel="noopener">',
+        'View PDF',
+        '</a>'
+      )
+    )
+  )
+
+datatable(
+  display_data,
+  filter = "top",
+  rownames = FALSE,
+  escape = FALSE,
+  width = "100%",
+  options = list(
+    pageLength = 10,
+    lengthMenu = c(10, 25, 50, 100),
+    scrollX = TRUE,
+    scrollCollapse = TRUE,
+    autoWidth = TRUE,
+    searchHighlight = TRUE,
+
+    # Third displayed column is Transaction date.
+    # DataTables uses zero-based column numbering.
+    order = list(
+      list(2, "desc")
+    )
+  )
+)
+```
+
+:::
+
+## Data source
+
+The source records are official U.S. House Periodic Transaction Reports.
+
+Each displayed transaction retains the original House disclosure URL when available.
