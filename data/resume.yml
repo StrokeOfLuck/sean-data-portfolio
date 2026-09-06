@@ -68,7 +68,7 @@ projects:
     year: "2026"
     bullets:
       - "Created an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact"
-    url: "https://strokeofluck.github.io/All-We-Are-Map/"
+    url: "https://strokeofluck.github.io/all-we-are-map-box/"
 
   - title: "Lyon Cycling Map — GPS Video Mapping Project"
     year: "2025"
