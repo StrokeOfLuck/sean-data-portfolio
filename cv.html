@@ -402,8 +402,16 @@ ul.task-list li input[type="checkbox"] {
     height: auto !important;
   }
 
-  html, body {
-    font-size: 10.5px;
+  /* Bootstrap's own print stylesheet sets `:root{font-size:11pt}`, and
+     `:root` outranks a plain `html` selector in specificity -- so an
+     `html, body {...}` rule here only actually overrides `body`, not
+     the root element. Anything sized in `rem` (like .resume-entry-org)
+     keeps resolving against that leftover 11pt root instead of this
+     value, while unsized text just inherits body's (correct) value --
+     which is why entry titles were rendering smaller than the
+     org/location line under them. Target `:root` directly to fix it. */
+  :root, html, body {
+    font-size: 10.5px !important;
   }
 
   body {
