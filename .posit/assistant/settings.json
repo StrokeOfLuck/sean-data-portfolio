@@ -22,7 +22,11 @@
     "edit": {
       "*.md": "allow",
       "*/.gitignore": "allow",
-      "*.qmd": "allow"
+      "*.qmd": "allow",
+      "*.yml": "allow"
+    },
+    "webfetch": {
+      "https://api.github.com/*": "allow"
     }
   }
 }

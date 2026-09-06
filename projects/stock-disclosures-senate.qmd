@@ -467,14 +467,21 @@ library(DT)
 library(jsonlite)
 
 
-# Senate data lives in the sibling senate-ptr-scraper repo (source of
-# truth for the automated scrape). Both locally and in the CI deploy
-# workflow, sean-data-portfolio and senate-ptr-scraper are checked out as
-# sibling folders, so this same relative path (up two levels from
-# projects/, then into the sibling repo) resolves in both places.
-data_path <- "../../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv"
+# Senate data lives in the senate-ptr-scraper repo (source of truth for
+# the automated scrape). Locally, that repo is a true sibling folder next
+# to sean-data-portfolio, reached from projects/ by going up two levels.
+# In CI, actions/checkout refuses any `path` that escapes $GITHUB_WORKSPACE
+# via "..", so the deploy workflow checks senate-ptr-scraper out *inside*
+# this repo instead (senate-ptr-scraper/), reached from projects/ by going
+# up only one level. Try both and use whichever exists.
+data_path_candidates <- c(
+  "../../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv",
+  "../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv"
+)
 
-data_available <- file.exists(data_path)
+data_path <- data_path_candidates[file.exists(data_path_candidates)][1]
+
+data_available <- !is.na(data_path) && file.exists(data_path)
 
 if (data_available) {
   ptr_raw <- read_csv(data_path, show_col_types = FALSE)

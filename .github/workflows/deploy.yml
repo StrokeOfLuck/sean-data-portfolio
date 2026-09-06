@@ -23,11 +23,16 @@ jobs:
       - name: Checkout sean-data-portfolio
         uses: actions/checkout@v4
 
-      - name: Checkout senate-ptr-scraper (sibling folder, for Senate data)
+      # actions/checkout refuses any `path` that escapes $GITHUB_WORKSPACE via
+      # "..", so this lands *inside* the sean-data-portfolio checkout as
+      # senate-ptr-scraper/ rather than as a true sibling folder (which is
+      # how it looks in local development). The Quarto page's data path
+      # tries both layouts and uses whichever exists.
+      - name: Checkout senate-ptr-scraper (for Senate data)
         uses: actions/checkout@v4
         with:
           repository: StrokeOfLuck/senate-ptr-scraper
-          path: ../senate-ptr-scraper
+          path: senate-ptr-scraper
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
