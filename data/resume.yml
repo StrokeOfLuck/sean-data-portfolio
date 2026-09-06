@@ -64,6 +64,12 @@ volunteer:
       - "Support outreach initiatives and grant development efforts"
 
 projects:
+  - title: "Personal Data Portfolio — This Website"
+    year: "2026"
+    bullets:
+      - "Built and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline"
+    url: "https://strokeofluck.github.io/sean-data-portfolio/"
+
   - title: "All We Are Solar Map — Nonprofit Infrastructure Visualization"
     year: "2026"
     bullets:

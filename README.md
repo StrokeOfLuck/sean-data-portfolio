@@ -1,50 +1,43 @@
 # Sean Ryan — Data Portfolio
 
-Starter Quarto portfolio for data journalism, digital investigations, and civic technology work.
+Source for [strokeofluck.github.io/sean-data-portfolio](https://strokeofluck.github.io/sean-data-portfolio/), a Quarto
+website showcasing data journalism, digital investigations, and civic technology work: politician stock
+disclosures, computational political text analysis, GIS/public-records reporting, and visual-AI research.
 
-## 1. Install Quarto
+## Structure
 
-Download Quarto from:
-https://quarto.org/docs/get-started/
+- `index.qmd` — homepage / project grid
+- `about.qmd` — about page
+- `cv.qmd` — resume page, rendered from `data/resume.yml` (see below)
+- `projects/*.qmd` — one page per project
+- `data/` — small data files committed directly to the repo (e.g. `resume.yml`, the House PTR snapshot fallback)
+- `styles.css` — shared site styling
+- `_quarto.yml` — site/nav configuration
 
-## 2. Preview the site
+Some project pages (`projects/stock-disclosures.qmd`, `projects/stock-disclosures-senate.qmd`) pull their live data
+from sibling scraper repositories (`house-ptr-scraper`, `senate-ptr-scraper`) at render time, with a static CSV
+fallback in `data/` if those aren't available locally.
 
-Open a terminal in this folder and run:
+## Editing the resume
+
+The resume page's content lives entirely in [`data/resume.yml`](data/resume.yml) — name, contact info, summary,
+experience, volunteer work, projects, education, and skills. Routine updates (a new job, a new bullet, a link fix)
+only require editing that file, not `cv.qmd`'s HTML/CSS.
+
+**Quickest way to edit:** open the file directly in GitHub's web editor —
+[github.com/StrokeOfLuck/sean-data-portfolio/edit/main/data/resume.yml](https://github.com/StrokeOfLuck/sean-data-portfolio/edit/main/data/resume.yml)
+— make changes, and commit. Pushing to `main` automatically triggers a rebuild and redeploy (see below). There's
+also an "Edit this resume" link on the live resume page itself that goes straight there.
+
+Only touch `cv.qmd` for structural/layout changes (new section types, styling, the print/PDF stylesheet).
+
+## Local preview
 
 ```bash
 quarto preview
 ```
 
-## 3. Edit these first
+## Deployment
 
-- `_quarto.yml` — replace `YOUR-USERNAME`
-- `cv.qmd` — replace GitHub and email placeholders
-- `index.qmd` — homepage wording
-- files inside `projects/` — replace placeholder text with real project material
-
-## 4. Put it on GitHub
-
-Create a new GitHub repository, then connect this folder to it.
-
-Example:
-
-```bash
-git init
-git add .
-git commit -m "Initial portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
-git push -u origin main
-```
-
-## 5. Publish
-
-Quarto's simple GitHub Pages workflow is:
-
-```bash
-quarto publish gh-pages
-```
-
-Follow the prompts.
-
-Do not worry about a custom domain until the GitHub Pages version works.
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which renders the site
+with Quarto and publishes it to the `gh-pages` branch (GitHub Pages). No manual `quarto publish` step is needed.
