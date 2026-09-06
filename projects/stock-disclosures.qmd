@@ -75,6 +75,15 @@ execute:
   background: rgba(110, 168, 254, 0.08);
 }
 
+/* Pandoc wraps a bare inline element (a lone <a> or <span>+<a> pair)
+   starting a raw-HTML line in a <p>, which carries default browser
+   margin and throws off spacing next to elements that don't get
+   wrapped (like <button>). Neutralize it here. */
+.featured-actions p,
+.chamber-toggle p {
+  margin: 0;
+}
+
 
 /* =========================================================
    FEATURED PTR

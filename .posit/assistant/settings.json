@@ -27,7 +27,8 @@
     },
     "webfetch": {
       "https://api.github.com/*": "allow",
-      "https://github.com/*": "allow"
+      "https://github.com/*": "allow",
+      "https://strokeofluck.github.io/*": "allow"
     }
   }
 }
