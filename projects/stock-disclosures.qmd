@@ -889,17 +889,8 @@ featured_items <- lapply(
 
     list(
 
-      # Strip the "Hon. " honorific prefix present on ~every House
-      # politician name -- it makes the featured-card title noticeably
-      # longer than Senate's plain names, causing it to wrap more often
-      # and push the meta rows/buttons down (visible gap mismatch between
-      # the two pages).
       politician =
-        gsub(
-          "^Hon\\.\\s*",
-          "",
-          filing_info$politician[[1]]
-        ),
+        filing_info$politician[[1]],
 
       district =
         filing_info$state_district[[1]],
