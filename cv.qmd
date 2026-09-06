@@ -1,30 +1,545 @@
 ---
-title: "CV"
-toc: false
+title: "Resume"
+page-layout: full
+title-block-banner: false
+
+format:
+  html:
+    toc: false
+
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
-A concise CV will go here.
+<style>
 
-For now, include:
+.quarto-title-block {
+  display: none;
+}
 
-## Education
+.resume-shell {
+  width: min(820px, calc(100vw - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
 
-**NC State University**  
-B.S., Interdisciplinary Studies  
-Focus: nonprofit studies, technology, and community development
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
 
-## Selected Projects
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 
-- Politician Stock Disclosures
-- Political Text Analysis
-- Visual AI & Internet Research
-- Raleigh Micromobility / GIS
+  border-bottom: 2px solid #6ea8fe;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
 
-## Technical Tools
+.resume-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
 
-Python, R, GIS, APIs, NLP, network analysis, data visualization
+.resume-tagline {
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
 
-## Links
+.resume-contact {
+  text-align: right;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
 
-- GitHub: [github.com/YOUR-USERNAME](https://github.com/YOUR-USERNAME)
-- Email: YOUR-EMAIL
+.resume-contact a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.resume-contact a:hover {
+  border-bottom-color: #6ea8fe;
+}
+
+.resume-contact div {
+  margin-bottom: 0.25rem;
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.85rem;
+
+  border: 1px solid #6ea8fe;
+  border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.resume-download:hover {
+  background: rgba(110, 168, 254, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   SECTIONS
+   --------------------------------------------------------- */
+
+.resume-section {
+  margin-bottom: 1.75rem;
+}
+
+.resume-section h2 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+
+  border-bottom: 1px solid #3b3b3b;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.resume-summary {
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   EXPERIENCE / EDUCATION ENTRIES
+   --------------------------------------------------------- */
+
+.resume-entry {
+  margin-bottom: 1.1rem;
+  page-break-inside: avoid;
+}
+
+.resume-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.resume-entry-title {
+  font-weight: 700;
+}
+
+.resume-entry-dates {
+  font-size: 0.85rem;
+  color: #6ea8fe;
+  white-space: nowrap;
+}
+
+.resume-entry-org {
+  opacity: 0.8;
+  font-size: 0.92rem;
+  margin-top: 0.1rem;
+}
+
+.resume-entry-bullets {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.2rem;
+}
+
+.resume-entry-bullets li {
+  margin-bottom: 0.3rem;
+  line-height: 1.45;
+}
+
+.resume-entry-details {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}
+
+.resume-entry-link {
+  font-size: 0.88rem;
+  margin-top: 0.3rem;
+}
+
+.resume-entry-link a {
+  color: #6ea8fe;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.resume-entry-link a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   SKILLS
+   --------------------------------------------------------- */
+
+/* Pandoc wraps the raw `cat()` output (a run of inline <span> pills) in
+   a <p> before it lands inside this div, so the flex rules that matter
+   have to target that inner <p>, not the div itself -- otherwise the
+   pills just wrap as ordinary inline text with a single space between
+   them, which is why they visually crowd/touch. */
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
+  column-gap: 0.85rem;
+}
+
+.resume-skills p {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
+  column-gap: 0.85rem;
+  margin: 0;
+}
+
+.resume-skill-pill {
+  display: inline-block;
+
+  padding: 0.35rem 0.9rem;
+
+  border: 1px solid #444;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   PRINT / PDF EXPORT
+   --------------------------------------------------------- */
+
+/* The browser's own print header/footer (page title, URL, date, page
+   numbers) is a print-dialog setting, not something CSS can suppress --
+   in Chrome/Edge, uncheck "Headers and footers" under "More settings"
+   in the print dialog before saving as PDF. */
+@page {
+  size: letter;
+  margin: 0.3in;
+}
+
+@media print {
+
+  .navbar, #quarto-header, .footer, .page-footer, #quarto-footer,
+  .quarto-back-to-top, .resume-download {
+    display: none !important;
+  }
+
+  /* Quarto's page chrome adds its own padding/margin around the content
+     area -- zero it out so the page margins above are the only margins
+     in effect. It also uses a sticky-footer flex layout (min-height:
+     100vh on the content grid) to push the site footer down, which adds
+     a large block of empty vertical space that forces a spurious blank
+     second printed page even after the footer itself is hidden -- cancel
+     that here. */
+  #quarto-content, #quarto-document-content, main.content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  #quarto-content {
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  html, body {
+    font-size: 10.5px;
+  }
+
+  body {
+    line-height: 1.25;
+  }
+
+  p {
+    margin: 0 0 0.3rem 0;
+  }
+
+  .resume-shell {
+    width: 100%;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .resume-header {
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.2rem;
+    border-bottom-color: #000;
+  }
+
+  .resume-name {
+    font-size: 1.25rem;
+  }
+
+  .resume-tagline {
+    margin-top: 0.05rem;
+  }
+
+  .resume-contact {
+    font-size: 0.78rem;
+  }
+
+  .resume-contact div {
+    margin-bottom: 0.1rem;
+  }
+
+  .resume-section {
+    margin-bottom: 0.2rem;
+  }
+
+  .resume-section h2 {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.1rem;
+    border-bottom-color: #999;
+    opacity: 1;
+  }
+
+  .resume-summary {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .resume-entry {
+    margin-bottom: 0.12rem;
+  }
+
+  .resume-entry-org {
+    margin-top: 0.03rem;
+  }
+
+  .resume-entry-dates {
+    color: #000;
+  }
+
+  .resume-entry-bullets {
+    margin-top: 0.12rem;
+  }
+
+  .resume-entry-bullets li {
+    margin-bottom: 0.03rem;
+    line-height: 1.2;
+  }
+
+  .resume-entry-details {
+    margin-top: 0.03rem;
+  }
+
+  .resume-skills, .resume-skills p {
+    row-gap: 0.25rem;
+    column-gap: 0.4rem;
+  }
+
+  .resume-skill-pill {
+    padding: 0.1rem 0.5rem;
+    border-color: #999;
+  }
+
+  .resume-entry-link {
+    font-size: 0.7rem;
+    margin-top: 0.12rem;
+  }
+
+  a {
+    color: #000 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .resume-header {
+    flex-direction: column;
+  }
+
+  .resume-contact {
+    text-align: left;
+  }
+}
+
+</style>
+
+
+```{r}
+library(yaml)
+library(glue)
+library(purrr)
+
+resume <- read_yaml("data/resume.yml")
+
+format_dates <- function(start, end = "") {
+  if (is.null(end) || !nzchar(end) || identical(start, end)) {
+    return(as.character(start))
+  }
+  glue("{start} – {end}")
+}
+
+render_bullets <- function(bullets) {
+  if (length(bullets) == 0) {
+    return("")
+  }
+  items <- paste0("<li>", bullets, "</li>", collapse = "")
+  glue('<ul class="resume-entry-bullets">{items}</ul>')
+}
+
+render_entry <- function(title, org, location, start, end, bullets = character(0), details = "") {
+  org_line <- if (nzchar(location)) glue("{org} — {location}") else org
+
+  details_html <- if (nzchar(details)) {
+    glue('<div class="resume-entry-details">{details}</div>')
+  } else {
+    ""
+  }
+
+  # Built as a single line (no leading whitespace on wrapped lines) --
+  # Pandoc treats 4+ leading spaces as an indented code block, so any
+  # multi-line indented HTML here would get escaped instead of rendered.
+  paste0(
+    '<div class="resume-entry">',
+    '<div class="resume-entry-head">',
+    '<div class="resume-entry-title">', title, '</div>',
+    '<div class="resume-entry-dates">', format_dates(start, end), '</div>',
+    '</div>',
+    '<div class="resume-entry-org">', org_line, '</div>',
+    details_html,
+    render_bullets(bullets),
+    '</div>'
+  )
+}
+
+render_project <- function(title, year, bullets = character(0), url = "") {
+  link_html <- if (nzchar(url)) {
+    glue('<div class="resume-entry-link"><a href="{url}" target="_blank" rel="noopener">{url}</a></div>')
+  } else {
+    ""
+  }
+
+  paste0(
+    '<div class="resume-entry">',
+    '<div class="resume-entry-head">',
+    '<div class="resume-entry-title">', title, '</div>',
+    '<div class="resume-entry-dates">', year, '</div>',
+    '</div>',
+    render_bullets(bullets),
+    link_html,
+    '</div>'
+  )
+}
+
+experience_html <- resume$experience |>
+  map_chr(~ render_entry(.x$title, .x$org, .x$location, .x$start, .x$end, .x$bullets)) |>
+  paste(collapse = "\n")
+
+volunteer_html <- resume$volunteer |>
+  map_chr(~ render_entry(.x$title, .x$org, .x$location, .x$start, .x$end, .x$bullets)) |>
+  paste(collapse = "\n")
+
+projects_html <- resume$projects |>
+  map_chr(~ render_project(.x$title, .x$year, .x$bullets, .x$url)) |>
+  paste(collapse = "\n")
+
+education_html <- resume$education |>
+  map_chr(~ render_entry(.x$degree, .x$school, .x$location, .x$start, .x$end, details = .x$details)) |>
+  paste(collapse = "\n")
+
+skills_html <- resume$skills |>
+  map_chr(~ glue('<span class="resume-skill-pill">{.x}</span>')) |>
+  paste(collapse = "\n")
+```
+
+
+::: {.resume-shell}
+
+<div class="resume-header">
+
+<div>
+<p class="resume-name">`r resume$name`</p>
+<div class="resume-tagline">`r resume$tagline`</div>
+</div>
+
+<div class="resume-contact">
+<div><a href="mailto:`r resume$contact$email`">`r resume$contact$email`</a></div>
+<div><a href="`r resume$contact$github`" target="_blank" rel="noopener">GitHub</a></div>
+<button type="button" class="resume-download" onclick="window.print()" title="Opens your browser's print dialog — choose Save as PDF">Print / Save as PDF</button>
+</div>
+
+</div>
+
+
+<div class="resume-section">
+<h2>Summary</h2>
+<p class="resume-summary">`r trimws(resume$summary)`</p>
+</div>
+
+
+<div class="resume-section">
+<h2>Experience</h2>
+```{r, results='asis'}
+cat(experience_html)
+```
+</div>
+
+
+<div class="resume-section">
+<h2>Volunteer Experience</h2>
+```{r, results='asis'}
+cat(volunteer_html)
+```
+</div>
+
+
+<div class="resume-section">
+<h2>Projects</h2>
+```{r, results='asis'}
+cat(projects_html)
+```
+</div>
+
+
+<div class="resume-section">
+<h2>Education</h2>
+```{r, results='asis'}
+cat(education_html)
+```
+</div>
+
+
+<div class="resume-section">
+<h2>Skills</h2>
+<div class="resume-skills">
+```{r, results='asis'}
+cat(skills_html)
+```
+</div>
+</div>
+
+:::

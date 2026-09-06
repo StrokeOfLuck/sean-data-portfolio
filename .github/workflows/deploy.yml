@@ -55,6 +55,9 @@ jobs:
             any::DT
             any::jsonlite
             any::htmltools
+            any::yaml
+            any::glue
+            any::purrr
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

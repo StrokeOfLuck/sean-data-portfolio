@@ -9,7 +9,16 @@
       "git *": "allow",
       "gh *": "allow",
       "mkdir *": "allow",
-      "cp *": "allow"
+      "cp *": "allow",
+      "cd *": "allow",
+      "quarto render *": "allow",
+      "tail *": "allow",
+      "Rscript *": "allow",
+      "where *": "allow",
+      "python *": "allow",
+      "pip show *": "allow",
+      "head *": "allow",
+      "pip install *": "allow"
     },
     "external_directory": {
       "C:/Users/Sean/Documents/GitHub/senate-ptr-scraper/notebooks/*": "allow",
@@ -18,7 +27,10 @@
       "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\03 Parsed Senate PTR Transaction Data/*": "allow",
       "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\01 Official Senate PTR HTML/*": "allow",
       "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\04 Scrape Checkpoints and Status/*": "allow",
-      "C:/Users/Sean/Documents/GitHub/*": "allow"
+      "C:/Users/Sean/Documents/GitHub/*": "allow",
+      "C:\\Users\\Sean\\Documents\\NCSU 15Nov2024\\Special Topics in Data Science Text Analysis for Data Science\\Trump and Iran War/*": "allow",
+      "G:\\My Drive\\Trump_Iran_Project/*": "allow",
+      "G:\\My Drive/*": "allow"
     },
     "edit": {
       "*.md": "allow",

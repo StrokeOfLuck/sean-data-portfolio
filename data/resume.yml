@@ -1,0 +1,117 @@
+# Resume content for cv.qmd.
+#
+# Edit this file to update the resume — no HTML/CSS editing required.
+# Each list item under `experience`, `volunteer`, and `education` becomes
+# one card on the page; each item under `projects` becomes a project card
+# with an optional link. Leave `bullets` empty ([]) if an entry has none,
+# and leave `end`/`details`/`location`/`url` as "" if not applicable.
+
+name: "Sean Ryan"
+tagline: "Data Journalism · Digital Investigations · Civic Technology"
+
+contact:
+  email: "sryan3@ncsu.edu"
+  github: "https://github.com/StrokeOfLuck"
+
+summary: >
+  Motivated and adaptable professional with technical support experience in highly sensitive
+  and collegiate environments. Proficient in facilitating the use of advanced manufacturing
+  technologies such as 3D printers, laser cutters, water jet cutters, and CNC machines.
+  Demonstrates a strong ability to build sustainable relationships with students, guiding them
+  through complex projects from conception to completion. Combines analytical thinking and
+  creative problem-solving to support and inspire the next generation of innovators.
+
+experience:
+  - title: "Fabrication Lab / Maker Space Technician"
+    org: "North Carolina State University"
+    location: "Raleigh, NC"
+    start: "2023"
+    end: "2024"
+    bullets:
+      - "Developed instructional materials for advanced manufacturing equipment"
+      - "Trained students on 3D printers, laser cutters, water jets, and CNC machines"
+      - "Maintained equipment and enforced shop safety protocols"
+
+  - title: "Teaching Assistant"
+    org: "North Carolina State University"
+    location: "Raleigh, NC"
+    start: "2024"
+    end: "2024"
+    bullets:
+      - "Provided technical support and instruction for SolidWorks and graphic communications coursework"
+      - "Held office hours and assisted with grading and project feedback"
+
+  - title: "PC Technician"
+    org: "Jacobs Engineering Group"
+    location: "Fort Bragg, NC"
+    start: "2020"
+    end: "2020"
+    bullets:
+      - "Provided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)"
+      - "Resolved client tickets"
+      - "Installed and configured application and operating system software and upgrades"
+
+volunteer:
+  - title: "Volunteer Mechanic / Program Lead"
+    org: "Durham Bike Co-op"
+    location: "Durham, NC"
+    start: "2025"
+    end: "Present"
+    bullets:
+      - "Repair and refurbish donated bicycles to expand affordable transportation access"
+      - "Lead open shop sessions and coordinate volunteer workflow"
+      - "Train volunteers in bicycle mechanics and shop safety"
+      - "Support outreach initiatives and grant development efforts"
+
+projects:
+  - title: "All We Are Solar Map — Nonprofit Infrastructure Visualization"
+    year: "2026"
+    bullets:
+      - "Created an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact"
+    url: "https://strokeofluck.github.io/All-We-Are-Map/"
+
+  - title: "Lyon Cycling Map — GPS Video Mapping Project"
+    year: "2025"
+    bullets:
+      - "Built an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage"
+    url: "https://www.google.com/maps/d/u/0/edit?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8"
+
+  - title: "ClearHouse.live — Civic Transparency Platform"
+    year: "2024"
+    bullets:
+      - "Co-developed a public-facing platform that tracks and organizes U.S. politicians' stock trades using official financial disclosures"
+    url: "https://clearhouse.live"
+
+education:
+  - degree: "Interdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies for Community Development (B.S.)"
+    school: "North Carolina State University"
+    location: ""
+    start: "(exp) 2027"
+    end: ""
+    details: ""
+
+  - degree: "Electronics Engineering Technology (A.A.S.)"
+    school: "Wake Technical Community College"
+    location: ""
+    start: "2021"
+    end: ""
+    details: "4.0 GPA · Honors Program Member"
+
+  - degree: "Security+ Certificate"
+    school: "CompTIA"
+    location: ""
+    start: "2018"
+    end: ""
+    details: ""
+
+skills:
+  - "Python"
+  - "R"
+  - "GIS"
+  - "SolidWorks"
+  - "3D Printing / CNC / Laser & Waterjet Cutting"
+  - "Technical Support & Troubleshooting"
+  - "NLP"
+  - "Network Analysis"
+  - "Data Visualization"
+  - "APIs"
