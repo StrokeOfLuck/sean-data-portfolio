@@ -247,3 +247,232 @@ plan once Senate is implemented and validated.
   filings) should run once manually/locally first (to avoid a very long
   first Actions run against the Senate's rate limits) versus letting the
   first scheduled Action run do the full backfill.
+
+---
+
+# House PTR Automation Plan
+
+(Written after the Senate pipeline above was implemented, validated end to
+end, and is live at
+https://strokeofluck.github.io/sean-data-portfolio/projects/stock-disclosures-senate.html.
+This section covers House only.)
+
+## Major discovery: a working local port already exists
+
+Before finalizing this plan, found an existing local repo at
+`C:\Users\Sean\Documents\GitHub\house-ptr-pipeline` (git remote:
+`https://github.com/StrokeOfLuck/house-ptr-pipeline.git`, 2 commits, last
+committed the same evening this session started). It is **not** a stub —
+it's a complete, faithful local-first Python port of all 5 Colab
+notebooks, already restructured into clean stage scripts:
+
+```
+house-ptr-pipeline/
+├── notebooks/            (the original 5 .ipynb files, preserved as-is)
+├── src/
+│   ├── config.py         (central path/year config, env-var overridable)
+│   ├── stage1_download.py
+│   ├── stage2_verify.py
+│   ├── stage3_extract.py   (3,161 lines — parse_pdf_geometry_v8 and helpers)
+│   ├── stage4_clean.py     (659 lines — ticker resolver)
+│   └── publish_latest.py   (already writes house_ptr_transactions_web.csv!)
+├── run_pipeline.py       (orchestrator with --from-stage flag)
+├── requirements.txt      (requests, pandas, openpyxl, PyMuPDF, xlsxwriter, numpy)
+├── docs/NEXT_GITHUB_ACTIONS.md  (already scopes out GitHub Actions next steps)
+└── README.md
+```
+
+Verified by reading `config.py`, `stage1_download.py`, `stage2_verify.py`,
+the top of `stage3_extract.py`/`stage4_clean.py`, and all of
+`publish_latest.py`:
+
+- **The "undocumented web CSV" gap flagged earlier is already closed.**
+  `publish_latest.py` already copies the V8.2 CSV to a stable
+  `house_ptr_transactions_latest.csv`, writes a trimmed
+  `house_ptr_transactions_web.csv` with a superset of the columns
+  `stock-disclosures.qmd` actually reads, sorted newest-first, plus a
+  `house_ptr_metadata.json` (row/column counts, accounted-for/fallback PDF
+  counts, timestamp). No new "Stage 5" needs to be written — it already
+  exists and matches the plan's intent almost exactly.
+- **Resumability/config already match what was planned**: `SAVE_EVERY =
+  10`, `MAX_NEW_PDFS_THIS_RUN = None` (chunk-size knob, currently unset),
+  `RESET_V8 = False` hardcoded (not env-overridable — already safe by
+  default).
+- **Current storage model still points at Google Drive**: `config.py`'s
+  `DEFAULT_ROOT` is `G:\My Drive\Congressional Trading Data\House_PTRs`,
+  overridable via `HOUSE_PTR_ROOT` env var. `docs/NEXT_GITHUB_ACTIONS.md`
+  explicitly flags "Google Drive authentication" as the remaining
+  cloud-specific piece it expects to need.
+- **Planned deviation from that doc**: per the Senate precedent, this plan
+  uses git-based storage instead of Google Drive API auth — no service
+  account, no Drive credentials in CI. `HOUSE_PTR_ROOT` gets pointed at a
+  local `data/` folder inside the repo instead of the `G:` drive, and that
+  folder is seeded once with the existing archive (same reasoning as
+  Senate: avoids a second, unrelated auth mechanism for the automated
+  path).
+- **Stage 2 does not yet have the audit improvements discussed** (no
+  cross-reference against Stage 3's checkpoint outcomes, no machine-
+  readable summary) — those are still worth adding.
+- Config folder names still use the original spaced-out Drive-style names
+  (`"01 Official House PTR PDFs"`, etc.) and filenames still carry the
+  `V8_1`/`V8_2`/`2021_2026` suffixes baked in via `YEAR_LABEL`.
+
+**This substantially shrinks the remaining work** from "port 5 notebooks"
+down to "adjust config for git-based storage, apply the naming cleanup,
+improve Stage 2, and add the GitHub Action" — the parsing/business logic
+itself is already done and doesn't need to be touched.
+
+## Rename request
+
+User wants this repo renamed **`house-ptr-pipeline` → `house-ptr-scraper`**,
+matching `senate-ptr-scraper`'s naming. Two parts:
+
+1. **Local folder rename** (tool-doable): rename
+   `C:\Users\Sean\Documents\GitHub\house-ptr-pipeline` →
+   `...\house-ptr-scraper`. Git itself doesn't care about the local folder
+   name matching the remote's name, so this is safe to do independently.
+2. **GitHub repo rename** (user must do this — no tool/API access to the
+   user's GitHub account for repo administration): Settings → General →
+   Repository name → `house-ptr-scraper`. GitHub automatically redirects
+   the old name for both git operations and web/API access, so this is
+   low-risk and doesn't strictly have to happen before the local rename or
+   before pushing — but should be done for consistency, and the local
+   `origin` remote URL should be updated afterward
+   (`git remote set-url origin https://github.com/StrokeOfLuck/house-ptr-scraper.git`)
+   even though the redirect means it isn't strictly required.
+
+All references in this plan below use `house-ptr-scraper` as the final
+name.
+
+## Key decisions confirmed with user
+
+- **Seed with existing data**: yes — same reasoning as Senate.
+- **Stage 2 (completeness audit)**: runs every time, alongside stages
+  1/3/4/publish.
+- **Schedule**: daily at ~9:30am US Eastern. `docs/NEXT_GITHUB_ACTIONS.md`
+  already scopes this using GitHub Actions' IANA-timezone cron syntax
+  (`schedule: - cron: "30 9 * * *"` with `timezone: "America/New_York"`),
+  which is cleaner than the two-cron-entry DST workaround used for
+  Senate's workflow (that feature wasn't used for Senate simply because it
+  wasn't known about yet at the time) — use the timezone-aware single-cron
+  syntax for House, and consider back-porting it to Senate's workflow
+  later as a small cleanup.
+- **Clean up naming**: still applies — see below. Only filenames/folder
+  layout change; column names inside CSVs stay exactly as the existing
+  scripts already produce them (Stage 4's resolver and the website depend
+  on specific column names).
+- **Improve the completeness audit**: still applies — see below.
+
+## Stage 2 audit improvements (still to be made)
+
+1. Cross-reference Stage 3's checkpoint (`source_key` column) so the audit
+   flags PDFs that exist but came back `needs_fallback`/had a
+   `geometry_error`, not just files that are missing outright.
+2. Emit a machine-readable summary (JSON or CSV) alongside the existing
+   Excel workbook, so the GitHub Action can act on regressions (annotate
+   the run, or fail loudly if missing/error counts increase run-over-run)
+   instead of the audit being Excel-only/human-only.
+
+## Proposed clean naming convention
+
+Mirroring `senate-ptr-scraper`'s `data/0N_*` folder convention. Requires
+changing `config.py`'s path constants (folder names and the
+`V8_1`/`V8_2`/`YEAR_LABEL`-suffixed filenames) — the stage scripts
+themselves import everything from `config.py`, so this is a single-file
+change plus a data-migration/rename pass, not a rewrite of stage logic:
+
+```
+house-ptr-scraper/
+├── src/                  (existing stage scripts, adjusted per above)
+├── data/
+│   ├── 01_pdfs/<year>/<doc_id>.pdf
+│   ├── 02_xml_indexes/<year>.xml
+│   ├── 03_verification/<year>.xlsx + completeness_summary.json
+│   ├── 04_transactions/
+│   │   ├── transactions_raw.csv       (was PTR_transactions_GEOMETRY_V8_1_...)
+│   │   ├── transactions_resolved.csv  (was ..._V8_2_...)
+│   │   └── needs_fallback.csv
+│   ├── 05_status/checkpoint.csv
+│   └── 06_public/
+│       ├── house_ptr_transactions_web.csv     (site reads this)
+│       ├── house_ptr_transactions_latest.csv
+│       └── house_ptr_metadata.json
+├── notebooks/            (kept as historical reference, unchanged)
+├── run_pipeline.py
+├── requirements.txt
+└── README.md
+```
+
+## Plan of work
+
+### Phase 1 — Rename
+- Rename the local folder `house-ptr-pipeline` → `house-ptr-scraper`.
+- User renames the GitHub repo to match; update the `origin` remote URL
+  locally afterward.
+
+### Phase 2 — Convert to git-based storage + apply naming cleanup
+- Update `config.py`: `DEFAULT_ROOT` becomes a local `data/` path relative
+  to the repo instead of the `G:` drive path; drop `HOUSE_PTR_ROOT`
+  Drive-specific framing (env override can stay for flexibility, just
+  pointed at something sensible by default).
+- Rename folders/files per the clean convention above. Update all path
+  constants in `config.py` accordingly — stage scripts don't need direct
+  changes since they import paths from `config.py`.
+- Seed `data/` by copying the existing PDF archive, XML indexes,
+  transaction CSVs, checkpoint, and public outputs from Drive into the new
+  layout (renaming files per convention, not touching column contents).
+
+### Phase 3 — Improve Stage 2
+- Add the checkpoint cross-reference and JSON/CSV summary output described
+  above.
+
+### Phase 4 — GitHub Action
+- `.github/workflows/scrape.yml`: runs `run_pipeline.py` (all stages) daily
+  using the timezone-aware single-cron schedule from
+  `docs/NEXT_GITHUB_ACTIONS.md` (`cron: "30 9 * * *"` +
+  `timezone: "America/New_York"`), plus `workflow_dispatch`. Sets
+  `MAX_NEW_PDFS_THIS_RUN` to a conservative default (e.g. 100–300) as a
+  safety chunk size for incremental runs. Commits `data/` changes,
+  dispatches `sean-data-portfolio` to rebuild (reusing the same
+  `SITE_DISPATCH_TOKEN` pattern/secret as Senate).
+
+### Phase 5 — Wire up the website
+- Update `stock-disclosures.qmd`'s `data_path` to the same dual-candidate
+  pattern used for Senate (tries the local sibling path and the CI nested
+  `house-ptr-scraper/` checkout path), pointing at
+  `data/06_public/house_ptr_transactions_web.csv`.
+- Remove or keep-as-fallback the static `data/house_ptr_transactions_web.csv`
+  snapshot in `sean-data-portfolio` (open item below).
+- Update `deploy.yml` to also checkout `house-ptr-scraper` (`path:
+  house-ptr-scraper`, avoiding the `..`-escape bug already discovered with
+  Senate).
+
+### Phase 6 — Validation
+- Run the pipeline locally once against the new git-based `data/` path to
+  confirm the seeded archive round-trips correctly (should mostly no-op
+  since everything is already checkpointed/computed).
+- Trigger the GitHub Action manually; confirm it correctly no-ops on the
+  seeded PDFs and only processes genuinely new filings.
+- Trigger/verify the site deploy picks up House data via the new path and
+  renders identically to today's static-snapshot version.
+
+## Manual steps only the user can do
+
+- Rename the GitHub repo `house-ptr-pipeline` → `house-ptr-scraper`.
+- Make it **public** (same reason as Senate — the deploy workflow's
+  default token can't check out a private repo it doesn't own).
+- Set its Actions workflow permissions to "Read and write."
+- Add the `SITE_DISPATCH_TOKEN` secret (can reuse the same PAT created for
+  Senate, since it's already scoped to `sean-data-portfolio`).
+
+## Open items to confirm before/while implementing
+
+- Confirm the exact `MAX_NEW_PDFS_THIS_RUN` default once real day-to-day
+  new-filing volume is observed (starting conservative, e.g. 100).
+- Whether to keep the static House CSV snapshot as a fallback in
+  `sean-data-portfolio` or remove it entirely once the automated pipeline
+  is proven (leaning toward keeping the graceful fallback, matching
+  Senate's page).
+- Confirm GitHub Actions' `timezone:` field on `schedule` works as
+  expected on first real run (it's a relatively recent feature) — fall
+  back to Senate's two-cron-entry approach if not.
