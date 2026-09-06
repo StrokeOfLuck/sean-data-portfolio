@@ -1,0 +1,1062 @@
+---
+title: "Politician Stock Disclosures"
+subtitle: "U.S. Senate Periodic Transaction Reports"
+page-layout: full
+
+format:
+  html:
+    toc: false
+
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+<style>
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.quarto-title-block {
+  display: none;
+}
+
+.wide-shell {
+  width: min(1750px, calc(100vw - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-main-title {
+  margin-bottom: 0.2rem;
+}
+
+.project-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+.dataTables_wrapper {
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   CHAMBER TOGGLE
+   ========================================================= */
+
+.chamber-toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chamber-toggle a,
+.chamber-toggle span {
+  padding: 0.35rem 0.9rem;
+
+  border: 1px solid #6ea8fe;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.chamber-toggle .chamber-active {
+  background: rgba(110, 168, 254, 0.18);
+  font-weight: 700;
+}
+
+.chamber-toggle a:hover {
+  background: rgba(110, 168, 254, 0.08);
+}
+
+
+/* =========================================================
+   FEATURED PTR
+   ========================================================= */
+
+.featured-card {
+  display: grid;
+
+  grid-template-columns:
+    minmax(560px, 0.9fr)
+    minmax(0, 1.1fr);
+
+  border: 1px solid #444;
+  border-radius: 10px;
+  overflow: hidden;
+
+  margin: 1.25rem 0;
+}
+
+.featured-info {
+  padding: 1.5rem;
+  border-right: 1px solid #444;
+}
+
+.featured-info h3 {
+  margin: 0 0 1.2rem 0;
+}
+
+.featured-meta {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1.35rem;
+}
+
+.featured-meta-row {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.featured-meta-label {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FEATURED CONTROLS
+   ========================================================= */
+
+.featured-controls {
+  display: grid;
+
+  grid-template-columns:
+    240px minmax(250px, 1fr);
+
+  gap: 1.25rem;
+
+  align-items: start;
+
+  max-width: 590px;
+
+  margin-top: 1rem;
+}
+
+.featured-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 0.65rem;
+
+  width: 240px;
+}
+
+.ptr-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 240px;
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 0 0.9rem;
+
+  border: 1px solid #6ea8fe;
+  border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
+  text-decoration: none;
+  text-align: center;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+  font: inherit;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ptr-button:hover {
+  border-color: #9bc2ff;
+  background: rgba(110, 168, 254, 0.08);
+  transform: translateY(-1px);
+}
+
+.ptr-button[disabled],
+.ptr-button.is-disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FILING ID SEARCH
+   ========================================================= */
+
+.filing-search {
+  width: 100%;
+
+  padding-left: 1.2rem;
+
+  border-left: 1px solid #444;
+}
+
+.filing-search label {
+  display: block;
+
+  margin-bottom: 0.55rem;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  opacity: 0.75;
+}
+
+.filing-search-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr) 72px;
+
+  width: 100%;
+}
+
+.filing-search-row input {
+  width: 100%;
+  min-width: 0;
+
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 0 0.7rem;
+
+  border: 1px solid #555;
+  border-right: none;
+
+  border-radius: 6px 0 0 6px;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+}
+
+.filing-search-row input:focus {
+  outline: none;
+  border-color: #6ea8fe;
+}
+
+.filing-search-row button {
+  height: 44px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #6ea8fe;
+
+  border-radius: 0 6px 6px 0;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  white-space: nowrap;
+}
+
+.filing-search-row button:hover {
+  background: rgba(110, 168, 254, 0.08);
+}
+
+.filing-search-message {
+  min-height: 1rem;
+
+  margin-top: 0.45rem;
+
+  font-size: 0.75rem;
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   FEATURED EXTRACTION TABLE
+   ========================================================= */
+
+.featured-extract {
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.featured-extract h3 {
+  margin: 0 0 1rem 0;
+}
+
+.featured-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.featured-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+.featured-table th,
+.featured-table td {
+  text-align: left;
+  vertical-align: top;
+
+  padding: 0.6rem 0.45rem;
+
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.featured-table th {
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+.featured-empty {
+  opacity: 0.65;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   NO-DATA PLACEHOLDER
+   ========================================================= */
+
+.no-data-card {
+  padding: 1.5rem;
+
+  border: 1px dashed #555;
+  border-radius: 10px;
+
+  margin: 1.25rem 0;
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   EXPLORE SUMMARY
+   ========================================================= */
+
+.explore-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  margin: 1.5rem 0 2rem 0;
+
+  border-top: 1px solid #3b3b3b;
+  border-bottom: 1px solid #3b3b3b;
+}
+
+.explore-stat {
+  padding: 1.2rem 1.4rem;
+
+  border-right: 1px solid #3b3b3b;
+}
+
+.explore-stat:last-child {
+  border-right: none;
+}
+
+.explore-stat-label {
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0.55;
+
+  margin-bottom: 0.35rem;
+}
+
+.explore-stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-info {
+    border-right: none;
+    border-bottom: 1px solid #444;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .wide-shell {
+    width: calc(100vw - 24px);
+  }
+
+  .featured-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-actions {
+    width: 100%;
+  }
+
+  .ptr-button {
+    width: 100%;
+  }
+
+  .filing-search {
+    padding-left: 0;
+    padding-top: 1rem;
+
+    border-left: none;
+    border-top: 1px solid #444;
+  }
+
+  .explore-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+
+  .explore-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .explore-stat {
+    border-right: none;
+  }
+
+  .featured-meta-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+</style>
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(DT)
+library(jsonlite)
+
+
+# Senate data lives in the sibling senate-ptr-scraper repo (source of
+# truth for the automated scrape). Locally this is a real sibling folder;
+# in CI, the deploy workflow checks that repo out into the same relative
+# path so this works unchanged in both places.
+data_path <- "../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv"
+
+data_available <- file.exists(data_path)
+
+if (data_available) {
+  ptr_raw <- read_csv(data_path, show_col_types = FALSE)
+  data_available <- nrow(ptr_raw) > 0
+}
+
+
+if (data_available) {
+
+  ptr_prepared <- ptr_raw |>
+    mutate(
+      report_id = as.character(report_id),
+
+      parsed_transaction_date =
+        as.Date(transaction_date, format = "%Y-%m-%d"),
+
+      owner_display = case_when(
+        is.na(owner) | trimws(owner) == "" ~ "Self",
+        toupper(trimws(owner)) == "SP" ~ "Spouse",
+        toupper(trimws(owner)) == "JT" ~ "Joint",
+        toupper(trimws(owner)) == "DC" ~ "Dependent child",
+        TRUE ~ owner
+      ),
+
+      amount_display = coalesce(amount, "")
+    )
+
+} else {
+
+  # Well-typed empty frame so every downstream chunk can run unchanged
+  # (group_by/filter/transmute/datatable) even before the scraper has
+  # ever produced data.
+  ptr_prepared <- tibble(
+    report_id = character(0),
+    filer_name = character(0),
+    office = character(0),
+    filing_date = character(0),
+    transaction_date = character(0),
+    owner = character(0),
+    asset_name = character(0),
+    ticker = character(0),
+    transaction_type = character(0),
+    amount = character(0),
+    report_url = character(0),
+    parsed_transaction_date = as.Date(character(0)),
+    owner_display = character(0),
+    amount_display = character(0)
+  )
+}
+```
+
+
+::: {.column-screen}
+
+::: {.wide-shell}
+
+
+# Politician Stock Disclosures {.project-main-title}
+
+<div class="project-subtitle">U.S. Senate Periodic Transaction Reports</div>
+
+<div class="chamber-toggle">
+<a href="stock-disclosures.qmd">House</a>
+<span class="chamber-active">Senate</span>
+</div>
+
+
+This project turns official U.S. Senate **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.
+
+
+## Featured PTR
+
+
+This section randomly selects one scraped Senate filing from the dataset.
+
+Use **Show another PTR** to pick another example, or enter a **Report ID** to inspect a specific source disclosure.
+
+
+```{r}
+if (data_available) {
+
+  filing_summary <- ptr_prepared |>
+    group_by(
+      report_id,
+      filer_name,
+      office,
+      filing_date,
+      report_url
+    ) |>
+    summarise(
+      transaction_count = n(),
+      .groups = "drop"
+    ) |>
+    filter(
+      !is.na(report_id), report_id != "",
+      !is.na(filer_name), filer_name != ""
+    )
+
+  featured_items <- lapply(seq_len(nrow(filing_summary)), function(i) {
+
+    filing_info <- filing_summary[i, , drop = FALSE]
+
+    filing_rows <- ptr_prepared |>
+      filter(report_id == filing_info$report_id[[1]]) |>
+      arrange(desc(parsed_transaction_date)) |>
+      transmute(
+        Owner = owner_display,
+        Asset = asset_name,
+        Ticker = ticker,
+        Type = transaction_type,
+        Date = transaction_date,
+        Amount = amount_display
+      )
+
+    list(
+      senator = filing_info$filer_name[[1]],
+      office = filing_info$office[[1]],
+      report_id = filing_info$report_id[[1]],
+      filing_date = filing_info$filing_date[[1]],
+      report_url = filing_info$report_url[[1]],
+      transaction_count = nrow(filing_rows),
+      transactions = filing_rows
+    )
+  })
+
+} else {
+
+  featured_items <- list()
+}
+
+featured_json <- toJSON(
+  featured_items,
+  auto_unbox = TRUE,
+  dataframe = "rows",
+  na = "null"
+)
+```
+
+
+<div class="featured-card">
+
+<div class="featured-info">
+
+<h3 id="featured-name"></h3>
+
+<div class="featured-meta">
+
+<div class="featured-meta-row"><span class="featured-meta-label">State / Office</span><span id="featured-office"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Report ID</span><span id="featured-report-id"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Filing date</span><span id="featured-filing-date"></span></div>
+
+<div class="featured-meta-row"><span class="featured-meta-label">Transactions</span><span id="featured-count"></span></div>
+
+</div>
+
+
+<div class="featured-controls">
+
+<div class="featured-actions">
+<button type="button" class="ptr-button" id="random-ptr-button">Show another PTR</button>
+<a class="ptr-button" id="featured-filing-link" href="#" target="_blank" rel="noopener">View official Senate filing</a>
+</div>
+
+<div class="filing-search">
+<label for="filing-id-search">Find by Report ID</label>
+<div class="filing-search-row"><input id="filing-id-search" type="text" placeholder="e.g. 1a2b3c4d"><button id="filing-id-search-button" type="button">Load</button></div>
+<div id="filing-search-message" class="filing-search-message"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="featured-extract">
+
+<h3>Extracted transactions</h3>
+
+<div class="featured-table-wrap">
+
+<table class="featured-table">
+
+<thead>
+<tr>
+<th>Owner</th>
+<th>Asset</th>
+<th>Ticker</th>
+<th>Type</th>
+<th>Date</th>
+<th>Amount</th>
+</tr>
+</thead>
+
+<tbody id="featured-table-body"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+```{r, results='asis'}
+cat(
+  '<script>',
+  'const allFeaturedPTRs = ',
+  featured_json,
+  ';',
+  '</script>'
+)
+```
+
+
+<script>
+
+(function () {
+
+  let currentIndex = -1;
+
+  function cleanValue(value) {
+    if (value === null || value === undefined || value === "NA") {
+      return "";
+    }
+    return String(value);
+  }
+
+  const hasData = Array.isArray(allFeaturedPTRs) && allFeaturedPTRs.length > 0;
+
+  function randomIndex() {
+    if (!hasData) {
+      return -1;
+    }
+
+    if (allFeaturedPTRs.length <= 1) {
+      return 0;
+    }
+
+    let nextIndex;
+
+    do {
+      nextIndex = Math.floor(Math.random() * allFeaturedPTRs.length);
+    } while (nextIndex === currentIndex);
+
+    return nextIndex;
+  }
+
+  function showNoDataState() {
+    document.getElementById("featured-name").textContent = "No Senate PTR data yet";
+    document.getElementById("featured-office").textContent = "";
+    document.getElementById("featured-report-id").textContent = "";
+    document.getElementById("featured-filing-date").textContent = "";
+    document.getElementById("featured-count").textContent = "0";
+
+    const link = document.getElementById("featured-filing-link");
+    link.href = "#";
+    link.classList.add("is-disabled");
+
+    const tbody = document.getElementById("featured-table-body");
+    tbody.innerHTML = "";
+
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 6;
+    cell.className = "featured-empty";
+    cell.textContent = "The automated scraper hasn't produced any Senate PTR data yet.";
+    row.appendChild(cell);
+    tbody.appendChild(row);
+  }
+
+  function renderFeaturedPTR(index) {
+    currentIndex = index;
+
+    const item = allFeaturedPTRs[index];
+
+    document.getElementById("featured-name").textContent = cleanValue(item.senator);
+    document.getElementById("featured-office").textContent = cleanValue(item.office);
+    document.getElementById("featured-report-id").textContent = cleanValue(item.report_id);
+    document.getElementById("featured-filing-date").textContent = cleanValue(item.filing_date);
+    document.getElementById("featured-count").textContent = Number(item.transaction_count).toLocaleString();
+
+    document.getElementById("filing-id-search").value = cleanValue(item.report_id);
+    document.getElementById("filing-search-message").textContent = "";
+
+    const link = document.getElementById("featured-filing-link");
+    link.href = cleanValue(item.report_url) || "#";
+    link.classList.remove("is-disabled");
+
+    const tbody = document.getElementById("featured-table-body");
+    tbody.innerHTML = "";
+
+    let transactions = item.transactions;
+
+    if (transactions && !Array.isArray(transactions)) {
+      transactions = [transactions];
+    }
+
+    if (!transactions || transactions.length === 0) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 6;
+      cell.className = "featured-empty";
+      cell.textContent = "No extracted transaction rows.";
+      row.appendChild(cell);
+      tbody.appendChild(row);
+    } else {
+      transactions.forEach(function (transaction) {
+        const row = document.createElement("tr");
+
+        const values = [
+          transaction.Owner,
+          transaction.Asset,
+          transaction.Ticker,
+          transaction.Type,
+          transaction.Date,
+          transaction.Amount
+        ];
+
+        values.forEach(function (value) {
+          const cell = document.createElement("td");
+          cell.textContent = cleanValue(value);
+          row.appendChild(cell);
+        });
+
+        tbody.appendChild(row);
+      });
+    }
+  }
+
+  function showRandomPTR() {
+    if (!hasData) {
+      showNoDataState();
+      return;
+    }
+    renderFeaturedPTR(randomIndex());
+  }
+
+  function loadReportID() {
+    if (!hasData) {
+      return;
+    }
+
+    const input = document.getElementById("filing-id-search");
+    const message = document.getElementById("filing-search-message");
+
+    const requestedID = input.value.trim();
+
+    if (!requestedID) {
+      message.textContent = "Enter a Report ID.";
+      return;
+    }
+
+    const index = allFeaturedPTRs.findIndex(function (item) {
+      return String(item.report_id) === requestedID;
+    });
+
+    if (index === -1) {
+      message.textContent = "Report ID not found in this dataset.";
+      return;
+    }
+
+    message.textContent = "";
+    renderFeaturedPTR(index);
+  }
+
+  function initializePTRFeature() {
+    const randomButton = document.getElementById("random-ptr-button");
+    const searchButton = document.getElementById("filing-id-search-button");
+    const searchInput = document.getElementById("filing-id-search");
+
+    randomButton.addEventListener("click", showRandomPTR);
+    searchButton.addEventListener("click", loadReportID);
+
+    searchInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        loadReportID();
+      }
+    });
+
+    showRandomPTR();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePTRFeature);
+  } else {
+    initializePTRFeature();
+  }
+
+})();
+
+</script>
+
+
+---
+
+
+## Explore the transactions
+
+
+```{r}
+explore_all <-
+  ptr_prepared |>
+  arrange(desc(parsed_transaction_date))
+
+senators_count <- n_distinct(
+  explore_all$filer_name[!is.na(explore_all$filer_name) & explore_all$filer_name != ""]
+)
+
+assets_count <- n_distinct(
+  explore_all$asset_name[!is.na(explore_all$asset_name) & explore_all$asset_name != ""]
+)
+
+filings_count <- n_distinct(
+  explore_all$report_id[!is.na(explore_all$report_id) & explore_all$report_id != ""]
+)
+
+transactions_count <- nrow(explore_all)
+```
+
+
+```{r, results='asis'}
+cat(
+  '<div class="explore-stats">',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Senators</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  senators_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Assets</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  assets_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Filings</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  filings_count,
+  '">0</div>',
+  '</div>',
+
+  '<div class="explore-stat">',
+  '<div class="explore-stat-label">Transactions</div>',
+  '<div class="explore-stat-number count-up" data-target="',
+  transactions_count,
+  '">0</div>',
+  '</div>',
+
+  '</div>'
+)
+```
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const statSection = document.querySelector(".explore-stats");
+
+  if (!statSection) {
+    return;
+  }
+
+  let hasAnimated = false;
+
+  function animateValue(element) {
+    const target = Number(element.dataset.target);
+    const duration = 4000;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = Math.pow(progress, 2.5);
+      const value = Math.floor(target * eased);
+
+      element.textContent = value.toLocaleString();
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = target.toLocaleString();
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          document.querySelectorAll(".count-up").forEach(animateValue);
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(statSection);
+});
+
+</script>
+
+
+Use the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.
+
+
+```{r}
+if (data_available) {
+
+  display_data <-
+    explore_all |>
+    transmute(
+      `Report ID` = report_id,
+      Senator = filer_name,
+      `State / Office` = office,
+      `Transaction date` = transaction_date,
+      `Filing date` = filing_date,
+      Owner = owner_display,
+      Asset = asset_name,
+      Ticker = ticker,
+      Type = transaction_type,
+      Amount = amount_display,
+      `Senate filing` = report_url
+    )
+
+  datatable(
+    display_data,
+    filter = "top",
+    rownames = FALSE,
+    width = "100%",
+    options = list(
+      pageLength = 10,
+      lengthMenu = c(10, 25, 50, 100),
+      scrollX = TRUE,
+      scrollCollapse = TRUE,
+      autoWidth = TRUE,
+      order = list(list(3, "desc")),
+      columnDefs = list(
+        list(
+          targets = 10,
+          orderable = FALSE,
+          render = JS(
+            "function(data, type, row, meta) {",
+            "  if (type !== 'display') return data;",
+            "  if (!data) return '';",
+            "  return '<a href=\"' + data + '\" target=\"_blank\" rel=\"noopener\">View filing</a>';",
+            "}"
+          )
+        )
+      )
+    )
+  )
+
+} else {
+
+  htmltools::tags$div(
+    class = "no-data-card",
+    "No Senate PTR transactions have been scraped yet. Once the automated ",
+    htmltools::tags$code("scrape-senate-ptrs"),
+    " GitHub Action has run at least once, this table will populate automatically."
+  )
+}
+```
+
+
+## Data source
+
+
+The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate's Electronic Financial Disclosure (eFD) system.
+
+Each displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included.
+
+
+:::
+
+:::

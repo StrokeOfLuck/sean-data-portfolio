@@ -45,6 +45,38 @@ execute:
 
 
 /* =========================================================
+   CHAMBER TOGGLE
+   ========================================================= */
+
+.chamber-toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chamber-toggle a,
+.chamber-toggle span {
+  padding: 0.35rem 0.9rem;
+
+  border: 1px solid #6ea8fe;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.chamber-toggle .chamber-active {
+  background: rgba(110, 168, 254, 0.18);
+  font-weight: 700;
+}
+
+.chamber-toggle a:hover {
+  background: rgba(110, 168, 254, 0.08);
+}
+
+
+/* =========================================================
    FEATURED PTR
    ========================================================= */
 
@@ -535,7 +567,7 @@ library(DT)
 library(jsonlite)
 
 
-data_path <- "G:/My Drive/Congressional Trading Data/House_PTRs/07 Public Website Data/house_ptr_transactions_web.csv"
+data_path <- "../data/house_ptr_transactions_web.csv"
 
 
 ptr <- read_csv(
@@ -695,6 +727,11 @@ ptr_prepared <- ptr |>
 # Politician Stock Disclosures {.project-main-title}
 
 <div class="project-subtitle">U.S. House Periodic Transaction Reports</div>
+
+<div class="chamber-toggle">
+<span class="chamber-active">House</span>
+<a href="stock-disclosures-senate.qmd">Senate</a>
+</div>
 
 
 This project turns official U.S. House **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed.

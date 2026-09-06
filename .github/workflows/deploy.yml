@@ -1,0 +1,55 @@
+name: Deploy site
+
+on:
+  repository_dispatch:
+    types: [senate-data-updated]
+  schedule:
+    # Weekly fallback rebuild (Mondays 12:00 UTC) in case a dispatch is
+    # ever missed, or House data is refreshed manually without a push.
+    - cron: "0 12 * * 1"
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout sean-data-portfolio
+        uses: actions/checkout@v4
+
+      - name: Checkout senate-ptr-scraper (sibling folder, for Senate data)
+        uses: actions/checkout@v4
+        with:
+          repository: StrokeOfLuck/senate-ptr-scraper
+          path: ../senate-ptr-scraper
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4.2"
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("readr", "dplyr", "DT", "jsonlite", "htmltools"), repos = "https://cloud.r-project.org")'
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.10.18"
+
+      - name: Render site
+        run: quarto render
+
+      - name: Publish to GitHub Pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          render: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

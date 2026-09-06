@@ -1,0 +1,24 @@
+{
+  "permission": {
+    "executeCode": {
+      "*": "allow"
+    },
+    "bash": {
+      "gh auth status *": "allow",
+      "echo *": "allow",
+      "git *": "allow",
+      "gh *": "allow",
+      "mkdir *": "allow",
+      "cp *": "allow"
+    },
+    "external_directory": {
+      "C:/Users/Sean/Documents/GitHub/senate-ptr-scraper/notebooks/*": "allow",
+      "G:\\My Drive\\Congressional Trading Data\\House_PTRs/*": "allow"
+    },
+    "edit": {
+      "*.md": "allow",
+      "*/.gitignore": "allow",
+      "*.qmd": "allow"
+    }
+  }
+}
