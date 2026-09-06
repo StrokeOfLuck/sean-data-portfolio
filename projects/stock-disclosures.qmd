@@ -36,7 +36,7 @@ execute:
 .project-subtitle {
   font-size: 1.15rem;
   opacity: 0.7;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .dataTables_wrapper {
@@ -889,8 +889,17 @@ featured_items <- lapply(
 
     list(
 
+      # Strip the "Hon. " honorific prefix present on ~every House
+      # politician name -- it makes the featured-card title noticeably
+      # longer than Senate's plain names, causing it to wrap more often
+      # and push the meta rows/buttons down (visible gap mismatch between
+      # the two pages).
       politician =
-        filing_info$politician[[1]],
+        gsub(
+          "^Hon\\.\\s*",
+          "",
+          filing_info$politician[[1]]
+        ),
 
       district =
         filing_info$state_district[[1]],
