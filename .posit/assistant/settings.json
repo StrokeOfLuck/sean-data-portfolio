@@ -13,7 +13,11 @@
     },
     "external_directory": {
       "C:/Users/Sean/Documents/GitHub/senate-ptr-scraper/notebooks/*": "allow",
-      "G:\\My Drive\\Congressional Trading Data\\House_PTRs/*": "allow"
+      "G:\\My Drive\\Congressional Trading Data\\House_PTRs/*": "allow",
+      "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\02 Senate PTR Filing Indexes/*": "allow",
+      "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\03 Parsed Senate PTR Transaction Data/*": "allow",
+      "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\01 Official Senate PTR HTML/*": "allow",
+      "G:\\My Drive\\Congressional Trading Data\\Senate_PTRs\\04 Scrape Checkpoints and Status/*": "allow"
     },
     "edit": {
       "*.md": "allow",
