@@ -207,6 +207,11 @@ ul.task-list li input[type="checkbox"] {
   margin-bottom: 0.25rem;
 }
 
+.resume-edit-link a {
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+
 .resume-download {
   display: inline-flex;
   align-items: center;
@@ -373,7 +378,7 @@ ul.task-list li input[type="checkbox"] {
 @media print {
 
   .navbar, #quarto-header, .footer, .page-footer, #quarto-footer,
-  .quarto-back-to-top, .resume-download {
+  .quarto-back-to-top, .resume-download, .resume-edit-link {
     display: none !important;
   }
 
@@ -548,6 +553,9 @@ Data Journalism · Digital Investigations · Civic Technology
 <div>
 <a href="https://github.com/StrokeOfLuck" target="_blank" rel="noopener">GitHub</a>
 </div>
+<div class="resume-edit-link">
+<a href="https://github.com/StrokeOfLuck/sean-data-portfolio/edit/main/data/resume.yml" target="_blank" rel="noopener" title="Opens the GitHub web editor for data/resume.yml">Edit this resume</a>
+</div>
 <button type="button" class="resume-download" onclick="window.print()" title="Opens your browser's print dialog — choose Save as PDF">
 Print / Save as PDF
 </button>
@@ -671,6 +679,24 @@ Support outreach initiatives and grant development efforts
 <h2 class="anchored">
 Projects
 </h2>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Personal Data Portfolio — This Website
+</div>
+<div class="resume-entry-dates">
+2026
+</div>
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Built and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline
+</li>
+</ul>
+<div class="resume-entry-link">
+<a href="https://strokeofluck.github.io/sean-data-portfolio/" target="_blank" rel="noopener">https://strokeofluck.github.io/sean-data-portfolio/</a>
+</div>
+</div>
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
