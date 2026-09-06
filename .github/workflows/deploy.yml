@@ -2,7 +2,7 @@ name: Deploy site
 
 on:
   repository_dispatch:
-    types: [senate-data-updated]
+    types: [senate-data-updated, house-data-updated]
   schedule:
     # Weekly fallback rebuild (Mondays 12:00 UTC) in case a dispatch is
     # ever missed, or House data is refreshed manually without a push.
@@ -33,6 +33,12 @@ jobs:
         with:
           repository: StrokeOfLuck/senate-ptr-scraper
           path: senate-ptr-scraper
+
+      - name: Checkout house-ptr-scraper (for House data)
+        uses: actions/checkout@v4
+        with:
+          repository: StrokeOfLuck/house-ptr-scraper
+          path: house-ptr-scraper
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
