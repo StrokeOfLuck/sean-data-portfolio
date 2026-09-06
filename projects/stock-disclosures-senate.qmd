@@ -468,10 +468,11 @@ library(jsonlite)
 
 
 # Senate data lives in the sibling senate-ptr-scraper repo (source of
-# truth for the automated scrape). Locally this is a real sibling folder;
-# in CI, the deploy workflow checks that repo out into the same relative
-# path so this works unchanged in both places.
-data_path <- "../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv"
+# truth for the automated scrape). Both locally and in the CI deploy
+# workflow, sean-data-portfolio and senate-ptr-scraper are checked out as
+# sibling folders, so this same relative path (up two levels from
+# projects/, then into the sibling repo) resolves in both places.
+data_path <- "../../senate-ptr-scraper/data/03_transactions/senate_ptr_transactions_electronic.csv"
 
 data_available <- file.exists(data_path)
 
