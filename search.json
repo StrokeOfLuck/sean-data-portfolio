@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
+    "section": "",
+    "text": "A concise CV will go here.\nFor now, include:"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "CV",
+    "section": "Education",
+    "text": "Education\nNC State University\nB.S., Interdisciplinary Studies\nFocus: nonprofit studies, technology, and community development"
+  },
+  {
+    "objectID": "cv.html#selected-projects",
+    "href": "cv.html#selected-projects",
+    "title": "CV",
+    "section": "Selected Projects",
+    "text": "Selected Projects\n\nPolitician Stock Disclosures\nPolitical Text Analysis\nVisual AI & Internet Research\nRaleigh Micromobility / GIS"
+  },
+  {
+    "objectID": "cv.html#technical-tools",
+    "href": "cv.html#technical-tools",
+    "title": "CV",
+    "section": "Technical Tools",
+    "text": "Technical Tools\nPython, R, GIS, APIs, NLP, network analysis, data visualization"
+  },
+  {
+    "objectID": "cv.html#links",
+    "href": "cv.html#links",
+    "title": "CV",
+    "section": "Links",
+    "text": "Links\n\nGitHub: github.com/YOUR-USERNAME\nEmail: YOUR-EMAIL"
+  },
+  {
     "objectID": "projects/visual-ai.html",
     "href": "projects/visual-ai.html",
     "title": "Visual AI & Internet Research",
@@ -47,6 +96,132 @@
     "title": "Visual AI & Internet Research",
     "section": "Links",
     "text": "Links\nAdd poster, presentation, code, or project materials when appropriate."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html",
+    "href": "projects/stock-disclosures.html",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#featured-ptr",
+    "href": "projects/stock-disclosures.html#featured-ptr",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
+    "href": "projects/stock-disclosures.html#explore-the-transactions",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
+  },
+  {
+    "objectID": "projects/stock-disclosures.html#data-source",
+    "href": "projects/stock-disclosures.html#data-source",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+  },
+  {
+    "objectID": "projects/micromobility.html",
+    "href": "projects/micromobility.html",
+    "title": "Raleigh Micromobility",
+    "section": "",
+    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+  },
+  {
+    "objectID": "projects/micromobility.html#question",
+    "href": "projects/micromobility.html#question",
+    "title": "Raleigh Micromobility",
+    "section": "",
+    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+  },
+  {
+    "objectID": "projects/micromobility.html#reporting-data",
+    "href": "projects/micromobility.html#reporting-data",
+    "title": "Raleigh Micromobility",
+    "section": "Reporting & Data",
+    "text": "Reporting & Data\nDescribe the public datasets, interviews, GIS layers, surveys, or other reporting used."
+  },
+  {
+    "objectID": "projects/micromobility.html#analysis",
+    "href": "projects/micromobility.html#analysis",
+    "title": "Raleigh Micromobility",
+    "section": "Analysis",
+    "text": "Analysis\nAdd maps and other visuals here."
+  },
+  {
+    "objectID": "projects/micromobility.html#methods",
+    "href": "projects/micromobility.html#methods",
+    "title": "Raleigh Micromobility",
+    "section": "Methods",
+    "text": "Methods\nGIS Public Data Reporting Transportation"
+  },
+  {
+    "objectID": "projects/micromobility.html#findings",
+    "href": "projects/micromobility.html#findings",
+    "title": "Raleigh Micromobility",
+    "section": "Findings",
+    "text": "Findings\nSummarize the strongest findings in a few concise paragraphs or bullets."
+  },
+  {
+    "objectID": "projects/micromobility.html#links",
+    "href": "projects/micromobility.html#links",
+    "title": "Raleigh Micromobility",
+    "section": "Links",
+    "text": "Links\nAdd the published story, map, source repository, or methodology when available."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\nPolitician Stock Disclosures\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nVisual AI & Internet Research\nDigital methods · computer vision · online research\nResearch exploring visual AI and internet culture using computational methods.\nView project →\n\n\nRaleigh Micromobility\nGIS · public data · reporting\nExamining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.\nView project →"
+  },
+  {
+    "objectID": "index.html#what-i-work-with",
+    "href": "index.html#what-i-work-with",
+    "title": "Sean Ryan",
+    "section": "What I Work With",
+    "text": "What I Work With\nPython · R · GIS · NLP · Network Analysis · Public Records · Data Visualization · Web Data · APIs"
+  },
+  {
+    "objectID": "projects/stock-disclosures-senate.html",
+    "href": "projects/stock-disclosures-senate.html",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "U.S. Senate Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. Senate Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.\n\n\nThis section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSenators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
+  },
+  {
+    "objectID": "projects/stock-disclosures-senate.html#featured-ptr",
+    "href": "projects/stock-disclosures-senate.html#featured-ptr",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "This section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount"
+  },
+  {
+    "objectID": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "href": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "Senators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date."
+  },
+  {
+    "objectID": "projects/stock-disclosures-senate.html#data-source",
+    "href": "projects/stock-disclosures-senate.html#data-source",
+    "title": "Politician Stock Disclosures",
+    "section": "",
+    "text": "The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
   },
   {
     "objectID": "projects/political-text-analysis.html",
@@ -105,150 +280,66 @@
     "text": "Links\nCode"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
+    "objectID": "senate-ptr-scraper/notebooks/Scrape_Official_Senate_PTRs_Electronic_Only.html",
+    "href": "senate-ptr-scraper/notebooks/Scrape_Official_Senate_PTRs_Electronic_Only.html",
+    "title": "Senate PTR Scraper — Electronic Filings Only",
     "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+    "text": "This notebook focuses only on electronic Senate Periodic Transaction Reports (PTRs)."
   },
   {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Sean Ryan",
-    "section": "Selected Work",
-    "text": "Selected Work\n\n\nPolitician Stock Disclosures\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nVisual AI & Internet Research\nDigital methods · computer vision · online research\nResearch exploring visual AI and internet culture using computational methods.\nView project →\n\n\nRaleigh Micromobility\nGIS · public data · reporting\nExamining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.\nView project →"
+    "objectID": "senate-ptr-scraper/notebooks/Scrape_Official_Senate_PTRs_Electronic_Only.html#paper-project-note",
+    "href": "senate-ptr-scraper/notebooks/Scrape_Official_Senate_PTRs_Electronic_Only.html#paper-project-note",
+    "title": "Senate PTR Scraper — Electronic Filings Only",
+    "section": "Paper project note",
+    "text": "Paper project note\nPaper PTRs are intentionally outside this notebook.\nThey are still visible in:\n\nSenate_PTR_Filing_Index.csv with filing_format = paper_scan\nSenate_PTR_Scrape_Status.csv with status = paper_deferred\n\nThat preserves the list of paper filings without carrying the paper downloader, PDF/image processing, vision model, or review workflow in the electronic scraper.\nWhen you return to paper filings later, make them a separate notebook that reads the filing index and processes only rows where filing_format == \"paper_scan\"."
   },
   {
-    "objectID": "index.html#what-i-work-with",
-    "href": "index.html#what-i-work-with",
-    "title": "Sean Ryan",
-    "section": "What I Work With",
-    "text": "What I Work With\nPython · R · GIS · NLP · Network Analysis · Public Records · Data Visualization · Web Data · APIs"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "AUTOMATION_SETUP.html",
+    "href": "AUTOMATION_SETUP.html",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+    "text": "This repo and the sibling senate-ptr-scraper repo are wired up to scrape Senate PTR data and rebuild/deploy this site automatically. A few steps can only be done by you in the GitHub UI (not something an assistant can do via local tools) — do these once to turn the automation on.\n\n\nsenate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main\n\n\n\nIn senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN.\n\n\n\nThe scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value.\n\n\n\n\nSettings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)\n\n\n\n\nIn senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data.\n\n\n\n\n\nThe scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
   },
   {
-    "objectID": "about.html#interests",
-    "href": "about.html#interests",
-    "title": "About",
-    "section": "Interests",
-    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "CV",
+    "objectID": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
+    "href": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "A concise CV will go here.\nFor now, include:"
+    "text": "senate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main"
   },
   {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "CV",
-    "section": "Education",
-    "text": "Education\nNC State University\nB.S., Interdisciplinary Studies\nFocus: nonprofit studies, technology, and community development"
-  },
-  {
-    "objectID": "cv.html#selected-projects",
-    "href": "cv.html#selected-projects",
-    "title": "CV",
-    "section": "Selected Projects",
-    "text": "Selected Projects\n\nPolitician Stock Disclosures\nPolitical Text Analysis\nVisual AI & Internet Research\nRaleigh Micromobility / GIS"
-  },
-  {
-    "objectID": "cv.html#technical-tools",
-    "href": "cv.html#technical-tools",
-    "title": "CV",
-    "section": "Technical Tools",
-    "text": "Technical Tools\nPython, R, GIS, APIs, NLP, network analysis, data visualization"
-  },
-  {
-    "objectID": "cv.html#links",
-    "href": "cv.html#links",
-    "title": "CV",
-    "section": "Links",
-    "text": "Links\n\nGitHub: github.com/YOUR-USERNAME\nEmail: YOUR-EMAIL"
-  },
-  {
-    "objectID": "projects/micromobility.html",
-    "href": "projects/micromobility.html",
-    "title": "Raleigh Micromobility",
+    "objectID": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
+    "href": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+    "text": "In senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN."
   },
   {
-    "objectID": "projects/micromobility.html#question",
-    "href": "projects/micromobility.html#question",
-    "title": "Raleigh Micromobility",
+    "objectID": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
+    "href": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "What does public transportation and infrastructure data reveal about biking and micromobility in Raleigh and around NC State?"
+    "text": "The scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value."
   },
   {
-    "objectID": "projects/micromobility.html#reporting-data",
-    "href": "projects/micromobility.html#reporting-data",
-    "title": "Raleigh Micromobility",
-    "section": "Reporting & Data",
-    "text": "Reporting & Data\nDescribe the public datasets, interviews, GIS layers, surveys, or other reporting used."
-  },
-  {
-    "objectID": "projects/micromobility.html#analysis",
-    "href": "projects/micromobility.html#analysis",
-    "title": "Raleigh Micromobility",
-    "section": "Analysis",
-    "text": "Analysis\nAdd maps and other visuals here."
-  },
-  {
-    "objectID": "projects/micromobility.html#methods",
-    "href": "projects/micromobility.html#methods",
-    "title": "Raleigh Micromobility",
-    "section": "Methods",
-    "text": "Methods\nGIS Public Data Reporting Transportation"
-  },
-  {
-    "objectID": "projects/micromobility.html#findings",
-    "href": "projects/micromobility.html#findings",
-    "title": "Raleigh Micromobility",
-    "section": "Findings",
-    "text": "Findings\nSummarize the strongest findings in a few concise paragraphs or bullets."
-  },
-  {
-    "objectID": "projects/micromobility.html#links",
-    "href": "projects/micromobility.html#links",
-    "title": "Raleigh Micromobility",
-    "section": "Links",
-    "text": "Links\nAdd the published story, map, source repository, or methodology when available."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html",
-    "href": "projects/stock-disclosures.html",
-    "title": "Politician Stock Disclosures",
+    "objectID": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
+    "href": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "U.S. House Periodic Transaction Reports\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "Settings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)"
   },
   {
-    "objectID": "projects/stock-disclosures.html#featured-ptr",
-    "href": "projects/stock-disclosures.html#featured-ptr",
-    "title": "Politician Stock Disclosures",
+    "objectID": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
+    "href": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
+    "text": "In senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data."
   },
   {
-    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
-    "href": "projects/stock-disclosures.html#explore-the-transactions",
-    "title": "Politician Stock Disclosures",
+    "objectID": "AUTOMATION_SETUP.html#notes",
+    "href": "AUTOMATION_SETUP.html#notes",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
-  },
-  {
-    "objectID": "projects/stock-disclosures.html#data-source",
-    "href": "projects/stock-disclosures.html#data-source",
-    "title": "Politician Stock Disclosures",
-    "section": "",
-    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
   }
 ]
