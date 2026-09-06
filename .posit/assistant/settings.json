@@ -26,7 +26,8 @@
       "*.yml": "allow"
     },
     "webfetch": {
-      "https://api.github.com/*": "allow"
+      "https://api.github.com/*": "allow",
+      "https://github.com/*": "allow"
     }
   }
 }
