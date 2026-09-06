@@ -16,37 +16,9 @@
   {
     "objectID": "cv.html",
     "href": "cv.html",
-    "title": "CV",
+    "title": "Resume",
     "section": "",
-    "text": "A concise CV will go here.\nFor now, include:"
-  },
-  {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "CV",
-    "section": "Education",
-    "text": "Education\nNC State University\nB.S., Interdisciplinary Studies\nFocus: nonprofit studies, technology, and community development"
-  },
-  {
-    "objectID": "cv.html#selected-projects",
-    "href": "cv.html#selected-projects",
-    "title": "CV",
-    "section": "Selected Projects",
-    "text": "Selected Projects\n\nPolitician Stock Disclosures\nPolitical Text Analysis\nVisual AI & Internet Research\nRaleigh Micromobility / GIS"
-  },
-  {
-    "objectID": "cv.html#technical-tools",
-    "href": "cv.html#technical-tools",
-    "title": "CV",
-    "section": "Technical Tools",
-    "text": "Technical Tools\nPython, R, GIS, APIs, NLP, network analysis, data visualization"
-  },
-  {
-    "objectID": "cv.html#links",
-    "href": "cv.html#links",
-    "title": "CV",
-    "section": "Links",
-    "text": "Links\n\nGitHub: github.com/YOUR-USERNAME\nEmail: YOUR-EMAIL"
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\nPrint / Save as PDF\n\n\n\n\n\nSummary\n\n\nMotivated and adaptable professional with technical support experience in highly sensitive and collegiate environments. Proficient in facilitating the use of advanced manufacturing technologies such as 3D printers, laser cutters, water jet cutters, and CNC machines. Demonstrates a strong ability to build sustainable relationships with students, guiding them through complex projects from conception to completion. Combines analytical thinking and creative problem-solving to support and inspire the next generation of innovators.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\nhttps://strokeofluck.github.io/All-We-Are-Map/\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\nhttps://www.google.com/maps/d/u/0/edit?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\nhttps://clearhouse.live\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies for Community Development (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs"
   },
   {
     "objectID": "house-ptr-scraper/docs/NEXT_GITHUB_ACTIONS.html",
@@ -452,49 +424,49 @@
     "href": "projects/political-text-analysis.html",
     "title": "Political Text Analysis",
     "section": "",
-    "text": "Write the specific research question in one sentence."
+    "text": "When real-world violence escalates or de-escalates in the Iran conflict, does Donald Trump’s rhetoric on Truth Social shift in predictable ways — toward more threatening or victorious language before/during high-fatality events, and toward more diplomatic or ceasefire-oriented language afterward?"
   },
   {
     "objectID": "projects/political-text-analysis.html#question",
     "href": "projects/political-text-analysis.html#question",
     "title": "Political Text Analysis",
     "section": "",
-    "text": "Write the specific research question in one sentence."
+    "text": "When real-world violence escalates or de-escalates in the Iran conflict, does Donald Trump’s rhetoric on Truth Social shift in predictable ways — toward more threatening or victorious language before/during high-fatality events, and toward more diplomatic or ceasefire-oriented language afterward?"
   },
   {
     "objectID": "projects/political-text-analysis.html#data",
     "href": "projects/political-text-analysis.html#data",
     "title": "Political Text Analysis",
     "section": "Data",
-    "text": "Data\nDescribe the political text corpus and the event or reference dataset."
+    "text": "Data\nTwo sources are aligned by date:\n\nTrump’s Truth Social posts. The full public archive of his original posts (not reblogs) is pulled from a Hugging Face dataset, filtered to calendar-year 2026 and to posts mentioning Iran (401 posts YTD as of this snapshot).\nUCDP conflict events. The Uppsala Conflict Data Program’s Georeferenced Event Dataset, filtered to events with US or joint US–Israel involvement related to the Iran conflict (through July 2026). UCDP is manually researcher-coded from primary reporting on organized violence, which makes it a more reliable “ground truth” for event timing and severity than automated event trackers like GDELT, though its inclusion rule (battle-related fatalities) means it can miss purely diplomatic or political moments that don’t involve violence.\n\nFor each UCDP event, a 1-day event window (day before / day of / day after, in Eastern time) is built around it, and any Iran-related Trump posts falling in that window are attached. This produces 393 unique event-dates with matched posts, spanning 543 underlying UCDP event records.\nEach event-date is also assigned a significance level (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded “Major” based on same-day death tolls in the dozens to low hundreds."
   },
   {
     "objectID": "projects/political-text-analysis.html#approach",
     "href": "projects/political-text-analysis.html#approach",
     "title": "Political Text Analysis",
     "section": "Approach",
-    "text": "Approach\nExplain the workflow in normal language before showing code:\n\nCollect the text.\nClean and structure it.\nDefine the event windows or comparison groups.\nApply the text-analysis method.\nVisualize and interpret the results."
+    "text": "Approach\n\nCollect Trump’s Truth Social posts (Hugging Face archive) and UCDP’s Iran-conflict event records (filtered Excel export), both refreshed periodically as new data becomes available.\nWindow the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.\nScore rhetoric with zero-shot classification. A Hugging Face multi-label zero-shot classifier scores each post’s content_text — and only the text, never the UCDP metadata — against four labels: Threat, Victory, Diplomacy, and Ceasefire/Ending, each a continuous 0–1 probability.\nAggregate event-balanced means. Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn’t dominate the pattern.\nVisualize the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their four rhetorical scores branching around it."
   },
   {
     "objectID": "projects/political-text-analysis.html#methods",
     "href": "projects/political-text-analysis.html#methods",
     "title": "Political Text Analysis",
     "section": "Methods",
-    "text": "Methods\nPython R NLP Text Analysis Event Data"
+    "text": "Methods\nPython Hugging Face Transformers Zero-Shot Classification Event Data UCDP Truth Social"
   },
   {
     "objectID": "projects/political-text-analysis.html#results",
     "href": "projects/political-text-analysis.html#results",
     "title": "Political Text Analysis",
     "section": "Results",
-    "text": "Results\nAdd 1–3 strong visualizations and explain what each one actually shows."
+    "text": "Results\n\n\n\n\nThe interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire scores, plus a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. Note the diagram is a horizontal, one-card-at-a-time scroll — it works but isn’t ideal on narrow/mobile screens; that’s a known layout limitation to revisit in a later pass, separate from the underlying data or analysis."
   },
   {
     "objectID": "projects/political-text-analysis.html#limitations",
     "href": "projects/political-text-analysis.html#limitations",
     "title": "Political Text Analysis",
     "section": "Limitations",
-    "text": "Limitations\nBriefly explain what the analysis can and cannot establish."
+    "text": "Limitations\n\nSmall sample. 103 posts were actually scored (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader’s rhetoric during one specific conflict, not a generalizable claim.\nZero-shot labels are heuristic. The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model’s association between text and label names, not a validated measure of intent or sentiment.\nUCDP’s fatality-based inclusion criterion means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn’t involve violence — so “no nearby UCDP event” doesn’t mean “nothing happened.”\nCorrelational, not causal. Matching rhetoric to nearby events shows co-occurrence, not that either caused the other — Trump may be reacting to the same news coverage the event is drawn from, rather than reacting to the event’s severity per se.\nBoth the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester."
   },
   {
     "objectID": "projects/political-text-analysis.html#links",

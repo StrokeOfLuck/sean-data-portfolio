@@ -112,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/YOUR-USERNAME"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/StrokeOfLuck"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -171,38 +171,53 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="question" class="level2">
 <h2 class="anchored" data-anchor-id="question">Question</h2>
-<p>Write the specific research question in one sentence.</p>
+<p>When real-world violence escalates or de-escalates in the Iran conflict, does Donald Trump’s rhetoric on Truth Social shift in predictable ways — toward more threatening or victorious language before/during high-fatality events, and toward more diplomatic or ceasefire-oriented language afterward?</p>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>Describe the political text corpus and the event or reference dataset.</p>
+<p>Two sources are aligned by date:</p>
+<ul>
+<li><strong>Trump’s Truth Social posts.</strong> The full public archive of his original posts (not reblogs) is pulled from a Hugging Face dataset, filtered to calendar-year 2026 and to posts mentioning Iran (401 posts YTD as of this snapshot).</li>
+<li><strong>UCDP conflict events.</strong> The Uppsala Conflict Data Program’s Georeferenced Event Dataset, filtered to events with US or joint US–Israel involvement related to the Iran conflict (through July 2026). UCDP is manually researcher-coded from primary reporting on organized violence, which makes it a more reliable “ground truth” for event timing and severity than automated event trackers like GDELT, though its inclusion rule (battle-related fatalities) means it can miss purely diplomatic or political moments that don’t involve violence.</li>
+</ul>
+<p>For each UCDP event, a <strong>1-day event window</strong> (day before / day of / day after, in Eastern time) is built around it, and any Iran-related Trump posts falling in that window are attached. This produces 393 unique event-dates with matched posts, spanning 543 underlying UCDP event records.</p>
+<p>Each event-date is also assigned a <strong>significance level</strong> (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded “Major” based on same-day death tolls in the dozens to low hundreds.</p>
 </section>
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
-<p>Explain the workflow in normal language before showing code:</p>
 <ol type="1">
-<li>Collect the text.</li>
-<li>Clean and structure it.</li>
-<li>Define the event windows or comparison groups.</li>
-<li>Apply the text-analysis method.</li>
-<li>Visualize and interpret the results.</li>
+<li><strong>Collect</strong> Trump’s Truth Social posts (Hugging Face archive) and UCDP’s Iran-conflict event records (filtered Excel export), both refreshed periodically as new data becomes available.</li>
+<li><strong>Window</strong> the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.</li>
+<li><strong>Score rhetoric with zero-shot classification.</strong> A Hugging Face multi-label zero-shot classifier scores each post’s <code>content_text</code> — and only the text, never the UCDP metadata — against four labels: <strong>Threat, Victory, Diplomacy, and Ceasefire/Ending</strong>, each a continuous 0–1 probability.</li>
+<li><strong>Aggregate event-balanced means.</strong> Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn’t dominate the pattern.</li>
+<li><strong>Visualize</strong> the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their four rhetorical scores branching around it.</li>
 </ol>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p><code>Python</code> <code>R</code> <code>NLP</code> <code>Text Analysis</code> <code>Event Data</code></p>
+<p><code>Python</code> <code>Hugging Face Transformers</code> <code>Zero-Shot Classification</code> <code>Event Data</code> <code>UCDP</code> <code>Truth Social</code></p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>Add 1–3 strong visualizations and explain what each one actually shows.</p>
+<div style="margin: 1.5rem 0;">
+<iframe src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;" loading="lazy">
+</iframe>
+</div>
+<p>The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire scores, plus a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. Note the diagram is a horizontal, one-card-at-a-time scroll — it works but isn’t ideal on narrow/mobile screens; that’s a known layout limitation to revisit in a later pass, separate from the underlying data or analysis.</p>
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
-<p>Briefly explain what the analysis can and cannot establish.</p>
+<ul>
+<li><strong>Small sample.</strong> 103 posts were actually scored (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader’s rhetoric during one specific conflict, not a generalizable claim.</li>
+<li><strong>Zero-shot labels are heuristic.</strong> The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model’s association between text and label names, not a validated measure of intent or sentiment.</li>
+<li><strong>UCDP’s fatality-based inclusion criterion</strong> means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn’t involve violence — so “no nearby UCDP event” doesn’t mean “nothing happened.”</li>
+<li><strong>Correlational, not causal.</strong> Matching rhetoric to nearby events shows co-occurrence, not that either caused the other — Trump may be reacting to the same news coverage the event is drawn from, rather than reacting to the event’s severity per se.</li>
+<li>Both the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester.</li>
+</ul>
 </section>
 <section id="links" class="level2">
 <h2 class="anchored" data-anchor-id="links">Links</h2>
-<p><a href="https://github.com/YOUR-USERNAME">Code</a></p>
+<p><a href="https://github.com/StrokeOfLuck/sean-data-portfolio">Code</a></p>
 
 
 </section>

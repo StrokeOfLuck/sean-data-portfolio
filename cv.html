@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CV – Sean Ryan</title>
+<title>Resume – Sean Ryan</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/YOUR-USERNAME"> <i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/StrokeOfLuck"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -123,21 +123,21 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CV</h1>
+<h1 class="title">Resume</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -149,36 +149,633 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A concise CV will go here.</p>
-<p>For now, include:</p>
-<section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
-<p><strong>NC State University</strong><br>
-B.S., Interdisciplinary Studies<br>
-Focus: nonprofit studies, technology, and community development</p>
-</section>
-<section id="selected-projects" class="level2">
-<h2 class="anchored" data-anchor-id="selected-projects">Selected Projects</h2>
-<ul>
-<li>Politician Stock Disclosures</li>
-<li>Political Text Analysis</li>
-<li>Visual AI &amp; Internet Research</li>
-<li>Raleigh Micromobility / GIS</li>
+<style>
+
+.quarto-title-block {
+  display: none;
+}
+
+.resume-shell {
+  width: min(820px, calc(100vw - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+
+  border-bottom: 2px solid #6ea8fe;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.resume-tagline {
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+.resume-contact {
+  text-align: right;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.resume-contact a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.resume-contact a:hover {
+  border-bottom-color: #6ea8fe;
+}
+
+.resume-contact div {
+  margin-bottom: 0.25rem;
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.85rem;
+
+  border: 1px solid #6ea8fe;
+  border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.resume-download:hover {
+  background: rgba(110, 168, 254, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   SECTIONS
+   --------------------------------------------------------- */
+
+.resume-section {
+  margin-bottom: 1.75rem;
+}
+
+.resume-section h2 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+
+  border-bottom: 1px solid #3b3b3b;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.resume-summary {
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   EXPERIENCE / EDUCATION ENTRIES
+   --------------------------------------------------------- */
+
+.resume-entry {
+  margin-bottom: 1.1rem;
+  page-break-inside: avoid;
+}
+
+.resume-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.resume-entry-title {
+  font-weight: 700;
+}
+
+.resume-entry-dates {
+  font-size: 0.85rem;
+  color: #6ea8fe;
+  white-space: nowrap;
+}
+
+.resume-entry-org {
+  opacity: 0.8;
+  font-size: 0.92rem;
+  margin-top: 0.1rem;
+}
+
+.resume-entry-bullets {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.2rem;
+}
+
+.resume-entry-bullets li {
+  margin-bottom: 0.3rem;
+  line-height: 1.45;
+}
+
+.resume-entry-details {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}
+
+.resume-entry-link {
+  font-size: 0.88rem;
+  margin-top: 0.3rem;
+}
+
+.resume-entry-link a {
+  color: #6ea8fe;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.resume-entry-link a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   SKILLS
+   --------------------------------------------------------- */
+
+/* Pandoc wraps the raw `cat()` output (a run of inline <span> pills) in
+   a <p> before it lands inside this div, so the flex rules that matter
+   have to target that inner <p>, not the div itself -- otherwise the
+   pills just wrap as ordinary inline text with a single space between
+   them, which is why they visually crowd/touch. */
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
+  column-gap: 0.85rem;
+}
+
+.resume-skills p {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
+  column-gap: 0.85rem;
+  margin: 0;
+}
+
+.resume-skill-pill {
+  display: inline-block;
+
+  padding: 0.35rem 0.9rem;
+
+  border: 1px solid #444;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   PRINT / PDF EXPORT
+   --------------------------------------------------------- */
+
+/* The browser's own print header/footer (page title, URL, date, page
+   numbers) is a print-dialog setting, not something CSS can suppress --
+   in Chrome/Edge, uncheck "Headers and footers" under "More settings"
+   in the print dialog before saving as PDF. */
+@page {
+  size: letter;
+  margin: 0.3in;
+}
+
+@media print {
+
+  .navbar, #quarto-header, .footer, .page-footer, #quarto-footer,
+  .quarto-back-to-top, .resume-download {
+    display: none !important;
+  }
+
+  /* Quarto's page chrome adds its own padding/margin around the content
+     area -- zero it out so the page margins above are the only margins
+     in effect. It also uses a sticky-footer flex layout (min-height:
+     100vh on the content grid) to push the site footer down, which adds
+     a large block of empty vertical space that forces a spurious blank
+     second printed page even after the footer itself is hidden -- cancel
+     that here. */
+  #quarto-content, #quarto-document-content, main.content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  #quarto-content {
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  html, body {
+    font-size: 10.5px;
+  }
+
+  body {
+    line-height: 1.25;
+  }
+
+  p {
+    margin: 0 0 0.3rem 0;
+  }
+
+  .resume-shell {
+    width: 100%;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .resume-header {
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.2rem;
+    border-bottom-color: #000;
+  }
+
+  .resume-name {
+    font-size: 1.25rem;
+  }
+
+  .resume-tagline {
+    margin-top: 0.05rem;
+  }
+
+  .resume-contact {
+    font-size: 0.78rem;
+  }
+
+  .resume-contact div {
+    margin-bottom: 0.1rem;
+  }
+
+  .resume-section {
+    margin-bottom: 0.2rem;
+  }
+
+  .resume-section h2 {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.1rem;
+    border-bottom-color: #999;
+    opacity: 1;
+  }
+
+  .resume-summary {
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .resume-entry {
+    margin-bottom: 0.12rem;
+  }
+
+  .resume-entry-org {
+    margin-top: 0.03rem;
+  }
+
+  .resume-entry-dates {
+    color: #000;
+  }
+
+  .resume-entry-bullets {
+    margin-top: 0.12rem;
+  }
+
+  .resume-entry-bullets li {
+    margin-bottom: 0.03rem;
+    line-height: 1.2;
+  }
+
+  .resume-entry-details {
+    margin-top: 0.03rem;
+  }
+
+  .resume-skills, .resume-skills p {
+    row-gap: 0.25rem;
+    column-gap: 0.4rem;
+  }
+
+  .resume-skill-pill {
+    padding: 0.1rem 0.5rem;
+    border-color: #999;
+  }
+
+  .resume-entry-link {
+    font-size: 0.7rem;
+    margin-top: 0.12rem;
+  }
+
+  a {
+    color: #000 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .resume-header {
+    flex-direction: column;
+  }
+
+  .resume-contact {
+    text-align: left;
+  }
+}
+
+</style>
+<div class="resume-shell">
+<div class="resume-header">
+<div>
+<p class="resume-name">
+Sean Ryan
+</p>
+<div class="resume-tagline">
+Data Journalism · Digital Investigations · Civic Technology
+</div>
+</div>
+<div class="resume-contact">
+<div>
+<a href="mailto:sryan3@ncsu.edu">sryan3@ncsu.edu</a>
+</div>
+<div>
+<a href="https://github.com/StrokeOfLuck" target="_blank" rel="noopener">GitHub</a>
+</div>
+<button type="button" class="resume-download" onclick="window.print()" title="Opens your browser's print dialog — choose Save as PDF">
+Print / Save as PDF
+</button>
+</div>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Summary
+</h2>
+<p class="resume-summary">
+Motivated and adaptable professional with technical support experience in highly sensitive and collegiate environments. Proficient in facilitating the use of advanced manufacturing technologies such as 3D printers, laser cutters, water jet cutters, and CNC machines. Demonstrates a strong ability to build sustainable relationships with students, guiding them through complex projects from conception to completion. Combines analytical thinking and creative problem-solving to support and inspire the next generation of innovators.
+</p>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Experience
+</h2>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Fabrication Lab / Maker Space Technician
+</div>
+<div class="resume-entry-dates">
+2023 – 2024
+</div>
+</div>
+<div class="resume-entry-org">
+North Carolina State University — Raleigh, NC
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Developed instructional materials for advanced manufacturing equipment
+</li>
+<li>
+Trained students on 3D printers, laser cutters, water jets, and CNC machines
+</li>
+<li>
+Maintained equipment and enforced shop safety protocols
+</li>
 </ul>
-</section>
-<section id="technical-tools" class="level2">
-<h2 class="anchored" data-anchor-id="technical-tools">Technical Tools</h2>
-<p>Python, R, GIS, APIs, NLP, network analysis, data visualization</p>
-</section>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
-<ul>
-<li>GitHub: <a href="https://github.com/YOUR-USERNAME">github.com/YOUR-USERNAME</a></li>
-<li>Email: YOUR-EMAIL</li>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Teaching Assistant
+</div>
+<div class="resume-entry-dates">
+2024
+</div>
+</div>
+<div class="resume-entry-org">
+North Carolina State University — Raleigh, NC
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Provided technical support and instruction for SolidWorks and graphic communications coursework
+</li>
+<li>
+Held office hours and assisted with grading and project feedback
+</li>
 </ul>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+PC Technician
+</div>
+<div class="resume-entry-dates">
+2020
+</div>
+</div>
+<div class="resume-entry-org">
+Jacobs Engineering Group — Fort Bragg, NC
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Provided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)
+</li>
+<li>
+Resolved client tickets
+</li>
+<li>
+Installed and configured application and operating system software and upgrades
+</li>
+</ul>
+</div>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Volunteer Experience
+</h2>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Volunteer Mechanic / Program Lead
+</div>
+<div class="resume-entry-dates">
+2025 – Present
+</div>
+</div>
+<div class="resume-entry-org">
+Durham Bike Co-op — Durham, NC
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Repair and refurbish donated bicycles to expand affordable transportation access
+</li>
+<li>
+Lead open shop sessions and coordinate volunteer workflow
+</li>
+<li>
+Train volunteers in bicycle mechanics and shop safety
+</li>
+<li>
+Support outreach initiatives and grant development efforts
+</li>
+</ul>
+</div>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Projects
+</h2>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+All We Are Solar Map — Nonprofit Infrastructure Visualization
+</div>
+<div class="resume-entry-dates">
+2026
+</div>
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Created an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact
+</li>
+</ul>
+<div class="resume-entry-link">
+<a href="https://strokeofluck.github.io/All-We-Are-Map/" target="_blank" rel="noopener">https://strokeofluck.github.io/All-We-Are-Map/</a>
+</div>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Lyon Cycling Map — GPS Video Mapping Project
+</div>
+<div class="resume-entry-dates">
+2025
+</div>
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Built an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage
+</li>
+</ul>
+<div class="resume-entry-link">
+<a href="https://www.google.com/maps/d/u/0/edit?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8" target="_blank" rel="noopener">https://www.google.com/maps/d/u/0/edit?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8</a>
+</div>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+ClearHouse.live — Civic Transparency Platform
+</div>
+<div class="resume-entry-dates">
+2024
+</div>
+</div>
+<ul class="resume-entry-bullets">
+<li>
+Co-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures
+</li>
+</ul>
+<div class="resume-entry-link">
+<a href="https://clearhouse.live" target="_blank" rel="noopener">https://clearhouse.live</a>
+</div>
+</div>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Education
+</h2>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Interdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies for Community Development (B.S.)
+</div>
+<div class="resume-entry-dates">
+(exp) 2027
+</div>
+</div>
+<div class="resume-entry-org">
+North Carolina State University
+</div>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Electronics Engineering Technology (A.A.S.)
+</div>
+<div class="resume-entry-dates">
+2021
+</div>
+</div>
+<div class="resume-entry-org">
+Wake Technical Community College
+</div>
+<div class="resume-entry-details">
+4.0 GPA · Honors Program Member
+</div>
+</div>
+<div class="resume-entry">
+<div class="resume-entry-head">
+<div class="resume-entry-title">
+Security+ Certificate
+</div>
+<div class="resume-entry-dates">
+2018
+</div>
+</div>
+<div class="resume-entry-org">
+CompTIA
+</div>
+</div>
+</div>
+<div class="resume-section">
+<h2 class="anchored">
+Skills
+</h2>
+<div class="resume-skills">
+<p><span class="resume-skill-pill">Python</span> <span class="resume-skill-pill">R</span> <span class="resume-skill-pill">GIS</span> <span class="resume-skill-pill">SolidWorks</span> <span class="resume-skill-pill">3D Printing / CNC / Laser &amp; Waterjet Cutting</span> <span class="resume-skill-pill">Technical Support &amp; Troubleshooting</span> <span class="resume-skill-pill">NLP</span> <span class="resume-skill-pill">Network Analysis</span> <span class="resume-skill-pill">Data Visualization</span> <span class="resume-skill-pill">APIs</span></p>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
