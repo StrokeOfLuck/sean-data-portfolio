@@ -40,8 +40,15 @@ jobs:
           r-version: "4.4.2"
 
       - name: Install R packages
-        run: |
-          Rscript -e 'install.packages(c("rmarkdown", "readr", "dplyr", "DT", "jsonlite", "htmltools"), repos = "https://cloud.r-project.org")'
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::rmarkdown
+            any::readr
+            any::dplyr
+            any::DT
+            any::jsonlite
+            any::htmltools
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
