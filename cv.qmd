@@ -151,6 +151,30 @@ execute:
   margin-bottom: 1rem;
 }
 
+.resume-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #3b3b3b;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.resume-section-heading h2 {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.resume-section-heading a {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: #3f6fd1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .resume-summary {
   line-height: 1.55;
 }
@@ -379,6 +403,24 @@ execute:
     padding-bottom: 0.15rem;
     border-bottom: 1px solid #888;
     opacity: 1;
+  }
+
+  .resume-section-heading {
+    margin-bottom: 0.28rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid #888;
+  }
+
+  .resume-section-heading h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .resume-section-heading a {
+    font-size: 0.66rem;
+    color: #000 !important;
+    text-decoration: none !important;
   }
 
   .resume-summary {
@@ -626,7 +668,10 @@ cat(volunteer_html)
 
 
 <div class="resume-section">
-<h2>Projects</h2>
+<div class="resume-section-heading">
+<h2>Selected Projects</h2>
+<a href="https://strokeofluck.github.io/sean-data-portfolio/" target="_blank" rel="noopener">View full portfolio →</a>
+</div>
 ```{r, results='asis'}
 cat(projects_html)
 ```
