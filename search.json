@@ -263,7 +263,7 @@
     "href": "projects/congressional-stock-network.html",
     "title": "Congressional Stock Trading Network",
     "section": "",
-    "text": "&lt;div id=\"network-loader\" class=\"network-loader\" aria-live=\"polite\"&gt;\n  &lt;div class=\"loader-inner\"&gt;\n    &lt;div class=\"loader-network\" aria-hidden=\"true\"&gt;\n      &lt;span class=\"loader-line one\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-line two\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-line three\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node center\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node left\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node right\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node top\"&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;div&gt;Building the congressional stock network…&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;iframe\n  id=\"congress-network-frame\"\n  src=\"https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1\"\n  title=\"Interactive Congressional Stock Trading Network\"\n  loading=\"eager\"\n  allowfullscreen&gt;\n&lt;/iframe&gt;\n\n&lt;div class=\"network-quick-actions\"&gt;\n  &lt;a href=\"#methodology\"&gt;Methodology ↓&lt;/a&gt;\n  &lt;a href=\"https://strokeofluck.github.io/congressional-stock-network-2025/\" target=\"_blank\" rel=\"noopener\"&gt;Open full screen ↗&lt;/a&gt;\n&lt;/div&gt;"
+    "text": "Building the congressional stock network…\n\n\n\n\nMethodology ↓\nOpen full screen ↗"
   },
   {
     "objectID": "projects/congressional-stock-network.html#what-it-does",
