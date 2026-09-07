@@ -187,100 +187,6 @@ body.network-project-app {
   overflow: hidden;
 }
 
-.network-project-nav {
-  display: none !important;
-}
-
-.network-project-title-block {
-  min-width: 0;
-  max-width: min(820px, 68vw);
-}
-
-.network-project-brand {
-  display: block;
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-.network-project-subtitle {
-  display: block;
-  margin-top: 3px;
-  color: #666d76;
-  font-size: 12px;
-  line-height: 1.35;
-  font-weight: 500;
-}
-
-.network-project-tabs {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.network-project-tab {
-  border: 1px solid #d8dce2;
-  background: #fff;
-  color: #30343a;
-  border-radius: 999px;
-  padding: 9px 16px;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 750;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.network-project-tab:hover {
-  background: #f1f3f5;
-}
-
-.network-project-tab.is-active {
-  background: #17191c;
-  color: #fff;
-  border-color: #17191c;
-}
-
-@media (max-width: 760px) {
-  .network-project-nav {
-    position: relative;
-    display: block;
-    padding: 12px 14px 10px;
-  }
-
-  .network-project-title-block {
-    max-width: none;
-    margin-bottom: 10px;
-  }
-
-  .network-project-brand {
-    font-size: 18px;
-    white-space: normal;
-  }
-
-  .network-project-subtitle {
-    font-size: 11px;
-  }
-
-  .network-project-tabs {
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
-  }
-
-  .network-project-tabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .network-project-tab {
-    flex: 0 0 auto;
-    padding: 8px 13px;
-    font-size: 13px;
-  }
-}
-
 .network-visual-shell {
   position: relative;
   width: 100%;
@@ -389,17 +295,6 @@ body.network-project-app {
 }
 </style>
 <div class="column-screen network-project-root">
-<div class="network-project-nav" aria-label="Project sections">
-<div class="network-project-title-block">
-<span class="network-project-brand">2025 Congressional Stock Trading Networks</span>
-<span class="network-project-subtitle">Explore reported 2025 House stock purchases across politicians, companies, committees, and subcommittees.</span>
-</div>
-<div class="network-project-tabs">
-<button class="network-project-tab is-active" type="button" data-network-page="explore">Explore</button>
-<button class="network-project-tab" type="button" data-network-page="about">About</button>
-<button class="network-project-tab" type="button" data-network-page="methodology">Methodology</button>
-</div>
-</div>
 <div id="network-visual-shell" class="network-visual-shell">
 <div id="network-loader" class="network-loader" aria-live="polite">
 <div class="loader-inner">
@@ -447,32 +342,6 @@ body.network-project-app {
   scheduleShellFit();
   window.addEventListener("resize", scheduleShellFit);
   window.addEventListener("orientationchange", scheduleShellFit);
-
-  const projectTabs = Array.from(
-    document.querySelectorAll("[data-network-page]")
-  );
-
-  projectTabs.forEach(function(button) {
-    button.addEventListener("click", function() {
-      const page = button.getAttribute("data-network-page");
-
-      projectTabs.forEach(function(tab) {
-        tab.classList.toggle("is-active", tab === button);
-      });
-
-      if (frame.contentWindow) {
-        frame.contentWindow.postMessage(
-          {
-            type: "congress-network-navigate",
-            page: page
-          },
-          window.location.origin
-        );
-      }
-
-      scheduleShellFit();
-    });
-  });
 
   let finished = false;
   const startedAt = performance.now();
