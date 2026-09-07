@@ -214,100 +214,12 @@ footer.footer {
   50% { transform: scale(1.2); opacity: 1; }
 }
 
-.network-quick-actions {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 5;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.network-quick-actions a {
-  display: inline-block;
-  padding: 9px 14px;
-  border: 1px solid rgba(65,71,79,0.22);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.94);
-  color: #30343a;
-  font-size: 13px;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 5px 18px rgba(20,28,38,0.10);
-  backdrop-filter: blur(8px);
-}
-
-.network-quick-actions a:hover {
-  background: #fff;
-  transform: translateY(-1px);
-}
-
-.network-writeup {
-  width: min(980px, calc(100vw - 40px));
-  margin: 0 auto;
-  padding: 64px 0 90px;
-}
-
-.network-writeup h1 {
-  margin: 0 0 10px;
-  font-size: clamp(30px, 4vw, 48px);
-  letter-spacing: -0.035em;
-}
-
-.network-writeup .lede {
-  margin: 0 0 28px;
-  color: #5f6670;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-.network-writeup h2 {
-  margin-top: 38px;
-}
-
-.network-writeup p,
-.network-writeup li {
-  line-height: 1.65;
-}
-
-.network-link-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 24px 0 8px;
-}
-
-.network-link-row a {
-  display: inline-block;
-  padding: 8px 13px;
-  border: 1px solid #cfd4da;
-  border-radius: 9px;
-  color: inherit;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.network-link-row a:hover {
-  background: #f3f4f6;
-}
-
 @media (max-width: 700px) {
   .network-visual-shell {
     height: calc(100vh - 58px);
     min-height: 600px;
   }
 
-  .network-quick-actions {
-    right: 10px;
-    bottom: 10px;
-  }
-
-  .network-quick-actions a {
-    padding: 8px 11px;
-    font-size: 12px;
-  }
 }
 </style>
 
@@ -342,61 +254,9 @@ footer.footer {
 </div>
 </div>
 <iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
-<div class="network-quick-actions">
-<a href="https://strokeofluck.github.io/congressional-stock-network-2025/" target="_blank" rel="noopener">Open full screen ↗</a>
-</div>
 </div>
 </div>
 ```
-
-::: {#methodology .network-writeup}
-
-# Congressional Stock Trading Network
-
-<p class="lede">An interactive network connecting <strong>reported 2025 House public-stock purchases</strong> to politicians, companies, committees, and subcommittees.</p>
-
-<div class="network-link-row">
-<a href="https://github.com/StrokeOfLuck/congressional-stock-network-2025" target="_blank" rel="noopener">Source repository ↗</a>
-<a href="stock-disclosures.qmd">Underlying disclosure project →</a>
-</div>
-
-## What it does
-
-The opening graph focuses on stocks purchased by at least **two different politicians**, making shared purchases easier to see without treating the display filter as a data-quality rule.
-
-Users can search politicians, stocks, committees, and subcommittees; inspect the original PTR records behind a stock; open committee and subcommittee drawers; export institution-level CSV summaries; copy links to selected drill-down states; and compare the graph with a broader House coverage panel.
-
-## Transaction-date committee matching
-
-Committee assignments are not treated as one fixed roster for the whole year.
-
-The project uses pinned historical snapshots from the `unitedstates/congress-legislators` dataset and matches committee membership to the transaction date.
-
-- **Jan. 1–2, 2025:** Dec. 17, 2024 snapshot, because those dates are still in the 118th Congress.
-- **Jan. 3–20, 2025:** Jan. 21, 2025, the first usable House committee snapshot for the 119th Congress.
-- **Jan. 21 onward:** latest available snapshot on or before the transaction date.
-
-A missing committee match does **not** remove a stock purchase. Committee data are added after the accepted stock-purchase dataset is created.
-
-## Coverage checks
-
-The project compares accepted purchasers with the 119th-Congress House roster and separates:
-
-1. politicians in the main shared-stock graph;
-2. accepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;
-3. House members for whom the project found no accepted 2025 public-stock purchase.
-
-The third group is a **coverage-review category**, not proof that someone did not trade.
-
-## Why I built it
-
-I wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.
-
-The result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.
-
-The interactive build and analysis source are maintained in a **standalone repository** rather than inside the portfolio repository. That keeps the portfolio site lightweight and keeps the network's analysis and deployment history independent from the website.
-
-:::
 
 <script>
 (function () {
