@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-01">
 
 <title>Lyon Cycling Map – Sean Ryan</title>
 <style>
@@ -124,40 +123,24 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#interactive-map" id="toc-interactive-map" class="nav-link active" data-scroll-target="#interactive-map">Interactive map</a></li>
-  <li><a href="#how-i-made-it" id="toc-how-i-made-it" class="nav-link" data-scroll-target="#how-i-made-it">How I made it</a></li>
-  <li><a href="#why-i-like-this-project" id="toc-why-i-like-this-project" class="nav-link" data-scroll-target="#why-i-like-this-project">Why I like this project</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Lyon Cycling Map</h1>
-<p class="subtitle lead">GPS video mapping · Lyon, France</p>
+<p class="subtitle lead">GPS video mapping · Lyon, France · Summer 2025</p>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -167,21 +150,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.</p>
-<p>The project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.</p>
-<section id="interactive-map" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-map">Interactive map</h2>
-<div class="lyon-map">
-<iframe src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8" title="Interactive map of cycling routes in Lyon, France" loading="lazy" allowfullscreen="">
-</iframe>
-</div>
-<p><a href="https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8">Open the map in Google My Maps ↗</a></p>
 <style>
-.lyon-map {
-  position: relative;
-  left: 50%;
+#title-block-header,
+.lyon-shell {
   width: min(94vw, 1200px);
-  transform: translateX(-50%);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lyon-map {
+  width: 100%;
   margin: 1rem 0 0.75rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
@@ -202,6 +181,16 @@ ul.task-list li input[type="checkbox"] {
   }
 }
 </style>
+<div class="lyon-shell">
+<p>While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.</p>
+<p>The project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.</p>
+<section id="interactive-map" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-map">Interactive map</h2>
+<div class="lyon-map">
+<iframe src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8" title="Interactive map of cycling routes in Lyon, France" loading="lazy" allowfullscreen="">
+</iframe>
+</div>
+<p><a href="https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8">Open the map in Google My Maps ↗</a></p>
 </section>
 <section id="how-i-made-it" class="level2">
 <h2 class="anchored" data-anchor-id="how-i-made-it">How I made it</h2>
@@ -217,9 +206,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="why-i-like-this-project">Why I like this project</h2>
 <p>This was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.</p>
 <p>It also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually.</p>
-
-
 </section>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
