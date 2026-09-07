@@ -261,37 +261,9 @@
   {
     "objectID": "projects/congressional-stock-network.html",
     "href": "projects/congressional-stock-network.html",
-    "title": "Congressional Stock Trading Network",
+    "title": "Sean Ryan",
     "section": "",
-    "text": "2025 Congressional Stock Trading Networks\nExplore reported 2025 House stock purchases across politicians, companies, committees, and subcommittees.\n\n\nExplore\nAbout\nMethodology\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoading congressional stock data…\n\n\n\n\nOpen full screen ↗"
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html#what-it-does",
-    "href": "projects/congressional-stock-network.html#what-it-does",
-    "title": "Congressional Stock Trading Network",
-    "section": "What it does",
-    "text": "What it does\nThe opening graph focuses on stocks purchased by at least two different politicians, making shared purchases easier to see without treating the display filter as a data-quality rule.\nUsers can search politicians, stocks, committees, and subcommittees; inspect the original PTR records behind a stock; open committee and subcommittee drawers; export institution-level CSV summaries; copy links to selected drill-down states; and compare the graph with a broader House coverage panel."
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html#transaction-date-committee-matching",
-    "href": "projects/congressional-stock-network.html#transaction-date-committee-matching",
-    "title": "Congressional Stock Trading Network",
-    "section": "Transaction-date committee matching",
-    "text": "Transaction-date committee matching\nCommittee assignments are not treated as one fixed roster for the whole year.\nThe project uses pinned historical snapshots from the unitedstates/congress-legislators dataset and matches committee membership to the transaction date.\n\nJan. 1–2, 2025: Dec. 17, 2024 snapshot, because those dates are still in the 118th Congress.\nJan. 3–20, 2025: Jan. 21, 2025, the first usable House committee snapshot for the 119th Congress.\nJan. 21 onward: latest available snapshot on or before the transaction date.\n\nA missing committee match does not remove a stock purchase. Committee data are added after the accepted stock-purchase dataset is created."
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html#coverage-checks",
-    "href": "projects/congressional-stock-network.html#coverage-checks",
-    "title": "Congressional Stock Trading Network",
-    "section": "Coverage checks",
-    "text": "Coverage checks\nThe project compares accepted purchasers with the 119th-Congress House roster and separates:\n\npoliticians in the main shared-stock graph;\naccepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;\nHouse members for whom the project found no accepted 2025 public-stock purchase.\n\nThe third group is a coverage-review category, not proof that someone did not trade."
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html#why-i-built-it",
-    "href": "projects/congressional-stock-network.html#why-i-built-it",
-    "title": "Congressional Stock Trading Network",
-    "section": "Why I built it",
-    "text": "Why I built it\nI wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.\nThe result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.\nThe interactive build and analysis source are maintained in a standalone repository rather than inside the portfolio repository. That keeps the portfolio site lightweight and keeps the network’s analysis and deployment history independent from the website."
+    "text": "2025 Congressional Stock Trading Networks\nExplore reported 2025 House stock purchases across politicians, companies, committees, and subcommittees.\n\n\nExplore\nAbout\nMethodology\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoading congressional stock data…"
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
