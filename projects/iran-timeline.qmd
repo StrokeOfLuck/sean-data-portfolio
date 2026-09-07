@@ -12,8 +12,8 @@ footer.footer {
   display: none !important;
 }
 
-/* Remove Quarto's normal article top spacing so the visualization
-   sits directly under the site navbar. */
+/* Remove Quarto's normal article spacing and its empty title block so
+   the visualization begins directly beneath the normal fixed site navbar. */
 #quarto-content,
 main.content,
 .page-columns {
@@ -21,21 +21,12 @@ main.content,
   padding-top: 0 !important;
 }
 
-/* Quarto's fixed-nav body offset can leave a thin blank strip here.
-   Keep this full-screen wrapper's navbar in normal flow so the iframe
-   begins immediately below it with no residual offset. */
-body.nav-fixed {
-  padding-top: 0 !important;
-}
-#quarto-header,
-#quarto-header.fixed-top,
-#quarto-header.headroom,
-#quarto-header.headroom--pinned,
-#quarto-header.headroom--unpinned {
-  position: static !important;
-  top: auto !important;
-  transform: none !important;
-  transition: none !important;
+.quarto-title-block,
+#title-block-header {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
 }
 </style>
 
@@ -52,26 +43,6 @@ body.nav-fixed {
 (function () {
   const frame = document.getElementById("iran-timeline-frame");
   if (!frame) return;
-
-  function normalizeOuterHeader() {
-    document.body.classList.remove("nav-fixed");
-    const header = document.getElementById("quarto-header");
-    if (!header) return;
-    header.classList.remove(
-      "fixed-top",
-      "headroom",
-      "headroom--pinned",
-      "headroom--unpinned"
-    );
-    header.style.setProperty("position", "static", "important");
-    header.style.setProperty("top", "auto", "important");
-    header.style.setProperty("transform", "none", "important");
-    header.style.setProperty("transition", "none", "important");
-  }
-
-  normalizeOuterHeader();
-  document.addEventListener("DOMContentLoaded", normalizeOuterHeader);
-  window.addEventListener("load", normalizeOuterHeader);
 
   function cleanEmbeddedChrome() {
     try {
