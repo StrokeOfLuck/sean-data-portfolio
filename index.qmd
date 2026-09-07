@@ -36,7 +36,7 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 
 <div class="project-heading">
 <h3>Political Text Analysis</h3>
-<span class="project-date">2026</span>
+<span class="project-date">Fall 2026</span>
 </div>
 
 **NLP · political data · event analysis**
@@ -58,7 +58,7 @@ Five-day University of Amsterdam research sprint on online political subcultures
 
 <div class="project-heading">
 <h3>All We Are Solar Map</h3>
-<span class="project-date">2026</span>
+<span class="project-date">Spring 2026</span>
 </div>
 
 **GIS · nonprofit data · interactive visualization**
