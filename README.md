@@ -10,13 +10,13 @@ politician stock disclosures, public-records data pipelines, and computational p
 - `about.qmd` — about page
 - `cv.qmd` — resume page, rendered from `data/resume.yml` (see below)
 - `projects/*.qmd` — one page per project
-- `data/` — small data files committed directly to the repo (e.g. `resume.yml`, the House PTR snapshot fallback)
+- `data/` — small site-owned data files committed directly to the repo (currently `resume.yml`)
 - `styles.css` — shared site styling
 - `_quarto.yml` — site/nav configuration
 
-Some project pages (`projects/stock-disclosures.qmd`, `projects/stock-disclosures-senate.qmd`) pull their live data
-from sibling scraper repositories (`house-ptr-scraper`, `senate-ptr-scraper`) at render time, with a static CSV
-fallback in `data/` if those aren't available locally.
+The stock-disclosure project pages pull their data directly from the sibling scraper repositories
+(`house-ptr-scraper` and `senate-ptr-scraper`) at render time. Those scraper repos are the data sources of truth;
+the portfolio repo does not keep duplicate PTR snapshots.
 
 ## Editing the resume
 
