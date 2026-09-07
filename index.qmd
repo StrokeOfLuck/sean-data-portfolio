@@ -13,17 +13,6 @@ I use data, public records, computational methods, and visualization to investig
 ::: {.project-grid}
 
 <div class="project-heading">
-<h3>Politician Stock Disclosures</h3>
-<span class="project-date">2024–present</span>
-</div>
-
-**Public records · data cleaning · civic technology**
-
-Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.
-
-[View project →](projects/stock-disclosures.qmd)
-
-<div class="project-heading">
 <h3>Congressional Stock Trading Network</h3>
 <span class="project-date">Fall 2026</span>
 </div>
@@ -33,6 +22,17 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.
 
 [View project →](projects/congressional-stock-network.qmd)
+
+<div class="project-heading">
+<h3>Politician Stock Disclosures</h3>
+<span class="project-date">2024–present</span>
+</div>
+
+**Public records · data cleaning · civic technology**
+
+Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.
+
+[View project →](projects/stock-disclosures.qmd)
 
 <div class="project-heading">
 <h3>Political Text Analysis</h3>
