@@ -8,11 +8,48 @@ ClearHouse.live was a **collaborative winter project** built to make U.S. politi
 
 It was also my introduction to **web scraping, public-records data collection, and building a data-backed web application**.
 
+## Live site preview
+
+<div class="clearhouse-preview">
+<iframe
+  src="https://clearhouse.live"
+  title="Live preview of ClearHouse.live"
+  loading="lazy">
+</iframe>
+</div>
+
+[Open ClearHouse.live ↗](https://clearhouse.live)
+
+<style>
+.clearhouse-preview {
+  position: relative;
+  left: 50%;
+  width: min(94vw, 1200px);
+  transform: translateX(-50%);
+  margin: 1rem 0 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.clearhouse-preview iframe {
+  display: block;
+  width: 100%;
+  height: min(68vh, 720px);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .clearhouse-preview iframe {
+    height: 520px;
+  }
+}
+</style>
+
 ## What we built
 
 The site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.
-
-[Open ClearHouse.live ↗](https://clearhouse.live)
 
 ## What I learned
 
