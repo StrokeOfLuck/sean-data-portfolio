@@ -1,13 +1,24 @@
 ---
 title: "Congressional Stock Trading Network"
 subtitle: "2025 U.S. House stock purchases, committees, and subcommittees"
-toc: true
+page-layout: full
+toc: false
 ---
 
-An interactive network connecting **reported 2025 House public-stock purchases** to politicians, companies, committees, and subcommittees.
+<div style="width:100%; margin: 0 0 1.1rem 0;">
+  <iframe
+    src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1"
+    title="Interactive Congressional Stock Trading Network"
+    style="width:100%; height:820px; border:1px solid #e1e4e8; border-radius:18px; background:#fff;"
+    loading="eager"
+    allowfullscreen>
+  </iframe>
+</div>
 
-[Open interactive network ↗](https://strokeofluck.github.io/congressional-stock-network-2025/)  
+[Open the network full screen ↗](https://strokeofluck.github.io/congressional-stock-network-2025/)  
 [Source repository ↗](https://github.com/StrokeOfLuck/congressional-stock-network-2025)
+
+An interactive network connecting **reported 2025 House public-stock purchases** to politicians, companies, committees, and subcommittees.
 
 The project grew out of my work cleaning congressional financial-disclosure data and is designed as an exploratory tool for finding relationships worth checking against original Periodic Transaction Reports and committee records.
 
