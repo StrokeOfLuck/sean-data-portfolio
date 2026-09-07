@@ -27,18 +27,18 @@ experience:
     start: "2023"
     end: "2024"
     bullets:
-      - "Developed instructional materials for advanced manufacturing equipment"
-      - "Trained students on 3D printers, laser cutters, water jets, and CNC machines"
-      - "Maintained equipment and enforced shop safety protocols"
+      - "Supported student projects using 3D printers, laser cutters, waterjets, and CNC equipment"
+      - "Developed equipment guides and instructional materials"
+      - "Troubleshot equipment and maintained shop safety"
 
-  - title: "Teaching Assistant"
+  - title: "Teaching Assistant, Graphic Communications"
     org: "North Carolina State University"
     location: "Raleigh, NC"
     start: "2024"
     end: "2024"
     bullets:
-      - "Provided technical support and instruction for SolidWorks and graphic communications coursework"
-      - "Held office hours and assisted with grading and project feedback"
+      - "Supported SolidWorks and graphic communications coursework"
+      - "Helped students troubleshoot projects and provided technical feedback"
 
   - title: "PC Technician"
     org: "Jacobs Engineering Group"
@@ -46,9 +46,9 @@ experience:
     start: "2020"
     end: "2020"
     bullets:
-      - "Provided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)"
-      - "Resolved client tickets"
-      - "Installed and configured application and operating system software and upgrades"
+      - "Provided in-person and remote technical support for computers, mobile devices, and printers"
+      - "Diagnosed hardware, software, and connectivity issues"
+      - "Installed and configured operating systems, applications, and updates"
 
 volunteer:
   - title: "Usual Crowd Lead / Grants Coordinator"
