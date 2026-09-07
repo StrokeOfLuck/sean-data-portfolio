@@ -36,12 +36,12 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 <div class="project-heading">
 <h3>TankieTube</h3>
-<span class="project-date">2026</span>
+<span class="project-date">Summer 2026</span>
 </div>
 
 **Digital methods · text analysis · internet research**
 
-Collaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.
+Five-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.
 
 [View project →](projects/tankietube.qmd)
 
