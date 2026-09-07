@@ -45,6 +45,3 @@ Examining bikeshare, transportation infrastructure, and mobility using public da
 
 :::
 
-## What I Work With
-
-Python · R · GIS · NLP · Network Analysis · Public Records · Data Visualization · Web Data · APIs
