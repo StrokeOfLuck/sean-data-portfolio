@@ -20682,5 +20682,133 @@ Multi-day Event </span>
 }
 </style>
 
+
+<style id="v28-post-link-behavior">
+/* Short posts show their complete archived text immediately.
+   The source link stays visible; expansion is only for genuinely long text. */
+.truth-card.short-post summary {
+  cursor: default;
+}
+.truth-card.short-post .preview {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+.truth-card.short-post .expanded-inline,
+.truth-card.short-post .full,
+.truth-card.short-post .read-more-cue {
+  display: none !important;
+}
+.post-direct-link {
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+}
+.post-direct-link a {
+  display: inline-block;
+  color: #3f78b8;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.post-direct-link a:hover {
+  text-decoration: underline;
+}
+.truth-card:not(.short-post) .read-more-cue {
+  margin-top: 8px;
+}
+.truth-card:not(.short-post) .read-more-cue small {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .post-direct-link {
+    padding-right: 2px;
+  }
+  .post-direct-link a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+</style>
+
+<script id="v28-post-link-script">
+(function () {
+  "use strict";
+
+  function textLength(el) {
+    return (el && el.textContent ? el.textContent : "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .length;
+  }
+
+  function enhancePostCards() {
+    document.querySelectorAll("details.truth-card").forEach(function (card) {
+      if (card.dataset.v28Enhanced === "1") return;
+
+      const summary = card.querySelector("summary");
+      const preview = card.querySelector(".preview");
+      const archivedFull = card.querySelector(".expanded-inline");
+      const fullSection = card.querySelector(".full");
+      const originalLink = fullSection && fullSection.querySelector(".truth-link");
+      const cue = card.querySelector(".read-more-cue");
+
+      if (!summary || !preview || !archivedFull) return;
+
+      if (originalLink && !summary.querySelector(".post-direct-link")) {
+        const row = document.createElement("div");
+        row.className = "post-direct-link";
+
+        const link = originalLink.cloneNode(true);
+        link.classList.remove("truth-link");
+        link.textContent = "View entire post on Truth Social ↗";
+        row.appendChild(link);
+
+        if (cue) summary.insertBefore(row, cue);
+        else summary.appendChild(row);
+
+        link.addEventListener("click", function (event) {
+          event.stopPropagation();
+        });
+      }
+
+      const isShort = textLength(archivedFull) <= 360;
+
+      if (isShort) {
+        card.classList.add("short-post");
+        preview.innerHTML = archivedFull.innerHTML;
+
+        if (cue) cue.remove();
+
+        summary.addEventListener("click", function (event) {
+          if (event.target.closest("a")) return;
+          event.preventDefault();
+        });
+
+        card.open = false;
+      } else if (cue) {
+        const collapsed = cue.querySelector(".read-collapsed");
+        const expanded = cue.querySelector(".read-expanded");
+        const small = cue.querySelector("small");
+
+        if (collapsed) collapsed.textContent = "Show full archived text ↓";
+        if (expanded) expanded.textContent = "Hide full archived text ↑";
+        if (small) small.remove();
+      }
+
+      card.dataset.v28Enhanced = "1";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhancePostCards);
+  } else {
+    enhancePostCards();
+  }
+})();
+</script>
+
 </body>
 </html>
