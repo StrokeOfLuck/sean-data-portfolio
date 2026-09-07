@@ -52,8 +52,10 @@ I wanted a way to move beyond a flat disclosure table and explore how reported s
 
 The result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.
 
-## Related work
+## Project links
+
+[Source repository ↗](https://github.com/StrokeOfLuck/congressional-stock-network-2025)
 
 [View the underlying Politician Stock Disclosures project →](stock-disclosures.qmd)
 
-The interactive build and analysis source are maintained in a **standalone project repository** rather than inside this portfolio repository.
+The interactive build and analysis source are maintained in a **standalone project repository** rather than inside this portfolio repository. That keeps the portfolio site lightweight and prevents the analysis code, data, and deployment history from becoming coupled to the website repo.
