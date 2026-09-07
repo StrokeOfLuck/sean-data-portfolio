@@ -1,33 +1,21 @@
 ---
 title: "Lyon Cycling Map"
-subtitle: "GPS video mapping · Lyon, France"
-date: "Summer 2025"
-toc: true
+subtitle: "GPS video mapping · Lyon, France · Summer 2025"
+page-layout: full
+toc: false
 ---
 
-While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage's GPS data to reconstruct the routes and turn them into an interactive map.
-
-The project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.
-
-## Interactive map
-
-<div class="lyon-map">
-<iframe
-  src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8"
-  title="Interactive map of cycling routes in Lyon, France"
-  loading="lazy"
-  allowfullscreen>
-</iframe>
-</div>
-
-[Open the map in Google My Maps ↗](https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8)
-
 <style>
-.lyon-map {
-  position: relative;
-  left: 50%;
+#title-block-header,
+.lyon-shell {
   width: min(94vw, 1200px);
-  transform: translateX(-50%);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lyon-map {
+  width: 100%;
   margin: 1rem 0 0.75rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
@@ -49,6 +37,25 @@ The project was a simple way to connect something I was already doing — riding
 }
 </style>
 
+::: {.lyon-shell}
+
+While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage's GPS data to reconstruct the routes and turn them into an interactive map.
+
+The project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.
+
+## Interactive map
+
+<div class="lyon-map">
+<iframe
+  src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8"
+  title="Interactive map of cycling routes in Lyon, France"
+  loading="lazy"
+  allowfullscreen>
+</iframe>
+</div>
+
+[Open the map in Google My Maps ↗](https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8)
+
 ## How I made it
 
 The basic workflow was:
@@ -63,3 +70,5 @@ The basic workflow was:
 This was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.
 
 It also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually.
+
+:::
