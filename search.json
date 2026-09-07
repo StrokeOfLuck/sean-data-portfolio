@@ -151,42 +151,42 @@
     "href": "projects/clearhouse.html",
     "title": "ClearHouse.live",
     "section": "",
-    "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application.\n\n\n\n  \n\nOpen ClearHouse.live ↗ · Open the archived snapshot →\n\n\n\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.\n\n\n\nThis was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines.\n\n\n\nThe project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services.\n\n\n\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
+    "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application."
   },
   {
     "objectID": "projects/clearhouse.html#site-snapshot",
     "href": "projects/clearhouse.html#site-snapshot",
     "title": "ClearHouse.live",
-    "section": "",
-    "text": "Open ClearHouse.live ↗ · Open the archived snapshot →"
+    "section": "Site snapshot",
+    "text": "Site snapshot\n\n\n\n\nOpen ClearHouse.live ↗ · Open the archived snapshot →"
   },
   {
     "objectID": "projects/clearhouse.html#what-we-built",
     "href": "projects/clearhouse.html#what-we-built",
     "title": "ClearHouse.live",
-    "section": "",
-    "text": "The site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform."
+    "section": "What we built",
+    "text": "What we built\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform."
   },
   {
     "objectID": "projects/clearhouse.html#what-i-learned",
     "href": "projects/clearhouse.html#what-i-learned",
     "title": "ClearHouse.live",
-    "section": "",
-    "text": "This was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines."
+    "section": "What I learned",
+    "text": "What I learned\nThis was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines."
   },
   {
     "objectID": "projects/clearhouse.html#technical-stack",
     "href": "projects/clearhouse.html#technical-stack",
     "title": "ClearHouse.live",
-    "section": "",
-    "text": "The project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services."
+    "section": "Technical stack",
+    "text": "Technical stack\nThe project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services."
   },
   {
     "objectID": "projects/clearhouse.html#why-it-mattered-to-me",
     "href": "projects/clearhouse.html#why-it-mattered-to-me",
     "title": "ClearHouse.live",
-    "section": "",
-    "text": "ClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
+    "section": "Why it mattered to me",
+    "text": "Why it mattered to me\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
   },
   {
     "objectID": "index.html",
