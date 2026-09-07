@@ -143,6 +143,16 @@ footer.footer {
   display: none !important;
 }
 
+/* Quarto leaves default top spacing for normal article content. This page
+   starts with a full-width interactive project header, so remove that empty
+   band and let the project header sit directly under the site navbar. */
+#quarto-content,
+main.content,
+.page-columns {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .network-project-nav {
   position: sticky;
   top: 0;
