@@ -19,10 +19,44 @@ execute:
   display: none;
 }
 
-.resume-shell {
-  width: min(820px, calc(100vw - 32px));
+.resume-layout {
+  width: min(1040px, calc(100vw - 32px));
   margin-left: auto;
   margin-right: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 820px) 170px;
+  gap: 2rem;
+  align-items: start;
+  justify-content: center;
+}
+
+.resume-shell {
+  width: 100%;
+  min-width: 0;
+}
+
+.resume-tools {
+  position: sticky;
+  top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.resume-tools .resume-download {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.resume-tools .resume-edit-link {
+  text-align: center;
+}
+
+.resume-tools .resume-edit-link a {
+  font-size: 0.75rem;
+  opacity: 0.62;
 }
 
 /* ---------------------------------------------------------
@@ -71,10 +105,6 @@ execute:
   margin-bottom: 0.25rem;
 }
 
-.resume-edit-link a {
-  font-size: 0.82rem;
-  opacity: 0.75;
-}
 
 .resume-download {
   display: inline-flex;
@@ -291,6 +321,12 @@ execute:
     margin: 0 0 0.3rem 0;
   }
 
+  .resume-layout {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
   .resume-shell {
     width: 100%;
   }
@@ -398,6 +434,31 @@ execute:
    RESPONSIVE
    --------------------------------------------------------- */
 
+@media (max-width: 1100px) {
+
+  .resume-layout {
+    display: block;
+    width: min(820px, calc(100vw - 32px));
+  }
+
+  .resume-tools {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .resume-tools .resume-download {
+    width: auto;
+  }
+
+  .resume-tools .resume-edit-link {
+    text-align: right;
+  }
+}
+
 @media (max-width: 600px) {
 
   .resume-header {
@@ -406,6 +467,10 @@ execute:
 
   .resume-contact {
     text-align: left;
+  }
+
+  .resume-tools {
+    justify-content: flex-start;
   }
 }
 
@@ -502,6 +567,8 @@ skills_html <- resume$skills |>
 ```
 
 
+::: {.resume-layout}
+
 ::: {.resume-shell}
 
 <div class="resume-header">
@@ -512,10 +579,8 @@ skills_html <- resume$skills |>
 </div>
 
 <div class="resume-contact">
-<button type="button" class="resume-download" onclick="window.print()" title="Opens your browser's print dialog — choose Save as PDF">Print / Save as PDF</button>
 <div><a href="mailto:`r resume$contact$email`">`r resume$contact$email`</a></div>
 <div><a href="`r resume$contact$github`" target="_blank" rel="noopener">GitHub</a></div>
-<div class="resume-edit-link"><a href="https://github.com/StrokeOfLuck/sean-data-portfolio/edit/main/data/resume.yml" target="_blank" rel="noopener" title="Opens the GitHub web editor for data/resume.yml">Edit this resume</a></div>
 </div>
 
 </div>
@@ -566,6 +631,13 @@ cat(education_html)
 cat(skills_html)
 ```
 </div>
+</div>
+
+:::
+
+<div class="resume-tools">
+<button type="button" class="resume-download" onclick="window.print()" title="Opens your browser's print dialog — choose Save as PDF">Print / Save as PDF</button>
+<div class="resume-edit-link"><a href="https://github.com/StrokeOfLuck/sean-data-portfolio/edit/main/data/resume.yml" target="_blank" rel="noopener" title="Opens the GitHub web editor for data/resume.yml">Edit resume</a></div>
 </div>
 
 :::
