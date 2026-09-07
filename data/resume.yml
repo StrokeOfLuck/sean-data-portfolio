@@ -64,7 +64,7 @@ volunteer:
 
 projects:
   - title: "Politician Stock Disclosures"
-    year: "2024–present"
+    year: "2024–Present"
     bullets:
       - "Built House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis"
     url: "https://strokeofluck.github.io/sean-data-portfolio/projects/stock-disclosures.html"
@@ -91,7 +91,7 @@ education:
   - degree: "Interdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)"
     school: "North Carolina State University"
     location: ""
-    start: "(exp) 2027"
+    start: "Expected 2027"
     end: ""
     details: ""
 
@@ -102,7 +102,7 @@ education:
     end: ""
     details: "4.0 GPA · Honors Program Member"
 
-  - degree: "Security+ Certificate"
+  - degree: "Security+ Certification"
     school: "CompTIA"
     location: ""
     start: "2018"
