@@ -18,7 +18,7 @@ It was also my introduction to **web scraping, public-records data collection, a
 </iframe>
 </div>
 
-[Open ClearHouse.live ↗](https://clearhouse.live)
+[Open ClearHouse.live ↗](https://clearhouse.live) · [Archived static snapshot →](assets/clearhouse/clearhouse-snapshot-2026-09-07.html)
 
 <style>
 .clearhouse-preview {
@@ -46,6 +46,8 @@ It was also my introduction to **web scraping, public-records data collection, a
   }
 }
 </style>
+
+If the live embed ever stops working, the archived snapshot above preserves a visual record of the site.
 
 ## What we built
 
