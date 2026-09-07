@@ -138,6 +138,92 @@ footer.footer {
   display: none !important;
 }
 
+.quarto-title-block,
+#title-block-header {
+  display: none !important;
+}
+
+.network-project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #e1e4e8;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+}
+
+.network-project-brand {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.network-project-tabs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.network-project-tab {
+  border: 1px solid #d8dce2;
+  background: #fff;
+  color: #30343a;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.network-project-tab:hover {
+  background: #f1f3f5;
+}
+
+.network-project-tab.is-active {
+  background: #17191c;
+  color: #fff;
+  border-color: #17191c;
+}
+
+@media (max-width: 760px) {
+  .network-project-nav {
+    position: relative;
+    display: block;
+    padding: 12px 14px 10px;
+  }
+
+  .network-project-brand {
+    margin-bottom: 10px;
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  .network-project-tabs {
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .network-project-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .network-project-tab {
+    flex: 0 0 auto;
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+}
+
 .network-visual-shell {
   position: relative;
   width: 100%;
@@ -356,6 +442,15 @@ footer.footer {
 }
 </style>
 <div class="column-screen" style="margin:0;">
+<div class="network-project-nav" aria-label="Project sections">
+<div class="network-project-brand">2025 Congressional Stock Trading Networks</div>
+<div class="network-project-tabs">
+<button class="network-project-tab is-active" type="button" data-network-page="explore">Explore</button>
+<button class="network-project-tab" type="button" data-network-page="about">About</button>
+<button class="network-project-tab" type="button" data-network-page="methodology">Methodology</button>
+<button class="network-project-tab" type="button" data-network-page="class">Class Report</button>
+</div>
+</div>
 <div id="network-visual-shell" class="network-visual-shell">
 <div id="network-loader" class="network-loader" aria-live="polite">
 <div class="loader-inner">
@@ -373,7 +468,6 @@ footer.footer {
 </div>
 <iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen=""></iframe>
 <div class="network-quick-actions">
-<a href="#methodology">Methodology ↓</a>
 <a href="https://strokeofluck.github.io/congressional-stock-network-2025/" target="_blank" rel="noopener">Open full screen ↗</a>
 </div>
 </div>
@@ -428,6 +522,35 @@ An interactive network connecting <strong>reported 2025 House public-stock purch
   const message = document.getElementById("network-loader-message");
 
   if (!shell || !frame) return;
+
+  const projectTabs = Array.from(
+    document.querySelectorAll("[data-network-page]")
+  );
+
+  projectTabs.forEach(function(button) {
+    button.addEventListener("click", function() {
+      const page = button.getAttribute("data-network-page");
+
+      projectTabs.forEach(function(tab) {
+        tab.classList.toggle("is-active", tab === button);
+      });
+
+      if (frame.contentWindow) {
+        frame.contentWindow.postMessage(
+          {
+            type: "congress-network-navigate",
+            page: page
+          },
+          window.location.origin
+        );
+      }
+
+      shell.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  });
 
   let finished = false;
   const startedAt = performance.now();
