@@ -1,6 +1,6 @@
 ---
 title: "Lyon Cycling Map"
-subtitle: "GPS video mapping · Lyon, France · Summer 2025"
+subtitle: "GPS video mapping · Gilman Scholarship project · Lyon, France · Summer 2025"
 page-layout: full
 toc: false
 ---
@@ -39,9 +39,9 @@ toc: false
 
 ::: {.lyon-shell}
 
-While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage's GPS data to reconstruct the routes and turn them into an interactive map.
+While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage's GPS data to reconstruct the routes and turn them into an interactive map.
 
-The project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.
+This grew out of my Gilman Scholarship follow on service project, which was designed to document Lyon's cycling infrastructure and make the city easier for future students to explore.
 
 ## Interactive map
 
@@ -67,8 +67,8 @@ The basic workflow was:
 
 ## Why I like this project
 
-This was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.
+This started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.
 
-It also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually.
+It was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project.
 
 :::
