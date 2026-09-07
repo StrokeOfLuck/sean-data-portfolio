@@ -263,14 +263,14 @@
     "href": "projects/congressional-stock-network.html",
     "title": "Congressional Stock Trading Network",
     "section": "",
-    "text": "Open the network full screen ↗\nSource repository ↗\nAn interactive network connecting reported 2025 House public-stock purchases to politicians, companies, committees, and subcommittees.\nThe project grew out of my work cleaning congressional financial-disclosure data and is designed as an exploratory tool for finding relationships worth checking against original Periodic Transaction Reports and committee records."
+    "text": "&lt;div id=\"network-loader\" class=\"network-loader\" aria-live=\"polite\"&gt;\n  &lt;div class=\"loader-inner\"&gt;\n    &lt;div class=\"loader-network\" aria-hidden=\"true\"&gt;\n      &lt;span class=\"loader-line one\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-line two\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-line three\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node center\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node left\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node right\"&gt;&lt;/span&gt;\n      &lt;span class=\"loader-node top\"&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;div&gt;Building the congressional stock network…&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;iframe\n  id=\"congress-network-frame\"\n  src=\"https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1\"\n  title=\"Interactive Congressional Stock Trading Network\"\n  loading=\"eager\"\n  allowfullscreen&gt;\n&lt;/iframe&gt;\n\n&lt;div class=\"network-quick-actions\"&gt;\n  &lt;a href=\"#methodology\"&gt;Methodology ↓&lt;/a&gt;\n  &lt;a href=\"https://strokeofluck.github.io/congressional-stock-network-2025/\" target=\"_blank\" rel=\"noopener\"&gt;Open full screen ↗&lt;/a&gt;\n&lt;/div&gt;"
   },
   {
     "objectID": "projects/congressional-stock-network.html#what-it-does",
     "href": "projects/congressional-stock-network.html#what-it-does",
     "title": "Congressional Stock Trading Network",
     "section": "What it does",
-    "text": "What it does\nThe opening graph focuses on stocks purchased by at least two different politicians, making shared holdings easier to see without treating the display filter as a data-quality rule.\nUsers can:\n\nsearch politicians, stocks, committees, and subcommittees;\ninspect the original PTR purchase records behind a stock;\nopen committee and subcommittee drawers;\nsee members with matched purchases alongside members with no accepted purchase found;\nexport institution-level CSV summaries;\ncopy links to selected drill-down states;\ncompare the graph with a broader House coverage panel."
+    "text": "What it does\nThe opening graph focuses on stocks purchased by at least two different politicians, making shared purchases easier to see without treating the display filter as a data-quality rule.\nUsers can search politicians, stocks, committees, and subcommittees; inspect the original PTR records behind a stock; open committee and subcommittee drawers; export institution-level CSV summaries; copy links to selected drill-down states; and compare the graph with a broader House coverage panel."
   },
   {
     "objectID": "projects/congressional-stock-network.html#transaction-date-committee-matching",
@@ -284,28 +284,21 @@
     "href": "projects/congressional-stock-network.html#coverage-checks",
     "title": "Congressional Stock Trading Network",
     "section": "Coverage checks",
-    "text": "Coverage checks\nThe project also compares accepted purchasers with the 119th-Congress House roster.\nThat separates:\n\npoliticians in the main shared-stock graph;\naccepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;\nHouse members for whom the project found no accepted 2025 public-stock purchase.\n\nThe third group is a coverage-review category, not proof that someone did not trade."
+    "text": "Coverage checks\nThe project compares accepted purchasers with the 119th-Congress House roster and separates:\n\npoliticians in the main shared-stock graph;\naccepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;\nHouse members for whom the project found no accepted 2025 public-stock purchase.\n\nThe third group is a coverage-review category, not proof that someone did not trade."
   },
   {
     "objectID": "projects/congressional-stock-network.html#why-i-built-it",
     "href": "projects/congressional-stock-network.html#why-i-built-it",
     "title": "Congressional Stock Trading Network",
     "section": "Why I built it",
-    "text": "Why I built it\nI wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.\nThe result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project."
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html#related-work",
-    "href": "projects/congressional-stock-network.html#related-work",
-    "title": "Congressional Stock Trading Network",
-    "section": "Related work",
-    "text": "Related work\nView the underlying Politician Stock Disclosures project →\nThe interactive build and analysis source are maintained in a standalone project repository rather than inside this portfolio repository. That keeps the portfolio site lightweight and prevents the analysis code, data, and deployment history from becoming coupled to the website repo."
+    "text": "Why I built it\nI wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.\nThe result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.\nThe interactive build and analysis source are maintained in a standalone repository rather than inside the portfolio repository. That keeps the portfolio site lightweight and keeps the network’s analysis and deployment history independent from the website."
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
     "href": "projects/lyon-cycling-map.html",
     "title": "Lyon Cycling Map",
     "section": "",
-    "text": "While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThe project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.\nIt also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually."
+    "text": "While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThis grew out of my Gilman Scholarship follow on service project, which was designed to document Lyon’s cycling infrastructure and make the city easier for future students to explore.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.\nIt was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project."
   },
   {
     "objectID": "projects/lyon-cycling-map.html#interactive-map",
@@ -326,7 +319,7 @@
     "href": "projects/lyon-cycling-map.html#why-i-like-this-project",
     "title": "Lyon Cycling Map",
     "section": "",
-    "text": "This was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.\nIt also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually."
+    "text": "This started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.\nIt was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project."
   },
   {
     "objectID": "projects/stock-disclosures-senate.html",
@@ -368,7 +361,7 @@
     "href": "projects/tankietube.html#project-poster",
     "title": "TankieTube",
     "section": "Project poster",
-    "text": "Project poster\n\n\n\n\nOpen the full poster ↗"
+    "text": "Project poster\n\n\n\n\nOpen poster in new tab ↗"
   },
   {
     "objectID": "projects/tankietube.html#tenetrumble-comparison",
