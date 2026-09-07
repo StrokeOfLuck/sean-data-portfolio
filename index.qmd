@@ -13,6 +13,17 @@ I use data, public records, computational methods, and visualization to investig
 ::: {.project-grid}
 
 <div class="project-heading">
+<h3>ClearHouse.live</h3>
+<span class="project-date">Winter 2024–25</span>
+</div>
+
+**Web scraping · public records · civic technology**
+
+Collaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.
+
+[View project →](projects/clearhouse.qmd)
+
+<div class="project-heading">
 <h3>Politician Stock Disclosures</h3>
 <span class="project-date">2024–present</span>
 </div>
