@@ -4,9 +4,11 @@ subtitle: "University of Amsterdam Digital Methods Summer School · June 29–Ju
 toc: true
 ---
 
-TankieTube was a **five-day collaborative research sprint** completed during the University of Amsterdam's 2026 Digital Methods Summer School. Our team examined how "natively digital" Marxist-Leninist YouTube creators differed from formal political organizations in their topics, language, and platform behavior.
+TankieTube was a **five-day collaborative research sprint** at the University of Amsterdam. Our team compared "natively digital" Marxist-Leninist YouTube creators with formal political organizations.
 
-My contribution centered on the **Tenet/Rumble comparison**, and I also helped create the team's final project poster. The project became one of my first hands-on introductions to Google Colab, very large text datasets, and computational methods for exploring online political media.
+**Team:** Luca Ghiselli, Ema Kinsel, Gavin Mueller, Ada Paul, Sean Ryan, and Jo Walton.
+
+My part focused on the **Tenet/Rumble comparison**, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research.
 
 ## Project poster
 
@@ -43,32 +45,24 @@ My contribution centered on the **Tenet/Rumble comparison**, and I also helped c
 
 ## Tenet/Rumble comparison
 
-I wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of **560 Tenet Media videos published on Rumble**, including transcripts, and used it as a comparison corpus.
+I found a public dataset of **560 Tenet Media videos on Rumble** and compared its transcripts with the much larger Tankie corpus.
 
-The workflow moved in two stages:
+- **TF-IDF** surfaced important words shared across both datasets.
+- "Israel" became a focus, and a **sentence-similarity matcher** paired Tenet quotes with the closest Tankie quotes.
 
-1. **Word-level overlap.** I compared the combined Tankie transcript corpus with the Tenet/Rumble transcripts using TF-IDF to surface words that were important in both datasets rather than starting with a hand-picked topic.
-2. **Quote-level comparison.** After "Israel" emerged as one of the strongest shared terms, transcript sentences containing the term were extracted and a sentence-similarity matcher paired each Tenet/Rumble quote with its closest Tankie quote.
+The goal was exploratory: find rhetorical overlap that would be hard to spot manually, not prove coordination.
 
-The result was a large comparison table that made it possible to inspect what Tenet said next to the most similar language found in the Tankie corpus. The goal was exploratory: to find rhetorical similarities that would be difficult to locate manually across such large collections of transcripts, not to claim coordination between the groups.
+## What the team found
 
-## Why this project mattered to me
+The broader dataset covered **23 YouTube channels, nine political organizations, about 2.5 million comments, and more than 6,000 hours of audio**.
 
-This was one of the projects that made computational internet research feel concrete to me.
+- The YouTubers and formal organizations focused on noticeably different topics.
+- YouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.
+- The team also found some aesthetic convergence between older organizations and newer YouTube-driven Marxism-Leninism.
 
-Before the Summer School, tools such as Colab, transcript corpora, embeddings, and conversational-analysis libraries were mostly things I had seen from the outside. Working with the TankieTube data gave me a practical introduction to digging through a dataset that was far too large to read manually, experimenting with methods, dealing with resource limits, and using code to narrow a broad corpus into something a researcher could actually inspect.
+## Why it mattered to me
 
-The broader project also introduced me to **ConvoKit** and other digital-methods workflows. My Tenet comparison itself centered on TF-IDF and sentence-similarity matching, while ConvoKit was used elsewhere in the team workflow for conversation-oriented text analysis.
-
-## The broader TankieTube project
-
-The team compared **23 natively digital YouTube channels** with **nine Marxist-Leninist political organizations**. The research combined transcripts and comments with methods including BERTopic, embeddings, UMAP, concordance analysis, TF-IDF, and Fighting Words.
-
-The official project report describes a corpus containing roughly **2.4 million YouTuber comments** and **107,000 organization comments**, alongside thousands of hours of transcribed video. My Tenet/Rumble comparison was one additional way of probing the corpus: instead of comparing the two TankieTube groups only with each other, it brought in an outside political-media dataset to look for unexpected rhetorical overlap.
-
-## Context
-
-The 2026 Digital Methods Summer School, hosted by the University of Amsterdam's Digital Methods Initiative, ran from **June 29 to July 3, 2026**. The program is structured as an intensive research and data sprint in which participants use web-specific and computational methods to study online culture and societal issues.
+Five days of working inside datasets that were far too large to read manually made computational research feel much more concrete. It helped push my interests toward digital investigations and data-driven online research.
 
 ## Sources and project links
 
