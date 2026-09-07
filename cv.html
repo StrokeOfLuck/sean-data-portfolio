@@ -287,6 +287,30 @@ ul.task-list li input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
+.resume-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #3b3b3b;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.resume-section-heading h2 {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.resume-section-heading a {
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: #3f6fd1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .resume-summary {
   line-height: 1.55;
 }
@@ -517,6 +541,24 @@ ul.task-list li input[type="checkbox"] {
     opacity: 1;
   }
 
+  .resume-section-heading {
+    margin-bottom: 0.28rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid #888;
+  }
+
+  .resume-section-heading h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .resume-section-heading a {
+    font-size: 0.66rem;
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
   .resume-summary {
     margin: 0;
     line-height: 1.34;
@@ -730,7 +772,7 @@ Volunteer Experience
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-Usual Crowd Lead / Grants Coordinator
+<a class="resume-entry-title-link" href="https://www.durhambikecoop.org/board-coordinators" target="_blank" rel="noopener">Usual Crowd Lead / Grants Coordinator</a>
 </div>
 <div class="resume-entry-dates">
 2025 – Present
@@ -753,66 +795,69 @@ Write grant applications and support fundraising, including securing grant fundi
 </div>
 </div>
 <div class="resume-section">
+<div class="resume-section-heading">
 <h2 class="anchored">
-Projects
+Selected Projects
 </h2>
+<p><a href="https://strokeofluck.github.io/sean-data-portfolio/" target="_blank" rel="noopener">View full portfolio →</a></p>
+</div>
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-<a class="resume-project-title-link" href="https://strokeofluck.github.io/sean-data-portfolio/" target="_blank" rel="noopener">Personal Data Portfolio — This Website</a>
+<a class="resume-project-title-link" href="https://strokeofluck.github.io/sean-data-portfolio/projects/stock-disclosures.html" target="_blank" rel="noopener">Politician Stock Disclosures</a>
 </div>
 <div class="resume-entry-dates">
-2026
+2024–present
 </div>
 </div>
 <ul class="resume-entry-bullets">
 <li>
-Built and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline
+Built House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis
 </li>
 </ul>
 </div>
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-<a class="resume-project-title-link" href="https://strokeofluck.github.io/all-we-are-map-box/" target="_blank" rel="noopener">All We Are Solar Map — Nonprofit Infrastructure Visualization</a>
+<a class="resume-project-title-link" href="https://strokeofluck.github.io/sean-data-portfolio/projects/iran-timeline.html" target="_blank" rel="noopener">Political Text Analysis</a>
 </div>
 <div class="resume-entry-dates">
-2026
+Fall 2026
 </div>
 </div>
 <ul class="resume-entry-bullets">
 <li>
-Created an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact
+Used computational text analysis to examine political rhetoric around real-world conflict events
 </li>
 </ul>
 </div>
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-<a class="resume-project-title-link" href="https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8" target="_blank" rel="noopener">Lyon Cycling Map — GPS Video Mapping Project</a>
+<a class="resume-project-title-link" href="https://strokeofluck.github.io/sean-data-portfolio/projects/tankietube.html" target="_blank" rel="noopener">TankieTube — University of Amsterdam Digital Methods</a>
 </div>
 <div class="resume-entry-dates">
-2025
+Summer 2026
 </div>
 </div>
 <ul class="resume-entry-bullets">
 <li>
-Built an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage
+Compared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching
 </li>
 </ul>
 </div>
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-<a class="resume-project-title-link" href="https://clearhouse.live" target="_blank" rel="noopener">ClearHouse.live — Civic Transparency Platform</a>
+<a class="resume-project-title-link" href="https://strokeofluck.github.io/sean-data-portfolio/projects/all-we-are-solar-map.html" target="_blank" rel="noopener">All We Are Solar Map</a>
 </div>
 <div class="resume-entry-dates">
-Winter 2024–25
+Spring 2026
 </div>
 </div>
 <ul class="resume-entry-bullets">
 <li>
-Co-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures
+Built an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit’s solar installation data in Uganda
 </li>
 </ul>
 </div>
