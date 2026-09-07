@@ -355,13 +355,17 @@ ul.task-list li input[type="checkbox"] {
   text-decoration: underline;
 }
 
-.resume-project-title-link {
-  color: inherit;
-  text-decoration: none;
+.resume-project-title-link,
+.resume-entry-title-link {
+  color: #3f6fd1;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
-.resume-project-title-link:hover {
-  text-decoration: underline;
+.resume-project-title-link:hover,
+.resume-entry-title-link:hover {
+  color: #2f5db8;
 }
 
 /* ---------------------------------------------------------
@@ -564,6 +568,12 @@ ul.task-list li input[type="checkbox"] {
   a {
     color: #000 !important;
   }
+
+  .resume-project-title-link,
+  .resume-entry-title-link {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
 }
 
 /* ---------------------------------------------------------
@@ -720,7 +730,7 @@ Volunteer Experience
 <div class="resume-entry">
 <div class="resume-entry-head">
 <div class="resume-entry-title">
-Usual Crowd Lead / Grants Coordinator
+<a class="resume-entry-title-link" href="https://www.durhambikecoop.org/board-coordinators" target="_blank" rel="noopener">Usual Crowd Lead / Grants Coordinator</a>
 </div>
 <div class="resume-entry-dates">
 2025 – Present
