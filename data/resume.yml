@@ -79,7 +79,7 @@ projects:
     year: "2025"
     bullets:
       - "Built an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage"
-    url: "https://www.google.com/maps/d/u/0/edit?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8"
+    url: "https://www.google.com/maps/d/viewer?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8"
 
   - title: "ClearHouse.live — Civic Transparency Platform"
     year: "2024"
