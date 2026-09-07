@@ -157,20 +157,9 @@ footer.footer {
   backdrop-filter: blur(10px);
 }
 
-.network-project-home {
+.network-project-title-block {
   min-width: 0;
   max-width: min(820px, 68vw);
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.network-project-home:hover .network-project-brand {
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .network-project-brand {
@@ -227,7 +216,7 @@ footer.footer {
     padding: 12px 14px 10px;
   }
 
-  .network-project-home {
+  .network-project-title-block {
     max-width: none;
     margin-bottom: 10px;
   }
@@ -451,14 +440,14 @@ footer.footer {
 </style>
 <div class="column-screen" style="margin:0;">
 <div class="network-project-nav" aria-label="Project sections">
-<button class="network-project-home" type="button" data-network-page="explore" aria-label="Show network">
+<div class="network-project-title-block">
 <span class="network-project-brand">2025 Congressional Stock Trading Networks</span>
 <span class="network-project-subtitle">Explore reported 2025 House stock purchases across politicians, companies, committees, and subcommittees.</span>
-</button>
+</div>
 <div class="network-project-tabs">
+<button class="network-project-tab is-active" type="button" data-network-page="explore">Explore</button>
 <button class="network-project-tab" type="button" data-network-page="about">About</button>
 <button class="network-project-tab" type="button" data-network-page="methodology">Methodology</button>
-<button class="network-project-tab" type="button" data-network-page="class">Class Report</button>
 </div>
 </div>
 <div id="network-visual-shell" class="network-visual-shell">
