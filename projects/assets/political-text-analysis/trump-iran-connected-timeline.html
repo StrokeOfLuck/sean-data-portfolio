@@ -18486,5 +18486,258 @@ Multi-day Event </span>
 })();
 </script>
 
+
+<style id="v25-post-carousel">
+/* V25: desktop post carousels.
+   Day-before/day-after show one post at a time; event-day shows two.
+   Native horizontal scrolling stays available, and mobile keeps its
+   existing swipe-first layout. */
+.post-carousel-shell {
+  position: relative;
+}
+
+@media (min-width: 901px) {
+  .post-carousel-shell {
+    margin-top: 4px;
+    padding: 10px 46px 14px;
+    border: 1px solid #d6dde5;
+    border-radius: 18px;
+    background: rgba(255,255,255,.72);
+  }
+
+  .post-carousel-shell .post-scroll {
+    padding: 3px 0 10px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+  }
+
+  .post-carousel-shell .post-track,
+  .eventday-zone .post-carousel-shell .post-track,
+  .before-branch .post-carousel-shell .post-track,
+  .after-branch .post-carousel-shell .post-track {
+    justify-content: flex-start !important;
+  }
+
+  .post-carousel-shell .truth-card {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .post-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    margin-bottom: 8px;
+  }
+
+  .post-carousel-btn {
+    width: 34px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #aeb8c3;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 850;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .post-carousel-btn:hover:not(:disabled) {
+    background: #eef2f6;
+  }
+
+  .post-carousel-btn:disabled {
+    opacity: .32;
+    cursor: default;
+  }
+
+  .post-carousel-counter {
+    min-width: 66px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .post-carousel-shell {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .post-carousel-nav {
+    display: none !important;
+  }
+}
+</style>
+
+<script id="v25-post-carousel-script">
+(function () {
+  "use strict";
+
+  function enhancePostCarousel(scroller) {
+    const track = scroller.querySelector(".post-track");
+    if (!track || scroller.dataset.carouselReady === "true") return;
+
+    const cards = Array.from(track.querySelectorAll(":scope > .truth-card"));
+    if (!cards.length) return;
+
+    scroller.dataset.carouselReady = "true";
+
+    const shell = document.createElement("div");
+    shell.className = "post-carousel-shell";
+
+    const nav = document.createElement("div");
+    nav.className = "post-carousel-nav";
+
+    const prev = document.createElement("button");
+    prev.type = "button";
+    prev.className = "post-carousel-btn";
+    prev.setAttribute("aria-label", "Previous post");
+    prev.textContent = "‹";
+
+    const counter = document.createElement("span");
+    counter.className = "post-carousel-counter";
+    counter.setAttribute("aria-live", "polite");
+
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "post-carousel-btn";
+    next.setAttribute("aria-label", "Next post");
+    next.textContent = "›";
+
+    nav.append(prev, counter, next);
+
+    scroller.parentNode.insertBefore(shell, scroller);
+    shell.append(nav, scroller);
+
+    const pageSize = scroller.classList.contains("eventday-posts") ? 2 : 1;
+    let currentStart = 0;
+    let resizeTimer = null;
+
+    function desktopMode() {
+      return window.matchMedia("(min-width: 901px)").matches;
+    }
+
+    function gapPx() {
+      const style = getComputedStyle(track);
+      return parseFloat(style.columnGap || style.gap || "16") || 16;
+    }
+
+    function maxStart() {
+      return Math.max(0, cards.length - pageSize);
+    }
+
+    function clampStart(value) {
+      return Math.max(0, Math.min(maxStart(), value));
+    }
+
+    function cardStep() {
+      if (!cards.length) return 1;
+      return cards[0].getBoundingClientRect().width + gapPx();
+    }
+
+    function sizeCards() {
+      if (!desktopMode()) {
+        cards.forEach(function (card) {
+          card.style.removeProperty("flex-basis");
+          card.style.removeProperty("width");
+          card.style.removeProperty("min-width");
+          card.style.removeProperty("max-width");
+        });
+        return;
+      }
+
+      const available = scroller.clientWidth;
+      const gap = gapPx();
+      const visible = Math.min(pageSize, cards.length);
+      const width = Math.max(
+        260,
+        Math.floor((available - gap * Math.max(0, visible - 1)) / visible)
+      );
+
+      cards.forEach(function (card) {
+        const px = width + "px";
+        card.style.flexBasis = px;
+        card.style.width = px;
+        card.style.minWidth = px;
+        card.style.maxWidth = px;
+      });
+    }
+
+    function updateControls() {
+      currentStart = clampStart(currentStart);
+
+      const visibleEnd = Math.min(cards.length, currentStart + pageSize);
+      counter.textContent =
+        pageSize === 1
+          ? (currentStart + 1) + " of " + cards.length
+          : (currentStart + 1) + "–" + visibleEnd + " of " + cards.length;
+
+      prev.disabled = currentStart <= 0;
+      next.disabled = currentStart >= maxStart();
+
+      nav.style.visibility = cards.length <= pageSize ? "hidden" : "visible";
+    }
+
+    function goTo(start, smooth) {
+      currentStart = clampStart(start);
+      scroller.scrollTo({
+        left: currentStart * cardStep(),
+        behavior: smooth ? "smooth" : "auto"
+      });
+      updateControls();
+    }
+
+    prev.addEventListener("click", function () {
+      goTo(currentStart - pageSize, true);
+    });
+
+    next.addEventListener("click", function () {
+      goTo(currentStart + pageSize, true);
+    });
+
+    scroller.addEventListener("scroll", function () {
+      if (!desktopMode()) return;
+
+      window.clearTimeout(scroller._carouselScrollTimer);
+      scroller._carouselScrollTimer = window.setTimeout(function () {
+        currentStart = clampStart(Math.round(scroller.scrollLeft / cardStep()));
+        updateControls();
+      }, 90);
+    }, { passive: true });
+
+    window.addEventListener("resize", function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        sizeCards();
+        goTo(currentStart, false);
+      }, 140);
+    });
+
+    sizeCards();
+    goTo(0, false);
+  }
+
+  function initPostCarousels() {
+    document.querySelectorAll(".post-scroll").forEach(enhancePostCarousel);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPostCarousels);
+  } else {
+    initPostCarousels();
+  }
+})();
+</script>
+
 </body>
 </html>
