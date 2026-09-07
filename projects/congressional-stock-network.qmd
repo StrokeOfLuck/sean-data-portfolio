@@ -60,46 +60,61 @@ body.network-project-app {
 }
 
 .network-project-nav {
-  position: sticky;
-  top: 0;
+  position: absolute;
+  inset: 0 0 auto 0;
   z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 18px;
-  border-bottom: 1px solid #e1e4e8;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(10px);
+  height: 0;
+  pointer-events: none;
 }
 
 .network-project-title-block {
-  min-width: 0;
-  max-width: min(820px, 68vw);
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  width: min(520px, calc(100vw - 28px));
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid rgba(205,210,216,.82);
+  border-radius: 12px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 6px 18px rgba(24,31,39,.08);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  pointer-events: auto;
 }
 
 .network-project-brand {
   display: block;
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 15px;
+  line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.02em;
-  white-space: nowrap;
 }
 
 .network-project-subtitle {
   display: block;
-  margin-top: 3px;
+  margin-top: 2px;
   color: #666d76;
-  font-size: 12px;
-  line-height: 1.35;
+  font-size: 9.5px;
+  line-height: 1.3;
   font-weight: 500;
 }
 
 .network-project-tabs {
+  position: absolute;
+  top: 8px;
+  right: 14px;
   display: flex;
-  gap: 8px;
+  gap: 5px;
   align-items: center;
+  padding: 5px;
+  border: 1px solid rgba(205,210,216,.82);
+  border-radius: 999px;
+  background: rgba(255,255,255,.80);
+  box-shadow: 0 6px 18px rgba(24,31,39,.08);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  pointer-events: auto;
 }
 
 .network-project-tab {
@@ -107,9 +122,9 @@ body.network-project-app {
   background: #fff;
   color: #30343a;
   border-radius: 999px;
-  padding: 9px 16px;
+  padding: 6px 10px;
   font: inherit;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 750;
   cursor: pointer;
   white-space: nowrap;
@@ -125,48 +140,66 @@ body.network-project-app {
   border-color: #17191c;
 }
 
-@media (max-width: 760px) {
-  .network-project-nav {
-    position: relative;
-    display: block;
-    padding: 12px 14px 10px;
-  }
-
+@media (max-width: 1100px) {
   .network-project-title-block {
-    max-width: none;
-    margin-bottom: 10px;
-  }
-
-  .network-project-brand {
-    font-size: 18px;
-    white-space: normal;
+    top: 8px;
+    left: 12px;
+    width: calc(100vw - 24px);
   }
 
   .network-project-subtitle {
-    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .network-project-tabs {
+    top: 60px;
+    left: 12px;
+    right: auto;
+    max-width: calc(100vw - 24px);
     overflow-x: auto;
-    padding-bottom: 2px;
     scrollbar-width: none;
   }
 
   .network-project-tabs::-webkit-scrollbar {
     display: none;
   }
+}
+
+@media (max-width: 700px) {
+  .network-project-title-block {
+    top: 6px;
+    left: 8px;
+    width: calc(100vw - 16px);
+    padding: 7px 9px;
+  }
+
+  .network-project-brand {
+    font-size: 13px;
+  }
+
+  .network-project-subtitle {
+    font-size: 8.5px;
+  }
+
+  .network-project-tabs {
+    top: 56px;
+    left: 8px;
+    max-width: calc(100vw - 16px);
+  }
 
   .network-project-tab {
     flex: 0 0 auto;
-    padding: 8px 13px;
-    font-size: 13px;
+    padding: 6px 9px;
+    font-size: 10px;
   }
 }
 
 .network-visual-shell {
   position: relative;
   width: 100%;
-  height: calc(100dvh - 64px);
+  height: 100dvh;
   min-height: 0;
   margin: 0;
   padding: 0;
@@ -264,7 +297,7 @@ body.network-project-app {
 
 @media (max-width: 700px) {
   .network-visual-shell {
-    height: calc(100dvh - 58px);
+    height: 100dvh;
     min-height: 0;
   }
 
