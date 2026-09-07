@@ -68,7 +68,7 @@ The goal was exploratory: find rhetorical overlap that would be hard to spot man
 
 ## What the team found
 
-The broader dataset covered **23 YouTube channels, nine political organizations, about 2.5 million comments, and more than 6,000 hours of audio**.
+The broader dataset covered **23 YouTube channels, nine political organizations, ~2.4 million YouTuber comments, ~107.4K organization comments, and over 6,000 hours of audio**.
 
 - The YouTubers and formal organizations focused on noticeably different topics.
 - YouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.
