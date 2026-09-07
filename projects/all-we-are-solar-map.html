@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="what-it-does" class="level2">
 <h2 class="anchored" data-anchor-id="what-it-does">What it does</h2>
-<p>The map reads a CSV export from the project’s master spreadsheet and turns each installation site into an interactive geographic feature.</p>
+<p>The map reads a CSV export from a <strong>read-only master sheet I built</strong>. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.</p>
 <p>Visitors can:</p>
 <ul>
 <li>browse solar installation locations across Uganda</li>
@@ -209,12 +209,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="how-it-works" class="level2">
 <h2 class="anchored" data-anchor-id="how-it-works">How it works</h2>
 <p>The project is a small <strong>Mapbox GL JS + D3</strong> application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.</p>
-<p>At the time of handoff, updates were made by exporting the organization’s master sheet to CSV and replacing the data file used by the map. This repository now keeps that bundled CSV so the version I worked on remains reproducible even though I no longer maintain the live source spreadsheet.</p>
+<p>The workflow was: <strong>four source spreadsheets → read-only master sheet → CSV → interactive map</strong>. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on.</p>
 </section>
 <section id="why-i-like-this-project" class="level2">
 <h2 class="anchored" data-anchor-id="why-i-like-this-project">Why I like this project</h2>
-<p>This project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.</p>
-<p>It also connects data visualization with nonprofit work directly. The map is not just a technical demo; it gives All We Are a way to show where its infrastructure projects are located and what those sites represent.</p>
+<p>One of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.</p>
+<p>The project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.</p>
 </section>
 </div>
 
