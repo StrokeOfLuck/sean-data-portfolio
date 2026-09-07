@@ -6,6 +6,9 @@ toc: true
 
 An interactive network connecting **reported 2025 House public-stock purchases** to politicians, companies, committees, and subcommittees.
 
+[Open interactive network ↗](https://strokeofluck.github.io/congressional-stock-network-2025/)  
+[Source repository ↗](https://github.com/StrokeOfLuck/congressional-stock-network-2025)
+
 The project grew out of my work cleaning congressional financial-disclosure data and is designed as an exploratory tool for finding relationships worth checking against original Periodic Transaction Reports and committee records.
 
 ## What it does
@@ -52,9 +55,7 @@ I wanted a way to move beyond a flat disclosure table and explore how reported s
 
 The result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.
 
-## Project links
-
-[Source repository ↗](https://github.com/StrokeOfLuck/congressional-stock-network-2025)
+## Related work
 
 [View the underlying Politician Stock Disclosures project →](stock-disclosures.qmd)
 
