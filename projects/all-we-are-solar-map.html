@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-01">
 
 <title>All We Are Solar Map – Sean Ryan</title>
 <style>
@@ -124,41 +123,24 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#interactive-map" id="toc-interactive-map" class="nav-link active" data-scroll-target="#interactive-map">Interactive map</a></li>
-  <li><a href="#what-it-does" id="toc-what-it-does" class="nav-link" data-scroll-target="#what-it-does">What it does</a></li>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it works</a></li>
-  <li><a href="#why-i-like-this-project" id="toc-why-i-like-this-project" class="nav-link" data-scroll-target="#why-i-like-this-project">Why I like this project</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">All We Are Solar Map</h1>
-<p class="subtitle lead">Nonprofit infrastructure visualization · Uganda</p>
+<p class="subtitle lead">Nonprofit infrastructure visualization · Uganda · 2026</p>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -168,23 +150,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I built this interactive map for <strong>All We Are</strong>, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.</p>
-<blockquote class="blockquote">
-<p><strong>Project status:</strong> This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.</p>
-</blockquote>
-<section id="interactive-map" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-map">Interactive map</h2>
-<div class="awa-map">
-<iframe src="https://strokeofluck.github.io/all-we-are-map-box/" title="All We Are solar installation impact map" loading="lazy" allowfullscreen="">
-</iframe>
-</div>
-<p><a href="https://strokeofluck.github.io/all-we-are-map-box/">Open the full interactive map ↗</a> · <a href="https://github.com/StrokeOfLuck/all-we-are-map-box">View the map repository on GitHub ↗</a></p>
 <style>
-.awa-map {
-  position: relative;
-  left: 50%;
+#title-block-header,
+.awa-shell {
   width: min(94vw, 1200px);
-  transform: translateX(-50%);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.awa-map {
+  width: 100%;
   margin: 1rem 0 0.75rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
@@ -205,6 +181,18 @@ ul.task-list li input[type="checkbox"] {
   }
 }
 </style>
+<div class="awa-shell">
+<p>I built this interactive map for <strong>All We Are</strong>, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.</p>
+<blockquote class="blockquote">
+<p><strong>Project status:</strong> This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.</p>
+</blockquote>
+<section id="interactive-map" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-map">Interactive map</h2>
+<div class="awa-map">
+<iframe src="https://strokeofluck.github.io/all-we-are-map-box/" title="All We Are solar installation impact map" loading="lazy" allowfullscreen="">
+</iframe>
+</div>
+<p><a href="https://strokeofluck.github.io/all-we-are-map-box/">Open the full interactive map ↗</a> · <a href="https://github.com/StrokeOfLuck/all-we-are-map-box">View the map repository on GitHub ↗</a></p>
 </section>
 <section id="what-it-does" class="level2">
 <h2 class="anchored" data-anchor-id="what-it-does">What it does</h2>
@@ -227,9 +215,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="why-i-like-this-project">Why I like this project</h2>
 <p>This project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.</p>
 <p>It also connects data visualization with nonprofit work directly. The map is not just a technical demo; it gives All We Are a way to show where its infrastructure projects are located and what those sites represent.</p>
-
-
 </section>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
