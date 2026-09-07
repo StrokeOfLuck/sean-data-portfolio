@@ -13,39 +13,33 @@ I worked on the **Tenet/Rumble comparison**, which became one of my first hands-
 
 I also helped create the team's final project poster.
 
-<div class="tankie-poster">
-<iframe
-  src="https://drive.google.com/file/d/1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk/preview"
-  title="TankieTube project poster"
-  loading="lazy"
-  allow="autoplay">
-</iframe>
-</div>
+<a class="tankie-poster" href="assets/tankietube/tankietube-poster.webp" target="_blank" rel="noopener" title="Open the archived poster image">
+<img
+  src="assets/tankietube/tankietube-poster.webp"
+  alt="TankieTube: Anti-Imperialist and Neo-Stalinist Subcultures on YouTube project poster"
+  loading="lazy">
+</a>
 
-[Open the poster in Google Drive ↗](https://drive.google.com/file/d/1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk/view?usp=sharing)
+The poster shown above is an **archived copy stored with this portfolio**, so it does not depend on the Google Drive link remaining available.
+
+[Open archived poster image →](assets/tankietube/tankietube-poster.webp) · [Official Google Drive copy ↗](https://drive.google.com/file/d/1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk/view?usp=sharing)
 
 <style>
 .tankie-poster {
-  width: 100%;
-  max-width: 1100px;
+  display: block;
+  width: min(100%, 900px);
   margin: 1rem 0 0.65rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
   overflow: hidden;
   background: #f8f9fa;
+  text-decoration: none;
 }
 
-.tankie-poster iframe {
+.tankie-poster img {
   display: block;
   width: 100%;
-  height: min(78vh, 820px);
-  border: 0;
-}
-
-@media (max-width: 700px) {
-  .tankie-poster iframe {
-    height: 560px;
-  }
+  height: auto;
 }
 </style>
 
