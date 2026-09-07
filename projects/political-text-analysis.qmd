@@ -72,8 +72,8 @@ The interactive timeline above shows, for each UCDP event, the surrounding Trump
 
 ## Links
 
-[Open in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/sean-data-portfolio/blob/main/projects/assets/political-text-analysis/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb): the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above (requires the files to be pushed to GitHub first).
+[Open in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb): the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above.
 
-[Download the notebook](assets/political-text-analysis/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)
+[Analysis repo (GitHub)](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis): the notebook, source data, and README live here, separate from the portfolio site's own repo.
 
 [Site source (GitHub)](https://github.com/StrokeOfLuck/sean-data-portfolio)
