@@ -168,11 +168,11 @@
     "text": "Limitations\n\nSmall sample. 87 unique posts are scored across the 26 events shown here (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader’s rhetoric during one specific conflict, not a generalizable claim.\nZero-shot labels are heuristic. The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model’s association between text and label names, not a validated measure of intent or sentiment.\nUCDP’s fatality-based inclusion criterion means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn’t involve violence — so “no nearby UCDP event” doesn’t mean “nothing happened.”\nNo counterfactual baseline. This only looks at posts already inside event windows — it doesn’t compare day-before Threat language ahead of strikes against day-before Threat language on dates where no strike ultimately happened. Without that comparison, elevated day-before Threat could reflect genuine advance signaling, or it could just be Trump’s ordinary baseline level of threatening rhetoric during an active conflict, which happens to precede strikes only because strikes were frequent during this period.\nBoth the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester."
   },
   {
-    "objectID": "projects/political-text-analysis.html#links",
-    "href": "projects/political-text-analysis.html#links",
+    "objectID": "projects/political-text-analysis.html#reproducibility",
+    "href": "projects/political-text-analysis.html#reproducibility",
     "title": "Political Text Analysis",
-    "section": "Links",
-    "text": "Links\nOpen in Colab ↗: the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above.\nAnalysis repo (GitHub): the notebook, source data, and README live here, separate from the portfolio site’s own repo.\nSite source (GitHub)"
+    "section": "Reproducibility",
+    "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe live visualization includes a final hand-tuned presentation pass on top of the notebook output, including layout fixes and interface polish."
   },
   {
     "objectID": "projects/stock-disclosures.html",
