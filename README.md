@@ -1,8 +1,8 @@
 # Sean Ryan — Data Portfolio
 
 Source for [strokeofluck.github.io/sean-data-portfolio](https://strokeofluck.github.io/sean-data-portfolio/), a Quarto
-website showcasing data journalism, digital investigations, and civic technology work: politician stock
-disclosures, computational political text analysis, GIS/public-records reporting, and visual-AI research.
+website showcasing data journalism, digital investigations, and civic technology work, currently focused on
+politician stock disclosures, public-records data pipelines, and computational political text analysis.
 
 ## Structure
 
