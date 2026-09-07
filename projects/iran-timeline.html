@@ -139,6 +139,15 @@ ul.task-list li input[type="checkbox"] {
 footer.footer {
   display: none !important;
 }
+
+/* Remove Quarto's normal article top spacing so the visualization
+   sits directly under the site navbar. */
+#quarto-content,
+main.content,
+.page-columns {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 </style>
 <div class="column-screen" style="margin: 0;">
 <iframe id="iran-timeline-frame" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;" loading="lazy">
