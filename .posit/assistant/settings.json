@@ -18,7 +18,9 @@
       "python *": "allow",
       "pip show *": "allow",
       "head *": "allow",
-      "pip install *": "allow"
+      "pip install *": "allow",
+      "powershell *": "allow",
+      "python3 *": "allow"
     },
     "external_directory": {
       "C:/Users/Sean/Documents/GitHub/senate-ptr-scraper/notebooks/*": "allow",
@@ -30,14 +32,16 @@
       "C:/Users/Sean/Documents/GitHub/*": "allow",
       "C:\\Users\\Sean\\Documents\\NCSU 15Nov2024\\Special Topics in Data Science Text Analysis for Data Science\\Trump and Iran War/*": "allow",
       "G:\\My Drive\\Trump_Iran_Project/*": "allow",
-      "G:\\My Drive/*": "allow"
+      "G:\\My Drive/*": "allow",
+      "C:\\Users\\Sean\\Downloads/*": "allow"
     },
     "edit": {
       "*.md": "allow",
       "*/.gitignore": "allow",
       "*.qmd": "allow",
       "*.yml": "allow",
-      "*.py": "allow"
+      "*.py": "allow",
+      "*.html": "allow"
     },
     "webfetch": {
       "https://api.github.com/*": "allow",
