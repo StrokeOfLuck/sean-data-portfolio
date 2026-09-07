@@ -27,7 +27,8 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 .tankie-poster {
   position: relative;
   left: 50%;
-  width: min(94vw, 1180px);
+  width: min(92vw, 980px);
+  aspect-ratio: 7 / 8;
   transform: translateX(-50%);
   margin: 1rem 0 0.65rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
@@ -39,13 +40,14 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 .tankie-poster iframe {
   display: block;
   width: 100%;
-  height: min(82vh, 900px);
+  height: 100%;
   border: 0;
 }
 
 @media (max-width: 700px) {
-  .tankie-poster iframe {
-    height: 620px;
+  .tankie-poster {
+    width: 96vw;
+    aspect-ratio: 3 / 4;
   }
 }
 </style>
