@@ -26,7 +26,7 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 
 Using computational text analysis to examine political rhetoric around real-world events.
 
-[View project →](projects/assets/political-text-analysis/trump-iran-connected-timeline.html)
+[View project →](projects/iran-timeline.qmd)
 
 ### Visual AI & Internet Research
 

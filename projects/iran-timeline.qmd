@@ -1,0 +1,14 @@
+---
+pagetitle: "Trump Truth Social Posts Around UCDP Iran Events"
+page-layout: full
+title-block-banner: false
+toc: false
+---
+
+<div class="column-screen" style="margin: 0;">
+<iframe
+  src="assets/political-text-analysis/trump-iran-connected-timeline.html"
+  style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;"
+  loading="lazy">
+</iframe>
+</div>

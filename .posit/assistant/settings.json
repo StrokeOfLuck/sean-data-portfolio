@@ -20,7 +20,8 @@
       "head *": "allow",
       "pip install *": "allow",
       "powershell *": "allow",
-      "python3 *": "allow"
+      "python3 *": "allow",
+      ".venv/Scripts/python.exe *": "allow"
     },
     "external_directory": {
       "C:/Users/Sean/Documents/GitHub/senate-ptr-scraper/notebooks/*": "allow",
@@ -33,7 +34,8 @@
       "C:\\Users\\Sean\\Documents\\NCSU 15Nov2024\\Special Topics in Data Science Text Analysis for Data Science\\Trump and Iran War/*": "allow",
       "G:\\My Drive\\Trump_Iran_Project/*": "allow",
       "G:\\My Drive/*": "allow",
-      "C:\\Users\\Sean\\Downloads/*": "allow"
+      "C:\\Users\\Sean\\Downloads/*": "allow",
+      "/tmp/*": "allow"
     },
     "edit": {
       "*.md": "allow",
@@ -41,12 +43,16 @@
       "*.qmd": "allow",
       "*.yml": "allow",
       "*.py": "allow",
-      "*.html": "allow"
+      "*.html": "allow",
+      "*.js": "allow"
     },
     "webfetch": {
       "https://api.github.com/*": "allow",
       "https://github.com/*": "allow",
       "https://strokeofluck.github.io/*": "allow"
+    },
+    "read": {
+      "*.png": "allow"
     }
   }
 }

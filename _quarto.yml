@@ -4,6 +4,8 @@ project:
     - "*.qmd"
     - "*.md"
     - "!projects/assets/"
+  resources:
+    - "projects/assets/**"
 
 website:
   title: "Sean Ryan"
