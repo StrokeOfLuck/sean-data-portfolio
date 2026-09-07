@@ -133,9 +133,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#project-poster" id="toc-project-poster" class="nav-link active" data-scroll-target="#project-poster">Project poster</a></li>
   <li><a href="#tenetrumble-comparison" id="toc-tenetrumble-comparison" class="nav-link" data-scroll-target="#tenetrumble-comparison">Tenet/Rumble comparison</a></li>
-  <li><a href="#why-this-project-mattered-to-me" id="toc-why-this-project-mattered-to-me" class="nav-link" data-scroll-target="#why-this-project-mattered-to-me">Why this project mattered to me</a></li>
-  <li><a href="#the-broader-tankietube-project" id="toc-the-broader-tankietube-project" class="nav-link" data-scroll-target="#the-broader-tankietube-project">The broader TankieTube project</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#what-the-team-found" id="toc-what-the-team-found" class="nav-link" data-scroll-target="#what-the-team-found">What the team found</a></li>
+  <li><a href="#why-it-mattered-to-me" id="toc-why-it-mattered-to-me" class="nav-link" data-scroll-target="#why-it-mattered-to-me">Why it mattered to me</a></li>
   <li><a href="#sources-and-project-links" id="toc-sources-and-project-links" class="nav-link" data-scroll-target="#sources-and-project-links">Sources and project links</a></li>
   </ul>
 </nav>
@@ -163,8 +162,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>TankieTube was a <strong>five-day collaborative research sprint</strong> completed during the University of Amsterdam’s 2026 Digital Methods Summer School. Our team examined how “natively digital” Marxist-Leninist YouTube creators differed from formal political organizations in their topics, language, and platform behavior.</p>
-<p>My contribution centered on the <strong>Tenet/Rumble comparison</strong>, and I also helped create the team’s final project poster. The project became one of my first hands-on introductions to Google Colab, very large text datasets, and computational methods for exploring online political media.</p>
+<p>TankieTube was a <strong>five-day collaborative research sprint</strong> at the University of Amsterdam. Our team compared “natively digital” Marxist-Leninist YouTube creators with formal political organizations.</p>
+<p><strong>Team:</strong> Luca Ghiselli, Ema Kinsel, Gavin Mueller, Ada Paul, Sean Ryan, and Jo Walton.</p>
+<p>My part focused on the <strong>Tenet/Rumble comparison</strong>, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research.</p>
 <section id="project-poster" class="level2">
 <h2 class="anchored" data-anchor-id="project-poster">Project poster</h2>
 <p><a class="tankie-poster" href="assets/tankietube/tankietube-poster.webp" target="_blank" rel="noopener" title="Open the archived poster image"> <img src="assets/tankietube/tankietube-poster.webp" alt="TankieTube: Anti-Imperialist and Neo-Stalinist Subcultures on YouTube project poster" loading="lazy"> </a></p>
@@ -193,28 +193,25 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="tenetrumble-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="tenetrumble-comparison">Tenet/Rumble comparison</h2>
-<p>I wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of <strong>560 Tenet Media videos published on Rumble</strong>, including transcripts, and used it as a comparison corpus.</p>
-<p>The workflow moved in two stages:</p>
-<ol type="1">
-<li><strong>Word-level overlap.</strong> I compared the combined Tankie transcript corpus with the Tenet/Rumble transcripts using TF-IDF to surface words that were important in both datasets rather than starting with a hand-picked topic.</li>
-<li><strong>Quote-level comparison.</strong> After “Israel” emerged as one of the strongest shared terms, transcript sentences containing the term were extracted and a sentence-similarity matcher paired each Tenet/Rumble quote with its closest Tankie quote.</li>
-</ol>
-<p>The result was a large comparison table that made it possible to inspect what Tenet said next to the most similar language found in the Tankie corpus. The goal was exploratory: to find rhetorical similarities that would be difficult to locate manually across such large collections of transcripts, not to claim coordination between the groups.</p>
+<p>I found a public dataset of <strong>560 Tenet Media videos on Rumble</strong> and compared its transcripts with the much larger Tankie corpus.</p>
+<ul>
+<li><strong>TF-IDF</strong> surfaced important words shared across both datasets.</li>
+<li>“Israel” became a focus, and a <strong>sentence-similarity matcher</strong> paired Tenet quotes with the closest Tankie quotes.</li>
+</ul>
+<p>The goal was exploratory: find rhetorical overlap that would be hard to spot manually, not prove coordination.</p>
 </section>
-<section id="why-this-project-mattered-to-me" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-project-mattered-to-me">Why this project mattered to me</h2>
-<p>This was one of the projects that made computational internet research feel concrete to me.</p>
-<p>Before the Summer School, tools such as Colab, transcript corpora, embeddings, and conversational-analysis libraries were mostly things I had seen from the outside. Working with the TankieTube data gave me a practical introduction to digging through a dataset that was far too large to read manually, experimenting with methods, dealing with resource limits, and using code to narrow a broad corpus into something a researcher could actually inspect.</p>
-<p>The broader project also introduced me to <strong>ConvoKit</strong> and other digital-methods workflows. My Tenet comparison itself centered on TF-IDF and sentence-similarity matching, while ConvoKit was used elsewhere in the team workflow for conversation-oriented text analysis.</p>
+<section id="what-the-team-found" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-team-found">What the team found</h2>
+<p>The broader dataset covered <strong>23 YouTube channels, nine political organizations, about 2.5 million comments, and more than 6,000 hours of audio</strong>.</p>
+<ul>
+<li>The YouTubers and formal organizations focused on noticeably different topics.</li>
+<li>YouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.</li>
+<li>The team also found some aesthetic convergence between older organizations and newer YouTube-driven Marxism-Leninism.</li>
+</ul>
 </section>
-<section id="the-broader-tankietube-project" class="level2">
-<h2 class="anchored" data-anchor-id="the-broader-tankietube-project">The broader TankieTube project</h2>
-<p>The team compared <strong>23 natively digital YouTube channels</strong> with <strong>nine Marxist-Leninist political organizations</strong>. The research combined transcripts and comments with methods including BERTopic, embeddings, UMAP, concordance analysis, TF-IDF, and Fighting Words.</p>
-<p>The official project report describes a corpus containing roughly <strong>2.4 million YouTuber comments</strong> and <strong>107,000 organization comments</strong>, alongside thousands of hours of transcribed video. My Tenet/Rumble comparison was one additional way of probing the corpus: instead of comparing the two TankieTube groups only with each other, it brought in an outside political-media dataset to look for unexpected rhetorical overlap.</p>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The 2026 Digital Methods Summer School, hosted by the University of Amsterdam’s Digital Methods Initiative, ran from <strong>June 29 to July 3, 2026</strong>. The program is structured as an intensive research and data sprint in which participants use web-specific and computational methods to study online culture and societal issues.</p>
+<section id="why-it-mattered-to-me" class="level2">
+<h2 class="anchored" data-anchor-id="why-it-mattered-to-me">Why it mattered to me</h2>
+<p>Five days of working inside datasets that were far too large to read manually made computational research feel much more concrete. It helped push my interests toward digital investigations and data-driven online research.</p>
 </section>
 <section id="sources-and-project-links" class="level2">
 <h2 class="anchored" data-anchor-id="sources-and-project-links">Sources and project links</h2>
