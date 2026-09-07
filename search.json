@@ -287,11 +287,11 @@
     "text": "Why I built it\nI wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.\nThe result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project."
   },
   {
-    "objectID": "projects/congressional-stock-network.html#related-work",
-    "href": "projects/congressional-stock-network.html#related-work",
+    "objectID": "projects/congressional-stock-network.html#project-links",
+    "href": "projects/congressional-stock-network.html#project-links",
     "title": "Congressional Stock Trading Network",
-    "section": "Related work",
-    "text": "Related work\nView the underlying Politician Stock Disclosures project →\nThe interactive build and analysis source are maintained in a standalone project repository rather than inside this portfolio repository."
+    "section": "Project links",
+    "text": "Project links\nSource repository ↗\nView the underlying Politician Stock Disclosures project →\nThe interactive build and analysis source are maintained in a standalone project repository rather than inside this portfolio repository. That keeps the portfolio site lightweight and prevents the analysis code, data, and deployment history from becoming coupled to the website repo."
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
