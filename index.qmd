@@ -12,7 +12,10 @@ I use data, public records, computational methods, and visualization to investig
 
 ::: {.project-grid}
 
-### Politician Stock Disclosures
+<div class="project-heading">
+<h3>Politician Stock Disclosures</h3>
+<span class="project-date">2024–present</span>
+</div>
 
 **Public records · data cleaning · civic technology**
 
@@ -20,7 +23,10 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 
 [View project →](projects/stock-disclosures.qmd)
 
-### Political Text Analysis
+<div class="project-heading">
+<h3>Political Text Analysis</h3>
+<span class="project-date">2026</span>
+</div>
 
 **NLP · political data · event analysis**
 
@@ -28,5 +34,15 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 [View project →](projects/iran-timeline.qmd)
 
-:::
+<div class="project-heading">
+<h3>TankieTube</h3>
+<span class="project-date">2026</span>
+</div>
 
+**Digital methods · text analysis · internet research**
+
+Collaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.
+
+[View project →](projects/tankietube.qmd)
+
+:::
