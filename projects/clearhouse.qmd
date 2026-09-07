@@ -50,7 +50,7 @@ It was also my introduction to **web scraping, public-records data collection, a
 </a>
 </div>
 
-[Open ClearHouse.live ↗](https://clearhouse.live) · [Open the archived snapshot →](assets/clearhouse/clearhouse-snapshot-2026-09-07.html)
+[Open ClearHouse.live ↗](https://clearhouse.live)
 
 ## What we built
 
