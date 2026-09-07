@@ -70,9 +70,11 @@ description: "Computational analysis of political rhetoric around real-world eve
   font-weight: 700;
   opacity: 0.7;
 }
-.truth-example-preview {
+.truth-example-fulltext {
   margin: 4px 0 12px;
-  line-height: 1.48;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .truth-example-scores {
   display: grid;
@@ -107,45 +109,37 @@ description: "Computational analysis of political rhetoric around real-world eve
 .truth-example-fill.media { background: var(--media); }
 .truth-example-actions {
   margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid var(--bs-border-color, #e5e7eb);
   font-size: 0.85rem;
   font-weight: 800;
 }
-.truth-example-details {
-  border-top: 1px solid var(--bs-border-color, #e5e7eb);
-}
-.truth-example-details summary {
-  padding: 12px 18px;
-  cursor: pointer;
-  color: #3f78b8;
-  font-weight: 800;
-  list-style: none;
-}
-.truth-example-details summary::-webkit-details-marker { display: none; }
-.truth-example-details summary::after { content: " ↓"; }
-.truth-example-details[open] summary::after { content: " ↑"; }
-.truth-example-full {
-  padding: 0 18px 18px;
-  line-height: 1.55;
-}
 .truth-example-original {
   display: inline-block;
-  margin-top: 10px;
   font-weight: 800;
 }
 
-/* On small screens use one in-flow sticky Quarto header instead of the
-   fixed/headroom combination. This avoids the duplicate/ghost navbar paint
-   seen on mobile while keeping the navigation available. */
+/* Use one in-flow sticky Quarto header on this page. Disabling Headroom's
+   fixed/translate behavior avoids the duplicate/ghost navbar seen while
+   scrolling and while the search overlay is open. */
+body.nav-fixed {
+  padding-top: 0 !important;
+}
+#quarto-header,
+#quarto-header.fixed-top,
+#quarto-header.headroom,
+#quarto-header.headroom--pinned,
+#quarto-header.headroom--unpinned {
+  position: sticky !important;
+  top: 0 !important;
+  transform: none !important;
+  transition: none !important;
+}
+#quarto-header {
+  z-index: 1030 !important;
+}
+
 @media (max-width: 991.98px) {
-  body.nav-fixed {
-    padding-top: 0 !important;
-  }
-  #quarto-header.fixed-top {
-    position: sticky !important;
-    top: 0 !important;
-    transform: none !important;
-    transition: none !important;
-  }
   .truth-example-summary {
     padding: 14px;
   }
@@ -156,6 +150,23 @@ description: "Computational analysis of political rhetoric around real-world eve
   }
 }
 </style>
+
+<script>
+(function disablePoliticalMethodologyHeadroom() {
+  function normalizeHeader() {
+    const header = document.getElementById("quarto-header");
+    if (!header) return;
+    header.classList.remove("headroom--pinned", "headroom--unpinned");
+    header.style.setProperty("position", "sticky", "important");
+    header.style.setProperty("top", "0", "important");
+    header.style.setProperty("transform", "none", "important");
+  }
+  document.addEventListener("DOMContentLoaded", normalizeHeader);
+  window.addEventListener("load", normalizeHeader);
+  window.addEventListener("scroll", normalizeHeader, { passive: true });
+})();
+</script>
+
 ## Question
 
 How does Donald Trump's Iran-related Truth Social rhetoric change in the day before, day of, and day after UCDP-recorded U.S. or joint U.S.–Israel conflict events, and is threat language elevated beforehand?
@@ -198,7 +209,7 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 
 The six categories are **multi-label**: the model evaluates each one independently, so a single post can score highly in more than one category. In computational text analysis these are often called rhetorical “frames,” but this page uses **category** as the plainer label. The values are model entailment scores, not calibrated probabilities.
 
-Each card below is the **highest-scoring post for that category** among the 87 unique posts in the current 26-event analysis subset. The colored bars show that same post's scores across all six categories, which also makes the multi-label behavior visible.
+Each card below is the **highest-scoring post for that category** among the 87 unique posts in the current 26-event analysis subset. The full archived post is shown directly in the card, followed by that post's scores across all six categories and a link to the original Truth Social post.
 
 ### Threat
 
@@ -215,7 +226,7 @@ Military threats, escalation, retaliation, ultimatums, warnings, strikes, or des
     </div>
   </div>
   <span class="truth-category-badge threat">Threat</span><span class="truth-example-topscore">Highest Threat score: 0.9995</span>
-  <div class="truth-example-preview">1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat…</div>
+  <div class="truth-example-fulltext">1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat, pronounced in many corners of the Globe, to assassinate, or attempt to assassinate, the sitting President of the United States of America, in this case, ME! Orders have already been given, and the U.S. Military is ready, willing, and able, for a one year period of time, subject to extension, to completely decimate and destroy all areas of Iran - PRAISE BE TO ALLAH! President DONALD J. TRUMP</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -249,14 +260,7 @@ Military threats, escalation, retaliation, ultimatums, warnings, strikes, or des
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat, pronounced in many corners of the Globe, to assassinate, or attempt to assassinate, the sitting President of the United States of America, in this case, ME! Orders have already been given, and the U.S. Military is ready, willing, and able, for a one year period of time, subject to extension, to completely decimate and destroy all areas of Iran - PRAISE BE TO ALLAH! President DONALD J. TRUMP
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116899176820572671" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116899176820572671" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -275,7 +279,7 @@ Claims of victory, military success, Iranian weakness, defeat, surrender, decima
     </div>
   </div>
   <span class="truth-category-badge victory">Victory</span><span class="truth-example-topscore">Highest Victory score: 0.9977</span>
-  <div class="truth-example-preview">The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule!…</div>
+  <div class="truth-example-fulltext">The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -309,14 +313,7 @@ Claims of victory, military success, Iranian weakness, defeat, surrender, decima
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116269555618597105" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116269555618597105" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -335,7 +332,7 @@ Diplomacy, negotiations, talks, deals, conditions, agreements, or communication 
     </div>
   </div>
   <span class="truth-category-badge diplomacy">Diplomacy</span><span class="truth-example-topscore">Highest Diplomacy score: 0.9627</span>
-  <div class="truth-example-preview">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan… I agree to suspend the bombing and attack of Iran for a period of two weeks…</div>
+  <div class="truth-example-fulltext">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -369,14 +366,7 @@ Diplomacy, negotiations, talks, deals, conditions, agreements, or communication 
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -395,7 +385,7 @@ A ceasefire, stopping military operations, ending the conflict, pausing attacks,
     </div>
   </div>
   <span class="truth-category-badge ceasefire">Ceasefire / Ending</span><span class="truth-example-topscore">Highest Ceasefire / Ending score: 0.9935</span>
-  <div class="truth-example-preview">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan… I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE!…</div>
+  <div class="truth-example-fulltext">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -429,14 +419,7 @@ A ceasefire, stopping military operations, ending the conflict, pausing attacks,
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -455,7 +438,7 @@ Blaming or criticizing NATO, European allies, or other countries for not helping
     </div>
   </div>
   <span class="truth-category-badge blame">Blame Allies</span><span class="truth-example-topscore">Highest Blame Allies score: 0.9962</span>
-  <div class="truth-example-preview">NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO…</div>
+  <div class="truth-example-fulltext">NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO, BUT “NEVER FORGET” THIS VERY IMPORTANT POINT IN TIME! President DONALD J. TRUMP</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -489,14 +472,7 @@ Blaming or criticizing NATO, European allies, or other countries for not helping
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO, BUT “NEVER FORGET” THIS VERY IMPORTANT POINT IN TIME! President DONALD J. TRUMP
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116294956989451533" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116294956989451533" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -515,7 +491,7 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
     </div>
   </div>
   <span class="truth-category-badge media">Media Criticism</span><span class="truth-example-topscore">Highest Media Criticism score: 0.9976</span>
-  <div class="truth-example-preview">The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process…</div>
+  <div class="truth-example-fulltext">The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process. All ten points were a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
   <span>Threat</span>
@@ -549,14 +525,7 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
 </div>
   </div>
 </div>
-<details class="truth-example-details">
-<summary>Read full archived post</summary>
-<div class="truth-example-full">
-The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process. All ten points were a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN
-<br>
-<a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116372497116210545" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a>
-</div>
-</details>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116372497116210545" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
 </div>
 ```
 
