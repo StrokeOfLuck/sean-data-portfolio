@@ -8,17 +8,17 @@ ClearHouse.live was a **collaborative winter project** built to make U.S. politi
 
 It was also my introduction to **web scraping, public-records data collection, and building a data-backed web application**.
 
-## Live site preview
+## Site snapshot
 
 <div class="clearhouse-preview">
 <iframe
-  src="https://clearhouse.live"
-  title="Live preview of ClearHouse.live"
+  src="assets/clearhouse/clearhouse-snapshot-2026-09-07.html"
+  title="Archived snapshot of ClearHouse.live"
   loading="lazy">
 </iframe>
 </div>
 
-[Open ClearHouse.live ↗](https://clearhouse.live) · [Archived static snapshot →](assets/clearhouse/clearhouse-snapshot-2026-09-07.html)
+[Open ClearHouse.live ↗](https://clearhouse.live) · [Open the archived snapshot →](assets/clearhouse/clearhouse-snapshot-2026-09-07.html)
 
 <style>
 .clearhouse-preview {
@@ -47,7 +47,6 @@ It was also my introduction to **web scraping, public-records data collection, a
 }
 </style>
 
-If the live embed ever stops working, the archived snapshot above preserves a visual record of the site.
 
 ## What we built
 
