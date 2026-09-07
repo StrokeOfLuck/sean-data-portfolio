@@ -70,10 +70,12 @@ The interactive timeline above shows, for each UCDP event, the surrounding Trump
 - **No counterfactual baseline.** This only looks at posts already inside event windows — it doesn't compare day-before Threat language ahead of strikes against day-before Threat language on dates where no strike ultimately happened. Without that comparison, elevated day-before Threat could reflect genuine advance signaling, or it could just be Trump's ordinary baseline level of threatening rhetoric during an active conflict, which happens to precede strikes only because strikes were frequent during this period.
 - Both the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester.
 
-## Links
+## Reproducibility
 
-[Open in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb): the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above.
+[Open the analysis notebook in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)  
+Runs the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.
 
-[Analysis repo (GitHub)](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis): the notebook, source data, and README live here, separate from the portfolio site's own repo.
+[Analysis code and data on GitHub ↗](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis)  
+Contains the notebook, source data, and project README.
 
-[Site source (GitHub)](https://github.com/StrokeOfLuck/sean-data-portfolio)
+The live visualization includes a final hand-tuned presentation pass on top of the notebook output, including layout fixes and interface polish.
