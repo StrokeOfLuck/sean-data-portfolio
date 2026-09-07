@@ -53,7 +53,7 @@
     "href": "projects/stock-disclosures.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\nCoverage note: The pipeline currently handles the majority of born-digital House PTRs. A smaller set of image-based filings, including typed scans and handwritten disclosures, still need a separate OCR/VLM workflow and are a work in progress.\n\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   },
   {
     "objectID": "projects/stock-disclosures.html#featured-ptr",
@@ -140,41 +140,6 @@
     "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe Colab notebook reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
-    "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
-  },
-  {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Sean Ryan",
-    "section": "Selected Work",
-    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\n2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
-  },
-  {
-    "objectID": "about.html#interests",
-    "href": "about.html#interests",
-    "title": "About",
-    "section": "Interests",
-    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
-  },
-  {
     "objectID": "projects/all-we-are-solar-map.html",
     "href": "projects/all-we-are-solar-map.html",
     "title": "All We Are Solar Map",
@@ -208,6 +173,76 @@
     "title": "All We Are Solar Map",
     "section": "Why I like this project",
     "text": "Why I like this project\nThis project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.\nIt also connects data visualization with nonprofit work directly. The map is not just a technical demo; it gives All We Are a way to show where its infrastructure projects are located and what those sites represent."
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\nWinter 2024–25\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\n\nClearHouse.live\n\nWinter 2024–25\n\nWeb scraping · public records · civic technology\nCollaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.\nView project →\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\n2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →"
+  },
+  {
+    "objectID": "projects/clearhouse.html",
+    "href": "projects/clearhouse.html",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application."
+  },
+  {
+    "objectID": "projects/clearhouse.html#what-we-built",
+    "href": "projects/clearhouse.html#what-we-built",
+    "title": "ClearHouse.live",
+    "section": "What we built",
+    "text": "What we built\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.\nOpen ClearHouse.live ↗"
+  },
+  {
+    "objectID": "projects/clearhouse.html#what-i-learned",
+    "href": "projects/clearhouse.html#what-i-learned",
+    "title": "ClearHouse.live",
+    "section": "What I learned",
+    "text": "What I learned\nThis was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines."
+  },
+  {
+    "objectID": "projects/clearhouse.html#technical-stack",
+    "href": "projects/clearhouse.html#technical-stack",
+    "title": "ClearHouse.live",
+    "section": "Technical stack",
+    "text": "Technical stack\nThe project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services."
+  },
+  {
+    "objectID": "projects/clearhouse.html#why-it-mattered-to-me",
+    "href": "projects/clearhouse.html#why-it-mattered-to-me",
+    "title": "ClearHouse.live",
+    "section": "Why it mattered to me",
+    "text": "Why it mattered to me\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
