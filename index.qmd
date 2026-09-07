@@ -3,6 +3,7 @@ title: "Sean Ryan"
 subtitle: "Data Journalism · Digital Investigations · Civic Technology"
 page-layout: full
 title-block-banner: false
+toc: false
 ---
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
