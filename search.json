@@ -340,7 +340,7 @@
     "href": "projects/tankietube.html#tenetrumble-comparison",
     "title": "TankieTube",
     "section": "Tenet/Rumble comparison",
-    "text": "Tenet/Rumble comparison\nI found a public dataset of 560 Tenet Media videos on Rumble and compared its transcripts with the much larger Tankie corpus.\n\nTF-IDF surfaced important words shared across both datasets.\n“Israel” became a focus, and a sentence-similarity matcher paired Tenet quotes with the closest Tankie quotes.\n\nThe goal was exploratory: find rhetorical overlap that would be hard to spot manually, not prove coordination."
+    "text": "Tenet/Rumble comparison\nI found a public dataset of 560 Tenet Media videos on Rumble and compared its transcripts with the much larger Tankie corpus.\n\n\n\n\n\n\nImportantWhat this comparison does not show\n\n\n\nThis is an exploratory text-similarity analysis. Similar language does not demonstrate coordination, ideological equivalence, causation, or support for “horseshoe theory.” The analysis instead looks for places where speakers with very different political motivations arrive at overlapping rhetoric, framings, or conclusions.\n\n\n\nTF-IDF surfaced important words shared across both datasets.\n“Israel” became a focus, and a sentence-similarity matcher paired Tenet quotes with the closest Tankie quotes.\n\nThe goal was to identify rhetorical convergence that would be difficult to spot manually, including cases where different ideological reasoning produced similar framings or conclusions."
   },
   {
     "objectID": "projects/tankietube.html#what-the-team-found",
