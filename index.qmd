@@ -8,7 +8,7 @@ toc: false
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
 
-## Selected Work
+## Data Projects
 
 ::: {.project-grid}
 
