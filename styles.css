@@ -9,33 +9,8 @@ body {
 }
 
 .project-grid h3 {
-  margin: 0;
-}
-
-.project-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
   margin-top: 2rem;
   margin-bottom: 0.35rem;
-}
-
-.project-date {
-  flex: 0 0 auto;
-  font-size: 0.9rem;
-  opacity: 0.6;
-  white-space: nowrap;
-}
-
-@media (max-width: 600px) {
-  .project-heading {
-    align-items: flex-start;
-  }
-
-  .project-date {
-    padding-top: 0.15rem;
-  }
 }
 
 .project-grid p {

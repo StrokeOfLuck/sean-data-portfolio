@@ -49,32 +49,67 @@
     "text": "The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data is read directly from house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv. The deploy workflow checks out house-ptr-scraper before rendering, so the portfolio repo does not keep a second House CSV snapshot."
   },
   {
-    "objectID": "projects/stock-disclosures.html",
-    "href": "projects/stock-disclosures.html",
+    "objectID": "projects/stock-disclosures-senate.html",
+    "href": "projects/stock-disclosures-senate.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "U.S. Senate Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. Senate Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.\n\n\nThis section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSenators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
   },
   {
-    "objectID": "projects/stock-disclosures.html#featured-ptr",
-    "href": "projects/stock-disclosures.html#featured-ptr",
+    "objectID": "projects/stock-disclosures-senate.html#featured-ptr",
+    "href": "projects/stock-disclosures-senate.html#featured-ptr",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
+    "text": "This section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount"
   },
   {
-    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
-    "href": "projects/stock-disclosures.html#explore-the-transactions",
+    "objectID": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "href": "projects/stock-disclosures-senate.html#explore-the-transactions",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
+    "text": "Senators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date."
   },
   {
-    "objectID": "projects/stock-disclosures.html#data-source",
-    "href": "projects/stock-disclosures.html#data-source",
+    "objectID": "projects/stock-disclosures-senate.html#data-source",
+    "href": "projects/stock-disclosures-senate.html#data-source",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\n2026\n\nDigital methods · text analysis · internet research\nCollaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →"
   },
   {
     "objectID": "projects/political-text-analysis.html",
@@ -140,108 +175,31 @@
     "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe Colab notebook reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
-    "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
-  },
-  {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Sean Ryan",
-    "section": "Selected Work",
-    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\n2026\n\nDigital methods · text analysis · internet research\nCollaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
-  },
-  {
-    "objectID": "about.html#interests",
-    "href": "about.html#interests",
-    "title": "About",
-    "section": "Interests",
-    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
-  },
-  {
-    "objectID": "projects/stock-disclosures-senate.html",
-    "href": "projects/stock-disclosures-senate.html",
+    "objectID": "projects/stock-disclosures.html",
+    "href": "projects/stock-disclosures.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "U.S. Senate Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. Senate Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.\n\n\nThis section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSenators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
+    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#featured-ptr",
-    "href": "projects/stock-disclosures-senate.html#featured-ptr",
+    "objectID": "projects/stock-disclosures.html#featured-ptr",
+    "href": "projects/stock-disclosures.html#featured-ptr",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "This section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount"
+    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#explore-the-transactions",
-    "href": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
+    "href": "projects/stock-disclosures.html#explore-the-transactions",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "Senators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date."
+    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#data-source",
-    "href": "projects/stock-disclosures-senate.html#data-source",
+    "objectID": "projects/stock-disclosures.html#data-source",
+    "href": "projects/stock-disclosures.html#data-source",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
-  },
-  {
-    "objectID": "projects/tankietube.html",
-    "href": "projects/tankietube.html",
-    "title": "TankieTube",
-    "section": "",
-    "text": "TankieTube was a collaborative research project from the University of Amsterdam’s 2026 Digital Methods Summer School. The broader project examined how “natively digital” Marxist-Leninist YouTube creators differed from formal political organizations in their topics, language, and platform behavior.\nI worked on the Tenet/Rumble comparison, which became one of my first hands-on introductions to using Google Colab, working through very large text datasets, and using computational methods to explore a question that started mostly from curiosity."
-  },
-  {
-    "objectID": "projects/tankietube.html#my-contribution-tenetrumble-comparison",
-    "href": "projects/tankietube.html#my-contribution-tenetrumble-comparison",
-    "title": "TankieTube",
-    "section": "My contribution: Tenet/Rumble comparison",
-    "text": "My contribution: Tenet/Rumble comparison\nI wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of 560 Tenet Media videos published on Rumble, including transcripts, and used it as a comparison corpus.\nThe workflow moved in two stages:\n\nWord-level overlap. I compared the combined Tankie transcript corpus with the Tenet/Rumble transcripts using TF-IDF to surface words that were important in both datasets rather than starting with a hand-picked topic.\nQuote-level comparison. After “Israel” emerged as one of the strongest shared terms, transcript sentences containing the term were extracted and a sentence-similarity matcher paired each Tenet/Rumble quote with its closest Tankie quote.\n\nThe result was a large comparison table that made it possible to inspect what Tenet said next to the most similar language found in the Tankie corpus. The goal was exploratory: to find rhetorical similarities that would be difficult to locate manually across such large collections of transcripts, not to claim coordination between the groups."
-  },
-  {
-    "objectID": "projects/tankietube.html#why-this-project-mattered-to-me",
-    "href": "projects/tankietube.html#why-this-project-mattered-to-me",
-    "title": "TankieTube",
-    "section": "Why this project mattered to me",
-    "text": "Why this project mattered to me\nThis was one of the projects that made computational internet research feel concrete to me.\nBefore the Summer School, tools such as Colab, transcript corpora, embeddings, and conversational-analysis libraries were mostly things I had seen from the outside. Working with the TankieTube data gave me a practical introduction to digging through a dataset that was far too large to read manually, experimenting with methods, dealing with resource limits, and using code to narrow a broad corpus into something a researcher could actually inspect.\nThe broader project also introduced me to ConvoKit and other digital-methods workflows. My Tenet comparison itself centered on TF-IDF and sentence-similarity matching, while ConvoKit was used elsewhere in the team workflow for conversation-oriented text analysis."
-  },
-  {
-    "objectID": "projects/tankietube.html#the-broader-tankietube-project",
-    "href": "projects/tankietube.html#the-broader-tankietube-project",
-    "title": "TankieTube",
-    "section": "The broader TankieTube project",
-    "text": "The broader TankieTube project\nThe team compared 23 natively digital YouTube channels with nine Marxist-Leninist political organizations. The research combined transcripts and comments with methods including BERTopic, embeddings, UMAP, concordance analysis, TF-IDF, and Fighting Words.\nThe official project report describes a corpus containing roughly 2.4 million YouTuber comments and 107,000 organization comments, alongside thousands of hours of transcribed video. My Tenet/Rumble comparison was one additional way of probing the corpus: instead of comparing the two TankieTube groups only with each other, it brought in an outside political-media dataset to look for unexpected rhetorical overlap."
-  },
-  {
-    "objectID": "projects/tankietube.html#context",
-    "href": "projects/tankietube.html#context",
-    "title": "TankieTube",
-    "section": "Context",
-    "text": "Context\nThe 2026 Digital Methods Summer School, hosted by the University of Amsterdam’s Digital Methods Initiative, ran from June 29 to July 3, 2026. The program is structured as an intensive research and data sprint in which participants use web-specific and computational methods to study online culture and societal issues."
-  },
-  {
-    "objectID": "projects/tankietube.html#sources-and-project-links",
-    "href": "projects/tankietube.html#sources-and-project-links",
-    "title": "TankieTube",
-    "section": "Sources and project links",
-    "text": "Sources and project links\n\nTankieTube project report ↗\nDigital Methods Summer School 2026 ↗\nUniversity of Amsterdam Digital Methods Summer School ↗\nTenet Media Rumble transcript dataset ↗"
+    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   }
 ]
