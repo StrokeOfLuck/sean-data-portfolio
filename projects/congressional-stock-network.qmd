@@ -32,24 +32,18 @@ footer.footer {
   box-shadow: none !important;
 }
 
-/* Quarto leaves default top spacing for normal article content. This page
-   starts with a full-width interactive project header, so remove that empty
-   band and let the project header sit directly under the site navbar. */
+/* Use the same full-width Quarto pattern as the portfolio's other
+   full-screen visualizations. column-screen handles the page grid; avoid
+   forcing widths on Quarto's internal grid wrappers. */
 #quarto-content,
 main.content,
 .page-columns {
-  width: 100% !important;
-  max-width: none !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 html.network-project-app,
 body.network-project-app {
-  width: 100% !important;
-  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
@@ -60,9 +54,8 @@ body.network-project-app {
   display: block;
   width: 100%;
   max-width: none;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   overflow: hidden;
 }
 
@@ -279,7 +272,7 @@ body.network-project-app {
 </style>
 
 ```{=html}
-<div class="network-project-root">
+<div class="column-screen network-project-root">
 <div class="network-project-nav" aria-label="Project sections">
 <div class="network-project-title-block">
 <span class="network-project-brand">2025 Congressional Stock Trading Networks</span>
@@ -323,8 +316,6 @@ body.network-project-app {
 
   document.documentElement.classList.add("network-project-app");
   document.body.classList.add("network-project-app");
-  document.documentElement.style.overflow = "hidden";
-  document.body.style.overflow = "hidden";
 
   function fitShellToViewport() {
     const shellTop = Math.max(0, shell.getBoundingClientRect().top);
