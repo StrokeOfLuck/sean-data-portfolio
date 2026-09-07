@@ -123,24 +123,12 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#site-snapshot" id="toc-site-snapshot" class="nav-link active" data-scroll-target="#site-snapshot">Site snapshot</a></li>
-  <li><a href="#what-we-built" id="toc-what-we-built" class="nav-link" data-scroll-target="#what-we-built">What we built</a></li>
-  <li><a href="#what-i-learned" id="toc-what-i-learned" class="nav-link" data-scroll-target="#what-i-learned">What I learned</a></li>
-  <li><a href="#technical-stack" id="toc-technical-stack" class="nav-link" data-scroll-target="#technical-stack">Technical stack</a></li>
-  <li><a href="#why-it-mattered-to-me" id="toc-why-it-mattered-to-me" class="nav-link" data-scroll-target="#why-it-mattered-to-me">Why it mattered to me</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -150,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -162,41 +150,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+#title-block-header,
+.clearhouse-shell {
+  width: min(94vw, 1200px);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clearhouse-preview {
+  width: 100%;
+  margin: 1rem 0 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+}
+
+.clearhouse-preview a {
+  display: block;
+}
+
+.clearhouse-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+</style>
+<div class="clearhouse-shell">
 <p>ClearHouse.live was a <strong>collaborative winter project</strong> built to make U.S. politicians’ financial disclosures easier to search and understand.</p>
 <p>It was also my introduction to <strong>web scraping, public-records data collection, and building a data-backed web application</strong>.</p>
 <section id="site-snapshot" class="level2">
 <h2 class="anchored" data-anchor-id="site-snapshot">Site snapshot</h2>
 <div class="clearhouse-preview">
-<iframe src="assets/clearhouse/clearhouse-snapshot-2026-09-07.html" title="Archived snapshot of ClearHouse.live" loading="lazy">
-</iframe>
+<p><a href="https://clearhouse.live" aria-label="Open ClearHouse.live"> <img src="assets/clearhouse/clearhouse-live-2026-09-07.svg" alt="ClearHouse.live interface showing searchable U.S. politician stock-trading disclosures on September 7, 2026"> </a></p>
 </div>
 <p><a href="https://clearhouse.live">Open ClearHouse.live ↗</a> · <a href="assets/clearhouse/clearhouse-snapshot-2026-09-07.html">Open the archived snapshot →</a></p>
-<style>
-.clearhouse-preview {
-  position: relative;
-  left: 50%;
-  width: min(94vw, 1200px);
-  transform: translateX(-50%);
-  margin: 1rem 0 0.75rem;
-  border: 1px solid rgba(127, 127, 127, 0.28);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #f8f9fa;
-}
-
-.clearhouse-preview iframe {
-  display: block;
-  width: 100%;
-  height: min(68vh, 720px);
-  border: 0;
-}
-
-@media (max-width: 700px) {
-  .clearhouse-preview iframe {
-    height: 520px;
-  }
-}
-</style>
 </section>
 <section id="what-we-built" class="level2">
 <h2 class="anchored" data-anchor-id="what-we-built">What we built</h2>
@@ -221,9 +211,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="why-it-mattered-to-me" class="level2">
 <h2 class="anchored" data-anchor-id="why-it-mattered-to-me">Why it mattered to me</h2>
 <p>ClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me.</p>
-
-
 </section>
+</div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
