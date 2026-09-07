@@ -207,21 +207,21 @@
     "href": "projects/tankietube.html",
     "title": "TankieTube",
     "section": "",
-    "text": "TankieTube was a collaborative research project from the University of Amsterdam’s 2026 Digital Methods Summer School. The broader project examined how “natively digital” Marxist-Leninist YouTube creators differed from formal political organizations in their topics, language, and platform behavior.\nI worked on the Tenet/Rumble comparison, which became one of my first hands-on introductions to using Google Colab, working through very large text datasets, and using computational methods to explore a question that started mostly from curiosity."
+    "text": "TankieTube was a collaborative research project from the University of Amsterdam’s 2026 Digital Methods Summer School. The broader project examined how “natively digital” Marxist-Leninist YouTube creators differed from formal political organizations in their topics, language, and platform behavior.\nMy contribution centered on the Tenet/Rumble comparison, and I also helped create the team’s final project poster. The project became one of my first hands-on introductions to Google Colab, very large text datasets, and computational methods for exploring online political media."
   },
   {
     "objectID": "projects/tankietube.html#project-poster",
     "href": "projects/tankietube.html#project-poster",
     "title": "TankieTube",
     "section": "Project poster",
-    "text": "Project poster\nI also helped create the team’s final project poster.\n\n\n\n\nOpen the poster in Google Drive ↗"
+    "text": "Project poster\n  \nView full-size archived poster → · Official Google Drive copy ↗"
   },
   {
-    "objectID": "projects/tankietube.html#my-contribution-tenetrumble-comparison",
-    "href": "projects/tankietube.html#my-contribution-tenetrumble-comparison",
+    "objectID": "projects/tankietube.html#tenetrumble-comparison",
+    "href": "projects/tankietube.html#tenetrumble-comparison",
     "title": "TankieTube",
-    "section": "My contribution: Tenet/Rumble comparison",
-    "text": "My contribution: Tenet/Rumble comparison\nI wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of 560 Tenet Media videos published on Rumble, including transcripts, and used it as a comparison corpus.\nThe workflow moved in two stages:\n\nWord-level overlap. I compared the combined Tankie transcript corpus with the Tenet/Rumble transcripts using TF-IDF to surface words that were important in both datasets rather than starting with a hand-picked topic.\nQuote-level comparison. After “Israel” emerged as one of the strongest shared terms, transcript sentences containing the term were extracted and a sentence-similarity matcher paired each Tenet/Rumble quote with its closest Tankie quote.\n\nThe result was a large comparison table that made it possible to inspect what Tenet said next to the most similar language found in the Tankie corpus. The goal was exploratory: to find rhetorical similarities that would be difficult to locate manually across such large collections of transcripts, not to claim coordination between the groups."
+    "section": "Tenet/Rumble comparison",
+    "text": "Tenet/Rumble comparison\nI wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of 560 Tenet Media videos published on Rumble, including transcripts, and used it as a comparison corpus.\nThe workflow moved in two stages:\n\nWord-level overlap. I compared the combined Tankie transcript corpus with the Tenet/Rumble transcripts using TF-IDF to surface words that were important in both datasets rather than starting with a hand-picked topic.\nQuote-level comparison. After “Israel” emerged as one of the strongest shared terms, transcript sentences containing the term were extracted and a sentence-similarity matcher paired each Tenet/Rumble quote with its closest Tankie quote.\n\nThe result was a large comparison table that made it possible to inspect what Tenet said next to the most similar language found in the Tankie corpus. The goal was exploratory: to find rhetorical similarities that would be difficult to locate manually across such large collections of transcripts, not to claim coordination between the groups."
   },
   {
     "objectID": "projects/tankietube.html#why-this-project-mattered-to-me",
