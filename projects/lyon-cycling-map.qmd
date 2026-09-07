@@ -41,7 +41,7 @@ toc: false
 
 While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage's GPS data to reconstruct the routes and turn them into an interactive map.
 
-This grew out of my Gilman Scholarship follow on service project, which was designed to document Lyon's cycling infrastructure and make the city easier for future students to explore.
+This was my Gilman Scholarship Follow-on Service Project, designed to document Lyon's cycling infrastructure and make the city easier for future students to explore.
 
 ## Interactive map
 
@@ -67,8 +67,8 @@ The basic workflow was:
 
 ## Why I like this project
 
-This started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.
+This was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.
 
-It was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project.
+I like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people.
 
 :::
