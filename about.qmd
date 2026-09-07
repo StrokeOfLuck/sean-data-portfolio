@@ -1,5 +1,6 @@
 ---
 title: "About"
+toc: false
 ---
 
 I'm interested in the intersection of **data journalism, digital investigations, civic technology, and public-interest research**.
