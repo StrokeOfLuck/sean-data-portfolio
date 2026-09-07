@@ -1,8 +1,40 @@
 ---
 title: "ClearHouse.live"
 subtitle: "Civic transparency platform · Winter 2024–25"
-toc: true
+page-layout: full
+toc: false
 ---
+
+<style>
+#title-block-header,
+.clearhouse-shell {
+  width: min(94vw, 1200px);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clearhouse-preview {
+  width: 100%;
+  margin: 1rem 0 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+}
+
+.clearhouse-preview a {
+  display: block;
+}
+
+.clearhouse-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+</style>
+
+::: {.clearhouse-shell}
 
 ClearHouse.live was a **collaborative winter project** built to make U.S. politicians' financial disclosures easier to search and understand.
 
@@ -11,42 +43,14 @@ It was also my introduction to **web scraping, public-records data collection, a
 ## Site snapshot
 
 <div class="clearhouse-preview">
-<iframe
-  src="assets/clearhouse/clearhouse-snapshot-2026-09-07.html"
-  title="Archived snapshot of ClearHouse.live"
-  loading="lazy">
-</iframe>
+<a href="https://clearhouse.live" aria-label="Open ClearHouse.live">
+<img
+  src="assets/clearhouse/clearhouse-live-2026-09-07.svg"
+  alt="ClearHouse.live interface showing searchable U.S. politician stock-trading disclosures on September 7, 2026">
+</a>
 </div>
 
 [Open ClearHouse.live ↗](https://clearhouse.live) · [Open the archived snapshot →](assets/clearhouse/clearhouse-snapshot-2026-09-07.html)
-
-<style>
-.clearhouse-preview {
-  position: relative;
-  left: 50%;
-  width: min(94vw, 1200px);
-  transform: translateX(-50%);
-  margin: 1rem 0 0.75rem;
-  border: 1px solid rgba(127, 127, 127, 0.28);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #f8f9fa;
-}
-
-.clearhouse-preview iframe {
-  display: block;
-  width: 100%;
-  height: min(68vh, 720px);
-  border: 0;
-}
-
-@media (max-width: 700px) {
-  .clearhouse-preview iframe {
-    height: 520px;
-  }
-}
-</style>
-
 
 ## What we built
 
@@ -71,3 +75,5 @@ The project uses **Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Ch
 ## Why it mattered to me
 
 ClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me.
+
+:::
