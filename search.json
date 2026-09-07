@@ -1,59 +1,52 @@
 [
   {
-    "objectID": "house-ptr-scraper/docs/NEXT_GITHUB_ACTIONS.html",
-    "href": "house-ptr-scraper/docs/NEXT_GITHUB_ACTIONS.html",
-    "title": "Next: scheduled GitHub Actions",
+    "objectID": "AUTOMATION_SETUP.html",
+    "href": "AUTOMATION_SETUP.html",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "Next: scheduled GitHub Actions\nDo not enable the cloud schedule until the converted scripts have completed one successful local run against the existing Google Drive archive.\nThe intended schedule is:\non:\n  workflow_dispatch:\n  schedule:\n    - cron: \"30 9 * * *\"\n      timezone: \"America/New_York\"\nGitHub’s current workflow syntax supports IANA time zones for scheduled workflows, so America/New_York follows Eastern daylight/standard time.\nThe remaining cloud-specific piece is Google Drive authentication. The local scripts deliberately do not embed credentials or service-account secrets."
+    "text": "This repo and the sibling senate-ptr-scraper repo are wired up to scrape Senate PTR data and rebuild/deploy this site automatically. A few steps can only be done by you in the GitHub UI (not something an assistant can do via local tools) — do these once to turn the automation on.\n\n\nsenate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main\n\n\n\nIn senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN.\n\n\n\nThe scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value.\n\n\n\n\nSettings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)\n\n\n\n\nIn senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data.\n\n\n\n\n\nThe scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
   },
   {
-    "objectID": "projects/visual-ai.html",
-    "href": "projects/visual-ai.html",
-    "title": "Visual AI & Internet Research",
+    "objectID": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
+    "href": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "Explain the project and the question you were investigating."
+    "text": "senate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main"
   },
   {
-    "objectID": "projects/visual-ai.html#research-context",
-    "href": "projects/visual-ai.html#research-context",
-    "title": "Visual AI & Internet Research",
+    "objectID": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
+    "href": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
     "section": "",
-    "text": "Explain the project and the question you were investigating."
+    "text": "In senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN."
   },
   {
-    "objectID": "projects/visual-ai.html#data-methods",
-    "href": "projects/visual-ai.html#data-methods",
-    "title": "Visual AI & Internet Research",
-    "section": "Data & Methods",
-    "text": "Data & Methods\nDescribe the platforms, image collections, computational methods, or digital-methods tools used."
+    "objectID": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
+    "href": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
+    "section": "",
+    "text": "The scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value."
   },
   {
-    "objectID": "projects/visual-ai.html#analysis",
-    "href": "projects/visual-ai.html#analysis",
-    "title": "Visual AI & Internet Research",
-    "section": "Analysis",
-    "text": "Analysis\nUse screenshots and visualizations heavily here. Keep the prose concise."
+    "objectID": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
+    "href": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
+    "section": "",
+    "text": "Settings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)"
   },
   {
-    "objectID": "projects/visual-ai.html#what-i-learned",
-    "href": "projects/visual-ai.html#what-i-learned",
-    "title": "Visual AI & Internet Research",
-    "section": "What I Learned",
-    "text": "What I Learned\nExplain what worked, what did not, and what you would change in a future version."
+    "objectID": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
+    "href": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
+    "section": "",
+    "text": "In senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data."
   },
   {
-    "objectID": "projects/visual-ai.html#methods",
-    "href": "projects/visual-ai.html#methods",
-    "title": "Visual AI & Internet Research",
-    "section": "Methods",
-    "text": "Methods\nDigital Methods Visual Analysis Internet Research Computational Research"
-  },
-  {
-    "objectID": "projects/visual-ai.html#links",
-    "href": "projects/visual-ai.html#links",
-    "title": "Visual AI & Internet Research",
-    "section": "Links",
-    "text": "Links\nAdd poster, presentation, code, or project materials when appropriate."
+    "objectID": "AUTOMATION_SETUP.html#notes",
+    "href": "AUTOMATION_SETUP.html#notes",
+    "title": "Automated Senate data + site deploy — manual setup checklist",
+    "section": "",
+    "text": "The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
   },
   {
     "objectID": "projects/stock-disclosures-senate.html",
@@ -144,7 +137,7 @@
     "href": "index.html#selected-work",
     "title": "Sean Ryan",
     "section": "Selected Work",
-    "text": "Selected Work\n\n\nPolitician Stock Disclosures\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nVisual AI & Internet Research\nDigital methods · computer vision · online research\nResearch exploring visual AI and internet culture using computational methods.\nView project →\n\n\nRaleigh Micromobility\nGIS · public data · reporting\nExamining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.\nView project →"
+    "text": "Selected Work\n\n\nPolitician Stock Disclosures\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →"
   },
   {
     "objectID": "about.html",
@@ -257,54 +250,5 @@
     "title": "Politician Stock Disclosures",
     "section": "",
     "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html",
-    "href": "AUTOMATION_SETUP.html",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "This repo and the sibling senate-ptr-scraper repo are wired up to scrape Senate PTR data and rebuild/deploy this site automatically. A few steps can only be done by you in the GitHub UI (not something an assistant can do via local tools) — do these once to turn the automation on.\n\n\nsenate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main\n\n\n\nIn senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN.\n\n\n\nThe scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value.\n\n\n\n\nSettings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)\n\n\n\n\nIn senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data.\n\n\n\n\n\nThe scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
-    "href": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "senate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main"
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
-    "href": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "In senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN."
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
-    "href": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "The scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value."
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
-    "href": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "Settings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)"
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
-    "href": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "In senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data."
-  },
-  {
-    "objectID": "AUTOMATION_SETUP.html#notes",
-    "href": "AUTOMATION_SETUP.html#notes",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data (data/house_ptr_transactions_web.csv) is currently a manual snapshot copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project)."
   }
 ]
