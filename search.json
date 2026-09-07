@@ -305,7 +305,7 @@
     "href": "projects/lyon-cycling-map.html",
     "title": "Lyon Cycling Map",
     "section": "",
-    "text": "While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThis grew out of my Gilman Scholarship follow on service project, which was designed to document Lyon’s cycling infrastructure and make the city easier for future students to explore.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.\nIt was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project."
+    "text": "While in Lyon in summer 2025, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThe project was a simple way to connect something I was already doing — riding around the city — with location data and interactive mapping.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.\nIt also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually."
   },
   {
     "objectID": "projects/lyon-cycling-map.html#interactive-map",
@@ -326,7 +326,7 @@
     "href": "projects/lyon-cycling-map.html#why-i-like-this-project",
     "title": "Lyon Cycling Map",
     "section": "",
-    "text": "This started as part of my Gilman Scholarship follow on project and became an early experiment in working with location data I collected myself. Instead of starting with a downloaded dataset, I recorded the rides, extracted the GPS coordinates, organized the routes, and turned them into something other people could explore.\nIt was a simple workflow, but it was one of the first times I connected something I was doing in the real world with a data project."
+    "text": "This was a small project, but it made location data feel tangible. Instead of starting with a downloaded dataset, the data came from something I had physically done and recorded myself.\nIt also gave me a practical introduction to turning raw geographic coordinates into something another person could explore visually."
   },
   {
     "objectID": "projects/stock-disclosures-senate.html",
