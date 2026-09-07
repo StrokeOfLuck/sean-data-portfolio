@@ -140,76 +140,6 @@
     "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe Colab notebook reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same."
   },
   {
-    "objectID": "projects/all-we-are-solar-map.html",
-    "href": "projects/all-we-are-solar-map.html",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "I built this interactive map for All We Are, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.\n\nProject status: This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.\n\n\n\n\n\n\n\nOpen the full interactive map ↗ · View the map repository on GitHub ↗\n\n\n\nThe map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles\n\n\n\n\nThe project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on.\n\n\n\nOne of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#interactive-map",
-    "href": "projects/all-we-are-solar-map.html#interactive-map",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "Open the full interactive map ↗ · View the map repository on GitHub ↗"
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#what-it-does",
-    "href": "projects/all-we-are-solar-map.html#what-it-does",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "The map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles"
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#how-it-works",
-    "href": "projects/all-we-are-solar-map.html#how-it-works",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "The project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on."
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#why-i-like-this-project",
-    "href": "projects/all-we-are-solar-map.html#why-i-like-this-project",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "One of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nUsual Crowd Lead / Grants Coordinator\n\n\n2024 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nLead Usual Crowd shop sessions and coordinate volunteer workflow\n\n\nServe as a volunteer mechanic, repairing donated bicycles and helping members learn bicycle maintenance\n\n\nWrite grant applications and support fundraising, including securing grant funding for co-op programs\n\n\n\n\n\n\n\nSelected Projects\n\nView full portfolio →\n\n\n\n\nPolitician Stock Disclosures\n\n\n2024–present\n\n\n\n\nBuilt House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis\n\n\n\n\n\n\nPolitical Text Analysis\n\n\nFall 2026\n\n\n\n\nUsed computational text analysis to examine political rhetoric around real-world conflict events\n\n\n\n\n\n\nTankieTube — University of Amsterdam Digital Methods\n\n\nSummer 2026\n\n\n\n\nCompared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching\n\n\n\n\n\n\nAll We Are Solar Map\n\n\nSpring 2026\n\n\n\n\nBuilt an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit’s solar installation data in Uganda\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
-  },
-  {
-    "objectID": "about.html#interests",
-    "href": "about.html#interests",
-    "title": "About",
-    "section": "Interests",
-    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
-    "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
-  },
-  {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Sean Ryan",
-    "section": "Selected Work",
-    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\nFall 2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\nSpring 2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →\n\n\nClearHouse.live\n\nWinter 2024–25\n\nWeb scraping · public records · civic technology\nCollaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.\nView project →"
-  },
-  {
     "objectID": "projects/clearhouse.html",
     "href": "projects/clearhouse.html",
     "title": "ClearHouse.live",
@@ -250,6 +180,118 @@
     "title": "ClearHouse.live",
     "section": "Why it mattered to me",
     "text": "Why it mattered to me\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\nFall 2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\nSpring 2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →\n\n\nClearHouse.live\n\nWinter 2024–25\n\nWeb scraping · public records · civic technology\nCollaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.\nView project →"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nUsual Crowd Lead / Grants Coordinator\n\n\n2024 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nLead Usual Crowd shop sessions and coordinate volunteer workflow\n\n\nServe as a volunteer mechanic, repairing donated bicycles and helping members learn bicycle maintenance\n\n\nWrite grant applications and support fundraising, including securing grant funding for co-op programs\n\n\n\n\n\n\n\nSelected Projects\n\nView full portfolio →\n\n\n\n\nPolitician Stock Disclosures\n\n\n2024–present\n\n\n\n\nBuilt House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis\n\n\n\n\n\n\nPolitical Text Analysis\n\n\nFall 2026\n\n\n\n\nUsed computational text analysis to examine political rhetoric around real-world conflict events\n\n\n\n\n\n\nTankieTube — University of Amsterdam Digital Methods\n\n\nSummer 2026\n\n\n\n\nCompared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching\n\n\n\n\n\n\nAll We Are Solar Map\n\n\nSpring 2026\n\n\n\n\nBuilt an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit’s solar installation data in Uganda\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html",
+    "href": "projects/all-we-are-solar-map.html",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "I built this interactive map for All We Are, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.\n\nProject status: This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.\n\n\n\n\n\n\n\nOpen the full interactive map ↗ · View the map repository on GitHub ↗\n\n\n\nThe map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles\n\n\n\n\nThe project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on.\n\n\n\nOne of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#interactive-map",
+    "href": "projects/all-we-are-solar-map.html#interactive-map",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "Open the full interactive map ↗ · View the map repository on GitHub ↗"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#what-it-does",
+    "href": "projects/all-we-are-solar-map.html#what-it-does",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "The map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#how-it-works",
+    "href": "projects/all-we-are-solar-map.html#how-it-works",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "The project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "href": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "One of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html",
+    "href": "projects/congressional-stock-network.html",
+    "title": "Congressional Stock Trading Network",
+    "section": "",
+    "text": "An interactive network connecting reported 2025 House public-stock purchases to politicians, companies, committees, and subcommittees.\nThe project grew out of my work cleaning congressional financial-disclosure data and is designed as an exploratory tool for finding relationships worth checking against original Periodic Transaction Reports and committee records."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html#what-it-does",
+    "href": "projects/congressional-stock-network.html#what-it-does",
+    "title": "Congressional Stock Trading Network",
+    "section": "What it does",
+    "text": "What it does\nThe opening graph focuses on stocks purchased by at least two different politicians, making shared holdings easier to see without treating the display filter as a data-quality rule.\nUsers can:\n\nsearch politicians, stocks, committees, and subcommittees;\ninspect the original PTR purchase records behind a stock;\nopen committee and subcommittee drawers;\nsee members with matched purchases alongside members with no accepted purchase found;\nexport institution-level CSV summaries;\ncopy links to selected drill-down states;\ncompare the graph with a broader House coverage panel."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html#transaction-date-committee-matching",
+    "href": "projects/congressional-stock-network.html#transaction-date-committee-matching",
+    "title": "Congressional Stock Trading Network",
+    "section": "Transaction-date committee matching",
+    "text": "Transaction-date committee matching\nCommittee assignments are not treated as one fixed roster for the whole year.\nThe project uses pinned historical snapshots from the unitedstates/congress-legislators dataset and matches committee membership to the transaction date.\n\nJan. 1–2, 2025: Dec. 17, 2024 snapshot, because those dates are still in the 118th Congress.\nJan. 3–20, 2025: Jan. 21, 2025, the first usable House committee snapshot for the 119th Congress.\nJan. 21 onward: latest available snapshot on or before the transaction date.\n\nA missing committee match does not remove a stock purchase. Committee data are added after the accepted stock-purchase dataset is created."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html#coverage-checks",
+    "href": "projects/congressional-stock-network.html#coverage-checks",
+    "title": "Congressional Stock Trading Network",
+    "section": "Coverage checks",
+    "text": "Coverage checks\nThe project also compares accepted purchasers with the 119th-Congress House roster.\nThat separates:\n\npoliticians in the main shared-stock graph;\naccepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;\nHouse members for whom the project found no accepted 2025 public-stock purchase.\n\nThe third group is a coverage-review category, not proof that someone did not trade."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html#why-i-built-it",
+    "href": "projects/congressional-stock-network.html#why-i-built-it",
+    "title": "Congressional Stock Trading Network",
+    "section": "Why I built it",
+    "text": "Why I built it\nI wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.\nThe result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html#related-work",
+    "href": "projects/congressional-stock-network.html#related-work",
+    "title": "Congressional Stock Trading Network",
+    "section": "Related work",
+    "text": "Related work\nView the underlying Politician Stock Disclosures project →\nThe interactive build and analysis source are maintained in a standalone project repository rather than inside this portfolio repository."
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
