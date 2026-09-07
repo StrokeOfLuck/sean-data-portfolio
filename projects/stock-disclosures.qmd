@@ -576,20 +576,27 @@ library(DT)
 library(jsonlite)
 
 
-# The automated house-ptr-scraper repo is the source of truth once its
-# pipeline is live. Locally it's a true sibling folder (two levels up from
-# projects/); in CI, actions/checkout can't check out a repo outside
-# $GITHUB_WORKSPACE via "..", so the deploy workflow nests it inside this
-# repo's checkout instead (one level up). The static snapshot committed to
-# this repo (data/house_ptr_transactions_web.csv) is the last-resort
-# fallback if neither is present yet.
+# house-ptr-scraper is the single source of truth for House data.
+# Locally it is a sibling repo (two levels up from projects/). In CI,
+# actions/checkout nests it inside the portfolio checkout (one level up).
 data_path_candidates <- c(
   "../../house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv",
-  "../house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv",
-  "../data/house_ptr_transactions_web.csv"
+  "../house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv"
 )
 
-data_path <- data_path_candidates[file.exists(data_path_candidates)][1]
+existing_data_paths <- data_path_candidates[file.exists(data_path_candidates)]
+
+if (length(existing_data_paths) == 0) {
+  stop(
+    paste0(
+      "House PTR data not found. Expected house-ptr-scraper/data/06_public/",
+      "house_ptr_transactions_web.csv. Make sure the scraper repo is available ",
+      "as a sibling checkout locally or is checked out by the deploy workflow."
+    )
+  )
+}
+
+data_path <- existing_data_paths[1]
 
 
 ptr <- read_csv(
