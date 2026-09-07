@@ -18499,7 +18499,7 @@ Multi-day Event </span>
 @media (min-width: 901px) {
   .post-carousel-shell {
     margin-top: 4px;
-    padding: 10px 46px 14px;
+    padding: 10px 14px 14px;
     border: 1px solid #d6dde5;
     border-radius: 18px;
     background: rgba(255,255,255,.72);
@@ -18656,12 +18656,16 @@ Multi-day Event </span>
         return;
       }
 
-      const available = scroller.clientWidth;
+      const available = Math.floor(scroller.getBoundingClientRect().width);
+
+      // Most event views are display:none at page load. Do not lock those
+      // cards to the old 260px fallback before the view becomes visible.
+      if (available < 320) return;
+
       const gap = gapPx();
       const visible = Math.min(pageSize, cards.length);
-      const width = Math.max(
-        260,
-        Math.floor((available - gap * Math.max(0, visible - 1)) / visible)
+      const width = Math.floor(
+        (available - gap * Math.max(0, visible - 1)) / visible
       );
 
       cards.forEach(function (card) {
@@ -18722,6 +18726,20 @@ Multi-day Event </span>
         goTo(currentStart, false);
       }, 140);
     });
+
+    if ("ResizeObserver" in window) {
+      const carouselResizeObserver = new ResizeObserver(function () {
+        const width = scroller.getBoundingClientRect().width;
+        if (width < 320) return;
+
+        sizeCards();
+        window.requestAnimationFrame(function () {
+          goTo(currentStart, false);
+        });
+      });
+
+      carouselResizeObserver.observe(scroller);
+    }
 
     sizeCards();
     goTo(0, false);
