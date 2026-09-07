@@ -40,6 +40,67 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 4. **Aggregate event-balanced means.** Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn't dominate the pattern.
 5. **Visualize** the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant frame as a small colored badge.
 
+
+## Rhetorical frame guide
+
+The six labels are **multi-label**: the model evaluates each frame independently, so one post can score highly on more than one frame. The values below are model entailment scores, not calibrated probabilities. “Highest-scoring example” means the post with the largest score for that frame among the 87 unique posts in the current 26-event analysis subset.
+
+### Threat
+
+Captures military threats, escalation, retaliation, ultimatums, warnings, strikes, or destruction directed at Iran.
+
+**Highest-scoring example — 0.9995**  
+> 1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat, pronounced in many corners of the Globe, to assassinate, or attempt to assassinate, the sitting President of the United States of America, in this case, ME! Orders have already been given, and the U.S. Military is ready, willing, and able, for a one year period of time, subject to extension, to completely decimate and destroy all areas of Iran - PRAISE BE TO ALLAH! President DONALD J. TRUMP
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116899176820572671)
+
+### Victory
+
+Captures claims of victory, military success, Iranian weakness, defeat, surrender, decimation, or successful U.S. operations.
+
+**Highest-scoring example — 0.9977**  
+> The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116269555618597105)
+
+### Diplomacy
+
+Captures diplomacy, negotiations, talks, deals, conditions, agreements, or communication with Iran or allied governments.
+
+**Highest-scoring example — 0.9627**  
+> Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116365796713313030)
+
+### Ceasefire / Ending
+
+Captures a ceasefire, stopping military operations, ending the conflict, pausing attacks, or declaring the fighting essentially finished.
+
+**Highest-scoring example — 0.9935**  
+The same April 7 post is also the highest-scoring Diplomacy example, which is a useful illustration of the multi-label setup. Its strongest ceasefire language is:
+
+> I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE!
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116365796713313030)
+
+### Blame Allies
+
+Captures blaming or criticizing NATO, European allies, or other countries for not helping enough or being unhelpful.
+
+**Highest-scoring example — 0.9962**  
+> NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO, BUT “NEVER FORGET” THIS VERY IMPORTANT POINT IN TIME! President DONALD J. TRUMP
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116294956989451533)
+
+### Media Criticism
+
+Captures criticizing, blaming, or attacking mainstream news media, journalists, or press coverage as biased, fake, or dishonest.
+
+**Highest-scoring example — 0.9976**  
+> The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process. All ten points were a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN
+
+[Open original Truth Social post ↗](https://truthsocial.com/@realDonaldTrump/116372497116210545)
+
 ## Methods
 
 `Python` `Hugging Face Transformers` `Zero-Shot Classification` `Event Data` `UCDP` `Truth Social`
