@@ -133,10 +133,44 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<style>
+/* The wrapper already has the real site navbar. Keep the full-screen
+   visualization from adding a second page footer below the iframe. */
+footer.footer {
+  display: none !important;
+}
+</style>
 <div class="column-screen" style="margin: 0;">
-<iframe src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;" loading="lazy">
+<iframe id="iran-timeline-frame" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;" loading="lazy">
 </iframe>
 </div>
+<script>
+(function () {
+  const frame = document.getElementById("iran-timeline-frame");
+  if (!frame) return;
+
+  function cleanEmbeddedChrome() {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+
+      const innerNav = doc.querySelector(".site-nav");
+      if (innerNav) {
+        innerNav.style.setProperty("display", "none", "important");
+      }
+
+      if (doc.body) {
+        doc.body.classList.remove("has-shared-nav");
+      }
+    } catch (error) {
+      /* Same-origin on the deployed site; fail quietly during local previews. */
+    }
+  }
+
+  frame.addEventListener("load", cleanEmbeddedChrome);
+  cleanEmbeddedChrome();
+})();
+</script>
 
 
 
