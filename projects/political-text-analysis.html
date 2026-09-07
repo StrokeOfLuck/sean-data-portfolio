@@ -136,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#significance-levels" id="toc-significance-levels" class="nav-link" data-scroll-target="#significance-levels">Significance levels</a></li>
   <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
-  <li><a href="#rhetorical-frame-guide" id="toc-rhetorical-frame-guide" class="nav-link" data-scroll-target="#rhetorical-frame-guide">Rhetorical frame guide</a>
+  <li><a href="#rhetorical-category-guide" id="toc-rhetorical-category-guide" class="nav-link" data-scroll-target="#rhetorical-category-guide">Rhetorical category guide</a>
   <ul class="collapse">
   <li><a href="#threat" id="toc-threat" class="nav-link" data-scroll-target="#threat">Threat</a></li>
   <li><a href="#victory" id="toc-victory" class="nav-link" data-scroll-target="#victory">Victory</a></li>
@@ -179,6 +179,158 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+/* Compact Truth Social-style examples used in the methodology guide. */
+.truth-example-card {
+  --threat: #9a4949;
+  --victory: #4e7657;
+  --diplomacy: #4b719c;
+  --ceasefire: #7d6594;
+  --blame: #b5752e;
+  --media: #2f8f95;
+  margin: 0.8rem 0 2rem;
+  border: 1px solid var(--bs-border-color, #cfd7e1);
+  border-radius: 18px;
+  background: var(--bs-body-bg, #fff);
+  overflow: hidden;
+}
+.truth-example-summary {
+  padding: 16px 18px 14px;
+}
+.truth-example-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.truth-example-avatar {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #2f579e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 850;
+}
+.truth-example-name {
+  font-weight: 800;
+  line-height: 1.15;
+}
+.truth-example-handle {
+  margin-top: 2px;
+  opacity: 0.66;
+  font-size: 0.9rem;
+}
+.truth-category-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+.truth-category-badge.threat { background: var(--threat); }
+.truth-category-badge.victory { background: var(--victory); }
+.truth-category-badge.diplomacy { background: var(--diplomacy); }
+.truth-category-badge.ceasefire { background: var(--ceasefire); }
+.truth-category-badge.blame { background: var(--blame); }
+.truth-category-badge.media { background: var(--media); }
+.truth-example-topscore {
+  margin-left: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+.truth-example-preview {
+  margin: 4px 0 12px;
+  line-height: 1.48;
+}
+.truth-example-scores {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--bs-border-color, #e5e7eb);
+}
+.truth-example-score {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 42px;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.78rem;
+}
+.truth-example-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(127,127,127,.18);
+}
+.truth-example-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+.truth-example-fill.threat { background: var(--threat); }
+.truth-example-fill.victory { background: var(--victory); }
+.truth-example-fill.diplomacy { background: var(--diplomacy); }
+.truth-example-fill.ceasefire { background: var(--ceasefire); }
+.truth-example-fill.blame { background: var(--blame); }
+.truth-example-fill.media { background: var(--media); }
+.truth-example-actions {
+  margin-top: 13px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.truth-example-details {
+  border-top: 1px solid var(--bs-border-color, #e5e7eb);
+}
+.truth-example-details summary {
+  padding: 12px 18px;
+  cursor: pointer;
+  color: #3f78b8;
+  font-weight: 800;
+  list-style: none;
+}
+.truth-example-details summary::-webkit-details-marker { display: none; }
+.truth-example-details summary::after { content: " ↓"; }
+.truth-example-details[open] summary::after { content: " ↑"; }
+.truth-example-full {
+  padding: 0 18px 18px;
+  line-height: 1.55;
+}
+.truth-example-original {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+/* On small screens use one in-flow sticky Quarto header instead of the
+   fixed/headroom combination. This avoids the duplicate/ghost navbar paint
+   seen on mobile while keeping the navigation available. */
+@media (max-width: 991.98px) {
+  body.nav-fixed {
+    padding-top: 0 !important;
+  }
+  #quarto-header.fixed-top {
+    position: sticky !important;
+    top: 0 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .truth-example-summary {
+    padding: 14px;
+  }
+  .truth-example-score {
+    grid-template-columns: 86px minmax(0, 1fr) 38px;
+    gap: 6px;
+    font-size: 0.72rem;
+  }
+}
+</style>
 <section id="question" class="level2">
 <h2 class="anchored" data-anchor-id="question">Question</h2>
 <p>How does Donald Trump’s Iran-related Truth Social rhetoric change in the day before, day of, and day after UCDP-recorded U.S. or joint U.S.–Israel conflict events, and is threat language elevated beforehand?</p>
@@ -220,58 +372,296 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><strong>Collect</strong> Trump’s Truth Social posts (Hugging Face archive) and UCDP’s Iran-conflict event records (filtered Excel export), both refreshed periodically as new data becomes available.</li>
 <li><strong>Window</strong> the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.</li>
-<li><strong>Score rhetoric with zero-shot classification.</strong> A Hugging Face multi-label zero-shot classifier (<code>facebook/bart-large-mnli</code>) scores each post’s <code>content_text</code> — and only the text, never the UCDP metadata — against six labels: <strong>Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism</strong>, each a continuous 0–1 probability.</li>
+<li><strong>Score rhetoric with zero-shot classification.</strong> A Hugging Face multi-label zero-shot classifier (<code>facebook/bart-large-mnli</code>) scores each post’s <code>content_text</code> — and only the text, never the UCDP metadata — against six categories: <strong>Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism</strong>, each receiving a continuous 0–1 entailment score.</li>
 <li><strong>Aggregate event-balanced means.</strong> Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn’t dominate the pattern.</li>
-<li><strong>Visualize</strong> the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant frame as a small colored badge.</li>
+<li><strong>Visualize</strong> the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant category as a small colored badge.</li>
 </ol>
 </section>
-<section id="rhetorical-frame-guide" class="level2">
-<h2 class="anchored" data-anchor-id="rhetorical-frame-guide">Rhetorical frame guide</h2>
-<p>The six labels are <strong>multi-label</strong>: the model evaluates each frame independently, so one post can score highly on more than one frame. The values below are model entailment scores, not calibrated probabilities. “Highest-scoring example” means the post with the largest score for that frame among the 87 unique posts in the current 26-event analysis subset.</p>
+<section id="rhetorical-category-guide" class="level2">
+<h2 class="anchored" data-anchor-id="rhetorical-category-guide">Rhetorical category guide</h2>
+<p>The six categories are <strong>multi-label</strong>: the model evaluates each one independently, so a single post can score highly in more than one category. In computational text analysis these are often called rhetorical “frames,” but this page uses <strong>category</strong> as the plainer label. The values are model entailment scores, not calibrated probabilities.</p>
+<p>Each card below is the <strong>highest-scoring post for that category</strong> among the 87 unique posts in the current 26-event analysis subset. The colored bars show that same post’s scores across all six categories, which also makes the multi-label behavior visible.</p>
 <section id="threat" class="level3">
 <h3 class="anchored" data-anchor-id="threat">Threat</h3>
-<p>Captures military threats, escalation, retaliation, ultimatums, warnings, strikes, or destruction directed at Iran.</p>
-<p><strong>Highest-scoring example — 0.9995</strong><br>
-&gt; 1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat, pronounced in many corners of the Globe, to assassinate, or attempt to assassinate, the sitting President of the United States of America, in this case, ME! Orders have already been given, and the U.S. Military is ready, willing, and able, for a one year period of time, subject to extension, to completely decimate and destroy all areas of Iran - PRAISE BE TO ALLAH! President DONALD J. TRUMP</p>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116899176820572671">Open original Truth Social post ↗</a></p>
+<p>Military threats, escalation, retaliation, ultimatums, warnings, strikes, or destruction directed at Iran.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge threat">Threat</span><span class="truth-example-topscore">Highest Threat score: 0.9995</span>
+<div class="truth-example-preview">
+1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:100.0%"></span></span> <strong>1.00</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:96.9%"></span></span> <strong>0.97</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:0.0%"></span></span> <strong>0.00</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:0.1%"></span></span> <strong>0.00</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:3.9%"></span></span> <strong>0.04</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:33.0%"></span></span> <strong>0.33</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>1000 Missiles are Locked and Loaded and aimed at the Islamic Republic of Iran, with thousands of more to immediately follow, should the Iranian Government act on its threat, pronounced in many corners of the Globe, to assassinate, or attempt to assassinate, the sitting President of the United States of America, in this case, ME! Orders have already been given, and the U.S. Military is ready, willing, and able, for a one year period of time, subject to extension, to completely decimate and destroy all areas of Iran - PRAISE BE TO ALLAH! President DONALD J. TRUMP <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116899176820572671" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 <section id="victory" class="level3">
 <h3 class="anchored" data-anchor-id="victory">Victory</h3>
-<p>Captures claims of victory, military success, Iranian weakness, defeat, surrender, decimation, or successful U.S. operations.</p>
-<p><strong>Highest-scoring example — 0.9977</strong><br>
-&gt; The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT</p>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116269555618597105">Open original Truth Social post ↗</a></p>
+<p>Claims of victory, military success, Iranian weakness, defeat, surrender, decimation, or successful U.S. operations.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge victory">Victory</span><span class="truth-example-topscore">Highest Victory score: 0.9977</span>
+<div class="truth-example-preview">
+The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule!…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:89.0%"></span></span> <strong>0.89</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:99.8%"></span></span> <strong>1.00</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:77.7%"></span></span> <strong>0.78</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:77.4%"></span></span> <strong>0.77</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:6.2%"></span></span> <strong>0.06</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:93.8%"></span></span> <strong>0.94</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116269555618597105" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 <section id="diplomacy" class="level3">
 <h3 class="anchored" data-anchor-id="diplomacy">Diplomacy</h3>
-<p>Captures diplomacy, negotiations, talks, deals, conditions, agreements, or communication with Iran or allied governments.</p>
-<p><strong>Highest-scoring example — 0.9627</strong><br>
-&gt; Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP</p>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116365796713313030">Open original Truth Social post ↗</a></p>
+<p>Diplomacy, negotiations, talks, deals, conditions, agreements, or communication with Iran or allied governments.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge diplomacy">Diplomacy</span><span class="truth-example-topscore">Highest Diplomacy score: 0.9627</span>
+<div class="truth-example-preview">
+Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan… I agree to suspend the bombing and attack of Iran for a period of two weeks…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:60.8%"></span></span> <strong>0.61</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:97.0%"></span></span> <strong>0.97</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:96.3%"></span></span> <strong>0.96</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:99.4%"></span></span> <strong>0.99</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:3.7%"></span></span> <strong>0.04</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:55.6%"></span></span> <strong>0.56</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 <section id="ceasefire-ending" class="level3">
 <h3 class="anchored" data-anchor-id="ceasefire-ending">Ceasefire / Ending</h3>
-<p>Captures a ceasefire, stopping military operations, ending the conflict, pausing attacks, or declaring the fighting essentially finished.</p>
-<p><strong>Highest-scoring example — 0.9935</strong><br>
-The same April 7 post is also the highest-scoring Diplomacy example, which is a useful illustration of the multi-label setup. Its strongest ceasefire language is:</p>
-<blockquote class="blockquote">
-<p>I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE!</p>
-</blockquote>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116365796713313030">Open original Truth Social post ↗</a></p>
+<p>A ceasefire, stopping military operations, ending the conflict, pausing attacks, or declaring the fighting essentially finished.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge ceasefire">Ceasefire / Ending</span><span class="truth-example-topscore">Highest Ceasefire / Ending score: 0.9935</span>
+<div class="truth-example-preview">
+Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan… I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE!…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:60.8%"></span></span> <strong>0.61</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:97.0%"></span></span> <strong>0.97</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:96.3%"></span></span> <strong>0.96</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:99.4%"></span></span> <strong>0.99</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:3.7%"></span></span> <strong>0.04</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:55.6%"></span></span> <strong>0.56</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 <section id="blame-allies" class="level3">
 <h3 class="anchored" data-anchor-id="blame-allies">Blame Allies</h3>
-<p>Captures blaming or criticizing NATO, European allies, or other countries for not helping enough or being unhelpful.</p>
-<p><strong>Highest-scoring example — 0.9962</strong><br>
-&gt; NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO, BUT “NEVER FORGET” THIS VERY IMPORTANT POINT IN TIME! President DONALD J. TRUMP</p>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116294956989451533">Open original Truth Social post ↗</a></p>
+<p>Blaming or criticizing NATO, European allies, or other countries for not helping enough or being unhelpful.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge blame">Blame Allies</span><span class="truth-example-topscore">Highest Blame Allies score: 0.9962</span>
+<div class="truth-example-preview">
+NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:92.9%"></span></span> <strong>0.93</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:97.1%"></span></span> <strong>0.97</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:4.7%"></span></span> <strong>0.05</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:4.5%"></span></span> <strong>0.04</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:99.6%"></span></span> <strong>1.00</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:38.4%"></span></span> <strong>0.38</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>NATO NATIONS HAVE DONE ABSOLUTELY NOTHING TO HELP WITH THE LUNATIC NATION, NOW MILITARILY DECIMATED, OF IRAN. THE U.S.A. NEEDS NOTHING FROM NATO, BUT “NEVER FORGET” THIS VERY IMPORTANT POINT IN TIME! President DONALD J. TRUMP <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116294956989451533" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 <section id="media-criticism" class="level3">
 <h3 class="anchored" data-anchor-id="media-criticism">Media Criticism</h3>
-<p>Captures criticizing, blaming, or attacking mainstream news media, journalists, or press coverage as biased, fake, or dishonest.</p>
-<p><strong>Highest-scoring example — 0.9976</strong><br>
-&gt; The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process. All ten points were a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN</p>
-<p><a href="https://truthsocial.com/@realDonaldTrump/116372497116210545">Open original Truth Social post ↗</a></p>
+<p>Criticizing, blaming, or attacking mainstream news media, journalists, or press coverage as biased, fake, or dishonest.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+<div class="truth-example-head">
+<pre><code>&lt;div class="truth-example-avatar"&gt;DJT&lt;/div&gt;
+&lt;div&gt;
+  &lt;div class="truth-example-name"&gt;Donald J. Trump&lt;/div&gt;
+  &lt;div class="truth-example-handle"&gt;@realDonaldTrump&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<span class="truth-category-badge media">Media Criticism</span><span class="truth-example-topscore">Highest Media Criticism score: 0.9976</span>
+<div class="truth-example-preview">
+The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process…
+</div>
+<div class="truth-example-scores">
+<div class="truth-example-score">
+<p><span>Threat</span> <span class="truth-example-track"><span class="truth-example-fill threat" style="width:3.0%"></span></span> <strong>0.03</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Victory</span> <span class="truth-example-track"><span class="truth-example-fill victory" style="width:19.1%"></span></span> <strong>0.19</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Diplomacy</span> <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:93.2%"></span></span> <strong>0.93</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Ceasefire</span> <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:60.2%"></span></span> <strong>0.60</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Blame Allies</span> <span class="truth-example-track"><span class="truth-example-fill blame" style="width:32.8%"></span></span> <strong>0.33</strong></p>
+</div>
+<div class="truth-example-score">
+<p><span>Media Criticism</span> <span class="truth-example-track"><span class="truth-example-fill media" style="width:99.8%"></span></span> <strong>1.00</strong></p>
+</div>
+</div>
+</div>
+<details class="truth-example-details">
+<summary>
+Read full archived post
+</summary>
+<div class="truth-example-full">
+<p>The Failing New York Times and Fake News CNN each reported a totally FAKE TEN POINT PLAN on the Iran negotiations which was meant to discredit the people involved in the peace process. All ten points were a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN <br> <a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116372497116210545" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></p>
+</div>
+</details>
+</div>
 </section>
 </section>
 <section id="methods" class="level2">
@@ -284,10 +674,27 @@ The same April 7 post is also the highest-scoring Diplomacy example, which is a 
 <a href="assets/political-text-analysis/trump-iran-connected-timeline.html" target="_blank" rel="noopener noreferrer">Open the timeline in its own full-width page ↗</a> — recommended on desktop, since the embed below is narrower than the page it’s showing and falls back to the mobile layout.
 </p>
 <div class="column-page" style="margin: 1.5rem 0;">
-<iframe src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;" loading="lazy">
+<iframe id="political-timeline-frame" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;" loading="lazy">
 </iframe>
 </div>
-<p>The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post’s single dominant frame), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.</p>
+<script>
+(function () {
+  const frame = document.getElementById("political-timeline-frame");
+  if (!frame) return;
+  function cleanPoliticalTimelineChrome() {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+      const innerNav = doc.querySelector(".site-nav");
+      if (innerNav) innerNav.style.setProperty("display", "none", "important");
+      if (doc.body) doc.body.classList.remove("has-shared-nav");
+    } catch (error) {}
+  }
+  frame.addEventListener("load", cleanPoliticalTimelineChrome);
+  cleanPoliticalTimelineChrome();
+})();
+</script>
+<p>The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post’s single dominant category), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.</p>
 <p><strong>The clearest evidence for telegraphing:</strong> average Threat language is actually <em>higher the day before</em> a UCDP event (0.55) than on the event day itself (0.52) or the day after (0.48). It’s also visible in individual posts — in the day before the April 6 event (34 killed in strikes on Iran’s Guards intelligence chief and a university), Trump wrote: <em>“Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!!”</em> — naming the target categories before further strikes happened.</p>
 <p><strong>Blame Allies</strong> and <strong>Media Criticism</strong> were added as later passes after the first four labels. Blame Allies (criticizing NATO/European allies for not helping) is low overall but ticks up on the event day (0.13) versus the day before (0.07) and day after (0.11). Media Criticism (attacking press coverage as biased or fake) varies a lot post-to-post (from near 0 to near 1) but doesn’t move much across the three windows (0.34–0.35 throughout) — a real, variable signal at the post level that just isn’t specifically tied to event timing. (A different sixth label, Self-Credit, was tried and dropped earlier — it scored near-ceiling on almost every post regardless of timing, which made it more a constant feature of the voice than a useful signal.)</p>
 </section>
