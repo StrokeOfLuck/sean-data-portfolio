@@ -143,6 +143,23 @@ footer.footer {
   display: none !important;
 }
 
+/* This full-screen project sits flush under the site navbar. Quarto/Cosmo
+   otherwise leaves a small white strip and bottom rule under the header. */
+#quarto-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background: #f8f9fa !important;
+}
+
+#quarto-header .navbar,
+#quarto-header > nav {
+  margin: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
 /* Quarto leaves default top spacing for normal article content. This page
    starts with a full-width interactive project header, so remove that empty
    band and let the project header sit directly under the site navbar. */
