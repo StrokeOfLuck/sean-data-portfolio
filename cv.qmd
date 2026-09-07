@@ -219,13 +219,17 @@ execute:
   text-decoration: underline;
 }
 
-.resume-project-title-link {
-  color: inherit;
-  text-decoration: none;
+.resume-project-title-link,
+.resume-entry-title-link {
+  color: #3f6fd1;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
-.resume-project-title-link:hover {
-  text-decoration: underline;
+.resume-project-title-link:hover,
+.resume-entry-title-link:hover {
+  color: #2f5db8;
 }
 
 /* ---------------------------------------------------------
@@ -428,6 +432,12 @@ execute:
   a {
     color: #000 !important;
   }
+
+  .resume-project-title-link,
+  .resume-entry-title-link {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
 }
 
 /* ---------------------------------------------------------
@@ -499,8 +509,15 @@ render_bullets <- function(bullets) {
   glue('<ul class="resume-entry-bullets">{items}</ul>')
 }
 
-render_entry <- function(title, org, location, start, end, bullets = character(0), details = "") {
+render_entry <- function(title, org, location, start, end, bullets = character(0), details = "", url = "") {
   org_line <- if (nzchar(location)) glue("{org} — {location}") else org
+  if (is.null(url)) url <- ""
+
+  title_html <- if (nzchar(url)) {
+    glue('<a class="resume-entry-title-link" href="{url}" target="_blank" rel="noopener">{title}</a>')
+  } else {
+    title
+  }
 
   details_html <- if (nzchar(details)) {
     glue('<div class="resume-entry-details">{details}</div>')
@@ -514,7 +531,7 @@ render_entry <- function(title, org, location, start, end, bullets = character(0
   paste0(
     '<div class="resume-entry">',
     '<div class="resume-entry-head">',
-    '<div class="resume-entry-title">', title, '</div>',
+    '<div class="resume-entry-title">', title_html, '</div>',
     '<div class="resume-entry-dates">', format_dates(start, end), '</div>',
     '</div>',
     '<div class="resume-entry-org">', org_line, '</div>',
@@ -550,7 +567,7 @@ experience_html <- resume$experience |>
   paste(collapse = "\n")
 
 volunteer_html <- resume$volunteer |>
-  map_chr(~ render_entry(.x$title, .x$org, .x$location, .x$start, .x$end, .x$bullets)) |>
+  map_chr(~ render_entry(.x$title, .x$org, .x$location, .x$start, .x$end, .x$bullets, url = .x$url)) |>
   paste(collapse = "\n")
 
 projects_html <- resume$projects |>
