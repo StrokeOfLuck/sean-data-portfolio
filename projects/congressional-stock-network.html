@@ -279,64 +279,38 @@ footer.footer {
 }
 
 .loader-network {
-  position: relative;
   width: 116px;
   height: 78px;
 }
 
-.loader-line {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 58px;
-  height: 1px;
-  background: #c8cdd3;
-  transform-origin: left center;
+.loader-network svg {
+  display: block;
+  width: 116px;
+  height: 78px;
+  overflow: visible;
 }
 
-.loader-line.one { transform: rotate(-28deg); }
-.loader-line.two { transform: rotate(31deg); }
-.loader-line.three {
-  width: 44px;
-  transform: translate(-43px, 2px) rotate(0deg);
+.loader-edge {
+  stroke: #c8cdd3;
+  stroke-width: 1.5;
+  stroke-linecap: round;
 }
 
 .loader-node {
-  position: absolute;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.8);
+  transform-box: fill-box;
+  transform-origin: center;
   animation: networkPulse 1.8s ease-in-out infinite;
 }
 
-.loader-node.center {
-  left: 51px;
-  top: 33px;
-  width: 16px;
-  height: 16px;
-  background: #d6b54a;
-}
-
 .loader-node.left {
-  left: 9px;
-  top: 55px;
-  background: #2f6fdb;
   animation-delay: 0.18s;
 }
 
 .loader-node.right {
-  right: 8px;
-  top: 56px;
-  background: #d64b4b;
   animation-delay: 0.36s;
 }
 
 .loader-node.top {
-  right: 14px;
-  top: 5px;
-  border-radius: 3px;
-  background: #667a70;
   animation-delay: 0.54s;
 }
 
@@ -455,13 +429,15 @@ footer.footer {
 <div id="network-loader" class="network-loader" aria-live="polite">
 <div class="loader-inner">
 <div class="loader-network" aria-hidden="true">
-<span class="loader-line one"></span>
-<span class="loader-line two"></span>
-<span class="loader-line three"></span>
-<span class="loader-node center"></span>
-<span class="loader-node left"></span>
-<span class="loader-node right"></span>
-<span class="loader-node top"></span>
+<svg viewbox="0 0 116 78" role="presentation" focusable="false">
+<line class="loader-edge" x1="58" y1="41" x2="18" y2="61"></line>
+<line class="loader-edge" x1="58" y1="41" x2="99" y2="61"></line>
+<line class="loader-edge" x1="58" y1="41" x2="98" y2="14"></line>
+<circle class="loader-node center" cx="58" cy="41" r="8" fill="#d6b54a"></circle>
+<circle class="loader-node left" cx="18" cy="61" r="6.5" fill="#2f6fdb"></circle>
+<circle class="loader-node right" cx="99" cy="61" r="6.5" fill="#d64b4b"></circle>
+<rect class="loader-node top" x="92" y="8" width="12" height="12" rx="3" fill="#667a70"></rect>
+</svg>
 </div>
 <div id="network-loader-message">Loading congressional stock data…</div>
 </div>
