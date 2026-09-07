@@ -365,7 +365,7 @@ execute:
   }
 
   .resume-header {
-    margin-bottom: 0.58rem;
+    margin-bottom: 0.65rem;
     padding-bottom: 0.34rem;
     border-bottom: 2px solid #111;
   }
@@ -391,22 +391,24 @@ execute:
     margin-bottom: 0.08rem;
   }
 
+  /* Use a little of the spare page height for breathing room while
+     keeping a generous safety margin at the bottom of a one-page PDF. */
   .resume-section {
-    margin-bottom: 0.46rem;
+    margin-bottom: 0.75rem;
   }
 
   .resume-section h2 {
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.11em;
-    margin-bottom: 0.28rem;
+    margin-bottom: 0.36rem;
     padding-bottom: 0.15rem;
     border-bottom: 1px solid #888;
     opacity: 1;
   }
 
   .resume-section-heading {
-    margin-bottom: 0.28rem;
+    margin-bottom: 0.36rem;
     padding-bottom: 0.15rem;
     border-bottom: 1px solid #888;
   }
@@ -429,7 +431,7 @@ execute:
   }
 
   .resume-entry {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.42rem;
   }
 
   .resume-entry-org {
