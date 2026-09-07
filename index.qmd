@@ -24,6 +24,17 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 [View project →](projects/stock-disclosures.qmd)
 
 <div class="project-heading">
+<h3>Congressional Stock Trading Network</h3>
+<span class="project-date">Fall 2026</span>
+</div>
+
+**Network analysis · public records · congressional data**
+
+Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.
+
+[View project →](projects/congressional-stock-network.qmd)
+
+<div class="project-heading">
 <h3>Political Text Analysis</h3>
 <span class="project-date">Fall 2026</span>
 </div>
