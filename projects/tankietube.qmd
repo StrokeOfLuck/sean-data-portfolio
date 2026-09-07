@@ -13,7 +13,8 @@ format:
 
 TankieTube was a **five-day collaborative research sprint** at the University of Amsterdam. Our team compared "natively digital" Marxist-Leninist YouTube creators with formal political organizations.
 
-**Team:** Luca Ghiselli, Ema Kinsel, Gavin Mueller, Ada Paul, Sean Ryan, and Jo Walton.
+**Project leads:** Gavin Mueller and Ema Kinsel.  
+**Team:** Luca Ghiselli, Ada Paul, Sean Ryan, and Jo Walton.
 
 My part focused on the **Tenet/Rumble comparison**, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research.
 
