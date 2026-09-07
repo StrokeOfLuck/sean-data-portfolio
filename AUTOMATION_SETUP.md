@@ -62,7 +62,6 @@ branch via `quarto-dev/quarto-actions/publish`.)
   the EDT/EST shift — see `senate-ptr-scraper/.github/workflows/scrape.yml`).
 - The site also rebuilds weekly on its own schedule as a fallback, and on
   every push to `main`, in addition to the dispatch trigger.
-- House data (`data/house_ptr_transactions_web.csv`) is currently a
-  **manual snapshot** copied from Google Drive — refresh it by re-copying
-  when you have new House data, until/unless House scraping is automated
-  the same way Senate is (a separate future project).
+- House data is read directly from `house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv`.
+  The deploy workflow checks out `house-ptr-scraper` before rendering, so the portfolio repo does not keep a
+  second House CSV snapshot.
