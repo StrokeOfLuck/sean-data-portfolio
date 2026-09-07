@@ -622,6 +622,38 @@ if (window.hljs) {
     font-size: 12px;
   }
 }
+
+/* Make the expand action explicit: the card contains an archived copy of the
+   post text, while the expanded section also links to the original post. */
+.read-more-cue {
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+  color: #3f78b8;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.read-more-cue small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+.read-expanded {
+  display: none;
+}
+.truth-card[open] .read-collapsed {
+  display: none;
+}
+.truth-card[open] .read-expanded {
+  display: inline;
+}
+.truth-card[open] .preview {
+  display: none;
+}
+
 </style>
 
 <style id="v20-analysis-summary">
@@ -1788,6 +1820,11 @@ faces renewed war with United States:
 <div class="meta">
 Event day • 2026-02-28 09:35:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -1874,6 +1911,11 @@ the ot…
         </div>
 <div class="meta">
 Event day • 2026-02-28 21:37:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -2023,6 +2065,11 @@ DONALD J. TRUMP
 <div class="meta">
 Day after • 2026-03-01 05:22:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2110,6 +2157,11 @@ Thank you for your attention to this matter! President DONALD J. TRUMP
 <div class="meta">
 Day after • 2026-03-01 05:25:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2194,6 +2246,11 @@ world a better place:
 <div class="meta">
 Day after • 2026-03-01 12:40:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2275,6 +2332,11 @@ all:
         </div>
 <div class="meta">
 Day after • 2026-03-01 14:55:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -2361,6 +2423,11 @@ DONALD J. TRUMP
         </div>
 <div class="meta">
 Day after • 2026-03-01 17:21:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -2478,6 +2545,11 @@ Support:
 <div class="meta">
 Event day • 2026-03-05 04:48:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2594,6 +2666,11 @@ on Iran:
 <div class="meta">
 Day before • 2026-03-03 12:18:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2676,6 +2753,11 @@ talk. I said “Too Late!”
 <div class="meta">
 Day before • 2026-03-03 12:38:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -2757,6 +2839,11 @@ Journal story was wrong, and a disgrace. President DJT
         </div>
 <div class="meta">
 Day before • 2026-03-03 13:02:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -2844,6 +2931,11 @@ as possib…
         </div>
 <div class="meta">
 Day before • 2026-03-03 19:37:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -2943,6 +3035,11 @@ remarking on Iran war deaths:
         </div>
 <div class="meta">
 Day after • 2026-03-05 14:35:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -3057,6 +3154,11 @@ DIFFERENTLY!President DJT
         </div>
 <div class="meta">
 Event day • 2026-03-08 22:54:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -3181,6 +3283,11 @@ President…
 <div class="meta">
 Day before • 2026-03-07 11:11:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3287,6 +3394,11 @@ matter. President DONALD J. TRUMP
 <div class="meta">
 Day after • 2026-03-09 14:16:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3377,6 +3489,11 @@ job having to do…
 <div class="meta">
 Day after • 2026-03-09 15:55:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3464,6 +3581,11 @@ Donald J. Trump
 <div class="meta">
 Day after • 2026-03-10 00:30:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3550,6 +3672,11 @@ This is…
         </div>
 <div class="meta">
 Day after • 2026-03-10 00:30:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -3676,6 +3803,11 @@ and we…
 <div class="meta">
 Event day • 2026-03-20 13:43:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3767,6 +3899,11 @@ Iran to get …
         </div>
 <div class="meta">
 Event day • 2026-03-20 21:13:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -3899,6 +4036,11 @@ shows the true scope of danger:
 <div class="meta">
 Day before • 2026-03-19 12:21:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -3980,6 +4122,11 @@ Khamenei’s Unforced Errors Proved Fatal:
 <div class="meta">
 Day before • 2026-03-19 14:04:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -4059,6 +4206,11 @@ MORNING GLORY: Why Trump must finish what he started with Iran’s regime:
         </div>
 <div class="meta">
 Day before • 2026-03-19 14:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4141,6 +4293,11 @@ Mind-Twisted Frauds:
         </div>
 <div class="meta">
 Day before • 2026-03-19 14:05:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4238,6 +4395,11 @@ always g…
 <div class="meta">
 Day after • 2026-03-21 22:37:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -4327,6 +4489,11 @@ President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day after • 2026-03-21 23:44:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4443,6 +4610,11 @@ in Iran is going GREAT! President DJT
         </div>
 <div class="meta">
 Event day • 2026-03-27 18:16:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4562,6 +4734,11 @@ DONALD J. TRUMP
 <div class="meta">
 Day before • 2026-03-26 10:16:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -4650,6 +4827,11 @@ President DJT
         </div>
 <div class="meta">
 Day before • 2026-03-26 10:39:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4741,6 +4923,11 @@ attention to this matter! President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day before • 2026-03-26 20:11:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -4838,6 +5025,11 @@ President DJT
 <div class="meta">
 Day after • 2026-03-28 21:46:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -4919,6 +5111,11 @@ No, Trump is not losing his nerve on Iran:
         </div>
 <div class="meta">
 Day after • 2026-03-28 22:36:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -5032,6 +5229,11 @@ World. God bless you all! President DJT
         </div>
 <div class="meta">
 Event day • 2026-03-30 02:29:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -5151,6 +5353,11 @@ President DJT
 <div class="meta">
 Day before • 2026-03-28 21:46:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -5232,6 +5439,11 @@ No, Trump is not losing his nerve on Iran:
         </div>
 <div class="meta">
 Day before • 2026-03-28 22:36:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -5328,6 +5540,11 @@ Generating Pl…
 <div class="meta">
 Day after • 2026-03-30 11:26:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -5418,6 +5635,11 @@ The current war in Iran may prevent much greater bloodshed:
         </div>
 <div class="meta">
 Day after • 2026-03-30 12:27:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -5535,6 +5757,11 @@ Generating Pl…
 <div class="meta">
 Event day • 2026-03-30 11:26:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -5625,6 +5852,11 @@ The current war in Iran may prevent much greater bloodshed:
         </div>
 <div class="meta">
 Event day • 2026-03-30 12:27:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -5742,6 +5974,11 @@ World. God bless you all! President DJT
 <div class="meta">
 Day before • 2026-03-30 02:29:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -5839,6 +6076,11 @@ li…
 <div class="meta">
 Day after • 2026-03-31 11:11:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -5928,6 +6170,11 @@ successfully eliminated! The U.S.A. will REMEMBER!!! President DJT
         </div>
 <div class="meta">
 Day after • 2026-03-31 11:19:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -6048,6 +6295,11 @@ li…
 <div class="meta">
 Event day • 2026-03-31 11:11:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -6137,6 +6389,11 @@ successfully eliminated! The U.S.A. will REMEMBER!!! President DJT
         </div>
 <div class="meta">
 Event day • 2026-03-31 11:19:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -6261,6 +6518,11 @@ Generating Pl…
 <div class="meta">
 Day before • 2026-03-30 11:26:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -6351,6 +6613,11 @@ The current war in Iran may prevent much greater bloodshed:
         </div>
 <div class="meta">
 Day before • 2026-03-30 12:27:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -6445,6 +6712,11 @@ they say, back to the Stone Ages!!! President DJT
 <div class="meta">
 Day after • 2026-04-01 12:44:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -6529,6 +6801,11 @@ war:
         </div>
 <div class="meta">
 Day after • 2026-04-02 02:55:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -6646,6 +6923,11 @@ COUNTRY! President DONALD J. TRUMP
 <div class="meta">
 Event day • 2026-04-02 16:37:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -6731,6 +7013,11 @@ done, and has to be done, FAST! President DONALD J.TRUMP
         </div>
 <div class="meta">
 Event day • 2026-04-03 02:41:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -6853,6 +7140,11 @@ they say, back to the Stone Ages!!! President DJT
 <div class="meta">
 Day before • 2026-04-01 12:44:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -6937,6 +7229,11 @@ war:
         </div>
 <div class="meta">
 Day before • 2026-04-02 02:55:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -7029,6 +7326,11 @@ President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day after • 2026-04-03 12:22:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -7151,6 +7453,11 @@ Iran. MAGA!!!
 <div class="meta">
 Event day • 2026-04-04 13:32:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -7236,6 +7543,11 @@ on them. Glory be to GOD! President DONALD J. TRUMP
 <div class="meta">
 Event day • 2026-04-04 14:05:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -7319,6 +7631,11 @@ Tehran! President DONALD J. TRUMP
         </div>
 <div class="meta">
 Event day • 2026-04-04 20:37:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -7438,6 +7755,11 @@ President DONALD J. TRUMP
 <div class="meta">
 Day before • 2026-04-03 12:22:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -7534,6 +7856,11 @@ mountains…
         </div>
 <div class="meta">
 Day after • 2026-04-05 04:08:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -7646,6 +7973,11 @@ daylight, als…
 <div class="meta">
 Day after • 2026-04-05 11:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -7737,6 +8069,11 @@ Allah. President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day after • 2026-04-05 12:03:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -7858,6 +8195,11 @@ mountains…
 <div class="meta">
 Event day • 2026-04-05 04:08:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -7969,6 +8311,11 @@ daylight, als…
 <div class="meta">
 Event day • 2026-04-05 11:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8060,6 +8407,11 @@ Allah. President DONALD J. TRUMP
         </div>
 <div class="meta">
 Event day • 2026-04-05 12:03:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -8181,6 +8533,11 @@ Iran. MAGA!!!
 <div class="meta">
 Day before • 2026-04-04 13:32:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8266,6 +8623,11 @@ on them. Glory be to GOD! President DONALD J. TRUMP
 <div class="meta">
 Day before • 2026-04-04 14:05:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8349,6 +8711,11 @@ Tehran! President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day before • 2026-04-04 20:37:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -8514,6 +8881,11 @@ mountains…
 <div class="meta">
 Day before • 2026-04-05 04:08:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8625,6 +8997,11 @@ daylight, als…
 <div class="meta">
 Day before • 2026-04-05 11:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8716,6 +9093,11 @@ Allah. President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day before • 2026-04-05 12:03:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -8815,6 +9197,11 @@ years of ext…
 <div class="meta">
 Day after • 2026-04-07 12:06:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -8907,6 +9294,11 @@ CEASEFIR…
         </div>
 <div class="meta">
 Day after • 2026-04-07 22:32:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9004,6 +9396,11 @@ OFFICIAL STATEMENT OF IRAN:
 <div class="meta">
 Day after • 2026-04-07 23:42:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -9089,6 +9486,11 @@ Statem…
         </div>
 <div class="meta">
 Day after • 2026-04-08 00:01:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9183,6 +9585,11 @@ cheating - A very dangerous thing to do!
         </div>
 <div class="meta">
 Day after • 2026-04-08 03:39:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9307,6 +9714,11 @@ years of ext…
 <div class="meta">
 Event day • 2026-04-07 12:06:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -9399,6 +9811,11 @@ CEASEFIR…
         </div>
 <div class="meta">
 Event day • 2026-04-07 22:32:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9496,6 +9913,11 @@ OFFICIAL STATEMENT OF IRAN:
 <div class="meta">
 Event day • 2026-04-07 23:42:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -9581,6 +10003,11 @@ Statem…
         </div>
 <div class="meta">
 Event day • 2026-04-08 00:01:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9675,6 +10102,11 @@ cheating - A very dangerous thing to do!
         </div>
 <div class="meta">
 Event day • 2026-04-08 03:39:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -9811,6 +10243,11 @@ well. I …
 <div class="meta">
 Day after • 2026-04-08 04:01:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -9905,6 +10342,11 @@ attack. W…
 <div class="meta">
 Day after • 2026-04-08 11:22:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -9996,6 +10438,11 @@ President DJT
 <div class="meta">
 Day after • 2026-04-08 11:30:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -10084,6 +10531,11 @@ during the…
         </div>
 <div class="meta">
 Day after • 2026-04-08 16:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -10178,6 +10630,11 @@ a made up HOAX - EVIL LOSERS!!! MAKE AMERICA GREAT AGAIN
 <div class="meta">
 Day after • 2026-04-09 02:56:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -10266,6 +10723,11 @@ Starts,” bigger,…
         </div>
 <div class="meta">
 Day after • 2026-04-09 03:46:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -10396,6 +10858,11 @@ He…
 <div class="meta">
 Event day • 2026-05-04 17:16:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -10524,6 +10991,11 @@ United …
 <div class="meta">
 Day before • 2026-05-03 20:35:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -10647,6 +11119,11 @@ Strait of H…
         </div>
 <div class="meta">
 Day after • 2026-05-05 22:52:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -10773,6 +11250,11 @@ exist! President…
 <div class="meta">
 Event day • 2026-06-27 23:13:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -10859,6 +11341,11 @@ trucking biz:
         </div>
 <div class="meta">
 Event day • 2026-06-28 03:53:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -10976,6 +11463,11 @@ Honest Pollsters are very rare and hard to find! President DJT
 <div class="meta">
 Day before • 2026-06-26 13:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -11061,6 +11553,11 @@ Ceasefire Agreement. President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day before • 2026-06-26 15:51:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -11161,6 +11658,11 @@ abou…
         </div>
 <div class="meta">
 Day after • 2026-06-28 04:22:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -11290,6 +11792,11 @@ happens again, it will get much worse!
         </div>
 <div class="meta">
 Event day • 2026-07-08 21:35:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -11483,6 +11990,11 @@ happens again, it will get much worse!
 <div class="meta">
 Day before • 2026-07-08 21:35:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -11576,6 +12088,11 @@ attention to this matter. President DONALD J. TRUMP
 <div class="meta">
 Day after • 2026-07-10 14:32:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -11664,6 +12181,11 @@ p…
         </div>
 <div class="meta">
 Day after • 2026-07-11 03:18:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -11832,6 +12354,11 @@ but as such, and as a matter of FAIRNESS, will be reimbursed, at the ra…
 <div class="meta">
 Day after • 2026-07-13 14:16:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -11958,6 +12485,11 @@ but as such, and as a matter of FAIRNESS, will be reimbursed, at the ra…
         </div>
 <div class="meta">
 Event day • 2026-07-13 14:16:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12092,6 +12624,11 @@ Old clip of Trump talking about Iran in 1980 goes viral:
 <div class="meta">
 Day after • 2026-07-14 14:28:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -12172,6 +12709,11 @@ of first-stage Iran deal:
         </div>
 <div class="meta">
 Day after • 2026-07-14 14:34:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12259,6 +12801,11 @@ for Iran — a…
         </div>
 <div class="meta">
 Day after • 2026-07-14 15:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12394,6 +12941,11 @@ Old clip of Trump talking about Iran in 1980 goes viral:
 <div class="meta">
 Event day • 2026-07-14 14:28:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -12474,6 +13026,11 @@ of first-stage Iran deal:
         </div>
 <div class="meta">
 Event day • 2026-07-14 14:34:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12561,6 +13118,11 @@ for Iran — a…
         </div>
 <div class="meta">
 Event day • 2026-07-14 15:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12704,6 +13266,11 @@ but as such, and as a matter of FAIRNESS, will be reimbursed, at the ra…
 <div class="meta">
 Day before • 2026-07-13 14:16:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -12805,6 +13372,11 @@ Iran! President DONALD J. TRUMP
         </div>
 <div class="meta">
 Day after • 2026-07-15 22:54:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -12925,6 +13497,11 @@ Iran! President DONALD J. TRUMP
 <div class="meta">
 Event day • 2026-07-15 22:54:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -13043,6 +13620,11 @@ Old clip of Trump talking about Iran in 1980 goes viral:
 <div class="meta">
 Day before • 2026-07-14 14:28:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -13123,6 +13705,11 @@ of first-stage Iran deal:
         </div>
 <div class="meta">
 Day before • 2026-07-14 14:34:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -13210,6 +13797,11 @@ for Iran — a…
         </div>
 <div class="meta">
 Day before • 2026-07-14 15:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -13395,6 +13987,11 @@ Iran! President DONALD J. TRUMP
 <div class="meta">
 Day before • 2026-07-15 22:54:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -13566,6 +14163,11 @@ DJT
 <div class="meta">
 Day after • 2026-07-19 11:54:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -13682,6 +14284,11 @@ every Leader in the Military. President DONALD J. TRUMP
 <div class="meta">
 Event day • 2026-07-20 16:41:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -13770,6 +14377,11 @@ something that should ha…
         </div>
 <div class="meta">
 Event day • 2026-07-20 16:50:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -13863,6 +14475,11 @@ Oil, Trad…
         </div>
 <div class="meta">
 Event day • 2026-07-20 22:18:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -13989,6 +14606,11 @@ DJT
 <div class="meta">
 Day before • 2026-07-19 11:54:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -14082,6 +14704,11 @@ Conflict: 4 months, 18 DEAD.
         </div>
 <div class="meta">
 Day after • 2026-07-21 19:51:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -14200,6 +14827,11 @@ President DONALD J. TRUMP
         </div>
 <div class="meta">
 Event day • 2026-07-22 12:56:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -14323,6 +14955,11 @@ Conflict: 4 months, 18 DEAD.
 <div class="meta">
 Day before • 2026-07-21 19:51:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -14421,6 +15058,11 @@ Nuclear Facil…
 <div class="meta">
 Day after • 2026-07-23 11:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -14513,6 +15155,11 @@ respon…
         </div>
 <div class="meta">
 Day after • 2026-07-23 12:16:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -14609,6 +15256,11 @@ TRU…
         </div>
 <div class="meta">
 Day after • 2026-07-23 22:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -14732,6 +15384,11 @@ with P…
 <div class="meta">
 Event day • 2026-07-24 15:15:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -14824,6 +15481,11 @@ Base Support Despite Iran Threats:
         </div>
 <div class="meta">
 Event day • 2026-07-24 17:01:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -14946,6 +15608,11 @@ Nuclear Facil…
 <div class="meta">
 Day before • 2026-07-23 11:52:00
 </div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
+</div>
 </summary>
 <div class="full">
 <p>
@@ -15038,6 +15705,11 @@ respon…
         </div>
 <div class="meta">
 Day before • 2026-07-23 12:16:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
@@ -15134,6 +15806,11 @@ TRU…
         </div>
 <div class="meta">
 Day before • 2026-07-23 22:04:00
+</div>
+<div class="read-more-cue">
+<span class="read-collapsed">Read full archived post ↓</span>
+<span class="read-expanded">Hide full post ↑</span>
+<small>Includes link to original Truth Social</small>
 </div>
 </summary>
 <div class="full">
