@@ -228,40 +228,33 @@ footer.footer {
 }
 </style>
 
+```{=html}
 <div class="column-screen" style="margin:0;">
-  <div id="network-visual-shell" class="network-visual-shell">
-
-    <div id="network-loader" class="network-loader" aria-live="polite">
-      <div class="loader-inner">
-        <div class="loader-network" aria-hidden="true">
-          <span class="loader-line one"></span>
-          <span class="loader-line two"></span>
-          <span class="loader-line three"></span>
-          <span class="loader-node center"></span>
-          <span class="loader-node left"></span>
-          <span class="loader-node right"></span>
-          <span class="loader-node top"></span>
-        </div>
-        <div>Building the congressional stock network…</div>
-      </div>
-    </div>
-
-    <iframe
-      id="congress-network-frame"
-      src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1"
-      title="Interactive Congressional Stock Trading Network"
-      loading="eager"
-      allowfullscreen>
-    </iframe>
-
-    <div class="network-quick-actions">
-      <a href="#methodology">Methodology ↓</a>
-      <a href="https://strokeofluck.github.io/congressional-stock-network-2025/" target="_blank" rel="noopener">Open full screen ↗</a>
-    </div>
-  </div>
+<div id="network-visual-shell" class="network-visual-shell">
+<div id="network-loader" class="network-loader" aria-live="polite">
+<div class="loader-inner">
+<div class="loader-network" aria-hidden="true">
+<span class="loader-line one"></span>
+<span class="loader-line two"></span>
+<span class="loader-line three"></span>
+<span class="loader-node center"></span>
+<span class="loader-node left"></span>
+<span class="loader-node right"></span>
+<span class="loader-node top"></span>
 </div>
+<div>Building the congressional stock network…</div>
+</div>
+</div>
+<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
+<div class="network-quick-actions">
+<a href="#methodology">Methodology ↓</a>
+<a href="https://strokeofluck.github.io/congressional-stock-network-2025/" target="_blank" rel="noopener">Open full screen ↗</a>
+</div>
+</div>
+</div>
+```
 
-<div id="methodology" class="network-writeup">
+::: {#methodology .network-writeup}
 
 # Congressional Stock Trading Network
 
@@ -309,7 +302,7 @@ The result combines public-records cleaning, network visualization, historical c
 
 The interactive build and analysis source are maintained in a **standalone repository** rather than inside the portfolio repository. That keeps the portfolio site lightweight and keeps the network's analysis and deployment history independent from the website.
 
-</div>
+:::
 
 <script>
 (function () {
