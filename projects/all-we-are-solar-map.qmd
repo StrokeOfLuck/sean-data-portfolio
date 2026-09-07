@@ -7,6 +7,8 @@ toc: true
 
 I built this interactive map for **All We Are**, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.
 
+> **Project status:** This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit's current installation data.
+
 ## Interactive map
 
 <div class="awa-map">
@@ -63,7 +65,7 @@ Visitors can:
 
 The project is a small **Mapbox GL JS + D3** application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.
 
-The spreadsheet remains the practical data source. Updating the map is intentionally simple: export the current sheet as CSV, replace the existing data file in the map repository, and redeploy through GitHub Pages.
+At the time of handoff, updates were made by exporting the organization's master sheet to CSV and replacing the data file used by the map. This repository now keeps that bundled CSV so the version I worked on remains reproducible even though I no longer maintain the live source spreadsheet.
 
 ## Why I like this project
 
