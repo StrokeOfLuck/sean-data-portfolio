@@ -60,17 +60,7 @@ body.network-project-app {
 }
 
 .network-project-nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 18px;
-  border-bottom: 1px solid #e1e4e8;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(10px);
+  display: none !important;
 }
 
 .network-project-title-block {
@@ -166,7 +156,7 @@ body.network-project-app {
 .network-visual-shell {
   position: relative;
   width: 100%;
-  height: calc(100dvh - 64px);
+  height: 100dvh;
   min-height: 0;
   margin: 0;
   padding: 0;
@@ -264,7 +254,7 @@ body.network-project-app {
 
 @media (max-width: 700px) {
   .network-visual-shell {
-    height: calc(100dvh - 58px);
+    height: 100dvh;
     min-height: 0;
   }
 
