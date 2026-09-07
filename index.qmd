@@ -28,21 +28,5 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 [View project →](projects/iran-timeline.qmd)
 
-### Visual AI & Internet Research
-
-**Digital methods · computer vision · online research**
-
-Research exploring visual AI and internet culture using computational methods.
-
-[View project →](projects/visual-ai.qmd)
-
-### Raleigh Micromobility
-
-**GIS · public data · reporting**
-
-Examining bikeshare, transportation infrastructure, and mobility using public data, mapping, and reporting.
-
-[View project →](projects/micromobility.qmd)
-
 :::
 
