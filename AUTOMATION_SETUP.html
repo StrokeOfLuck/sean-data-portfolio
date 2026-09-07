@@ -191,7 +191,7 @@ git push -u origin main</code></pre>
 <ul>
 <li>The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see <code>senate-ptr-scraper/.github/workflows/scrape.yml</code>).</li>
 <li>The site also rebuilds weekly on its own schedule as a fallback, and on every push to <code>main</code>, in addition to the dispatch trigger.</li>
-<li>House data (<code>data/house_ptr_transactions_web.csv</code>) is currently a <strong>manual snapshot</strong> copied from Google Drive — refresh it by re-copying when you have new House data, until/unless House scraping is automated the same way Senate is (a separate future project).</li>
+<li>House data is read directly from <code>house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv</code>. The deploy workflow checks out <code>house-ptr-scraper</code> before rendering, so the portfolio repo does not keep a second House CSV snapshot.</li>
 </ul>
 
 
