@@ -140,11 +140,18 @@
     "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe Colab notebook reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same."
   },
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Resume",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
     "section": "",
-    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#selected-work",
+    "href": "index.html#selected-work",
+    "title": "Sean Ryan",
+    "section": "Selected Work",
+    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\n2026\n\nDigital methods · text analysis · internet research\nCollaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →"
   },
   {
     "objectID": "about.html",
@@ -161,18 +168,46 @@
     "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume",
     "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology practitioner focused on political transparency, public records, and digital investigations. Uses Python, R, GIS, APIs, and network analysis to turn complex public data into accessible tools and visualizations. Interested in applying technical methods to accountability reporting and public interest investigations.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nDeveloped instructional materials for advanced manufacturing equipment\n\n\nTrained students on 3D printers, laser cutters, water jets, and CNC machines\n\n\nMaintained equipment and enforced shop safety protocols\n\n\n\n\n\n\nTeaching Assistant\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nProvided technical support and instruction for SolidWorks and graphic communications coursework\n\n\nHeld office hours and assisted with grading and project feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support, troubleshooting, monitored and maintained equipment (desktop and laptop, mobile devices, printers, etc.)\n\n\nResolved client tickets\n\n\nInstalled and configured application and operating system software and upgrades\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nVolunteer Mechanic / Program Lead\n\n\n2025 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nRepair and refurbish donated bicycles to expand affordable transportation access\n\n\nLead open shop sessions and coordinate volunteer workflow\n\n\nTrain volunteers in bicycle mechanics and shop safety\n\n\nSupport outreach initiatives and grant development efforts\n\n\n\n\n\n\nProjects\n\n\n\n\nPersonal Data Portfolio — This Website\n\n\n2026\n\n\n\n\nBuilt and maintain a Quarto-based portfolio site for data journalism, digital investigations, and civic technology work, including a resume page driven by structured YAML data and an automated GitHub Actions build/deploy pipeline\n\n\n\n\n\n\nAll We Are Solar Map — Nonprofit Infrastructure Visualization\n\n\n2026\n\n\n\n\nCreated an interactive web map displaying solar installations deployed by a nonprofit based in Raleigh in collaboration with Uganda to visualize community impact\n\n\n\n\n\n\nLyon Cycling Map — GPS Video Mapping Project\n\n\n2025\n\n\n\n\nBuilt an interactive map of cycling routes in Lyon, France using GPS coordinates extracted from GoPro footage\n\n\n\n\n\n\nClearHouse.live — Civic Transparency Platform\n\n\n2024\n\n\n\n\nCo-developed a public-facing platform that tracks and organizes U.S. politicians’ stock trades using official financial disclosures\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\n(exp) 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certificate\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS SolidWorks 3D Printing / CNC / Laser & Waterjet Cutting Technical Support & Troubleshooting NLP Network Analysis Data Visualization APIs\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
   },
   {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Sean Ryan",
-    "section": "Selected Work",
-    "text": "Selected Work\n\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\n2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\n2026\n\nDigital methods · text analysis · internet research\nCollaborative University of Amsterdam research project on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →"
+    "objectID": "projects/all-we-are-solar-map.html",
+    "href": "projects/all-we-are-solar-map.html",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "I built this interactive map for All We Are, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#interactive-map",
+    "href": "projects/all-we-are-solar-map.html#interactive-map",
+    "title": "All We Are Solar Map",
+    "section": "Interactive map",
+    "text": "Interactive map\n\n\n\n\nOpen the full interactive map ↗ · View the map repository on GitHub ↗"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#what-it-does",
+    "href": "projects/all-we-are-solar-map.html#what-it-does",
+    "title": "All We Are Solar Map",
+    "section": "What it does",
+    "text": "What it does\nThe map reads a CSV export from the project’s master spreadsheet and turns each installation site into an interactive geographic feature.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#how-it-works",
+    "href": "projects/all-we-are-solar-map.html#how-it-works",
+    "title": "All We Are Solar Map",
+    "section": "How it works",
+    "text": "How it works\nThe project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe spreadsheet remains the practical data source. Updating the map is intentionally simple: export the current sheet as CSV, replace the existing data file in the map repository, and redeploy through GitHub Pages."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "href": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "title": "All We Are Solar Map",
+    "section": "Why I like this project",
+    "text": "Why I like this project\nThis project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.\nIt also connects data visualization with nonprofit work directly. The map is not just a technical demo; it gives All We Are a way to show where its infrastructure projects are located and what those sites represent."
   },
   {
     "objectID": "projects/lyon-cycling-map.html",
