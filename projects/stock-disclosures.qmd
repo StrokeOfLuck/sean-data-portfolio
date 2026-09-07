@@ -765,6 +765,8 @@ ptr_prepared <- ptr |>
 
 This project turns official U.S. House **Periodic Transaction Report (PTR)** disclosures into structured transaction data that can be searched and analyzed.
 
+> **Coverage note:** The pipeline currently handles the majority of born-digital House PTRs. A smaller set of image-based filings, including typed scans and handwritten disclosures, still need a separate OCR/VLM workflow and are a work in progress.
+
 
 ## Featured PTR
 
