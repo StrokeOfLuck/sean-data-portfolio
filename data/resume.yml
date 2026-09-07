@@ -14,11 +14,10 @@ contact:
   github: "https://github.com/StrokeOfLuck"
 
 summary: >
-  Data journalism and civic technology practitioner building public-interest tools for
-  political transparency and digital investigations. Uses Python, R, GIS, APIs, and
-  computational text and network analysis to turn messy public records and online data
-  into searchable datasets, visualizations, and investigative workflows. Focus areas
-  include politician financial disclosures, political rhetoric, and accountability reporting.
+  Data journalism and civic technology practitioner using public records, computational
+  methods, and visualization to investigate politics, technology, and public institutions.
+  Builds searchable datasets, interactive tools, and investigative workflows with Python,
+  R, GIS, APIs, and text and network analysis.
   
 experience:
   - title: "Fabrication Lab / Maker Space Technician"
