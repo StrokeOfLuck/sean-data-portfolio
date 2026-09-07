@@ -9,6 +9,46 @@ TankieTube was a collaborative research project from the University of Amsterdam
 
 I worked on the **Tenet/Rumble comparison**, which became one of my first hands-on introductions to using Google Colab, working through very large text datasets, and using computational methods to explore a question that started mostly from curiosity.
 
+## Project poster
+
+I also helped create the team's final project poster.
+
+<div class="tankie-poster">
+<iframe
+  src="https://drive.google.com/file/d/1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk/preview"
+  title="TankieTube project poster"
+  loading="lazy"
+  allow="autoplay">
+</iframe>
+</div>
+
+[Open the poster in Google Drive ↗](https://drive.google.com/file/d/1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk/view?usp=sharing)
+
+<style>
+.tankie-poster {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1rem 0 0.65rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.tankie-poster iframe {
+  display: block;
+  width: 100%;
+  height: min(78vh, 820px);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .tankie-poster iframe {
+    height: 560px;
+  }
+}
+</style>
+
 ## My contribution: Tenet/Rumble comparison
 
 I wanted to see whether language in the TankieTube transcript corpus overlapped with a very different political media ecosystem. I found a public dataset of **560 Tenet Media videos published on Rumble**, including transcripts, and used it as a comparison corpus.
