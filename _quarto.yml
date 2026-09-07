@@ -1,5 +1,9 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "!projects/assets/"
 
 website:
   title: "Sean Ryan"

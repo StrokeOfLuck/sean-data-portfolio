@@ -16,7 +16,21 @@ Two sources are aligned by date:
 
 For each UCDP event, a **1-day event window** (day before / day of / day after, in Eastern time) is built around it, and any Iran-related Trump posts falling in that window are attached. This produces 393 unique event-dates with matched posts, spanning 543 underlying UCDP event records.
 
-Each event-date is also assigned a **significance level** (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded "Major" based on same-day death tolls in the dozens to low hundreds.
+Each event-date is also assigned a **significance level** (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded "Major" based on same-day death tolls in the dozens to low hundreds. The exact rule is below.
+
+## Significance levels
+
+The central event circle and the clickable bottom timeline in the visualization are both sized and colored by this classification, derived directly from the UCDP event workbook:
+
+<ul>
+<li><span style="display:inline-block;width:15px;height:15px;border-radius:50%;background:#9a4949;margin-right:8px;vertical-align:middle;"></span><strong>Major:</strong> same-day best death estimate ≥ 25, or same-day civilian deaths ≥ 10.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9a6b43;margin-right:8px;vertical-align:middle;"></span><strong>High:</strong> same-day best estimate ≥ 10, or at least 3 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#567a9c;margin-right:8px;vertical-align:middle;"></span><strong>Notable:</strong> same-day best estimate ≥ 5, or at least 2 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8a96a3;margin-right:8px;vertical-align:middle;"></span><strong>Standard:</strong> another same-day UCDP event date.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:white;box-shadow:inset 0 0 0 2px #84759a;margin-right:8px;vertical-align:middle;"></span><strong>Context:</strong> a multi-day record begins on that date, but there is no same-day fatality record to assign to that specific date.</li>
+</ul>
+
+The intent is to visually emphasize dates with more substantial same-day UCDP activity, without assigning an entire multi-day fatality total to the first day of a long record.
 
 ## Approach
 
@@ -32,7 +46,9 @@ Each event-date is also assigned a **significance level** (Standard, Notable, Hi
 
 ## Results
 
-<div style="margin: 1.5rem 0;">
+<p><a href="assets/political-text-analysis/trump-iran-connected-timeline.html" target="_blank" rel="noopener noreferrer">Open the timeline in its own full-width page ↗</a> — recommended on desktop, since the embed below is narrower than the page it's showing and falls back to the mobile layout.</p>
+
+<div class="column-page" style="margin: 1.5rem 0;">
 <iframe
   src="assets/political-text-analysis/trump-iran-connected-timeline.html"
   style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;"
@@ -40,7 +56,7 @@ Each event-date is also assigned a **significance level** (Standard, Notable, Hi
 </iframe>
 </div>
 
-The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire scores, plus a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. Note the diagram is a horizontal, one-card-at-a-time scroll — it works but isn't ideal on narrow/mobile screens; that's a known layout limitation to revisit in a later pass, separate from the underlying data or analysis.
+The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire scores, plus a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.
 
 ## Limitations
 
@@ -52,4 +68,8 @@ The interactive timeline above shows, for each UCDP event, the surrounding Trump
 
 ## Links
 
-[Code](https://github.com/StrokeOfLuck/sean-data-portfolio)
+[Open in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/sean-data-portfolio/blob/main/projects/assets/political-text-analysis/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb): the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above (requires the files to be pushed to GitHub first).
+
+[Download the notebook](assets/political-text-analysis/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)
+
+[Site source (GitHub)](https://github.com/StrokeOfLuck/sean-data-portfolio)
