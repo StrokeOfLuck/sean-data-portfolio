@@ -1,0 +1,59 @@
+---
+title: "Congressional Stock Trading Network"
+subtitle: "2025 U.S. House stock purchases, committees, and subcommittees"
+toc: true
+---
+
+An interactive network connecting **reported 2025 House public-stock purchases** to politicians, companies, committees, and subcommittees.
+
+The project grew out of my work cleaning congressional financial-disclosure data and is designed as an exploratory tool for finding relationships worth checking against original Periodic Transaction Reports and committee records.
+
+## What it does
+
+The opening graph focuses on stocks purchased by at least **two different politicians**, making shared holdings easier to see without treating the display filter as a data-quality rule.
+
+Users can:
+
+- search politicians, stocks, committees, and subcommittees;
+- inspect the original PTR purchase records behind a stock;
+- open committee and subcommittee drawers;
+- see members with matched purchases alongside members with no accepted purchase found;
+- export institution-level CSV summaries;
+- copy links to selected drill-down states;
+- compare the graph with a broader House coverage panel.
+
+## Transaction-date committee matching
+
+Committee assignments are not treated as one fixed roster for the whole year.
+
+The project uses pinned historical snapshots from the `unitedstates/congress-legislators` dataset and matches committee membership to the transaction date.
+
+- **Jan. 1–2, 2025:** Dec. 17, 2024 snapshot, because those dates are still in the 118th Congress.
+- **Jan. 3–20, 2025:** Jan. 21, 2025, the first usable House committee snapshot for the 119th Congress.
+- **Jan. 21 onward:** latest available snapshot on or before the transaction date.
+
+A missing committee match does **not** remove a stock purchase. Committee data are added after the accepted stock-purchase dataset is created.
+
+## Coverage checks
+
+The project also compares accepted purchasers with the 119th-Congress House roster.
+
+That separates:
+
+1. politicians in the main shared-stock graph;
+2. accepted purchasers hidden only because none of their tickers pass the 2+ politician display rule;
+3. House members for whom the project found no accepted 2025 public-stock purchase.
+
+The third group is a **coverage-review category**, not proof that someone did not trade.
+
+## Why I built it
+
+I wanted a way to move beyond a flat disclosure table and explore how reported stock purchases intersect with congressional institutions.
+
+The result combines public-records cleaning, network visualization, historical committee metadata, and reproducibility checks in one interactive project.
+
+## Related work
+
+[View the underlying Politician Stock Disclosures project →](stock-disclosures.qmd)
+
+The interactive build and analysis source are maintained in a **standalone project repository** rather than inside this portfolio repository.
