@@ -217,11 +217,18 @@
     "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application."
   },
   {
+    "objectID": "projects/clearhouse.html#live-site-preview",
+    "href": "projects/clearhouse.html#live-site-preview",
+    "title": "ClearHouse.live",
+    "section": "Live site preview",
+    "text": "Live site preview\n\n\n\n\nOpen ClearHouse.live ↗"
+  },
+  {
     "objectID": "projects/clearhouse.html#what-we-built",
     "href": "projects/clearhouse.html#what-we-built",
     "title": "ClearHouse.live",
     "section": "What we built",
-    "text": "What we built\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.\nOpen ClearHouse.live ↗"
+    "text": "What we built\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform."
   },
   {
     "objectID": "projects/clearhouse.html#what-i-learned",

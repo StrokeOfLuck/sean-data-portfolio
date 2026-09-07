@@ -131,7 +131,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-we-built" id="toc-what-we-built" class="nav-link active" data-scroll-target="#what-we-built">What we built</a></li>
+  <li><a href="#live-site-preview" id="toc-live-site-preview" class="nav-link active" data-scroll-target="#live-site-preview">Live site preview</a></li>
+  <li><a href="#what-we-built" id="toc-what-we-built" class="nav-link" data-scroll-target="#what-we-built">What we built</a></li>
   <li><a href="#what-i-learned" id="toc-what-i-learned" class="nav-link" data-scroll-target="#what-i-learned">What I learned</a></li>
   <li><a href="#technical-stack" id="toc-technical-stack" class="nav-link" data-scroll-target="#technical-stack">Technical stack</a></li>
   <li><a href="#why-it-mattered-to-me" id="toc-why-it-mattered-to-me" class="nav-link" data-scroll-target="#why-it-mattered-to-me">Why it mattered to me</a></li>
@@ -163,10 +164,43 @@ ul.task-list li input[type="checkbox"] {
 
 <p>ClearHouse.live was a <strong>collaborative winter project</strong> built to make U.S. politicians’ financial disclosures easier to search and understand.</p>
 <p>It was also my introduction to <strong>web scraping, public-records data collection, and building a data-backed web application</strong>.</p>
+<section id="live-site-preview" class="level2">
+<h2 class="anchored" data-anchor-id="live-site-preview">Live site preview</h2>
+<div class="clearhouse-preview">
+<iframe src="https://clearhouse.live" title="Live preview of ClearHouse.live" loading="lazy">
+</iframe>
+</div>
+<p><a href="https://clearhouse.live">Open ClearHouse.live ↗</a></p>
+<style>
+.clearhouse-preview {
+  position: relative;
+  left: 50%;
+  width: min(94vw, 1200px);
+  transform: translateX(-50%);
+  margin: 1rem 0 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.clearhouse-preview iframe {
+  display: block;
+  width: 100%;
+  height: min(68vh, 720px);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .clearhouse-preview iframe {
+    height: 520px;
+  }
+}
+</style>
+</section>
 <section id="what-we-built" class="level2">
 <h2 class="anchored" data-anchor-id="what-we-built">What we built</h2>
 <p>The site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.</p>
-<p><a href="https://clearhouse.live">Open ClearHouse.live ↗</a></p>
 </section>
 <section id="what-i-learned" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-learned">What I learned</h2>
