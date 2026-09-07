@@ -33,12 +33,12 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 <style>
 .tankie-poster {
   width: 100%;
-  aspect-ratio: 210 / 297;
+  aspect-ratio: 4 / 5;
   margin: 1rem 0 0.65rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
   overflow: hidden;
-  background: #f8f9fa;
+  background: #202124;
 }
 
 .tankie-poster iframe {
@@ -50,7 +50,7 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 
 @media (max-width: 700px) {
   .tankie-poster {
-    aspect-ratio: 210 / 297;
+    aspect-ratio: 4 / 5;
     border-radius: 8px;
   }
 }
