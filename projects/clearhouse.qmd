@@ -45,7 +45,7 @@ It was also my introduction to **web scraping, public-records data collection, a
 <div class="clearhouse-preview">
 <a href="https://clearhouse.live" aria-label="Open ClearHouse.live">
 <img
-  src="assets/clearhouse/clearhouse-live-cropped.png"
+  src="assets/clearhouse/clearhouse-live-tight.webp"
   alt="ClearHouse.live interface showing searchable U.S. politician stock-trading disclosures on September 7, 2026">
 </a>
 </div>
