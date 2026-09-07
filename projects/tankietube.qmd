@@ -61,10 +61,14 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 
 I found a public dataset of **560 Tenet Media videos on Rumble** and compared its transcripts with the much larger Tankie corpus.
 
+::: {.callout-important title="What this comparison does not show"}
+This is an exploratory text-similarity analysis. Similar language does **not** demonstrate coordination, ideological equivalence, causation, or support for "horseshoe theory." The analysis instead looks for places where speakers with very different political motivations arrive at overlapping rhetoric, framings, or conclusions.
+:::
+
 - **TF-IDF** surfaced important words shared across both datasets.
 - "Israel" became a focus, and a **sentence-similarity matcher** paired Tenet quotes with the closest Tankie quotes.
 
-The goal was exploratory: find rhetorical overlap that would be hard to spot manually, not prove coordination.
+The goal was to identify rhetorical convergence that would be difficult to spot manually, including cases where different ideological reasoning produced similar framings or conclusions.
 
 ## What the team found
 
