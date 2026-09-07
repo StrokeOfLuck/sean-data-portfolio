@@ -235,7 +235,7 @@
     "href": "projects/political-text-analysis.html#links",
     "title": "Political Text Analysis",
     "section": "Links",
-    "text": "Links\nOpen in Colab ↗: the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above (requires the files to be pushed to GitHub first).\nDownload the notebook\nSite source (GitHub)"
+    "text": "Links\nOpen in Colab ↗: the notebook that builds the event windows, runs the zero-shot classifier, and renders the timeline above.\nAnalysis repo (GitHub): the notebook, source data, and README live here, separate from the portfolio site’s own repo.\nSite source (GitHub)"
   },
   {
     "objectID": "projects/stock-disclosures.html",
