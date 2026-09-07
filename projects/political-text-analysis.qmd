@@ -131,9 +131,10 @@ description: "Computational analysis of political rhetoric around real-world eve
   font-weight: 800;
 }
 
-/* Use one in-flow sticky Quarto header on this page. Disabling Headroom's
-   fixed/translate behavior avoids the duplicate/ghost navbar seen while
-   scrolling and while the search overlay is open. */
+/* Keep the methodology page header completely in normal document flow.
+   Some mobile browsers can leave a composited ghost of Quarto's fixed/
+   Headroom navbar, which looks like a second menu. Making the header static
+   avoids that rendering path entirely. */
 body.nav-fixed {
   padding-top: 0 !important;
 }
@@ -142,13 +143,13 @@ body.nav-fixed {
 #quarto-header.headroom,
 #quarto-header.headroom--pinned,
 #quarto-header.headroom--unpinned {
-  position: sticky !important;
-  top: 0 !important;
+  position: static !important;
+  top: auto !important;
   transform: none !important;
   transition: none !important;
 }
 #quarto-header {
-  z-index: 1030 !important;
+  z-index: auto !important;
 }
 
 @media (max-width: 991.98px) {
@@ -166,16 +167,22 @@ body.nav-fixed {
 <script>
 (function disablePoliticalMethodologyHeadroom() {
   function normalizeHeader() {
+    document.body.classList.remove("nav-fixed");
     const header = document.getElementById("quarto-header");
     if (!header) return;
-    header.classList.remove("headroom--pinned", "headroom--unpinned");
-    header.style.setProperty("position", "sticky", "important");
-    header.style.setProperty("top", "0", "important");
+    header.classList.remove(
+      "fixed-top",
+      "headroom",
+      "headroom--pinned",
+      "headroom--unpinned"
+    );
+    header.style.setProperty("position", "static", "important");
+    header.style.setProperty("top", "auto", "important");
     header.style.setProperty("transform", "none", "important");
+    header.style.setProperty("transition", "none", "important");
   }
   document.addEventListener("DOMContentLoaded", normalizeHeader);
   window.addEventListener("load", normalizeHeader);
-  window.addEventListener("scroll", normalizeHeader, { passive: true });
 })();
 </script>
 
