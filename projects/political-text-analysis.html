@@ -239,23 +239,11 @@ ul.task-list li input[type="checkbox"] {
 .truth-category-badge.ceasefire { background: var(--ceasefire); }
 .truth-category-badge.blame { background: var(--blame); }
 .truth-category-badge.media { background: var(--media); }
-.truth-category-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 8px;
-}
-.truth-category-row .truth-category-badge {
-  margin-bottom: 0;
-}
 .truth-example-topscore {
   margin-left: 8px;
   font-size: 0.78rem;
   font-weight: 700;
   opacity: 0.7;
-}
-.truth-example-topscore-shared {
-  margin: 0 0 10px;
 }
 .truth-example-fulltext {
   margin: 4px 0 12px;
@@ -306,10 +294,9 @@ ul.task-list li input[type="checkbox"] {
   font-weight: 800;
 }
 
-/* Keep the methodology page header completely in normal document flow.
-   Some mobile browsers can leave a composited ghost of Quarto's fixed/
-   Headroom navbar, which looks like a second menu. Making the header static
-   avoids that rendering path entirely. */
+/* Use one in-flow sticky Quarto header on this page. Disabling Headroom's
+   fixed/translate behavior avoids the duplicate/ghost navbar seen while
+   scrolling and while the search overlay is open. */
 body.nav-fixed {
   padding-top: 0 !important;
 }
@@ -318,13 +305,13 @@ body.nav-fixed {
 #quarto-header.headroom,
 #quarto-header.headroom--pinned,
 #quarto-header.headroom--unpinned {
-  position: static !important;
-  top: auto !important;
+  position: sticky !important;
+  top: 0 !important;
   transform: none !important;
   transition: none !important;
 }
 #quarto-header {
-  z-index: auto !important;
+  z-index: 1030 !important;
 }
 
 @media (max-width: 991.98px) {
@@ -341,22 +328,16 @@ body.nav-fixed {
 <script>
 (function disablePoliticalMethodologyHeadroom() {
   function normalizeHeader() {
-    document.body.classList.remove("nav-fixed");
     const header = document.getElementById("quarto-header");
     if (!header) return;
-    header.classList.remove(
-      "fixed-top",
-      "headroom",
-      "headroom--pinned",
-      "headroom--unpinned"
-    );
-    header.style.setProperty("position", "static", "important");
-    header.style.setProperty("top", "auto", "important");
+    header.classList.remove("headroom--pinned", "headroom--unpinned");
+    header.style.setProperty("position", "sticky", "important");
+    header.style.setProperty("top", "0", "important");
     header.style.setProperty("transform", "none", "important");
-    header.style.setProperty("transition", "none", "important");
   }
   document.addEventListener("DOMContentLoaded", normalizeHeader);
   window.addEventListener("load", normalizeHeader);
+  window.addEventListener("scroll", normalizeHeader, { passive: true });
 })();
 </script>
 <section id="question" class="level2">
@@ -512,11 +493,6 @@ body.nav-fixed {
 <section id="diplomacy" class="level3">
 <h3 class="anchored" data-anchor-id="diplomacy">Diplomacy</h3>
 <p>Diplomacy, negotiations, talks, deals, conditions, agreements, or communication with Iran or allied governments.</p>
-</section>
-<section id="ceasefire-ending" class="level3">
-<h3 class="anchored" data-anchor-id="ceasefire-ending">Ceasefire / Ending</h3>
-<p>A ceasefire, stopping military operations, ending the conflict, pausing attacks, or declaring the fighting essentially finished.</p>
-<p>This same post is the highest-scoring example for both categories, which shows why the model is treated as multi-label rather than forcing each post into only one category.</p>
 <div class="truth-example-card">
 <div class="truth-example-summary">
   <div class="truth-example-head">
@@ -526,13 +502,57 @@ body.nav-fixed {
       <div class="truth-example-handle">@realDonaldTrump</div>
     </div>
   </div>
-  <div class="truth-category-row">
-    <span class="truth-category-badge diplomacy">Diplomacy</span>
-    <span class="truth-category-badge ceasefire">Ceasefire / Ending</span>
+  <span class="truth-category-badge diplomacy">Diplomacy</span><span class="truth-example-topscore">Highest Diplomacy score: 0.9627</span>
+  <div class="truth-example-fulltext">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP</div>
+  <div class="truth-example-scores">
+<div class="truth-example-score">
+  <span>Threat</span>
+  <span class="truth-example-track"><span class="truth-example-fill threat" style="width:60.8%"></span></span>
+  <strong>0.61</strong>
+</div>
+<div class="truth-example-score">
+  <span>Victory</span>
+  <span class="truth-example-track"><span class="truth-example-fill victory" style="width:97.0%"></span></span>
+  <strong>0.97</strong>
+</div>
+<div class="truth-example-score">
+  <span>Diplomacy</span>
+  <span class="truth-example-track"><span class="truth-example-fill diplomacy" style="width:96.3%"></span></span>
+  <strong>0.96</strong>
+</div>
+<div class="truth-example-score">
+  <span>Ceasefire</span>
+  <span class="truth-example-track"><span class="truth-example-fill ceasefire" style="width:99.4%"></span></span>
+  <strong>0.99</strong>
+</div>
+<div class="truth-example-score">
+  <span>Blame Allies</span>
+  <span class="truth-example-track"><span class="truth-example-fill blame" style="width:3.7%"></span></span>
+  <strong>0.04</strong>
+</div>
+<div class="truth-example-score">
+  <span>Media Criticism</span>
+  <span class="truth-example-track"><span class="truth-example-fill media" style="width:55.6%"></span></span>
+  <strong>0.56</strong>
+</div>
   </div>
-  <div class="truth-example-topscore truth-example-topscore-shared">
-    Highest Diplomacy score: 0.9627 &nbsp;•&nbsp; Highest Ceasefire / Ending score: 0.9935
+</div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+</div>
+</section>
+<section id="ceasefire-ending" class="level3">
+<h3 class="anchored" data-anchor-id="ceasefire-ending">Ceasefire / Ending</h3>
+<p>A ceasefire, stopping military operations, ending the conflict, pausing attacks, or declaring the fighting essentially finished.</p>
+<div class="truth-example-card">
+<div class="truth-example-summary">
+  <div class="truth-example-head">
+    <div class="truth-example-avatar">DJT</div>
+    <div>
+      <div class="truth-example-name">Donald J. Trump</div>
+      <div class="truth-example-handle">@realDonaldTrump</div>
+    </div>
   </div>
+  <span class="truth-category-badge ceasefire">Ceasefire / Ending</span><span class="truth-example-topscore">Highest Ceasefire / Ending score: 0.9935</span>
   <div class="truth-example-fulltext">Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks. This will be a double sided CEASEFIRE! The reason for doing so is that we have already met and exceeded all Military objectives, and are very far along with a definitive Agreement concerning Longterm PEACE with Iran, and PEACE in the Middle East. We received a 10 point proposal from Iran, and believe it is a workable basis on which to negotiate. Almost all of the various points of past contention have been agreed to between the United States and Iran, but a two week period will allow the Agreement to be finalized and consummated. On behalf of the United States of America, as President, and also representing the Countries of the Middle East, it is an Honor to have this Longterm problem close to resolution. Thank you for your attention to this matter! President DONALD J. TRUMP</div>
   <div class="truth-example-scores">
 <div class="truth-example-score">
