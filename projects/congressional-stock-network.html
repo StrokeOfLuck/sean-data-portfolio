@@ -221,7 +221,7 @@ footer.footer {
   height: 13px;
   border-radius: 50%;
   box-shadow: 0 0 0 4px rgba(255,255,255,0.8);
-  animation: networkPulse 1.4s ease-in-out infinite;
+  animation: networkPulse 1.8s ease-in-out infinite;
 }
 
 .loader-node.center {
@@ -368,7 +368,7 @@ footer.footer {
 <span class="loader-node right"></span>
 <span class="loader-node top"></span>
 </div>
-<div>Building the congressional stock network…</div>
+<div id="network-loader-message">Loading congressional stock data…</div>
 </div>
 </div>
 <iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen=""></iframe>
@@ -425,29 +425,55 @@ An interactive network connecting <strong>reported 2025 House public-stock purch
 (function () {
   const shell = document.getElementById("network-visual-shell");
   const frame = document.getElementById("congress-network-frame");
+  const message = document.getElementById("network-loader-message");
 
   if (!shell || !frame) return;
 
   let finished = false;
+  const startedAt = performance.now();
+  const minimumLoaderMs = 1200;
 
   function revealNetwork() {
     if (finished) return;
     finished = true;
 
+    const elapsed = performance.now() - startedAt;
+    const remaining = Math.max(0, minimumLoaderMs - elapsed);
+
     window.setTimeout(function () {
       shell.classList.add("is-loaded");
-    }, 350);
+    }, remaining);
   }
 
-  frame.addEventListener("load", revealNetwork);
+  frame.addEventListener("load", function () {
+    if (message) {
+      message.textContent = "Arranging politicians, stocks, and committees…";
+    }
+  });
 
-  /* If the browser restores the frame from cache before this listener is
-     attached, still reveal it after a short safety window. */
-  window.setTimeout(function () {
-    if (!finished) {
+  window.addEventListener("message", function (event) {
+    if (event.origin !== window.location.origin) return;
+
+    if (
+      event.data &&
+      event.data.type === "congress-network-ready"
+    ) {
+      if (message) {
+        message.textContent = "Network ready";
+      }
       revealNetwork();
     }
-  }, 12000);
+  });
+
+  /* Safety fallback in case a browser suppresses the ready message. */
+  window.setTimeout(function () {
+    if (!finished) {
+      if (message) {
+        message.textContent = "Opening network…";
+      }
+      revealNetwork();
+    }
+  }, 20000);
 })();
 </script>
 
