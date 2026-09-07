@@ -5,7 +5,7 @@ description: "Computational analysis of political rhetoric around real-world eve
 
 ## Question
 
-When real-world violence escalates or de-escalates in the Iran conflict, does Donald Trump's rhetoric on Truth Social shift in predictable ways — toward more threatening or victorious language before/during high-fatality events, and toward more diplomatic or ceasefire-oriented language afterward?
+In the day before a US-Israeli strike on Iran, does Donald Trump's Truth Social rhetoric telegraph the coming action — through elevated threat language, or by naming targets outright — rather than only reacting to it afterward?
 
 ## Data
 
@@ -23,11 +23,11 @@ Each event-date is also assigned a **significance level** (Standard, Notable, Hi
 The central event circle and the clickable bottom timeline in the visualization are both sized and colored by this classification, derived directly from the UCDP event workbook:
 
 <ul>
-<li><span style="display:inline-block;width:15px;height:15px;border-radius:50%;background:#9a4949;margin-right:8px;vertical-align:middle;"></span><strong>Major:</strong> same-day best death estimate ≥ 25, or same-day civilian deaths ≥ 10.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9a6b43;margin-right:8px;vertical-align:middle;"></span><strong>High:</strong> same-day best estimate ≥ 10, or at least 3 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8a96a3;margin-right:8px;vertical-align:middle;"></span><strong>Minor:</strong> another same-day UCDP event date.</li>
 <li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#567a9c;margin-right:8px;vertical-align:middle;"></span><strong>Notable:</strong> same-day best estimate ≥ 5, or at least 2 same-day UCDP records.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8a96a3;margin-right:8px;vertical-align:middle;"></span><strong>Standard:</strong> another same-day UCDP event date.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:white;box-shadow:inset 0 0 0 2px #84759a;margin-right:8px;vertical-align:middle;"></span><strong>Context:</strong> a multi-day record begins on that date, but there is no same-day fatality record to assign to that specific date.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9a6b43;margin-right:8px;vertical-align:middle;"></span><strong>High:</strong> same-day best estimate ≥ 10, or at least 3 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:15px;height:15px;border-radius:50%;background:#9a4949;margin-right:8px;vertical-align:middle;"></span><strong>Major:</strong> same-day best death estimate ≥ 25, or same-day civilian deaths ≥ 10.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:white;box-shadow:inset 0 0 0 2px #84759a;margin-right:8px;vertical-align:middle;"></span><strong>Multi-day Event:</strong> a multi-day record begins on that date, but there is no same-day fatality record to assign to that specific date.</li>
 </ul>
 
 The intent is to visually emphasize dates with more substantial same-day UCDP activity, without assigning an entire multi-day fatality total to the first day of a long record.
@@ -36,9 +36,9 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 
 1. **Collect** Trump's Truth Social posts (Hugging Face archive) and UCDP's Iran-conflict event records (filtered Excel export), both refreshed periodically as new data becomes available.
 2. **Window** the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.
-3. **Score rhetoric with zero-shot classification.** A Hugging Face multi-label zero-shot classifier scores each post's `content_text` — and only the text, never the UCDP metadata — against four labels: **Threat, Victory, Diplomacy, and Ceasefire/Ending**, each a continuous 0–1 probability.
+3. **Score rhetoric with zero-shot classification.** A Hugging Face multi-label zero-shot classifier (`facebook/bart-large-mnli`) scores each post's `content_text` — and only the text, never the UCDP metadata — against six labels: **Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism**, each a continuous 0–1 probability.
 4. **Aggregate event-balanced means.** Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn't dominate the pattern.
-5. **Visualize** the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their four rhetorical scores branching around it.
+5. **Visualize** the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant frame as a small colored badge.
 
 ## Methods
 
@@ -56,14 +56,18 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 </iframe>
 </div>
 
-The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire scores, plus a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.
+The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post's single dominant frame), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.
+
+**The clearest evidence for telegraphing:** average Threat language is actually *higher the day before* a UCDP event (0.55) than on the event day itself (0.52) or the day after (0.48). It's also visible in individual posts — in the day before the April 6 event (34 killed in strikes on Iran's Guards intelligence chief and a university), Trump wrote: *"Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!!"* — naming the target categories before further strikes happened.
+
+**Blame Allies** and **Media Criticism** were added as later passes after the first four labels. Blame Allies (criticizing NATO/European allies for not helping) is low overall but ticks up on the event day (0.13) versus the day before (0.07) and day after (0.11). Media Criticism (attacking press coverage as biased or fake) varies a lot post-to-post (from near 0 to near 1) but doesn't move much across the three windows (0.34–0.35 throughout) — a real, variable signal at the post level that just isn't specifically tied to event timing. (A different sixth label, Self-Credit, was tried and dropped earlier — it scored near-ceiling on almost every post regardless of timing, which made it more a constant feature of the voice than a useful signal.)
 
 ## Limitations
 
-- **Small sample.** 103 posts were actually scored (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader's rhetoric during one specific conflict, not a generalizable claim.
+- **Small sample.** 87 unique posts are scored across the 26 events shown here (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader's rhetoric during one specific conflict, not a generalizable claim.
 - **Zero-shot labels are heuristic.** The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model's association between text and label names, not a validated measure of intent or sentiment.
 - **UCDP's fatality-based inclusion criterion** means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn't involve violence — so "no nearby UCDP event" doesn't mean "nothing happened."
-- **Correlational, not causal.** Matching rhetoric to nearby events shows co-occurrence, not that either caused the other — Trump may be reacting to the same news coverage the event is drawn from, rather than reacting to the event's severity per se.
+- **No counterfactual baseline.** This only looks at posts already inside event windows — it doesn't compare day-before Threat language ahead of strikes against day-before Threat language on dates where no strike ultimately happened. Without that comparison, elevated day-before Threat could reflect genuine advance signaling, or it could just be Trump's ordinary baseline level of threatening rhetoric during an active conflict, which happens to precede strikes only because strikes were frequent during this period.
 - Both the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester.
 
 ## Links

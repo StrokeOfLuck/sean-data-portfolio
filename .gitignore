@@ -3,3 +3,4 @@
 /.vscode/
 
 **/*.quarto_ipynb
+server.log
