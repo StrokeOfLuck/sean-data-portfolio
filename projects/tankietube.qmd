@@ -2,6 +2,13 @@
 title: "TankieTube"
 subtitle: "University of Amsterdam Digital Methods Summer School · June 29–July 3, 2026"
 toc: true
+format:
+  html:
+    toc: true
+    grid:
+      body-width: 980px
+      margin-width: 190px
+      gutter-width: 1.25rem
 ---
 
 TankieTube was a **five-day collaborative research sprint** at the University of Amsterdam. Our team compared "natively digital" Marxist-Leninist YouTube creators with formal political organizations.
@@ -25,11 +32,8 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 
 <style>
 .tankie-poster {
-  position: relative;
-  left: 50%;
-  width: min(92vw, 980px);
-  aspect-ratio: 7 / 8;
-  transform: translateX(-50%);
+  width: 100%;
+  aspect-ratio: 210 / 297;
   margin: 1rem 0 0.65rem;
   border: 1px solid rgba(127, 127, 127, 0.28);
   border-radius: 10px;
@@ -46,8 +50,8 @@ My part focused on the **Tenet/Rumble comparison**, and I also helped make the f
 
 @media (max-width: 700px) {
   .tankie-poster {
-    width: 96vw;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 210 / 297;
+    border-radius: 8px;
   }
 }
 </style>
