@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
@@ -149,15 +149,32 @@ footer.footer {
 #quarto-content,
 main.content,
 .page-columns {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
+  overflow: hidden !important;
 }
 
 html.network-project-app,
 body.network-project-app {
+  width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
+}
+
+.network-project-root {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .network-project-nav {
@@ -371,7 +388,7 @@ body.network-project-app {
 
 }
 </style>
-<div class="column-screen" style="margin:0;">
+<div class="network-project-root">
 <div class="network-project-nav" aria-label="Project sections">
 <div class="network-project-title-block">
 <span class="network-project-brand">2025 Congressional Stock Trading Networks</span>
@@ -413,6 +430,8 @@ body.network-project-app {
 
   document.documentElement.classList.add("network-project-app");
   document.body.classList.add("network-project-app");
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
 
   function fitShellToViewport() {
     const shellTop = Math.max(0, shell.getBoundingClientRect().top);
