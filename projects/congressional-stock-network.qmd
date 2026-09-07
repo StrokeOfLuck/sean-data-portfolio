@@ -29,12 +29,38 @@ footer.footer {
   backdrop-filter: blur(10px);
 }
 
+.network-project-home {
+  min-width: 0;
+  max-width: min(820px, 68vw);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.network-project-home:hover .network-project-brand {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .network-project-brand {
+  display: block;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: -0.02em;
   white-space: nowrap;
+}
+
+.network-project-subtitle {
+  display: block;
+  margin-top: 3px;
+  color: #666d76;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
 }
 
 .network-project-tabs {
@@ -73,10 +99,18 @@ footer.footer {
     padding: 12px 14px 10px;
   }
 
-  .network-project-brand {
+  .network-project-home {
+    max-width: none;
     margin-bottom: 10px;
+  }
+
+  .network-project-brand {
     font-size: 18px;
     white-space: normal;
+  }
+
+  .network-project-subtitle {
+    font-size: 11px;
   }
 
   .network-project-tabs {
@@ -291,9 +325,11 @@ footer.footer {
 ```{=html}
 <div class="column-screen" style="margin:0;">
 <div class="network-project-nav" aria-label="Project sections">
-<div class="network-project-brand">2025 Congressional Stock Trading Networks</div>
+<button class="network-project-home" type="button" data-network-page="explore" aria-label="Show network">
+<span class="network-project-brand">2025 Congressional Stock Trading Networks</span>
+<span class="network-project-subtitle">Explore reported 2025 House stock purchases across politicians, companies, committees, and subcommittees.</span>
+</button>
 <div class="network-project-tabs">
-<button class="network-project-tab is-active" type="button" data-network-page="explore">Explore</button>
 <button class="network-project-tab" type="button" data-network-page="about">About</button>
 <button class="network-project-tab" type="button" data-network-page="methodology">Methodology</button>
 <button class="network-project-tab" type="button" data-network-page="class">Class Report</button>
