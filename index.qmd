@@ -46,6 +46,17 @@ Collaborative University of Amsterdam research project on online political subcu
 [View project →](projects/tankietube.qmd)
 
 <div class="project-heading">
+<h3>All We Are Solar Map</h3>
+<span class="project-date">2026</span>
+</div>
+
+**GIS · nonprofit data · interactive visualization**
+
+Interactive Mapbox visualization turning All We Are's solar installation records into an explorable map of project sites in Uganda.
+
+[View project →](projects/all-we-are-solar-map.qmd)
+
+<div class="project-heading">
 <h3>Lyon Cycling Map</h3>
 <span class="project-date">Summer 2025</span>
 </div>
