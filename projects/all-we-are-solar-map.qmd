@@ -1,0 +1,72 @@
+---
+title: "All We Are Solar Map"
+subtitle: "Nonprofit infrastructure visualization · Uganda"
+date: "2026"
+toc: true
+---
+
+I built this interactive map for **All We Are**, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.
+
+## Interactive map
+
+<div class="awa-map">
+<iframe
+  src="https://strokeofluck.github.io/all-we-are-map-box/"
+  title="All We Are solar installation impact map"
+  loading="lazy"
+  allowfullscreen>
+</iframe>
+</div>
+
+[Open the full interactive map ↗](https://strokeofluck.github.io/all-we-are-map-box/) · [View the map repository on GitHub ↗](https://github.com/StrokeOfLuck/all-we-are-map-box)
+
+<style>
+.awa-map {
+  position: relative;
+  left: 50%;
+  width: min(94vw, 1200px);
+  transform: translateX(-50%);
+  margin: 1rem 0 0.75rem;
+  border: 1px solid rgba(127, 127, 127, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.awa-map iframe {
+  display: block;
+  width: 100%;
+  height: min(74vh, 780px);
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .awa-map iframe {
+    height: 540px;
+  }
+}
+</style>
+
+## What it does
+
+The map reads a CSV export from the project's master spreadsheet and turns each installation site into an interactive geographic feature.
+
+Visitors can:
+
+- browse solar installation locations across Uganda
+- use a customer/site selector to jump directly to a location
+- zoom into clustered areas
+- click a site to see details such as installation date, number of systems, customer type, district, and population
+- switch between map styles
+
+## How it works
+
+The project is a small **Mapbox GL JS + D3** application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.
+
+The spreadsheet remains the practical data source. Updating the map is intentionally simple: export the current sheet as CSV, replace the existing data file in the map repository, and redeploy through GitHub Pages.
+
+## Why I like this project
+
+This project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use.
+
+It also connects data visualization with nonprofit work directly. The map is not just a technical demo; it gives All We Are a way to show where its infrastructure projects are located and what those sites represent.
