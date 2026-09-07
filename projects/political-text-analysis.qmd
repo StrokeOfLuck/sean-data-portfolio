@@ -121,14 +121,18 @@ description: "Computational analysis of political rhetoric around real-world eve
 .truth-example-fill.media { background: var(--media); }
 .truth-example-actions {
   margin-top: 13px;
-  padding-top: 12px;
+  padding: 12px 18px 14px;
   border-top: 1px solid var(--bs-border-color, #e5e7eb);
   font-size: 0.85rem;
   font-weight: 800;
+  line-height: 1.4;
 }
 .truth-example-original {
   display: inline-block;
+  max-width: 100%;
   font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 /* Keep the methodology page header completely in normal document flow.
@@ -155,6 +159,9 @@ body.nav-fixed {
 @media (max-width: 991.98px) {
   .truth-example-summary {
     padding: 14px;
+  }
+  .truth-example-actions {
+    padding: 12px 14px 14px;
   }
   .truth-example-score {
     grid-template-columns: 86px minmax(0, 1fr) 38px;
@@ -279,7 +286,7 @@ Military threats, escalation, retaliation, ultimatums, warnings, strikes, or des
 </div>
   </div>
 </div>
-<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116899176820572671" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116899176820572671" target="_blank" rel="noopener noreferrer">View original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -332,7 +339,7 @@ Claims of victory, military success, Iranian weakness, defeat, surrender, decima
 </div>
   </div>
 </div>
-<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116269555618597105" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116269555618597105" target="_blank" rel="noopener noreferrer">View original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -397,7 +404,7 @@ This same post is the highest-scoring example for both categories, which shows w
 </div>
   </div>
 </div>
-<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116365796713313030" target="_blank" rel="noopener noreferrer">View original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -450,7 +457,7 @@ Blaming or criticizing NATO, European allies, or other countries for not helping
 </div>
   </div>
 </div>
-<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116294956989451533" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116294956989451533" target="_blank" rel="noopener noreferrer">View original Truth Social post ↗</a></div>
 </div>
 ```
 
@@ -503,7 +510,7 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
 </div>
   </div>
 </div>
-<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116372497116210545" target="_blank" rel="noopener noreferrer">Open original Truth Social post ↗</a></div>
+<div class="truth-example-actions"><a class="truth-example-original" href="https://truthsocial.com/@realDonaldTrump/116372497116210545" target="_blank" rel="noopener noreferrer">View original Truth Social post ↗</a></div>
 </div>
 ```
 
