@@ -149,9 +149,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+.about-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.about-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+@media (max-width: 700px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-photo-wrap {
+    order: -1;
+    width: min(100%, 360px);
+    margin: 0 auto;
+  }
+}
+</style>
+<div class="about-intro">
+<div class="about-copy">
 <p>I’m interested in the intersection of <strong>data journalism, digital investigations, civic technology, and public-interest research</strong>.</p>
 <p>My work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.</p>
 <p>I am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question.</p>
+</div>
+<div class="about-photo-wrap">
+<p><img src="about-me.png" class="about-photo img-fluid" alt="Sean Ryan"></p>
+</div>
+</div>
 <section id="interests" class="level2">
 <h2 class="anchored" data-anchor-id="interests">Interests</h2>
 <ul>
