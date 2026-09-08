@@ -1,6 +1,7 @@
 /.quarto/
 /_site/
 /.vscode/
+/.posit/
 
 **/*.quarto_ipynb
 server.log
