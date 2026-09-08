@@ -161,10 +161,10 @@ a {
 /* Google My Maps has a fixed chrome bar and zoom controls.
    Crop those outside the card while keeping the actual map/route. */
 .lyon-live iframe {
-  top: -118px;
-  left: -54px;
-  width: calc(100% + 72px);
-  height: calc(100% + 250px);
+  top: -110px;
+  left: -68px;
+  width: calc(100% + 86px);
+  height: calc(100% + 242px);
 }
 
 .project-card-body {
