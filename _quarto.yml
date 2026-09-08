@@ -13,7 +13,7 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Work
+        text: Projects
       - href: about.qmd
         text: About
       - href: cv.qmd
