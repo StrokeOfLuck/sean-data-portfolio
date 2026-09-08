@@ -230,6 +230,7 @@ ul.task-list li input[type="checkbox"] {
   .page h2 {
     margin:38px 0 14px;
     padding-bottom:6px;
+    border-bottom:0 !important;
     font-size:34px;
   }
 
@@ -542,6 +543,13 @@ ul.task-list li input[type="checkbox"] {
     backdrop-filter:blur(8px);
   }
 
+  .hud-settings,
+  .hud-drive {
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
   .hint {
     font-size:12px;
     color:var(--muted);
@@ -558,6 +566,35 @@ ul.task-list li input[type="checkbox"] {
     font-size:12px;
     cursor:pointer;
     white-space:nowrap;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+
+  #left,
+  #right {
+    width:30px;
+    height:28px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+
+  #left::before,
+  #right::before {
+    content:'';
+    width:0;
+    height:0;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+  }
+
+  #left::before {
+    border-right:8px solid currentColor;
+  }
+
+  #right::before {
+    border-left:8px solid currentColor;
   }
 
   .hud button.active {
@@ -572,12 +609,14 @@ ul.task-list li input[type="checkbox"] {
     .interests { grid-template-columns:1fr; gap:12px; }
     .page { padding-bottom:660px; }
     .hint { display:none; }
+
     .telemetry-toggle {
       left:8px;
       bottom:8px;
-      padding:6px 10px;
-      font-size:10px;
+      padding:7px 11px;
+      font-size:11px;
     }
+
     .telemetry {
       left:8px;
       bottom:56px;
@@ -585,14 +624,123 @@ ul.task-list li input[type="checkbox"] {
       max-height:58vh;
       padding:7px 8px 8px;
     }
+
     .telemetry-grid {
       gap:8px 8px;
       grid-template-columns:repeat(2,minmax(0,1fr));
     }
+
+    .hud {
+      position:static;
+      transform:none;
+      padding:0;
+      border:0;
+      background:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+
+    .hud-drive {
+      position:fixed;
+      left:50%;
+      bottom:76px;
+      transform:translateX(-50%);
+      z-index:24;
+      gap:10px;
+      padding:8px;
+      border:1px solid rgba(199,209,220,.9);
+      border-radius:14px;
+      background:rgba(255,255,255,.95);
+      box-shadow:0 5px 20px rgba(28,42,58,.08);
+      backdrop-filter:blur(8px);
+    }
+
+    .hud-drive button {
+      height:46px;
+      min-width:50px;
+      border-radius:10px;
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .hud-drive #left,
+    .hud-drive #right {
+      width:50px;
+      height:46px;
+    }
+
+    .hud-drive #left::before,
+    .hud-drive #right::before {
+      border-top-width:7px;
+      border-bottom-width:7px;
+    }
+
+    .hud-drive #left::before {
+      border-right-width:11px;
+    }
+
+    .hud-drive #right::before {
+      border-left-width:11px;
+    }
+
+    .hud-drive #jump {
+      min-width:68px;
+    }
+
+    .hud-settings {
+      position:fixed;
+      right:8px;
+      bottom:8px;
+      z-index:23;
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      gap:5px;
+      padding:6px;
+      border:1px solid rgba(199,209,220,.9);
+      border-radius:12px;
+      background:rgba(255,255,255,.95);
+      box-shadow:0 5px 20px rgba(28,42,58,.07);
+      backdrop-filter:blur(8px);
+    }
+
+    .hud-settings .bike-style-control {
+      justify-content:space-between;
+      min-width:108px;
+      padding:5px 7px;
+    }
+
+    .hud-settings .bike-style-control > span {
+      display:none;
+    }
+
+    .hud-settings .bike-style-control select {
+      width:100%;
+      font-size:11px;
+      text-align:center;
+    }
+
+    .hud-settings button {
+      min-width:108px;
+      padding:6px 8px;
+      font-size:11px;
+    }
   }
 
   .quarto-title-block { display:none; }
-  #quarto-header, .nav-footer { position:relative; z-index:50; }
+
+  main.content {
+    margin-top:0 !important;
+    padding-top:0 !important;
+  }
+
+  #quarto-header {
+    position:sticky !important;
+    top:0;
+    z-index:60;
+  }
+
+  .nav-footer { position:relative; z-index:50; }
 
 </style>
 
@@ -690,21 +838,26 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 <div class="hud">
-  <label class="bike-style-control" title="Preview different bike drawings. The final page can use one fixed style.">
-    <span>BIKE STYLE</span>
-    <select id="bikeStyle" aria-label="Bike design">
-      <option value="original">Classic</option>
-      <option value="bmx">BMX</option>
-      <option value="road">Road</option>
-      <option value="mtb" selected="">MTB</option>
-      <option value="penny">Penny Farthing</option>
-    </select>
-  </label>
-  <button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>
-  <button id="left">◀</button>
-  <button id="right">▶</button>
-  <button id="jump">Jump</button>
-  <button id="reset">Reset</button>
+  <div class="hud-settings">
+    <label class="bike-style-control" title="Preview different bike drawings. The final page can use one fixed style.">
+      <span>BIKE STYLE</span>
+      <select id="bikeStyle" aria-label="Bike design">
+        <option value="original">Classic</option>
+        <option value="bmx">BMX</option>
+        <option value="road">Road</option>
+        <option value="mtb" selected="">MTB</option>
+        <option value="penny">Penny Farthing</option>
+      </select>
+    </label>
+    <button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>
+    <button id="reset">Reset</button>
+  </div>
+
+  <div class="hud-drive" aria-label="Bike controls">
+    <button id="left" aria-label="Move left"></button>
+    <button id="right" aria-label="Move right"></button>
+    <button id="jump">Jump</button>
+  </div>
 </div>
 
 <script>
@@ -2292,6 +2445,7 @@ ul.task-list li input[type="checkbox"] {
   }
 
   document.addEventListener('keydown',blockSearchShortcut,true);
+  document.addEventListener('keyup',blockSearchShortcut,true);
   addEventListener('keydown',keyDown);
   addEventListener('keyup',keyUp);
   addEventListener('resize',resize);
