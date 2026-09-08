@@ -20,7 +20,7 @@ page-layout: full
     z-index:1;
     max-width:1100px;
     margin:0 auto;
-    padding:46px 32px 690px;
+    padding:22px 32px 690px;
   }
 
   /* Desktop playground is a single-screen scene. The page itself should not
@@ -45,7 +45,7 @@ page-layout: full
     }
   }
 
-  .page h1 { font-size:42px; margin:0 0 28px; }
+  .page h1 { font-size:42px; margin:0 0 20px; }
 
   .intro {
     display:grid;
@@ -715,17 +715,49 @@ page-layout: full
   }
 
   function geom() {
-    const bottom=trackBottomY || Math.max(420,H-350);
     const center=W/2;
+    const flatHalf=clamp(W*0.055,34,58);
+    const blendLenBase=28;
 
-    // Keep the halfpipe itself a consistent size on normal desktop widths.
-    // Only shrink it when the viewport is too narrow to fit safely.
-    const sideMargin=32;
-    const flatHalf=clamp(W*0.06, 34, 55);
+    if(window.matchMedia('(min-width:761px)').matches) {
+      // Desktop: fit the *entire* halfpipe inside the viewport every time.
+      // Reserve visible deck space on both sides, room below for the HUD,
+      // and clearance below the site header. Ultrawide screens therefore
+      // make the ramp wider/taller instead of pushing its lips off-screen.
+      const header=document.getElementById('quarto-header');
+      const headerBottom=header
+        ? header.getBoundingClientRect().bottom
+        : 52;
+      const topClearance=clamp(headerBottom+14,58,150);
+      const bottomClearance=64;
+      const minDeck=clamp(W*0.035,42,84);
+      const maxRadiusX=Math.max(105,center-flatHalf-minDeck);
+      const maxRadiusY=Math.max(105,H-bottomClearance-topClearance);
+      const R=Math.max(105,Math.min(maxRadiusX,maxRadiusY));
+      const bottom=H-bottomClearance;
+      const lipY=bottom-R;
+      const leftFlat=center-flatHalf;
+      const rightFlat=center+flatHalf;
+      const leftLip=leftFlat-R;
+      const rightLip=rightFlat+R;
+      const deckWidth=Math.max(0,leftLip);
+      const blendLen=Math.min(blendLenBase,Math.max(16,R*.09));
+
+      return {
+        bottom,center,R,flatHalf,deckWidth,blendLen,
+        leftFlat,rightFlat,leftLip,rightLip,
+        lipY,
+        ceilingY:-2600
+      };
+    }
+
+    // Mobile keeps a smaller document-based ramp because the About page is
+    // intentionally scrollable on narrow screens.
+    const bottom=trackBottomY || Math.max(420,H-350);
+    const sideMargin=24;
     const maxRadius=Math.max(105,(W-(sideMargin*2)-(flatHalf*2))/2);
     const R=Math.min(260,maxRadius);
-    const blendLen=Math.min(28,Math.max(16,R*.09));
-
+    const blendLen=Math.min(blendLenBase,Math.max(16,R*.09));
     const leftFlat=center-flatHalf;
     const rightFlat=center+flatHalf;
     const leftLip=leftFlat-R;
@@ -879,17 +911,18 @@ page-layout: full
     W=s.w; H=s.h;
     dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
 
-    // Anchor the halfpipe just below the actual About content instead of to
-    // the document's overflow height. This keeps the platforms, lips and
-    // bottom of the ramp visible and prevents off-screen drift.
-    const contentBottom=(pageEl && interestsEl)
-      ? pageEl.offsetTop + interestsEl.offsetTop + interestsEl.offsetHeight
-      : Math.max(260,(window.innerHeight || 0)*.48);
-    trackBottomY=clamp(
-      Math.max(contentBottom + 165,(window.innerHeight || 0)-105),
-      420,
-      Math.max(420,H-80)
-    );
+    if(window.matchMedia('(max-width:760px)').matches) {
+      const contentBottom=(pageEl && interestsEl)
+        ? pageEl.offsetTop + interestsEl.offsetTop + interestsEl.offsetHeight
+        : Math.max(260,(window.innerHeight || 0)*.48);
+      trackBottomY=clamp(
+        Math.max(contentBottom + 165,(window.innerHeight || 0)-105),
+        420,
+        Math.max(420,H-80)
+      );
+    } else {
+      trackBottomY=0;
+    }
 
     canvas.width=Math.round(W*dpr);
     canvas.height=Math.round(H*dpr);
@@ -905,13 +938,27 @@ page-layout: full
     }
   }
 
+  function worldUsesFixedCanvas() {
+    return window.matchMedia('(min-width:761px)').matches;
+  }
+
+  function worldXFromClient(clientX) {
+    return clientX + (worldUsesFixedCanvas() ? 0 : window.scrollX);
+  }
+
+  function worldYFromClient(clientY) {
+    return clientY +
+      (worldUsesFixedCanvas() ? 0 : window.scrollY) -
+      cameraShiftY;
+  }
+
   function wordBody(span) {
     const r=span.getBoundingClientRect();
     const cs=getComputedStyle(span);
     return {
       type:'word', text:span.textContent,
-      x:r.left+window.scrollX+r.width/2,
-      y:r.top+window.scrollY-cameraShiftY+r.height/2,
+      x:worldXFromClient(r.left+r.width/2),
+      y:worldYFromClient(r.top+r.height/2),
       vx:0,vy:0,angle:0,av:0,
       w:Math.max(5,r.width), h:Math.max(8,r.height),
       font:`${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`,
@@ -942,8 +989,8 @@ page-layout: full
     photoWrap.style.visibility='hidden';
 
     const b={      type:'photo',
-      x:r.left+window.scrollX+r.width/2,
-      y:r.top+window.scrollY-cameraShiftY+r.height/2,
+      x:worldXFromClient(r.left+r.width/2),
+      y:worldYFromClient(r.top+r.height/2),
       vx,vy,angle:0,av:0,
       w:r.width,h:r.height,
       restitution:.34,
@@ -958,8 +1005,8 @@ page-layout: full
     const r=el.getBoundingClientRect();
     return {
       type:'divider',
-      x:r.left+window.scrollX+r.width/2,
-      y:r.top+window.scrollY-cameraShiftY+r.height/2,
+      x:worldXFromClient(r.left+r.width/2),
+      y:worldYFromClient(r.top+r.height/2),
       vx:0,vy:0,angle:0,av:0,
       w:Math.max(20,r.width),
       h:8,
@@ -1453,10 +1500,10 @@ page-layout: full
   }
 
   function hitStaticRect(x,y,r,rect) {
-    const left=rect.left+window.scrollX;
-    const right=rect.right+window.scrollX;
-    const top=rect.top+window.scrollY-cameraShiftY;
-    const bottom=rect.bottom+window.scrollY-cameraShiftY;
+    const left=worldXFromClient(rect.left);
+    const right=worldXFromClient(rect.right);
+    const top=worldYFromClient(rect.top);
+    const bottom=worldYFromClient(rect.bottom);
     const cx=Math.max(left,Math.min(x,right));
     const cy=Math.max(top,Math.min(y,bottom));
     const dx=x-cx, dy=y-cy;
@@ -2017,8 +2064,8 @@ page-layout: full
 
   function eventPagePos(e) {
     return {
-      x:e.clientX+window.scrollX,
-      y:e.clientY+window.scrollY-cameraShiftY
+      x:worldXFromClient(e.clientX),
+      y:worldYFromClient(e.clientY)
     };
   }
 
