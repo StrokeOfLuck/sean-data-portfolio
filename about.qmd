@@ -120,7 +120,7 @@ page-layout: full
   }
 
   #world {
-    position:absolute;
+    position:fixed;
     inset:0;
     z-index:5;
     width:100%;
@@ -459,23 +459,80 @@ page-layout: full
     font-weight:700;
   }
 
+  .hud-settings-toggle {
+    display:none;
+  }
+
   @media(max-width:760px) {
-    .intro { grid-template-columns:1fr; }
-    .photo-wrap { width:min(100%,340px); height:auto; aspect-ratio:1; }
-    .interests { grid-template-columns:1fr; gap:12px; }
-    .page { padding-bottom:660px; }
+    html,
+    body {
+      height:100%;
+      overflow:hidden;
+    }
+
+    .page {
+      height:calc(100dvh - 54px);
+      min-height:0;
+      padding:8px 18px 0;
+      overflow:hidden;
+    }
+
+    .page h1 {
+      font-size:26px;
+      margin:0 0 10px;
+    }
+
+    .intro {
+      grid-template-columns:minmax(0,1fr) 118px;
+      gap:14px;
+      align-items:start;
+    }
+
+    .copy {
+      max-width:none;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .copy p {
+      margin:0 0 12px;
+    }
+
+    .photo-wrap {
+      width:118px;
+      height:118px;
+      aspect-ratio:1;
+    }
+
+    .photo {
+      border-radius:12px;
+    }
+
+    .page h2 {
+      margin:16px 0 8px;
+      padding-bottom:0;
+      font-size:22px;
+    }
+
+    .interests {
+      grid-template-columns:1fr 1fr;
+      gap:8px 18px;
+      font-size:12.5px;
+      line-height:1.35;
+    }
+
     .hint { display:none; }
 
     .telemetry-toggle {
       left:8px;
-      bottom:8px;
-      padding:7px 11px;
+      bottom:10px;
+      padding:8px 11px;
       font-size:11px;
     }
 
     .telemetry {
       left:8px;
-      bottom:56px;
+      bottom:66px;
       width:min(286px,calc(100vw - 16px));
       max-height:58vh;
       padding:7px 8px 8px;
@@ -506,11 +563,11 @@ page-layout: full
     .hud-drive {
       position:fixed;
       left:50%;
-      bottom:88px;
+      bottom:8px;
       transform:translateX(-50%);
       z-index:24;
-      gap:10px;
-      padding:8px;
+      gap:8px;
+      padding:7px;
       border:1px solid rgba(199,209,220,.9);
       border-radius:14px;
       background:rgba(255,255,255,.96);
@@ -521,7 +578,7 @@ page-layout: full
 
     .hud-drive button {
       height:48px;
-      min-width:54px;
+      min-width:50px;
       border-radius:10px;
       font-size:15px;
       font-weight:600;
@@ -529,7 +586,7 @@ page-layout: full
 
     .hud-drive #left,
     .hud-drive #right {
-      width:54px;
+      width:50px;
       height:48px;
     }
 
@@ -548,30 +605,57 @@ page-layout: full
     }
 
     .hud-drive #jump {
-      min-width:76px;
+      min-width:68px;
+    }
+
+    .hud-settings-toggle {
+      position:fixed;
+      right:8px;
+      bottom:10px;
+      z-index:25;
+      display:block;
+      min-width:58px;
+      padding:8px 10px;
+      border:1px solid rgba(199,209,220,.9);
+      border-radius:999px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 5px 20px rgba(28,42,58,.07);
+      backdrop-filter:blur(8px);
+      color:#43566d;
+      font:inherit;
+      font-size:11px;
+      font-weight:700;
+      cursor:pointer;
+      pointer-events:auto;
+      -webkit-appearance:none;
+      appearance:none;
     }
 
     .hud-settings {
       position:fixed;
       right:8px;
-      bottom:8px;
-      z-index:23;
-      display:flex;
+      bottom:66px;
+      z-index:26;
+      display:none;
       flex-direction:column;
       align-items:stretch;
       gap:5px;
       padding:6px;
       border:1px solid rgba(199,209,220,.9);
       border-radius:12px;
-      background:rgba(255,255,255,.96);
-      box-shadow:0 5px 20px rgba(28,42,58,.07);
+      background:rgba(255,255,255,.97);
+      box-shadow:0 5px 20px rgba(28,42,58,.08);
       backdrop-filter:blur(8px);
       pointer-events:auto;
     }
 
+    .hud-settings.open {
+      display:flex;
+    }
+
     .hud-settings .bike-style-control {
       justify-content:space-between;
-      min-width:108px;
+      min-width:112px;
       padding:5px 7px;
     }
 
@@ -586,8 +670,8 @@ page-layout: full
     }
 
     .hud-settings button {
-      min-width:108px;
-      padding:6px 8px;
+      min-width:112px;
+      padding:7px 8px;
       font-size:11px;
     }
   }
@@ -710,8 +794,10 @@ page-layout: full
   <div class="telemetry-note" id="zenNote">Physics objects disabled</div>
 </div>
 
+<button class="hud-settings-toggle" id="settingsToggle" type="button" aria-expanded="false" aria-controls="hudSettings">Options</button>
+
 <div class="hud">
-  <div class="hud-settings">
+  <div class="hud-settings" id="hudSettings">
     <label class="bike-style-control" title="Preview different bike drawings. The final page can use one fixed style.">
       <span>BIKE STYLE</span>
       <select id="bikeStyle" aria-label="Bike design">
@@ -745,6 +831,8 @@ page-layout: full
   const telemetryToggle = document.getElementById('telemetryToggle');
   const telemetryPanel = document.getElementById('telemetryPanel');
   const telemetryClose = document.getElementById('telemetryClose');
+  const settingsToggle = document.getElementById('settingsToggle');
+  const hudSettings = document.getElementById('hudSettings');
   const bikeStyleSelect = document.getElementById('bikeStyle');
   let bikeDesign='mtb';
 
@@ -846,79 +934,91 @@ page-layout: full
       document.documentElement.clientHeight || window.innerHeight || 0
     );
 
-    // Desktop is deliberately one screen with no document scrolling.
-    if(window.matchMedia('(min-width:761px)').matches) {
-      return {w:viewportW,h:viewportH};
+    return {w:viewportW,h:viewportH};
+  }
+
+  function contentGeometry() {
+    const rects=[
+      pageEl?.getBoundingClientRect?.(),
+      interestsEl?.getBoundingClientRect?.(),
+      photoWrap?.getBoundingClientRect?.(),
+      document.querySelector('.copy')?.getBoundingClientRect?.(),
+      document.querySelector('.page h2')?.getBoundingClientRect?.()
+    ].filter(Boolean);
+
+    if(!rects.length) {
+      return {left:W*.2,right:W*.8,bottom:H*.45,width:W*.6};
     }
 
-    const pageBottom=pageEl
-      ? pageEl.offsetTop + pageEl.offsetHeight
-      : viewportH;
-
     return {
-      w:viewportW,
-      h:Math.max(viewportH,pageBottom + 24)
+      left:Math.min(...rects.map(r=>r.left)),
+      right:Math.max(...rects.map(r=>r.right)),
+      bottom:Math.max(...rects.map(r=>r.bottom)),
+      width:Math.max(...rects.map(r=>r.right))-Math.min(...rects.map(r=>r.left))
     };
   }
 
   function geom() {
+    const mobile=window.matchMedia('(max-width:760px)').matches;
     const center=W/2;
-    const flatHalf=clamp(W*0.055,34,58);
     const blendLenBase=28;
+    const header=document.getElementById('quarto-header');
+    const headerBottom=header
+      ? header.getBoundingClientRect().bottom
+      : (mobile ? 54 : 52);
+    const content=contentGeometry();
 
-    if(window.matchMedia('(min-width:761px)').matches) {
-      // Desktop: fit the *entire* halfpipe inside the viewport every time.
-      // Reserve visible deck space on both sides, room below for the HUD,
-      // and clearance below the site header. Ultrawide screens therefore
-      // make the ramp wider/taller instead of pushing its lips off-screen.
-      const header=document.getElementById('quarto-header');
-      const headerBottom=header
-        ? header.getBoundingClientRect().bottom
-        : 52;
-      // A bike sitting on a flat deck extends roughly 47 px above the
-      // track surface. Reserve a little extra room so no bike style can hide
-      // behind the fixed navbar, even on very wide / short displays.
-      const bikeTopClearance=58;
-      const minLipY=headerBottom+bikeTopClearance;
-      const bottomClearance=64;
-      const minDeck=clamp(W*0.035,42,84);
-      const maxRadiusX=Math.max(105,center-flatHalf-minDeck);
-      const maxRadiusY=Math.max(105,(H-bottomClearance)-minLipY);
-      const R=Math.max(105,Math.min(maxRadiusX,maxRadiusY));
-      const bottom=H-bottomClearance;
-      const lipY=bottom-R;
-      const leftFlat=center-flatHalf;
-      const rightFlat=center+flatHalf;
-      const leftLip=leftFlat-R;
-      const rightLip=rightFlat+R;
-      const deckWidth=Math.max(0,leftLip);
-      const blendLen=Math.min(blendLenBase,Math.max(16,R*.09));
+    const bottomClearance=mobile ? 74 : 64;
+    const bottom=Math.max(headerBottom+120,H-bottomClearance);
+    const minDeck=mobile
+      ? clamp(W*.18,64,74)
+      : clamp(W*.035,42,84);
 
-      return {
-        bottom,center,R,flatHalf,deckWidth,blendLen,
-        leftFlat,rightFlat,leftLip,rightLip,
-        lipY,
-        ceilingY:-2600
-      };
+    const baseFlatHalf=mobile
+      ? clamp(W*.05,18,28)
+      : clamp(W*.055,34,58);
+
+    // On genuinely wide screens, keep the curved walls completely outside
+    // the central About column. That preserves the large halfpipe look
+    // without ever drawing a ramp line through the text.
+    const outerFlatHalf=Math.max(
+      baseFlatHalf,
+      Math.min(
+        Math.max(baseFlatHalf,content.width/2+24),
+        Math.max(baseFlatHalf,center-minDeck-80)
+      )
+    );
+    const canWrapContent=
+      !mobile &&
+      W>=1450 &&
+      (center-outerFlatHalf-minDeck)>=110;
+
+    const flatHalf=canWrapContent ? outerFlatHalf : baseFlatHalf;
+
+    // If there is not enough horizontal room to route the curves around the
+    // content, put the entire ramp below it instead.
+    const bikeTopClearance=mobile ? 46 : 58;
+    let minLipY=headerBottom+bikeTopClearance;
+    if(!canWrapContent) {
+      minLipY=Math.max(minLipY,content.bottom+(mobile ? 14 : 22));
     }
 
-    // Mobile keeps a smaller document-based ramp because the About page is
-    // intentionally scrollable on narrow screens.
-    const bottom=trackBottomY || Math.max(420,H-350);
-    const sideMargin=24;
-    const maxRadius=Math.max(105,(W-(sideMargin*2)-(flatHalf*2))/2);
-    const R=Math.min(260,maxRadius);
-    const blendLen=Math.min(blendLenBase,Math.max(16,R*.09));
+    const maxRadiusX=Math.max(28,center-flatHalf-minDeck);
+    const maxRadiusY=Math.max(28,bottom-minLipY);
+    const R=Math.max(28,Math.min(maxRadiusX,maxRadiusY));
+    const lipY=bottom-R;
+
     const leftFlat=center-flatHalf;
     const rightFlat=center+flatHalf;
     const leftLip=leftFlat-R;
     const rightLip=rightFlat+R;
     const deckWidth=Math.max(0,leftLip);
+    const blendLen=Math.min(blendLenBase,Math.max(12,R*.09));
 
     return {
       bottom,center,R,flatHalf,deckWidth,blendLen,
       leftFlat,rightFlat,leftLip,rightLip,
-      lipY:bottom-R,
+      lipY,
       ceilingY:-2600
     };
   }
@@ -1057,23 +1157,44 @@ page-layout: full
     };
   }
 
+  const BIKE_DECK_HALF_WIDTH=31;
+
+  function safeDeckX(g,side='left') {
+    const margin=BIKE_DECK_HALF_WIDTH+2;
+
+    if(side==='right') {
+      const deckStart=g.rightLip;
+      const deckWidth=Math.max(0,W-deckStart);
+      if(deckWidth>=margin*2) {
+        return deckStart+deckWidth/2;
+      }
+      return Math.min(W-margin,deckStart+deckWidth/2);
+    }
+
+    const deckWidth=Math.max(0,g.leftLip);
+    if(deckWidth>=margin*2) {
+      return deckWidth/2;
+    }
+    return Math.max(margin,deckWidth/2);
+  }
+
   function resize() {
+    const oldGeom=(W>0 && H>0) ? geom() : null;
+    const wasLeftDeck=!!(
+      oldGeom &&
+      !bike.airborne &&
+      bike.x<=oldGeom.leftLip+2
+    );
+    const wasRightDeck=!!(
+      oldGeom &&
+      !bike.airborne &&
+      bike.x>=oldGeom.rightLip-2
+    );
+
     const s=pageSize();
     W=s.w; H=s.h;
     dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
-
-    if(window.matchMedia('(max-width:760px)').matches) {
-      const contentBottom=(pageEl && interestsEl)
-        ? pageEl.offsetTop + interestsEl.offsetTop + interestsEl.offsetHeight
-        : Math.max(260,(window.innerHeight || 0)*.48);
-      trackBottomY=clamp(
-        Math.max(contentBottom + 165,(window.innerHeight || 0)-105),
-        420,
-        Math.max(420,H-80)
-      );
-    } else {
-      trackBottomY=0;
-    }
+    trackBottomY=0;
 
     canvas.width=Math.round(W*dpr);
     canvas.height=Math.round(H*dpr);
@@ -1082,7 +1203,15 @@ page-layout: full
     ctx.setTransform(dpr,0,0,dpr,0,0);
 
     if(!bike.airborne && W) {
-      bike.x=clamp(bike.x||W/2,20,W-20);
+      const g=geom();
+      if(wasLeftDeck) {
+        bike.x=safeDeckX(g,'left');
+      } else if(wasRightDeck) {
+        bike.x=safeDeckX(g,'right');
+      } else {
+        bike.x=clamp(bike.x||safeDeckX(g,'left'),20,W-20);
+      }
+
       const pose=groundPoseAt(bike.x);
       bike.y=pose.y;
       bike.angle=pose.angle;
@@ -1090,7 +1219,7 @@ page-layout: full
   }
 
   function worldUsesFixedCanvas() {
-    return window.matchMedia('(min-width:761px)').matches;
+    return true;
   }
 
   function worldXFromClient(clientX) {
@@ -1203,7 +1332,7 @@ page-layout: full
     resetGuardUntil=performance.now()+280;
     restoreWordsAndPhoto();
     resize();
-    bike.x=55;
+    bike.x=safeDeckX(geom(),'left');
     {
       const pose=groundPoseAt(bike.x);
       bike.y=pose.y;
@@ -2367,6 +2496,20 @@ page-layout: full
     });
   }
 
+  function setSettingsOpen(open) {
+    if(!settingsToggle || !hudSettings) return;
+    hudSettings.classList.toggle('open',open);
+    settingsToggle.setAttribute('aria-expanded',open ? 'true' : 'false');
+    settingsToggle.textContent=open ? 'Close' : 'Options';
+  }
+
+  if(settingsToggle) {
+    settingsToggle.addEventListener('click',e=>{
+      e.stopPropagation();
+      setSettingsOpen(settingsToggle.getAttribute('aria-expanded')!=='true');
+    });
+  }
+
   pageLockButton.addEventListener('click',e=>{
     e.stopPropagation();
     setPageLocked(!pageLocked);
@@ -2378,7 +2521,7 @@ page-layout: full
   requestAnimationFrame(()=>{
     resize();
     reset();
-    setPageLocked(false);
+    setPageLocked(window.matchMedia('(max-width:760px)').matches);
     requestAnimationFrame(frame);
   });
 })();
