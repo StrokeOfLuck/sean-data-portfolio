@@ -9,11 +9,15 @@ toc: false
   grid-template-columns: minmax(0, 1fr) 260px;
   gap: 2.25rem;
   align-items: start;
-  margin-bottom: 2rem;
+  margin-bottom: 0.35rem;
 }
 
 .about-copy p:first-child {
   margin-top: 0;
+}
+
+.about-copy p:last-child {
+  margin-bottom: 0;
 }
 
 .about-photo {
@@ -23,21 +27,31 @@ toc: false
   border-radius: 16px;
 }
 
+.about-interests {
+  margin-top: 0;
+}
+
+.about-interests h2 {
+  margin-top: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
 .interests-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.4rem 2.5rem;
-  margin-top: 0.75rem;
+  gap: 0.2rem 2.5rem;
+  margin-top: 0;
 }
 
 .interests-grid div {
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 @media (max-width: 700px) {
   .about-intro {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .about-photo-wrap {
@@ -46,9 +60,13 @@ toc: false
     margin: 0 auto;
   }
 
+  .about-interests h2 {
+    margin-top: 0.75rem;
+  }
+
   .interests-grid {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 }
 </style>
@@ -70,6 +88,8 @@ Much of my work uses political and public datasets, including financial disclosu
 :::
 
 :::
+
+::: {.about-interests}
 
 ## Interests
 
@@ -105,6 +125,8 @@ Civic technology
 
 ::: {}
 Data visualization
+:::
+
 :::
 
 :::
