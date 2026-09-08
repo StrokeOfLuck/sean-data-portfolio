@@ -8,85 +8,115 @@ toc: false
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
 
-## Data Projects
+## Projects
 
-::: {.project-grid}
+<div class="projects-grid">
 
-<div class="project-heading">
-<h3>Congressional Stock Trading Network</h3>
-<span class="project-date">Fall 2026</span>
+<a class="project-card" href="projects/congressional-stock-network.html">
+  <div class="project-card-art art-network" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>Congressional Stock Trading Network</h3>
+      <span class="project-date">Fall 2026</span>
+    </div>
+    <div class="project-tags">
+      <span>Network Analysis</span><span>Public Records</span><span>Congressional Data</span>
+    </div>
+    <p>Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/stock-disclosures.html">
+  <div class="project-card-art art-records" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>Politician Stock Disclosures</h3>
+      <span class="project-date">2024–present</span>
+    </div>
+    <div class="project-tags">
+      <span>Public Records</span><span>Data Cleaning</span><span>Civic Technology</span>
+    </div>
+    <p>Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/iran-timeline.html">
+  <div class="project-card-art art-text" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>Political Text Analysis</h3>
+      <span class="project-date">Fall 2026</span>
+    </div>
+    <div class="project-tags">
+      <span>NLP</span><span>Political Data</span><span>Event Analysis</span>
+    </div>
+    <p>Using computational text analysis to examine political rhetoric around real-world events.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/tankietube.html">
+  <div class="project-card-art art-tankie" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>TankieTube</h3>
+      <span class="project-date">Summer 2026</span>
+    </div>
+    <div class="project-tags">
+      <span>Digital Methods</span><span>Text Analysis</span><span>Internet Research</span>
+    </div>
+    <p>Five-day University of Amsterdam research sprint comparing a Tankie transcript corpus with a Tenet Media/Rumble dataset using TF-IDF and sentence-similarity matching.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/all-we-are-solar-map.html">
+  <div class="project-card-art art-map" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>All We Are Solar Map</h3>
+      <span class="project-date">Spring 2026</span>
+    </div>
+    <div class="project-tags">
+      <span>GIS</span><span>Nonprofit Data</span><span>Interactive Visualization</span>
+    </div>
+    <p>Interactive Mapbox visualization turning All We Are's solar installation records into an explorable map of project sites in Uganda.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/lyon-cycling-map.html">
+  <div class="project-card-art art-bike" aria-hidden="true"></div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>Lyon Cycling Map</h3>
+      <span class="project-date">Summer 2025</span>
+    </div>
+    <div class="project-tags">
+      <span>GIS</span><span>GPS Data</span><span>Interactive Mapping</span>
+    </div>
+    <p>Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
+<a class="project-card" href="projects/clearhouse.html">
+  <div class="project-card-art project-card-image">
+    <img src="projects/assets/clearhouse/Image%20Sep%207,%202026,%2003_11_37%20PM.png" alt="ClearHouse stock disclosure interface">
+  </div>
+  <div class="project-card-body">
+    <div class="project-card-heading">
+      <h3>ClearHouse.live</h3>
+      <span class="project-date">Winter 2024–25</span>
+    </div>
+    <div class="project-tags">
+      <span>Web Scraping</span><span>Public Records</span><span>Civic Technology</span>
+    </div>
+    <p>Collaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.</p>
+    <span class="project-link">View project →</span>
+  </div>
+</a>
+
 </div>
-
-**Network analysis · public records · congressional data**
-
-Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.
-
-[View project →](projects/congressional-stock-network.qmd)
-
-<div class="project-heading">
-<h3>Politician Stock Disclosures</h3>
-<span class="project-date">2024–present</span>
-</div>
-
-**Public records · data cleaning · civic technology**
-
-Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.
-
-[View project →](projects/stock-disclosures.qmd)
-
-<div class="project-heading">
-<h3>Political Text Analysis</h3>
-<span class="project-date">Fall 2026</span>
-</div>
-
-**NLP · political data · event analysis**
-
-Using computational text analysis to examine political rhetoric around real-world events.
-
-[View project →](projects/iran-timeline.qmd)
-
-<div class="project-heading">
-<h3>TankieTube</h3>
-<span class="project-date">Summer 2026</span>
-</div>
-
-**Digital methods · text analysis · internet research**
-
-Five-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.
-
-[View project →](projects/tankietube.qmd)
-
-<div class="project-heading">
-<h3>All We Are Solar Map</h3>
-<span class="project-date">Spring 2026</span>
-</div>
-
-**GIS · nonprofit data · interactive visualization**
-
-Interactive Mapbox visualization turning All We Are's solar installation records into an explorable map of project sites in Uganda.
-
-[View project →](projects/all-we-are-solar-map.qmd)
-
-<div class="project-heading">
-<h3>Lyon Cycling Map</h3>
-<span class="project-date">Summer 2025</span>
-</div>
-
-**GIS · GPS data · interactive mapping**
-
-Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.
-
-[View project →](projects/lyon-cycling-map.qmd)
-
-<div class="project-heading">
-<h3>ClearHouse.live</h3>
-<span class="project-date">Winter 2024–25</span>
-</div>
-
-**Web scraping · public records · civic technology**
-
-Collaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.
-
-[View project →](projects/clearhouse.qmd)
-
-:::
