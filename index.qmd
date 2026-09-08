@@ -74,7 +74,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
-![](projects/assets/cards/tankietube-title.svg){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
+![](projects/assets/cards/tankietube-card.svg){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
