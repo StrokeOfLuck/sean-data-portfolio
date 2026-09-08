@@ -20,6 +20,15 @@ summary: >
   R, GIS, APIs, and text and network analysis.
   
 experience:
+  - title: "Teaching Assistant, Graphic Communications"
+    org: "North Carolina State University"
+    location: "Raleigh, NC"
+    start: "2024"
+    end: "2024"
+    bullets:
+      - "Supported SolidWorks and graphic communications coursework"
+      - "Helped students troubleshoot projects and provided technical feedback"
+
   - title: "Fabrication Lab / Maker Space Technician"
     org: "North Carolina State University"
     location: "Raleigh, NC"
@@ -29,15 +38,6 @@ experience:
       - "Supported student projects using 3D printers, laser cutters, waterjets, and CNC equipment"
       - "Developed equipment guides and instructional materials"
       - "Troubleshot equipment and maintained shop safety"
-
-  - title: "Teaching Assistant, Graphic Communications"
-    org: "North Carolina State University"
-    location: "Raleigh, NC"
-    start: "2024"
-    end: "2024"
-    bullets:
-      - "Supported SolidWorks and graphic communications coursework"
-      - "Helped students troubleshoot projects and provided technical feedback"
 
   - title: "PC Technician"
     org: "Jacobs Engineering Group"
