@@ -117,7 +117,7 @@ a {
 }
 
 .poster-image {
-  background: #f3edcf;
+  background: #f2ebd1;
 }
 
 .poster-image p {
@@ -126,9 +126,9 @@ a {
   justify-content: center;
   height: 100%;
   margin: 0;
-  padding: 0.7rem 1rem;
+  padding: 0;
   box-sizing: border-box;
-  background: #f3edcf;
+  background: #f2ebd1;
 }
 
 .poster-image img {
@@ -173,8 +173,8 @@ a {
 /* Google My Maps has a fixed chrome bar and zoom controls.
    Crop those outside the card while keeping the actual map/route. */
 .lyon-live iframe {
-  top: -102px;
-  left: -82px;
+  top: -116px;
+  left: -38px;
   width: calc(100% + 86px);
   height: calc(100% + 242px);
 }
