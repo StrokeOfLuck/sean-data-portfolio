@@ -518,118 +518,114 @@ ul.task-list li input[type="checkbox"] {
   #quarto-header, .nav-footer { position:relative; z-index:50; }
 
 </style>
+
 <div class="page">
-<h1 data-physics-text="">
-About
-</h1>
-<section class="intro">
-<div class="copy">
-<pre><code>  &lt;p data-physics-text&gt;I work at the intersection of &lt;strong&gt;data journalism, digital investigations, civic technology, and public-interest research.&lt;/strong&gt;&lt;/p&gt;
-  &lt;p data-physics-text&gt;Much of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use.&lt;/p&gt;
-&lt;/div&gt;
+  <h1 data-physics-text="">About</h1>
 
-&lt;div class="photo-wrap" id="photoWrap"&gt;
-  &lt;img class="photo" id="photo" src="about-me.png" alt="Sean Ryan"&gt;
-&lt;/div&gt;</code></pre>
-</div></section>
-<h2 data-physics-text="" class="anchored">
-Interests
-</h2>
-<div id="interestsDivider" class="physics-divider">
+  <section class="intro">
+    <div class="copy">
+      <p data-physics-text="">I work at the intersection of <strong>data journalism, digital investigations, civic technology, and public-interest research.</strong></p>
+      <p data-physics-text="">Much of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use.</p>
+    </div>
 
+    <div class="photo-wrap" id="photoWrap">
+      <img class="photo" id="photo" src="about-me.png" alt="Sean Ryan">
+    </div>
+  </section>
+
+  <h2 data-physics-text="" class="anchored">Interests</h2>
+  <div class="physics-divider" id="interestsDivider"></div>
+
+  <section class="interests">
+    <div data-physics-text="">Data journalism</div>
+    <div data-physics-text="">Computational text analysis</div>
+    <div data-physics-text="">Digital investigations and OSINT</div>
+    <div data-physics-text="">Network analysis</div>
+    <div data-physics-text="">Political and government data</div>
+    <div data-physics-text="">GIS and spatial analysis</div>
+    <div data-physics-text="">Civic technology</div>
+    <div data-physics-text="">Data visualization</div>
+  </section>
 </div>
-<section class="interests">
-<div data-physics-text="">
-Data journalism
-</div>
-<div data-physics-text="">
-Computational text analysis
-</div>
-<div data-physics-text="">
-Digital investigations and OSINT
-</div>
-<div data-physics-text="">
-Network analysis
-</div>
-<div data-physics-text="">
-Political and government data
-</div>
-<div data-physics-text="">
-GIS and spatial analysis
-</div>
-<div data-physics-text="">
-Civic technology
-</div>
-<div data-physics-text="">
-Data visualization
-</div>
-</section>
-</div>
-<canvas id="world">
-</canvas>
+
+<canvas id="world"></canvas>
+
 <div class="telemetry" aria-label="Live ride telemetry">
-<div class="telemetry-title" title="Live values from the bike physics simulation">
-LIVE TELEMETRY
-</div>
-<div class="telemetry-grid">
-<pre><code>&lt;div&gt;&lt;span&gt;STATE&lt;/span&gt;&lt;strong id="tState"&gt;GROUND&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;SPEED&lt;/span&gt;&lt;strong id="tSpeed"&gt;0.00&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;BOOST&lt;/span&gt;&lt;strong id="tBoost"&gt;1.00×&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;AIRTIME&lt;/span&gt;&lt;strong id="tAir"&gt;0.00 s&lt;/strong&gt;&lt;/div&gt;
+  <div class="telemetry-title" title="Live values from the bike physics simulation">LIVE TELEMETRY</div>
+  <div class="telemetry-grid">
+    <div><span>STATE</span><strong id="tState">GROUND</strong></div>
+    <div><span>SPEED</span><strong id="tSpeed">0.00</strong></div>
+    <div><span>BOOST</span><strong id="tBoost">1.00×</strong></div>
+    <div><span>AIRTIME</span><strong id="tAir">0.00 s</strong></div>
 
-&lt;div&gt;&lt;span&gt;ANGLE&lt;/span&gt;&lt;strong id="tAngle"&gt;0°&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;HEIGHT&lt;/span&gt;&lt;strong id="tHeight"&gt;0 px&lt;/strong&gt;&lt;/div&gt;
-&lt;div&gt;&lt;span&gt;FLIPS&lt;/span&gt;&lt;strong id="tFlips"&gt;0&lt;/strong&gt;&lt;/div&gt;
-&lt;div title="Total times the bike has left the ramp or platform this session."&gt;
-  &lt;span&gt;JUMPS&lt;/span&gt;&lt;strong id="tJumps"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
+    <div><span>ANGLE</span><strong id="tAngle">0°</strong></div>
+    <div><span>HEIGHT</span><strong id="tHeight">0 px</strong></div>
+    <div><span>FLIPS</span><strong id="tFlips">0</strong></div>
+    <div title="Total times the bike has left the ramp or platform this session.">
+      <span>JUMPS</span><strong id="tJumps">0</strong>
+    </div>
 
-&lt;div title="Each successful lip launch adds one. Collisions or cooling back to 1.00× reset it."&gt;
-  &lt;span&gt;STREAK&lt;/span&gt;&lt;strong id="tStreak"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div title="Longest launch streak reached this session."&gt;
-  &lt;span&gt;BEST STREAK&lt;/span&gt;&lt;strong id="tBestStreak"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div title="Most complete flips landed in a single jump this session."&gt;
-  &lt;span&gt;BEST FLIP&lt;/span&gt;&lt;strong id="tBestFlip"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div title="Longest single jump airtime this session."&gt;
-  &lt;span&gt;LONGEST AIR&lt;/span&gt;&lt;strong id="tMaxAir"&gt;0.00 s&lt;/strong&gt;
-&lt;/div&gt;
+    <div title="Each successful lip launch adds one. Collisions or cooling back to 1.00× reset it.">
+      <span>STREAK</span><strong id="tStreak">0</strong>
+    </div>
+    <div title="Longest launch streak reached this session.">
+      <span>BEST STREAK</span><strong id="tBestStreak">0</strong>
+    </div>
+    <div title="Most complete flips landed in a single jump this session.">
+      <span>BEST FLIP</span><strong id="tBestFlip">0</strong>
+    </div>
+    <div title="Longest single jump airtime this session.">
+      <span>LONGEST AIR</span><strong id="tMaxAir">0.00 s</strong>
+    </div>
 
-&lt;div&gt;
-  &lt;span&gt;IMPACTS&lt;/span&gt;&lt;strong id="tImpacts"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;span&gt;OBJECTS&lt;/span&gt;&lt;strong id="tLoose"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div title="Actual path distance traveled by the bike in simulation pixels."&gt;
-  &lt;span&gt;DIST&lt;/span&gt;&lt;strong id="tDist"&gt;0 px&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div title="Total time spent airborne this session."&gt;
-  &lt;span&gt;TOTAL AIR&lt;/span&gt;&lt;strong id="tTotalAir"&gt;0.00 s&lt;/strong&gt;
-&lt;/div&gt;
+    <div>
+      <span>IMPACTS</span><strong id="tImpacts">0</strong>
+    </div>
+    <div>
+      <span>OBJECTS</span><strong id="tLoose">0</strong>
+    </div>
+    <div title="Actual path distance traveled by the bike in simulation pixels.">
+      <span>DIST</span><strong id="tDist">0 px</strong>
+    </div>
+    <div title="Total time spent airborne this session.">
+      <span>TOTAL AIR</span><strong id="tTotalAir">0.00 s</strong>
+    </div>
 
-&lt;div&gt;
-  &lt;span&gt;X&lt;/span&gt;&lt;strong id="tX"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;span&gt;Y&lt;/span&gt;&lt;strong id="tY"&gt;0&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;span&gt;VX&lt;/span&gt;&lt;strong id="tVx"&gt;0.00&lt;/strong&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;span&gt;VY&lt;/span&gt;&lt;strong id="tVy"&gt;0.00&lt;/strong&gt;
-&lt;/div&gt;</code></pre>
+    <div>
+      <span>X</span><strong id="tX">0</strong>
+    </div>
+    <div>
+      <span>Y</span><strong id="tY">0</strong>
+    </div>
+    <div>
+      <span>VX</span><strong id="tVx">0.00</strong>
+    </div>
+    <div>
+      <span>VY</span><strong id="tVy">0.00</strong>
+    </div>
+  </div>
+
+  <div class="telemetry-note" id="zenNote">Physics objects disabled</div>
 </div>
-<div id="zenNote" class="telemetry-note">
-Physics objects disabled
-</div>
-</div>
+
 <div class="hud">
-<p><label class="bike-style-control" title="Preview different bike drawings. The final page can use one fixed style."> <span>BIKE STYLE</span> <select id="bikeStyle" aria-label="Bike design"> <option value="original">Classic</option> <option value="bmx">BMX</option> <option value="road">Road</option> <option value="mtb" selected="">MTB</option> <option value="penny">Penny Farthing</option> </select> </label> <button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button> <button id="left">◀</button> <button id="right">▶</button> <button id="jump">Jump</button> <button id="reset">Reset</button></p>
+  <label class="bike-style-control" title="Preview different bike drawings. The final page can use one fixed style.">
+    <span>BIKE STYLE</span>
+    <select id="bikeStyle" aria-label="Bike design">
+      <option value="original">Classic</option>
+      <option value="bmx">BMX</option>
+      <option value="road">Road</option>
+      <option value="mtb" selected="">MTB</option>
+      <option value="penny">Penny Farthing</option>
+    </select>
+  </label>
+  <button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>
+  <button id="left">◀</button>
+  <button id="right">▶</button>
+  <button id="jump">Jump</button>
+  <button id="reset">Reset</button>
 </div>
+
 <script>
 (() => {
   const canvas = document.getElementById('world');
@@ -2213,6 +2209,7 @@ Physics objects disabled
   });
 })();
 </script>
+
 <script>
 (() => {
   const canvas = document.getElementById('world');
@@ -3801,9 +3798,8 @@ Physics objects disabled
 </script>
 
 
-</main></div>
 
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -4204,7 +4200,7 @@ Physics objects disabled
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
