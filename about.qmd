@@ -938,11 +938,14 @@ page-layout: full
   }
 
   function contentGeometry() {
+    // Measure only the actual visible content, not the .page wrapper itself.
+    // The wrapper intentionally fills the viewport, so including it here
+    // would make the ramp think the content extends all the way to the bottom.
     const rects=[
-      pageEl?.getBoundingClientRect?.(),
       interestsEl?.getBoundingClientRect?.(),
       photoWrap?.getBoundingClientRect?.(),
       document.querySelector('.copy')?.getBoundingClientRect?.(),
+      document.querySelector('.page h1')?.getBoundingClientRect?.(),
       document.querySelector('.page h2')?.getBoundingClientRect?.()
     ].filter(Boolean);
 
