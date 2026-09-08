@@ -186,7 +186,7 @@ body.network-project-app {
 <div id="network-loader-message">Loading congressional stock data…</div>
 </div>
 </div>
-<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&v=04041921" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
+<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&v=cbce0f63" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
 </div>
 </div>
 ```
