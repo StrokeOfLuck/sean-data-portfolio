@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#f7f9fb"/>
+<g stroke="#dfe6ec" stroke-width="2" opacity=".9"><path d="M0 170 H1600 M0 330 H1600 M0 510 H1600 M0 700 H1600"/><path d="M180 0 V900 M420 0 V900 M690 0 V900 M980 0 V900 M1280 0 V900"/><path d="M-100 770 L620 0 M220 900 L980 0 M710 900 L1520 0 M1100 900 L1700 260"/></g>
+<text x="80" y="92" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#26323d">GoPro → GPS → interactive cycling map</text>
+<text x="80" y="132" font-family="Inter,Arial,sans-serif" font-size="18" fill="#6a7680">Lyon, France · route reconstruction workflow</text>
+<path d="M160 680 C260 610 300 520 410 545 C505 566 532 462 640 445 C748 428 765 328 866 355 C980 386 1008 518 1115 480 C1240 437 1290 293 1430 252" fill="none" stroke="#2f6fb3" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="160" cy="680" r="24" fill="#fff" stroke="#2f6fb3" stroke-width="10"/><circle cx="1430" cy="252" r="24" fill="#2f6fb3" stroke="#fff" stroke-width="8"/>
+<g font-family="Arial,sans-serif"><rect x="120" y="205" width="270" height="92" rx="20" fill="#fff" stroke="#d7e0e7" stroke-width="2"/><text x="155" y="242" font-size="17" font-weight="700" fill="#26323d">1 · GoPro footage</text><text x="155" y="270" font-size="16" fill="#6a7680">record rides around Lyon</text>
+<rect x="465" y="205" width="270" height="92" rx="20" fill="#fff" stroke="#d7e0e7" stroke-width="2"/><text x="500" y="242" font-size="17" font-weight="700" fill="#26323d">2 · Extract GPS</text><text x="500" y="270" font-size="16" fill="#6a7680">recover coordinates</text>
+<rect x="810" y="205" width="300" height="92" rx="20" fill="#fff" stroke="#d7e0e7" stroke-width="2"/><text x="845" y="242" font-size="17" font-weight="700" fill="#26323d">3 · Build routes</text><text x="845" y="270" font-size="16" fill="#6a7680">organize ride geometry</text>
+<rect x="1185" y="205" width="300" height="92" rx="20" fill="#fff" stroke="#d7e0e7" stroke-width="2"/><text x="1220" y="242" font-size="17" font-weight="700" fill="#26323d">4 · Publish map</text><text x="1220" y="270" font-size="16" fill="#6a7680">Google My Maps</text></g>
+</svg>

@@ -14,7 +14,7 @@ I use data, public records, computational methods, and visualization to investig
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
-![](projects/assets/cards/congressional-stock-network.webp){fig-alt="Interactive congressional stock trading network showing politicians, companies, and committees"}
+![](projects/assets/cards/congressional-stock-network.svg){fig-alt="Miniature recreation of the congressional stock trading network interface"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -34,7 +34,7 @@ Interactive network of reported 2025 House stock purchases, shared companies, co
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
-![](projects/assets/cards/stock-disclosures.webp){fig-alt="Featured congressional periodic transaction report with extracted stock transactions"}
+![](projects/assets/cards/stock-disclosures.svg){fig-alt="Miniature recreation of a featured congressional periodic transaction report and extracted transactions"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -54,7 +54,7 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
-![](projects/assets/cards/political-text-analysis.webp){fig-alt="Political text analysis timeline connecting Truth Social posts with conflict events"}
+![](projects/assets/cards/political-text-analysis.svg){fig-alt="Miniature recreation of the Iran event and Truth Social post timeline"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -74,7 +74,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
-![](https://drive.google.com/thumbnail?id=1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk&sz=w1600){fig-alt="TankieTube University of Amsterdam Digital Methods research poster"}
+![](https://drive.google.com/thumbnail?id=1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk&sz=w2000){fig-alt="TankieTube University of Amsterdam Digital Methods research poster"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -99,6 +99,9 @@ Five-day University of Amsterdam research sprint comparing a Tankie transcript c
 :::: {.more-projects-grid}
 
 ::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/all-we-are-solar-map.svg){fig-alt="Source-derived preview of installed All We Are solar sites in Uganda"}
+:::
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### All We Are Solar Map
@@ -116,6 +119,9 @@ Interactive Mapbox visualization turning All We Are's solar installation records
 :::
 
 ::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/lyon-cycling-map.svg){fig-alt="Diagram of the GoPro to GPS to interactive map workflow used for the Lyon cycling project"}
+:::
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### Lyon Cycling Map
@@ -133,6 +139,9 @@ Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro f
 :::
 
 ::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image .clearhouse-image}
+![](projects/assets/clearhouse/Image%20Sep%207,%202026,%2003_11_37%20PM.png){fig-alt="ClearHouse public stock disclosure and trades interface"}
+:::
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### ClearHouse.live
