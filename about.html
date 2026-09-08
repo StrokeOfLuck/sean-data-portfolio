@@ -868,6 +868,8 @@ ul.task-list li input[type="checkbox"] {
   let cameraShiftY=0;
   let cameraTargetY=0;
   let resetGuardUntil=0;
+  let spawnOriginX=0;
+  let spawnProtected=true;
 
   let topSpeed=0;
   let peakHeight=0;
@@ -1195,6 +1197,55 @@ ul.task-list li input[type="checkbox"] {
     return Math.max(margin,deckWidth/2);
   }
 
+  // Find a flat-deck starting point that is not already touching any page
+  // text or the photo. This keeps responsive layouts from spawning the bike
+  // inside an Interests item and instantly triggering a chain reaction.
+  function spawnClearAt(x) {
+    const pose=groundPoseAt(x);
+    const r=36;
+
+    for(const span of document.querySelectorAll('.physics-word')) {
+      if(span.dataset.detached==='1') continue;
+      if(hitStaticRect(x,pose.y,r,span.getBoundingClientRect())) return false;
+    }
+
+    if(
+      photoWrap.dataset.detached!=='1' &&
+      hitStaticRect(x,pose.y,r+10,photoWrap.getBoundingClientRect())
+    ) return false;
+
+    return true;
+  }
+
+  function safeSpawnX(g,preferred='left') {
+    const margin=BIKE_DECK_HALF_WIDTH+8;
+    const sides=preferred==='right' ? ['right','left'] : ['left','right'];
+
+    for(const side of sides) {
+      const start=side==='left' ? margin : g.rightLip+margin;
+      const end=side==='left' ? g.leftLip-margin : W-margin;
+      if(end<start) continue;
+
+      const target=clamp(safeDeckX(g,side),start,end);
+      const candidates=[target];
+      const step=18;
+      const span=end-start;
+
+      for(let d=step;d<=span+step;d+=step) {
+        candidates.push(target-d,target+d);
+      }
+
+      for(const x of candidates) {
+        if(x<start || x>end) continue;
+        if(spawnClearAt(x)) return x;
+      }
+    }
+
+    // Very small viewports may have no fully clear deck. Keep the old safe
+    // fallback, while the short spawn guard below still prevents load-time chaos.
+    return safeDeckX(g,preferred);
+  }
+
   function resize() {
     const oldGeom=(W>0 && H>0) ? geom() : null;
     const wasLeftDeck=!!(
@@ -1221,11 +1272,11 @@ ul.task-list li input[type="checkbox"] {
     if(!bike.airborne && W) {
       const g=geom();
       if(wasLeftDeck) {
-        bike.x=safeDeckX(g,'left');
+        bike.x=Math.abs(bike.speed)<.05 ? safeSpawnX(g,'left') : safeDeckX(g,'left');
       } else if(wasRightDeck) {
-        bike.x=safeDeckX(g,'right');
+        bike.x=Math.abs(bike.speed)<.05 ? safeSpawnX(g,'right') : safeDeckX(g,'right');
       } else {
-        bike.x=clamp(bike.x||safeDeckX(g,'left'),20,W-20);
+        bike.x=clamp(bike.x||safeSpawnX(g,'left'),20,W-20);
       }
 
       const pose=groundPoseAt(bike.x);
@@ -1346,12 +1397,14 @@ ul.task-list li input[type="checkbox"] {
     resetGuardUntil=performance.now()+280;
     restoreWordsAndPhoto();
     resize();
-    bike.x=safeDeckX(geom(),'left');
+    bike.x=safeSpawnX(geom(),'left');
     {
       const pose=groundPoseAt(bike.x);
       bike.y=pose.y;
       bike.angle=pose.angle;
     }
+    spawnOriginX=bike.x;
+    spawnProtected=true;
     bike.speed=0;
     bike.vx=0;
     bike.vy=0;
@@ -1755,7 +1808,7 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function bikeKnockStatic() {
-    if(pageLocked || performance.now()<resetGuardUntil) return;
+    if(pageLocked || spawnProtected || performance.now()<resetGuardUntil) return;
     const r=26;
 
     for(const span of document.querySelectorAll('.physics-word')) {
@@ -2187,6 +2240,16 @@ ul.task-list li input[type="checkbox"] {
 
     if(Math.abs(cameraShiftY)<0.2 && cameraTargetY===0) cameraShiftY=0;
     if(pageEl) pageEl.style.transform=`translateY(${cameraShiftY}px)`;
+
+    // Do not let a stationary bike knock page content loose just because a
+    // responsive layout briefly placed something near the spawn point. Once
+    // the rider actually leaves the spawn area, normal collisions resume.
+    if(
+      spawnProtected &&
+      (bike.airborne || Math.abs(bike.x-spawnOriginX)>BIKE_DECK_HALF_WIDTH)
+    ) {
+      spawnProtected=false;
+    }
 
     bikeKnockStatic();
     collideBikeBodies();
