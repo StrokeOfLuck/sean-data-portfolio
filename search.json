@@ -1,80 +1,220 @@
 [
   {
-    "objectID": "AUTOMATION_SETUP.html",
-    "href": "AUTOMATION_SETUP.html",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
+    "objectID": "projects/tankietube.html",
+    "href": "projects/tankietube.html",
+    "title": "TankieTube",
     "section": "",
-    "text": "This repo and the sibling senate-ptr-scraper repo are wired up to scrape Senate PTR data and rebuild/deploy this site automatically. A few steps can only be done by you in the GitHub UI (not something an assistant can do via local tools) — do these once to turn the automation on.\n\n\nsenate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main\n\n\n\nIn senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN.\n\n\n\nThe scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value.\n\n\n\n\nSettings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)\n\n\n\n\nIn senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data.\n\n\n\n\n\nThe scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data is read directly from house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv. The deploy workflow checks out house-ptr-scraper before rendering, so the portfolio repo does not keep a second House CSV snapshot."
+    "text": "TankieTube was a five-day collaborative research sprint at the University of Amsterdam. Our team compared “natively digital” Marxist-Leninist YouTube creators with formal political organizations.\nProject leads: Gavin Mueller and Ema Kinsel.\nTeam: Luca Ghiselli, Ada Paul, Sean Ryan, and Jo Walton.\nMy part focused on the Tenet/Rumble comparison, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research."
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
-    "href": "AUTOMATION_SETUP.html#push-senate-ptr-scraper-to-github",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "senate-ptr-scraper currently only exists as a local git repo. Create an empty GitHub repo (no README/gitignore — it already has one), then:\ncd \"C:\\Users\\Sean\\Documents\\GitHub\\senate-ptr-scraper\"\ngit remote add origin https://github.com/StrokeOfLuck/senate-ptr-scraper.git\ngit push -u origin main"
+    "objectID": "projects/tankietube.html#project-poster",
+    "href": "projects/tankietube.html#project-poster",
+    "title": "TankieTube",
+    "section": "Project poster",
+    "text": "Project poster\n\n\n\n\nOpen poster in new tab ↗"
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
-    "href": "AUTOMATION_SETUP.html#allow-senate-ptr-scrapers-action-to-push-commits",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "In senate-ptr-scraper on GitHub: Settings → Actions → General → Workflow permissions → select “Read and write permissions” → Save.\nThis lets the scrape.yml workflow commit updated data back to the repo using the default GITHUB_TOKEN."
+    "objectID": "projects/tankietube.html#tenetrumble-comparison",
+    "href": "projects/tankietube.html#tenetrumble-comparison",
+    "title": "TankieTube",
+    "section": "Tenet/Rumble comparison",
+    "text": "Tenet/Rumble comparison\nI found a public dataset of 560 Tenet Media videos on Rumble and compared its transcripts with the much larger Tankie corpus.\n\n\n\n\n\n\nImportantWhat this comparison does not show\n\n\n\nThis is an exploratory text-similarity analysis. Similar language does not demonstrate coordination, ideological equivalence, causation, or support for “horseshoe theory.” The analysis instead looks for places where speakers with very different political motivations arrive at overlapping rhetoric, framings, or conclusions.\n\n\n\nTF-IDF surfaced important words shared across both datasets.\n“Israel” became a focus, and a sentence-similarity matcher paired Tenet quotes with the closest Tankie quotes.\n\nThe goal was to identify rhetorical convergence that would be difficult to spot manually, including cases where different ideological reasoning produced similar framings or conclusions."
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
-    "href": "AUTOMATION_SETUP.html#create-a-token-so-the-scraper-can-notify-this-site-to-rebuild",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "The scraper repo needs to trigger a build in this repo when new data lands — that requires a Personal Access Token (the default GITHUB_TOKEN can’t act across repos).\n\nGitHub → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token.\nResource owner: your account. Repository access: Only select repositories → sean-data-portfolio.\nPermissions: Contents: Read and write (this is what’s needed to fire a repository_dispatch event).\nGenerate the token and copy it.\nIn senate-ptr-scraper → Settings → Secrets and variables → Actions → New repository secret → name it SITE_DISPATCH_TOKEN, paste the token value."
+    "objectID": "projects/tankietube.html#what-the-team-found",
+    "href": "projects/tankietube.html#what-the-team-found",
+    "title": "TankieTube",
+    "section": "What the team found",
+    "text": "What the team found\nThe broader dataset covered 23 YouTube channels, nine political organizations, ~2.4 million YouTuber comments, ~107.4K organization comments, and over 6,000 hours of audio.\n\nThe YouTubers and formal organizations focused on noticeably different topics.\nYouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.\nThe team also found some aesthetic convergence between older organizations and newer YouTube-driven Marxism-Leninism."
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
-    "href": "AUTOMATION_SETUP.html#enable-github-pages-on-this-repo",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "Settings → Pages → Source: Deploy from a branch → Branch: gh-pages / (root). (The deploy.yml workflow here publishes to that branch via quarto-dev/quarto-actions/publish.)"
+    "objectID": "projects/tankietube.html#why-it-mattered-to-me",
+    "href": "projects/tankietube.html#why-it-mattered-to-me",
+    "title": "TankieTube",
+    "section": "Why it mattered to me",
+    "text": "Why it mattered to me\nFive days of working inside datasets that were far too large to read manually made computational research feel much more concrete. It helped push my interests toward digital investigations and data-driven online research."
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
-    "href": "AUTOMATION_SETUP.html#trigger-both-workflows-manually-once-to-validate",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "In senate-ptr-scraper → Actions → Scrape Senate PTRs → Run workflow. Watch it scrape, commit data, and (if the token from step 3 is set) fire a dispatch.\nIn sean-data-portfolio → Actions → Deploy site → Run workflow (or just wait for the dispatch from the step above). Confirm the site builds and the Senate page shows real data."
+    "objectID": "projects/tankietube.html#sources-and-project-links",
+    "href": "projects/tankietube.html#sources-and-project-links",
+    "title": "TankieTube",
+    "section": "Sources and project links",
+    "text": "Sources and project links\n\nTankieTube project report ↗\nDigital Methods Summer School 2026 ↗\nUniversity of Amsterdam Digital Methods Summer School ↗\nTenet Media Rumble transcript dataset ↗"
   },
   {
-    "objectID": "AUTOMATION_SETUP.html#notes",
-    "href": "AUTOMATION_SETUP.html#notes",
-    "title": "Automated Senate data + site deploy — manual setup checklist",
-    "section": "",
-    "text": "The scraper runs daily at ~9:30am US Eastern (two cron entries handle the EDT/EST shift — see senate-ptr-scraper/.github/workflows/scrape.yml).\nThe site also rebuilds weekly on its own schedule as a fallback, and on every push to main, in addition to the dispatch trigger.\nHouse data is read directly from house-ptr-scraper/data/06_public/house_ptr_transactions_web.csv. The deploy workflow checks out house-ptr-scraper before rendering, so the portfolio repo does not keep a second House CSV snapshot."
-  },
-  {
-    "objectID": "projects/stock-disclosures.html",
-    "href": "projects/stock-disclosures.html",
+    "objectID": "projects/stock-disclosures-senate.html",
+    "href": "projects/stock-disclosures-senate.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\nCoverage note: The pipeline currently handles the majority of born-digital House PTRs. A smaller set of image-based filings, including typed scans and handwritten disclosures, still need a separate OCR/VLM workflow and are a work in progress.\n\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "U.S. Senate Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. Senate Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.\n\n\nThis section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSenators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
   },
   {
-    "objectID": "projects/stock-disclosures.html#featured-ptr",
-    "href": "projects/stock-disclosures.html#featured-ptr",
+    "objectID": "projects/stock-disclosures-senate.html#featured-ptr",
+    "href": "projects/stock-disclosures-senate.html#featured-ptr",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
+    "text": "This section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount"
   },
   {
-    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
-    "href": "projects/stock-disclosures.html#explore-the-transactions",
+    "objectID": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "href": "projects/stock-disclosures-senate.html#explore-the-transactions",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
+    "text": "Senators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date."
   },
   {
-    "objectID": "projects/stock-disclosures.html#data-source",
-    "href": "projects/stock-disclosures.html#data-source",
+    "objectID": "projects/stock-disclosures-senate.html#data-source",
+    "href": "projects/stock-disclosures-senate.html#data-source",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
+    "text": "The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
+  },
+  {
+    "objectID": "projects/lyon-cycling-map.html",
+    "href": "projects/lyon-cycling-map.html",
+    "title": "Lyon Cycling Map",
+    "section": "",
+    "text": "While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThis was my Gilman Scholarship Follow-on Service Project, designed to document Lyon’s cycling infrastructure and make the city easier for future students to explore.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
+  },
+  {
+    "objectID": "projects/lyon-cycling-map.html#interactive-map",
+    "href": "projects/lyon-cycling-map.html#interactive-map",
+    "title": "Lyon Cycling Map",
+    "section": "",
+    "text": "Open the map in Google My Maps ↗"
+  },
+  {
+    "objectID": "projects/lyon-cycling-map.html#how-i-made-it",
+    "href": "projects/lyon-cycling-map.html#how-i-made-it",
+    "title": "Lyon Cycling Map",
+    "section": "",
+    "text": "The basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden."
+  },
+  {
+    "objectID": "projects/lyon-cycling-map.html#why-i-like-this-project",
+    "href": "projects/lyon-cycling-map.html#why-i-like-this-project",
+    "title": "Lyon Cycling Map",
+    "section": "",
+    "text": "This was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
+  },
+  {
+    "objectID": "projects/congressional-stock-network.html",
+    "href": "projects/congressional-stock-network.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "Loading congressional stock data…"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html",
+    "href": "projects/all-we-are-solar-map.html",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "I built this interactive map for All We Are, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.\n\nProject status: This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.\n\n\n\n\n\n\n\nOpen the full interactive map ↗ · View the map repository on GitHub ↗\n\n\n\nThe map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles\n\n\n\n\nThe project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on.\n\n\n\nOne of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#interactive-map",
+    "href": "projects/all-we-are-solar-map.html#interactive-map",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "Open the full interactive map ↗ · View the map repository on GitHub ↗"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#what-it-does",
+    "href": "projects/all-we-are-solar-map.html#what-it-does",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "The map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles"
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#how-it-works",
+    "href": "projects/all-we-are-solar-map.html#how-it-works",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "The project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on."
+  },
+  {
+    "objectID": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "href": "projects/all-we-are-solar-map.html#why-i-like-this-project",
+    "title": "All We Are Solar Map",
+    "section": "",
+    "text": "One of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology researcher using public records, computational methods, and visualization to investigate politics, technology, and public institutions. Builds searchable datasets, interactive tools, and investigative workflows with Python, R, GIS, APIs, and text and network analysis.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nSupported student projects using 3D printers, laser cutters, waterjets, and CNC equipment\n\n\nDeveloped equipment guides and instructional materials\n\n\nTroubleshot equipment and maintained shop safety\n\n\n\n\n\n\nTeaching Assistant, Graphic Communications\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nSupported SolidWorks and graphic communications coursework\n\n\nHelped students troubleshoot projects and provided technical feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support for computers, mobile devices, and printers\n\n\nDiagnosed hardware, software, and connectivity issues\n\n\nInstalled and configured operating systems, applications, and updates\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nUsual Crowd Lead / Grants Coordinator\n\n\n2024 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nLead Usual Crowd shop sessions and coordinate volunteer workflow\n\n\nServe as a volunteer mechanic, repairing donated bicycles and helping members learn bicycle maintenance\n\n\nWrite grant applications and support fundraising, including securing grant funding for co-op programs\n\n\n\n\n\n\n\nSelected Projects\n\nView full portfolio →\n\n\n\n\nPolitician Stock Disclosures\n\n\n2024–Present\n\n\n\n\nBuilt House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis\n\n\n\n\n\n\nPolitical Text Analysis\n\n\nFall 2026\n\n\n\n\nUsed computational text analysis to examine political rhetoric around real-world conflict events\n\n\n\n\n\n\nTankieTube — University of Amsterdam Digital Methods\n\n\nSummer 2026\n\n\n\n\nCompared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching\n\n\n\n\n\n\nAll We Are Solar Map\n\n\nSpring 2026\n\n\n\n\nBuilt an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit’s solar installation data in Uganda\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\nExpected 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certification\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS Data Visualization Text Analysis Network Analysis Web Scraping APIs Public Records Data Cleaning Mapbox Git / GitHub SolidWorks Digital Fabrication\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I work at the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMuch of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use."
+  },
+  {
+    "objectID": "about.html#interests",
+    "href": "about.html#interests",
+    "title": "About",
+    "section": "Interests",
+    "text": "Interests\n\n\nData journalism\n\n\nComputational text analysis\n\n\nDigital investigations and OSINT\n\n\nNetwork analysis\n\n\nPolitical and government data\n\n\nGIS and spatial analysis\n\n\nCivic technology\n\n\nData visualization"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sean Ryan",
+    "section": "",
+    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
+  },
+  {
+    "objectID": "index.html#data-projects",
+    "href": "index.html#data-projects",
+    "title": "Sean Ryan",
+    "section": "Data Projects",
+    "text": "Data Projects\n\n\n\nCongressional Stock Trading Network\n\nFall 2026\n\nNetwork analysis · public records · congressional data\nInteractive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.\nView project →\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\nFall 2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\nSpring 2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →\n\n\nClearHouse.live\n\nWinter 2024–25\n\nWeb scraping · public records · civic technology\nCollaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.\nView project →"
+  },
+  {
+    "objectID": "projects/clearhouse.html",
+    "href": "projects/clearhouse.html",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application.\n\n\n\n  \n\nOpen ClearHouse.live ↗\n\n\n\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.\n\n\n\nThis was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines.\n\n\n\nThe project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services.\n\n\n\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
+  },
+  {
+    "objectID": "projects/clearhouse.html#site-snapshot",
+    "href": "projects/clearhouse.html#site-snapshot",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "Open ClearHouse.live ↗"
+  },
+  {
+    "objectID": "projects/clearhouse.html#what-we-built",
+    "href": "projects/clearhouse.html#what-we-built",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "The site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform."
+  },
+  {
+    "objectID": "projects/clearhouse.html#what-i-learned",
+    "href": "projects/clearhouse.html#what-i-learned",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "This was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines."
+  },
+  {
+    "objectID": "projects/clearhouse.html#technical-stack",
+    "href": "projects/clearhouse.html#technical-stack",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "The project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services."
+  },
+  {
+    "objectID": "projects/clearhouse.html#why-it-mattered-to-me",
+    "href": "projects/clearhouse.html#why-it-mattered-to-me",
+    "title": "ClearHouse.live",
+    "section": "",
+    "text": "ClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
   },
   {
     "objectID": "projects/political-text-analysis.html",
@@ -147,220 +287,31 @@
     "text": "Reproducibility\nOpen the analysis notebook in Colab ↗\nRuns the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.\nAnalysis code and data on GitHub ↗\nContains the notebook, source data, and project README.\nThe Colab notebook reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same."
   },
   {
-    "objectID": "projects/clearhouse.html",
-    "href": "projects/clearhouse.html",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "ClearHouse.live was a collaborative winter project built to make U.S. politicians’ financial disclosures easier to search and understand.\nIt was also my introduction to web scraping, public-records data collection, and building a data-backed web application.\n\n\n\n  \n\nOpen ClearHouse.live ↗\n\n\n\nThe site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform.\n\n\n\nThis was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines.\n\n\n\nThe project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services.\n\n\n\nClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
-  },
-  {
-    "objectID": "projects/clearhouse.html#site-snapshot",
-    "href": "projects/clearhouse.html#site-snapshot",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "Open ClearHouse.live ↗"
-  },
-  {
-    "objectID": "projects/clearhouse.html#what-we-built",
-    "href": "projects/clearhouse.html#what-we-built",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "The site organizes politician stock trades from Periodic Transaction Reports and financial disclosures into a searchable public-facing platform."
-  },
-  {
-    "objectID": "projects/clearhouse.html#what-i-learned",
-    "href": "projects/clearhouse.html#what-i-learned",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "This was the first project where I had to think about the whole pipeline instead of just a finished dataset:\n\nfinding and collecting public disclosure data\nextracting useful fields from filings\ncleaning and storing transactions\nconnecting the data to a web interface\nchecking the source documents when automated extraction looked wrong\n\nThat experience is what eventually led me back to congressional stock disclosures with the newer House and Senate PTR pipelines."
-  },
-  {
-    "objectID": "projects/clearhouse.html#technical-stack",
-    "href": "projects/clearhouse.html#technical-stack",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "The project uses Python/Flask, SQLAlchemy, SQLite, HTML/CSS/JavaScript, and Chart.js, with background processing for financial-disclosure data and external market-data services."
-  },
-  {
-    "objectID": "projects/clearhouse.html#why-it-mattered-to-me",
-    "href": "projects/clearhouse.html#why-it-mattered-to-me",
-    "title": "ClearHouse.live",
-    "section": "",
-    "text": "ClearHouse was the project that made public-records data feel like something I could actually build around. It connected politics, scraping, data cleaning, and web development in a way that stuck with me."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Sean Ryan",
-    "section": "",
-    "text": "I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions."
-  },
-  {
-    "objectID": "index.html#data-projects",
-    "href": "index.html#data-projects",
-    "title": "Sean Ryan",
-    "section": "Data Projects",
-    "text": "Data Projects\n\n\n\nCongressional Stock Trading Network\n\nFall 2026\n\nNetwork analysis · public records · congressional data\nInteractive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.\nView project →\n\n\nPolitician Stock Disclosures\n\n2024–present\n\nPublic records · data cleaning · civic technology\nTurning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.\nView project →\n\n\nPolitical Text Analysis\n\nFall 2026\n\nNLP · political data · event analysis\nUsing computational text analysis to examine political rhetoric around real-world events.\nView project →\n\n\nTankieTube\n\nSummer 2026\n\nDigital methods · text analysis · internet research\nFive-day University of Amsterdam research sprint on online political subcultures. My contribution compared the Tankie transcript corpus with a Tenet Media/Rumble transcript dataset using TF-IDF and sentence-similarity matching.\nView project →\n\n\nAll We Are Solar Map\n\nSpring 2026\n\nGIS · nonprofit data · interactive visualization\nInteractive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.\nView project →\n\n\nLyon Cycling Map\n\nSummer 2025\n\nGIS · GPS data · interactive mapping\nCycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.\nView project →\n\n\nClearHouse.live\n\nWinter 2024–25\n\nWeb scraping · public records · civic technology\nCollaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.\nView project →"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I work at the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMuch of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use."
-  },
-  {
-    "objectID": "about.html#interests",
-    "href": "about.html#interests",
-    "title": "About",
-    "section": "Interests",
-    "text": "Interests\n\n\nData journalism\n\n\nComputational text analysis\n\n\nDigital investigations and OSINT\n\n\nNetwork analysis\n\n\nPolitical and government data\n\n\nGIS and spatial analysis\n\n\nCivic technology\n\n\nData visualization"
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Resume",
-    "section": "",
-    "text": "Sean Ryan\n\n\nData Journalism · Digital Investigations · Civic Technology\n\n\n\n\nsryan3@ncsu.edu\n\n\nGitHub\n\n\n\n\n\nSummary\n\n\nData journalism and civic technology researcher using public records, computational methods, and visualization to investigate politics, technology, and public institutions. Builds searchable datasets, interactive tools, and investigative workflows with Python, R, GIS, APIs, and text and network analysis.\n\n\n\n\nExperience\n\n\n\n\nFabrication Lab / Maker Space Technician\n\n\n2023 – 2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nSupported student projects using 3D printers, laser cutters, waterjets, and CNC equipment\n\n\nDeveloped equipment guides and instructional materials\n\n\nTroubleshot equipment and maintained shop safety\n\n\n\n\n\n\nTeaching Assistant, Graphic Communications\n\n\n2024\n\n\n\nNorth Carolina State University — Raleigh, NC\n\n\n\nSupported SolidWorks and graphic communications coursework\n\n\nHelped students troubleshoot projects and provided technical feedback\n\n\n\n\n\n\nPC Technician\n\n\n2020\n\n\n\nJacobs Engineering Group — Fort Bragg, NC\n\n\n\nProvided in-person and remote technical support for computers, mobile devices, and printers\n\n\nDiagnosed hardware, software, and connectivity issues\n\n\nInstalled and configured operating systems, applications, and updates\n\n\n\n\n\n\nVolunteer Experience\n\n\n\n\nUsual Crowd Lead / Grants Coordinator\n\n\n2024 – Present\n\n\n\nDurham Bike Co-op — Durham, NC\n\n\n\nLead Usual Crowd shop sessions and coordinate volunteer workflow\n\n\nServe as a volunteer mechanic, repairing donated bicycles and helping members learn bicycle maintenance\n\n\nWrite grant applications and support fundraising, including securing grant funding for co-op programs\n\n\n\n\n\n\n\nSelected Projects\n\nView full portfolio →\n\n\n\n\nPolitician Stock Disclosures\n\n\n2024–Present\n\n\n\n\nBuilt House and Senate pipelines that turn difficult-to-use financial disclosures into structured transaction data for search and analysis\n\n\n\n\n\n\nPolitical Text Analysis\n\n\nFall 2026\n\n\n\n\nUsed computational text analysis to examine political rhetoric around real-world conflict events\n\n\n\n\n\n\nTankieTube — University of Amsterdam Digital Methods\n\n\nSummer 2026\n\n\n\n\nCompared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching\n\n\n\n\n\n\nAll We Are Solar Map\n\n\nSpring 2026\n\n\n\n\nBuilt an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit’s solar installation data in Uganda\n\n\n\n\n\n\nEducation\n\n\n\n\nInterdisciplinary Studies — Integrating Nonprofit Studies and Engineering Technologies (B.S.)\n\n\nExpected 2027\n\n\n\nNorth Carolina State University\n\n\n\n\n\nElectronics Engineering Technology (A.A.S.)\n\n\n2021\n\n\n\nWake Technical Community College\n\n\n4.0 GPA · Honors Program Member\n\n\n\n\n\nSecurity+ Certification\n\n\n2018\n\n\n\nCompTIA\n\n\n\n\n\nSkills\n\n\nPython R GIS Data Visualization Text Analysis Network Analysis Web Scraping APIs Public Records Data Cleaning Mapbox Git / GitHub SolidWorks Digital Fabrication\n\n\n\n\n\nPrint / Save as PDF\n\n\nEdit resume"
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html",
-    "href": "projects/all-we-are-solar-map.html",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "I built this interactive map for All We Are, a Raleigh-based nonprofit working with communities in Uganda. The goal was to turn a spreadsheet of solar installations into something people could explore visually instead of reading through rows of project data.\n\nProject status: This page preserves the version I built before ongoing maintenance was handed off to the All We Are team. The map and bundled CSV here are a project snapshot and may not reflect the nonprofit’s current installation data.\n\n\n\n\n\n\n\nOpen the full interactive map ↗ · View the map repository on GitHub ↗\n\n\n\nThe map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles\n\n\n\n\nThe project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on.\n\n\n\nOne of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#interactive-map",
-    "href": "projects/all-we-are-solar-map.html#interactive-map",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "Open the full interactive map ↗ · View the map repository on GitHub ↗"
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#what-it-does",
-    "href": "projects/all-we-are-solar-map.html#what-it-does",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "The map reads a CSV export from a read-only master sheet I built. That sheet pulled the fields needed for the map from four existing All We Are spreadsheets into one view without modifying the organization’s source data.\nVisitors can:\n\nbrowse solar installation locations across Uganda\nuse a customer/site selector to jump directly to a location\nzoom into clustered areas\nclick a site to see details such as installation date, number of systems, customer type, district, and population\nswitch between map styles"
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#how-it-works",
-    "href": "projects/all-we-are-solar-map.html#how-it-works",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "The project is a small Mapbox GL JS + D3 application. D3 loads and parses the exported CSV, while Mapbox handles the interactive map, clustering, navigation, and popups.\nThe workflow was: four source spreadsheets → read-only master sheet → CSV → interactive map. The master sheet referenced the organization’s existing data rather than changing it. At handoff, a fresh CSV export could replace the map’s data file. This repository now keeps the last bundled CSV as a reproducible snapshot of the version I worked on."
-  },
-  {
-    "objectID": "projects/all-we-are-solar-map.html#why-i-like-this-project",
-    "href": "projects/all-we-are-solar-map.html#why-i-like-this-project",
-    "title": "All We Are Solar Map",
-    "section": "",
-    "text": "One of my favorite parts was building the master sheet itself: pulling useful fields from four separate spreadsheets into one clean, view-only layer for the map without touching the original records.\nThe project is a good example of the kind of technical work I enjoy: taking information that already exists inside an organization and making it easier to understand and use."
-  },
-  {
-    "objectID": "projects/congressional-stock-network.html",
-    "href": "projects/congressional-stock-network.html",
-    "title": "Sean Ryan",
-    "section": "",
-    "text": "Loading congressional stock data…"
-  },
-  {
-    "objectID": "projects/lyon-cycling-map.html",
-    "href": "projects/lyon-cycling-map.html",
-    "title": "Lyon Cycling Map",
-    "section": "",
-    "text": "While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThis was my Gilman Scholarship Follow-on Service Project, designed to document Lyon’s cycling infrastructure and make the city easier for future students to explore.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
-  },
-  {
-    "objectID": "projects/lyon-cycling-map.html#interactive-map",
-    "href": "projects/lyon-cycling-map.html#interactive-map",
-    "title": "Lyon Cycling Map",
-    "section": "",
-    "text": "Open the map in Google My Maps ↗"
-  },
-  {
-    "objectID": "projects/lyon-cycling-map.html#how-i-made-it",
-    "href": "projects/lyon-cycling-map.html#how-i-made-it",
-    "title": "Lyon Cycling Map",
-    "section": "",
-    "text": "The basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden."
-  },
-  {
-    "objectID": "projects/lyon-cycling-map.html#why-i-like-this-project",
-    "href": "projects/lyon-cycling-map.html#why-i-like-this-project",
-    "title": "Lyon Cycling Map",
-    "section": "",
-    "text": "This was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
-  },
-  {
-    "objectID": "projects/stock-disclosures-senate.html",
-    "href": "projects/stock-disclosures-senate.html",
+    "objectID": "projects/stock-disclosures.html",
+    "href": "projects/stock-disclosures.html",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "U.S. Senate Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. Senate Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed. Electronic filings are scraped and parsed automatically; paper (scanned) filings are out of scope for now.\n\n\nThis section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSenators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date.\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
+    "text": "U.S. House Periodic Transaction Reports\n\n\nHouse Senate\n\nThis project turns official U.S. House Periodic Transaction Report (PTR) disclosures into structured transaction data that can be searched and analyzed.\n\nCoverage note: The pipeline currently handles the majority of born-digital House PTRs. A smaller set of image-based filings, including typed scans and handwritten disclosures, still need a separate OCR/VLM workflow and are a work in progress.\n\n\n\nThis section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF\n\n\n\n\n\n\n\n\n\n\n\n\nRepresentatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records\n\n\n\n\n\n\n\n\n\n\nThe source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#featured-ptr",
-    "href": "projects/stock-disclosures-senate.html#featured-ptr",
+    "objectID": "projects/stock-disclosures.html#featured-ptr",
+    "href": "projects/stock-disclosures.html#featured-ptr",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "This section randomly selects one scraped Senate filing from the dataset.\nUse Show another PTR to pick another example, or enter a Report ID to inspect a specific source disclosure.\n\n\n\n\n\nState / Office\n\n\nReport ID\n\n\nFiling date\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nView official Senate filing\n\n\nFind by Report ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount"
+    "text": "This section randomly selects one successfully extracted House filing from the dataset.\nUse Show another PTR to pick another clean example, or enter a Filing ID to inspect a specific source disclosure.\n\n\n\n\n\nDistrict\n\n\nFiling ID\n\n\nSource year\n\n\nTransactions\n\n\n\n\n\nShow another PTR\n\nOpen original House PDF\n\n\nFind by Filing ID\n\nLoad\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOwner\n\n\nAsset\n\n\nTicker\n\n\nType\n\n\nDate\n\n\nAmount\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYour browser could not display this PDF inline.\nOpen the original House PDF"
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#explore-the-transactions",
-    "href": "projects/stock-disclosures-senate.html#explore-the-transactions",
+    "objectID": "projects/stock-disclosures.html#explore-the-transactions",
+    "href": "projects/stock-disclosures.html#explore-the-transactions",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "Senators\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nFilings\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nUse the global search box or individual column filters to search by report ID, senator, ticker, asset, state/office, transaction type, or date."
+    "text": "Representatives\n\n\n0\n\n\n\n\nAssets\n\n\n0\n\n\n\n\nDisclosures\n\n\n0\n\n\n\n\nTransactions\n\n\n0\n\n\n\n\nThe table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.\nUse the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.\n\nDebug modeInclude high-QA records"
   },
   {
-    "objectID": "projects/stock-disclosures-senate.html#data-source",
-    "href": "projects/stock-disclosures-senate.html#data-source",
+    "objectID": "projects/stock-disclosures.html#data-source",
+    "href": "projects/stock-disclosures.html#data-source",
     "title": "Politician Stock Disclosures",
     "section": "",
-    "text": "The source records are official U.S. Senate Periodic Transaction Reports, scraped from the Senate’s Electronic Financial Disclosure (eFD) system.\nEach displayed transaction retains a link to the original official Senate filing page. Paper (scanned) filings are not yet included."
-  },
-  {
-    "objectID": "projects/tankietube.html",
-    "href": "projects/tankietube.html",
-    "title": "TankieTube",
-    "section": "",
-    "text": "TankieTube was a five-day collaborative research sprint at the University of Amsterdam. Our team compared “natively digital” Marxist-Leninist YouTube creators with formal political organizations.\nProject leads: Gavin Mueller and Ema Kinsel.\nTeam: Luca Ghiselli, Ada Paul, Sean Ryan, and Jo Walton.\nMy part focused on the Tenet/Rumble comparison, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research."
-  },
-  {
-    "objectID": "projects/tankietube.html#project-poster",
-    "href": "projects/tankietube.html#project-poster",
-    "title": "TankieTube",
-    "section": "Project poster",
-    "text": "Project poster\n\n\n\n\nOpen poster in new tab ↗"
-  },
-  {
-    "objectID": "projects/tankietube.html#tenetrumble-comparison",
-    "href": "projects/tankietube.html#tenetrumble-comparison",
-    "title": "TankieTube",
-    "section": "Tenet/Rumble comparison",
-    "text": "Tenet/Rumble comparison\nI found a public dataset of 560 Tenet Media videos on Rumble and compared its transcripts with the much larger Tankie corpus.\n\n\n\n\n\n\nImportantWhat this comparison does not show\n\n\n\nThis is an exploratory text-similarity analysis. Similar language does not demonstrate coordination, ideological equivalence, causation, or support for “horseshoe theory.” The analysis instead looks for places where speakers with very different political motivations arrive at overlapping rhetoric, framings, or conclusions.\n\n\n\nTF-IDF surfaced important words shared across both datasets.\n“Israel” became a focus, and a sentence-similarity matcher paired Tenet quotes with the closest Tankie quotes.\n\nThe goal was to identify rhetorical convergence that would be difficult to spot manually, including cases where different ideological reasoning produced similar framings or conclusions."
-  },
-  {
-    "objectID": "projects/tankietube.html#what-the-team-found",
-    "href": "projects/tankietube.html#what-the-team-found",
-    "title": "TankieTube",
-    "section": "What the team found",
-    "text": "What the team found\nThe broader dataset covered 23 YouTube channels, nine political organizations, ~2.4 million YouTuber comments, ~107.4K organization comments, and over 6,000 hours of audio.\n\nThe YouTubers and formal organizations focused on noticeably different topics.\nYouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.\nThe team also found some aesthetic convergence between older organizations and newer YouTube-driven Marxism-Leninism."
-  },
-  {
-    "objectID": "projects/tankietube.html#why-it-mattered-to-me",
-    "href": "projects/tankietube.html#why-it-mattered-to-me",
-    "title": "TankieTube",
-    "section": "Why it mattered to me",
-    "text": "Why it mattered to me\nFive days of working inside datasets that were far too large to read manually made computational research feel much more concrete. It helped push my interests toward digital investigations and data-driven online research."
-  },
-  {
-    "objectID": "projects/tankietube.html#sources-and-project-links",
-    "href": "projects/tankietube.html#sources-and-project-links",
-    "title": "TankieTube",
-    "section": "Sources and project links",
-    "text": "Sources and project links\n\nTankieTube project report ↗\nDigital Methods Summer School 2026 ↗\nUniversity of Amsterdam Digital Methods Summer School ↗\nTenet Media Rumble transcript dataset ↗"
+    "text": "The source records are official U.S. House Periodic Transaction Reports.\nEach displayed transaction retains the original House disclosure URL when available."
   }
 ]
