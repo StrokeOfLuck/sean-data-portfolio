@@ -10,10 +10,11 @@ I use data, public records, computational methods, and visualization to investig
 
 ## Projects
 
-:::: {.projects-grid}
+:::: {.featured-projects}
 
-::: {.project-card}
-::: {.project-card-art .art-network}
+::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/congressional-stock-network.webp){fig-alt="Interactive congressional stock trading network showing politicians, companies, and committees"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -31,8 +32,9 @@ Interactive network of reported 2025 House stock purchases, shared companies, co
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .art-records}
+::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/stock-disclosures.webp){fig-alt="Featured congressional periodic transaction report with extracted stock transactions"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -50,8 +52,9 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .art-text}
+::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/political-text-analysis.webp){fig-alt="Political text analysis timeline connecting Truth Social posts with conflict events"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -69,8 +72,9 @@ Using computational text analysis to examine political rhetoric around real-worl
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .art-tankie}
+::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image .poster-image}
+![](https://drive.google.com/thumbnail?id=1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk&sz=w1600){fig-alt="TankieTube University of Amsterdam Digital Methods research poster"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -82,15 +86,19 @@ Summer 2026
 ::: {.project-tags}
 [Digital Methods]{.project-tag} [Text Analysis]{.project-tag} [Internet Research]{.project-tag}
 :::
-Five-day University of Amsterdam research sprint comparing a Tankie transcript corpus with a Tenet Media/Rumble dataset using TF-IDF and sentence-similarity matching.
+Five-day University of Amsterdam research sprint comparing a Tankie transcript corpus with Tenet Media/Rumble using TF-IDF and sentence-similarity matching.
 
 [View project →](projects/tankietube.qmd){.project-link}
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .art-map}
-:::
+::::
+
+### More projects
+
+:::: {.more-projects-grid}
+
+::: {.project-card .compact-project-card}
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### All We Are Solar Map
@@ -107,9 +115,7 @@ Interactive Mapbox visualization turning All We Are's solar installation records
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .art-bike}
-:::
+::: {.project-card .compact-project-card}
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### Lyon Cycling Map
@@ -126,10 +132,7 @@ Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro f
 :::
 :::
 
-::: {.project-card}
-::: {.project-card-art .project-card-image}
-![](projects/assets/clearhouse/Image%20Sep%207,%202026,%2003_11_37%20PM.png){fig-alt="ClearHouse stock disclosure interface"}
-:::
+::: {.project-card .compact-project-card}
 ::: {.project-card-body}
 ::: {.project-card-heading}
 ### ClearHouse.live
@@ -140,7 +143,7 @@ Winter 2024–25
 ::: {.project-tags}
 [Web Scraping]{.project-tag} [Public Records]{.project-tag} [Civic Technology]{.project-tag}
 :::
-Collaborative project that turned politician financial disclosures into a searchable public-facing stock-trading platform. This was my introduction to scraping and public-records data pipelines.
+Collaborative public-facing stock-trading platform built from scraped politician financial disclosures; my introduction to public-records data pipelines.
 
 [View project →](projects/clearhouse.qmd){.project-link}
 :::
