@@ -23,9 +23,9 @@ page-layout: full
     padding:6px 32px 690px;
   }
 
-  /* Desktop playground is a single-screen scene. The page itself should not
-     scroll; only the physics objects move. Mobile keeps normal document
-     scrolling so the About copy is not clipped on a narrow screen. */
+  /* Desktop playground is a single-screen scene. The page itself does not
+     scroll; only the physics objects move. Mobile has its own compact
+     single-screen layout below. */
   @media (min-width:761px) {
     html,
     body {
@@ -105,19 +105,6 @@ page-layout: full
   }
 
   body.page-locked .physics-word { cursor:default; }
-
-  .physics-floating-word {
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:16;
-    display:block;
-    pointer-events:none;
-    user-select:none;
-    white-space:nowrap;
-    transform-origin:center center;
-    will-change:transform;
-  }
 
   #world {
     position:fixed;
@@ -239,114 +226,6 @@ page-layout: full
     white-space:nowrap;
   }
 
-  .telemetry-records {
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:8px 12px;
-    margin-top:8px;
-    padding-top:7px;
-  }
-
-  .telemetry-records span {
-    display:block;
-    margin-bottom:1px;
-    font-size:8px;
-    letter-spacing:.08em;
-    color:#9aa5b1;
-  }
-
-  .telemetry-records-four {
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:8px 12px;
-  }
-
-  .telemetry-records-two {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px 12px;
-  }
-
-  .telemetry-records strong {
-    display:block;
-    font-size:12px;
-    line-height:1.15;
-    font-weight:600;
-    color:#33465d;
-    font-variant-numeric:tabular-nums;
-  }
-
-
-  .telemetry-all {
-    margin-top:10px;
-    padding-top:2px;
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:8px 12px;
-  }
-
-  .telemetry-all div {
-    min-width:0;
-    padding:2px 2px 3px;
-    border-radius:0;
-    background:transparent;
-  }
-
-  .telemetry-all span {
-    display:block;
-    margin-bottom:2px;
-    font-size:8px;
-    letter-spacing:.08em;
-    color:#9aa5b1;
-  }
-
-  .telemetry-all strong {
-    display:block;
-    overflow:hidden;
-    font-size:12px;
-    line-height:1.15;
-    font-weight:600;
-    color:#33465d;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    font-variant-numeric:tabular-nums;
-  }
-
-  .telemetry-raw-pairs {
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:9px 12px;
-    margin-top:10px;
-    padding-top:2px;
-  }
-
-  .telemetry-raw-pairs > div {
-    min-width:0;
-  }
-
-  .telemetry-raw-pairs span {
-    display:block;
-    margin-bottom:2px;
-    font-size:8px;
-    letter-spacing:.08em;
-    color:#9aa5b1;
-  }
-
-  .telemetry-raw-pairs strong {
-    display:block;
-    overflow:hidden;
-    margin-bottom:7px;
-    font-size:12px;
-    line-height:1.15;
-    font-weight:600;
-    color:#33465d;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    font-variant-numeric:tabular-nums;
-  }
-
-  .telemetry-pair strong:last-child {
-    margin-bottom:0;
-  }
-
   .telemetry-note {
     display:none;
     margin-top:8px;
@@ -404,12 +283,6 @@ page-layout: full
     display:flex;
     align-items:center;
     gap:8px;
-  }
-
-  .hint {
-    font-size:12px;
-    color:var(--muted);
-    white-space:nowrap;
   }
 
   .hud button {
@@ -520,8 +393,6 @@ page-layout: full
       font-size:12.5px;
       line-height:1.35;
     }
-
-    .hint { display:none; }
 
     .telemetry-toggle {
       left:8px;
@@ -852,7 +723,6 @@ page-layout: full
   let pageLocked=false;
   let cameraShiftY=0;
   let cameraTargetY=0;
-  let trackBottomY=0;
   let resetGuardUntil=0;
 
   let topSpeed=0;
@@ -1197,7 +1067,6 @@ page-layout: full
     const s=pageSize();
     W=s.w; H=s.h;
     dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
-    trackBottomY=0;
 
     canvas.width=Math.round(W*dpr);
     canvas.height=Math.round(H*dpr);
@@ -1293,8 +1162,6 @@ page-layout: full
     window.removeEventListener('pointerup',onDragEnd);
     clearPendingStatic();
 
-    // Clean up copies created by older deployed versions too.
-    document.querySelectorAll('.physics-floating-word').forEach(el=>el.remove());
     bodies.length=0;
     document.querySelectorAll('.physics-word').forEach(s=>{ s.dataset.detached=''; s.style.visibility=''; });
     photoWrap.dataset.detached='';
