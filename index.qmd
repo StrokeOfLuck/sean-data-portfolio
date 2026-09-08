@@ -74,7 +74,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
-![](projects/assets/cards/tankietube-title-banner.webp){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
+![](projects/assets/cards/tankietube-title.webp){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -127,7 +127,7 @@ Interactive Mapbox visualization turning All We Are's solar installation records
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-live .lyon-live}
 <iframe
-  src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8&ll=45.7605%2C4.8420&z=12"
+  src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8&ll=45.7605%2C4.8420&z=11"
   title="Live preview of the actual Lyon cycling route map"
   loading="lazy"
   tabindex="-1"
