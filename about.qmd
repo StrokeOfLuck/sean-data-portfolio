@@ -1479,14 +1479,13 @@ page-layout: full
       ctx.restore();
     };
 
-    // Fill wheel interiors first so the ramp line does not visually run
-    // through the wheels and make the contact point look inconsistent.
+    // Transparent wheel interiors: draw only the rim and spokes so the page
+    // background / ramp remains visible between spokes.
     // Penny farthing gets its own unequal wheel geometry below.
     if(bikeDesign!=='penny') {
       ctx.beginPath();
       ctx.arc(rear.x,rear.y,wheelR,0,Math.PI*2);
       ctx.arc(front.x,front.y,wheelR,0,Math.PI*2);
-      ctx.fill();
       ctx.stroke();
 
       const spokeCount=(bikeDesign==='road' || bikeDesign==='mtb') ? 8 : 6;
@@ -1623,12 +1622,10 @@ page-layout: full
 
       const circle = (x,y,r,w=2) => {
         ctx.save();
-        ctx.fillStyle='#ffffff';
         ctx.strokeStyle=lineColor;
         ctx.lineWidth=w;
         ctx.beginPath();
         ctx.arc(x,y,r,0,Math.PI*2);
-        ctx.fill();
         ctx.stroke();
         ctx.restore();
       };
