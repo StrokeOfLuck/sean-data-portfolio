@@ -421,9 +421,7 @@ execute:
   }
 
   .resume-section-heading a {
-    font-size: 0.66rem;
-    color: #000 !important;
-    text-decoration: none !important;
+    display: none !important;
   }
 
   .resume-summary {
