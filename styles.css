@@ -93,7 +93,19 @@ a {
 }
 
 .poster-image img {
-  object-position: left top;
+  position: absolute;
+  top: -2%;
+  left: -4%;
+  width: 245%;
+  max-width: none;
+  height: auto;
+  object-fit: unset;
+  object-position: unset;
+  transform: none;
+}
+
+.project-card:hover .poster-image img {
+  transform: none;
 }
 
 .clearhouse-image img {
@@ -118,6 +130,15 @@ a {
 
 .all-we-are-live iframe {
   background: #171717;
+}
+
+/* Google My Maps has a fixed chrome bar and zoom controls.
+   Crop those outside the card while keeping the actual map/route. */
+.lyon-live iframe {
+  top: -76px;
+  left: -64px;
+  width: calc(100% + 64px);
+  height: calc(100% + 92px);
 }
 
 .project-card-body {
