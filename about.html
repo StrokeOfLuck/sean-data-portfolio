@@ -644,6 +644,7 @@ ul.task-list li input[type="checkbox"] {
   const canvas = document.getElementById('world');
   const ctx = canvas.getContext('2d');
   const pageEl = document.querySelector('.page');
+  const interestsEl = document.querySelector('.interests');
   const photoWrap = document.getElementById('photoWrap');
   const photoImg = document.getElementById('photo');
   const pageLockButton = document.getElementById('pageLock');
@@ -666,6 +667,8 @@ ul.task-list li input[type="checkbox"] {
   let pageLocked=false;
   let cameraShiftY=0;
   let cameraTargetY=0;
+  let trackBottomY=0;
+  let resetGuardUntil=0;
 
   let topSpeed=0;
   let peakHeight=0;
@@ -735,14 +738,25 @@ ul.task-list li input[type="checkbox"] {
   document.querySelectorAll('[data-physics-text]').forEach(wrapWords);
 
   function pageSize() {
+    // Never use scrollWidth/scrollHeight here. The absolute canvas and detached
+    // physics objects can contribute to document overflow, which fed their own
+    // size back into the world on every resize and made the scene grow.
+    const viewportW=Math.max(
+      320,
+      document.documentElement.clientWidth || window.innerWidth || 0
+    );
+    const pageBottom=pageEl
+      ? pageEl.offsetTop + pageEl.offsetHeight
+      : (document.documentElement.clientHeight || window.innerHeight || 0);
+
     return {
-      w:Math.max(document.documentElement.clientWidth,document.documentElement.scrollWidth),
-      h:Math.max(document.documentElement.scrollHeight,document.body.scrollHeight)
+      w:viewportW,
+      h:Math.max(window.innerHeight || 0, pageBottom + 24)
     };
   }
 
   function geom() {
-    const bottom=H-350;
+    const bottom=trackBottomY || Math.max(420,H-350);
     const center=W/2;
 
     // Keep the halfpipe itself a consistent size on normal desktop widths.
@@ -906,6 +920,18 @@ ul.task-list li input[type="checkbox"] {
     W=s.w; H=s.h;
     dpr=Math.max(1,Math.min(2,window.devicePixelRatio||1));
 
+    // Anchor the halfpipe just below the actual About content instead of to
+    // the document's overflow height. This keeps the platforms, lips and
+    // bottom of the ramp visible and prevents off-screen drift.
+    const contentBottom=(pageEl && interestsEl)
+      ? pageEl.offsetTop + interestsEl.offsetTop + interestsEl.offsetHeight
+      : Math.max(260,(window.innerHeight || 0)*.48);
+    trackBottomY=clamp(
+      Math.max(contentBottom + 165,(window.innerHeight || 0)-105),
+      420,
+      Math.max(420,H-80)
+    );
+
     canvas.width=Math.round(W*dpr);
     canvas.height=Math.round(H*dpr);
     canvas.style.width=W+'px';
@@ -938,14 +964,9 @@ ul.task-list li input[type="checkbox"] {
     if(pageLocked || !span || span.dataset.detached==='1') return null;
     const b=wordBody(span);
 
-    const floating=document.createElement('span');
-    floating.className='physics-floating-word';
-    floating.textContent=b.text;
-    floating.style.font=b.font;
-    floating.style.color=b.color;
-    document.body.appendChild(floating);
-    b.floatEl=floating;
-
+    // Draw detached words only on the physics canvas. Keeping a second DOM
+    // copy caused stale duplicates to survive resets and could also expand
+    // the document's overflow dimensions.
     span.dataset.detached='1';
     span.style.visibility='hidden';
     b.vx=vx; b.vy=vy; b.av=(Math.random()-.5)*.05;
@@ -1003,13 +1024,17 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function restoreWordsAndPhoto() {
-    for(const b of bodies) {
-      if(b.floatEl) b.floatEl.remove();
-    }
-    document.querySelectorAll('.physics-floating-word').forEach(el=>el.remove());
-    bodies=[];
+    // Fully cancel any in-progress drag before restoring the page. Reset can
+    // be clicked while a pointer interaction is active.
+    if(dragging) dragging.held=false;
     dragging=null;
-    pendingStatic=null;
+    window.removeEventListener('pointermove',onDragMove);
+    window.removeEventListener('pointerup',onDragEnd);
+    clearPendingStatic();
+
+    // Clean up copies created by older deployed versions too.
+    document.querySelectorAll('.physics-floating-word').forEach(el=>el.remove());
+    bodies.length=0;
     document.querySelectorAll('.physics-word').forEach(s=>{ s.dataset.detached=''; s.style.visibility=''; });
     const divider=document.getElementById('interestsDivider');
     if(divider) {
@@ -1049,6 +1074,9 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function reset() {
+    // Briefly suppress collision-triggered detaches so a restored element
+    // cannot be knocked loose again in the same click/reset frame.
+    resetGuardUntil=performance.now()+280;
     restoreWordsAndPhoto();
     resize();
     bike.x=55;
@@ -1152,7 +1180,7 @@ ul.task-list li input[type="checkbox"] {
   function drawTrack() {
     const g=geom();
 
-    ctx.fillStyle='rgba(220,227,235,.15)';
+    ctx.fillStyle='rgba(220,227,235,.24)';
     ctx.beginPath();
     ctx.moveTo(g.leftLip,g.lipY);
     for(let x=g.leftLip;x<=g.leftFlat;x+=3) ctx.lineTo(x,trackY(x));
@@ -1168,8 +1196,8 @@ ul.task-list li input[type="checkbox"] {
     ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle='#c7d1dc';
-    ctx.lineWidth=1.7;
+    ctx.strokeStyle='#aebcca';
+    ctx.lineWidth=2.2;
     ctx.beginPath();
     ctx.moveTo(0,g.lipY);
     ctx.lineTo(g.leftLip,g.lipY);
@@ -1477,7 +1505,7 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function bikeKnockStatic() {
-    if(pageLocked) return;
+    if(pageLocked || performance.now()<resetGuardUntil) return;
     const r=26;
 
     for(const span of document.querySelectorAll('.physics-word')) {
@@ -1512,7 +1540,7 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function movingBodyKnockStatic(body) {
-    if(pageLocked) return;
+    if(pageLocked || performance.now()<resetGuardUntil) return;
     const speed=Math.hypot(body.vx,body.vy);
     if(speed<1.6) return;
 
@@ -1701,14 +1729,9 @@ ul.task-list li input[type="checkbox"] {
       ctx.rotate(b.angle);
 
       if(b.type==='word') {
-        if(b.floatEl) {
-          b.floatEl.style.transform =
-            `translate3d(${b.x}px,${b.y+cameraShiftY}px,0) translate(-50%,-50%) rotate(${b.angle}rad)`;
-        } else {
-          ctx.font=b.font;
-          ctx.fillStyle=b.color;
-          ctx.fillText(b.text,0,0);
-        }
+        ctx.font=b.font;
+        ctx.fillStyle=b.color;
+        ctx.fillText(b.text,0,0);
       } else if(b.type==='divider') {
         // Render the divider as a simple rigid beam, not as a stretched photo.
         ctx.fillStyle=b.color || '#dfe4ea';
