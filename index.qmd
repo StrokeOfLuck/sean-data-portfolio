@@ -34,7 +34,7 @@ Interactive network of reported 2025 House stock purchases, shared companies, co
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .stock-image}
-![](projects/assets/cards/stock-disclosures-actual.webp){fig-alt="Actual rendered Politician Stock Disclosures project page showing the Featured PTR interface"}
+![](projects/assets/cards/stock-disclosures.svg){fig-alt="Clean miniature of the Politician Stock Disclosures PTR extraction interface"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -74,7 +74,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
-![](https://drive.google.com/thumbnail?id=1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk&sz=w2000){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster"}
+![](https://drive.google.com/thumbnail?id=1kCgZ4PEYHndaUcQFrkFVmwpD9nxYZFCk&sz=w4000){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
@@ -101,7 +101,7 @@ Five-day University of Amsterdam research sprint comparing a Tankie transcript c
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-live .all-we-are-live}
 <iframe
-  src="https://strokeofluck.github.io/all-we-are-map-box/"
+  src="https://strokeofluck.github.io/all-we-are-map-box/?preview=1"
   title="Live preview of the actual All We Are solar installation map"
   loading="lazy"
   tabindex="-1"
