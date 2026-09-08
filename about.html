@@ -249,6 +249,19 @@ ul.task-list li input[type="checkbox"] {
 
   body.page-locked .physics-word { cursor:default; }
 
+  .physics-floating-word {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:16;
+    display:block;
+    pointer-events:none;
+    user-select:none;
+    white-space:nowrap;
+    transform-origin:center center;
+    will-change:transform;
+  }
+
   #world {
     position:absolute;
     inset:0;
@@ -731,15 +744,20 @@ ul.task-list li input[type="checkbox"] {
   function geom() {
     const bottom=H-350;
     const center=W/2;
-    const deckWidth=clamp(W*0.05, 38, 82);
-    const flatHalf=clamp(W*0.025, 34, 58);
-    const R=Math.max(220, center-flatHalf-deckWidth);
-    const blendLen=clamp(W*0.02, 18, 34);
+
+    // Keep the halfpipe itself a consistent size on normal desktop widths.
+    // Only shrink it when the viewport is too narrow to fit safely.
+    const sideMargin=32;
+    const flatHalf=clamp(W*0.06, 34, 55);
+    const maxRadius=Math.max(105,(W-(sideMargin*2)-(flatHalf*2))/2);
+    const R=Math.min(260,maxRadius);
+    const blendLen=Math.min(28,Math.max(16,R*.09));
 
     const leftFlat=center-flatHalf;
     const rightFlat=center+flatHalf;
-    const leftLip=deckWidth;
-    const rightLip=W-deckWidth;
+    const leftLip=leftFlat-R;
+    const rightLip=rightFlat+R;
+    const deckWidth=Math.max(0,leftLip);
 
     return {
       bottom,center,R,flatHalf,deckWidth,blendLen,
@@ -919,6 +937,15 @@ ul.task-list li input[type="checkbox"] {
   function detachWord(span,vx=0,vy=0) {
     if(pageLocked || !span || span.dataset.detached==='1') return null;
     const b=wordBody(span);
+
+    const floating=document.createElement('span');
+    floating.className='physics-floating-word';
+    floating.textContent=b.text;
+    floating.style.font=b.font;
+    floating.style.color=b.color;
+    document.body.appendChild(floating);
+    b.floatEl=floating;
+
     span.dataset.detached='1';
     span.style.visibility='hidden';
     b.vx=vx; b.vy=vy; b.av=(Math.random()-.5)*.05;
@@ -976,6 +1003,10 @@ ul.task-list li input[type="checkbox"] {
   }
 
   function restoreWordsAndPhoto() {
+    for(const b of bodies) {
+      if(b.floatEl) b.floatEl.remove();
+    }
+    document.querySelectorAll('.physics-floating-word').forEach(el=>el.remove());
     bodies=[];
     dragging=null;
     pendingStatic=null;
@@ -1670,9 +1701,14 @@ ul.task-list li input[type="checkbox"] {
       ctx.rotate(b.angle);
 
       if(b.type==='word') {
-        ctx.font=b.font;
-        ctx.fillStyle=b.color;
-        ctx.fillText(b.text,0,0);
+        if(b.floatEl) {
+          b.floatEl.style.transform =
+            `translate3d(${b.x}px,${b.y+cameraShiftY}px,0) translate(-50%,-50%) rotate(${b.angle}rad)`;
+        } else {
+          ctx.font=b.font;
+          ctx.fillStyle=b.color;
+          ctx.fillText(b.text,0,0);
+        }
       } else if(b.type==='divider') {
         // Render the divider as a simple rigid beam, not as a stretched photo.
         ctx.fillStyle=b.color || '#dfe4ea';
