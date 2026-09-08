@@ -6,10 +6,14 @@ toc: false
 <style>
 .about-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 290px;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2.25rem;
   align-items: start;
   margin-bottom: 2rem;
+}
+
+.about-copy p:first-child {
+  margin-top: 0;
 }
 
 .about-photo {
@@ -17,6 +21,17 @@ toc: false
   width: 100%;
   height: auto;
   border-radius: 16px;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 2.5rem;
+  margin-top: 0.75rem;
+}
+
+.interests-grid div {
+  line-height: 1.45;
 }
 
 @media (max-width: 700px) {
@@ -27,8 +42,13 @@ toc: false
 
   .about-photo-wrap {
     order: -1;
-    width: min(100%, 360px);
+    width: min(100%, 340px);
     margin: 0 auto;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 }
 </style>
@@ -37,11 +57,9 @@ toc: false
 
 ::: {.about-copy}
 
-I'm interested in the intersection of **data journalism, digital investigations, civic technology, and public-interest research**.
+I work at the intersection of **data journalism, digital investigations, civic technology, and public-interest research**.
 
-My work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.
-
-I am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question.
+Much of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I'm especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use.
 
 :::
 
@@ -55,11 +73,38 @@ I am particularly interested in using technical methods not simply to analyze a 
 
 ## Interests
 
-- Data journalism
-- Digital investigations and OSINT
-- Political and government data
-- Computational text analysis
-- Network analysis
-- GIS and spatial analysis
-- Civic technology
-- Data visualization
+::: {.interests-grid}
+
+::: {}
+Data journalism
+:::
+
+::: {}
+Computational text analysis
+:::
+
+::: {}
+Digital investigations and OSINT
+:::
+
+::: {}
+Network analysis
+:::
+
+::: {}
+Political and government data
+:::
+
+::: {}
+GIS and spatial analysis
+:::
+
+::: {}
+Civic technology
+:::
+
+::: {}
+Data visualization
+:::
+
+:::
