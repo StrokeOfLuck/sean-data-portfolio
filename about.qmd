@@ -23,6 +23,28 @@ page-layout: full
     padding:46px 32px 690px;
   }
 
+  /* Desktop playground is a single-screen scene. The page itself should not
+     scroll; only the physics objects move. Mobile keeps normal document
+     scrolling so the About copy is not clipped on a narrow screen. */
+  @media (min-width:761px) {
+    html,
+    body {
+      height:100%;
+      overflow:hidden;
+    }
+
+    .page {
+      height:calc(100vh - 48px);
+      min-height:0;
+      padding-bottom:0;
+      overflow:hidden;
+    }
+
+    #world {
+      position:fixed;
+    }
+  }
+
   .page h1 { font-size:42px; margin:0 0 28px; }
 
   .intro {
@@ -594,20 +616,29 @@ page-layout: full
   document.querySelectorAll('[data-physics-text]').forEach(wrapWords);
 
   function pageSize() {
-    // Never use scrollWidth/scrollHeight here. The absolute canvas and detached
-    // physics objects can contribute to document overflow, which fed their own
-    // size back into the world on every resize and made the scene grow.
+    // Never use scrollWidth/scrollHeight here. The canvas and detached physics
+    // objects can create overflow, which must not feed back into world size.
     const viewportW=Math.max(
       320,
       document.documentElement.clientWidth || window.innerWidth || 0
     );
+    const viewportH=Math.max(
+      420,
+      document.documentElement.clientHeight || window.innerHeight || 0
+    );
+
+    // Desktop is deliberately one screen with no document scrolling.
+    if(window.matchMedia('(min-width:761px)').matches) {
+      return {w:viewportW,h:viewportH};
+    }
+
     const pageBottom=pageEl
       ? pageEl.offsetTop + pageEl.offsetHeight
-      : (document.documentElement.clientHeight || window.innerHeight || 0);
+      : viewportH;
 
     return {
       w:viewportW,
-      h:Math.max(window.innerHeight || 0, pageBottom + 24)
+      h:Math.max(viewportH,pageBottom + 24)
     };
   }
 
