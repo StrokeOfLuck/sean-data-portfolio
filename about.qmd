@@ -20,7 +20,7 @@ page-layout: full
     z-index:1;
     max-width:1100px;
     margin:0 auto;
-    padding:22px 32px 690px;
+    padding:6px 32px 690px;
   }
 
   /* Desktop playground is a single-screen scene. The page itself should not
@@ -45,7 +45,7 @@ page-layout: full
     }
   }
 
-  .page h1 { font-size:42px; margin:0 0 20px; }
+  .page h1 { font-size:42px; margin:0 0 16px; }
 
   .intro {
     display:grid;
@@ -94,28 +94,6 @@ page-layout: full
     grid-template-columns:1fr 1fr;
     gap:22px 80px;
     font-size:21px;
-  }
-
-  .physics-divider {
-    height:1px;
-    background:#dfe4ea;
-    position:relative;
-    margin:0 0 22px;
-    cursor:grab;
-    touch-action:none;
-  }
-
-  .physics-divider::before {
-    content:'';
-    position:absolute;
-    left:0;
-    right:0;
-    top:-7px;
-    bottom:-7px;
-  }
-
-  body.page-locked .physics-divider {
-    cursor:default;
   }
 
   .physics-word {
@@ -489,7 +467,6 @@ page-layout: full
   </section>
 
   <h2 data-physics-text>Interests</h2>
-  <div class="physics-divider" id="interestsDivider"></div>
 
   <section class="interests">
     <div data-physics-text>Data journalism</div>
@@ -1001,34 +978,6 @@ page-layout: full
     return b;
   }
 
-  function dividerBody(el) {
-    const r=el.getBoundingClientRect();
-    return {
-      type:'divider',
-      x:worldXFromClient(r.left+r.width/2),
-      y:worldYFromClient(r.top+r.height/2),
-      vx:0,vy:0,angle:0,av:0,
-      w:Math.max(20,r.width),
-      h:8,
-      color:'#dfe4ea',
-      restitution:.28,
-      source:el,
-      held:false
-    };
-  }
-
-  function detachDivider(vx=0,vy=0) {
-    const divider=document.getElementById('interestsDivider');
-    if(pageLocked || !divider || divider.dataset.detached==='1') return null;
-    const b=dividerBody(divider);
-    divider.dataset.detached='1';
-    divider.style.visibility='hidden';
-    b.vx=vx;
-    b.vy=vy;
-    bodies.push(b);
-    return b;
-  }
-
   function restoreWordsAndPhoto() {
     // Fully cancel any in-progress drag before restoring the page. Reset can
     // be clicked while a pointer interaction is active.
@@ -1042,11 +991,6 @@ page-layout: full
     document.querySelectorAll('.physics-floating-word').forEach(el=>el.remove());
     bodies.length=0;
     document.querySelectorAll('.physics-word').forEach(s=>{ s.dataset.detached=''; s.style.visibility=''; });
-    const divider=document.getElementById('interestsDivider');
-    if(divider) {
-      divider.dataset.detached='';
-      divider.style.visibility='';
-    }
     photoWrap.dataset.detached='';
     photoWrap.style.visibility='';
   }
@@ -1518,17 +1462,6 @@ page-layout: full
       if(p) p.av=(Math.random()-.5)*.035;
     }
 
-    const divider=document.getElementById('interestsDivider');
-    if(divider && divider.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+8,divider.getBoundingClientRect())) {
-      impacts+=1;
-      resetStreakState();
-      bike.comboBoost*=.65;
-      const d=detachDivider(
-        bike.airborne ? bike.vx*.55 : bike.speed*.72,
-        bike.airborne ? bike.vy*.22-1.2 : -2.0
-      );
-      if(d) d.av=(Math.random()-.5)*.02;
-    }
   }
 
   function movingBodyKnockStatic(body) {
@@ -1559,14 +1492,6 @@ page-layout: full
       }
     }
 
-    const divider=document.getElementById('interestsDivider');
-    if(divider && divider.dataset.detached!=='1' && body.type!=='divider' && hitStaticRect(body.x,body.y,r+10,divider.getBoundingClientRect())) {
-      const d=detachDivider(body.vx*.60, body.vy*.36-0.9);
-      if(d) {
-        body.vx*=.78;
-        body.vy*=.84;
-      }
-    }
   }
 
   function bodyHitsBike(b) {
@@ -1724,10 +1649,6 @@ page-layout: full
         ctx.font=b.font;
         ctx.fillStyle=b.color;
         ctx.fillText(b.text,0,0);
-      } else if(b.type==='divider') {
-        // Render the divider as a simple rigid beam, not as a stretched photo.
-        ctx.fillStyle=b.color || '#dfe4ea';
-        ctx.fillRect(-b.w/2,-1,b.w,2);
       } else if(b.type==='photo' && photoReady) {
         const x=-b.w/2, y=-b.h/2, w=b.w, h=b.h, r=16;
         ctx.beginPath();
@@ -2122,8 +2043,6 @@ page-layout: full
       let body=null;
       if(pendingStatic.kind==='word') body=detachWord(pendingStatic.target);
       else if(pendingStatic.kind==='photo') body=detachPhoto();
-      else if(pendingStatic.kind==='divider') body=detachDivider();
-
       clearPendingStatic();
       if(body) startDragBody(body,e);
       e.preventDefault();
@@ -2137,8 +2056,6 @@ page-layout: full
       detachWord(pendingStatic.target,(Math.random()-.5)*.8,-.6-Math.random()*.5);
     } else if(pendingStatic.kind==='photo') {
       detachPhoto((Math.random()-.5)*.8,-.7-Math.random()*.6);
-    } else if(pendingStatic.kind==='divider') {
-      detachDivider((Math.random()-.5)*.7,-.9-Math.random()*.5);
     }
 
     clearPendingStatic();
@@ -2193,18 +2110,6 @@ page-layout: full
       return;
     }
 
-    const divider=under?.closest?.('#interestsDivider');
-    if(divider && divider.dataset.detached!=='1' && !pageLocked) {
-      pendingStatic={
-        kind:'divider',
-        target:divider,
-        startClientX:e.clientX,
-        startClientY:e.clientY
-      };
-      window.addEventListener('pointermove',onPendingStaticMove,{passive:false});
-      window.addEventListener('pointerup',onPendingStaticUp,{passive:false,once:true});
-      e.preventDefault();
-    }
   },{passive:false});
 
   function isEditableTarget(target) {
