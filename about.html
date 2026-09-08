@@ -165,6 +165,16 @@ ul.task-list li input[type="checkbox"] {
     max-width:1100px;
     margin:0 auto;
     padding:6px 32px 690px;
+    --about-h1-size:42px;
+    --about-copy-size:23px;
+    --about-copy-leading:1.55;
+    --about-copy-gap:24px;
+    --about-photo-size:260px;
+    --about-h2-size:34px;
+    --about-h2-top:38px;
+    --about-h2-bottom:14px;
+    --about-interest-size:21px;
+    --about-interest-gap:22px;
   }
 
   /* Desktop playground is a single-screen scene. The page itself does not
@@ -189,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
     }
   }
 
-  .page h1 { font-size:42px; margin:0 0 16px; }
+  .page h1 { font-size:var(--about-h1-size); margin:0 0 16px; }
 
   .intro {
     display:grid;
@@ -199,16 +209,16 @@ ul.task-list li input[type="checkbox"] {
   }
 
   .copy {
-    font-size:23px;
-    line-height:1.55;
+    font-size:var(--about-copy-size);
+    line-height:var(--about-copy-leading);
     max-width:700px;
   }
 
-  .copy p { margin:0 0 24px; }
+  .copy p { margin:0 0 var(--about-copy-gap); }
 
   .photo-wrap {
-    width:260px;
-    height:260px;
+    width:var(--about-photo-size);
+    height:var(--about-photo-size);
     position:relative;
     touch-action:none;
     cursor:grab;
@@ -228,17 +238,17 @@ ul.task-list li input[type="checkbox"] {
   }
 
   .page h2 {
-    margin:38px 0 14px;
+    margin:var(--about-h2-top) 0 var(--about-h2-bottom);
     padding-bottom:6px;
     border-bottom:0 !important;
-    font-size:34px;
+    font-size:var(--about-h2-size);
   }
 
   .interests {
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:22px 80px;
-    font-size:21px;
+    gap:var(--about-interest-gap) 80px;
+    font-size:var(--about-interest-size);
   }
 
   .physics-word {
@@ -953,6 +963,74 @@ ul.task-list li input[type="checkbox"] {
     return {w:viewportW,h:viewportH};
   }
 
+  function fitStaticLayout() {
+    if(!pageEl || window.matchMedia('(max-width:760px)').matches) return;
+
+    const setVars=(v)=>{
+      for(const [name,value] of Object.entries(v)) {
+        pageEl.style.setProperty(name,value);
+      }
+    };
+
+    const natural={
+      '--about-h1-size':'42px',
+      '--about-copy-size':'23px',
+      '--about-copy-leading':'1.55',
+      '--about-copy-gap':'24px',
+      '--about-photo-size':'260px',
+      '--about-h2-size':'34px',
+      '--about-h2-top':'38px',
+      '--about-h2-bottom':'14px',
+      '--about-interest-size':'21px',
+      '--about-interest-gap':'22px'
+    };
+
+    // Start from the roomy desktop layout on every resize.
+    setVars(natural);
+
+    const header=document.getElementById('quarto-header');
+    const headerBottom=header ? header.getBoundingClientRect().bottom : 52;
+    const rampBottom=Math.max(headerBottom+120,H-64);
+    const safetyGap=24;
+    const minimumRampDepth=28;
+    const targetContentBottom=rampBottom-safetyGap-minimumRampDepth;
+
+    if(contentGeometry().bottom<=targetContentBottom) return;
+
+    // First choice: tighten whitespace only.
+    setVars({
+      '--about-copy-gap':'20px',
+      '--about-h2-top':'20px',
+      '--about-h2-bottom':'8px',
+      '--about-interest-gap':'8px'
+    });
+
+    if(contentGeometry().bottom<=targetContentBottom) return;
+
+    // Second choice: modestly compact type/photo size.
+    setVars({
+      '--about-h1-size':'39px',
+      '--about-copy-size':'21px',
+      '--about-copy-leading':'1.47',
+      '--about-photo-size':'238px',
+      '--about-h2-size':'31px',
+      '--about-interest-size':'19.5px'
+    });
+
+    if(contentGeometry().bottom<=targetContentBottom) return;
+
+    // Final fallback for unusually short or heavily zoomed desktop windows.
+    setVars({
+      '--about-copy-size':'20px',
+      '--about-copy-leading':'1.43',
+      '--about-photo-size':'226px',
+      '--about-h2-top':'15px',
+      '--about-h2-size':'29px',
+      '--about-interest-size':'18.5px',
+      '--about-interest-gap':'6px'
+    });
+  }
+
   function contentGeometry() {
     // Measure only the actual visible content, not the .page wrapper itself.
     // The wrapper intentionally fills the viewport, so including it here
@@ -988,7 +1066,13 @@ ul.task-list li input[type="checkbox"] {
     const content=contentGeometry();
 
     const bottomClearance=mobile ? 74 : 64;
-    const bottom=Math.max(headerBottom+120,H-bottomClearance);
+    const contentGap=mobile ? 14 : 24;
+    const minimumRampDepth=mobile ? 24 : 28;
+    const viewportBottom=Math.max(headerBottom+120,H-bottomClearance);
+    const bottom=Math.max(
+      viewportBottom,
+      content.bottom+contentGap+minimumRampDepth
+    );
     const minDeck=mobile
       ? clamp(W*.18,64,74)
       : clamp(W*.035,42,84);
@@ -1014,17 +1098,18 @@ ul.task-list li input[type="checkbox"] {
 
     const flatHalf=canWrapContent ? outerFlatHalf : baseFlatHalf;
 
-    // If there is not enough horizontal room to route the curves around the
-    // content, put the entire ramp below it instead.
+    // Static page content always owns the space above the ramp. Wide screens
+    // may still route the curved walls around the content horizontally, but
+    // the platform/lip itself never sits above the last text row.
     const bikeTopClearance=mobile ? 46 : 58;
-    let minLipY=headerBottom+bikeTopClearance;
-    if(!canWrapContent) {
-      minLipY=Math.max(minLipY,content.bottom+(mobile ? 14 : 22));
-    }
+    const minLipY=Math.max(
+      headerBottom+bikeTopClearance,
+      content.bottom+contentGap
+    );
 
-    const maxRadiusX=Math.max(28,center-flatHalf-minDeck);
-    const maxRadiusY=Math.max(28,bottom-minLipY);
-    const R=Math.max(28,Math.min(maxRadiusX,maxRadiusY));
+    const maxRadiusX=Math.max(minimumRampDepth,center-flatHalf-minDeck);
+    const maxRadiusY=Math.max(minimumRampDepth,bottom-minLipY);
+    const R=Math.max(minimumRampDepth,Math.min(maxRadiusX,maxRadiusY));
     const lipY=bottom-R;
 
     const leftFlat=center-flatHalf;
@@ -1268,6 +1353,8 @@ ul.task-list li input[type="checkbox"] {
     canvas.style.width=W+'px';
     canvas.style.height=H+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    fitStaticLayout();
 
     if(!bike.airborne && W) {
       const g=geom();
