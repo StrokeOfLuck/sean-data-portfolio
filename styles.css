@@ -340,25 +340,89 @@ a {
 }
 
 @media (max-width: 620px) {
+  #more-projects {
+    margin-top: 2.8rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid rgba(127, 127, 127, 0.22);
+    font-size: 1.3rem;
+  }
+
+  .more-projects-grid {
+    gap: 0.8rem;
+  }
+
   .compact-project-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: 38% minmax(0, 1fr);
+    min-height: 176px;
   }
 
   .compact-project-card .project-card-art {
-    aspect-ratio: 16 / 8;
-    min-height: 0;
-    border-right: 0;
-    border-bottom: 1px solid rgba(127, 127, 127, 0.16);
+    aspect-ratio: auto;
+    min-height: 176px;
+    height: 100%;
+    border-right: 1px solid rgba(127, 127, 127, 0.16);
+    border-bottom: 0;
   }
 
-  .project-card-heading,
+  .compact-project-card .project-card-body {
+    padding: 0.85rem 0.9rem;
+  }
+
   .compact-project-card .project-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.08rem;
+    margin-bottom: 0.48rem;
+  }
+
+  .compact-project-card .project-card-heading h3 {
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  .compact-project-card .project-date {
+    font-size: 0.7rem;
+  }
+
+  .compact-project-card .project-tags {
+    margin-bottom: 0.5rem;
+  }
+
+  .compact-project-card .project-tags p {
+    gap: 0.25rem;
+  }
+
+  .compact-project-card .project-tag {
+    padding: 0.1rem 0.32rem;
+    font-size: 0.6rem;
+  }
+
+  .compact-project-card .project-card-body > p {
+    display: -webkit-box;
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 0.78rem;
+    line-height: 1.38;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .compact-project-card .project-link {
+    height: 0;
+    margin: 0;
+    overflow: visible;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .project-card-heading {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  .project-card-body {
+  .featured-project-card .project-card-body {
     padding: 1rem;
   }
 }
