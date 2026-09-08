@@ -1186,22 +1186,8 @@ page-layout: full
   function drawTrack() {
     const g=geom();
 
-    ctx.fillStyle='rgba(220,227,235,.24)';
-    ctx.beginPath();
-    ctx.moveTo(g.leftLip,g.lipY);
-    for(let x=g.leftLip;x<=g.leftFlat;x+=3) ctx.lineTo(x,trackY(x));
-    ctx.lineTo(g.leftFlat,g.bottom+2);
-    ctx.lineTo(g.leftLip,g.bottom+2);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(g.rightFlat,g.bottom+2);
-    for(let x=g.rightFlat;x<=g.rightLip;x+=3) ctx.lineTo(x,trackY(x));
-    ctx.lineTo(g.rightLip,g.bottom+2);
-    ctx.closePath();
-    ctx.fill();
-
+    // Keep the halfpipe clean and transparent. The old translucent fills
+    // created a blue-gray block under the curved walls on wide screens.
     ctx.strokeStyle='#aebcca';
     ctx.lineWidth=2.2;
     ctx.beginPath();
@@ -2221,7 +2207,28 @@ page-layout: full
     }
   },{passive:false});
 
+  function isEditableTarget(target) {
+    return !!target?.closest?.(
+      'input, textarea, select, [contenteditable="true"], [role="searchbox"], .aa-Form'
+    );
+  }
+
+  // Quarto uses plain "s" as a global search shortcut. On this page that key
+  // belongs to the playground, so suppress the shortcut unless the user is
+  // actually typing in a field. Search is still available from the navbar icon.
+  function blockSearchShortcut(e) {
+    if(
+      e.key?.toLowerCase()==='s' &&
+      !e.ctrlKey && !e.metaKey && !e.altKey &&
+      !isEditableTarget(e.target)
+    ) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }
+  }
+
   function keyDown(e) {
+    if(isEditableTarget(e.target)) return;
     const k=e.key.toLowerCase();
     if(k==='a' || k==='arrowleft') { bike.left=true; e.preventDefault(); }
     if(k==='d' || k==='arrowright') { bike.right=true; e.preventDefault(); }
@@ -2235,6 +2242,7 @@ page-layout: full
     if(k==='d' || k==='arrowright') bike.right=false;
   }
 
+  document.addEventListener('keydown',blockSearchShortcut,true);
   addEventListener('keydown',keyDown);
   addEventListener('keyup',keyUp);
   addEventListener('resize',resize);
