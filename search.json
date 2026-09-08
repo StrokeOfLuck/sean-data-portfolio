@@ -207,14 +207,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I’m interested in the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMy work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.\nI am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question."
+    "text": "I work at the intersection of data journalism, digital investigations, civic technology, and public-interest research.\nMuch of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use."
   },
   {
     "objectID": "about.html#interests",
     "href": "about.html#interests",
     "title": "About",
     "section": "Interests",
-    "text": "Interests\n\nData journalism\nDigital investigations and OSINT\nPolitical and government data\nComputational text analysis\nNetwork analysis\nGIS and spatial analysis\nCivic technology\nData visualization"
+    "text": "Interests\n\n\nData journalism\n\n\nComputational text analysis\n\n\nDigital investigations and OSINT\n\n\nNetwork analysis\n\n\nPolitical and government data\n\n\nGIS and spatial analysis\n\n\nCivic technology\n\n\nData visualization"
   },
   {
     "objectID": "cv.html",

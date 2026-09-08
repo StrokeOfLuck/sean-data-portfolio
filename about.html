@@ -152,10 +152,14 @@ ul.task-list li input[type="checkbox"] {
 <style>
 .about-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 290px;
-  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2.25rem;
   align-items: start;
   margin-bottom: 2rem;
+}
+
+.about-copy p:first-child {
+  margin-top: 0;
 }
 
 .about-photo {
@@ -163,6 +167,17 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
   height: auto;
   border-radius: 16px;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem 2.5rem;
+  margin-top: 0.75rem;
+}
+
+.interests-grid div {
+  line-height: 1.45;
 }
 
 @media (max-width: 700px) {
@@ -173,16 +188,20 @@ ul.task-list li input[type="checkbox"] {
 
   .about-photo-wrap {
     order: -1;
-    width: min(100%, 360px);
+    width: min(100%, 340px);
     margin: 0 auto;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 }
 </style>
 <div class="about-intro">
 <div class="about-copy">
-<p>I’m interested in the intersection of <strong>data journalism, digital investigations, civic technology, and public-interest research</strong>.</p>
-<p>My work focuses especially on political and public datasets: financial disclosures, government records, political communication, online media, transportation data, and other sources that can be made more useful through computational analysis.</p>
-<p>I am particularly interested in using technical methods not simply to analyze a dataset, but to answer a clear investigative or public-interest question.</p>
+<p>I work at the intersection of <strong>data journalism, digital investigations, civic technology, and public-interest research</strong>.</p>
+<p>Much of my work uses political and public datasets, including financial disclosures, government records, political communication, online media, and transportation data. I’m especially interested in using computational methods to answer concrete investigative questions and make public information easier to understand and use.</p>
 </div>
 <div class="about-photo-wrap">
 <p><img src="about-me.png" class="about-photo img-fluid" alt="Sean Ryan"></p>
@@ -190,16 +209,32 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="interests" class="level2">
 <h2 class="anchored" data-anchor-id="interests">Interests</h2>
-<ul>
-<li>Data journalism</li>
-<li>Digital investigations and OSINT</li>
-<li>Political and government data</li>
-<li>Computational text analysis</li>
-<li>Network analysis</li>
-<li>GIS and spatial analysis</li>
-<li>Civic technology</li>
-<li>Data visualization</li>
-</ul>
+<div class="interests-grid">
+<div>
+<p>Data journalism</p>
+</div>
+<div>
+<p>Computational text analysis</p>
+</div>
+<div>
+<p>Digital investigations and OSINT</p>
+</div>
+<div>
+<p>Network analysis</p>
+</div>
+<div>
+<p>Political and government data</p>
+</div>
+<div>
+<p>GIS and spatial analysis</p>
+</div>
+<div>
+<p>Civic technology</p>
+</div>
+<div>
+<p>Data visualization</p>
+</div>
+</div>
 
 
 </section>
