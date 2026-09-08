@@ -4,6 +4,7 @@ toc: false
 page-layout: full
 ---
 
+```{=html}
 <style>
   :root {
     --ink:#26374d;
@@ -3651,3 +3652,5 @@ page-layout: full
 })();
 
 </script>
+```
+
