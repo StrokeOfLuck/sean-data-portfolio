@@ -23,12 +23,11 @@ a {
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   overflow: hidden;
-  color: inherit;
-  text-decoration: none;
   background: var(--bs-body-bg);
   border: 1px solid rgba(127, 127, 127, 0.24);
   border-radius: 0.8rem;
@@ -36,17 +35,10 @@ a {
 }
 
 .project-card:hover,
-.project-card:focus-visible {
-  color: inherit;
-  text-decoration: none;
+.project-card:focus-within {
   transform: translateY(-3px);
   border-color: rgba(var(--bs-primary-rgb), 0.45);
   box-shadow: 0 0.65rem 1.5rem rgba(0, 0, 0, 0.09);
-}
-
-.project-card:focus-visible {
-  outline: 3px solid rgba(var(--bs-primary-rgb), 0.24);
-  outline-offset: 3px;
 }
 
 .project-card-art {
@@ -64,7 +56,6 @@ a {
   inset: 0;
 }
 
-/* Lightweight project-specific visual motifs */
 .art-network::before {
   background:
     radial-gradient(circle at 17% 67%, rgba(var(--bs-primary-rgb), 0.8) 0 5px, transparent 6px),
@@ -106,8 +97,7 @@ a {
 
 .art-tankie::before {
   inset: 24px 10%;
-  background:
-    repeating-linear-gradient(0deg, rgba(var(--bs-primary-rgb), 0.12) 0 4px, transparent 4px 13px);
+  background: repeating-linear-gradient(0deg, rgba(var(--bs-primary-rgb), 0.12) 0 4px, transparent 4px 13px);
 }
 
 .art-tankie::after {
@@ -151,18 +141,20 @@ a {
   transform: rotate(-7deg);
 }
 
-.project-card-image {
-  background: #f4f4f4;
-}
-
 .project-card-image::before,
 .project-card-image::after {
   display: none;
 }
 
+.project-card-image p {
+  height: 100%;
+  margin: 0;
+}
+
 .project-card-image img {
   width: 100%;
   height: 100%;
+  margin: 0;
   object-fit: cover;
   object-position: center top;
 }
@@ -196,13 +188,18 @@ a {
 }
 
 .project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
   margin-bottom: 0.85rem;
 }
 
-.project-tags span {
+.project-tags p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.project-tag {
+  display: inline-block;
   padding: 0.18rem 0.5rem;
   font-size: 0.76rem;
   line-height: 1.35;
@@ -211,7 +208,7 @@ a {
   background: rgba(var(--bs-primary-rgb), 0.055);
 }
 
-.project-card p {
+.project-card-body > p {
   max-width: none;
   margin: 0 0 1rem;
   line-height: 1.55;
@@ -220,7 +217,17 @@ a {
 .project-link {
   margin-top: auto;
   font-weight: 600;
-  color: var(--bs-link-color);
+  text-decoration: none;
+}
+
+.project-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.project-card:hover .project-link {
+  text-decoration: underline;
 }
 
 @media (max-width: 780px) {
