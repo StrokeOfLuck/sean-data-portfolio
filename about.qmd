@@ -590,10 +590,18 @@ page-layout: full
     padding-top:0 !important;
   }
 
+  /* Quarto already marks this navbar as fixed-top. Keep it truly fixed to
+     the viewport; making it sticky put it back into document flow, where
+     body.nav-fixed's top padding pushed the whole navbar down and left the
+     strange blank strip above it. */
   #quarto-header {
-    position:sticky !important;
-    top:0;
+    position:fixed !important;
+    top:0 !important;
+    left:0;
+    right:0;
+    width:100%;
     z-index:60;
+    margin:0 !important;
   }
 
   .nav-footer { position:relative; z-index:50; }
