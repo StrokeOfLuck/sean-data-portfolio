@@ -474,15 +474,15 @@ ul.task-list li input[type="checkbox"] {
      which is why entry titles were rendering smaller than the
      org/location line under them. Target `:root` directly to fix it. */
   :root, html, body {
-    font-size: 11.2px !important;
+    font-size: 12.4px !important;
   }
 
   body {
-    line-height: 1.3;
+    line-height: 1.34;
   }
 
   p {
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.36rem 0;
   }
 
   .resume-layout {
@@ -501,25 +501,25 @@ ul.task-list li input[type="checkbox"] {
   }
 
   .resume-header {
-    margin-bottom: 0.65rem;
-    padding-bottom: 0.34rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.42rem;
     border-bottom: 2px solid #111;
   }
 
   .resume-name {
-    font-size: 1.65rem;
+    font-size: 1.72rem;
     line-height: 1;
     letter-spacing: -0.02em;
   }
 
   .resume-tagline {
     margin-top: 0.18rem;
-    font-size: 0.96rem;
+    font-size: 0.98rem;
     letter-spacing: 0.01em;
   }
 
   .resume-contact {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     line-height: 1.35;
   }
 
@@ -527,25 +527,26 @@ ul.task-list li input[type="checkbox"] {
     margin-bottom: 0.08rem;
   }
 
-  /* Use a little of the spare page height for breathing room while
-     keeping a generous safety margin at the bottom of a one-page PDF. */
+  /* Let the one-page print version use the page naturally instead of
+     compressing everything into the top two-thirds. These values keep
+     a modest bottom safety margin while improving readability. */
   .resume-section {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .resume-section h2 {
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.11em;
-    margin-bottom: 0.36rem;
-    padding-bottom: 0.15rem;
+    margin-bottom: 0.45rem;
+    padding-bottom: 0.18rem;
     border-bottom: 1px solid #888;
     opacity: 1;
   }
 
   .resume-section-heading {
-    margin-bottom: 0.36rem;
-    padding-bottom: 0.15rem;
+    margin-bottom: 0.45rem;
+    padding-bottom: 0.18rem;
     border-bottom: 1px solid #888;
   }
 
@@ -563,15 +564,15 @@ ul.task-list li input[type="checkbox"] {
 
   .resume-summary {
     margin: 0;
-    line-height: 1.34;
+    line-height: 1.38;
   }
 
   .resume-entry {
-    margin-bottom: 0.42rem;
+    margin-bottom: 0.56rem;
   }
 
   .resume-entry-org {
-    margin-top: 0.04rem;
+    margin-top: 0.06rem;
   }
 
   .resume-entry-dates {
@@ -579,30 +580,30 @@ ul.task-list li input[type="checkbox"] {
   }
 
   .resume-entry-bullets {
-    margin-top: 0.14rem;
+    margin-top: 0.18rem;
     padding-left: 1.2rem;
   }
 
   .resume-entry-bullets li {
-    margin-bottom: 0.04rem;
-    line-height: 1.23;
+    margin-bottom: 0.07rem;
+    line-height: 1.29;
   }
 
   .resume-entry-details {
-    margin-top: 0.05rem;
+    margin-top: 0.07rem;
   }
 
   .resume-skills,
   .resume-skills p {
-    gap: 0.16rem 0.22rem;
+    gap: 0.18rem 0.24rem;
   }
 
   .resume-skill-pill {
-    padding: 0.06rem 0.32rem;
+    padding: 0.08rem 0.34rem;
     border: 1px solid #999;
     background: transparent;
-    font-size: 0.7rem;
-    line-height: 1.1;
+    font-size: 0.72rem;
+    line-height: 1.12;
   }
 
   .resume-entry-link {
