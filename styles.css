@@ -105,7 +105,7 @@ a {
   }
 
   .featured-project-card .poster-image {
-    background: #f2ebd1;
+    background: #979789;
   }
 }
 
@@ -138,7 +138,7 @@ a {
 }
 
 .poster-image {
-  background: #f2ebd1;
+  background: #979789;
 }
 
 .poster-image p {
@@ -149,7 +149,7 @@ a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #f2ebd1;
+  background: #979789;
 }
 
 .poster-image img {
