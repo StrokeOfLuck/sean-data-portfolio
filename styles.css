@@ -139,11 +139,12 @@ a {
   margin: 0;
   object-fit: contain;
   object-position: center;
-  transform: none;
+  transform: scale(1.16);
+  transform-origin: center;
 }
 
 .project-card:hover .poster-image img {
-  transform: none;
+  transform: scale(1.16);
 }
 
 .clearhouse-image img {
