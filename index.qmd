@@ -14,7 +14,7 @@ I use data, public records, computational methods, and visualization to investig
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
-![](projects/assets/cards/congressional-stock-network.svg){fig-alt="Miniature recreation of the congressional stock trading network interface"}
+![](projects/assets/cards/congressional-stock-network-v2.svg){fig-alt="Miniature recreation of the congressional stock trading network interface"}
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
