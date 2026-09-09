@@ -88,6 +88,27 @@ a {
   margin-top: 0.1rem;
 }
 
+/* On desktop, preserve the full 16:9 project preview instead of cropping it
+   to whatever height the text column happens to create. */
+@media (min-width: 881px) {
+  .featured-project-card .project-card-image {
+    background: #fbfcfd;
+  }
+
+  .featured-project-card .project-card-image img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .featured-project-card .stock-image img {
+    object-position: center;
+  }
+
+  .featured-project-card .poster-image {
+    background: #f2ebd1;
+  }
+}
+
 .compact-project-card .project-card-art {
   aspect-ratio: 16 / 8.1;
 }
