@@ -32,4 +32,3 @@ format:
     css: styles.css
     toc: true
     smooth-scroll: true
-    include-after-body: includes/about-photo-ball-toggle.html
