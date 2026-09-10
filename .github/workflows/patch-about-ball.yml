@@ -26,7 +26,6 @@ jobs:
           path = Path('about.qmd')
           text = path.read_text()
 
-          bad_wrap = r'''  \1\n    border-radius:50%;\n    overflow:hidden;\2'''
           good_wrap = '''  .photo-wrap {
             width:var(--about-photo-size);
             height:var(--about-photo-size);
@@ -36,16 +35,11 @@ jobs:
             border-radius:50%;
             overflow:hidden;
           }'''
+          bad_wrap = r'''  \1\n    border-radius:50%;\n    overflow:hidden;\2'''
           if bad_wrap not in text:
               raise SystemExit('Corrupt desktop photo-wrap marker not found')
           text = text.replace(bad_wrap, good_wrap, 1)
 
-          bad_photo = r'''  \1border-radius:50%;'''
-          bad_photo_full = bad_photo + '''
-            display:block;
-            user-select:none;
-            -webkit-user-drag:none;
-          }'''
           good_photo = '''  .photo {
             width:100%;
             height:100%;
@@ -55,12 +49,15 @@ jobs:
             user-select:none;
             -webkit-user-drag:none;
           }'''
-          if bad_photo_full not in text:
-              raise SystemExit('Corrupt desktop photo marker not found')
-          text = text.replace(bad_photo_full, good_photo, 1)
+          text, n = re.subn(
+              r'\s*\\1border-radius:50%;\s*display:block;\s*user-select:none;\s*-webkit-user-drag:none;\s*\}',
+              lambda m: '\n\n' + good_photo,
+              text,
+              count=1
+          )
+          if n != 1:
+              raise SystemExit(f'Corrupt desktop photo block replacement count {n}')
 
-          bad_mobile = r'''  \1border-radius:50%;''' + '''
-            }'''
           good_mobile = '''  @media(max-width:760px) {
             html,
             body {
@@ -105,15 +102,22 @@ jobs:
             .photo {
               border-radius:50%;
             }'''
-          if bad_mobile not in text:
-              raise SystemExit('Corrupt mobile CSS marker not found')
-          text = text.replace(bad_mobile, good_mobile, 1)
+          text, n = re.subn(
+              r'\s*\\1border-radius:50%;\s*\}',
+              lambda m: '\n\n' + good_mobile,
+              text,
+              count=1
+          )
+          if n != 1:
+              raise SystemExit(f'Corrupt mobile CSS replacement count {n}')
 
           if r'\1' in text or r'\2' in text:
               raise SystemExit('Backreference artifact still present')
 
           required = [
-              'shape:\'circle\'',
+              '.photo-wrap {',
+              'border-radius:50%;',
+              "shape:'circle'",
               'restitution:.72',
               'function restoreWordsOnly()',
               'Text physics disabled; photo ball stays active',
@@ -122,7 +126,7 @@ jobs:
           ]
           for marker in required:
               if marker not in text:
-                  raise SystemExit(f'Missing expected About physics marker: {marker}')
+                  raise SystemExit(f'Missing expected About marker: {marker}')
 
           scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
           if not scripts:
@@ -130,7 +134,7 @@ jobs:
           Path('/tmp/about-script.js').write_text('\n'.join(scripts))
 
           path.write_text(text)
-          print('About CSS repaired and markers validated')
+          print('About CSS repaired and physics markers validated')
           PY
 
           node --check /tmp/about-script.js
