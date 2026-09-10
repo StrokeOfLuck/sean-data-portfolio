@@ -21,3 +21,74 @@
   color: inherit;
   text-decoration: underline;
 }
+
+/* Congressional network thumbnail: preserve the left-side interface while
+   shifting only the graph 85 SVG pixels to the right. The mask has small
+   notches for the title and search boxes so those controls stay untouched. */
+.network-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.network-thumb img,
+.network-thumb-erase {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.network-thumb img {
+  display: block;
+  margin: 0;
+  object-fit: fill;
+  object-position: center;
+  transition: none;
+}
+
+.network-thumb-base {
+  z-index: 0;
+}
+
+.network-thumb-erase,
+.network-thumb-shifted {
+  clip-path: polygon(
+    35% 0,
+    100% 0,
+    100% 100%,
+    35% 100%,
+    35% 30.444%,
+    37.6875% 30.444%,
+    37.6875% 22.444%,
+    35% 22.444%,
+    35% 18.444%,
+    41.4375% 18.444%,
+    41.4375% 9.778%,
+    35% 9.778%
+  );
+}
+
+.network-thumb-erase {
+  z-index: 1;
+  background: #fbfcfd;
+}
+
+.network-thumb-shifted {
+  z-index: 2;
+  transform: translateX(5.3125%);
+}
+
+/* Keep the card lift/hover effect, but do not let the global thumbnail zoom
+   override the graph-only translation above. */
+.project-card:hover .project-card-image .network-thumb-base {
+  transform: none;
+}
+
+.project-card:hover .project-card-image .network-thumb-shifted {
+  transform: translateX(5.3125%);
+}
