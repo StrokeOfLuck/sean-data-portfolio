@@ -1,4 +1,4 @@
-name: Add photo physics toggle
+name: Refine photo ball toggle
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
         with:
           ref: main
 
-      - name: Add independent photo physics toggle
+      - name: Make photo ball toggle clearer
         shell: bash
         run: |
           python - <<'PY'
@@ -27,105 +27,33 @@ jobs:
           path = Path('about.qmd')
           text = path.read_text()
 
-          def replace_once(old, new, label):
-              global text
-              if old not in text:
-                  raise SystemExit(f'Missing expected marker: {label}')
-              text = text.replace(old, new, 1)
-
-          replace_once(
-              '    <button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>\n    <button id="reset">Reset</button>',
-              '    <button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>\n    <button id="photoPhysics" title="Allow the profile photo to detach, bounce, and collide" aria-label="Photo physics on. The profile photo can detach and bounce." class="active">Photo physics on</button>\n    <button id="reset">Reset</button>',
-              'controls'
-          )
-
-          replace_once(
-              "  const pageLockButton = document.getElementById('pageLock');\n  const telemetryToggle = document.getElementById('telemetryToggle');",
-              "  const pageLockButton = document.getElementById('pageLock');\n  const photoPhysicsButton = document.getElementById('photoPhysics');\n  const telemetryToggle = document.getElementById('telemetryToggle');",
-              'photoPhysicsButton const'
-          )
-
-          replace_once(
-              '  let pageLocked=false;\n  let cameraShiftY=0;',
-              '  let pageLocked=false;\n  let photoPhysicsEnabled=true;\n  let cameraShiftY=0;',
-              'photo physics state'
-          )
-
-          replace_once(
-              "  function detachPhoto(vx=0,vy=0) {\n  if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;",
-              "  function detachPhoto(vx=0,vy=0) {\n  if(!photoPhysicsEnabled) return null;\n  if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;",
-              'detachPhoto guard'
-          )
-
-          replace_once(
-              "  if(photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {",
-              "  if(photoPhysicsEnabled && photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {",
-              'bike photo collision guard'
-          )
-
-          replace_once(
-              "  if(photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {",
-              "  if(photoPhysicsEnabled && photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {",
-              'body photo collision guard'
-          )
-
-          marker = "function reset() {"
-          if marker not in text:
-              raise SystemExit('Missing reset marker')
-
-          photo_toggle_fn = '\n'.join([
-              'function setPhotoPhysics(next) {',
-              '    photoPhysicsEnabled=next;',
-              '',
-              '    if(!photoPhysicsEnabled) {',
-              "      if(dragging?.type==='photo') {",
-              '        dragging.held=false;',
-              '        dragging=null;',
-              "        window.removeEventListener('pointermove',onDragMove);",
-              "        window.removeEventListener('pointerup',onDragEnd);",
-              '      }',
-              "      if(pendingStatic?.kind==='photo') clearPendingStatic();",
-              "      bodies=bodies.filter(b=>b.type!=='photo');",
-              "      photoWrap.dataset.detached='';",
-              "      photoWrap.style.visibility='';",
-              '    }',
-              '',
-              '    if(photoPhysicsButton) {',
-              "      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';",
-              '      photoPhysicsButton.title=photoPhysicsEnabled',
-              "        ? 'Profile photo can detach, bounce, and collide'",
-              "        : 'Profile photo stays fixed';",
-              '      photoPhysicsButton.setAttribute(',
-              "        'aria-label',",
-              '        photoPhysicsEnabled',
-              "          ? 'Photo physics on. The profile photo can detach and bounce.'",
-              "          : 'Photo physics off. The profile photo stays fixed.'",
-              '      );',
-              "      photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);",
-              '    }',
-              '  }',
-              '',
-              '  '
-          ])
-          text = text.replace(marker, photo_toggle_fn + marker, 1)
-
-          replace_once(
-              "  pageLockButton.addEventListener('click',e=>{\n    e.stopPropagation();\n    setPageLocked(!pageLocked);\n  });",
-              "  pageLockButton.addEventListener('click',e=>{\n    e.stopPropagation();\n    setPageLocked(!pageLocked);\n  });\n\n  photoPhysicsButton?.addEventListener('click',e=>{\n    e.stopPropagation();\n    setPhotoPhysics(!photoPhysicsEnabled);\n  });",
-              'photo physics listener'
-          )
-
-          required = [
-              'id="photoPhysics"',
-              'let photoPhysicsEnabled=true;',
-              'function setPhotoPhysics(next)',
-              'if(!photoPhysicsEnabled) return null;',
-              'Photo physics on',
-              'Photo physics off'
+          replacements = [
+              (
+                  '    <button id="photoPhysics" title="Allow the profile photo to detach, bounce, and collide" aria-label="Photo physics on. The profile photo can detach and bounce." class="active">Photo physics on</button>',
+                  '    <button id="photoPhysics" title="Profile photo can detach, bounce, and collide" aria-label="Photo ball on. The profile photo can detach and bounce." class="active">Photo ball on</button>'
+              ),
+              (
+                  "      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';",
+                  "      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo ball on' : 'Photo ball off';"
+              ),
+              (
+                  "          ? 'Photo physics on. The profile photo can detach and bounce.'\n          : 'Photo physics off. The profile photo stays fixed.'",
+                  "          ? 'Photo ball on. The profile photo can detach and bounce.'\n          : 'Photo ball off. The profile photo stays fixed.'"
+              ),
+              (
+                  "    if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {",
+                  "    if(photoPhysicsEnabled && under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {"
+              )
           ]
-          for item in required:
-              if item not in text:
-                  raise SystemExit(f'Missing final marker: {item}')
+
+          for old, new in replacements:
+              if old in text:
+                  text = text.replace(old, new, 1)
+
+          if 'Photo ball on' not in text or 'Photo ball off' not in text:
+              raise SystemExit('Photo ball labels were not applied')
+          if "if(photoPhysicsEnabled && under?.closest?.('#photoWrap')" not in text:
+              raise SystemExit('Photo pointer guard was not applied')
 
           scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
           if not scripts:
@@ -136,12 +64,15 @@ jobs:
 
           node --check /tmp/about-script.js
 
-      - name: Commit toggle
+      - name: Commit wording cleanup
         shell: bash
         run: |
+          if git diff --quiet -- about.qmd; then
+            echo "No change needed"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add about.qmd
-          git diff --cached --quiet && exit 0
-          git commit -m "Add independent photo physics toggle"
+          git commit -m "Clarify photo ball physics toggle"
           git push origin main
