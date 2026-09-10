@@ -27,76 +27,46 @@ jobs:
           text = path.read_text()
           original = text
 
-          def must_replace(old, new, count=1):
+          def sub_once(pattern, replacement, flags=0, label='replacement'):
               global text
-              found = text.count(old)
-              if found < count:
-                  raise SystemExit(f'Expected at least {count} occurrence(s), found {found}: {old[:100]!r}')
-              text = text.replace(old, new, count)
+              rx = re.compile(pattern, flags)
+              text, n = rx.subn(lambda m: replacement, text, count=1)
+              if n != 1:
+                  raise SystemExit(f'{label} count {n}')
 
-          must_replace("""  .photo-wrap {
-            width:var(--about-photo-size);
-            height:var(--about-photo-size);
-            position:relative;
-            touch-action:none;
-            cursor:grab;
-          }""", """  .photo-wrap {
-            width:var(--about-photo-size);
-            height:var(--about-photo-size);
-            position:relative;
-            touch-action:none;
-            cursor:grab;
-            border-radius:50%;
-            overflow:hidden;
-          }""")
+          # Static headshot is circular on desktop and mobile.
+          sub_once(
+              r'(  \.photo-wrap \{.*?    cursor:grab;)(\n  \})',
+              r'\1\n    border-radius:50%;\n    overflow:hidden;\2',
+              re.S,
+              'photo-wrap CSS'
+          )
+          text = text.replace('body.page-locked .photo-wrap { cursor:default; }', 'body.page-locked .photo-wrap { cursor:grab; }', 1)
+          sub_once(
+              r'(  \.photo \{.*?    object-fit:cover;\n    )border-radius:18px;',
+              r'\1border-radius:50%;',
+              re.S,
+              'desktop photo radius'
+          )
+          sub_once(
+              r'(    \.photo \{\n      )border-radius:12px;',
+              r'\1border-radius:50%;',
+              0,
+              'mobile photo radius'
+          )
 
-          must_replace("body.page-locked .photo-wrap { cursor:default; }", "body.page-locked .photo-wrap { cursor:grab; }")
+          text = text.replace(
+              '<div class="telemetry-note" id="zenNote">Physics objects disabled</div>',
+              '<div class="telemetry-note" id="zenNote">Text physics disabled; photo ball stays active</div>',
+              1
+          )
+          text = text.replace(
+              '<button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>',
+              '<button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>',
+              1
+          )
 
-          must_replace("""  .photo {
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            border-radius:18px;
-            display:block;
-            user-select:none;
-            -webkit-user-drag:none;
-          }""", """  .photo {
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            border-radius:50%;
-            display:block;
-            user-select:none;
-            -webkit-user-drag:none;
-          }""")
-
-          must_replace("""    .photo {
-              border-radius:12px;
-            }""", """    .photo {
-              border-radius:50%;
-            }""")
-
-          must_replace('<div class="telemetry-note" id="zenNote">Physics objects disabled</div>', '<div class="telemetry-note" id="zenNote">Text physics disabled; photo ball stays active</div>')
-          must_replace('<button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>', '<button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>')
-
-          # Circular static-photo hit test, used where the bike or a loose object
-          # interacts with the still-attached headshot.
-          marker = """  function bikeKnockStatic() {"""
-          helper = """  function hitStaticCircle(x,y,r,rect) {
-            const cx=worldXFromClient(rect.left+rect.width/2);
-            const cy=worldYFromClient(rect.top+rect.height/2);
-            const cr=Math.min(rect.width,rect.height)/2;
-            const dx=x-cx, dy=y-cy;
-            const rr=r+cr;
-            return dx*dx+dy*dy<rr*rr;
-          }
-
-          function bikeKnockStatic() {"""
-          must_replace(marker, helper)
-
-          # Photo becomes a real circular physics body and remains detachable in Zen mode.
-          pattern = re.compile(r"  function detachPhoto\(vx=0,vy=0\) \{.*?\n  \}\n\n  function restoreWordsAndPhoto", re.S)
-          replacement = """  function detachPhoto(vx=0,vy=0) {
+          detach_photo = '''  function detachPhoto(vx=0,vy=0) {
             if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;
 
             const r=photoWrap.getBoundingClientRect();
@@ -135,14 +105,15 @@ jobs:
             });
           }
 
-          function restoreWordsAndPhoto"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'detachPhoto replacement count {n}')
+          function restoreWordsAndPhoto'''
+          sub_once(
+              r'  function detachPhoto\(vx=0,vy=0\) \{.*?\n  \}\n\n  function restoreWordsAndPhoto',
+              detach_photo,
+              re.S,
+              'detachPhoto'
+          )
 
-          # Zen mode now freezes/restores text only; the circular photo remains live.
-          pattern = re.compile(r"  function setPageLocked\(next\) \{.*?\n  \}\n\n  function reset\(\)", re.S)
-          replacement = """  function setPageLocked(next) {
+          set_zen = '''  function setPageLocked(next) {
             pageLocked=next;
             document.body.classList.toggle('page-locked',pageLocked);
 
@@ -169,14 +140,15 @@ jobs:
             if(tImpacts) tImpacts.textContent=String(impacts);
           }
 
-          function reset()"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'setPageLocked replacement count {n}')
+          function reset()'''
+          sub_once(
+              r'  function setPageLocked\(next\) \{.*?\n  \}\n\n  function reset\(\)',
+              set_zen,
+              re.S,
+              'setPageLocked'
+          )
 
-          # A circular body gets circular bounds for walls and the ramp.
-          pattern = re.compile(r"  function bounds\(b\) \{.*?\n  \}\n\n  function hitStaticRect", re.S)
-          replacement = """  function bounds(b) {
+          bounds_code = '''  function bounds(b) {
             if(b.shape==='circle') {
               const r=b.r || Math.min(b.w,b.h)/2;
               return {left:b.x-r,right:b.x+r,top:b.y-r,bottom:b.y+r,hw:r,hh:r};
@@ -188,14 +160,27 @@ jobs:
             return {left:b.x-hw,right:b.x+hw,top:b.y-hh,bottom:b.y+hh,hw,hh};
           }
 
-          function hitStaticRect"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'bounds replacement count {n}')
+          function hitStaticRect'''
+          sub_once(
+              r'  function bounds\(b\) \{.*?\n  \}\n\n  function hitStaticRect',
+              bounds_code,
+              re.S,
+              'bounds'
+          )
 
-          # Bike collisions detach words only outside Zen mode, but always hit the photo ball.
-          pattern = re.compile(r"  function bikeKnockStatic\(\) \{.*?\n  \}\n\n  function movingBodyKnockStatic", re.S)
-          replacement = """  function bikeKnockStatic() {
+          circle_helper = '''  function hitStaticCircle(x,y,r,rect) {
+            const cx=worldXFromClient(rect.left+rect.width/2);
+            const cy=worldYFromClient(rect.top+rect.height/2);
+            const cr=Math.min(rect.width,rect.height)/2;
+            const dx=x-cx, dy=y-cy;
+            const rr=r+cr;
+            return dx*dx+dy*dy<rr*rr;
+          }
+
+          function bikeKnockStatic() {'''
+          sub_once(r'  function bikeKnockStatic\(\) \{', circle_helper, 0, 'circle helper')
+
+          bike_knock = '''  function bikeKnockStatic() {
             if(spawnProtected || performance.now()<resetGuardUntil) return;
             const r=26;
 
@@ -220,14 +205,15 @@ jobs:
             }
           }
 
-          function movingBodyKnockStatic"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'bikeKnockStatic replacement count {n}')
+          function movingBodyKnockStatic'''
+          sub_once(
+              r'  function bikeKnockStatic\(\) \{.*?\n  \}\n\n  function movingBodyKnockStatic',
+              bike_knock,
+              re.S,
+              'bikeKnockStatic'
+          )
 
-          # Loose photo keeps moving in Zen mode without knocking text loose.
-          pattern = re.compile(r"  function movingBodyKnockStatic\(body\) \{.*?\n  \}\n\n  function bodyHitsBike", re.S)
-          replacement = """  function movingBodyKnockStatic(body) {
+          moving_knock = '''  function movingBodyKnockStatic(body) {
             if(performance.now()<resetGuardUntil) return;
             const speed=Math.hypot(body.vx,body.vy);
             if(speed<1.6) return;
@@ -258,14 +244,15 @@ jobs:
             }
           }
 
-          function bodyHitsBike"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'movingBodyKnockStatic replacement count {n}')
+          function bodyHitsBike'''
+          sub_once(
+              r'  function movingBodyKnockStatic\(body\) \{.*?\n  \}\n\n  function bodyHitsBike',
+              moving_knock,
+              re.S,
+              'movingBodyKnockStatic'
+          )
 
-          # Exact circle-vs-bike hit check for the photo ball.
-          pattern = re.compile(r"  function bodyHitsBike\(b\) \{.*?\n  \}\n\n  function collideBikeBodies", re.S)
-          replacement = """  function bodyHitsBike(b) {
+          body_hit = '''  function bodyHitsBike(b) {
             const r=26;
             if(b.shape==='circle') {
               const rr=r+(b.r||Math.min(b.w,b.h)/2);
@@ -279,18 +266,15 @@ jobs:
             return dx*dx+dy*dy<r*r;
           }
 
-          function collideBikeBodies"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'bodyHitsBike replacement count {n}')
+          function collideBikeBodies'''
+          sub_once(
+              r'  function bodyHitsBike\(b\) \{.*?\n  \}\n\n  function collideBikeBodies',
+              body_hit,
+              re.S,
+              'bodyHitsBike'
+          )
 
-          # Let the ball roll as well as bounce when it touches the halfpipe.
-          must_replace("""        if(b.y>floor) {
-              b.y=floor;
-              b.vy=Math.abs(b.vy)>.8 ? -Math.abs(b.vy)*b.restitution : 0;
-              b.vx*=.965;
-              b.av*=.9;
-            }""", """        if(b.y>floor) {
+          floor_block = '''        if(b.y>floor) {
               b.y=floor;
               b.vy=Math.abs(b.vy)>.8 ? -Math.abs(b.vy)*b.restitution : 0;
               if(b.shape==='circle') {
@@ -301,39 +285,34 @@ jobs:
                 b.vx*=.965;
                 b.av*=.9;
               }
-            }""")
+            }'''
+          sub_once(
+              r'        if\(b\.y>floor\) \{\n          b\.y=floor;\n          b\.vy=Math\.abs\(b\.vy\)>\.8 \? -Math\.abs\(b\.vy\)\*b\.restitution : 0;\n          b\.vx\*=\.965;\n          b\.av\*=\.9;\n        \}',
+              floor_block,
+              0,
+              'floor ball physics'
+          )
 
-          # Draw the detached photo as a true circle.
-          must_replace("""      } else if(b.type==='photo' && photoReady) {
-              const x=-b.w/2, y=-b.h/2, w=b.w, h=b.h, r=16;
-              ctx.beginPath();
-              ctx.moveTo(x+r,y);
-              ctx.arcTo(x+w,y,x+w,y+h,r);
-              ctx.arcTo(x+w,y+h,x,y+h,r);
-              ctx.arcTo(x,y+h,x,y,r);
-              ctx.arcTo(x,y,x+w,y,r);
-              ctx.closePath();
-              ctx.clip();
-              ctx.drawImage(photoBitmap,-b.w/2,-b.h/2,b.w,b.h);
-            }""", """      } else if(b.type==='photo' && photoReady) {
+          draw_photo = '''      } else if(b.type==='photo' && photoReady) {
               const r=b.r || Math.min(b.w,b.h)/2;
               ctx.beginPath();
               ctx.arc(0,0,r,0,Math.PI*2);
               ctx.closePath();
               ctx.clip();
               ctx.drawImage(photoBitmap,-r,-r,r*2,r*2);
-            }""")
+            }'''
+          sub_once(
+              r"      \} else if\(b\.type==='photo' && photoReady\) \{.*?\n        \}",
+              draw_photo,
+              re.S,
+              'draw photo circle'
+          )
 
-          # Telemetry still reports the active photo ball while text physics are locked.
-          must_replace("if(tLoose && !pageLocked) tLoose.textContent=String(bodies.length);", "if(tLoose) tLoose.textContent=String(bodies.length);")
-          must_replace("if(tImpacts && !pageLocked) tImpacts.textContent=String(impacts);", "if(tImpacts) tImpacts.textContent=String(impacts);")
+          text = text.replace('if(tLoose && !pageLocked) tLoose.textContent=String(bodies.length);', 'if(tLoose) tLoose.textContent=String(bodies.length);', 1)
+          text = text.replace('if(tImpacts && !pageLocked) tImpacts.textContent=String(impacts);', 'if(tImpacts) tImpacts.textContent=String(impacts);', 1)
+          text = text.replace("if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1' && !pageLocked) {", "if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {", 1)
 
-          # Static photo remains interactive in Zen mode.
-          must_replace("if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1' && !pageLocked) {", "if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {")
-
-          # Selecting a detached circle should use its real round hit area.
-          pattern = re.compile(r"  function pickDetachedAt\(x,y\) \{.*?\n  \}\n\n  function onPendingStaticMove", re.S)
-          replacement = """  function pickDetachedAt(x,y) {
+          pick_code = '''  function pickDetachedAt(x,y) {
             for(let i=bodies.length-1;i>=0;i--) {
               const b=bodies[i];
               if(b.shape==='circle') {
@@ -348,10 +327,13 @@ jobs:
             return null;
           }
 
-          function onPendingStaticMove"""
-          text, n = pattern.subn(replacement, text, count=1)
-          if n != 1:
-              raise SystemExit(f'pickDetachedAt replacement count {n}')
+          function onPendingStaticMove'''
+          sub_once(
+              r'  function pickDetachedAt\(x,y\) \{.*?\n  \}\n\n  function onPendingStaticMove',
+              pick_code,
+              re.S,
+              'pickDetachedAt'
+          )
 
           if text == original:
               raise SystemExit('No changes made')
