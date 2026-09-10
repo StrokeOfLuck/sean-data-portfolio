@@ -14,12 +14,12 @@ I use data, public records, computational methods, and visualization to investig
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
-![](projects/assets/cards/congressional-stock-network-v2.svg){fig-alt="Miniature recreation of the congressional stock trading network interface"}
+![](projects/assets/cards/congressional-stock-network-v3.svg){fig-alt="Miniature recreation of the congressional stock trading network interface"}
 <a href="projects/congressional-stock-network.html" aria-label="Open Congressional Stock Trading Network project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### Congressional Stock Trading Network
+### [Congressional Stock Trading Network](projects/congressional-stock-network.qmd){.project-title-link}
 ::: {.project-date}
 Fall 2026
 :::
@@ -40,7 +40,7 @@ Interactive network of reported 2025 House stock purchases, shared companies, co
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### Politician Stock Disclosures
+### [Politician Stock Disclosures](projects/stock-disclosures.qmd){.project-title-link}
 ::: {.project-date}
 2024–present
 :::
@@ -61,7 +61,7 @@ Turning difficult-to-use financial disclosures into structured data that can be 
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### Political Text Analysis
+### [Political Text Analysis](projects/iran-timeline.qmd){.project-title-link}
 ::: {.project-date}
 Fall 2026
 :::
@@ -82,7 +82,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### TankieTube
+### [TankieTube](projects/tankietube.qmd){.project-title-link}
 ::: {.project-date}
 Summer 2026
 :::
@@ -115,7 +115,7 @@ Five-day University of Amsterdam research sprint comparing a Tankie transcript c
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### All We Are Solar Map
+### [All We Are Solar Map](projects/all-we-are-solar-map.qmd){.project-title-link}
 ::: {.project-date}
 Spring 2026
 :::
@@ -142,7 +142,7 @@ Interactive Mapbox visualization turning All We Are's solar installation records
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### Lyon Cycling Map
+### [Lyon Cycling Map](projects/lyon-cycling-map.qmd){.project-title-link}
 ::: {.project-date}
 Summer 2025
 :::
@@ -163,7 +163,7 @@ Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro f
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### ClearHouse.live
+### [ClearHouse.live](projects/clearhouse.qmd){.project-title-link}
 ::: {.project-date}
 Winter 2024–25
 :::
