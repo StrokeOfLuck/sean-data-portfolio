@@ -836,7 +836,7 @@ ul.task-list li input[type="checkbox"] {
       </select>
     </label>
     <button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>
-    <button id="photoPhysics" title="Allow the profile photo to detach, bounce, and collide" aria-label="Photo physics on. The profile photo can detach and bounce." class="active">Photo physics on</button>
+    <button id="photoPhysics" title="Profile photo can detach, bounce, and collide" aria-label="Photo ball on. The profile photo can detach and bounce." class="active">Photo ball on</button>
     <button id="reset">Reset</button>
   </div>
 
@@ -1516,15 +1516,15 @@ function setPhotoPhysics(next) {
     }
 
     if(photoPhysicsButton) {
-      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';
+      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo ball on' : 'Photo ball off';
       photoPhysicsButton.title=photoPhysicsEnabled
         ? 'Profile photo can detach, bounce, and collide'
         : 'Profile photo stays fixed';
       photoPhysicsButton.setAttribute(
         'aria-label',
         photoPhysicsEnabled
-          ? 'Photo physics on. The profile photo can detach and bounce.'
-          : 'Photo physics off. The profile photo stays fixed.'
+          ? 'Photo ball on. The profile photo can detach and bounce.'
+          : 'Photo ball off. The profile photo stays fixed.'
       );
       photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);
     }
@@ -2613,7 +2613,7 @@ function bodyHitsBike(b) {
       return;
     }
 
-    if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {
+    if(photoPhysicsEnabled && under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {
       pendingStatic={
         kind:'photo',
         target:photoWrap,
