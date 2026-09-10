@@ -23,6 +23,51 @@ jobs:
       - name: Checkout sean-data-portfolio
         uses: actions/checkout@v4
 
+      - name: Make profile photo physics weightier
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('about.qmd')
+          text = path.read_text()
+          original = text
+
+          replacements = [
+              ("    restitution:.72,", "    restitution:.48,"),
+              ("        b.vy+=(b.type==='photo'?.34:.30)*dt;\n        b.x+=b.vx*dt;\n        b.y+=b.vy*dt;\n        b.angle+=b.av*dt;\n        b.vx*=Math.pow(.999,dt);\n        b.av*=Math.pow(.996,dt);",
+               "        const isPhoto=b.type==='photo';\n        b.vy+=(isPhoto?.38:.30)*dt;\n        b.x+=b.vx*dt;\n        b.y+=b.vy*dt;\n        b.angle+=b.av*dt;\n        b.vx*=Math.pow(isPhoto?.997:.999,dt);\n        b.av*=Math.pow(isPhoto?.989:.996,dt);"),
+              ("          b.vy=Math.abs(b.vy)>.8 ? -Math.abs(b.vy)*b.restitution : 0;\n          b.vx*=.965;\n          b.av*=.9;",
+               "          const bounceThreshold=isPhoto?1.15:.8;\n          b.vy=Math.abs(b.vy)>bounceThreshold ? -Math.abs(b.vy)*b.restitution : 0;\n          b.vx*=isPhoto?.95:.965;\n          b.av*=isPhoto?.85:.9;"),
+              ("      detachPhoto((Math.random()-.5)*.8,-.7-Math.random()*.6);",
+               "      detachPhoto((Math.random()-.5)*.4,-.28-Math.random()*.22);"),
+              ("    dragging.vx*=1.55;\n    dragging.vy*=1.55;\n    dragging.av+=dragging.vx*.0028;",
+               "    const photoRelease=dragging.type==='photo';\n    const releaseBoost=photoRelease?1.25:1.55;\n    dragging.vx*=releaseBoost;\n    dragging.vy*=releaseBoost;\n    dragging.av+=dragging.vx*(photoRelease?.0018:.0028);")
+          ]
+
+          for old, new in replacements:
+              if old not in text:
+                  raise SystemExit(f'Missing expected physics block: {old[:60]}')
+              text = text.replace(old, new, 1)
+
+          path.write_text(text)
+          scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
+          if not scripts:
+              raise SystemExit('No script block found')
+          Path('/tmp/about-script.js').write_text('\n'.join(scripts))
+          PY
+
+          node --check /tmp/about-script.js
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add about.qmd
+          if ! git diff --cached --quiet; then
+            git commit -m "Make About photo physics weightier"
+            git push origin main
+          fi
+
       # actions/checkout refuses any `path` that escapes $GITHUB_WORKSPACE via
       # "..", so this lands *inside* the sean-data-portfolio checkout as
       # senate-ptr-scraper/ rather than as a true sibling folder (which is
