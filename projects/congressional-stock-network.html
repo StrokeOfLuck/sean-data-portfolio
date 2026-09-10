@@ -394,6 +394,108 @@ body.network-project-app {
 
 
 </main> <!-- /main -->
+<style>
+  .photo-wrap.photo-ball-locked,
+  .photo-wrap.photo-ball-locked:active {
+    cursor: default !important;
+  }
+</style>
+
+<script>
+(() => {
+  function initPhotoBallToggle() {
+    const photoWrap = document.getElementById('photoWrap');
+    const pageLockButton = document.getElementById('pageLock');
+    const resetButton = document.getElementById('reset');
+    const settings = document.getElementById('hudSettings');
+
+    if (!photoWrap || !pageLockButton || !resetButton || !settings) return false;
+    if (document.getElementById('photoBallToggle')) return true;
+
+    let enabled = true;
+
+    const button = document.createElement('button');
+    button.id = 'photoBallToggle';
+    button.type = 'button';
+    button.classList.add('active');
+    pageLockButton.insertAdjacentElement('afterend', button);
+
+    const zenNote = () => document.getElementById('zenNote');
+    const zenIsOn = () => document.body.classList.contains('page-locked');
+
+    function updateZenNote() {
+      const note = zenNote();
+      if (!note || !zenIsOn()) return;
+      note.textContent = enabled
+        ? 'Text physics disabled; photo ball stays active'
+        : 'Text physics disabled; photo ball physics disabled';
+    }
+
+    function applyLockedState() {
+      if (enabled) return;
+      photoWrap.dataset.detached = '1';
+      photoWrap.style.visibility = '';
+      photoWrap.classList.add('photo-ball-locked');
+    }
+
+    function renderButton() {
+      button.textContent = enabled ? 'Photo physics on' : 'Photo physics off';
+      button.classList.toggle('active', enabled);
+      button.title = enabled
+        ? 'Photo can be knocked loose and bounce'
+        : 'Photo stays fixed in place';
+      button.setAttribute(
+        'aria-label',
+        enabled ? 'Photo physics on. The photo can be knocked loose and bounce.' : 'Photo physics off. The photo stays fixed in place.'
+      );
+      button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    }
+
+    function setEnabled(next) {
+      enabled = next;
+
+      if (enabled) {
+        photoWrap.dataset.detached = '';
+        photoWrap.classList.remove('photo-ball-locked');
+      } else {
+        const photoIsMoving =
+          photoWrap.dataset.detached === '1' &&
+          (photoWrap.style.visibility === 'hidden' || getComputedStyle(photoWrap).visibility === 'hidden');
+
+        if (photoIsMoving) resetButton.click();
+        applyLockedState();
+      }
+
+      renderButton();
+      updateZenNote();
+    }
+
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setEnabled(!enabled);
+    });
+
+    resetButton.addEventListener('click', () => {
+      if (!enabled) requestAnimationFrame(applyLockedState);
+    });
+
+    pageLockButton.addEventListener('click', () => {
+      requestAnimationFrame(updateZenNote);
+    });
+
+    renderButton();
+    return true;
+  }
+
+  if (!initPhotoBallToggle()) {
+    let attempts = 0;
+    const timer = setInterval(() => {
+      attempts += 1;
+      if (initPhotoBallToggle() || attempts >= 20) clearInterval(timer);
+    }, 100);
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
