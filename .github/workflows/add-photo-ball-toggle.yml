@@ -72,33 +72,35 @@ jobs:
           marker = "\nfunction reset() {"
           if text.count(marker) != 1:
               raise SystemExit(f'photo toggle function marker: expected 1 match, found {text.count(marker)}')
-          photo_toggle_fn = """
 
-function setPhotoPhysics(next) {
-  photoPhysicsEnabled=next;
-
-  if(!photoPhysicsEnabled) restorePhotoOnly();
-
-  if(photoPhysicsButton) {
-    photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo ball on' : 'Photo ball off';
-    photoPhysicsButton.title=photoPhysicsEnabled
-      ? 'Photo can be knocked loose and bounce'
-      : 'Photo is fixed in place';
-    photoPhysicsButton.setAttribute(
-      'aria-label',
-      photoPhysicsEnabled ? 'Photo ball physics on.' : 'Photo ball physics off.'
-    );
-    photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);
-  }
-
-  const zenNote=document.getElementById('zenNote');
-  if(pageLocked && zenNote) {
-    zenNote.textContent=photoPhysicsEnabled
-      ? 'Text physics disabled; photo ball stays active'
-      : 'Text physics disabled; photo ball physics disabled';
-  }
-}
-"""
+          photo_toggle_fn = '\n'.join([
+              '',
+              'function setPhotoPhysics(next) {',
+              '  photoPhysicsEnabled=next;',
+              '',
+              '  if(!photoPhysicsEnabled) restorePhotoOnly();',
+              '',
+              '  if(photoPhysicsButton) {',
+              "    photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo ball on' : 'Photo ball off';",
+              '    photoPhysicsButton.title=photoPhysicsEnabled',
+              "      ? 'Photo can be knocked loose and bounce'",
+              "      : 'Photo is fixed in place';",
+              '    photoPhysicsButton.setAttribute(',
+              "      'aria-label',",
+              "      photoPhysicsEnabled ? 'Photo ball physics on.' : 'Photo ball physics off.'",
+              '    );',
+              "    photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);",
+              '  }',
+              '',
+              "  const zenNote=document.getElementById('zenNote');",
+              '  if(pageLocked && zenNote) {',
+              '    zenNote.textContent=photoPhysicsEnabled',
+              "      ? 'Text physics disabled; photo ball stays active'",
+              "      : 'Text physics disabled; photo ball physics disabled';",
+              '  }',
+              '}',
+              ''
+          ])
           text = text.replace(marker, photo_toggle_fn + marker, 1)
 
           replace_once(
