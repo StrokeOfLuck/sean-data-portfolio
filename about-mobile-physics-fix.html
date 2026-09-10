@@ -1,0 +1,38 @@
+<script>
+(() => {
+  function installAboutMobilePhysicsFix() {
+    const canvas = document.getElementById('world');
+    if (!canvas) return;
+
+    // The canvas receives the touch, so Chrome needs the touch-action rule here
+    // (not only on the DOM photo underneath it) to keep the pointer stream alive.
+    canvas.style.touchAction = 'none';
+
+    // Android Chrome can still emit pointercancel in edge cases. The About page
+    // drag code listens for pointerup, so convert a canceled touch into a clean
+    // release instead of leaving a photo/word stuck in its held state.
+    window.addEventListener('pointercancel', (e) => {
+      if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+
+      try {
+        window.dispatchEvent(new PointerEvent('pointerup', {
+          pointerId: e.pointerId,
+          pointerType: e.pointerType,
+          clientX: e.clientX,
+          clientY: e.clientY,
+          bubbles: false,
+          cancelable: true
+        }));
+      } catch (_) {
+        window.dispatchEvent(new Event('pointerup', { cancelable: true }));
+      }
+    }, true);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', installAboutMobilePhysicsFix, { once: true });
+  } else {
+    installAboutMobilePhysicsFix();
+  }
+})();
+</script>
