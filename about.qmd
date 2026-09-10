@@ -1291,7 +1291,7 @@ page-layout: full
     vx,vy,angle:0,av:0,
     r:radius,
     w:radius*2,h:radius*2,
-    restitution:.72,
+    restitution:.48,
     source:photoWrap,
     held:false
   };
@@ -1963,12 +1963,13 @@ function bodyHitsBike(b) {
 
     for(const b of bodies) {
       if(!b.held) {
-        b.vy+=(b.type==='photo'?.34:.30)*dt;
+        const isPhoto=b.type==='photo';
+        b.vy+=(isPhoto?.38:.30)*dt;
         b.x+=b.vx*dt;
         b.y+=b.vy*dt;
         b.angle+=b.av*dt;
-        b.vx*=Math.pow(.999,dt);
-        b.av*=Math.pow(.996,dt);
+        b.vx*=Math.pow(isPhoto?.997:.999,dt);
+        b.av*=Math.pow(isPhoto?.989:.996,dt);
 
         const bb=bounds(b);
 
@@ -1988,9 +1989,10 @@ function bodyHitsBike(b) {
         const floor=trackY(b.x)-bb.hh;
         if(b.y>floor) {
           b.y=floor;
-          b.vy=Math.abs(b.vy)>.8 ? -Math.abs(b.vy)*b.restitution : 0;
-          b.vx*=.965;
-          b.av*=.9;
+          const bounceThreshold=isPhoto?1.15:.8;
+          b.vy=Math.abs(b.vy)>bounceThreshold ? -Math.abs(b.vy)*b.restitution : 0;
+          b.vx*=isPhoto?.95:.965;
+          b.av*=isPhoto?.85:.9;
         }
       }
 
@@ -2387,9 +2389,11 @@ function bodyHitsBike(b) {
     e.preventDefault();
 
     dragging.held=false;
-    dragging.vx*=1.55;
-    dragging.vy*=1.55;
-    dragging.av+=dragging.vx*.0028;
+    const photoRelease=dragging.type==='photo';
+    const releaseBoost=photoRelease?1.25:1.55;
+    dragging.vx*=releaseBoost;
+    dragging.vy*=releaseBoost;
+    dragging.av+=dragging.vx*(photoRelease?.0018:.0028);
 
     dragging=null;
     window.removeEventListener('pointermove',onDragMove);
@@ -2427,7 +2431,7 @@ function bodyHitsBike(b) {
     if(pendingStatic.kind==='word') {
       detachWord(pendingStatic.target,(Math.random()-.5)*.8,-.6-Math.random()*.5);
     } else if(pendingStatic.kind==='photo') {
-      detachPhoto((Math.random()-.5)*.8,-.7-Math.random()*.6);
+      detachPhoto((Math.random()-.5)*.4,-.28-Math.random()*.22);
     }
 
     clearPendingStatic();
