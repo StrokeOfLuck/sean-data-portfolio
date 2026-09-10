@@ -73,38 +73,40 @@ jobs:
           if marker not in text:
               raise SystemExit('Missing reset marker')
 
-          photo_toggle_fn = r'''function setPhotoPhysics(next) {
-    photoPhysicsEnabled=next;
-
-    if(!photoPhysicsEnabled) {
-      if(dragging?.type==='photo') {
-        dragging.held=false;
-        dragging=null;
-        window.removeEventListener('pointermove',onDragMove);
-        window.removeEventListener('pointerup',onDragEnd);
-      }
-      if(pendingStatic?.kind==='photo') clearPendingStatic();
-      bodies=bodies.filter(b=>b.type!=='photo');
-      photoWrap.dataset.detached='';
-      photoWrap.style.visibility='';
-    }
-
-    if(photoPhysicsButton) {
-      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';
-      photoPhysicsButton.title=photoPhysicsEnabled
-        ? 'Profile photo can detach, bounce, and collide'
-        : 'Profile photo stays fixed';
-      photoPhysicsButton.setAttribute(
-        'aria-label',
-        photoPhysicsEnabled
-          ? 'Photo physics on. The profile photo can detach and bounce.'
-          : 'Photo physics off. The profile photo stays fixed.'
-      );
-      photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);
-    }
-  }
-
-  '''
+          photo_toggle_fn = '\n'.join([
+              'function setPhotoPhysics(next) {',
+              '    photoPhysicsEnabled=next;',
+              '',
+              '    if(!photoPhysicsEnabled) {',
+              "      if(dragging?.type==='photo') {",
+              '        dragging.held=false;',
+              '        dragging=null;',
+              "        window.removeEventListener('pointermove',onDragMove);",
+              "        window.removeEventListener('pointerup',onDragEnd);",
+              '      }',
+              "      if(pendingStatic?.kind==='photo') clearPendingStatic();",
+              "      bodies=bodies.filter(b=>b.type!=='photo');",
+              "      photoWrap.dataset.detached='';",
+              "      photoWrap.style.visibility='';",
+              '    }',
+              '',
+              '    if(photoPhysicsButton) {',
+              "      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';",
+              '      photoPhysicsButton.title=photoPhysicsEnabled',
+              "        ? 'Profile photo can detach, bounce, and collide'",
+              "        : 'Profile photo stays fixed';",
+              '      photoPhysicsButton.setAttribute(',
+              "        'aria-label',",
+              '        photoPhysicsEnabled',
+              "          ? 'Photo physics on. The profile photo can detach and bounce.'",
+              "          : 'Photo physics off. The profile photo stays fixed.'",
+              '      );',
+              "      photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);",
+              '    }',
+              '  }',
+              '',
+              '  '
+          ])
           text = text.replace(marker, photo_toggle_fn + marker, 1)
 
           replace_once(
