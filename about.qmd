@@ -72,22 +72,12 @@ page-layout: full
 
   .copy p { margin:0 0 var(--about-copy-gap); }
 
-  .photo-wrap {
-    width:var(--about-photo-size);
-    height:var(--about-photo-size);
-    position:relative;
-    touch-action:none;
-    cursor:grab;
-  }
+  \1\n    border-radius:50%;\n    overflow:hidden;\2
 
   .photo-wrap:active { cursor:grabbing; }
-  body.page-locked .photo-wrap { cursor:default; }
+  body.page-locked .photo-wrap { cursor:grab; }
 
-  .photo {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:18px;
+  \1border-radius:50%;
     display:block;
     user-select:none;
     -webkit-user-drag:none;
@@ -346,49 +336,7 @@ page-layout: full
     display:none;
   }
 
-  @media(max-width:760px) {
-    html,
-    body {
-      height:100%;
-      overflow:hidden;
-    }
-
-    .page {
-      height:calc(100dvh - 54px);
-      min-height:0;
-      padding:8px 18px 0;
-      overflow:hidden;
-    }
-
-    .page h1 {
-      font-size:26px;
-      margin:0 0 10px;
-    }
-
-    .intro {
-      grid-template-columns:minmax(0,1fr) 118px;
-      gap:14px;
-      align-items:start;
-    }
-
-    .copy {
-      max-width:none;
-      font-size:13px;
-      line-height:1.45;
-    }
-
-    .copy p {
-      margin:0 0 12px;
-    }
-
-    .photo-wrap {
-      width:118px;
-      height:118px;
-      aspect-ratio:1;
-    }
-
-    .photo {
-      border-radius:12px;
+  \1border-radius:50%;
     }
 
     .page h2 {
@@ -672,7 +620,7 @@ page-layout: full
     </div>
   </div>
 
-  <div class="telemetry-note" id="zenNote">Physics objects disabled</div>
+  <div class="telemetry-note" id="zenNote">Text physics disabled; photo ball stays active</div>
 </div>
 
 <button class="hud-settings-toggle" id="settingsToggle" type="button" aria-expanded="false" aria-controls="hudSettings">Options</button>
@@ -689,7 +637,7 @@ page-layout: full
         <option value="penny">Penny Farthing</option>
       </select>
     </label>
-    <button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>
+    <button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>
     <button id="reset">Reset</button>
   </div>
 
@@ -1269,29 +1217,46 @@ page-layout: full
     bodies.push(b);
     return b;
   }
-
   function detachPhoto(vx=0,vy=0) {
-    if(pageLocked) return null;
-    if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;
+  if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;
 
-    const r=photoWrap.getBoundingClientRect();
-    photoWrap.dataset.detached='1';
-    photoWrap.style.visibility='hidden';
+  const rect=photoWrap.getBoundingClientRect();
+  const radius=Math.min(rect.width,rect.height)/2;
+  photoWrap.dataset.detached='1';
+  photoWrap.style.visibility='hidden';
 
-    const b={      type:'photo',
-      x:worldXFromClient(r.left+r.width/2),
-      y:worldYFromClient(r.top+r.height/2),
-      vx,vy,angle:0,av:0,
-      w:r.width,h:r.height,
-      restitution:.34,
-      source:photoWrap,
-      held:false
-    };
-    bodies.push(b);
-    return b;
+  const b={
+    type:'photo',
+    shape:'circle',
+    x:worldXFromClient(rect.left+rect.width/2),
+    y:worldYFromClient(rect.top+rect.height/2),
+    vx,vy,angle:0,av:0,
+    r:radius,
+    w:radius*2,h:radius*2,
+    restitution:.72,
+    source:photoWrap,
+    held:false
+  };
+  bodies.push(b);
+  return b;
+}
+
+function restoreWordsOnly() {
+  if(dragging?.type==='word') {
+    dragging.held=false;
+    dragging=null;
+    window.removeEventListener('pointermove',onDragMove);
+    window.removeEventListener('pointerup',onDragEnd);
   }
+  if(pendingStatic?.kind==='word') clearPendingStatic();
+  bodies=bodies.filter(b=>b.type==='photo');
+  document.querySelectorAll('.physics-word').forEach(s=>{
+    s.dataset.detached='';
+    s.style.visibility='';
+  });
+}
 
-  function restoreWordsAndPhoto() {
+function restoreWordsAndPhoto() {
     // Fully cancel any in-progress drag before restoring the page. Reset can
     // be clicked while a pointer interaction is active.
     if(dragging) dragging.held=false;
@@ -1305,36 +1270,34 @@ page-layout: full
     photoWrap.dataset.detached='';
     photoWrap.style.visibility='';
   }
-
   function setPageLocked(next) {
-    pageLocked=next;
-    document.body.classList.toggle('page-locked',pageLocked);
+  pageLocked=next;
+  document.body.classList.toggle('page-locked',pageLocked);
 
-    const zenNote=document.getElementById('zenNote');
-    const tLoose=document.getElementById('tLoose');
-    const tImpacts=document.getElementById('tImpacts');
+  const zenNote=document.getElementById('zenNote');
+  const tLoose=document.getElementById('tLoose');
+  const tImpacts=document.getElementById('tImpacts');
 
-    if(pageLocked) {
-      restoreWordsAndPhoto();
-      pageLockButton.textContent='Zen mode on';
-      pageLockButton.title='Enable falling page objects';
-      pageLockButton.setAttribute('aria-label','Zen mode on. Enable falling page objects.');
-      pageLockButton.classList.add('active');
-      if(zenNote) zenNote.style.display='block';
-      if(tLoose) tLoose.textContent='OFF';
-      if(tImpacts) tImpacts.textContent='OFF';
-    } else {
-      pageLockButton.textContent='Zen mode off';
-      pageLockButton.title='Disable falling page objects';
-      pageLockButton.setAttribute('aria-label','Zen mode off. Disable falling page objects.');
-      pageLockButton.classList.remove('active');
-      if(zenNote) zenNote.style.display='none';
-      if(tLoose) tLoose.textContent=String(bodies.length);
-      if(tImpacts && !pageLocked) tImpacts.textContent=String(impacts);
-    }
+  if(pageLocked) {
+    restoreWordsOnly();
+    pageLockButton.textContent='Zen mode on';
+    pageLockButton.title='Enable falling text objects';
+    pageLockButton.setAttribute('aria-label','Zen mode on. Text is fixed; photo ball physics remain active.');
+    pageLockButton.classList.add('active');
+    if(zenNote) zenNote.style.display='block';
+  } else {
+    pageLockButton.textContent='Zen mode off';
+    pageLockButton.title='Disable falling text objects';
+    pageLockButton.setAttribute('aria-label','Zen mode off. Text physics enabled.');
+    pageLockButton.classList.remove('active');
+    if(zenNote) zenNote.style.display='none';
   }
 
-  function reset() {
+  if(tLoose) tLoose.textContent=String(bodies.length);
+  if(tImpacts) tImpacts.textContent=String(impacts);
+}
+
+function reset() {
     // Briefly suppress collision-triggered detaches so a restored element
     // cannot be knocked loose again in the same click/reset frame.
     resetGuardUntil=performance.now()+280;
@@ -1730,16 +1693,19 @@ page-layout: full
       ctx.stroke();
     }
   }
-
   function bounds(b) {
-    const c=Math.abs(Math.cos(b.angle));
-    const s=Math.abs(Math.sin(b.angle));
-    const hw=(b.w*c+b.h*s)/2;
-    const hh=(b.w*s+b.h*c)/2;
-    return {left:b.x-hw,right:b.x+hw,top:b.y-hh,bottom:b.y+hh,hw,hh};
+  if(b.shape==='circle') {
+    const r=b.r || Math.min(b.w,b.h)/2;
+    return {left:b.x-r,right:b.x+r,top:b.y-r,bottom:b.y+r,hw:r,hh:r};
   }
+  const c=Math.abs(Math.cos(b.angle));
+  const s=Math.abs(Math.sin(b.angle));
+  const hw=(b.w*c+b.h*s)/2;
+  const hh=(b.w*s+b.h*c)/2;
+  return {left:b.x-hw,right:b.x+hw,top:b.y-hh,bottom:b.y+hh,hw,hh};
+}
 
-  function hitStaticRect(x,y,r,rect) {
+function hitStaticRect(x,y,r,rect) {
     const left=worldXFromClient(rect.left);
     const right=worldXFromClient(rect.right);
     const top=worldYFromClient(rect.top);
@@ -1749,11 +1715,11 @@ page-layout: full
     const dx=x-cx, dy=y-cy;
     return dx*dx+dy*dy<r*r;
   }
-
   function bikeKnockStatic() {
-    if(pageLocked || spawnProtected || performance.now()<resetGuardUntil) return;
-    const r=26;
+  if(spawnProtected || performance.now()<resetGuardUntil) return;
+  const r=26;
 
+  if(!pageLocked) {
     for(const span of document.querySelectorAll('.physics-word')) {
       if(span.dataset.detached==='1') continue;
       if(hitStaticRect(bike.x,bike.y,r,span.getBoundingClientRect())) {
@@ -1763,24 +1729,25 @@ page-layout: full
         detachWord(span, bike.airborne ? bike.vx*.6 : bike.speed*.8, bike.airborne ? bike.vy*.35-1.5 : -2.4);
       }
     }
-
-    if(photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {
-      impacts+=1;
-      resetStreakState();
-      bike.comboBoost*=.5;
-      const p=detachPhoto(bike.airborne ? bike.vx*.6 : bike.speed*.8, bike.airborne ? bike.vy*.3-1.5 : -2.8);
-      if(p) p.av=(Math.random()-.5)*.035;
-    }
-
   }
 
-  function movingBodyKnockStatic(body) {
-    if(pageLocked || performance.now()<resetGuardUntil) return;
-    const speed=Math.hypot(body.vx,body.vy);
-    if(speed<1.6) return;
+  if(photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {
+    impacts+=1;
+    resetStreakState();
+    bike.comboBoost*=.5;
+    const p=detachPhoto(bike.airborne ? bike.vx*.6 : bike.speed*.8, bike.airborne ? bike.vy*.3-1.5 : -2.8);
+    if(p) p.av=(Math.random()-.5)*.035;
+  }
+}
 
-    const r=Math.max(10,Math.min(48,Math.max(body.w,body.h)*.34));
+function movingBodyKnockStatic(body) {
+  if(performance.now()<resetGuardUntil) return;
+  const speed=Math.hypot(body.vx,body.vy);
+  if(speed<1.6) return;
 
+  const r=Math.max(10,Math.min(48,Math.max(body.w,body.h)*.34));
+
+  if(!pageLocked) {
     for(const span of document.querySelectorAll('.physics-word')) {
       if(span.dataset.detached==='1') continue;
       if(hitStaticRect(body.x,body.y,r,span.getBoundingClientRect())) {
@@ -1792,19 +1759,19 @@ page-layout: full
         }
       }
     }
-
-    if(photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {
-      const p=detachPhoto(body.vx*.58,body.vy*.42-1.5);
-      if(p) {
-        p.av=(Math.random()-.5)*.04;
-        body.vx*=.72;
-        body.vy*=.8;
-      }
-    }
-
   }
 
-  function bodyHitsBike(b) {
+  if(photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {
+    const p=detachPhoto(body.vx*.58,body.vy*.42-1.5);
+    if(p) {
+      p.av=(Math.random()-.5)*.04;
+      body.vx*=.72;
+      body.vy*=.8;
+    }
+  }
+}
+
+function bodyHitsBike(b) {
     const bb=bounds(b);
     const r=26;
     const cx=Math.max(bb.left,Math.min(bike.x,bb.right));
@@ -1960,17 +1927,13 @@ page-layout: full
         ctx.fillStyle=b.color;
         ctx.fillText(b.text,0,0);
       } else if(b.type==='photo' && photoReady) {
-        const x=-b.w/2, y=-b.h/2, w=b.w, h=b.h, r=16;
-        ctx.beginPath();
-        ctx.moveTo(x+r,y);
-        ctx.arcTo(x+w,y,x+w,y+h,r);
-        ctx.arcTo(x+w,y+h,x,y+h,r);
-        ctx.arcTo(x,y+h,x,y,r);
-        ctx.arcTo(x,y,x+w,y,r);
-        ctx.closePath();
-        ctx.clip();
-        ctx.drawImage(photoBitmap,-b.w/2,-b.h/2,b.w,b.h);
-      }
+    const r=b.r || Math.min(b.w,b.h)/2;
+    ctx.beginPath();
+    ctx.arc(0,0,r,0,Math.PI*2);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(photoBitmap,-r,-r,r*2,r*2);
+  }
       ctx.restore();
     }
   }
@@ -2247,7 +2210,7 @@ page-layout: full
     if(tBoost) tBoost.textContent=`${(1+bike.comboBoost*.13).toFixed(2)}×`;
     if(tHeight) tHeight.textContent=`${Math.round(liveHeight)} px`;
     if(tFlips) tFlips.textContent=String(bike.totalFlips + bike.flipsThisAir);
-    if(tLoose && !pageLocked) tLoose.textContent=String(bodies.length);
+    if(tLoose) tLoose.textContent=String(bodies.length);
     if(tStreak) tStreak.textContent=String(cleanStreak);
 
     const vxNow=bike.airborne ? bike.vx : bike.speed*Math.cos(bike.angle);
@@ -2258,7 +2221,7 @@ page-layout: full
     if(tX) tX.textContent=String(Math.round(bike.x));
     if(tY) tY.textContent=String(Math.round(bike.y));
     if(tAir) tAir.textContent=`${airtime.toFixed(2)} s`;
-    if(tImpacts && !pageLocked) tImpacts.textContent=String(impacts);
+    if(tImpacts) tImpacts.textContent=String(impacts);
     if(tJumps) tJumps.textContent=String(jumpCount);
     if(tMaxAir) tMaxAir.textContent=`${maxAirtime.toFixed(2)} s`;
     if(tDist) tDist.textContent=`${Math.round(distanceTravelled)} px`;
@@ -2417,7 +2380,7 @@ page-layout: full
       return;
     }
 
-    if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1' && !pageLocked) {
+    if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {
       pendingStatic={
         kind:'photo',
         target:photoWrap,
