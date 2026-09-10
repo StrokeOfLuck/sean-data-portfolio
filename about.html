@@ -836,6 +836,7 @@ ul.task-list li input[type="checkbox"] {
       </select>
     </label>
     <button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>
+    <button id="photoPhysics" title="Allow the profile photo to detach, bounce, and collide" aria-label="Photo physics on. The profile photo can detach and bounce." class="active">Photo physics on</button>
     <button id="reset">Reset</button>
   </div>
 
@@ -855,6 +856,7 @@ ul.task-list li input[type="checkbox"] {
   const photoWrap = document.getElementById('photoWrap');
   const photoImg = document.getElementById('photo');
   const pageLockButton = document.getElementById('pageLock');
+  const photoPhysicsButton = document.getElementById('photoPhysics');
   const telemetryToggle = document.getElementById('telemetryToggle');
   const telemetryPanel = document.getElementById('telemetryPanel');
   const telemetryClose = document.getElementById('telemetryClose');
@@ -877,6 +879,7 @@ ul.task-list li input[type="checkbox"] {
   let dragOffset={x:0,y:0};
   let dragLast={x:0,y:0,t:0};
   let pageLocked=false;
+  let photoPhysicsEnabled=true;
   let cameraShiftY=0;
   let cameraTargetY=0;
   let resetGuardUntil=0;
@@ -1416,6 +1419,7 @@ ul.task-list li input[type="checkbox"] {
     return b;
   }
   function detachPhoto(vx=0,vy=0) {
+  if(!photoPhysicsEnabled) return null;
   if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;
 
   const rect=photoWrap.getBoundingClientRect();
@@ -1495,7 +1499,38 @@ function restoreWordsAndPhoto() {
   if(tImpacts) tImpacts.textContent=String(impacts);
 }
 
-function reset() {
+function setPhotoPhysics(next) {
+    photoPhysicsEnabled=next;
+
+    if(!photoPhysicsEnabled) {
+      if(dragging?.type==='photo') {
+        dragging.held=false;
+        dragging=null;
+        window.removeEventListener('pointermove',onDragMove);
+        window.removeEventListener('pointerup',onDragEnd);
+      }
+      if(pendingStatic?.kind==='photo') clearPendingStatic();
+      bodies=bodies.filter(b=>b.type!=='photo');
+      photoWrap.dataset.detached='';
+      photoWrap.style.visibility='';
+    }
+
+    if(photoPhysicsButton) {
+      photoPhysicsButton.textContent=photoPhysicsEnabled ? 'Photo physics on' : 'Photo physics off';
+      photoPhysicsButton.title=photoPhysicsEnabled
+        ? 'Profile photo can detach, bounce, and collide'
+        : 'Profile photo stays fixed';
+      photoPhysicsButton.setAttribute(
+        'aria-label',
+        photoPhysicsEnabled
+          ? 'Photo physics on. The profile photo can detach and bounce.'
+          : 'Photo physics off. The profile photo stays fixed.'
+      );
+      photoPhysicsButton.classList.toggle('active',photoPhysicsEnabled);
+    }
+  }
+
+  function reset() {
     // Briefly suppress collision-triggered detaches so a restored element
     // cannot be knocked loose again in the same click/reset frame.
     resetGuardUntil=performance.now()+280;
@@ -1929,7 +1964,7 @@ function hitStaticRect(x,y,r,rect) {
     }
   }
 
-  if(photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {
+  if(photoPhysicsEnabled && photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {
     impacts+=1;
     resetStreakState();
     bike.comboBoost*=.5;
@@ -1959,7 +1994,7 @@ function movingBodyKnockStatic(body) {
     }
   }
 
-  if(photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {
+  if(photoPhysicsEnabled && photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {
     const p=detachPhoto(body.vx*.58,body.vy*.42-1.5);
     if(p) {
       p.av=(Math.random()-.5)*.04;
@@ -2691,6 +2726,11 @@ function bodyHitsBike(b) {
   pageLockButton.addEventListener('click',e=>{
     e.stopPropagation();
     setPageLocked(!pageLocked);
+  });
+
+  photoPhysicsButton?.addEventListener('click',e=>{
+    e.stopPropagation();
+    setPhotoPhysics(!photoPhysicsEnabled);
   });
 
   document.getElementById('jump').onclick=e=>{ e.stopPropagation(); jump(); };
