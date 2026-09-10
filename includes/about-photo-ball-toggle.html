@@ -43,14 +43,14 @@
     }
 
     function renderButton() {
-      button.textContent = enabled ? 'Photo ball on' : 'Photo ball off';
+      button.textContent = enabled ? 'Photo physics on' : 'Photo physics off';
       button.classList.toggle('active', enabled);
       button.title = enabled
         ? 'Photo can be knocked loose and bounce'
         : 'Photo stays fixed in place';
       button.setAttribute(
         'aria-label',
-        enabled ? 'Photo ball physics on.' : 'Photo ball physics off.'
+        enabled ? 'Photo physics on. The photo can be knocked loose and bounce.' : 'Photo physics off. The photo stays fixed in place.'
       );
       button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
     }
