@@ -17,7 +17,7 @@ jobs:
         with:
           ref: main
 
-      - name: Patch About page
+      - name: Repair About CSS and validate script
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -25,269 +25,121 @@ jobs:
 
           path = Path('about.qmd')
           text = path.read_text()
-          original = text
 
-          def replace_once(old, new, label):
-              global text
-              if old not in text:
-                  raise SystemExit(f'{label}: source text not found')
-              text = text.replace(old, new, 1)
+          bad_wrap = r'''  \1\n    border-radius:50%;\n    overflow:hidden;\2'''
+          good_wrap = '''  .photo-wrap {
+            width:var(--about-photo-size);
+            height:var(--about-photo-size);
+            position:relative;
+            touch-action:none;
+            cursor:grab;
+            border-radius:50%;
+            overflow:hidden;
+          }'''
+          if bad_wrap not in text:
+              raise SystemExit('Corrupt desktop photo-wrap marker not found')
+          text = text.replace(bad_wrap, good_wrap, 1)
 
-          def sub_once(pattern, replacement, label, flags=re.S):
-              global text
-              text, n = re.subn(pattern, lambda m: replacement, text, count=1, flags=flags)
-              if n != 1:
-                  raise SystemExit(f'{label}: replacement count {n}')
+          bad_photo = r'''  \1border-radius:50%;'''
+          bad_photo_full = bad_photo + '''
+            display:block;
+            user-select:none;
+            -webkit-user-drag:none;
+          }'''
+          good_photo = '''  .photo {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            border-radius:50%;
+            display:block;
+            user-select:none;
+            -webkit-user-drag:none;
+          }'''
+          if bad_photo_full not in text:
+              raise SystemExit('Corrupt desktop photo marker not found')
+          text = text.replace(bad_photo_full, good_photo, 1)
 
-          # Make the attached headshot a circle.
-          sub_once(
-              r'(\.photo-wrap\s*\{[^}]*?cursor:grab;)(\s*\})',
-              r'\1\n    border-radius:50%;\n    overflow:hidden;\2',
-              'photo wrapper'
-          )
-          replace_once(
-              'body.page-locked .photo-wrap { cursor:default; }',
-              'body.page-locked .photo-wrap { cursor:grab; }',
-              'zen photo cursor'
-          )
-          sub_once(
-              r'(\.photo\s*\{[^}]*?object-fit:cover;\s*)border-radius:18px;',
-              r'\1border-radius:50%;',
-              'desktop photo radius'
-          )
-          sub_once(
-              r'(@media\(max-width:760px\).*?\.photo\s*\{\s*)border-radius:12px;',
-              r'\1border-radius:50%;',
-              'mobile photo radius'
-          )
-
-          replace_once(
-              '<div class="telemetry-note" id="zenNote">Physics objects disabled</div>',
-              '<div class="telemetry-note" id="zenNote">Text physics disabled; photo ball stays active</div>',
-              'zen note'
-          )
-          replace_once(
-              '<button id="pageLock" title="Disable falling page objects" aria-label="Zen mode off. Disable falling page objects.">Zen mode off</button>',
-              '<button id="pageLock" title="Keep text fixed while photo physics stay active" aria-label="Zen mode off. Text physics enabled.">Zen mode off</button>',
-              'zen button'
-          )
-
-          # Convert the photo to a circular, bouncier physics body. Unlike words,
-          # the photo remains detachable while Zen mode is enabled.
-          detach_photo = '''  function detachPhoto(vx=0,vy=0) {
-            if(photoWrap.dataset.detached==='1') return bodies.find(b=>b.type==='photo')||null;
-
-            const rect=photoWrap.getBoundingClientRect();
-            const radius=Math.min(rect.width,rect.height)/2;
-            photoWrap.dataset.detached='1';
-            photoWrap.style.visibility='hidden';
-
-            const b={
-              type:'photo',
-              shape:'circle',
-              x:worldXFromClient(rect.left+rect.width/2),
-              y:worldYFromClient(rect.top+rect.height/2),
-              vx,vy,angle:0,av:0,
-              r:radius,
-              w:radius*2,h:radius*2,
-              restitution:.72,
-              source:photoWrap,
-              held:false
-            };
-            bodies.push(b);
-            return b;
-          }
-
-          function restoreWordsOnly() {
-            if(dragging?.type==='word') {
-              dragging.held=false;
-              dragging=null;
-              window.removeEventListener('pointermove',onDragMove);
-              window.removeEventListener('pointerup',onDragEnd);
-            }
-            if(pendingStatic?.kind==='word') clearPendingStatic();
-            bodies=bodies.filter(b=>b.type==='photo');
-            document.querySelectorAll('.physics-word').forEach(s=>{
-              s.dataset.detached='';
-              s.style.visibility='';
-            });
-          }
-
-          function restoreWordsAndPhoto'''
-          sub_once(
-              r'\s*function detachPhoto\(vx=0,vy=0\)\s*\{.*?\n\s*\}\n\n\s*function restoreWordsAndPhoto',
-              '\n' + detach_photo,
-              'detachPhoto'
-          )
-
-          # Zen mode restores/freezes words only. The photo body is deliberately
-          # left alone so it can keep bouncing around the halfpipe.
-          zen_function = '''  function setPageLocked(next) {
-            pageLocked=next;
-            document.body.classList.toggle('page-locked',pageLocked);
-
-            const zenNote=document.getElementById('zenNote');
-            const tLoose=document.getElementById('tLoose');
-            const tImpacts=document.getElementById('tImpacts');
-
-            if(pageLocked) {
-              restoreWordsOnly();
-              pageLockButton.textContent='Zen mode on';
-              pageLockButton.title='Enable falling text objects';
-              pageLockButton.setAttribute('aria-label','Zen mode on. Text is fixed; photo ball physics remain active.');
-              pageLockButton.classList.add('active');
-              if(zenNote) zenNote.style.display='block';
-            } else {
-              pageLockButton.textContent='Zen mode off';
-              pageLockButton.title='Disable falling text objects';
-              pageLockButton.setAttribute('aria-label','Zen mode off. Text physics enabled.');
-              pageLockButton.classList.remove('active');
-              if(zenNote) zenNote.style.display='none';
-            }
-
-            if(tLoose) tLoose.textContent=String(bodies.length);
-            if(tImpacts) tImpacts.textContent=String(impacts);
-          }
-
-          function reset()'''
-          sub_once(
-              r'\s*function setPageLocked\(next\)\s*\{.*?\n\s*\}\n\n\s*function reset\(\)',
-              '\n' + zen_function,
-              'setPageLocked'
-          )
-
-          # Circle bounds make wall/ramp contact use the photo radius rather than
-          # the rotating square's bounding box.
-          bounds_function = '''  function bounds(b) {
-            if(b.shape==='circle') {
-              const r=b.r || Math.min(b.w,b.h)/2;
-              return {left:b.x-r,right:b.x+r,top:b.y-r,bottom:b.y+r,hw:r,hh:r};
-            }
-            const c=Math.abs(Math.cos(b.angle));
-            const s=Math.abs(Math.sin(b.angle));
-            const hw=(b.w*c+b.h*s)/2;
-            const hh=(b.w*s+b.h*c)/2;
-            return {left:b.x-hw,right:b.x+hw,top:b.y-hh,bottom:b.y+hh,hw,hh};
-          }
-
-          function hitStaticRect'''
-          sub_once(
-              r'\s*function bounds\(b\)\s*\{.*?\n\s*\}\n\n\s*function hitStaticRect',
-              '\n' + bounds_function,
-              'bounds'
-          )
-
-          # In Zen mode, collisions ignore text but still interact with the photo.
-          knock_functions = '''  function bikeKnockStatic() {
-            if(spawnProtected || performance.now()<resetGuardUntil) return;
-            const r=26;
-
-            if(!pageLocked) {
-              for(const span of document.querySelectorAll('.physics-word')) {
-                if(span.dataset.detached==='1') continue;
-                if(hitStaticRect(bike.x,bike.y,r,span.getBoundingClientRect())) {
-                  impacts+=1;
-                  resetStreakState();
-                  bike.comboBoost*=.55;
-                  detachWord(span, bike.airborne ? bike.vx*.6 : bike.speed*.8, bike.airborne ? bike.vy*.35-1.5 : -2.4);
-                }
-              }
-            }
-
-            if(photoWrap.dataset.detached!=='1' && hitStaticRect(bike.x,bike.y,r+10,photoWrap.getBoundingClientRect())) {
-              impacts+=1;
-              resetStreakState();
-              bike.comboBoost*=.5;
-              const p=detachPhoto(bike.airborne ? bike.vx*.6 : bike.speed*.8, bike.airborne ? bike.vy*.3-1.5 : -2.8);
-              if(p) p.av=(Math.random()-.5)*.035;
-            }
-          }
-
-          function movingBodyKnockStatic(body) {
-            if(performance.now()<resetGuardUntil) return;
-            const speed=Math.hypot(body.vx,body.vy);
-            if(speed<1.6) return;
-
-            const r=Math.max(10,Math.min(48,Math.max(body.w,body.h)*.34));
-
-            if(!pageLocked) {
-              for(const span of document.querySelectorAll('.physics-word')) {
-                if(span.dataset.detached==='1') continue;
-                if(hitStaticRect(body.x,body.y,r,span.getBoundingClientRect())) {
-                  const n=detachWord(span, body.vx*.72+(Math.random()-.5), body.vy*.55-1.0);
-                  if(n) {
-                    body.vx*=.78;
-                    body.vy*=.82;
-                    body.av+=(Math.random()-.5)*.03;
-                  }
-                }
-              }
-            }
-
-            if(photoWrap.dataset.detached!=='1' && body.type!=='photo' && hitStaticRect(body.x,body.y,r+12,photoWrap.getBoundingClientRect())) {
-              const p=detachPhoto(body.vx*.58,body.vy*.42-1.5);
-              if(p) {
-                p.av=(Math.random()-.5)*.04;
-                body.vx*=.72;
-                body.vy*=.8;
-              }
-            }
-          }
-
-          function bodyHitsBike'''
-          sub_once(
-              r'\s*function bikeKnockStatic\(\)\s*\{.*?\n\s*\}\n\n\s*function movingBodyKnockStatic\(body\)\s*\{.*?\n\s*\}\n\n\s*function bodyHitsBike',
-              '\n' + knock_functions,
-              'static collision functions'
-          )
-
-          # Use a circular clip when painting the detached photo.
-          draw_photo = '''} else if(b.type==='photo' && photoReady) {
-              const r=b.r || Math.min(b.w,b.h)/2;
-              ctx.beginPath();
-              ctx.arc(0,0,r,0,Math.PI*2);
-              ctx.closePath();
-              ctx.clip();
-              ctx.drawImage(photoBitmap,-r,-r,r*2,r*2);
+          bad_mobile = r'''  \1border-radius:50%;''' + '''
             }'''
-          sub_once(
-              r"\} else if\(b\.type==='photo' && photoReady\)\s*\{.*?ctx\.drawImage\(photoBitmap,-b\.w/2,-b\.h/2,b\.w,b\.h\);\s*\}",
-              draw_photo,
-              'photo canvas drawing'
-          )
+          good_mobile = '''  @media(max-width:760px) {
+            html,
+            body {
+              height:100%;
+              overflow:hidden;
+            }
 
-          # Keep live object/impact counts meaningful in Zen mode because the
-          # photo ball still exists there.
-          replace_once(
-              'if(tLoose && !pageLocked) tLoose.textContent=String(bodies.length);',
-              'if(tLoose) tLoose.textContent=String(bodies.length);',
-              'loose telemetry'
-          )
-          replace_once(
-              'if(tImpacts && !pageLocked) tImpacts.textContent=String(impacts);',
-              'if(tImpacts) tImpacts.textContent=String(impacts);',
-              'impact telemetry'
-          )
+            .page {
+              height:calc(100dvh - 54px);
+              min-height:0;
+              padding:8px 18px 0;
+              overflow:hidden;
+            }
 
-          # Allow click/drag activation of the photo while Zen mode is on.
-          replace_once(
-              "if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1' && !pageLocked) {",
+            .page h1 {
+              font-size:26px;
+              margin:0 0 10px;
+            }
+
+            .intro {
+              grid-template-columns:minmax(0,1fr) 118px;
+              gap:14px;
+              align-items:start;
+            }
+
+            .copy {
+              max-width:none;
+              font-size:13px;
+              line-height:1.45;
+            }
+
+            .copy p {
+              margin:0 0 12px;
+            }
+
+            .photo-wrap {
+              width:118px;
+              height:118px;
+              aspect-ratio:1;
+            }
+
+            .photo {
+              border-radius:50%;
+            }'''
+          if bad_mobile not in text:
+              raise SystemExit('Corrupt mobile CSS marker not found')
+          text = text.replace(bad_mobile, good_mobile, 1)
+
+          if r'\1' in text or r'\2' in text:
+              raise SystemExit('Backreference artifact still present')
+
+          required = [
+              'shape:\'circle\'',
+              'restitution:.72',
+              'function restoreWordsOnly()',
+              'Text physics disabled; photo ball stays active',
               "if(under?.closest?.('#photoWrap') && photoWrap.dataset.detached!=='1') {",
-              'zen photo pointer activation'
-          )
+              'ctx.arc(0,0,r,0,Math.PI*2);'
+          ]
+          for marker in required:
+              if marker not in text:
+                  raise SystemExit(f'Missing expected About physics marker: {marker}')
 
-          if text == original:
-              raise SystemExit('No changes made')
+          scripts = re.findall(r'<script>(.*?)</script>', text, flags=re.S)
+          if not scripts:
+              raise SystemExit('No script block found')
+          Path('/tmp/about-script.js').write_text('\n'.join(scripts))
 
           path.write_text(text)
-          print('Patched about.qmd successfully')
+          print('About CSS repaired and markers validated')
           PY
 
-      - name: Commit patch
+          node --check /tmp/about-script.js
+
+      - name: Commit repair
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add about.qmd
           git diff --cached --check
-          git commit -m "Make About photo a physics ball"
+          git commit -m "Repair About photo ball styling"
           git push origin main
