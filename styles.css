@@ -448,3 +448,25 @@ a {
     padding: 1rem;
   }
 }
+
+/* Politician stock disclosure: keep the featured transaction table readable on phones.
+   The existing wrapper already scrolls horizontally, so the table only needs a sane
+   minimum width instead of squeezing all six columns into the viewport. */
+@media (max-width: 700px) {
+  .featured-table {
+    min-width: 680px;
+  }
+
+  .featured-table th:nth-child(1),
+  .featured-table td:nth-child(1),
+  .featured-table th:nth-child(3),
+  .featured-table td:nth-child(3),
+  .featured-table th:nth-child(4),
+  .featured-table td:nth-child(4),
+  .featured-table th:nth-child(5),
+  .featured-table td:nth-child(5),
+  .featured-table th:nth-child(6),
+  .featured-table td:nth-child(6) {
+    white-space: nowrap;
+  }
+}
