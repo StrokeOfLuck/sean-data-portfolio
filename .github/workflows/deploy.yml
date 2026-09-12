@@ -40,6 +40,11 @@ jobs:
           repository: StrokeOfLuck/house-ptr-scraper
           path: house-ptr-scraper
 
+      - name: Restore static Technician article PDF
+        run: |
+          base64 --decode projects/assets/park-it-here/park-it-here-sean-ryan.pdf.b64 > projects/assets/park-it-here/park-it-here-sean-ryan.pdf
+          file projects/assets/park-it-here/park-it-here-sean-ryan.pdf
+
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
