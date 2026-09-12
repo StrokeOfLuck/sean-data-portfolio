@@ -1,0 +1,162 @@
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: transparent;
+  transition: opacity .12s ease;
+}
+.dw-hybrid.dw-live .dw-live-frame {
+  position: relative;
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+.dw-hybrid.dw-live .dw-fallback {
+  display: none;
+}
+</style><style id="archive-share-icons-fix">
+.sno-story-social-icons .sno-row-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+.sno-story-social-icons .sno-row-icon-ring {
+  width: 42px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+.sno-story-social-icons .archive-share-svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+  color: #fff;
+}
+.sno-story-social-icons .comment-row-icon { background:#2e7061 !important; color:#fff !important; }
+.sno-story-social-icons .like-row-icon { background:#862635 !important; color:#fff !important; }
+.sno-story-social-icons .facebook-row-icon { background:#3b5998 !important; color:#fff !important; }
+.sno-story-social-icons .twitter-row-icon { background:#000 !important; color:#fff !important; }
+.sno-story-social-icons .email-row-icon { background:#1f385c !important; color:#fff !important; }
+.sno-story-social-icons .print-row-icon { background:#546b8b !important; color:#fff !important; border:0 !important; }
+.sno-story-social-icons .sno-side-icon-bubble { display:none !important; }
+</style><style id="archive-datawrapper-white-fix">
+/* Match Datawrapper's normal white chart canvas in the local fallback. */
+.archived-dw-chart,
+.archived-dw-title,
+.archived-dw-desc,
+.archived-dw-credit,
+.dw-fallback {
+  background: #ffffff !important;
+}
+.archived-dw-chart {
+  border: 0 !important;
+}
+.archived-dw-map-link,
+.archived-datawrapper-map {
+  background: #ffffff !important;
+}
+</style><style id="archive-footer-icons-fix">
+.sno-hac-inner-desktop-footer-18 .sno-icon {
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.sno-hac-inner-desktop-footer-18 .archive-footer-svg {
+  width:20px;
+  height:20px;
+  display:block;
+  color:#fff;
+}
+.sno-hac-inner-desktop-footer-18 .sno-icon i {
+  display:none !important;
+}
+</style><style id="archive-all-ui-icons-fix">
+.archive-ui-svg {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.12em;
+  color: currentColor;
+}
+.sno-hac-submit-search-button .archive-ui-svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.archive-icon-only {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.bds-arrow .archive-ui-svg,
+.bottom-drawer-toggle .archive-ui-svg,
+.comment-close-icon .archive-ui-svg {
+  width: 18px;
+  height: 18px;
+}
+</style><style id="archive-external-link-behavior">
+/* Portfolio mirror: original-site links open separately so the portfolio stays open. */
+a[target="_blank"] { cursor: pointer; }
+</style></head>
+<body class="sno-animate-active" data-rsssl="1">
+<div class="bodywrap" data-desktop-breakpoint="1200" data-mobile-breakpoint="600" data-post-template="full" data-tablet-breakpoint="900" id="wrap">
+<a class="skip-to-content" href="#sno-sites-main-content">Skip to Content</a>
+<header>
+<div class="sno-header-wrap sno-header-wrap-desktop sno-header-desktop-standard" style="">
+<div class="sno-designer-area-row sno-designer-area-row-desktop-1 sno-designer-row-fullscreen" style="background: #231f20; ">
+<div class="sno-hac-row-wrap">
+<div class="sno-designer-area-container sno-hac-desktop-1" style="width: 33%; height: 137px;">
+<a href="https://technicianonline.com/" rel="noopener noreferrer" target="_blank">
+<div class="sno-hac-inner sno-hac-inner-desktop-1">
+<img alt="Technician - The News Site of NC State University" class="sno-hac-headerimage" src="https://technicianonline.com/wp-content/uploads/2025/05/58d6e5cc-705c-11e6-a234-ff2269afdda9.webp"/>
+<div class="sno-hidden-title">
+<h1>Technician</h1>
+</div>
+</div>
+</a> </div>
+<div class="sno-designer-area-container sno-hac-desktop-2" style="width: 33%; height: 137px;">
+</div>
+<div class="sno-designer-area-container sno-hac-desktop-3" style="width: 34%; height: 137px;">
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div class="sno-designer-area-row sno-designer-area-row-desktop-2 sno-designer-row-fullscreen" style="background: #231f20; border-top: 2px solid #ffffff; ">
+<div class="sno-hac-row-wrap">
+<div class="sno-designer-area-container sno-hac-desktop-4" style="width: 73%; height: 50px;">
+<div class="sno-hac-inner sno-hac-inner-desktop-4">
+<nav aria-label="Primary navigation">
+<div class="sno-hac-menuwrap">
+<div class="menu-menu-tester-container"><ul class="sf-menu" id="menu-menu-tester"><li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-147421" id="menu-item-147421"><a href="https://technicianonline.com/category/news/" rel="noopener noreferrer" target="_blank">News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147422" id="menu-item-147422"><a href="https://technicianonline.com/category/sports/" rel="noopener noreferrer" target="_blank">Sports</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147423" id="menu-item-147423"><a href="https://technicianonline.com/category/opinion/" rel="noopener noreferrer" target="_blank">Opinion</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147424" id="menu-item-147424"><a href="https://technicianonline.com/category/culture/" rel="noopener noreferrer" target="_blank">Culture</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-147428" id="menu-item-147428"><a href="https://technicianonline.com/category/multimedia/" rel="noopener noreferrer" target="_blank">Multimedia</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147430" id="menu-item-147430"><a href="https://technicianonline.com/category/multimedia/photos/" rel="noopener noreferrer" target="_blank">Photos</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147429" id="menu-item-147429"><a href="https://technicianonline.com/category/multimedia/videos/" rel="noopener noreferrer" target="_blank">Videos</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147426" id="menu-item-147426"><a href="https://technicianonline.com/submissions/" rel="noopener noreferrer" target="_blank">Submissions</a></li>
+</ul></div> <ul class="sno-menu-more sf-arrows" style="display:none">
+<li class="menu-more-item-top">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Show More Menu Items" class="sf-with-ul">More<span class="sf-sub-indicator"></span></button>
+<ul class="sno-hac-menu-more"></ul>
+</li>
+</ul>
+</div>
+</nav>
+</div>
+</div>
+<div class="sno-designer-area-container sno-hac-desktop-5" style="width: 27%; height: 50px;">
+<div class="sno-hac-inner sno-hac-inner-desktop-5">
+<div class="sno-hac-textwrap sno-search-center-v">
+<form action="https://technicianonline.com/" method="get" target="_blank">
+<div class="sno-hac-search-inner-wrap">
