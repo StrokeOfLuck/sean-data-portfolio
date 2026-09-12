@@ -191,7 +191,7 @@
   }
 
   /* The live mobile search control uses the same black field as the masthead,
-     with a thin dark-gray outline and a visibly larger magnifier. */
+     with a thin dark-gray outline and the same large Font Awesome-scale mark. */
   .sno-header-wrap-mobile .sno-hac-mobile-3 .sno-hac-search-icon {
     box-sizing: border-box !important;
     background: #000000 !important;
@@ -201,8 +201,8 @@
   }
 
   .sno-header-wrap-mobile .sno-hac-mobile-3 .sno-hac-search-icon .archive-ui-svg {
-    width: 24px !important;
-    height: 24px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 
   .sno-story-page {
@@ -237,6 +237,19 @@
     margin-left: 20px !important;
     margin-right: 20px !important;
     margin-bottom: 20px !important;
+  }
+
+  /* The live byline is Source Serif throughout. Some captured inner spans
+     retain Technician's sans-serif utility rule unless every descendant is
+     explicitly returned to the byline font, which changes the line's width. */
+  .sno-story-byline.byline-post-162505,
+  .sno-story-byline.byline-post-162505 * {
+    font-family: "Source Serif 4" !important;
+    font-size: 16px !important;
+    line-height: 1.4em !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    letter-spacing: 0 !important;
   }
 
   /* Technician's phone article column itself is flush to the viewport. The
