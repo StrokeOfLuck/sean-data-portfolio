@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --quiet gdown
           mkdir -p projects/assets/park-it-here
-          gdown 'https://drive.google.com/uc?id=1ycEKLU3yOuHVbut3Q4VABoJ-2IoIffxn' \
+          gdown 'https://drive.google.com/uc?id=1uv6m-EcCD7kqUurfdA1AeCzws6soLr3W' \
             -O projects/assets/park-it-here/technician-publication-snapshot.png
 
       - name: Verify snapshot
