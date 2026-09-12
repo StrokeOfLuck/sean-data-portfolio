@@ -104,3 +104,116 @@
 .sno-story-body .dw-hybrid + p {
   margin-top: 15px !important;
 }
+
+/* The source site switches to a dedicated mobile masthead. The preserved
+   archive now does the same instead of squeezing the desktop navigation into
+   a phone viewport. The hamburger and search buttons intentionally open the
+   original published article, as this is an archival mirror rather than a
+   functioning copy of Technician's site navigation. */
+.archive-mobile-header {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-x: hidden !important;
+  }
+
+  #wrap > header {
+    display: none !important;
+  }
+
+  .archive-mobile-header {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: 58px minmax(0, 1fr) 58px !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    min-height: 128px !important;
+    padding: 25px 22px !important;
+    background: #000000 !important;
+    border: 0 !important;
+  }
+
+  .archive-mobile-header a {
+    text-decoration: none !important;
+  }
+
+  .archive-mobile-header__button {
+    box-sizing: border-box !important;
+    width: 58px !important;
+    height: 58px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid #3b3b3b !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  .archive-mobile-header__button svg {
+    width: 32px !important;
+    height: 32px !important;
+    display: block !important;
+  }
+
+  .archive-mobile-header__logo {
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .archive-mobile-header__logo img {
+    display: block !important;
+    width: min(178px, 100%) !important;
+    max-height: 56px !important;
+    object-fit: contain !important;
+  }
+
+  .sno-story-page {
+    padding-top: 0 !important;
+  }
+
+  .sno-story-wrap {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 56px 0 35px !important;
+  }
+
+  h1.sno-story-headline {
+    font-size: 30px !important;
+    line-height: 1.28em !important;
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 18px !important;
+  }
+
+  .sno-story-byline.byline-post-162505 {
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .sno-story-body-content > p,
+  .sno-story-body-content > ul,
+  .sno-story-body-content > ol {
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+  }
+
+  /* Technician does not show the desktop floating share rail in the captured
+     mobile article view. */
+  .sno-story-social-icons {
+    display: none !important;
+  }
+
+  .dw-hybrid .dw-live-frame,
+  .dw-hybrid.dw-live .dw-live-frame {
+    height: 560px;
+  }
+}
