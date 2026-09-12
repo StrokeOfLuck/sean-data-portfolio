@@ -1,0 +1,18 @@
+/* Project-specific preview crop for the published Technician article. */
+.featured-project-card .project-card-art.park-it-here-image img {
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform: scale(1.07) !important;
+  transform-origin: 100% 100% !important;
+}
+
+.project-card:hover .park-it-here-image img {
+  transform: scale(1.085) !important;
+}
+
+@media (max-width: 880px) {
+  .featured-project-card .project-card-art.park-it-here-image img {
+    transform: scale(1.06) !important;
+    transform-origin: 100% 100% !important;
+  }
+}
