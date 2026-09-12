@@ -35,9 +35,8 @@
   background-repeat: no-repeat !important;
 }
 
-/* The live rail is Font Awesome at 20px. Use local SVGs at the equivalent
-   intrinsic glyph proportions so the icons survive independently of FA CDN
-   changes while retaining the same apparent size. */
+/* Local SVGs keep the live Technician glyph proportions without depending on
+   whichever Font Awesome version happens to load later. */
 .sno-story-social-icons .archive-share-svg {
   display: none !important;
 }
@@ -63,29 +62,42 @@
 }
 .sno-story-social-icons .email-row-icon .sno-row-icon-ring {
   background-image: url("icons/envelope.svg") !important;
-  background-size: 20px 20px !important;
+  background-size: 21px 15px !important;
 }
 .sno-story-social-icons .print-row-icon .sno-row-icon-ring {
   background-image: url("icons/print.svg") !important;
   background-size: 20px 20px !important;
 }
 
-/* Keep the archive's original hybrid Datawrapper behavior. The static PNG is
-   visible immediately, then the live Datawrapper iframe replaces it after the
-   chart posts its real height. Do not force either layer off: doing that was
-   what made the maps disappear. */
+/* The static Datawrapper PNG endpoints are unreliable for these maps. Prefer
+   the actual interactive embeds. Give each iframe a usable initial height so
+   it appears immediately; the archive's Datawrapper message handler replaces
+   this with the chart's reported height once it loads. */
 .dw-hybrid {
+  position: relative !important;
+  width: 100% !important;
   min-height: 0 !important;
   margin: 0 !important;
 }
-.archived-datawrapper-map {
+.dw-hybrid .dw-fallback,
+.dw-hybrid.dw-live .dw-fallback {
+  display: none !important;
+}
+.dw-hybrid .dw-live-frame,
+.dw-hybrid.dw-live .dw-live-frame {
   display: block !important;
+  position: relative !important;
+  inset: auto !important;
   width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
+  height: 620px;
+  min-height: 0 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  border: 0 !important;
 }
 
-/* Preserve the small paragraph gap visible after a Datawrapper credit. */
+/* Preserve the small paragraph gap visible after a Datawrapper embed. */
 .sno-story-body .dw-hybrid {
   margin-bottom: 0 !important;
 }
