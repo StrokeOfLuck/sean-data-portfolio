@@ -23,15 +23,15 @@
 }
 
 /* The first featured project uses Datawrapper's plain export as a thumbnail.
-   Crop it into the map itself so the chart footer/credit strip is not part of
-   the card art. Attribution remains intact in the full article and archive. */
+   Crop tightly into the map itself. The full article/archive preserves the
+   complete map and attribution; this card is only a visual preview. */
 .featured-projects .featured-project-card:first-child .project-card-image img {
   object-fit: cover !important;
-  object-position: center 46% !important;
-  transform: scale(1.16) !important;
-  transform-origin: center 46% !important;
+  object-position: 55% 43% !important;
+  transform: scale(1.22) !important;
+  transform-origin: 55% 43% !important;
 }
 
 .featured-projects .featured-project-card:first-child:hover .project-card-image img {
-  transform: scale(1.18) !important;
+  transform: scale(1.24) !important;
 }
