@@ -114,6 +114,20 @@
   margin-top: 15px !important;
 }
 
+/* The live article has a visible white strip between the Alex Manuel caption
+   card and the first Spin map. Use a real spacer instead of a margin so the
+   gap cannot collapse or disappear when the archived blocks are reflowed. */
+.archive-technician-photo {
+  margin-bottom: 0 !important;
+}
+.archive-technician-photo::after {
+  content: "" !important;
+  display: block !important;
+  width: 100% !important;
+  height: 24px !important;
+  background: #ffffff !important;
+}
+
 /* The archive already contains Technician's real mobile masthead. */
 .archive-mobile-header {
   display: none !important;
