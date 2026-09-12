@@ -51,8 +51,6 @@ body,
   color: #000000 !important;
 }
 
-/* Match the captured search-field typography without independently loading a
-   different Google Fonts build than the live site. */
 .sno-hac-inner-desktop-5 input.hac-search,
 .sno-hac-inner-desktop-5 input.hac-search::placeholder,
 .sno-hac-inner-desktop-5 .sno-hac-submit-search-button {
@@ -67,8 +65,6 @@ body,
   line-height: 32px !important;
 }
 
-/* Superfish adds this arrow class on the live site with JavaScript.
-   Recreate only the missing static state, retaining the measured spacing. */
 .sno-hac-inner-desktop-4 #menu-menu-tester > li.menu-item-has-children > a {
   position: relative !important;
   padding-right: 2.125em !important;
@@ -104,7 +100,6 @@ body,
   width: 800px !important;
 }
 
-/* Exact headline rule captured from Technician. */
 h1.sno-story-headline {
   margin-top: 0 !important;
   font-size: 44px !important;
@@ -121,8 +116,6 @@ h1.sno-story-headline:not(.headline-wrap) {
   padding-bottom: 15px !important;
 }
 
-/* Keep the story and byline on Technician's captured family declaration and
-   browser defaults so their glyph metrics resolve the same way as the live tab. */
 .sno-story-byline.byline-post-162505,
 .sno-story-body,
 .sno-story-body-content,
@@ -207,8 +200,6 @@ h1.sno-story-headline:not(.headline-wrap) {
   color: #cc0000 !important;
 }
 
-/* Match the newly added Technician lead-photo caption and the visible white
-   separation before the first Datawrapper map. */
 .archive-technician-photo {
   width: 100% !important;
   margin: 0 0 25px !important;
@@ -244,15 +235,50 @@ h1.sno-story-headline:not(.headline-wrap) {
   font: inherit !important;
 }
 
-/* Technician currently has no separate contributor module after the story.
-   Hide any stale injected copy on both desktop and mobile while the post-deploy
-   finalizer also removes it from the archive HTML entirely. */
+/* Contributor belongs below the More in News cards on the current Technician page. */
 .archive-contributor {
-  display: none !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 58px 0 82px !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
 }
 
-/* Reassert the captured footer typography after remote Technician CSS so the
-   preservation copy cannot drift if the live stylesheet changes later. */
+.archive-contributor-title {
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-family: "Myriad Pro" !important;
+  font-size: 28px !important;
+  line-height: 1.15em !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.archive-contributor-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-family: "Source Serif 4" !important;
+  font-size: 20px !important;
+  line-height: 1.3em !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.archive-contributor-line a,
+.archive-contributor-line a:visited,
+.archive-contributor-line a:hover,
+.archive-contributor-line a:focus {
+  color: #000000 !important;
+  font: inherit !important;
+  text-decoration: none !important;
+}
+
 .sno-hac-inner-desktop-footer-4,
 .sno-hac-inner-desktop-footer-8,
 .sno-hac-inner-desktop-footer-12,
@@ -305,5 +331,16 @@ h1.sno-story-headline:not(.headline-wrap) {
   }
   .archive-technician-photo {
     margin-bottom: 25px !important;
+  }
+  .archive-contributor {
+    width: auto !important;
+    margin: 56px 30px 96px !important;
+  }
+  .archive-contributor-title {
+    font-size: 28px !important;
+    margin-bottom: 18px !important;
+  }
+  .archive-contributor-line {
+    font-size: 20px !important;
   }
 }
