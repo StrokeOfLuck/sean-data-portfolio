@@ -42,7 +42,27 @@ jobs:
 
       - name: Restore static Technician article PDF
         run: |
-          base64 --decode projects/assets/park-it-here/park-it-here-sean-ryan.pdf.b64 > projects/assets/park-it-here/park-it-here-sean-ryan.pdf
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          import re
+
+          source = Path("projects/assets/park-it-here/park-it-here-sean-ryan.pdf.b64")
+          target = Path("projects/assets/park-it-here/park-it-here-sean-ryan.pdf")
+
+          # Strip any accidental non-base64 characters introduced while the
+          # text asset was committed, then normalize padding before decoding.
+          encoded = re.sub(r"[^A-Za-z0-9+/=]", "", source.read_text(encoding="utf-8"))
+          encoded = encoded.rstrip("=")
+          encoded += "=" * (-len(encoded) % 4)
+          decoded = base64.b64decode(encoded, validate=False)
+
+          if not decoded.startswith(b"%PDF"):
+              raise SystemExit("Restored asset is not a PDF")
+
+          target.write_bytes(decoded)
+          print(f"Restored {target} ({len(decoded):,} bytes)")
+          PY
           file projects/assets/park-it-here/park-it-here-sean-ryan.pdf
 
       - name: Set up R
