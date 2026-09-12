@@ -88,7 +88,7 @@ jobs:
             git push origin main
           fi
 
-      - name: Restore snapshot, photo, icons and fidelity stylesheets
+      - name: Restore snapshot, photo, contributor, icons and fidelity stylesheets
         run: |
           set -euo pipefail
 
@@ -134,8 +134,6 @@ jobs:
               shutil.rmtree(icon_dst)
           shutil.copytree(icon_src, icon_dst)
 
-          # The current rendered page may still contain the temporary Drive link
-          # from the previous deploy. Point it at the repo-hosted snapshot now.
           rendered = Path("site/projects/park-it-here.html")
           if rendered.exists():
               page = rendered.read_text(encoding="utf-8")
@@ -158,6 +156,13 @@ jobs:
                       raise SystemExit("Published archive is missing </head>")
                   html = html.replace("</head>", marker + "\n</head>", 1)
                   changed = True
+
+          # Remove the temporary last-mile stylesheet from the previous pass so
+          # the header/footer return to the closer baseline that preceded it.
+          stale_last_mile = '<link rel="stylesheet" href="technician-last-mile.css" data-archive-last-mile="1"/>'
+          if stale_last_mile in html:
+              html = html.replace(stale_last_mile, "")
+              changed = True
 
           photo_marker = 'data-archive-added-photo="spin-scooter-alex-manuel"'
           if photo_marker not in html:
@@ -182,6 +187,29 @@ jobs:
               html = html[:insert_at] + photo_html + html[insert_at:]
               changed = True
 
+          # Rebuild the contributor block in one predictable form before More in News.
+          contributor_start = html.find('<section class="archive-contributor"')
+          if contributor_start != -1:
+              contributor_end = html.find('</section>', contributor_start)
+              if contributor_end == -1:
+                  raise SystemExit("Existing contributor block is malformed")
+              html = html[:contributor_start] + html[contributor_end + len('</section>'):]
+              changed = True
+
+          related_marker = '<div class="related-term-container">'
+          related_pos = html.find(related_marker)
+          if related_pos == -1:
+              raise SystemExit("Could not find More in News for contributor insertion")
+
+          contributor_html = (
+              '\n<section class="archive-contributor" data-archive-contributor="alex-manuel" aria-labelledby="archive-contributor-title">\n'
+              '<h2 class="archive-contributor-title" id="archive-contributor-title">About the Contributor</h2>\n'
+              '<p class="archive-contributor-line"><a href="https://technicianonline.com/staff_name/alex-manuel/" target="_blank" rel="noopener noreferrer">Alex Manuel</a>, Photo Editor</p>\n'
+              '</section>\n'
+          )
+          html = html[:related_pos] + contributor_html + html[related_pos:]
+          changed = True
+
           mobile_marker = '<div class="archive-mobile-header" data-archive-mobile-header="1">'
           while mobile_marker in html:
               start = html.index(mobile_marker)
@@ -202,7 +230,7 @@ jobs:
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
           print(f"Archived lead photo: {photo.stat().st_size:,} bytes")
-          print("Technician desktop/mobile fidelity, lead photo, live maps and local social icons finalized.")
+          print("Technician baseline chrome restored; lead photo, contributor, maps and local icons finalized.")
           PY
 
       - name: Commit published archive fixes
