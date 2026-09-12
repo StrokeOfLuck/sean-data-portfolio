@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
 
-/* Fidelity overrides copied from the saved Technician page. */
+/* Fidelity overrides tuned against the live Technician page capture. */
 body,
 #wrap,
 #upperwrap {
@@ -45,17 +45,19 @@ body,
 }
 
 /* The live site adds the Superfish dropdown class with JavaScript. In the
-   static archive, draw the same arrow directly on menu items with children. */
+   static archive, draw the same arrow directly on menu items with children.
+   The measurements below also reproduce the tighter Multimedia/Submissions
+   spacing visible on the live page. */
 .sno-hac-inner-desktop-4 #menu-menu-tester > li.menu-item-has-children > a {
   position: relative !important;
-  padding-right: 2.5em !important;
+  padding-right: 2.125em !important;
 }
 
 .sno-hac-inner-desktop-4 #menu-menu-tester > li.menu-item-has-children > a::after {
   content: "" !important;
   position: absolute !important;
   top: 50% !important;
-  right: 1em !important;
+  right: .75em !important;
   width: 0 !important;
   height: 0 !important;
   margin-top: -3px !important;
@@ -73,22 +75,26 @@ body,
   padding-top: 20px !important;
 }
 
+/* The mirror was about five pixels too high relative to the navigation bar. */
 .sno-story-wrap {
-  padding: 35px 0 !important;
+  padding: 40px 0 35px 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
   max-width: 1200px !important;
   width: 800px !important;
 }
 
+/* The live page capture uses a bold serif headline, not the sans-serif
+   fallback that was appearing in the mirror. */
 h1.sno-story-headline {
   margin-top: 0 !important;
   font-size: 44px !important;
   line-height: 1.35em !important;
   text-align: left !important;
   margin-bottom: 0 !important;
-  font-family: "Myriad Pro", Arial, Helvetica, sans-serif !important;
-  font-weight: 600 !important;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
 }
 
 h1.sno-story-headline:not(.headline-wrap) {
@@ -138,6 +144,13 @@ h1.sno-story-headline:not(.headline-wrap) {
 
 .sno-story-body a {
   color: #cc0000 !important;
+}
+
+/* The colored 40px action buttons already match the live page. The SVG
+   glyphs inside them were substantially too small in the archive. */
+.sno-story-social-icons .archive-share-svg {
+  width: 28px !important;
+  height: 28px !important;
 }
 
 @media only screen and (max-width: 800px) {
