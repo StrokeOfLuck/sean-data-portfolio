@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400&family=Playfair+Display:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap');
-
 /* Static-archive fidelity layer.
-   Reassert the captured Technician values. Load the actual Technician text
-   families so navigation/search/body metrics do not change between tabs. */
+   Reassert the captured Technician values while letting the browser resolve
+   the same named font families as the live Technician page. */
 
 body,
 #wrap,
@@ -19,8 +17,6 @@ body,
   height: 50px !important;
   font-weight: 400 !important;
   font-family: "Playfair Display" !important;
-  font-optical-sizing: auto !important;
-  font-kerning: auto !important;
   font-style: normal !important;
   letter-spacing: 0 !important;
   margin-left: 0 !important;
@@ -55,13 +51,12 @@ body,
   color: #000000 !important;
 }
 
-/* Lock the search field to Technician's captured Source Serif metrics too. */
+/* Match the captured search-field typography without independently loading a
+   different Google Fonts build than the live site. */
 .sno-hac-inner-desktop-5 input.hac-search,
 .sno-hac-inner-desktop-5 input.hac-search::placeholder,
 .sno-hac-inner-desktop-5 .sno-hac-submit-search-button {
   font-family: "Source Serif 4" !important;
-  font-optical-sizing: auto !important;
-  font-kerning: auto !important;
   font-weight: 400 !important;
   font-style: normal !important;
   letter-spacing: 0 !important;
@@ -126,9 +121,8 @@ h1.sno-story-headline:not(.headline-wrap) {
   padding-bottom: 15px !important;
 }
 
-/* Lock the rest of the story typography to the captured Technician metrics.
-   Loading the actual Source Serif face prevents tiny line-wrap changes between
-   the live and preserved tabs. */
+/* Keep the story and byline on Technician's captured family declaration and
+   browser defaults so their glyph metrics resolve the same way as the live tab. */
 .sno-story-byline.byline-post-162505,
 .sno-story-body,
 .sno-story-body-content,
@@ -139,8 +133,6 @@ h1.sno-story-headline:not(.headline-wrap) {
 .sno-collection-body p,
 .live-update-wrap p {
   font-family: "Source Serif 4" !important;
-  font-optical-sizing: auto !important;
-  font-kerning: auto !important;
 }
 
 .sno-story-byline.byline-post-162505 {
@@ -204,11 +196,11 @@ h1.sno-story-headline:not(.headline-wrap) {
   color: #cc0000 !important;
 }
 
-/* Match the newly added Technician lead-photo caption and the smaller gap
-   before the first Datawrapper map. */
+/* Match the newly added Technician lead-photo caption. The live article runs
+   directly from the caption card into the first Datawrapper block. */
 .archive-technician-photo {
   width: 100% !important;
-  margin: 0 0 15px !important;
+  margin: 0 !important;
   background: #eeeeee !important;
 }
 
@@ -223,12 +215,12 @@ h1.sno-story-headline:not(.headline-wrap) {
   box-sizing: border-box !important;
   width: 100% !important;
   margin: 0 !important;
-  padding: 9px 12px 12px !important;
+  padding: 6px 10px 15px !important;
   background: #eeeeee !important;
   color: #000000 !important;
   font-family: "Source Serif 4" !important;
   font-size: 16px !important;
-  line-height: 1.35em !important;
+  line-height: 1.4em !important;
   font-style: italic !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
@@ -236,7 +228,7 @@ h1.sno-story-headline:not(.headline-wrap) {
 
 .archive-technician-photo > figcaption > span {
   display: block !important;
-  margin: 0 0 6px !important;
+  margin: 0 0 11px !important;
   color: #cc0000 !important;
   font: inherit !important;
 }
@@ -294,6 +286,6 @@ h1.sno-story-headline:not(.headline-wrap) {
     line-height: 1.4em !important;
   }
   .archive-technician-photo {
-    margin-bottom: 15px !important;
+    margin-bottom: 0 !important;
   }
 }
