@@ -186,9 +186,30 @@ a[target="_blank"] { cursor: pointer; }
 
 <script>
 (function () {
-  if (new URLSearchParams(window.location.search).get("view") === "desktop") {
+  var params = new URLSearchParams(window.location.search);
+  var forceDesktop = params.get("view") === "desktop";
+  var embedDesktop = params.get("embed") === "1";
+
+  if (forceDesktop) {
     document.documentElement.classList.add("archive-force-desktop");
   }
+  if (embedDesktop) {
+    document.documentElement.classList.add("archive-embed-desktop");
+  }
+
+  function fitEmbeddedDesktop() {
+    if (!embedDesktop) return;
+    var scale = Math.min(1, window.innerWidth / 1200);
+    document.body.style.zoom = String(scale);
+    document.body.style.minWidth = "1200px";
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fitEmbeddedDesktop);
+  } else {
+    fitEmbeddedDesktop();
+  }
+  window.addEventListener("resize", fitEmbeddedDesktop);
 
   /* The mobile header is visual archive chrome. Rather than opening a stale
      menu/search UI, send both controls to the live published article. */
@@ -217,10 +238,16 @@ html.archive-force-desktop .sno-footer-wrap-mobile,
 html.archive-force-desktop .sno-footer-wrap-tablet-footer,
 html.archive-force-desktop .sno-footer-wrap-mobile-footer { display: none !important; }
 
-/* On phones, match Technician's article layout: share controls sit in a row
-   after the story instead of floating over the maps and text. */
+/* The Mac-window preview is a scaled desktop capture. Hide the floating
+   share rail there so it cannot cover the article while scrolling. */
+html.archive-embed-desktop .sno-story-social-icons {
+  display: none !important;
+}
+
+/* Direct mobile viewing keeps Technician's share controls, but moves them
+   beneath the story rather than letting them float over maps and text. */
 @media only screen and (max-width: 600px) {
-  .sno-story-social-icons {
+  html:not(.archive-force-desktop) .sno-story-social-icons {
     position: static !important;
     inset: auto !important;
     width: auto !important;
@@ -229,7 +256,7 @@ html.archive-force-desktop .sno-footer-wrap-mobile-footer { display: none !impor
     padding: 0 !important;
     transform: none !important;
   }
-  .sno-story-social-icons .sno-row-icons-side {
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icons-side {
     position: static !important;
     inset: auto !important;
     top: auto !important;
@@ -247,13 +274,13 @@ html.archive-force-desktop .sno-footer-wrap-mobile-footer { display: none !impor
     transform: none !important;
     z-index: auto !important;
   }
-  .sno-story-social-icons .sno-row-icon {
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icon {
     float: none !important;
     width: 42px !important;
     height: 42px !important;
     margin: 0 !important;
   }
-  .sno-story-social-icons .print-row-icon {
+  html:not(.archive-force-desktop) .sno-story-social-icons .print-row-icon {
     display: none !important;
   }
 }
