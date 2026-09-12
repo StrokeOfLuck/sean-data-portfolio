@@ -97,13 +97,15 @@
   border: 0 !important;
 }
 
-/* The first Spin map on the live article sits on #ddd rather than pure white.
-   Datawrapper leaves parts of its canvas transparent, so match both the host
-   wrapper and the iframe surface. The chart-id selector avoids changing the
-   later maps. */
+/* The lead Spin map directly under the Alex Manuel photo uses the gray
+   Datawrapper canvas. The later in-story copy of the same chart does not. */
 .dw-hybrid:has(.dw-live-frame[src*="28Wwl"]),
 .dw-hybrid .dw-live-frame[src*="28Wwl"] {
   background: #dddddd !important;
+}
+.sno-story-body-content .dw-hybrid[data-chart-id="28Wwl"],
+.sno-story-body-content .dw-hybrid[data-chart-id="28Wwl"] .dw-live-frame {
+  background: #ffffff !important;
 }
 
 /* Preserve the small paragraph gap visible after a Datawrapper embed. */
@@ -251,6 +253,25 @@
     margin-right: 20px !important;
   }
 
+  /* The lower Lime/Spin embeds live inside the article text column on mobile,
+     so they are inset with the same 20px gutters as the surrounding copy.
+     This also gives Datawrapper the same responsive width as Technician, which
+     restores the smaller title/description sizing in the lower Spin copy. */
+  .sno-story-body-content > .dw-hybrid {
+    box-sizing: border-box !important;
+    width: calc(100% - 40px) !important;
+    max-width: calc(100% - 40px) !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  .sno-story-body-content > .dw-hybrid .dw-live-frame,
+  .sno-story-body-content > .dw-hybrid.dw-live .dw-live-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+  }
+
   /* Technician's phone layout places sharing in normal document flow,
      horizontally, directly before More in News. */
   .sno-story-social-icons {
@@ -315,6 +336,12 @@
   .dw-hybrid.dw-live .dw-live-frame {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  /* Reassert the in-story gutters after the general Datawrapper width rule. */
+  .sno-story-body-content > .dw-hybrid {
+    width: calc(100% - 40px) !important;
+    max-width: calc(100% - 40px) !important;
   }
 
   .dw-hybrid .dw-live-frame,
