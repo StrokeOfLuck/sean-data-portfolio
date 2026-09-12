@@ -1,12 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,700&display=swap');
-
 /* Final fidelity fixes measured against the live Technician capture. */
-
-/* The live story headline uses a visibly heavier face than the preservation
-   copy was getting from the 600-only font load. */
-h1.sno-story-headline {
-  font-weight: 700 !important;
-}
 
 /* Technician's fixed desktop social rail geometry. */
 .sno-story-social-icons .sno-row-icons {
@@ -197,7 +189,7 @@ h1.sno-story-headline {
   }
 
   h1.sno-story-headline {
-    font-family: "Myriad Pro", Arial, sans-serif !important;
+    font-family: "Myriad Pro" !important;
     font-weight: 600 !important;
     font-size: 30px !important;
     line-height: 1.28em !important;
