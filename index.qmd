@@ -4,7 +4,9 @@ subtitle: "Data Journalism · Digital Investigations · Civic Technology"
 page-layout: full
 title-block-banner: false
 toc: false
-css: card-selectable.css
+css:
+  - card-selectable.css
+  - project-card-overrides.css
 ---
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
