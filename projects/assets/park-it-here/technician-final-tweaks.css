@@ -153,7 +153,6 @@
     max-width: none !important;
   }
 
-  /* Use the actual captured Technician phone header. */
   .sno-header-wrap-mobile {
     display: block !important;
     width: 100% !important;
@@ -177,35 +176,33 @@
   .sno-story-page {
     width: 100% !important;
     max-width: none !important;
+    padding-top: 0 !important;
     margin: 0 !important;
   }
 
-  /* Revert the preservation copy to Technician's captured phone story
-     geometry instead of the larger custom mobile treatment. */
   .sno-story-wrap {
     box-sizing: border-box !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 35px 0 !important;
+    margin: 0 !important;
+    padding: 56px 0 35px !important;
   }
 
   h1.sno-story-headline {
     font-family: "Myriad Pro" !important;
     font-weight: 600 !important;
-    font-size: 20px !important;
-    line-height: 1.35em !important;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    font-size: 30px !important;
+    line-height: 1.28em !important;
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 18px !important;
   }
 
   .sno-story-byline.byline-post-162505 {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
-    margin-bottom: 20px !important;
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+    margin-bottom: 24px !important;
   }
 
   .sno-story-body,
@@ -218,11 +215,11 @@
   .sno-story-body-content > p,
   .sno-story-body-content > ul,
   .sno-story-body-content > ol {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: 32px !important;
+    margin-right: 32px !important;
   }
 
-  /* Technician's phone layout places sharing in normal document flow,
+  /* Technician's real phone layout places sharing in normal document flow,
      horizontally, directly before More in News. */
   .sno-story-social-icons {
     display: block !important;
@@ -238,8 +235,8 @@
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    margin: 18px 20px 20px !important;
-    padding: 0 !important;
+    margin: 26px 0 24px !important;
+    padding: 0 32px !important;
     transform: none !important;
     overflow: visible !important;
     z-index: auto !important;
@@ -258,7 +255,7 @@
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 8px !important;
+    gap: 10px !important;
     width: auto !important;
     max-width: 100% !important;
     height: auto !important;
