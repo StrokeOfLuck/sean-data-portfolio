@@ -29,8 +29,24 @@ jobs:
           ref: gh-pages
           path: site
 
-      - name: Restore snapshot, icons and fidelity stylesheets
+      - name: Restore snapshot, photo, icons and fidelity stylesheets
         run: |
+          set -euo pipefail
+
+          PHOTO='site/projects/assets/park-it-here/spin-scooter-alex-manuel.jpg'
+          PHOTO_URL='https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg'
+          mkdir -p "$(dirname "$PHOTO")"
+
+          # Preserve the newly added Technician lead image locally on gh-pages.
+          # Once it has been archived, subsequent runs keep the local copy even
+          # if the publication later removes or replaces the source asset.
+          if [ ! -s "$PHOTO" ]; then
+            curl -L --fail --retry 3 --retry-delay 2 \
+              -A 'Mozilla/5.0' \
+              "$PHOTO_URL" \
+              -o "$PHOTO"
+          fi
+
           python3 - <<'PY'
           from pathlib import Path
           import shutil
@@ -49,6 +65,10 @@ jobs:
               if not src.exists():
                   raise SystemExit(f"Missing source asset: {src}")
               shutil.copy2(src, dst)
+
+          photo = site_dir / "spin-scooter-alex-manuel.jpg"
+          if not photo.exists() or photo.stat().st_size == 0:
+              raise SystemExit(f"Missing archived Technician photo: {photo}")
 
           icon_src = source_dir / "icons"
           icon_dst = site_dir / "icons"
@@ -71,6 +91,32 @@ jobs:
                       raise SystemExit("Published archive is missing </head>")
                   html = html.replace("</head>", marker + "\n</head>", 1)
                   changed = True
+
+          # Technician added a lead photo after publication. Preserve the exact
+          # current image, credit and caption immediately before the first Spin
+          # Datawrapper map so the archive follows the live article's new order.
+          photo_marker = 'data-archive-added-photo="spin-scooter-alex-manuel"'
+          if photo_marker not in html:
+              first_map = "https://datawrapper.dwcdn.net/28Wwl/"
+              map_pos = html.find(first_map)
+              if map_pos == -1:
+                  raise SystemExit("Could not find the first Spin Datawrapper map")
+
+              insert_at = html.rfind('<div class="dw-hybrid', 0, map_pos)
+              if insert_at == -1:
+                  raise SystemExit("Could not find the first Datawrapper wrapper")
+
+              photo_html = '''
+<figure class="archive-technician-photo" data-archive-added-photo="spin-scooter-alex-manuel" style="margin:0 0 30px;width:100%;background:#eeeeee;">
+<img src="spin-scooter-alex-manuel.jpg" width="1200" height="801" alt="A Spin electric scooter lies sideways in the Court of North Carolina" data-original-src="https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg" style="display:block;width:100%;height:auto;margin:0;"/>
+<figcaption style="box-sizing:border-box;width:100%;margin:0;padding:9px 12px 12px;background:#eeeeee;color:#000000;font-family:&quot;Source Serif 4&quot;;font-size:16px;line-height:1.35em;font-style:italic;">
+<span style="display:block;margin:0 0 6px;color:#cc0000;">Alex Manuel</span>
+A Spin electric scooter lies sideways in the court of North Carolina on Monday, Nov. 18, 2024. Spin is a leading micromobility company and a unit of Ford Mobility, currently operating electric scooters in many cities and universities nationwide. At NC State, Spin scooters are deployed on North, Central, South, and Centennial Campuses.
+</figcaption>
+</figure>
+'''
+              html = html[:insert_at] + photo_html + html[insert_at:]
+              changed = True
 
           # Older preservation passes injected a second mobile masthead. The
           # captured Technician HTML already includes its genuine phone header,
@@ -97,7 +143,8 @@ jobs:
               archive.write_text(html, encoding="utf-8")
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
-          print("Technician desktop/mobile fidelity, live maps and local social icons finalized.")
+          print(f"Archived lead photo: {photo.stat().st_size:,} bytes")
+          print("Technician desktop/mobile fidelity, lead photo, live maps and local social icons finalized.")
           PY
 
       - name: Commit published archive fixes
@@ -109,6 +156,7 @@ jobs:
           git add projects/assets/park-it-here/technician-exact.css
           git add projects/assets/park-it-here/technician-final-tweaks.css
           git add projects/assets/park-it-here/icons
+          git add projects/assets/park-it-here/spin-scooter-alex-manuel.jpg
           git add projects/assets/park-it-here/park-it-here-archive.html
           if git diff --cached --quiet; then
             echo 'Published archive already finalized.'
