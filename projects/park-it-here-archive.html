@@ -128,100 +128,175 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Park it here? E-bike and scooter rules differ across NC State</h1></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="tech-headline title display-7">Park it here? E-bike and scooter rules differ across NC State</h1></header>
 
 
 
 
 <style>
 #quarto-header, footer.footer, .quarto-title-block, #title-block-header { display:none !important; }
-body { margin:0; background:#fff; color:#111; }
-#quarto-content, main.content, .page-columns { margin:0 !important; padding:0 !important; max-width:none !important; }
-.tech-archive { min-height:100vh; background:#fff; }
-.tech-masthead { position:sticky; top:0; z-index:10; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; min-height:74px; padding:0 5vw; color:#fff; background:#211d1f; border-bottom:1px solid #3b3638; }
-.tech-logo { grid-column:2; font-family:Georgia,'Times New Roman',serif; font-size:2rem; letter-spacing:-.04em; }
-.tech-menu { justify-self:start; font-family:Arial,sans-serif; font-size:.82rem; opacity:.8; }
-.tech-original { justify-self:end; color:#fff !important; font-family:Arial,sans-serif; font-size:.8rem; text-decoration:none !important; }
-.tech-story { width:min(92vw, 760px); margin:0 auto; padding:36px 0 70px; }
-.tech-story h1 { margin:0 0 .55rem; font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.2rem,5vw,4.1rem); line-height:1.02; letter-spacing:-.03em; }
-.tech-byline { margin:0 0 1.45rem; font-family:Georgia,'Times New Roman',serif; font-size:1rem; }
-.tech-byline a { color:#b31d13; }
-.tech-story p { margin:0 0 1.2rem; font-family:Georgia,'Times New Roman',serif; font-size:1.24rem; line-height:1.55; }
-.tech-dw { width:100%; margin:1.25rem 0 1.7rem; }
-.tech-dw iframe { display:block; width:100%; height:694px; border:0; }
-.tech-legend { margin:1rem 0 1.4rem; font-family:Arial,Helvetica,sans-serif; font-size:.95rem; line-height:1.45; }
-.tech-legend ul { margin:.35rem 0 0 1.25rem; }
-.tech-preserve-note { width:min(92vw,760px); margin:0 auto 44px; padding-top:1.1rem; border-top:1px solid #ddd; color:#666; font:13px/1.5 Arial,Helvetica,sans-serif; }
-.tech-preserve-note a { color:#555; }
-@media (max-width:700px) {
-  .tech-masthead { min-height:58px; padding:0 16px; }
-  .tech-logo { font-size:1.35rem; }
-  .tech-original { font-size:.7rem; }
-  .tech-menu { font-size:0; }
-  .tech-menu::after { content:'☰'; font-size:1rem; }
-  .tech-story { width:min(92vw,760px); padding-top:24px; }
-  .tech-story p { font-size:1.08rem; }
-  .tech-dw iframe { height:560px; }
+html, body { margin:0 !important; padding:0 !important; background:#fff !important; color:#111; }
+#quarto-content, main.content, .page-columns { margin:0 !important; padding:0 !important; max-width:none !important; width:100% !important; }
+.tech-page { min-height:100vh; background:#fff; }
+.tech-header { background:#231f20; color:#fff; font-family:Arial,Helvetica,sans-serif; }
+.tech-header-top { width:min(94vw,1060px); margin:0 auto; min-height:84px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; }
+.tech-logo { grid-column:2; justify-self:center; color:#fff; font-family:Georgia,'Times New Roman',serif; font-size:2.2rem; letter-spacing:-.055em; }
+.tech-original { justify-self:end; color:#fff !important; text-decoration:none !important; font-size:12px; opacity:.86; }
+.tech-nav { border-top:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14); }
+.tech-nav-inner { width:min(94vw,1060px); margin:0 auto; display:flex; align-items:center; gap:24px; min-height:34px; font-size:11px; text-transform:uppercase; letter-spacing:.03em; }
+.tech-nav a { color:#fff !important; text-decoration:none !important; opacity:.92; }
+.tech-story-wrap { position:relative; width:min(94vw,1030px); margin:0 auto; padding:34px 0 72px; }
+.tech-story { width:min(100%,960px); margin:0 auto; }
+.tech-headline { margin:0 0 10px; font-family:Georgia,'Times New Roman',serif; font-size:clamp(34px,5vw,56px); line-height:1.03; letter-spacing:-.025em; font-weight:700; }
+.tech-byline { margin:0 0 24px; font-family:Georgia,'Times New Roman',serif; font-size:17px; }
+.tech-byline a { color:#bd2b1e !important; text-decoration:underline; }
+.tech-story p { margin:0 0 18px; font-family:Georgia,'Times New Roman',serif; font-size:20px; line-height:1.55; }
+.tech-story p a { color:#b32217; }
+.tech-story ul { margin:0 0 22px 28px; font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:1.48; }
+.tech-story li { margin:3px 0; }
+.tech-dw { width:100%; margin:22px 0 30px; }
+.tech-dw iframe { display:block; width:100%; height:760px; border:0; }
+.tech-share { position:fixed; right:18px; top:50%; z-index:20; display:flex; flex-direction:column; gap:8px; transform:translateY(-50%); }
+.tech-share a, .tech-share span { display:grid; width:44px; height:44px; place-items:center; border-radius:8px; color:#fff !important; text-decoration:none !important; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+.tech-share svg { width:21px; height:21px; fill:currentColor; }
+.tech-share-comment { background:#356f61; }
+.tech-share-like { background:#8b3033; }
+.tech-share-facebook { background:#405ba4; }
+.tech-share-x { background:#000; font:700 17px Arial,sans-serif; }
+.tech-share-mail { background:#28466d; }
+.tech-share-print { background:#617594; }
+.tech-more { width:min(94vw,960px); margin:0 auto 56px; padding-top:22px; border-top:1px solid #cfcfcf; }
+.tech-more h2 { margin:0 0 16px; font:700 20px Arial,Helvetica,sans-serif; }
+.tech-more-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.tech-more-card { min-height:120px; padding:14px; border:1px solid #ddd; background:#fafafa; }
+.tech-more-card a { color:#111 !important; text-decoration:none !important; font:700 16px/1.25 Georgia,'Times New Roman',serif; }
+.tech-more-card p { margin:8px 0 0; color:#777; font:12px/1.35 Arial,Helvetica,sans-serif; }
+.tech-preserved { width:min(94vw,960px); margin:0 auto 32px; color:#777; font:12px/1.45 Arial,Helvetica,sans-serif; }
+.tech-preserved a { color:#555; }
+.tech-footer { background:#231f20; color:#fff; font-family:Arial,Helvetica,sans-serif; }
+.tech-footer-inner { width:min(94vw,1060px); margin:0 auto; display:grid; grid-template-columns:150px repeat(4,1fr); gap:24px; padding:40px 0 44px; }
+.tech-footer-mark { font:86px/.8 Georgia,'Times New Roman',serif; }
+.tech-footer h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+.tech-footer p, .tech-footer a { margin:3px 0; color:#fff !important; font-size:11px; line-height:1.4; text-decoration:none !important; opacity:.9; }
+@media (max-width:900px) {
+  .tech-share { position:absolute; right:auto; left:-44px; top:150px; transform:none; }
+  .tech-share a, .tech-share span { width:36px; height:36px; border-radius:7px; }
+  .tech-story { width:min(100%,820px); }
+  .tech-dw iframe { height:680px; }
 }
-@media print {
-  .tech-masthead, .tech-preserve-note { display:none !important; }
-  .tech-story { width:100%; padding:0; }
-  .tech-dw iframe { break-inside:avoid; }
+@media (max-width:700px) {
+  .tech-header-top { min-height:62px; }
+  .tech-logo { font-size:1.6rem; }
+  .tech-original { font-size:0; }
+  .tech-original::after { content:'Original ↗'; font-size:10px; }
+  .tech-nav-inner { gap:12px; overflow:hidden; white-space:nowrap; font-size:9px; }
+  .tech-story-wrap { width:min(94vw,1030px); padding-top:22px; }
+  .tech-story { width:100%; }
+  .tech-headline { font-size:clamp(31px,9vw,43px); }
+  .tech-byline { font-size:15px; }
+  .tech-story p { font-size:18px; line-height:1.52; }
+  .tech-story ul { font-size:16px; }
+  .tech-dw iframe { height:590px; }
+  .tech-share { display:none; }
+  .tech-more-grid { grid-template-columns:1fr; }
+  .tech-footer-inner { grid-template-columns:1fr 1fr; }
+  .tech-footer-mark { display:none; }
 }
 </style>
-<div class="tech-archive">
-  <header class="tech-masthead">
-    <div class="tech-menu">News &nbsp; Sports &nbsp; Opinion &nbsp; Culture &nbsp; Multimedia</div>
-    <div class="tech-logo">TECHNICIAN</div>
-    <a class="tech-original" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Original ↗</a>
+<div class="tech-page">
+  <header class="tech-header">
+    <div class="tech-header-top">
+      <div></div>
+      <div class="tech-logo">TECHNICIAN</div>
+      <a class="tech-original" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">View original on Technician ↗</a>
+    </div>
+    <nav class="tech-nav" aria-label="Technician sections"><div class="tech-nav-inner">
+      <a href="https://technicianonline.com/category/news/" target="_blank" rel="noopener noreferrer">News</a>
+      <a href="https://technicianonline.com/category/sports/" target="_blank" rel="noopener noreferrer">Sports</a>
+      <a href="https://technicianonline.com/category/opinion/" target="_blank" rel="noopener noreferrer">Opinion</a>
+      <a href="https://technicianonline.com/category/culture/" target="_blank" rel="noopener noreferrer">Culture</a>
+      <a href="https://technicianonline.com/category/multimedia/" target="_blank" rel="noopener noreferrer">Multimedia</a>
+    </div></nav>
   </header>
-  <article class="tech-story">
-    
-    <div class="tech-byline"><a href="https://technicianonline.com/staff_name/sean-ryan/" target="_blank" rel="noopener noreferrer">Sean Ryan</a>, Correspondent · Sep 11, 2026</div>
-    <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/28Wwl/18/" title="Spin parking and riding restrictions around NC State (Crash points added)" loading="eager"></iframe></figure>
-<p>NC State enrolled 39,259 students in fall 2025, continuing a three-year trend of record enrollment. By contrast, parking capacity has remained essentially flat at around 20,000 spaces for the past decade.</p>
-<p>Parking access was already strained last fall, when limited spaces and a lottery system left many students relying on luck to secure permits. This lack of parking may have manifested in micromobility options becoming more popular around campus.</p>
-<p>Nicole Odell, who earned her Ph.D. in Parks, Recreation and Tourism Management from NC State, researched e-scooters and active transportation on campus, studying how students were using Spin, a shared electric bike and scooter rental service, on and around campus.</p>
-<p>In a 2024 post-trip survey, nearly half of respondents whose trips started or ended at NC State were undergraduates living on campus.</p>
-<p>“I think more mobility choices are better to get people around,” Odell said.</p>
-<p>The need for alternatives is especially relevant for newer students, who are lower on the credit-hour priority list for parking permits and may have to find other ways to get to and around campus.</p>
-<p>In the age of phone apps, Spin and Lime have helped fill that gap by providing access to electric bikes and scooters.</p>
-<p>However, GIS data reveals vastly different experiences for riders depending on whether they choose Spin or Lime, the two major app-based bike and scooter rental services available around NC State. Spin is NC State’s contracted micromobility provider, while Lime operates through its partnership with the City of Raleigh.</p>
-<p>That split means riders can encounter different parking and service-area rules depending on which app they use, creating a potentially confusing experience for students unfamiliar with the two systems.</p>
-<p>As NC State’s contracted micromobility provider, Spin operates under a different arrangement on campus than Lime, including a campus-specific rate the University calls the “NC State Rate.” Pricing was one factor considered during the University’s request-for-proposal process, where companies offered their rates for the campus community.</p>
-<p>Gabrielle Bubin, University transportation planner and TDM coordinator, said rates for rides differ based on location and destination.</p>
-<p>“So you’ll see on the Spin app currently that for students that start rides that originate from NC State’s campus, it starts at $1 to unlock and 30 cents [per minute],” Bubin said. “That would look different if you were in Durham, per se.”</p>
-<p>The maps show a major difference between Lime and Spin at NC State. Between Main and Centennial campuses, the two companies use different no-parking restrictions, with Lime heavily restricting where riders can leave scooters and e-bikes.</p>
-<div class="tech-legend"><strong>Map legend</strong><ul><li><b>Blue:</b> Service area where scooters and e-bikes can operate</li><li><b>Solid red:</b> No-parking zone</li><li><b>Red stripes:</b> No-ride zone; riders cannot pass through</li><li><b>Gray:</b> NC State campus areas</li><li><b>Green:</b> Bike routes physically separated from traffic</li><li><b>Yellow:</b> Bike routes using painted lanes or shared roads</li></ul></div>
-<figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/fmUon/5/" title="Lime parking and riding restrictions around NC State" loading="lazy"></iframe></figure>
-<p>Lime’s rideable area also does not extend to the Centennial Biomedical Campus, meaning riders cannot use Lime to travel to or around it. Spin, meanwhile, explicitly includes a separate service area for the Biomedical Campus.</p>
-<figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/uhMNN/13/" title="Spin parking and riding restrictions around NC State" loading="lazy"></iframe></figure>
-<p>Parking restrictions may also affect the different streets riders use. If students can’t park near their destination, they may have to keep riding until they reach an allowed area, which could be on streets shared with cars.</p>
-<p>Odell said even one difficult connection can make an otherwise usable route feel unsafe.</p>
-<p>“I think a lot of it comes from not feeling safe on a road,” Odell said. “If you think of outside of campus, like if you’re trying to get to or from campus, the connections, your whole network has to feel safe because one nasty intersection can keep somebody from making that bike trip, even if everything else is reasonable.”</p>
-<p>N.C. Department of Transportation crash records from March 2015 through 2025 show 168 reported crashes involving bicyclists, scooters and other cyclists within 2.5-mile-diameter areas centered on NC State’s Main, Centennial and Centennial Biomedical campuses. The bicycles on the map mark the location of each reported crash.</p>
-<p>The data doesn’t show whether Lime or Spin riders were involved, or whether geofencing — virtual boundaries that control where bikes and scooters can be ridden or parked — played any role, but they provide context for the traffic environment riders may face when parking options are limited.</p>
-<figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/Ww6ig/17/" title="Lime parking and riding restrictions around NC State (Crash points added)" loading="lazy"></iframe></figure>
-<figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/28Wwl/18/" title="Spin parking and riding restrictions around NC State (Crash points added)" loading="lazy"></iframe></figure>
-<p>These restrictions may become more important as NC State grows and more students look toward alternative transportation to get around campus. In the next five years, NC State is projected to lose up to 2,000 parking spaces with the demolition of the older portion of Coliseum deck.</p>
-<p>NC State also permanently removed on-street parking along Morrill Drive and is using the space to build dedicated bike infrastructure. These planned bike lanes along Morrill Drive, running beside Carmichael Gym, will give students a safer and more separated route to reach campus amenities and move between different parts of campus.</p>
-<p>As parking and driving become a more limited option to students, bikeshare use is increasing. Raleigh reported more than 5,500 e-bike trips in September 2025 alone, almost as many rides in one month as the city saw during the entire first half of 2025 with its old docked bikeshare program.</p>
-<p>The growth of bikeshare also brings its own set of problems. Bikes and scooters left in inconvenient or improper locations can block paths and create problems for people moving around campus.</p>
-<p>Demar Bonnemere, communications manager for NC State Transportation, said riders and pedestrians can use the Spin app to report a poorly parked bike or scooter.</p>
-<p>“The biggest thing is to either let us know [at the NC State Transportation office] or send a notification directly through the Spin app, and then we’ll get somebody out to relocate the device into a proper area,” Bonnemere said.</p>
-<p>Even with the growing pains, bikeshare systems are adding to the transportation options that students can use to get around campus.</p>
-<p>For Odell, those options are also part of a larger question about how dependent students should have to be on cars.</p>
-<p>“You need a place to live, you need to get around, you need transportation, but it shouldn’t have to be that you need to have a car,” Odell said.</p>
-  </article>
-  <div class="tech-preserve-note">Preserved portfolio copy of an article originally published by <a href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Technician on Sept. 11, 2026</a>. Live Datawrapper embeds are used while available.</div>
+
+  <div class="tech-story-wrap">
+    <div class="tech-share" aria-label="Article actions">
+      <a class="tech-share-comment" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/#respond" target="_blank" rel="noopener noreferrer" aria-label="View comments"><svg viewbox="0 0 24 24"><path d="M4.2 4.5h10.6a3 3 0 0 1 3 3v5.2a3 3 0 0 1-3 3H9.2l-4.5 3.2.9-3.2H4.2a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3Z"></path><path d="M16.8 8.2h2a3 3 0 0 1 3 3v3.7a3 3 0 0 1-3 3h-.6l.6 2.1-3-2.1h-3.2" opacity=".9"></path></svg></a>
+      <span class="tech-share-like" aria-label="Like"><svg viewbox="0 0 24 24"><path d="M9.3 20H5.6a1.7 1.7 0 0 1-1.7-1.7v-8A1.7 1.7 0 0 1 5.6 8.6h3.7V20Zm2-11.4 3.1-5.1c.4-.7 1.5-.5 1.7.3.3 1.2.2 2.5-.3 3.7h3.1c1.8 0 3.1 1.7 2.6 3.4l-2 6.6A3.5 3.5 0 0 1 16.2 20h-4.9V8.6Z"></path></svg></span>
+      <a class="tech-share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechnicianonline.com%2F162505%2Fnews%2Fpark-it-here-e-bike-and-scooter-rules-differ-across-nc-state%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><svg viewbox="0 0 24 24"><path d="M13.8 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.8v8h3.5Z"></path></svg></a>
+      <a class="tech-share-x" href="https://x.com/intent/post?url=https%3A%2F%2Ftechnicianonline.com%2F162505%2Fnews%2Fpark-it-here-e-bike-and-scooter-rules-differ-across-nc-state%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+      <a class="tech-share-mail" href="mailto:?subject=Park%20it%20here%3F%20E-bike%20and%20scooter%20rules%20differ%20across%20NC%20State&amp;body=https%3A%2F%2Ftechnicianonline.com%2F162505%2Fnews%2Fpark-it-here-e-bike-and-scooter-rules-differ-across-nc-state%2F" aria-label="Email story"><svg viewbox="0 0 24 24"><path d="M3.8 5.5h16.4c1 0 1.8.8 1.8 1.8v9.4c0 1-.8 1.8-1.8 1.8H3.8c-1 0-1.8-.8-1.8-1.8V7.3c0-1 .8-1.8 1.8-1.8Zm.5 1.6 7.7 5.5 7.7-5.5H4.3Zm15.9 9.8V9l-7.7 5.5a.9.9 0 0 1-1 0L3.8 9v7.9h16.4Z"></path></svg></a>
+      <a class="tech-share-print" href="javascript:window.print()" aria-label="Print story"><svg viewbox="0 0 24 24"><path d="M6.2 3h11.6v5H6.2V3Zm11.6 15v3H6.2v-3h11.6ZM4.2 8.8h15.6A2.2 2.2 0 0 1 22 11v5.2h-4.2v-2.7H6.2v2.7H2V11a2.2 2.2 0 0 1 2.2-2.2Zm14.3 2.1a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path></svg></a>
+    </div>
+
+    <article class="tech-story">
+      
+      <div class="tech-byline"><a href="https://technicianonline.com/staff_name/sean-ryan/" target="_blank" rel="noopener noreferrer">Sean Ryan</a>, Correspondent • Sep 11, 2026</div>
+      <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/28Wwl/18/" title="Spin parking and riding restrictions around NC State (Crash points added)" loading="eager" scrolling="no" frameborder="0"></iframe></figure>
+
+      <p>NC State enrolled 39,259 students in fall 2025, continuing a three-year trend of record enrollment. By contrast, parking capacity has remained essentially flat at around 20,000 spaces for the past decade.</p>
+      <p>Parking access was already strained last fall, when limited spaces and a lottery system left many students relying on luck to secure permits. This lack of parking may have manifested in micromobility options becoming more popular around campus.</p>
+      <p>Nicole Odell, who earned her Ph.D. in Parks, Recreation and Tourism Management from NC State, researched e-scooters and active transportation on campus, studying how students were using <a href="https://www.spin.app/" target="_blank" rel="noopener noreferrer">Spin</a> (a shared electric bike and scooter rental service) on and around campus.</p>
+      <p>In a 2024 <a href="https://technicianonline.com/76471/news/study-highlights-student-and-faculty-concerns-around-electric-scooters/" target="_blank" rel="noopener noreferrer">post-trip survey</a>, nearly half of respondents whose trips started or ended at NC State were undergraduates living on campus.</p>
+      <p>“I think more mobility choices are better to get people around,” Odell said.</p>
+      <p>The need for alternatives is especially relevant for newer students, who are lower on the credit-hour priority list for parking permits, and may have to find other ways to get to and around campus.</p>
+      <p>In the age of phone apps, Spin and <a href="https://www.li.me/" target="_blank" rel="noopener noreferrer">Lime</a> have helped fill that gap by providing access to electric bikes and scooters.</p>
+      <p>However, GIS data reveals vastly different experiences for riders depending on whether they choose Spin or Lime, the two major app-based bike and scooter rental services available around NC State. Spin is NC State’s contracted micro mobility provider, while Lime operates through its partnership with the City of Raleigh.</p>
+      <p>That split means riders can encounter different parking and service-area rules depending on which app they use, creating a potentially confusing experience for students unfamiliar with the two systems.</p>
+      <p>As NC State’s contracted micromobility provider, Spin operates under a different arrangement on campus than Lime, including a campus-specific rate the University calls the “NC State Rate.” Pricing was one factor considered during the University’s request-for-proposal process, where companies offered their rates for the campus community.</p>
+      <p><a href="https://transportation.ncsu.edu/people/gbubin/" target="_blank" rel="noopener noreferrer">Gabrielle Bubin</a>, University transportation planner and TDM coordinator, said rates for rides differ based on location and destination.</p>
+      <p>“So you’ll see on the Spin app currently that for students that start rides that originate from NC State’s campus, it starts at $1 to unlock and 30 cents [per minute],” Bubin said. “That would look different if you were in Durham, per se.”</p>
+      <p>The maps show a major difference between Lime and Spin at NC State. Between Main and Centennial campuses, the two companies use different no-parking restrictions, with Lime heavily restricting where riders can leave scooters and e-bikes.</p>
+      <p><strong>Map legend</strong></p>
+      <ul>
+        <li><strong>Blue:</strong> Service area where scooters and e-bikes can operate</li>
+        <li><strong>Solid red:</strong> No-parking zone</li>
+        <li><strong>Red stripes:</strong> No-ride zone; riders cannot pass through</li>
+        <li><strong>Gray:</strong> NC State campus areas</li>
+        <li><strong>Green:</strong> Bike routes physically separated from traffic</li>
+        <li><strong>Yellow:</strong> Bike routes using painted lanes or shared roads</li>
+      </ul>
+      <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/fmUon/5/" title="Lime parking and riding restrictions around NC State" loading="lazy" scrolling="no" frameborder="0"></iframe></figure>
+      <p>Lime’s rideable area also does not extend to the Centennial Biomedical Campus, meaning riders cannot use Lime to travel to or around it. Spin, meanwhile, explicitly includes a separate service area for the Biomedical Campus.</p>
+      <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/uhMNN/13/" title="Spin parking and riding restrictions around NC State" loading="lazy" scrolling="no" frameborder="0"></iframe></figure>
+      <p>Parking restrictions may also affect the different streets riders use. If students can’t park near their destination, they may have to keep riding until they reach an allowed area, which could be on streets shared with cars.</p>
+      <p>Odell said even one difficult connection can make an otherwise usable route feel unsafe.</p>
+      <p>“I think a lot of it comes from not feeling safe on a road,” Odell said. “If you think of outside of campus, like if you’re trying to get to or from campus, the connections, your whole network has to feel safe because one nasty intersection can keep somebody from making that bike trip, even if everything else is reasonable.”</p>
+      <p>N.C. Department of Transportation crash records from March 2015 through 2025 show 168 reported crashes involving bicyclists, scooters and other cyclists within 2.5-mile-diameter areas centered on NC State’s Main, Centennial and Centennial Biomedical campuses. The bicycles on the map mark the location of each reported crash.</p>
+      <p>The data doesn’t show whether Lime or Spin riders were involved, or whether geofencing — virtual boundaries that control where bikes and scooters can be ridden or parked — played any role, but they provide context for the traffic environment riders may face when parking options are limited.</p>
+      <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/Ww6ig/17/" title="Lime parking and riding restrictions around NC State (Crash points added)" loading="lazy" scrolling="no" frameborder="0"></iframe></figure>
+      <figure class="tech-dw figure"><iframe src="https://datawrapper.dwcdn.net/28Wwl/18/" title="Spin parking and riding restrictions around NC State (Crash points added)" loading="lazy" scrolling="no" frameborder="0"></iframe></figure>
+      <p>These restrictions may become more important as NC State grows and more students look towards alternative transportation to get around campus. In the next five years, NC State is projected to lose up to 2,000 parking spaces with the demolition of the older portion of Coliseum deck.</p>
+      <p>NC State also permanently removed on-street parking along Morrill Drive and is using the space to build dedicated bike infrastructure. These planned bike lanes along Morrill Drive, running beside Carmichael Gym, will give students a safer and more separated route to reach campus amenities and move between different parts of campus.</p>
+      <p>As parking and driving become a more limited option to students, bikeshare use is increasing. Raleigh reported more than 5,500 e-bike trips in September 2025 alone, almost as many rides in one month as the city saw during the entire first half of 2025 with its old docked bikeshare program.</p>
+      <p>The growth of bikeshare also brings its own set of problems. Bikes and scooters left in inconvenient or improper locations can block paths and create problems for people moving around campus.</p>
+      <p>Demar Bonnemere, communications manager for NC State Transportation, said riders and pedestrians can use the Spin app to report a poorly parked bike or scooter.</p>
+      <p>“The biggest thing is to either let us know [at the NC State Transportation office] or send a notification directly through the Spin app, and then we’ll get somebody out to relocate the device into a proper area,” Bonnemere said.</p>
+      <p>Even with the growing pains, bikeshare systems are adding to the transportation options that students can use to get around campus.</p>
+      <p>For Odell, those options are also part of a larger question about how dependent students should have to be on cars.</p>
+      <p>“You need a place to live, you need to get around, you need transportation, but it shouldn’t have to be that you need to have a car,” Odell said.</p>
+    </article>
+  </div>
+
+  <section class="tech-more">
+    <h2 class="anchored">More in News</h2>
+    <div class="tech-more-grid">
+      <div class="tech-more-card"><a href="https://technicianonline.com/162474/news/we-the-people-the-state-of-free-speech-and-protests-on-campus/" target="_blank" rel="noopener noreferrer">We the people: The state of free speech and protests on campus</a><p>Technician News</p></div>
+      <div class="tech-more-card"><a href="https://technicianonline.com/162480/news/experience/" target="_blank" rel="noopener noreferrer">The LGBTQ+ experience in on-campus housing</a><p>Technician News</p></div>
+      <div class="tech-more-card"><a href="https://technicianonline.com/" target="_blank" rel="noopener noreferrer">More reporting from Technician</a><p>Visit the publication</p></div>
+    </div>
+  </section>
+
+  <div class="tech-preserved">Portfolio preservation copy of the article as published by <a href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Technician on Sept. 11, 2026</a>. Datawrapper charts remain interactive while their original embeds are available.</div>
+
+  <footer class="tech-footer"><div class="tech-footer-inner">
+    <div class="tech-footer-mark">T</div>
+    <div><h3 class="anchored">Sections</h3><p>Home</p><p>Sports</p><p>News</p><p>Opinion</p><p>Culture</p><p>Multimedia</p></div>
+    <div><h3 class="anchored">Services</h3><p>Staff</p><p>Work with us</p><p>Submissions</p><p>User Policies</p><p>Advertising</p></div>
+    <div><h3 class="anchored">Affiliates</h3><p>Agromeck</p><p>Nubian Message</p><p>Roundabout</p><p>Windhover</p><p>WKNC</p></div>
+    <div><h3 class="anchored">Contact Information</h3><p>Technician</p><p>323 Witherspoon Student Center, Campus Box 7318</p><p>Raleigh, NC 27695</p><p><a href="mailto:technician-editor@ncsu.edu">technician-editor@ncsu.edu</a></p></div>
+  </div></footer>
 </div>
-<script>
-(function() {
-  if (new URLSearchParams(window.location.search).get('print') === '1') {
-    window.addEventListener('load', function() { setTimeout(function() { window.print(); }, 700); });
-  }
-})();
-</script>
 
 
 

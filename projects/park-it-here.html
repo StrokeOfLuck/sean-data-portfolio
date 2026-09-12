@@ -213,8 +213,7 @@ ul.task-list li input[type="checkbox"] {
   margin-top:auto;
 }
 
-.park-actions a,
-.park-print-button {
+.park-actions a {
   display:flex;
   align-items:center;
   justify-content:center;
@@ -228,8 +227,7 @@ ul.task-list li input[type="checkbox"] {
   transition:transform 140ms ease, box-shadow 140ms ease;
 }
 
-.park-actions a:hover,
-.park-print-button:hover {
+.park-actions a:hover {
   transform:translateY(-1px);
 }
 
@@ -239,17 +237,10 @@ ul.task-list li input[type="checkbox"] {
   background:var(--bs-primary);
 }
 
-.park-secondary,
-.park-print-button {
+.park-secondary {
   color:var(--bs-body-color) !important;
   border:1px solid rgba(127,127,127,.35);
   background:var(--bs-body-bg);
-}
-
-.park-note {
-  margin:.75rem 0 0;
-  color:var(--bs-secondary-color);
-  font-size:.82rem;
 }
 
 .park-preview-wrap {
@@ -295,112 +286,12 @@ ul.task-list li input[type="checkbox"] {
 .park-dot-yellow { background:#febc2e; }
 .park-dot-green { background:#28c840; }
 
-.park-tech-bar {
-  display:grid;
-  grid-template-columns:40px 1fr 40px;
-  align-items:center;
-  height:56px;
-  padding:0 14px;
-  color:#fff;
-  background:#111;
-}
-
-.park-tech-brand {
-  justify-self:center;
-  font-family:Georgia, 'Times New Roman', serif;
-  font-size:1.45rem;
-  letter-spacing:-.02em;
-}
-
-.park-tech-icon {
-  font-size:1.2rem;
-  text-align:center;
-}
-
-.park-article-preview {
-  display:grid;
-  grid-template-columns:36px minmax(0,1fr);
-  gap:14px;
-  padding:18px 20px 18px 16px;
-  color:#111;
-  background:#fff;
-}
-
-.park-share-rail {
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  padding-top:4px;
-}
-
-.park-share-dot {
-  display:grid;
-  width:28px;
-  height:28px;
-  place-items:center;
-  border-radius:6px;
-  color:#fff;
-  font:700 12px/1 Arial,sans-serif;
-}
-.park-share-comment { background:#3f7665; }
-.park-share-like { background:#8f3637; }
-.park-share-facebook { background:#405ba4; }
-.park-share-x { background:#000; }
-.park-share-mail { background:#2d486d; }
-.park-share-print { background:#617494; }
-
-.park-preview-title {
-  margin:0 0 .35rem;
-  color:#111;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:clamp(1.25rem, 2.2vw, 2rem);
-  line-height:1.03;
-  font-weight:800;
-  letter-spacing:-.02em;
-}
-
-.park-preview-byline,
-.park-preview-lede,
-.park-map-credit {
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-.park-preview-byline {
-  margin:0 0 .65rem;
-  color:#4b5563;
-  font-size:.76rem;
-}
-
-.park-preview-lede {
-  margin:0 0 .75rem;
-  color:#46505c;
-  font-size:.79rem;
-  line-height:1.4;
-}
-
-.park-preview-map {
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 10;
-  overflow:hidden;
-  background:#eef2f3;
-}
-
-.park-preview-map iframe {
-  position:absolute;
-  top:-118px;
-  left:0;
+.park-article-frame {
   display:block;
   width:100%;
-  height:calc(100% + 165px);
+  height:700px;
   border:0;
-  pointer-events:none;
-}
-
-.park-map-credit {
-  margin:.38rem 0 0;
-  color:#69717b;
-  font-size:.62rem;
+  background:#fff;
 }
 
 .park-preview-open {
@@ -419,13 +310,6 @@ ul.task-list li input[type="checkbox"] {
   backdrop-filter:blur(7px);
   text-decoration:none !important;
   font-size:1.3rem;
-}
-
-.park-preview-overlay {
-  position:absolute;
-  inset:32px 0 0;
-  z-index:3;
-  border-radius:0 0 12px 12px;
 }
 
 .park-bottom-nav {
@@ -454,22 +338,7 @@ ul.task-list li input[type="checkbox"] {
     gap:1.25rem;
     padding:1rem;
   }
-  .park-article-preview {
-    grid-template-columns:28px minmax(0,1fr);
-    gap:9px;
-    padding:12px 11px;
-  }
-  .park-share-dot {
-    width:23px;
-    height:23px;
-    border-radius:5px;
-    font-size:9px;
-  }
-  .park-tech-bar { height:48px; }
-  .park-tech-brand { font-size:1.15rem; }
-  .park-preview-lede { display:none; }
-  .park-preview-map { aspect-ratio:4 / 3; }
-  .park-preview-map iframe { top:-96px; height:calc(100% + 130px); }
+  .park-article-frame { height:560px; }
 }
 </style>
 <div class="park-project-shell">
@@ -489,9 +358,8 @@ ul.task-list li input[type="checkbox"] {
       <div class="park-actions">
         <a class="park-primary" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Read on Technician ↗</a>
         <a class="park-secondary" href="park-it-here-archive.html" target="_blank" rel="noopener noreferrer">Open preserved article ↗</a>
-        <a class="park-secondary" href="park-it-here-archive.html?print=1" target="_blank" rel="noopener noreferrer">Print / save PDF</a>
+        <a class="park-secondary" href="assets/park-it-here/park-it-here-sean-ryan.pdf" download="">Download reading copy PDF</a>
       </div>
-      <p class="park-note">Original publication and preserved copy both open in a new tab.</p>
     </section>
 
     <section class="park-preview-wrap" aria-label="Preview of the published Technician article">
@@ -503,32 +371,8 @@ ul.task-list li input[type="checkbox"] {
             <span class="park-window-dot park-dot-green"></span>
           </div>
         </div>
-        <div class="park-tech-bar">
-          <div class="park-tech-icon">☰</div>
-          <div class="park-tech-brand">TECHNICIAN</div>
-          <div class="park-tech-icon">⌕</div>
-        </div>
-        <div class="park-article-preview">
-          <div class="park-share-rail" aria-hidden="true">
-            <span class="park-share-dot park-share-comment">◌</span>
-            <span class="park-share-dot park-share-like">♥</span>
-            <span class="park-share-dot park-share-facebook">f</span>
-            <span class="park-share-dot park-share-x">X</span>
-            <span class="park-share-dot park-share-mail">✉</span>
-            <span class="park-share-dot park-share-print">▣</span>
-          </div>
-          <div>
-            <h2 class="park-preview-title anchored">Park it here? E-bike and scooter rules differ across NC State</h2>
-            <div class="park-preview-byline">Sean Ryan, Correspondent · Sep 11, 2026</div>
-            <p class="park-preview-lede">NC State’s two major app-based bike and scooter services use different geofencing and parking rules around campus.</p>
-            <div class="park-preview-map">
-              <iframe src="https://datawrapper.dwcdn.net/28Wwl/18/" title="Spin parking and riding restrictions around NC State with crash points added" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
-            </div>
-            <div class="park-map-credit">Map: Sean Ryan · Source: Spin GBFS geofencing data; NCDOT Non-Motorist Crashes · Created with Datawrapper</div>
-          </div>
-        </div>
-        <a class="park-preview-overlay" href="park-it-here-archive.html" target="_blank" rel="noopener noreferrer" aria-label="Open preserved Technician article in a new tab"></a>
-        <a class="park-preview-open" href="park-it-here-archive.html" target="_blank" rel="noopener noreferrer" aria-label="Open preserved article">↗</a>
+        <iframe class="park-article-frame" src="park-it-here-archive.html" title="Scrollable preserved Technician article" loading="eager"></iframe>
+        <a class="park-preview-open" href="park-it-here-archive.html" target="_blank" rel="noopener noreferrer" aria-label="Open preserved article in a new tab">↗</a>
       </div>
     </section>
   </div>
