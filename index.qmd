@@ -20,7 +20,8 @@ I use data, public records, computational methods, and visualization to investig
   title="Preview of the Spin geofencing and crash map from Park it here?"
   loading="lazy"
   tabindex="-1"
-  aria-hidden="true">
+  aria-hidden="true"
+  style="top:-190px;bottom:auto;height:calc(100% + 290px);">
 </iframe>
 <a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
