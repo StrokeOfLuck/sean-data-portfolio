@@ -72,30 +72,16 @@ jobs:
                   html = html.replace("</head>", marker + "\n</head>", 1)
                   changed = True
 
-          original_article = "https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/"
-          mobile_header = (
-              '<div class="archive-mobile-header" data-archive-mobile-header="1">\n'
-              f'<a class="archive-mobile-header__button archive-mobile-header__menu" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">\n'
-              '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>\n'
-              '</a>\n'
-              '<a class="archive-mobile-header__logo" href="https://technicianonline.com/" target="_blank" rel="noopener noreferrer" aria-label="Technician home">\n'
-              '<img src="https://technicianonline.com/wp-content/uploads/2025/05/58d6e5cc-705c-11e6-a234-ff2269afdda9.webp" alt="Technician"/>\n'
-              '</a>\n'
-              f'<a class="archive-mobile-header__button archive-mobile-header__search" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">\n'
-              '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13.5" cy="13.5" r="8.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 20l7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>\n'
-              '</a>\n'
-              '</div>'
-          )
-          if 'data-archive-mobile-header="1"' not in html:
-              body_anchor = '<div class="bodywrap" data-desktop-breakpoint="1200"'
-              idx = html.find(body_anchor)
-              if idx == -1:
-                  raise SystemExit("Published archive is missing bodywrap anchor")
-              insert_at = html.find('>', idx)
-              if insert_at == -1:
-                  raise SystemExit("Published archive bodywrap tag is malformed")
-              insert_at += 1
-              html = html[:insert_at] + "\n" + mobile_header + html[insert_at:]
+          # Older preservation passes injected a second mobile masthead. The
+          # captured Technician HTML already includes its genuine phone header,
+          # so remove the duplicate if it is ever present in a published copy.
+          mobile_marker = '<div class="archive-mobile-header" data-archive-mobile-header="1">'
+          while mobile_marker in html:
+              start = html.index(mobile_marker)
+              end = html.find('</div>', start)
+              if end == -1:
+                  raise SystemExit("Injected mobile header is malformed")
+              html = html[:start] + html[end + len('</div>'):]
               changed = True
 
           # Full-page screenshots do not necessarily scroll through the page,
@@ -111,7 +97,7 @@ jobs:
               archive.write_text(html, encoding="utf-8")
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
-          print("Technician desktop fidelity, mobile masthead, live maps and local social icons finalized.")
+          print("Technician desktop/mobile fidelity, live maps and local social icons finalized.")
           PY
 
       - name: Commit published archive fixes
