@@ -91,9 +91,28 @@ jobs:
           if actual_html != expected_html:
               raise SystemExit(f"Technician archive HTML hash mismatch: {actual_html}")
 
+          freeze_source = Path("projects/assets/park-it-here/technician-freeze.css.gz.b64")
+          freeze_compressed = base64.b64decode(freeze_source.read_text(encoding="utf-8").strip(), validate=True)
+          expected_freeze_gzip = "9be087ae08bc4624dc8fb808ff3d2fb40856143aa8e12add56f6a925b37eaafb"
+          if hashlib.sha256(freeze_compressed).hexdigest() != expected_freeze_gzip:
+              raise SystemExit("Technician captured CSS gzip hash mismatch")
+
+          freeze_css = gzip.decompress(freeze_compressed)
+          expected_freeze_css = "c75b6cf708ee00ce599dc6572b10b4d6560ac53a1272012628ac3e50d49f977a"
+          if hashlib.sha256(freeze_css).hexdigest() != expected_freeze_css:
+              raise SystemExit("Technician captured CSS hash mismatch")
+
+          freeze_target = Path("projects/assets/park-it-here/technician-freeze.css")
+          freeze_target.write_bytes(freeze_css)
+
+          stylesheet = b'\n<link rel="stylesheet" href="technician-freeze.css" data-archive-frozen-layout="1"/>\n'
+          if b"</head>" not in html:
+              raise SystemExit("Preserved Technician archive is missing </head>")
+          html = html.replace(b"</head>", stylesheet + b"</head>", 1)
+
           target = Path("projects/assets/park-it-here/park-it-here-archive.html")
           target.write_bytes(html)
-          print(f"Restored {target} ({len(html):,} bytes)")
+          print(f"Restored {target} ({len(html):,} bytes) with captured layout CSS")
           PY
 
       - name: Set up R
