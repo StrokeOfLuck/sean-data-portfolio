@@ -239,16 +239,27 @@
     margin-bottom: 20px !important;
   }
 
+  /* Technician's phone article column itself is flush to the viewport. The
+     20px inset belongs on the paragraphs/lists, not on both the parent column
+     and the copy. Reset the captured desktop/tablet offsets here so mobile
+     text does not drift to the right. */
   .sno-story-body,
   .sno-story-body-content {
     box-sizing: border-box !important;
     width: 100% !important;
     max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .sno-story-body-content > p,
   .sno-story-body-content > ul,
   .sno-story-body-content > ol {
+    box-sizing: border-box !important;
+    width: auto !important;
+    max-width: none !important;
     margin-left: 20px !important;
     margin-right: 20px !important;
   }
