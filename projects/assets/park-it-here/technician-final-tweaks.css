@@ -1,6 +1,11 @@
-/* Final fidelity fixes measured against the live Technician capture. */
+/* Final fidelity tweaks measured against the live Technician page. */
 
-/* Technician's fixed social rail geometry. */
+/* Restore the captured Technician story offset. */
+.sno-story-wrap {
+  padding-top: 35px !important;
+}
+
+/* Reproduce Technician's fixed social rail geometry exactly. */
 .sno-story-social-icons .sno-row-icons {
   width: 52px !important;
   position: fixed !important;
@@ -28,79 +33,19 @@
   border-width: 0 !important;
   margin-left: 0 !important;
   margin-top: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
 }
 
-/* Fixed SVG artwork avoids Font Awesome version/fallback differences.
-   Sizes are matched to the live-page screenshot. */
-.sno-story-social-icons .archive-share-svg {
-  display: none !important;
-}
-.sno-story-social-icons .sno-row-icon-ring::before {
-  content: none !important;
-  display: none !important;
-}
-.sno-story-social-icons .comment-row-icon .sno-row-icon-ring {
-  background-image: url("icons/comments.svg") !important;
-  background-size: 32px 26px !important;
-}
-.sno-story-social-icons .like-row-icon .sno-row-icon-ring {
-  background-image: url("icons/thumbs-up.svg") !important;
-  background-size: 25px 25px !important;
-}
-.sno-story-social-icons .facebook-row-icon .sno-row-icon-ring {
-  background-image: url("icons/facebook-f.svg") !important;
-  background-size: 16px 26px !important;
-}
-.sno-story-social-icons .twitter-row-icon .sno-row-icon-ring {
-  background-image: url("icons/x-twitter.svg") !important;
-  background-size: 21px 21px !important;
-}
-.sno-story-social-icons .email-row-icon .sno-row-icon-ring {
-  background-image: url("icons/envelope.svg") !important;
-  background-size: 25px 25px !important;
-}
-.sno-story-social-icons .print-row-icon .sno-row-icon-ring {
-  background-image: url("icons/print.svg") !important;
-  background-size: 26px 26px !important;
+/* Technician uses the outlined FA5 comments glyph. */
+.sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
+  content: "\f086" !important;
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+  line-height: 30px !important;
 }
 
-/* Full-page screenshots of the mirror were much taller than the live page
-   because cross-origin/lazy Datawrapper iframes could reserve their live
-   height while rendering blank. Keep the static preservation chart visible
-   and remove the iframe height from layout; each map remains linked to its
-   original interactive Datawrapper version. */
-.dw-hybrid {
-  height: auto !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-}
-.dw-hybrid .dw-live-frame,
-.dw-hybrid.dw-live .dw-live-frame {
-  display: none !important;
-  height: 0 !important;
-  min-height: 0 !important;
-}
-.dw-hybrid .dw-fallback,
-.dw-hybrid.dw-live .dw-fallback {
-  display: block !important;
-}
-.archived-datawrapper-map {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-/* Preserve the small paragraph gap visible after a Datawrapper credit,
-   without accumulating the large blank iframe gaps. */
+/* The local Datawrapper fallback trims space that exists below the live
+   embed. Restore that breathing room before the following story text. */
 .sno-story-body .dw-hybrid {
-  margin-bottom: 0 !important;
-}
-.sno-story-body .dw-hybrid + p {
-  margin-top: 15px !important;
+  margin-bottom: 25px !important;
 }
