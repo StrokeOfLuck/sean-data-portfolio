@@ -244,49 +244,11 @@ h1.sno-story-headline:not(.headline-wrap) {
   font: inherit !important;
 }
 
-/* The contributor module was added to Technician after the original scrape. */
+/* Technician currently has no separate contributor module after the story.
+   Hide any stale injected copy on both desktop and mobile while the post-deploy
+   finalizer also removes it from the archive HTML entirely. */
 .archive-contributor {
-  box-sizing: border-box !important;
-  width: 100% !important;
-  margin: 24px 0 44px !important;
-  padding: 0 !important;
-  color: #000000 !important;
-  font-family: "Source Serif 4" !important;
-  font-style: normal !important;
-  letter-spacing: 0 !important;
-}
-
-.archive-contributor-title {
-  margin: 0 0 16px !important;
-  padding: 0 !important;
-  color: #000000 !important;
-  font-family: "Source Serif 4" !important;
-  font-size: 28px !important;
-  line-height: 1.2em !important;
-  font-weight: 700 !important;
-  font-style: normal !important;
-  letter-spacing: 0 !important;
-}
-
-.archive-contributor-line {
-  margin: 0 !important;
-  padding: 0 !important;
-  color: #000000 !important;
-  font-family: "Source Serif 4" !important;
-  font-size: 20px !important;
-  line-height: 1.3em !important;
-  font-weight: 700 !important;
-  font-style: normal !important;
-  letter-spacing: 0 !important;
-}
-
-.archive-contributor-line a,
-.archive-contributor-line a:visited,
-.archive-contributor-line a:hover,
-.archive-contributor-line a:focus {
-  color: #000000 !important;
-  font: inherit !important;
-  text-decoration: none !important;
+  display: none !important;
 }
 
 /* Reassert the captured footer typography after remote Technician CSS so the
@@ -343,15 +305,5 @@ h1.sno-story-headline:not(.headline-wrap) {
   }
   .archive-technician-photo {
     margin-bottom: 25px !important;
-  }
-  .archive-contributor {
-    width: auto !important;
-    margin: 22px 20px 36px !important;
-  }
-  .archive-contributor-title {
-    font-size: 24px !important;
-  }
-  .archive-contributor-line {
-    font-size: 18px !important;
   }
 }
