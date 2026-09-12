@@ -70,25 +70,13 @@
   background-size: 20px 20px !important;
 }
 
-/* Full-page screenshots of the mirror were much taller than the live page
-   because cross-origin/lazy Datawrapper iframes could reserve their live
-   height while rendering blank. Keep the static preservation chart visible
-   and remove the iframe height from layout; each map remains linked to its
-   original interactive Datawrapper version. */
+/* Keep the archive's original hybrid Datawrapper behavior. The static PNG is
+   visible immediately, then the live Datawrapper iframe replaces it after the
+   chart posts its real height. Do not force either layer off: doing that was
+   what made the maps disappear. */
 .dw-hybrid {
-  height: auto !important;
   min-height: 0 !important;
   margin: 0 !important;
-}
-.dw-hybrid .dw-live-frame,
-.dw-hybrid.dw-live .dw-live-frame {
-  display: none !important;
-  height: 0 !important;
-  min-height: 0 !important;
-}
-.dw-hybrid .dw-fallback,
-.dw-hybrid.dw-live .dw-fallback {
-  display: block !important;
 }
 .archived-datawrapper-map {
   display: block !important;
@@ -97,8 +85,7 @@
   height: auto !important;
 }
 
-/* Preserve the small paragraph gap visible after a Datawrapper credit,
-   without accumulating the large blank iframe gaps. */
+/* Preserve the small paragraph gap visible after a Datawrapper credit. */
 .sno-story-body .dw-hybrid {
   margin-bottom: 0 !important;
 }
