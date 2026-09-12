@@ -106,15 +106,15 @@ jobs:
               if insert_at == -1:
                   raise SystemExit("Could not find the first Datawrapper wrapper")
 
-              photo_html = '''
-<figure class="archive-technician-photo" data-archive-added-photo="spin-scooter-alex-manuel" style="margin:0 0 30px;width:100%;background:#eeeeee;">
-<img src="spin-scooter-alex-manuel.jpg" width="1200" height="801" alt="A Spin electric scooter lies sideways in the Court of North Carolina" data-original-src="https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg" style="display:block;width:100%;height:auto;margin:0;"/>
-<figcaption style="box-sizing:border-box;width:100%;margin:0;padding:9px 12px 12px;background:#eeeeee;color:#000000;font-family:&quot;Source Serif 4&quot;;font-size:16px;line-height:1.35em;font-style:italic;">
-<span style="display:block;margin:0 0 6px;color:#cc0000;">Alex Manuel</span>
-A Spin electric scooter lies sideways in the court of North Carolina on Monday, Nov. 18, 2024. Spin is a leading micromobility company and a unit of Ford Mobility, currently operating electric scooters in many cities and universities nationwide. At NC State, Spin scooters are deployed on North, Central, South, and Centennial Campuses.
-</figcaption>
-</figure>
-'''
+              photo_html = (
+                  '\n<figure class="archive-technician-photo" data-archive-added-photo="spin-scooter-alex-manuel" style="margin:0 0 30px;width:100%;background:#eeeeee;">\n'
+                  '<img src="spin-scooter-alex-manuel.jpg" width="1200" height="801" alt="A Spin electric scooter lies sideways in the Court of North Carolina" data-original-src="https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg" style="display:block;width:100%;height:auto;margin:0;"/>\n'
+                  '<figcaption style="box-sizing:border-box;width:100%;margin:0;padding:9px 12px 12px;background:#eeeeee;color:#000000;font-family:&quot;Source Serif 4&quot;;font-size:16px;line-height:1.35em;font-style:italic;">\n'
+                  '<span style="display:block;margin:0 0 6px;color:#cc0000;">Alex Manuel</span>\n'
+                  'A Spin electric scooter lies sideways in the court of North Carolina on Monday, Nov. 18, 2024. Spin is a leading micromobility company and a unit of Ford Mobility, currently operating electric scooters in many cities and universities nationwide. At NC State, Spin scooters are deployed on North, Central, South, and Centennial Campuses.\n'
+                  '</figcaption>\n'
+                  '</figure>\n'
+              )
               html = html[:insert_at] + photo_html + html[insert_at:]
               changed = True
 
