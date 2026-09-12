@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500&family=Playfair+Display:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
 /* Static-archive fidelity layer.
-   The captured Technician stylesheet (technician-freeze.css) already contains
-   the publication's actual typography and spacing. Keep the same font-family
-   names here without importing substitute webfonts, so the archive resolves
-   them exactly the same way as the live page in the same browser. */
+   The frozen Technician CSS preserves the publication's measured values.
+   Explicitly load the three webfonts used by the captured page so the mirror
+   does not fall back to different local serif/sans faces. */
 
 body,
 #wrap,
 #upperwrap {
-  font-family: "Source Serif 4" !important;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
   font-weight: 400 !important;
 }
 
@@ -18,7 +19,7 @@ body,
   line-height: 50px !important;
   height: 50px !important;
   font-weight: normal !important;
-  font-family: "Playfair Display" !important;
+  font-family: "Playfair Display", Georgia, serif !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   width: 100% !important;
@@ -30,14 +31,14 @@ body,
   color: #ffffff !important;
   line-height: 50px !important;
   font-size: 16px !important;
-  font-family: "Playfair Display" !important;
+  font-family: "Playfair Display", Georgia, serif !important;
   font-weight: normal !important;
 }
 
 .sno-hac-inner-desktop-4 .sno-hac-menuwrap li a:not(.menuheadline) {
   color: #ffffff !important;
   line-height: 50px !important;
-  font-family: "Playfair Display" !important;
+  font-family: "Playfair Display", Georgia, serif !important;
   font-weight: normal !important;
 }
 
@@ -90,7 +91,7 @@ h1.sno-story-headline {
   line-height: 1.35em !important;
   text-align: left !important;
   margin-bottom: 0 !important;
-  font-family: "Myriad Pro" !important;
+  font-family: "Myriad Pro", Arial, sans-serif !important;
   font-weight: 600 !important;
 }
 
@@ -102,7 +103,7 @@ h1.sno-story-headline:not(.headline-wrap) {
 
 .sno-story-byline.byline-post-162505 {
   font-size: 16px !important;
-  font-family: "Source Serif 4" !important;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
   font-weight: 400 !important;
   font-style: normal !important;
   letter-spacing: 0 !important;
@@ -123,14 +124,14 @@ h1.sno-story-headline:not(.headline-wrap) {
   font-size: 20px !important;
   line-height: 1.4em !important;
   margin-bottom: 15px !important;
-  font-family: "Source Serif 4" !important;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
   color: #000000 !important;
 }
 
 .sno-story-body ul,
 .sno-story-body ol,
 .sno-story-body li {
-  font-family: "Source Serif 4" !important;
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
   color: #000000 !important;
 }
 
@@ -141,6 +142,36 @@ h1.sno-story-headline:not(.headline-wrap) {
 
 .sno-story-body a {
   color: #cc0000 !important;
+}
+
+/* The frozen page specifies 22px Playfair headings and 16px Karla links/text
+   in the desktop footer. Reassert them after remote Technician CSS so the
+   preservation copy cannot drift if the live stylesheet changes later. */
+.sno-hac-inner-desktop-footer-4,
+.sno-hac-inner-desktop-footer-8,
+.sno-hac-inner-desktop-footer-12,
+.sno-hac-inner-desktop-footer-16 {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 22px !important;
+  line-height: 1.3em !important;
+  font-weight: 400 !important;
+}
+
+.sno-hac-inner-desktop-footer-5 .sno-hac-menuwrap,
+.sno-hac-inner-desktop-footer-9 .sno-hac-menuwrap,
+.sno-hac-inner-desktop-footer-13 .sno-hac-menuwrap,
+.sno-hac-inner-desktop-footer-17 {
+  font-family: "Karla", Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.sno-hac-inner-desktop-footer-5 .sno-hac-menuwrap li,
+.sno-hac-inner-desktop-footer-9 .sno-hac-menuwrap li,
+.sno-hac-inner-desktop-footer-13 .sno-hac-menuwrap li,
+.sno-hac-inner-desktop-footer-17,
+.sno-hac-inner-desktop-footer-17 p {
+  font-size: 16px !important;
+  line-height: 1.3em !important;
 }
 
 @media only screen and (max-width: 800px) {
