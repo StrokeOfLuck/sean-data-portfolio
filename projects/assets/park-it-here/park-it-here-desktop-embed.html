@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technician article desktop preview</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: #fff;
+}
+#viewport {
+  position: relative;
+  width: 100%;
+}
+#stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  transform-origin: top left;
+}
+#article {
+  display: block;
+  width: 1200px;
+  min-height: 1800px;
+  border: 0;
+  background: #fff;
+}
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <iframe id="article" src="park-it-here-archive.html?view=desktop&embed=1" title="Preserved Technician article in desktop layout" scrolling="no"></iframe>
+  </div>
+</div>
+<script>
+(function () {
+  const DESKTOP_WIDTH = 1200;
+  const frame = document.getElementById('article');
+  const stage = document.getElementById('stage');
+  const viewport = document.getElementById('viewport');
+  let observer;
+
+  function articleHeight() {
+    try {
+      const doc = frame.contentDocument;
+      if (!doc) return 1800;
+      return Math.max(
+        doc.documentElement ? doc.documentElement.scrollHeight : 0,
+        doc.body ? doc.body.scrollHeight : 0,
+        1800
+      );
+    } catch (e) {
+      return 1800;
+    }
+  }
+
+  function fit() {
+    const available = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const scale = Math.min(1, available / DESKTOP_WIDTH);
+    const height = articleHeight();
+    frame.style.height = height + 'px';
+    stage.style.transform = 'scale(' + scale + ')';
+    viewport.style.height = Math.ceil(height * scale) + 'px';
+  }
+
+  frame.addEventListener('load', function () {
+    fit();
+    setTimeout(fit, 250);
+    setTimeout(fit, 1000);
+    setTimeout(fit, 2500);
+    try {
+      observer = new ResizeObserver(fit);
+      observer.observe(frame.contentDocument.documentElement);
+    } catch (e) {}
+  });
+
+  window.addEventListener('resize', fit);
+  fit();
+})();
+</script>
+</body>
+</html>
