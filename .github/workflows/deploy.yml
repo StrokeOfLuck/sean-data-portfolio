@@ -69,20 +69,29 @@ jobs:
           from pathlib import Path
           import base64
           import gzip
-          import re
+          import hashlib
 
-          source = Path("projects/assets/park-it-here/park-it-here-archive.html.gz.b64")
-          target = Path("projects/assets/park-it-here/park-it-here-archive.html")
+          parts = [
+              Path("projects/assets/park-it-here/archive-gzip/part-1.b64"),
+              Path("projects/assets/park-it-here/archive-gzip/part-2.b64"),
+              Path("projects/assets/park-it-here/archive-gzip/part-3.b64"),
+              Path("projects/assets/park-it-here/archive-gzip/part-4.b64"),
+          ]
+          encoded = "".join(p.read_text(encoding="utf-8").strip() for p in parts)
+          compressed = base64.b64decode(encoded, validate=True)
 
-          encoded = re.sub(r"[^A-Za-z0-9+/=]", "", source.read_text(encoding="utf-8"))
-          encoded = encoded.rstrip("=")
-          encoded += "=" * (-len(encoded) % 4)
-          compressed = base64.b64decode(encoded, validate=False)
+          expected_gzip = "087391614c7ee362eb70e7c1d4fd20955868aeacb2ac3e233df5108a2d450950"
+          actual_gzip = hashlib.sha256(compressed).hexdigest()
+          if actual_gzip != expected_gzip:
+              raise SystemExit(f"Technician archive gzip hash mismatch: {actual_gzip}")
+
           html = gzip.decompress(compressed)
+          expected_html = "ba6a840d57e05afd41460a5962317d284d2c8582be52cd92ea14e38d8a36cd2b"
+          actual_html = hashlib.sha256(html).hexdigest()
+          if actual_html != expected_html:
+              raise SystemExit(f"Technician archive HTML hash mismatch: {actual_html}")
 
-          if b"Park it here? E-bike and scooter rules differ across NC State" not in html:
-              raise SystemExit("Restored Technician archive failed validation")
-
+          target = Path("projects/assets/park-it-here/park-it-here-archive.html")
           target.write_bytes(html)
           print(f"Restored {target} ({len(html):,} bytes)")
           PY
