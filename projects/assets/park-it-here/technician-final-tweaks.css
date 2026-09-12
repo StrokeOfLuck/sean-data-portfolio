@@ -1,0 +1,51 @@
+/* Final fidelity tweaks measured against the live Technician page. */
+
+/* Restore the captured Technician story offset. */
+.sno-story-wrap {
+  padding-top: 35px !important;
+}
+
+/* Reproduce Technician's fixed social rail geometry exactly. */
+.sno-story-social-icons .sno-row-icons {
+  width: 52px !important;
+  position: fixed !important;
+  bottom: unset !important;
+  top: 50% !important;
+  left: unset !important;
+  right: 0 !important;
+  transform: translateY(-50%) !important;
+}
+.sno-story-social-icons .sno-row-icon {
+  box-shadow: 0 2px 8px rgba(0,0,0,.4) !important;
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+  border-radius: 10px !important;
+  width: 42px !important;
+  height: 42px !important;
+  line-height: 42px !important;
+  font-size: 20px !important;
+  opacity: 1 !important;
+}
+.sno-story-social-icons .sno-row-icon-ring {
+  border-radius: 7px !important;
+  width: 42px !important;
+  height: 30px !important;
+  border-width: 0 !important;
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Technician uses the outlined FA5 comments glyph. */
+.sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
+  content: "\f086" !important;
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+  line-height: 30px !important;
+}
+
+/* The local Datawrapper fallback trims space that exists below the live
+   embed. Restore that breathing room before the following story text. */
+.sno-story-body .dw-hybrid {
+  margin-bottom: 25px !important;
+}
