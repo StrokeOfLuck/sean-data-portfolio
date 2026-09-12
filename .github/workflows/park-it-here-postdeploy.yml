@@ -105,6 +105,7 @@ jobs:
 
           python3 - <<'PY'
           from pathlib import Path
+          import re
           import shutil
 
           source_dir = Path("source/projects/assets/park-it-here")
@@ -185,9 +186,7 @@ jobs:
               html = html[:insert_at] + photo_html + html[insert_at:]
               changed = True
 
-          # The live Technician page currently ends the story directly at More in News.
-          # Remove any contributor module we previously injected. This applies to the
-          # same archive HTML on both desktop and mobile.
+          # Rebuild the contributor once, after the complete More in News block.
           contributor_start = html.find('<section class="archive-contributor"')
           while contributor_start != -1:
               contributor_end = html.find('</section>', contributor_start)
@@ -196,6 +195,34 @@ jobs:
               html = html[:contributor_start] + html[contributor_end + len('</section>'):]
               changed = True
               contributor_start = html.find('<section class="archive-contributor"')
+
+          related_start = html.find('<div class="related-term-container">')
+          if related_start == -1:
+              raise SystemExit("Could not find More in News container")
+
+          token_re = re.compile(r'<div\b[^>]*>|</div\s*>', re.I)
+          depth = 0
+          related_end = None
+          for match in token_re.finditer(html, related_start):
+              token = match.group(0).lower()
+              if token.startswith('<div'):
+                  depth += 1
+              else:
+                  depth -= 1
+                  if depth == 0:
+                      related_end = match.end()
+                      break
+          if related_end is None:
+              raise SystemExit("Could not find end of More in News container")
+
+          contributor_html = (
+              '\n<section class="archive-contributor" data-archive-contributor="alex-manuel" aria-labelledby="archive-contributor-title">\n'
+              '<h2 class="archive-contributor-title" id="archive-contributor-title">About the Contributor</h2>\n'
+              '<p class="archive-contributor-line"><a href="https://technicianonline.com/staff_name/alex-manuel/" target="_blank" rel="noopener noreferrer">Alex Manuel</a>, Photo Editor</p>\n'
+              '</section>\n'
+          )
+          html = html[:related_end] + contributor_html + html[related_end:]
+          changed = True
 
           mobile_marker = '<div class="archive-mobile-header" data-archive-mobile-header="1">'
           while mobile_marker in html:
@@ -217,7 +244,7 @@ jobs:
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
           print(f"Archived lead photo: {photo.stat().st_size:,} bytes")
-          print("Technician baseline chrome restored; lead photo, maps and local icons finalized.")
+          print("Technician archive finalized with contributor below More in News.")
           PY
 
       - name: Commit published archive fixes
