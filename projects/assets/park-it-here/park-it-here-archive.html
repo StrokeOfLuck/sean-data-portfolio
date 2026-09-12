@@ -189,6 +189,21 @@ a[target="_blank"] { cursor: pointer; }
   if (new URLSearchParams(window.location.search).get("view") === "desktop") {
     document.documentElement.classList.add("archive-force-desktop");
   }
+
+  /* The mobile header is visual archive chrome. Rather than opening a stale
+     menu/search UI, send both controls to the live published article. */
+  var articleUrl = "https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/";
+  document.addEventListener("click", function (event) {
+    var control = event.target.closest(
+      ".sno-header-wrap-mobile .sno-hac-menu-icon, .sno-header-wrap-mobile .sno-hac-search-icon"
+    );
+    if (!control) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    var opened = window.open(articleUrl, "_blank");
+    if (opened) opened.opener = null;
+  }, true);
 })();
 </script>
 <style id="archive-portfolio-overrides">
