@@ -183,6 +183,19 @@
 a[target="_blank"] { cursor: pointer; }
 </style>
 <link rel="stylesheet" href="technician-freeze.css" data-archive-frozen-layout="1"/>
+
+<script>
+(function () {
+  if (new URLSearchParams(window.location.search).get("view") === "desktop") {
+    document.documentElement.classList.add("archive-force-desktop");
+  }
+})();
+</script>
+<style id="archive-force-desktop-css">
+html.archive-force-desktop .sno-header-wrap-desktop { display: block !important; }
+html.archive-force-desktop .sno-header-wrap-tablet,
+html.archive-force-desktop .sno-header-wrap-mobile { display: none !important; }
+</style>
 </head>
 <body class="sno-animate-active" data-rsssl="1">
 <div class="bodywrap" data-desktop-breakpoint="1200" data-mobile-breakpoint="600" data-post-template="full" data-tablet-breakpoint="900" id="wrap">
