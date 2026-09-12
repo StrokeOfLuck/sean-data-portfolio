@@ -73,17 +73,19 @@ jobs:
                   changed = True
 
           original_article = "https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/"
-          mobile_header = f'''<div class="archive-mobile-header" data-archive-mobile-header="1">
-<a class="archive-mobile-header__button archive-mobile-header__menu" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">
-<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
-</a>
-<a class="archive-mobile-header__logo" href="https://technicianonline.com/" target="_blank" rel="noopener noreferrer" aria-label="Technician home">
-<img src="https://technicianonline.com/wp-content/uploads/2025/05/58d6e5cc-705c-11e6-a234-ff2269afdda9.webp" alt="Technician"/>
-</a>
-<a class="archive-mobile-header__button archive-mobile-header__search" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">
-<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13.5" cy="13.5" r="8.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 20l7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-</a>
-</div>'''
+          mobile_header = (
+              '<div class="archive-mobile-header" data-archive-mobile-header="1">\n'
+              f'<a class="archive-mobile-header__button archive-mobile-header__menu" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">\n'
+              '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24M4 16h24M4 24h24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>\n'
+              '</a>\n'
+              '<a class="archive-mobile-header__logo" href="https://technicianonline.com/" target="_blank" rel="noopener noreferrer" aria-label="Technician home">\n'
+              '<img src="https://technicianonline.com/wp-content/uploads/2025/05/58d6e5cc-705c-11e6-a234-ff2269afdda9.webp" alt="Technician"/>\n'
+              '</a>\n'
+              f'<a class="archive-mobile-header__button archive-mobile-header__search" href="{original_article}" target="_blank" rel="noopener noreferrer" aria-label="Open original Technician article">\n'
+              '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13.5" cy="13.5" r="8.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 20l7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>\n'
+              '</a>\n'
+              '</div>'
+          )
           if 'data-archive-mobile-header="1"' not in html:
               body_anchor = '<div class="bodywrap" data-desktop-breakpoint="1200"'
               idx = html.find(body_anchor)
