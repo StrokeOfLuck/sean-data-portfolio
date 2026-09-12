@@ -29,6 +29,65 @@ jobs:
           ref: gh-pages
           path: site
 
+      - name: Sync latest publication snapshot into repository
+        run: |
+          set -euo pipefail
+
+          SNAPSHOT='source/projects/assets/park-it-here/technician-publication-snapshot.png'
+          TMP='/tmp/technician-publication-snapshot.png'
+          DRIVE_URL='https://drive.google.com/uc?export=download&id=1ME743-sSD243gDGnAgk4nuSaxt24VyGw'
+          EXPECTED_SHA='afe97d08cff006030ad5a28678d10d6562e5c97d3989fbca3cf0038d55141acb'
+
+          curl -L --fail --retry 3 --retry-delay 2 \
+            -A 'Mozilla/5.0' \
+            "$DRIVE_URL" \
+            -o "$TMP"
+
+          ACTUAL_SHA="$(sha256sum "$TMP" | awk '{print $1}')"
+          if [ "$ACTUAL_SHA" != "$EXPECTED_SHA" ]; then
+            echo "Snapshot hash mismatch"
+            echo "Expected: $EXPECTED_SHA"
+            echo "Actual:   $ACTUAL_SHA"
+            file "$TMP" || true
+            exit 1
+          fi
+
+          mkdir -p "$(dirname "$SNAPSHOT")"
+          mv "$TMP" "$SNAPSHOT"
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          qmd = Path('source/projects/park-it-here.qmd')
+          text = qmd.read_text(encoding='utf-8')
+          drive = 'https://drive.google.com/file/d/1ME743-sSD243gDGnAgk4nuSaxt24VyGw/view?usp=drivesdk'
+          local = 'assets/park-it-here/technician-publication-snapshot.png'
+          if drive in text:
+              text = text.replace(drive, local)
+              qmd.write_text(text, encoding='utf-8')
+
+          obsolete = Path('source/projects/assets/park-it-here/technician-publication-snapshot.jpg.b64')
+          if obsolete.exists():
+              obsolete.unlink()
+          PY
+
+          echo "Verified exact snapshot: $(stat -c%s "$SNAPSHOT") bytes"
+
+      - name: Commit source snapshot and cleanup
+        working-directory: source
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add projects/assets/park-it-here/technician-publication-snapshot.png
+          git add projects/park-it-here.qmd
+          git add -u projects/assets/park-it-here/technician-publication-snapshot.jpg.b64
+          if git diff --cached --quiet; then
+            echo 'Source snapshot already current.'
+          else
+            git commit -m 'Replace Technician publication snapshot'
+            git push origin main
+          fi
+
       - name: Restore snapshot, photo, icons and fidelity stylesheets
         run: |
           set -euo pipefail
@@ -37,9 +96,6 @@ jobs:
           PHOTO_URL='https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg'
           mkdir -p "$(dirname "$PHOTO")"
 
-          # Preserve the newly added Technician lead image locally on gh-pages.
-          # Once it has been archived, subsequent runs keep the local copy even
-          # if the publication later removes or replaces the source asset.
           if [ ! -s "$PHOTO" ]; then
             curl -L --fail --retry 3 --retry-delay 2 \
               -A 'Mozilla/5.0' \
@@ -78,6 +134,17 @@ jobs:
               shutil.rmtree(icon_dst)
           shutil.copytree(icon_src, icon_dst)
 
+          # The current rendered page may still contain the temporary Drive link
+          # from the previous deploy. Point it at the repo-hosted snapshot now.
+          rendered = site / "projects/park-it-here.html" if False else Path("site/projects/park-it-here.html")
+          if rendered.exists():
+              page = rendered.read_text(encoding="utf-8")
+              page = page.replace(
+                  "https://drive.google.com/file/d/1ME743-sSD243gDGnAgk4nuSaxt24VyGw/view?usp=drivesdk",
+                  "assets/park-it-here/technician-publication-snapshot.png",
+              )
+              rendered.write_text(page, encoding="utf-8")
+
           archive = site_dir / "park-it-here-archive.html"
           html = archive.read_text(encoding="utf-8")
           markers = [
@@ -92,9 +159,6 @@ jobs:
                   html = html.replace("</head>", marker + "\n</head>", 1)
                   changed = True
 
-          # Technician added a lead photo after publication. Preserve the exact
-          # current image, credit and caption immediately before the first Spin
-          # Datawrapper map so the archive follows the live article's new order.
           photo_marker = 'data-archive-added-photo="spin-scooter-alex-manuel"'
           if photo_marker not in html:
               first_map = "https://datawrapper.dwcdn.net/28Wwl/"
@@ -118,9 +182,6 @@ jobs:
               html = html[:insert_at] + photo_html + html[insert_at:]
               changed = True
 
-          # Older preservation passes injected a second mobile masthead. The
-          # captured Technician HTML already includes its genuine phone header,
-          # so remove the duplicate if it is ever present in a published copy.
           mobile_marker = '<div class="archive-mobile-header" data-archive-mobile-header="1">'
           while mobile_marker in html:
               start = html.index(mobile_marker)
@@ -130,9 +191,6 @@ jobs:
               html = html[:start] + html[end + len('</div>'):]
               changed = True
 
-          # Full-page screenshots do not necessarily scroll through the page,
-          # so lazy Datawrapper iframes may never initialize. Load the preserved
-          # live maps eagerly instead; their own postMessage sizing still applies.
           lazy = 'class="dw-live-frame" data-external="1" frameborder="0" loading="lazy"'
           eager = 'class="dw-live-frame" data-external="1" frameborder="0" loading="eager"'
           if lazy in html:
@@ -158,6 +216,7 @@ jobs:
           git add projects/assets/park-it-here/icons
           git add projects/assets/park-it-here/spin-scooter-alex-manuel.jpg
           git add projects/assets/park-it-here/park-it-here-archive.html
+          git add projects/park-it-here.html
           if git diff --cached --quiet; then
             echo 'Published archive already finalized.'
             exit 0
