@@ -80,7 +80,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add projects/assets/park-it-here/technician-publication-snapshot.png
           git add projects/park-it-here.qmd
-          git add -u projects/assets/park-it-here/technician-publication-snapshot.jpg.b64
+          git add -u projects/assets/park-it-here/
           if git diff --cached --quiet; then
             echo 'Source snapshot already current.'
           else
@@ -136,7 +136,7 @@ jobs:
 
           # The current rendered page may still contain the temporary Drive link
           # from the previous deploy. Point it at the repo-hosted snapshot now.
-          rendered = site / "projects/park-it-here.html" if False else Path("site/projects/park-it-here.html")
+          rendered = Path("site/projects/park-it-here.html")
           if rendered.exists():
               page = rendered.read_text(encoding="utf-8")
               page = page.replace(
