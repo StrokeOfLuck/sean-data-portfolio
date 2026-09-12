@@ -29,7 +29,7 @@ jobs:
           ref: gh-pages
           path: site
 
-      - name: Restore snapshot and fidelity stylesheets
+      - name: Restore snapshot, icons and fidelity stylesheets
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -50,6 +50,14 @@ jobs:
                   raise SystemExit(f"Missing source asset: {src}")
               shutil.copy2(src, dst)
 
+          icon_src = source_dir / "icons"
+          icon_dst = site_dir / "icons"
+          if not icon_src.exists():
+              raise SystemExit(f"Missing icon directory: {icon_src}")
+          if icon_dst.exists():
+              shutil.rmtree(icon_dst)
+          shutil.copytree(icon_src, icon_dst)
+
           archive = site_dir / "park-it-here-archive.html"
           html = archive.read_text(encoding="utf-8")
           markers = [
@@ -67,7 +75,7 @@ jobs:
               archive.write_text(html, encoding="utf-8")
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
-          print("Technician fidelity stylesheets linked into preserved article.")
+          print("Technician fidelity stylesheets and local social icons copied into preserved article.")
           PY
 
       - name: Commit published archive fixes
@@ -78,6 +86,7 @@ jobs:
           git add projects/assets/park-it-here/technician-publication-snapshot.png
           git add projects/assets/park-it-here/technician-exact.css
           git add projects/assets/park-it-here/technician-final-tweaks.css
+          git add projects/assets/park-it-here/icons
           git add projects/assets/park-it-here/park-it-here-archive.html
           if git diff --cached --quiet; then
             echo 'Published archive already finalized.'
