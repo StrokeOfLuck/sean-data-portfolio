@@ -146,11 +146,65 @@ h1.sno-story-headline:not(.headline-wrap) {
   color: #cc0000 !important;
 }
 
-/* The colored 40px action buttons already match the live page. The SVG
-   glyphs inside them were substantially too small in the archive. */
+/* The button boxes, colors, corner radii, spacing and shadows already match
+   the live page almost exactly. What differed was the icon artwork. Use the
+   same Font Awesome families loaded by Technician instead of the simplified
+   hand-drawn SVG replacements in the preservation copy. */
 .sno-story-social-icons .archive-share-svg {
-  width: 28px !important;
-  height: 28px !important;
+  display: none !important;
+}
+
+.sno-story-social-icons .sno-row-icon-ring::before {
+  display: inline-block !important;
+  color: #ffffff !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  -webkit-font-smoothing: antialiased !important;
+  line-height: 1 !important;
+  font-size: 24px !important;
+}
+
+.sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
+  content: "\f086" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+}
+
+.sno-story-social-icons .like-row-icon .sno-row-icon-ring::before {
+  content: "\f164" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  font-size: 24px !important;
+}
+
+.sno-story-social-icons .facebook-row-icon .sno-row-icon-ring::before {
+  content: "\f39e" !important;
+  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands" !important;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+}
+
+.sno-story-social-icons .twitter-row-icon .sno-row-icon-ring::before {
+  content: "\e61f" !important;
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+  font-size: 24px !important;
+}
+
+.sno-story-social-icons .email-row-icon .sno-row-icon-ring::before {
+  content: "\f0e0" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  font-size: 23px !important;
+}
+
+.sno-story-social-icons .print-row-icon .sno-row-icon-ring::before {
+  content: "\f02f" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+  font-size: 23px !important;
 }
 
 @media only screen and (max-width: 800px) {
