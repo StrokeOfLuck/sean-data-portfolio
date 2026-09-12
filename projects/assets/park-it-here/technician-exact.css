@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
+/* Static-archive fidelity layer.
+   The captured Technician stylesheet (technician-freeze.css) already contains
+   the publication's actual typography and spacing. Keep the same font-family
+   names here without importing substitute webfonts, so the archive resolves
+   them exactly the same way as the live page in the same browser. */
 
-/* Fidelity overrides tuned against the live Technician page capture. */
 body,
 #wrap,
 #upperwrap {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: "Source Serif 4" !important;
   font-weight: 400 !important;
 }
 
@@ -15,7 +18,7 @@ body,
   line-height: 50px !important;
   height: 50px !important;
   font-weight: normal !important;
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: "Playfair Display" !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   width: 100% !important;
@@ -27,14 +30,14 @@ body,
   color: #ffffff !important;
   line-height: 50px !important;
   font-size: 16px !important;
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: "Playfair Display" !important;
   font-weight: normal !important;
 }
 
 .sno-hac-inner-desktop-4 .sno-hac-menuwrap li a:not(.menuheadline) {
   color: #ffffff !important;
   line-height: 50px !important;
-  font-family: "Playfair Display", Georgia, serif !important;
+  font-family: "Playfair Display" !important;
   font-weight: normal !important;
 }
 
@@ -44,10 +47,8 @@ body,
   color: #000000 !important;
 }
 
-/* The live site adds the Superfish dropdown class with JavaScript. In the
-   static archive, draw the same arrow directly on menu items with children.
-   The measurements below also reproduce the tighter Multimedia/Submissions
-   spacing visible on the live page. */
+/* Superfish adds this arrow class on the live site with JavaScript.
+   Recreate only the missing static state, retaining the measured spacing. */
 .sno-hac-inner-desktop-4 #menu-menu-tester > li.menu-item-has-children > a {
   position: relative !important;
   padding-right: 2.125em !important;
@@ -75,26 +76,22 @@ body,
   padding-top: 20px !important;
 }
 
-/* The mirror was about five pixels too high relative to the navigation bar. */
 .sno-story-wrap {
-  padding: 40px 0 35px 0 !important;
+  padding: 35px 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
   max-width: 1200px !important;
   width: 800px !important;
 }
 
-/* The live page capture uses a bold serif headline, not the sans-serif
-   fallback that was appearing in the mirror. */
 h1.sno-story-headline {
   margin-top: 0 !important;
   font-size: 44px !important;
   line-height: 1.35em !important;
   text-align: left !important;
   margin-bottom: 0 !important;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
-  font-weight: 700 !important;
-  letter-spacing: 0 !important;
+  font-family: "Myriad Pro" !important;
+  font-weight: 600 !important;
 }
 
 h1.sno-story-headline:not(.headline-wrap) {
@@ -105,7 +102,7 @@ h1.sno-story-headline:not(.headline-wrap) {
 
 .sno-story-byline.byline-post-162505 {
   font-size: 16px !important;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: "Source Serif 4" !important;
   font-weight: 400 !important;
   font-style: normal !important;
   letter-spacing: 0 !important;
@@ -126,14 +123,14 @@ h1.sno-story-headline:not(.headline-wrap) {
   font-size: 20px !important;
   line-height: 1.4em !important;
   margin-bottom: 15px !important;
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: "Source Serif 4" !important;
   color: #000000 !important;
 }
 
 .sno-story-body ul,
 .sno-story-body ol,
 .sno-story-body li {
-  font-family: "Source Serif 4", Georgia, "Times New Roman", serif !important;
+  font-family: "Source Serif 4" !important;
   color: #000000 !important;
 }
 
@@ -146,73 +143,11 @@ h1.sno-story-headline:not(.headline-wrap) {
   color: #cc0000 !important;
 }
 
-/* The button boxes, colors, corner radii, spacing and shadows already match
-   the live page almost exactly. What differed was the icon artwork. Use the
-   same Font Awesome families loaded by Technician instead of the simplified
-   hand-drawn SVG replacements in the preservation copy. */
-.sno-story-social-icons .archive-share-svg {
-  display: none !important;
-}
-
-.sno-story-social-icons .sno-row-icon-ring::before {
-  display: inline-block !important;
-  color: #ffffff !important;
-  font-style: normal !important;
-  font-variant: normal !important;
-  text-rendering: auto !important;
-  -webkit-font-smoothing: antialiased !important;
-  line-height: 1 !important;
-  font-size: 24px !important;
-}
-
-.sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
-  content: "\f086" !important;
-  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
-  font-weight: 400 !important;
-  font-size: 25px !important;
-}
-
-.sno-story-social-icons .like-row-icon .sno-row-icon-ring::before {
-  content: "\f164" !important;
-  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
-  font-weight: 900 !important;
-  font-size: 24px !important;
-}
-
-.sno-story-social-icons .facebook-row-icon .sno-row-icon-ring::before {
-  content: "\f39e" !important;
-  font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands" !important;
-  font-weight: 400 !important;
-  font-size: 25px !important;
-}
-
-.sno-story-social-icons .twitter-row-icon .sno-row-icon-ring::before {
-  content: "\e61f" !important;
-  font-family: "Font Awesome 6 Brands" !important;
-  font-weight: 400 !important;
-  font-size: 24px !important;
-}
-
-.sno-story-social-icons .email-row-icon .sno-row-icon-ring::before {
-  content: "\f0e0" !important;
-  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
-  font-weight: 900 !important;
-  font-size: 23px !important;
-}
-
-.sno-story-social-icons .print-row-icon .sno-row-icon-ring::before {
-  content: "\f02f" !important;
-  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
-  font-weight: 900 !important;
-  font-size: 23px !important;
-}
-
 @media only screen and (max-width: 800px) {
   .sno-story-wrap {
     width: 100% !important;
     max-width: 100% !important;
   }
-
   h1.sno-story-headline {
     margin-left: 20px !important;
     margin-right: 20px !important;
@@ -220,6 +155,10 @@ h1.sno-story-headline:not(.headline-wrap) {
 }
 
 @media only screen and (max-width: 600px) {
+  h1.sno-story-headline {
+    font-size: 20px !important;
+    line-height: 1.35em !important;
+  }
   .sno-story-body p:not(.infographic-widget-container p),
   .sno-story-body p.pullquotetext,
   .sno-story-body p.quotespeaker,
