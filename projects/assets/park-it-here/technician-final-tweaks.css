@@ -188,6 +188,21 @@
     margin-right: 0 !important;
   }
 
+  /* The live mobile search control uses the same black field as the masthead,
+     with a thin dark-gray outline and a visibly larger magnifier. */
+  .sno-header-wrap-mobile .sno-hac-mobile-3 .sno-hac-search-icon {
+    box-sizing: border-box !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #303030 !important;
+    box-shadow: none !important;
+  }
+
+  .sno-header-wrap-mobile .sno-hac-mobile-3 .sno-hac-search-icon .archive-ui-svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
   .sno-story-page {
     width: 100% !important;
     max-width: none !important;
