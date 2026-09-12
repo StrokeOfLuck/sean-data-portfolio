@@ -71,11 +71,21 @@ jobs:
                       raise SystemExit("Published archive is missing </head>")
                   html = html.replace("</head>", marker + "\n</head>", 1)
                   changed = True
+
+          # Full-page screenshots do not necessarily scroll through the page,
+          # so lazy Datawrapper iframes may never initialize. Load the preserved
+          # live maps eagerly instead; their own postMessage sizing still applies.
+          lazy = 'class="dw-live-frame" data-external="1" frameborder="0" loading="lazy"'
+          eager = 'class="dw-live-frame" data-external="1" frameborder="0" loading="eager"'
+          if lazy in html:
+              html = html.replace(lazy, eager)
+              changed = True
+
           if changed:
               archive.write_text(html, encoding="utf-8")
 
           print(f"Snapshot: {(site_dir / 'technician-publication-snapshot.png').stat().st_size:,} bytes")
-          print("Technician fidelity stylesheets and local social icons copied into preserved article.")
+          print("Technician fidelity stylesheets, live maps and local social icons copied into preserved article.")
           PY
 
       - name: Commit published archive fixes
