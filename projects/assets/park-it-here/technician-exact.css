@@ -147,6 +147,17 @@ h1.sno-story-headline:not(.headline-wrap) {
   border-bottom: 0 solid #eeeeee !important;
 }
 
+.sno-story-byline.byline-post-162505 .byline-inner-container,
+.sno-story-byline.byline-post-162505 .byline-name,
+.sno-story-byline.byline-post-162505 .byline-job,
+.sno-story-byline.byline-post-162505 .time-wrapper {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+  letter-spacing: inherit !important;
+}
+
 .sno-story-byline.byline-post-162505 a {
   color: #cc0000 !important;
 }
@@ -196,11 +207,11 @@ h1.sno-story-headline:not(.headline-wrap) {
   color: #cc0000 !important;
 }
 
-/* Match the newly added Technician lead-photo caption. The live article runs
-   directly from the caption card into the first Datawrapper block. */
+/* Match the newly added Technician lead-photo caption and the visible white
+   separation before the first Datawrapper map. */
 .archive-technician-photo {
   width: 100% !important;
-  margin: 0 !important;
+  margin: 0 0 25px !important;
   background: #eeeeee !important;
 }
 
@@ -231,6 +242,51 @@ h1.sno-story-headline:not(.headline-wrap) {
   margin: 0 0 11px !important;
   color: #cc0000 !important;
   font: inherit !important;
+}
+
+/* The contributor module was added to Technician after the original scrape. */
+.archive-contributor {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  margin: 24px 0 44px !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-family: "Source Serif 4" !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.archive-contributor-title {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-family: "Source Serif 4" !important;
+  font-size: 28px !important;
+  line-height: 1.2em !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.archive-contributor-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  font-family: "Source Serif 4" !important;
+  font-size: 20px !important;
+  line-height: 1.3em !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  letter-spacing: 0 !important;
+}
+
+.archive-contributor-line a,
+.archive-contributor-line a:visited,
+.archive-contributor-line a:hover,
+.archive-contributor-line a:focus {
+  color: #000000 !important;
+  font: inherit !important;
+  text-decoration: none !important;
 }
 
 /* Reassert the captured footer typography after remote Technician CSS so the
@@ -286,6 +342,16 @@ h1.sno-story-headline:not(.headline-wrap) {
     line-height: 1.4em !important;
   }
   .archive-technician-photo {
-    margin-bottom: 0 !important;
+    margin-bottom: 25px !important;
+  }
+  .archive-contributor {
+    width: auto !important;
+    margin: 22px 20px 36px !important;
+  }
+  .archive-contributor-title {
+    font-size: 24px !important;
+  }
+  .archive-contributor-line {
+    font-size: 18px !important;
   }
 }
