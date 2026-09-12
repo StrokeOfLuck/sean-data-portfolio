@@ -85,8 +85,7 @@ toc: false
   margin-top:auto;
 }
 
-.park-actions a,
-.park-print-button {
+.park-actions a {
   display:flex;
   align-items:center;
   justify-content:center;
@@ -100,8 +99,7 @@ toc: false
   transition:transform 140ms ease, box-shadow 140ms ease;
 }
 
-.park-actions a:hover,
-.park-print-button:hover {
+.park-actions a:hover {
   transform:translateY(-1px);
 }
 
@@ -111,17 +109,10 @@ toc: false
   background:var(--bs-primary);
 }
 
-.park-secondary,
-.park-print-button {
+.park-secondary {
   color:var(--bs-body-color) !important;
   border:1px solid rgba(127,127,127,.35);
   background:var(--bs-body-bg);
-}
-
-.park-note {
-  margin:.75rem 0 0;
-  color:var(--bs-secondary-color);
-  font-size:.82rem;
 }
 
 .park-preview-wrap {
@@ -241,9 +232,8 @@ toc: false
       <div class="park-actions">
         <a class="park-primary" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Read on Technician ↗</a>
         <a class="park-secondary" href="park-it-here-archive.html" target="_blank" rel="noopener noreferrer">Open preserved article ↗</a>
-        <a class="park-secondary" href="assets/park-it-here/park-it-here-sean-ryan.pdf" download>Download PDF</a>
+        <a class="park-secondary" href="assets/park-it-here/park-it-here-sean-ryan.pdf" download>Download reading copy PDF</a>
       </div>
-      <p class="park-note">Original publication and preserved copy open in a new tab. The PDF is a clean static reading copy with the maps preserved.</p>
     </section>
 
     <section class="park-preview-wrap" aria-label="Preview of the published Technician article">
