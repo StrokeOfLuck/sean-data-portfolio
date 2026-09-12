@@ -62,7 +62,7 @@
 }
 .sno-story-social-icons .email-row-icon .sno-row-icon-ring {
   background-image: url("icons/envelope.svg") !important;
-  background-size: 21px 15px !important;
+  background-size: 27px 20px !important;
 }
 .sno-story-social-icons .print-row-icon .sno-row-icon-ring {
   background-image: url("icons/print.svg") !important;
@@ -108,6 +108,14 @@
 /* The archive already contains Technician's real mobile masthead. */
 .archive-mobile-header {
   display: none !important;
+}
+
+/* The captured footer social marks render a little smaller in the static copy
+   than they do on Technician. Keep the same spacing, but scale the glyphs up
+   to the visual size in the live header/footer social row. */
+.sno-hac-inner-desktop-footer-18 .archive-footer-svg {
+  width: 24px !important;
+  height: 24px !important;
 }
 
 @media only screen and (max-width: 600px) {
