@@ -50,8 +50,6 @@ jobs:
           source = Path("projects/assets/park-it-here/park-it-here-sean-ryan.pdf.b64")
           target = Path("projects/assets/park-it-here/park-it-here-sean-ryan.pdf")
 
-          # Strip any accidental non-base64 characters introduced while the
-          # text asset was committed, then normalize padding before decoding.
           encoded = re.sub(r"[^A-Za-z0-9+/=]", "", source.read_text(encoding="utf-8"))
           encoded = encoded.rstrip("=")
           encoded += "=" * (-len(encoded) % 4)
@@ -64,6 +62,30 @@ jobs:
           print(f"Restored {target} ({len(decoded):,} bytes)")
           PY
           file projects/assets/park-it-here/park-it-here-sean-ryan.pdf
+
+      - name: Restore preserved Technician article
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          import gzip
+          import re
+
+          source = Path("projects/assets/park-it-here/park-it-here-archive.html.gz.b64")
+          target = Path("projects/assets/park-it-here/park-it-here-archive.html")
+
+          encoded = re.sub(r"[^A-Za-z0-9+/=]", "", source.read_text(encoding="utf-8"))
+          encoded = encoded.rstrip("=")
+          encoded += "=" * (-len(encoded) % 4)
+          compressed = base64.b64decode(encoded, validate=False)
+          html = gzip.decompress(compressed)
+
+          if b"Park it here? E-bike and scooter rules differ across NC State" not in html:
+              raise SystemExit("Restored Technician archive failed validation")
+
+          target.write_bytes(html)
+          print(f"Restored {target} ({len(html):,} bytes)")
+          PY
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
