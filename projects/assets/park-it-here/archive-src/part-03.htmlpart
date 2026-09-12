@@ -1,0 +1,65 @@
+<label class="assistive-text" for="s-desktop-5">Search this site</label>
+<input class="field hac-search" id="s-desktop-5" name="s" placeholder="Enter Search Term" type="text"/>
+<button class="sno-hac-submit-search-button sno-search archive-icon-only" type="submit"><svg aria-hidden="true" class="archive-ui-svg" viewbox="0 0 24 24">
+<circle cx="10.5" cy="10.5" fill="none" r="6.2" stroke="currentColor" stroke-width="2.2"></circle>
+<path d="m15.2 15.2 5 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path>
+</svg><span class="icon-hidden-text">Submit Search</span></button>
+</div>
+</form>
+</div>
+</div> </div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="sno-header-wrap sno-header-wrap-tablet sno-header-tablet-standard" style="">
+<div class="sno-designer-area-row sno-designer-area-row-tablet-1 sno-designer-row-fullscreen" style="background: #000000; ">
+<div class="sno-hac-row-wrap">
+<div class="sno-designer-area-container sno-hac-tablet-1" style="width: 13%; height: 95px;">
+<div class="sno-hac-inner sno-hac-inner-tablet-1">
+<div class="sno-hac-textwrap sno-menu-center-v">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Open Navigation Menu" class="sno-hac-menu-icon sno-hac-menu-side" data-menu-id="tablet-1-14">
+<i class="archive-icon-only"><svg aria-hidden="true" class="archive-ui-svg" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path>
+</svg></i>
+<span class="icon-hidden-text">Open Navigation Menu</span>
+</button>
+</div>
+</div>
+<div aria-modal="true" class="sno-hac-hamburger-menu sno-hac-hamburger-menu-tablet-1-14 sno-hac-menu-side-display" role="dialog">
+<nav aria-label="Secondary navigation">
+<div class="sno-hac-menu-wrap">
+<div class="sno-hac-menu-mobile-header">
+<div aria-label="Close Navigation Menu" class="sno-hac-menu-mobile-close" tabindex="0">
+<i class="archive-icon-only"><svg aria-hidden="true" class="archive-ui-svg" viewbox="0 0 24 24">
+<path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path>
+</svg></i>
+</div>
+<div class="sno-hac-menu-mobile-name">
+<a href="https://technicianonline.com/" rel="noopener noreferrer" target="_blank">Technician</a>
+</div>
+</div>
+<div class="menu-main-navigation-container"><ul class="sf-menu" id="menu-main-navigation"><li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-176" id="menu-item-176"><a href="https://technicianonline.com/category/news/" rel="noopener noreferrer" target="_blank">News</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107699" id="menu-item-107699"><a href="https://technicianonline.com/category/news/poe-hall/" rel="noopener noreferrer" target="_blank">Poe Hall Updates</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107700" id="menu-item-107700"><a href="https://technicianonline.com/category/events/" rel="noopener noreferrer" target="_blank">Events</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107701" id="menu-item-107701"><a href="https://technicianonline.com/category/profiles/" rel="noopener noreferrer" target="_blank">Profiles</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107702" id="menu-item-107702"><a href="https://technicianonline.com/category/news/student-government/" rel="noopener noreferrer" target="_blank">Student Government</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107703" id="menu-item-107703"><a href="https://technicianonline.com/category/university/" rel="noopener noreferrer" target="_blank">University</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177" id="menu-item-177"><a href="https://technicianonline.com/category/sports/" rel="noopener noreferrer" target="_blank">Sports</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107704" id="menu-item-107704"><a href="https://technicianonline.com/category/sports/baseball/" rel="noopener noreferrer" target="_blank">Baseball</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107705" id="menu-item-107705"><a href="https://technicianonline.com/category/sports/club-sports/" rel="noopener noreferrer" target="_blank">Club Sports</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107706" id="menu-item-107706"><a href="https://technicianonline.com/category/sports/cross-country/" rel="noopener noreferrer" target="_blank">Cross Country</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107707" id="menu-item-107707"><a href="https://technicianonline.com/category/sports/football/" rel="noopener noreferrer" target="_blank">Football</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107708" id="menu-item-107708"><a href="https://technicianonline.com/category/sports/golf/" rel="noopener noreferrer" target="_blank">Golf</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107709" id="menu-item-107709"><a href="https://technicianonline.com/category/sports/gymnastics/" rel="noopener noreferrer" target="_blank">Gymnastics</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107710" id="menu-item-107710"><a href="https://technicianonline.com/category/sports/hockey/" rel="noopener noreferrer" target="_blank">Hockey</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107711" id="menu-item-107711"><a href="https://technicianonline.com/category/sports/mens-basketball/" rel="noopener noreferrer" target="_blank">Men’s Basketball</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107712" id="menu-item-107712"><a href="https://technicianonline.com/category/sports/rifle/" rel="noopener noreferrer" target="_blank">Rifle</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107714" id="menu-item-107714"><a href="https://technicianonline.com/category/sports/soccer/" rel="noopener noreferrer" target="_blank">Soccer</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107713" id="menu-item-107713"><a href="https://technicianonline.com/category/sports/softball/" rel="noopener noreferrer" target="_blank">Softball</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107715" id="menu-item-107715"><a href="https://technicianonline.com/category/sports/swimming-and-diving/" rel="noopener noreferrer" target="_blank">Swimming and Diving</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-107716" id="menu-item-107716"><a href="https://technicianonline.com/category/sports/tennis/" rel="noopener noreferrer" target="_blank">Tennis</a></li>
