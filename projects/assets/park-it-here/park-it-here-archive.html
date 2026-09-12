@@ -187,8 +187,8 @@ a[target="_blank"] { cursor: pointer; }
 <script>
 (function () {
   var params = new URLSearchParams(window.location.search);
-  var forceDesktop = params.get("view") === "desktop";
   var embedDesktop = params.get("embed") === "1";
+  var forceDesktop = params.get("view") === "desktop" && (embedDesktop || window.innerWidth > 600);
 
   if (forceDesktop) {
     document.documentElement.classList.add("archive-force-desktop");
