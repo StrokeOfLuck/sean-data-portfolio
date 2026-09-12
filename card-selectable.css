@@ -21,3 +21,17 @@
   color: inherit;
   text-decoration: underline;
 }
+
+/* The first featured project uses Datawrapper's plain export as a thumbnail.
+   Crop it into the map itself so the chart footer/credit strip is not part of
+   the card art. Attribution remains intact in the full article and archive. */
+.featured-projects .featured-project-card:first-child .project-card-image img {
+  object-fit: cover !important;
+  object-position: center 46% !important;
+  transform: scale(1.16) !important;
+  transform-origin: center 46% !important;
+}
+
+.featured-projects .featured-project-card:first-child:hover .project-card-image img {
+  transform: scale(1.18) !important;
+}
