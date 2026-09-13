@@ -493,3 +493,137 @@
     line-height: 14px !important;
   }
 }
+
+/* Whole-page desktop geometry measured in the same browser as Technician. */
+@media only screen and (min-width: 601px) {
+  .archive-technician-photo::after {
+    height: 20px !important;
+  }
+
+  /* Native inline iframes leave 4px beneath the lead map. */
+  .sno-video-embed .dw-hybrid {
+    padding-bottom: 4px !important;
+  }
+
+  /* Body embeds have 7px of line-box descent plus a 15px paragraph margin. */
+  .sno-story-body-content > .dw-hybrid {
+    margin-bottom: 22px !important;
+  }
+  .sno-story-body-content > .dw-hybrid + p {
+    margin-top: 0 !important;
+  }
+
+  /* This block is inside the related-content wrapper, which supplies the
+     final 15px padding and 20px margin used by the native contributor box. */
+  .archive-contributor {
+    margin: 50px 0 0 !important;
+    padding: 0 0 6px !important;
+  }
+  .archive-contributor-title {
+    font-family: "Myriad Pro" !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    margin: 0 0 12px !important;
+  }
+  .archive-contributor-line {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    margin: 0 !important;
+  }
+
+  .sno-hac-inner-desktop-4 #menu-menu-tester > li.menu-item-has-children > a {
+    padding-right: 32px !important;
+  }
+  .sno-hac-inner-desktop-footer-5 .sno-hac-menuwrap li,
+  .sno-hac-inner-desktop-footer-9 .sno-hac-menuwrap li,
+  .sno-hac-inner-desktop-footer-13 .sno-hac-menuwrap li {
+    line-height: 30px !important;
+  }
+
+  /* Use the same glyphs, font versions and baselines as the publication. */
+  .sno-story-social-icons .sno-row-icon {
+    display: grid !important;
+    align-items: normal !important;
+    align-content: normal !important;
+    justify-items: normal !important;
+    justify-content: normal !important;
+  }
+  .sno-story-social-icons .sno-row-icon-ring {
+    display: block !important;
+    text-align: center !important;
+    background-image: none !important;
+  }
+  .sno-story-social-icons .sno-row-icon-ring::before {
+    display: inline-block !important;
+    font-size: 20px !important;
+    font-style: normal !important;
+    line-height: 42px !important;
+    color: #ffffff !important;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
+    content: "\f086" !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 400 !important;
+  }
+  .sno-story-social-icons .like-row-icon .sno-row-icon-ring::before {
+    content: "\f164" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+  .sno-story-social-icons .facebook-row-icon .sno-row-icon-ring::before {
+    content: "\f39e" !important;
+    font-family: "Font Awesome 5 Brands" !important;
+    font-weight: 400 !important;
+  }
+  .sno-story-social-icons .twitter-row-icon .sno-row-icon-ring::before {
+    content: "\e61b" !important;
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+  }
+  .sno-story-social-icons .email-row-icon .sno-row-icon-ring::before {
+    content: "\f0e0" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+  .sno-story-social-icons .print-row-icon .sno-row-icon-ring::before {
+    content: "\f02f" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+
+  .sno-hac-inner-desktop-footer-18 .sno-icon {
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-icon i {
+    display: none !important;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-icon::before {
+    display: inline-block !important;
+    font-size: 20px !important;
+    font-style: normal !important;
+    line-height: 30px !important;
+    color: #ffffff !important;
+    font-weight: 400 !important;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-facebook::before {
+    content: "\f39e" !important;
+    font-family: "Font Awesome 5 Brands" !important;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-instagram::before {
+    content: "\f16d" !important;
+    font-family: "Font Awesome 5 Brands" !important;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-twitter::before {
+    content: "\e61b" !important;
+    font-family: "Font Awesome 6 Brands" !important;
+  }
+  .sno-hac-inner-desktop-footer-18 .sno-youtube::before {
+    content: "\f167" !important;
+    font-family: "Font Awesome 5 Brands" !important;
+  }
+}
