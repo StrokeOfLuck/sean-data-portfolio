@@ -656,3 +656,149 @@
 .archive-technician-photo > .archive-technician-photo-image {
   overflow: hidden !important;
 }
+
+/* Phone rules restored from Technician's responsive styles on 2026-09-13.
+   These replace earlier screenshot-based estimates. Full phone rendering still
+   needs a same-device comparison; the verified desktop rules are unchanged. */
+@media only screen and (max-width: 600px) {
+  /* Preserve the native image ratio and its fixed 5px overflow crop. */
+  html:not(.archive-force-desktop) .archive-technician-photo img {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: -5px !important;
+    object-fit: cover !important;
+  }
+  html:not(.archive-force-desktop) .archive-technician-photo::after {
+    height: 20px !important;
+  }
+  html:not(.archive-force-desktop) .archive-technician-photo > figcaption {
+    padding: 0 20px 8px !important;
+    border: 1px solid #dddddd !important;
+    border-top: 0 !important;
+    font-size: 15px !important;
+    line-height: 21px !important;
+  }
+  html:not(.archive-force-desktop) .archive-technician-photo > figcaption > span {
+    margin: 0 !important;
+    padding: 8px 0 !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+
+  /* The original maps are inline iframes. Let the font's line box supply the
+     responsive baseline space; Datawrapper continues to size each iframe. */
+  html:not(.archive-force-desktop) .sno-video-embed .dw-hybrid {
+    height: auto !important;
+    padding-bottom: 0 !important;
+    font-size: 12px !important;
+    line-height: normal !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-body-content > .dw-hybrid {
+    height: auto !important;
+    margin-bottom: 15px !important;
+    font-size: 18px !important;
+    line-height: 1.4em !important;
+  }
+  html:not(.archive-force-desktop) .sno-video-embed .dw-hybrid .dw-live-frame,
+  html:not(.archive-force-desktop) .sno-story-body-content > .dw-hybrid .dw-live-frame {
+    display: inline !important;
+    vertical-align: baseline !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-body-content > .dw-hybrid + p {
+    margin-top: 0 !important;
+  }
+
+  /* Match the native floating share row and its clearing sibling. Using an
+     automatic width retains both 20px gutters without overflowing the page. */
+  html:not(.archive-force-desktop) .sno-story-social-icons {
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 20px !important;
+    clear: none !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icons {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    gap: normal !important;
+    transform: translateY(-50%) !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icon {
+    display: inline-grid !important;
+    position: relative !important;
+    float: left !important;
+    margin: 0 10px 10px 0 !important;
+    align-items: normal !important;
+    align-content: normal !important;
+    justify-items: normal !important;
+    justify-content: normal !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .print-row-icon {
+    display: none !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icon .sno-row-icon-ring {
+    display: block !important;
+    text-align: center !important;
+    background-image: none !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icon-ring::before {
+    display: inline-block !important;
+    font-size: 20px !important;
+    font-style: normal !important;
+    line-height: 42px !important;
+    color: #ffffff !important;
+    -webkit-font-smoothing: antialiased;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .comment-row-icon .sno-row-icon-ring::before {
+    content: "\f086" !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 400 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .like-row-icon .sno-row-icon-ring::before {
+    content: "\f164" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .facebook-row-icon .sno-row-icon-ring::before {
+    content: "\f39e" !important;
+    font-family: "Font Awesome 5 Brands" !important;
+    font-weight: 400 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .twitter-row-icon .sno-row-icon-ring::before {
+    content: "\e61b" !important;
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .email-row-icon .sno-row-icon-ring::before {
+    content: "\f0e0" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .like-count-bubble.like-count-display {
+    display: block !important;
+    box-sizing: content-box !important;
+    width: 14px !important;
+  }
+
+  /* The related-content wrapper supplies the contributor's final padding
+     and margin, as in the desktop archive's equivalent nested structure. */
+  html:not(.archive-force-desktop) .archive-contributor {
+    margin: 50px 0 0 !important;
+    padding: 0 0 6px !important;
+  }
+  html:not(.archive-force-desktop) .archive-contributor-title {
+    font-family: "Myriad Pro" !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    margin: 0 0 12px !important;
+  }
+  html:not(.archive-force-desktop) .archive-contributor-line {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: normal !important;
+    margin: 0 !important;
+  }
+}
