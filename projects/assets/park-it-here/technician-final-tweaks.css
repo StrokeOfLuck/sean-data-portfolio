@@ -1,18 +1,6 @@
 /* Final fidelity fixes measured against the live Technician capture. */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Source+Serif+4:wght@400&display=swap");
 
-/* The live desktop masthead's upper band measures 158px including its final
-   row pixel. The captured archive retained an older 137px container value,
-   which renders that band 15px too tall and makes the otherwise identical
-   logo and navigation appear to jump when switching tabs. */
-@media only screen and (min-width: 901px) {
-  .sno-header-wrap-desktop .sno-hac-desktop-1,
-  .sno-header-wrap-desktop .sno-hac-desktop-2,
-  .sno-header-wrap-desktop .sno-hac-desktop-3 {
-    height: 122px !important;
-  }
-}
-
 /* Technician's fixed desktop social rail geometry. */
 .sno-story-social-icons .sno-row-icons {
   width: 52px !important;
