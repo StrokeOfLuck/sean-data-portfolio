@@ -3,3 +3,63 @@
    and technician-exact.css preserves the live story typography at those widths.
    Do not force phone typography here: doing so shrinks the headline/byline and
    makes the unfolded foldable view diverge from the live Technician article. */
+
+/* The captured tablet masthead is the correct layout for unfolded foldables,
+   but its archived button defaults render differently from the live site.
+   Match the live screenshot without changing the tablet breakpoint itself. */
+@media only screen and (min-width: 601px) and (max-width: 979px) {
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon,
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #303030 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 0 !important;
+  }
+
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon > i.archive-icon-only,
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon > i.archive-icon-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    line-height: 0 !important;
+  }
+
+  /* The live tablet hamburger uses visibly longer bars than the archived
+     default, while staying centered in the same 47x44 control. */
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon {
+    width: 47px !important;
+    height: 44px !important;
+  }
+
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon .archive-ui-svg {
+    display: block !important;
+    width: 35px !important;
+    height: 35px !important;
+    vertical-align: 0 !important;
+    transform: none !important;
+  }
+
+  /* The live search mark is substantially larger than the frozen archive's
+     1em icon. Keep the button geometry fixed and scale only the SVG. */
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon {
+    width: 47px !important;
+    height: 44px !important;
+  }
+
+  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon .archive-ui-svg {
+    display: block !important;
+    width: 40px !important;
+    height: 40px !important;
+    vertical-align: 0 !important;
+    transform: none !important;
+  }
+}
