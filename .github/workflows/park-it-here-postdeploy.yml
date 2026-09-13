@@ -199,6 +199,15 @@ jobs:
               html = html[:insert_at] + photo_html + html[insert_at:]
               changed = True
 
+          # Use the native overflow crop instead of antialiased clip-path clipping.
+          cropped_html = re.sub(
+              r'(<figure class="archive-technician-photo"[^>]*>\s*)(<img\b[^>]*>)',
+              r'\1<div class="archive-technician-photo-image">\2</div>',
+              html,
+          )
+          changed = changed or cropped_html != html
+          html = cropped_html
+
           # Rebuild the contributor once, after the complete More in News block.
           contributor_start = html.find('<section class="archive-contributor"')
           while contributor_start != -1:
