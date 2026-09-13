@@ -211,6 +211,39 @@ jobs:
           changed = changed or cropped_html != html
           html = cropped_html
 
+          # Technician keeps the photo beside the video area, not inside it.
+          # Preserve the same ancestors around the lead iframe: Firefox's
+          # automatic text sizing can differ when its embedding layout differs.
+          photo_match = re.search(
+              r'<figure class="archive-technician-photo"[^>]*>.*?</figure>',
+              html,
+              re.S,
+          )
+          if photo_match is None:
+              raise SystemExit("Could not find the archived lead photo")
+          video_start = html.find('<div class="sno-story-video-area">')
+          if video_start == -1:
+              raise SystemExit("Could not find the lead video area")
+          if photo_match.start() > video_start:
+              photo_html = photo_match.group(0)
+              html = html[:photo_match.start()] + html[photo_match.end():]
+              html = html[:video_start] + photo_html + "\n" + html[video_start:]
+              changed = True
+
+          # Remove the redundant empty wrapper left around the live-map block.
+          # The native hierarchy is .sno-video-embed > div > iframe.
+          native_embed_html = re.sub(
+              r'(<div class="sno-video-embed">\s*)'
+              r'<div class="" style="height: unset; padding-bottom: unset; ">\s*'
+              r'(<div class="dw-hybrid"[^>]*>.*?</iframe></div>)\s*</div>',
+              r'\1\2',
+              html,
+              count=1,
+              flags=re.S,
+          )
+          changed = changed or native_embed_html != html
+          html = native_embed_html
+
           # Rebuild the contributor once, after the complete More in News block.
           contributor_start = html.find('<section class="archive-contributor"')
           while contributor_start != -1:

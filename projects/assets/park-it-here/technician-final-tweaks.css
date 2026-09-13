@@ -802,3 +802,25 @@
     margin: 0 !important;
   }
 }
+
+/* Match the native lead-embed structure and byline metrics seen in the
+   540px-wide Firefox phone captures. Keep the iframe's own responsive sizing. */
+@media only screen and (max-width: 600px) {
+  html:not(.archive-force-desktop) .sno-story-byline.byline-post-162505,
+  html:not(.archive-force-desktop) .sno-story-byline.byline-post-162505 * {
+    line-height: normal !important;
+  }
+
+  html:not(.archive-force-desktop) .sno-video-embed > .dw-hybrid {
+    position: static !important;
+  }
+  html:not(.archive-force-desktop) .sno-video-embed > .dw-hybrid > .dw-live-frame {
+    /* Datawrapper's native width/min-width combination also matches the
+       containing layout used by Firefox's automatic text sizing. */
+    width: 0 !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+    height: 677px;
+  }
+}
