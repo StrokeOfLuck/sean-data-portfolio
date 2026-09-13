@@ -33,8 +33,10 @@
     line-height: 0 !important;
   }
 
-  /* The live tablet hamburger uses visibly longer bars than the archived
-     default, while staying centered in the same 47x44 control. */
+  /* Pixel-matched against the live foldable screenshot. In the archived copy,
+     the three bars rendered about 43px wide and their visual center sat about
+     8 screenshot pixels too low. Shrink the SVG and lift it while leaving the
+     button box itself in the captured Technician position. */
   html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon {
     width: 47px !important;
     height: 44px !important;
@@ -42,10 +44,10 @@
 
   html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon .archive-ui-svg {
     display: block !important;
-    width: 35px !important;
-    height: 35px !important;
+    width: 30px !important;
+    height: 32px !important;
     vertical-align: 0 !important;
-    transform: none !important;
+    transform: translateY(-4.5px) !important;
   }
 
   /* The live search mark is substantially larger than the frozen archive's
