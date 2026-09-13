@@ -391,7 +391,7 @@
 /* Phone-only details measured against the live Technician screenshot. */
 @media only screen and (max-width: 600px) {
   /* Match the live hamburger: black fill, thin gray keyline, larger three-bar
-     mark, and true vertical centering inside the existing 74 x 69 px button. */
+     mark, and its lower visual center inside the existing 74 x 69 px button. */
   .sno-header-wrap-mobile .sno-hac-menu-icon {
     box-sizing: border-box !important;
     width: 74px !important;
@@ -419,28 +419,27 @@
 
   .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg {
     display: block !important;
-    width: 52px !important;
-    height: 52px !important;
+    width: 56px !important;
+    height: 56px !important;
     vertical-align: 0 !important;
-    transform: none !important;
+    transform: translateY(5px) !important;
   }
 
   .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg path {
     transform-box: view-box !important;
     transform-origin: center !important;
-    transform: scaleX(.91) !important;
+    transform: scaleX(1.02) !important;
   }
 
-  /* The live caption uses the same 20px phone gutter as story copy. Reducing
-     the type one pixel preserves the live line breaks inside that narrower
-     measure; the tighter leading and credit gap match the captured block. */
+  /* Match the live photo-credit block: slightly smaller copy with a narrower,
+     centered text measure and tighter line spacing beneath the full-width image. */
   .archive-technician-photo > figcaption {
-    padding: 6px 20px 12px !important;
+    padding: 6px 28px 12px !important;
     font-size: 15px !important;
-    line-height: 1.35em !important;
+    line-height: 1.33em !important;
   }
 
   .archive-technician-photo > figcaption > span {
-    margin-bottom: 6px !important;
+    margin-bottom: 7px !important;
   }
 }
