@@ -387,3 +387,60 @@
     overflow-x: hidden !important;
   }
 }
+
+/* Phone-only details measured against the live Technician screenshot. */
+@media only screen and (max-width: 600px) {
+  /* Match the live hamburger: black fill, thin gray keyline, larger three-bar
+     mark, and true vertical centering inside the existing 74 x 69 px button. */
+  .sno-header-wrap-mobile .sno-hac-menu-icon {
+    box-sizing: border-box !important;
+    width: 74px !important;
+    height: 69px !important;
+    padding: 0 !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #303030 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 0 !important;
+  }
+
+  .sno-header-wrap-mobile .sno-hac-menu-icon > i.archive-icon-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    line-height: 0 !important;
+  }
+
+  .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg {
+    display: block !important;
+    width: 52px !important;
+    height: 52px !important;
+    vertical-align: 0 !important;
+    transform: none !important;
+  }
+
+  .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg path {
+    transform-box: view-box !important;
+    transform-origin: center !important;
+    transform: scaleX(.91) !important;
+  }
+
+  /* The live caption uses the same 20px phone gutter as story copy. Reducing
+     the type one pixel preserves the live line breaks inside that narrower
+     measure; the tighter leading and credit gap match the captured block. */
+  .archive-technician-photo > figcaption {
+    padding: 6px 20px 12px !important;
+    font-size: 15px !important;
+    line-height: 1.35em !important;
+  }
+
+  .archive-technician-photo > figcaption > span {
+    margin-bottom: 6px !important;
+  }
+}
