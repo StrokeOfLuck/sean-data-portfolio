@@ -116,6 +116,7 @@ jobs:
               "technician-publication-snapshot.png",
               "technician-exact.css",
               "technician-final-tweaks.css",
+              "technician-foldable-mobile.css",
           ):
               src = source_dir / name
               dst = site_dir / name
@@ -149,6 +150,7 @@ jobs:
           markers = [
               '<link rel="stylesheet" href="technician-exact.css" data-archive-exact-styles="1"/>',
               '<link rel="stylesheet" href="technician-final-tweaks.css" data-archive-final-tweaks="1"/>',
+              '<link rel="stylesheet" href="technician-foldable-mobile.css" data-archive-foldable-mobile="1"/>',
           ]
           changed = False
           for marker in markers:
@@ -255,6 +257,7 @@ jobs:
           git add projects/assets/park-it-here/technician-publication-snapshot.png
           git add projects/assets/park-it-here/technician-exact.css
           git add projects/assets/park-it-here/technician-final-tweaks.css
+          git add projects/assets/park-it-here/technician-foldable-mobile.css
           git add projects/assets/park-it-here/icons
           git add projects/assets/park-it-here/spin-scooter-alex-manuel.jpg
           git add projects/assets/park-it-here/park-it-here-archive.html
