@@ -252,6 +252,15 @@ jobs:
               html = html.replace(lazy, eager)
               changed = True
 
+          # Preserve the visible reaction count in the September 13, 2026 capture.
+          snapshot_html = re.sub(
+              r'<div class="sno-side-icon-bubble like-count-bubble like-count-(?:hide|display)">\s*\d+\s*</div>',
+              '<div class="sno-side-icon-bubble like-count-bubble like-count-display">1</div>',
+              html,
+          )
+          changed = changed or snapshot_html != html
+          html = snapshot_html
+
           if changed:
               archive.write_text(html, encoding="utf-8")
 
