@@ -447,7 +447,7 @@
   /* Technician crops a small strip from the bottom of the lead photo on phone.
      The archive was showing the full 1200x801 image, which made the caption
      begin about 9 screenshot pixels too low. */
-  .archive-technician-photo > img {
+  .archive-technician-photo img {
     width: 100% !important;
     height: 65.5vw !important;
     object-fit: cover !important;
@@ -473,9 +473,9 @@
    8px bottom padding and a 1px bottom border. Keep phone rules above intact. */
 @media only screen and (min-width: 601px) {
   /* Technician hides the final 5px of the full-size image above the caption. */
-  .archive-technician-photo > img {
+  .archive-technician-photo img {
     margin-bottom: -5px !important;
-    clip-path: inset(0 0 5px 0) !important;
+    object-fit: cover !important;
   }
 
   .archive-technician-photo > figcaption {
@@ -650,4 +650,9 @@
     content: "\f002" !important;
     display: inline !important;
   }
+}
+
+/* Match the native overflow crop, including its fractional-pixel boundary. */
+.archive-technician-photo > .archive-technician-photo-image {
+  overflow: hidden !important;
 }
