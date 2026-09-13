@@ -1,90 +1,56 @@
-/* Foldable/tablet views intentionally use Technician's captured native breakpoints.
-   technician-freeze.css switches to the captured tablet masthead from 601–979px,
-   and technician-exact.css preserves the live story typography at those widths.
-   Do not force phone typography here: doing so shrinks the headline/byline and
-   makes the unfolded foldable view diverge from the live Technician article. */
-
-/* The captured tablet masthead is the correct layout for unfolded foldables,
-   but its archived button defaults render differently from the live site.
-   Match the live screenshot without changing the tablet breakpoint itself. */
-@media only screen and (min-width: 601px) and (max-width: 979px) {
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon,
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon {
+/* Technician uses the same 26px Font Awesome controls on phones and tablets.
+   Match the native button and inline glyph metrics instead of scaling and
+   translating approximate SVGs. The portfolio embed keeps its desktop layout. */
+@media only screen and (max-width: 979px) {
+  html:not(.archive-force-desktop) :is(.sno-header-wrap-mobile, .sno-header-wrap-tablet) :is(.sno-hac-menu-icon, .sno-hac-search-icon) {
     box-sizing: border-box !important;
+    width: 46px !important;
+    height: 44px !important;
+    display: block !important;
     padding: 0 !important;
+    margin: 0 auto !important;
+    border: 1px solid #333333 !important;
+    border-radius: 0 !important;
     background: #000000 !important;
     color: #ffffff !important;
-    border: 1px solid #303030 !important;
-    border-radius: 0 !important;
     box-shadow: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    line-height: 0 !important;
+    font-family: Arial !important;
+    font-size: 26px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 44px !important;
+    text-align: center !important;
+    align-items: normal !important;
+    justify-content: normal !important;
   }
 
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon > i.archive-icon-only,
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon > i.archive-icon-only {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    line-height: 0 !important;
-  }
-
-  /* Pixel-matched against the live foldable screenshot. In the archived copy,
-     the three bars rendered about 43px wide and their visual center sat about
-     8 screenshot pixels too low. Shrink the SVG and lift it while leaving the
-     button box itself in the captured Technician position. */
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon {
-    width: 47px !important;
-    height: 44px !important;
-  }
-
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-menu-icon .archive-ui-svg {
-    display: block !important;
-    width: 30px !important;
-    height: 32px !important;
-    vertical-align: 0 !important;
-    transform: translateY(-4.5px) !important;
-  }
-
-  /* The live search mark is substantially larger than the frozen archive's
-     1em icon. Keep the button geometry fixed and scale only the SVG. */
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon {
-    width: 47px !important;
-    height: 44px !important;
-  }
-
-  html:not(.archive-force-desktop) .sno-header-wrap-tablet .sno-hac-search-icon .archive-ui-svg {
-    display: block !important;
-    width: 40px !important;
-    height: 40px !important;
-    vertical-align: 0 !important;
+  html:not(.archive-force-desktop) :is(.sno-header-wrap-mobile, .sno-header-wrap-tablet) :is(.sno-hac-menu-icon, .sno-hac-search-icon) > i.archive-icon-only {
+    display: inline-block !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-size: 26px !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    line-height: 26px !important;
+    vertical-align: baseline !important;
     transform: none !important;
-  }
-}
-
-/* The unfolded Samsung screenshot is 658 physical pixels wide, but the page's
-   CSS viewport is still below Technician's 600px breakpoint. That means the
-   visible control is the MOBILE hamburger, not the tablet one above. Measured
-   directly against the matching live screenshot: the archived bar group was
-   about 42px wide vs 36px live and its center was about 8 physical pixels low.
-   Override the earlier mobile 35px / translateY(5px treatment here, after the
-   final-tweaks stylesheet, so the actual rendered control matches the live one. */
-@media only screen and (max-width: 600px) {
-  html:not(.archive-force-desktop) .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg {
-    display: block !important;
-    width: 30px !important;
-    height: 33px !important;
-    vertical-align: 0 !important;
-    transform: translateY(0) !important;
+    -webkit-font-smoothing: antialiased;
   }
 
-  html:not(.archive-force-desktop) .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg path {
-    transform-box: view-box !important;
-    transform-origin: center !important;
-    transform: scaleX(1) !important;
+  html:not(.archive-force-desktop) :is(.sno-header-wrap-mobile, .sno-header-wrap-tablet) :is(.sno-hac-menu-icon, .sno-hac-search-icon) .archive-ui-svg {
+    display: none !important;
+  }
+
+  html:not(.archive-force-desktop) :is(.sno-header-wrap-mobile, .sno-header-wrap-tablet) .sno-hac-menu-icon > i.archive-icon-only::before {
+    content: "\f0c9" !important;
+    display: inline !important;
+  }
+
+  html:not(.archive-force-desktop) :is(.sno-header-wrap-mobile, .sno-header-wrap-tablet) .sno-hac-search-icon > i.archive-icon-only::before {
+    content: "\f002" !important;
+    display: inline !important;
   }
 }

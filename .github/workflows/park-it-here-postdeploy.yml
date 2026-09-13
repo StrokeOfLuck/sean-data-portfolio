@@ -148,21 +148,24 @@ jobs:
 
           archive = site_dir / "park-it-here-archive.html"
           html = archive.read_text(encoding="utf-8")
-          # Request the current caption styles instead of a cached prior revision.
-          styles_revision = hashlib.sha256(
-              (source_dir / "technician-final-tweaks.css").read_bytes()
-          ).hexdigest()[:12]
-          revisioned_html = re.sub(
-              r'(href="technician-final-tweaks\.css)(?:\?[^"]*)?(")',
-              lambda match: f'{match[1]}?v={styles_revision}{match[2]}',
-              html,
-          )
-          changed = revisioned_html != html
-          html = revisioned_html
+          # Version both measured stylesheets so phone/foldable fixes refresh too.
+          style_revisions = {
+              name: hashlib.sha256((source_dir / name).read_bytes()).hexdigest()[:12]
+              for name in ("technician-final-tweaks.css", "technician-foldable-mobile.css")
+          }
+          changed = False
+          for name, revision in style_revisions.items():
+              revisioned_html = re.sub(
+                  r'(href="' + re.escape(name) + r')(?:\?[^"]*)?(")',
+                  lambda match, revision=revision: f'{match[1]}?v={revision}{match[2]}',
+                  html,
+              )
+              changed = changed or revisioned_html != html
+              html = revisioned_html
           markers = [
               '<link rel="stylesheet" href="technician-exact.css" data-archive-exact-styles="1"/>',
-              f'<link rel="stylesheet" href="technician-final-tweaks.css?v={styles_revision}" data-archive-final-tweaks="1"/>',
-              '<link rel="stylesheet" href="technician-foldable-mobile.css" data-archive-foldable-mobile="1"/>',
+              f'<link rel="stylesheet" href="technician-final-tweaks.css?v={style_revisions["technician-final-tweaks.css"]}" data-archive-final-tweaks="1"/>',
+              f'<link rel="stylesheet" href="technician-foldable-mobile.css?v={style_revisions["technician-foldable-mobile.css"]}" data-archive-foldable-mobile="1"/>',
           ]
           for marker in markers:
               if marker not in html:
