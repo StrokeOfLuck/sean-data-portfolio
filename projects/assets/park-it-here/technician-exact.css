@@ -247,11 +247,11 @@ h1.sno-story-headline:not(.headline-wrap) {
 }
 
 .archive-contributor-title {
-  margin: 0 0 18px !important;
+  margin: 0 0 10px !important;
   padding: 0 !important;
   color: #000000 !important;
   font-family: "Myriad Pro" !important;
-  font-size: 28px !important;
+  font-size: 26px !important;
   line-height: 1.15em !important;
   font-weight: 700 !important;
   font-style: normal !important;
@@ -263,7 +263,7 @@ h1.sno-story-headline:not(.headline-wrap) {
   padding: 0 !important;
   color: #000000 !important;
   font-family: "Source Serif 4" !important;
-  font-size: 20px !important;
+  font-size: 16px !important;
   line-height: 1.3em !important;
   font-weight: 700 !important;
   font-style: normal !important;
