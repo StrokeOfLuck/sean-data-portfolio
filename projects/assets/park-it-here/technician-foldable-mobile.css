@@ -65,3 +65,26 @@
     transform: none !important;
   }
 }
+
+/* The unfolded Samsung screenshot is 658 physical pixels wide, but the page's
+   CSS viewport is still below Technician's 600px breakpoint. That means the
+   visible control is the MOBILE hamburger, not the tablet one above. Measured
+   directly against the matching live screenshot: the archived bar group was
+   about 42px wide vs 36px live and its center was about 8 physical pixels low.
+   Override the earlier mobile 35px / translateY(5px treatment here, after the
+   final-tweaks stylesheet, so the actual rendered control matches the live one. */
+@media only screen and (max-width: 600px) {
+  html:not(.archive-force-desktop) .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg {
+    display: block !important;
+    width: 30px !important;
+    height: 33px !important;
+    vertical-align: 0 !important;
+    transform: translateY(0) !important;
+  }
+
+  html:not(.archive-force-desktop) .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg path {
+    transform-box: view-box !important;
+    transform-origin: center !important;
+    transform: scaleX(1) !important;
+  }
+}
