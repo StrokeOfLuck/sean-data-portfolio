@@ -550,7 +550,7 @@
     justify-items: normal !important;
     justify-content: normal !important;
   }
-  .sno-story-social-icons .sno-row-icon-ring {
+  .sno-story-social-icons .sno-row-icon .sno-row-icon-ring {
     display: block !important;
     text-align: center !important;
     background-image: none !important;
@@ -598,7 +598,8 @@
     display: inline-block !important;
     text-align: center !important;
   }
-  .sno-hac-inner-desktop-footer-18 .sno-icon i {
+  .sno-hac-inner-desktop-footer-18 .sno-icon i,
+  .sno-hac-inner-desktop-footer-18 .archive-footer-svg {
     display: none !important;
   }
   .sno-hac-inner-desktop-footer-18 .sno-icon::before {
@@ -625,5 +626,28 @@
   .sno-hac-inner-desktop-footer-18 .sno-youtube::before {
     content: "\f167" !important;
     font-family: "Font Awesome 5 Brands" !important;
+  }
+}
+
+/* Complete the desktop font-icon replacement without the SVG fallbacks. */
+@media only screen and (min-width: 601px) {
+  .sno-story-social-icons .like-count-bubble.like-count-display {
+    display: block !important;
+    box-sizing: content-box !important;
+    width: 14px !important;
+  }
+
+  .sno-hac-inner-desktop-5 .sno-hac-submit-search-button {
+    display: block !important;
+    width: auto !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+  }
+  .sno-hac-inner-desktop-5 .sno-hac-submit-search-button .archive-ui-svg {
+    display: none !important;
+  }
+  .sno-hac-inner-desktop-5 .sno-hac-submit-search-button::before {
+    content: "\f002" !important;
+    display: inline !important;
   }
 }
