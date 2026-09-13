@@ -231,3 +231,36 @@
     display: none !important;
   }
 }
+
+/* Phone last-mile fidelity overrides. This stylesheet loads after
+   technician-final-tweaks.css, so these values intentionally win on phones. */
+@media only screen and (max-width: 600px) {
+  /* The outer menu box already matches Technician. Only correct the glyph:
+     shorter bars horizontally and remove the 5px downward nudge. */
+  .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg {
+    width: 30px !important;
+    height: 35px !important;
+    transform: none !important;
+  }
+
+  .sno-header-wrap-mobile .sno-hac-menu-icon .archive-ui-svg path {
+    transform-box: view-box !important;
+    transform-origin: center !important;
+    transform: scaleX(1.02) !important;
+  }
+
+  /* Technician's caption begins at roughly the same 20px story gutter.
+     The previous 29px override made the copy one line narrower and therefore
+     about one full line too tall. */
+  .archive-technician-photo > figcaption {
+    padding: 5px 20px 11px !important;
+    font-size: 15px !important;
+    line-height: 1.37em !important;
+  }
+
+  .archive-technician-photo > figcaption > span {
+    margin-bottom: 7px !important;
+    font-size: 14px !important;
+    line-height: 1.37em !important;
+  }
+}
