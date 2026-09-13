@@ -177,7 +177,6 @@
     max-width: none !important;
     margin: 0 !important;
   }
-
   .sno-header-wrap-desktop,
   .sno-header-wrap-tablet {
     display: none !important;
@@ -440,5 +439,31 @@
 
   .archive-technician-photo > figcaption > span {
     margin-bottom: 7px !important;
+  }
+}
+
+/* Final mobile photo/caption alignment from pixel-matched live screenshots. */
+@media only screen and (max-width: 600px) {
+  /* Technician crops a small strip from the bottom of the lead photo on phone.
+     The archive was showing the full 1200x801 image, which made the caption
+     begin about 9 screenshot pixels too low. */
+  .archive-technician-photo > img {
+    width: 100% !important;
+    height: 65.5vw !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  /* Shift the caption measure about two screenshot pixels to the right. */
+  .archive-technician-photo > figcaption {
+    padding-left: 29px !important;
+    padding-right: 29px !important;
+    line-height: 1.37em !important;
+  }
+
+  /* The live photo credit is visibly smaller than the caption copy. */
+  .archive-technician-photo > figcaption > span {
+    font-size: 14px !important;
+    line-height: 1.37em !important;
   }
 }
