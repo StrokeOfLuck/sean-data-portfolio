@@ -472,6 +472,12 @@
    The caption is 123px high: 30px credit, four 21px text lines,
    8px bottom padding and a 1px bottom border. Keep phone rules above intact. */
 @media only screen and (min-width: 601px) {
+  /* Technician hides the final 5px of the full-size image above the caption. */
+  .archive-technician-photo > img {
+    margin-bottom: -5px !important;
+    clip-path: inset(0 0 5px 0) !important;
+  }
+
   .archive-technician-photo > figcaption {
     padding: 0 8px 8px !important;
     border: 1px solid #dddddd !important;
