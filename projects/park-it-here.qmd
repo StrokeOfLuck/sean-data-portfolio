@@ -221,7 +221,7 @@ toc: false
       <div class="park-eyebrow">Published reporting</div>
       <h1 class="park-title">Park it here? E-bike and scooter rules differ across NC State</h1>
       <div class="park-meta">Technician &nbsp;·&nbsp; Sept. 11, 2026</div>
-      <p class="park-summary">My first published newsroom byline, combining interviews, GIS analysis, geofencing data and NCDOT crash records to compare Lime and Spin around NC State.</p>
+      <p class="park-summary">Published reporting combining interviews, GIS analysis, geofencing data and NCDOT crash records to compare Lime and Spin around NC State.</p>
       <div class="park-tags" aria-label="Project tags">
         <span>Data Journalism</span>
         <span>GIS</span>
