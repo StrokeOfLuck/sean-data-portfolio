@@ -46,6 +46,16 @@ html, body {
   const viewport = document.getElementById('viewport');
   let observer;
 
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function resetToTop() {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   function articleHeight() {
     try {
       const doc = frame.contentDocument;
@@ -70,7 +80,9 @@ html, body {
   }
 
   frame.addEventListener('load', function () {
+    resetToTop();
     fit();
+    requestAnimationFrame(resetToTop);
     setTimeout(fit, 250);
     setTimeout(fit, 1000);
     setTimeout(fit, 2500);
@@ -80,7 +92,9 @@ html, body {
     } catch (e) {}
   });
 
+  window.addEventListener('pageshow', resetToTop);
   window.addEventListener('resize', fit);
+  resetToTop();
   fit();
 })();
 </script>
