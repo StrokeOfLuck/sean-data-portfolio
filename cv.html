@@ -474,7 +474,7 @@ ul.task-list li input[type="checkbox"] {
      which is why entry titles were rendering smaller than the
      org/location line under them. Target `:root` directly to fix it. */
   :root, html, body {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   body {
@@ -532,6 +532,8 @@ ul.task-list li input[type="checkbox"] {
      a modest bottom safety margin while improving readability. */
   .resume-section {
     margin-bottom: 0.35rem;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
   }
 
   .resume-section h2 {
@@ -594,6 +596,8 @@ ul.task-list li input[type="checkbox"] {
   .resume-skills,
   .resume-skills p {
     gap: 0.18rem 0.24rem;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
   }
 
   .resume-skill-pill {
