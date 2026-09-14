@@ -71,6 +71,12 @@ volunteer:
       - "Write grant applications and support fundraising, including securing grant funding for co-op programs"
 
 projects:
+  - title: "Park it here? E-bike and scooter rules"
+    year: "Fall 2026"
+    bullets:
+      - "Published a reported Technician article combining interviews, GIS analysis, geofencing data, and NCDOT crash records"
+    url: "https://strokeofluck.github.io/sean-data-portfolio/projects/park-it-here.html"
+
   - title: "Politician Stock Disclosures"
     year: "2024–Present"
     bullets:
@@ -88,12 +94,6 @@ projects:
     bullets:
       - "Compared a large political-media transcript corpus with Tenet Media/Rumble data using TF-IDF and sentence-similarity matching"
     url: "https://strokeofluck.github.io/sean-data-portfolio/projects/tankietube.html"
-
-  - title: "All We Are Solar Map"
-    year: "Spring 2026"
-    bullets:
-      - "Built an interactive Mapbox visualization and read-only master-sheet workflow for a nonprofit's solar installation data in Uganda"
-    url: "https://strokeofluck.github.io/sean-data-portfolio/projects/all-we-are-solar-map.html"
 
 education:
   - degree: "Interdisciplinary Studies — Public Interest Data Journalism (B.S.)"
