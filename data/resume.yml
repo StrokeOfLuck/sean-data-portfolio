@@ -49,6 +49,14 @@ experience:
       - "Diagnosed hardware, software, and connectivity issues"
       - "Installed and configured operating systems, applications, and updates"
 
+  - title: "Combat Medic / Treatment Squad Leader"
+    org: "U.S. Army"
+    location: "Fort Bragg, NC"
+    start: "2014"
+    end: "2020"
+    bullets:
+      - "Provided emergency medical care and led clinic operations, personnel, records, and medical inventory"
+
 volunteer:
   - title: "Usual Crowd Lead / Grants Coordinator"
     org: "Durham Bike Co-op"
