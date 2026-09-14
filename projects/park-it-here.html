@@ -143,10 +143,9 @@ ul.task-list li input[type="checkbox"] {
 }
 
 .park-project-card {
-  display:grid;
-  grid-template-columns:minmax(330px, .86fr) minmax(520px, 1.24fr);
-  gap:2rem;
-  align-items:stretch;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
   padding:2rem;
   border:1px solid rgba(127,127,127,.24);
   border-radius:.9rem;
@@ -209,8 +208,8 @@ ul.task-list li input[type="checkbox"] {
 
 .park-actions {
   display:grid;
-  gap:.65rem;
-  margin-top:auto;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:.75rem;
 }
 
 .park-actions a {
@@ -294,24 +293,6 @@ ul.task-list li input[type="checkbox"] {
   background:#fff;
 }
 
-.park-preview-open {
-  position:absolute;
-  right:14px;
-  bottom:14px;
-  z-index:4;
-  display:grid;
-  width:48px;
-  height:48px;
-  place-items:center;
-  border:1px solid rgba(255,255,255,.75);
-  border-radius:50%;
-  color:#fff !important;
-  background:rgba(78,83,89,.6);
-  backdrop-filter:blur(7px);
-  text-decoration:none !important;
-  font-size:1.3rem;
-}
-
 .park-bottom-nav {
   display:flex;
   justify-content:space-between;
@@ -322,11 +303,10 @@ ul.task-list li input[type="checkbox"] {
   font-size:.92rem;
 }
 
-@media (max-width: 980px) {
-  .park-project-card {
+@media (max-width: 700px) {
+  .park-actions {
     grid-template-columns:1fr;
   }
-  .park-preview-wrap { order:-1; }
 }
 
 @media (max-width: 620px) {
@@ -355,11 +335,6 @@ ul.task-list li input[type="checkbox"] {
         <span>Datawrapper</span>
         <span>Interviews</span>
       </div>
-      <div class="park-actions">
-        <a class="park-primary" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Read on Technician ↗</a>
-        <a class="park-secondary" href="assets/park-it-here/park-it-here-archive.html" target="_blank" rel="noopener noreferrer">Open preserved article ↗</a>
-        <a class="park-secondary" href="assets/park-it-here/technician-publication-snapshot.png" target="_blank" rel="noopener noreferrer">View publication snapshot ↗</a>
-      </div>
     </section>
 
     <section class="park-preview-wrap" aria-label="Preview of the published Technician article">
@@ -372,9 +347,14 @@ ul.task-list li input[type="checkbox"] {
           </div>
         </div>
         <iframe class="park-article-frame" src="assets/park-it-here/park-it-here-desktop-embed.html" title="Scrollable preserved Technician article in desktop layout" loading="eager"></iframe>
-        <a class="park-preview-open" href="assets/park-it-here/park-it-here-archive.html" target="_blank" rel="noopener noreferrer" aria-label="Open preserved article in a new tab">↗</a>
       </div>
     </section>
+
+    <div class="park-actions">
+      <a class="park-primary" href="https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/" target="_blank" rel="noopener noreferrer">Read on Technician ↗</a>
+      <a class="park-secondary" href="assets/park-it-here/park-it-here-archive.html" target="_blank" rel="noopener noreferrer">Open preserved article ↗</a>
+      <a class="park-secondary" href="assets/park-it-here/technician-publication-snapshot.png" target="_blank" rel="noopener noreferrer">View publication snapshot ↗</a>
+    </div>
   </div>
 
   <nav class="park-bottom-nav" aria-label="Project navigation">
