@@ -148,10 +148,10 @@ jobs:
 
           archive = site_dir / "park-it-here-archive.html"
           html = archive.read_text(encoding="utf-8")
-          # Version both measured stylesheets so phone/foldable fixes refresh too.
+          # Version local stylesheets so browsers refresh layout fixes too.
           style_revisions = {
               name: hashlib.sha256((source_dir / name).read_bytes()).hexdigest()[:12]
-              for name in ("technician-final-tweaks.css", "technician-foldable-mobile.css")
+              for name in ("technician-exact.css", "technician-final-tweaks.css", "technician-foldable-mobile.css")
           }
           changed = False
           for name, revision in style_revisions.items():
@@ -163,7 +163,7 @@ jobs:
               changed = changed or revisioned_html != html
               html = revisioned_html
           markers = [
-              '<link rel="stylesheet" href="technician-exact.css" data-archive-exact-styles="1"/>',
+              f'<link rel="stylesheet" href="technician-exact.css?v={style_revisions["technician-exact.css"]}" data-archive-exact-styles="1"/>',
               f'<link rel="stylesheet" href="technician-final-tweaks.css?v={style_revisions["technician-final-tweaks.css"]}" data-archive-final-tweaks="1"/>',
               f'<link rel="stylesheet" href="technician-foldable-mobile.css?v={style_revisions["technician-foldable-mobile.css"]}" data-archive-foldable-mobile="1"/>',
           ]
