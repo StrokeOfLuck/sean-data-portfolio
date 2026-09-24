@@ -2,6 +2,54 @@
    Reassert the captured Technician values while letting the browser resolve
    the same named font families as the live Technician page. */
 
+/* The original SNO base stylesheet is sometimes blocked by its host. Keep
+   the archived desktop header self-contained when that request fails. */
+html.archive-force-desktop .sno-header-wrap-desktop .sno-designer-area-row {
+  display: flow-root !important;
+}
+
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+  width: 100% !important;
+  height: 50px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul > li {
+  display: block !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  height: 50px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul > li > a {
+  display: block !important;
+  padding: 0 18px !important;
+  text-decoration: none !important;
+}
+
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap ul ul {
+  position: absolute !important;
+  z-index: 20 !important;
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap li:hover > ul,
+html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap li:focus-within > ul {
+  display: block !important;
+}
+
 body,
 #wrap,
 #upperwrap {
