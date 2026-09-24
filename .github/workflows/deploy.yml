@@ -114,6 +114,8 @@ jobs:
           html = html.replace(b"</head>", stylesheet + portfolio_overrides + b"</head>", 1)
 
           target = Path("projects/assets/park-it-here/park-it-here-archive.html")
+          from scripts.localize_technician import localize
+          html = localize(html.decode("utf-8")).encode("utf-8")
           target.write_bytes(html)
           print(f"Restored {target} ({len(html):,} bytes) with captured layout CSS")
           PY

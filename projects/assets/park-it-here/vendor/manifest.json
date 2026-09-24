@@ -1,0 +1,313 @@
+{
+  "captured": "2026-09-24",
+  "assets": [
+    {
+      "url": "https://technicianonline.com/wp-content/uploads/font-awesome/v5.15.2/css/svg-with-js.css",
+      "file": "c416e19ff246-svg-with-js.css",
+      "sha256": "4ad098e977ae91d8a665ff80da612ef7eafd683fed6d5decdaa1c07e80ae65a7"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/css/all.css",
+      "file": "f8a610ece345-all.css",
+      "sha256": "204ca2cb8101afe44d395d9ad1a7891fa1135a5c9ff3dee7926393a860faac82"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/plugins/sno-student-news-source/assets/css/mobile-popup.css?ver=1.0.1",
+      "file": "36b3b8c7a8fa-mobile-popup.css",
+      "sha256": "82f405d767d102db535f6b37a66f35003a168863cccf67184486954472131e48"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/plugins/sno-countdown/assets/style/sno-countdown-style.css?ver=1.0.1",
+      "file": "4792fcf7071e-sno-countdown-style.css",
+      "sha256": "38a5b9ce709114251fc04f70242ca4922050566550fafc54c369ee0eb664952d"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css",
+      "file": "63ddeebceda2-v4-shims.css",
+      "sha256": "23dc0579b933d942c0e46488214c394922cc3e9434f757d307bb1a3b72b276d7"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/flex-functions/comments/comments.css?ver=11.1.83",
+      "file": "7937eaffdc5b-comments.css",
+      "sha256": "8d91519b8bd89208416e236767d40cb24ad5ba8bbe7a0de0ce0ac120fd138be0"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/includes/parallax/css/main.css?ver=11.1.83",
+      "file": "590b6964cf17-main.css",
+      "sha256": "89f55bcc71ff6dbf421a0e5462083f705455d239eebb016a3aac6328edbcbedb"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/flex-functions/weather/weather.css?ver=20220702",
+      "file": "a281b5ab3823-weather.css",
+      "sha256": "21f5bd72428ed62fa0dcb32a1c35602468e95ed4a79c74cc3943eee59acb3ae0"
+    },
+    {
+      "url": "https://technicianonline.com/wp-includes/css/dashicons.min.css?ver=7.1.2",
+      "file": "c49cf73dbd31-dashicons.min.css",
+      "sha256": "c9d108f0ef6fd17135594db3c4fcad90287f4f968afb6d58e6abe184d3beab3c"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/styles/remodal-default-theme.css?ver=11.1.83",
+      "file": "c3fc456682d0-remodal-default-theme.css",
+      "sha256": "d16e8c693b00226d7f727895fe1bd327aeba5113dea919e51e386fb4498b7357"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/includes/superfish/css/superfish.css?ver=11.1.83",
+      "file": "47543ba5b779-superfish.css",
+      "sha256": "22c0025161fe40871a192a496c4ac752c4817f71378aa7eb6ec19840baa6ef33"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/includes/flexslider/flexslider.css?ver=11.1.83",
+      "file": "fe4247f78120-flexslider.css",
+      "sha256": "3e3aead8888607be6c8c2830f93f05fd23d9ba4225f3c02434befcaa73053db1"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/styles/remodal.css?ver=11.1.83",
+      "file": "5caaddde5657-remodal.css",
+      "sha256": "d4a45eefb5b510457aaa6164b95dc6ec3514fa68aac520b958efba0e1e196f05"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/themes/snoflex/style.css?ver=11.1.83",
+      "file": "37ff54c78f71-style.css",
+      "sha256": "d51acffefac47a4d500bd8ee8822ead84fe0b2bab2537e5cb3df4a799f7de3be"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/css/all.css?ver=6.6.0",
+      "file": "9bd4ad582885-all.css",
+      "sha256": "07ffb7c97ed183d94bcb04a34101415ce329b45ecfa505fb5f6f2dbdc0a679cd"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css?family=Playfair+Display:500,400,700,100|Karla:400,700,600|Myriad+Pro:600,700,400|Source+Serif+4:400,700&display=swap&ver=7.1.2",
+      "file": "62f9fbf33413-css.css",
+      "sha256": "abd30c7cbbc98877418ca81baa89584bef45d84e962c8102791e1403346a76d8"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/plugins/wp-paginate/css/wp-paginate.css?ver=2.2.6",
+      "file": "48c2d639ae7d-wp-paginate.css",
+      "sha256": "e379a211e75642755c7b975859d84ebf76697490618e8a6127a41036ef82f2df"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/plugins/sno-ad-rotate/css/widget-default.css?ver=1.6.20",
+      "file": "91580feb0791-widget-default.css",
+      "sha256": "aad12ee8cdaba1ba8d2c3d3c7a70a3b21ed836e85863819390276b63fcb6b0a3"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/uploads/2025/05/58d6e5cc-705c-11e6-a234-ff2269afdda9.webp",
+      "file": "a8a1fcdb6cb2-58d6e5cc-705c-11e6-a234-ff2269afdda9.webp",
+      "sha256": "8dff4afbe9d8d1347e5ff254b989737e0bdf905cc34fa75c35d9065097d25f9c"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/uploads/2025/05/59f0fff8-791a-11e6-9cd1-a7345ef169cb-1.webp",
+      "file": "45d600a59209-59f0fff8-791a-11e6-9cd1-a7345ef169cb-1.webp",
+      "sha256": "4d30b85846d00eac01a48be22f963e7238c7b132e3ed8215242620cfa8bf2059"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/uploads/2024/11/cf99f0db034483efd353a21087d5ff33-1200x801.jpg",
+      "file": "4fba4de58a32-cf99f0db034483efd353a21087d5ff33-1200x801.jpg",
+      "sha256": "47dcb269fb7413d6b73eca006602f7a2ac4723078d33dc60f04c9adebc6d26ff"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/karla/v33/qkB9XvYC6trAT55ZBi1ueQVIjQTD-JrIH2G7nytkHRyQ8p4wUjm6bnEr.woff2",
+      "file": "9e8853afd8a2-qkB9XvYC6trAT55ZBi1ueQVIjQTD-JrIH2G7nytkHRyQ8p4wUjm6bnEr.woff2",
+      "sha256": "86844b3e23c7d2a62485d23d6ea6e5cedf49d913884dfa64a7028ad2e1064dfe"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/karla/v33/qkB9XvYC6trAT55ZBi1ueQVIjQTD-JrIH2G7nytkHRyQ8p4wUje6bg.woff2",
+      "file": "ee60be3a5e7c-qkB9XvYC6trAT55ZBi1ueQVIjQTD-JrIH2G7nytkHRyQ8p4wUje6bg.woff2",
+      "sha256": "3b1eb09a53fd7b26c107b099b3da5fb2ac90b77297cb3ad713a7b40438ae718b"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2",
+      "file": "edff4874961e-nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2",
+      "sha256": "c108681cba6a9820bff52f4a1a4a1d9edf356b347bd79b7c61e916028e8a8b54"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2",
+      "file": "2f08df1456fc-nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2",
+      "sha256": "ef6446229b59773e671021650ef3882cf35806dae723ce047de87c0a6633039a"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2",
+      "file": "3cb6b7b1979e-nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2",
+      "sha256": "42898ad49a6b23f32b109243e1df596edf831015ed685f429e4dafbb181d599d"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+      "file": "363014d7c907-nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+      "sha256": "e0c764a8e9e1cce92163c55bac4b2ad6cd4cf8c696ce2289ab5c41565e65b7e2"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kAHr4cXk.woff2",
+      "file": "757a70dae405-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kAHr4cXk.woff2",
+      "sha256": "f423aab1098e5b0dae59d200aadbb9433e687f505425c7e73d1f65ae2b59016e"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kCXr4cXk.woff2",
+      "file": "8fe4e708383a-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kCXr4cXk.woff2",
+      "sha256": "25e85aef8acff54f91ea7e85c9c2c260caf97101fdef194ed6b8b58bc34ce3eb"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kDnr4cXk.woff2",
+      "file": "4641f4f97bbd-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kDnr4cXk.woff2",
+      "sha256": "d84b0c5fda036126b6bb9205b144500fe08fec6d54d8bdd60645bc3e6577490b"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kAnr4cXk.woff2",
+      "file": "37da1b0a2f69-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kAnr4cXk.woff2",
+      "sha256": "63b54e70d3bfb018162640bfb0015be46a2ec96f3c00d4170c8a02d0ff9d5abd"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kA3r4cXk.woff2",
+      "file": "22292ab77afc-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kA3r4cXk.woff2",
+      "sha256": "41529a5b38008d9ea01e28ec18693a714a3216669ee477d83a5b9db999369625"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/sourceserif4/v14/vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kDXr4.woff2",
+      "file": "0ca7ef9494a9-vEFF2_tTDB4M7-auWDN0ahZJW3IX2ih5nk3AucvUHf6kDXr4.woff2",
+      "sha256": "c1df4596be5029233ed2afbb8b2f6ea20784b3fb1aa5d6b5c6519ccd85eb3dfb"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-brands-400.eot",
+      "file": "17a84aad2d59-fa-brands-400.eot",
+      "sha256": "9860d6f05386a150d5356afc249a4a67f5161372fee2c80c9b81eddd13259706",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-brands-400.svg",
+      "file": "9232909730c0-fa-brands-400.svg",
+      "sha256": "8594ac7ea23505e2c5096659c6f642c610d2ef126d8ba718c42067ccc6338c32",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-brands-400.ttf",
+      "file": "2a231d3f6d04-fa-brands-400.ttf",
+      "sha256": "dee03b559ef15082f4864001d7ecc562b2ff4dd2c1a761047c8fd52919a9ee04",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-brands-400.woff",
+      "file": "493204ca0b09-fa-brands-400.woff",
+      "sha256": "8d79ac2164bf3d60583e0c44707f79d73f8de3b55e365f9839c91ccb6b4e5e0f",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-brands-400.woff2",
+      "file": "25e68f2d44d9-fa-brands-400.woff2",
+      "sha256": "529d0a7b3944929222155bca3272ba1a87acc2faa09b2ed26a713872b7ff8794",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-regular-400.eot",
+      "file": "ebfa0525cb0d-fa-regular-400.eot",
+      "sha256": "d7858047be52401462cf08a32a73fb8edc2f0824fab4bc3c928f97d5c1301550",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-regular-400.svg",
+      "file": "6eba1f85b8c8-fa-regular-400.svg",
+      "sha256": "165101542d8b8339e451556c199d517cdc88833537fd1efecce7f5469bce3fe6",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-regular-400.ttf",
+      "file": "40b5114d2501-fa-regular-400.ttf",
+      "sha256": "96353a91851616607cf2e7f9f61519675d16119dd43b4d51be4930b28da20330",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-regular-400.woff",
+      "file": "a5839fe22b76-fa-regular-400.woff",
+      "sha256": "59c188c0320df9e338aaf70ccba3ad4eae5714ff6a4a5b323fcad2937de164df",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-regular-400.woff2",
+      "file": "5170c769af5d-fa-regular-400.woff2",
+      "sha256": "b3b8c21edfe6c5e402fdc607366fd8d15949a65914f58134733dc68922bc8d61",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-solid-900.eot",
+      "file": "7ceb02c97225-fa-solid-900.eot",
+      "sha256": "7fa0a8d2ff9cf56367af3da926117e8c649d741ec2601ce016298984771a954c",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-solid-900.svg",
+      "file": "6f1e5fb71423-fa-solid-900.svg",
+      "sha256": "a27b561face9f54ee9cb8db85baf678e307c1be3e6774fca606e97d316a0d040",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-solid-900.ttf",
+      "file": "6a45c9654e1e-fa-solid-900.ttf",
+      "sha256": "83027b10416216a20a0d7522c1e367a16948f450c0ac6b4c0d5af7b05ab9f207",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-solid-900.woff",
+      "file": "1850d4448241-fa-solid-900.woff",
+      "sha256": "54b246419327b460f37af4f2dfaa4ac9cb901f62ea517ab95c06ae8605cf51e6",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v5.15.2/webfonts/fa-solid-900.woff2",
+      "file": "7f8bc2e788f6-fa-solid-900.woff2",
+      "sha256": "6c916669cf923b4f1b2db5c5107c83b6ca205e7ad0dcd840b251e63f0c8d28a2",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-brands-400.ttf",
+      "file": "759e76e17471-fa-brands-400.ttf",
+      "sha256": "bc844b5b02d3f3adabb514de4e0c0208252d3123413bd03f6287fa446acee859",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-regular-400.ttf",
+      "file": "7a913c1420b0-fa-regular-400.ttf",
+      "sha256": "64f9fb623681f112261e9a2f97826782439f3925dea8f44a57d1e4db95ba6cfd",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-solid-900.ttf",
+      "file": "3cce3165bf1c-fa-solid-900.ttf",
+      "sha256": "31f099c13f6e4ba05f1b471bf170cb5493249474222917372de3ca5cf29e6a1a",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-v4compatibility.ttf",
+      "file": "c6bf059e2857-fa-v4compatibility.ttf",
+      "sha256": "a6274a12fd3f5f1ea05fc9b4677959b31fd101fdac4f0d09c17159c414d36d23",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-brands-400.woff2",
+      "file": "bd1f668795ae-fa-brands-400.woff2",
+      "sha256": "c411f11975d26eb04cd2aa3c071181d4b18e489f1fb97060d4176a3531dfb36e",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-regular-400.woff2",
+      "file": "3f098e276e77-fa-regular-400.woff2",
+      "sha256": "c732f106e91bc618767fbac8e2c7b27e5c736d477b2bb4fb83f597a43198c33c",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-solid-900.woff2",
+      "file": "99322d22f453-fa-solid-900.woff2",
+      "sha256": "1f0189e087fcefbf654fad74a3a06668b782c01353a61d5c0b7f0bf23e33c020",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://use.fontawesome.com/releases/v6.6.0/webfonts/fa-v4compatibility.woff2",
+      "file": "f92547b141ae-fa-v4compatibility.woff2",
+      "sha256": "2aca24b35bd41474dcc5e7fb5f11ec43fa06e3ac1d0035ad41108fa6b30b0871",
+      "package": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.6.0.tgz"
+    },
+    {
+      "url": "https://technicianonline.com/wp-content/uploads/2025/04/4214fc79501b1e375ac9f6a44255028f.jpg",
+      "file": "fc238a397db4-4214fc79501b1e375ac9f6a44255028f.jpg",
+      "sha256": "f887648fb98cde298687eaf5accf0a49a6169ed5621b0e93d90f7828cde4cf5f"
+    }
+  ]
+}

@@ -108,6 +108,10 @@ jobs:
           import hashlib
           import re
           import shutil
+          import sys
+
+          sys.path.insert(0, str(Path("source").resolve()))
+          from scripts.localize_technician import localize
 
           source_dir = Path("source/projects/assets/park-it-here")
           site_dir = Path("site/projects/assets/park-it-here")
@@ -124,6 +128,8 @@ jobs:
               if not src.exists():
                   raise SystemExit(f"Missing source asset: {src}")
               shutil.copy2(src, dst)
+
+          shutil.copytree(source_dir / "vendor", site_dir / "vendor", dirs_exist_ok=True)
 
           photo = site_dir / "spin-scooter-alex-manuel.jpg"
           if not photo.exists() or photo.stat().st_size == 0:
@@ -148,12 +154,14 @@ jobs:
 
           archive = site_dir / "park-it-here-archive.html"
           html = archive.read_text(encoding="utf-8")
+          original_html = html
+          html = localize(html)
           # Version local stylesheets so browsers refresh layout fixes too.
           style_revisions = {
               name: hashlib.sha256((source_dir / name).read_bytes()).hexdigest()[:12]
               for name in ("technician-exact.css", "technician-final-tweaks.css", "technician-foldable-mobile.css")
           }
-          changed = False
+          changed = html != original_html
           for name, revision in style_revisions.items():
               revisioned_html = re.sub(
                   r'(href="' + re.escape(name) + r')(?:\?[^"]*)?(")',
@@ -324,6 +332,7 @@ jobs:
           git add projects/assets/park-it-here/technician-final-tweaks.css
           git add projects/assets/park-it-here/technician-foldable-mobile.css
           git add projects/assets/park-it-here/icons
+          git add projects/assets/park-it-here/vendor
           git add projects/assets/park-it-here/spin-scooter-alex-manuel.jpg
           git add projects/assets/park-it-here/park-it-here-archive.html
           git add projects/park-it-here.html
