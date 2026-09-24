@@ -8,7 +8,7 @@ html.archive-force-desktop .sno-header-wrap-desktop .sno-designer-area-row {
   display: flow-root !important;
 }
 
-html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul {
+html.archive-force-desktop .sno-hac-inner-desktop-4 #menu-menu-tester {
   display: flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
@@ -20,7 +20,7 @@ html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul {
   list-style: none !important;
 }
 
-html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul > li {
+html.archive-force-desktop .sno-hac-inner-desktop-4 #menu-menu-tester > li {
   display: block !important;
   flex: 0 0 auto !important;
   width: auto !important;
@@ -30,7 +30,7 @@ html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul > li 
   list-style: none !important;
 }
 
-html.archive-force-desktop .sno-hac-inner-desktop-4 .sno-hac-menuwrap > ul > li > a {
+html.archive-force-desktop .sno-hac-inner-desktop-4 #menu-menu-tester > li > a {
   display: block !important;
   padding: 0 18px !important;
   text-decoration: none !important;
