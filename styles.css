@@ -560,3 +560,7 @@ a {
 }
 /* Motion is explicitly triggered by hover or keyboard focus, never automatic. */
 .schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
+
+.schism-image > img.schism-background { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; transition: none; }
+.schism-image:is(:hover, :focus-within) > img.schism-background { opacity: 1; }
+.schism-image > img.schism-hover { z-index: 1; }
