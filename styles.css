@@ -546,3 +546,18 @@ a {
 
 /* Whole checker squares fit the thumbnail without cropping. */
 @media (min-width: 601px) { .compact-project-card .schism-image { aspect-ratio: 2 / 1; } }
+
+/* Use the approved animated preview without inline SVG sizing dependencies. */
+.schism-image { position: relative; }
+.schism-image > img.schism-hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
+}
