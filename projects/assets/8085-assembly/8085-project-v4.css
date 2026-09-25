@@ -53,7 +53,7 @@
 }
 
 .assembly-source-controls a {
-  color: #9dccff;
+  color: var(--bs-link-color);
   font: 0.8rem/1.35 var(--bs-body-font-family, system-ui);
   font-weight: 600;
   text-underline-offset: 3px;
@@ -160,19 +160,19 @@
   gap: 0.7rem;
   min-height: 46px;
   padding: 0.55rem 0.75rem;
-  border-right: 1px solid #2d3740;
-  border-bottom: 1px solid #2d3740;
-  background: #101820;
-  color: #96a3ae;
+  border-right: 1px solid var(--bs-border-color, #dee2e6);
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+  background: var(--bs-body-bg);
+  color: var(--bs-secondary-color, #5f6973);
   font: 0.75rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 .assembly-code-bar button {
   min-height: 30px;
   padding: 0.25rem 0.55rem;
-  border-color: #45515c;
-  background: #172029;
-  color: #e7edf2;
+  border-color: #8494a3;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
   font: inherit;
 }
 
@@ -182,11 +182,11 @@
   max-height: 390px;
   overflow: auto;
   padding: 0.5rem 0 0.65rem;
-  border-right: 1px solid #2d3740;
-  background: #101820;
-  color: #e7edf2;
+  border-right: 1px solid var(--bs-border-color, #dee2e6);
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
   font: 0.75rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  scrollbar-color: #53606c #101820;
+  scrollbar-color: #a8b4c0 var(--bs-body-bg);
 }
 
 .assembly-flow-view {
@@ -224,13 +224,13 @@
 }
 
 .assembly-code-line.is-active {
-  border-left-color: #6ea8fe;
-  background: #173b62;
+  border-left-color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.12);
 }
 
 .assembly-line-number {
   padding-right: 0.65rem;
-  color: #73808a;
+  color: var(--bs-secondary-color, #5f6973);
   text-align: right;
   user-select: none;
 }
@@ -242,15 +242,15 @@
 
 .assembly-comment-line .assembly-source-text,
 .assembly-blank-line .assembly-source-text {
-  color: #96a3ae;
+  color: var(--bs-secondary-color, #5f6973);
 }
 
 .assembly-inline-comment {
-  color: #9cb9a9;
+  color: #42634e;
 }
 
 .assembly-label-text {
-  color: #f0b36d;
+  color: #875018;
 }
 
 .assembly-state-panel {
