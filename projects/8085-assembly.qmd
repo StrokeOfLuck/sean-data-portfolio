@@ -3,7 +3,7 @@ title: "Celsius to Fahrenheit on the Intel 8085"
 subtitle: "Assembly programming · Wake Technical Community College · Fall 2020"
 page-layout: full
 toc: false
-css: assets/8085-assembly/8085-project.css?v=3
+css: assets/8085-assembly/8085-project-v2.css
 ---
 
 ::: {.assembly-project-shell}
@@ -228,7 +228,7 @@ The interactive chart is a browser-native recreation of the flowchart submitted 
 ```
 
 ```{=html}
-<script src="assets/8085-assembly/8085-project.js?v=3"></script>
+<script src="assets/8085-assembly/8085-project-v2.js"></script>
 ```
 
 :::
