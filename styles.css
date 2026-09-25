@@ -601,3 +601,17 @@ a {
     object-position: center center;
   }
 }
+
+
+/* Touch devices do not have a reliable hover state. Keep the Schism animated
+   preview visible on mobile/tablet while preserving hover-to-animate on desktop. */
+@media (hover: none), (pointer: coarse) {
+  .schism-image > img.schism-still {
+    opacity: 0;
+  }
+
+  .schism-image > img.schism-background,
+  .schism-image > img.schism-hover {
+    opacity: 1;
+  }
+}
