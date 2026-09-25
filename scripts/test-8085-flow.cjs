@@ -11,7 +11,7 @@ const edges = new Set([...page.matchAll(/data-flow-from="([^"]+)" data-flow-to="
 // Isolate the existing interpreter and instruction-to-diagram mapping from rendering.
 let script = fs.readFileSync(asset('8085-project-v3.js'), 'utf8');
 script = script.slice(0, script.indexOf('  function render()')) + '  function render() {}\n';
-script += '\n globalThis.test = {parseSource, resetState, executeStep, transferHtml, instructionLessons, displayedInstruction, current: () => flowNodeForInstruction(displayedInstruction()), state: () => state};\n})();';
+script += '\n globalThis.test = {parseSource, resetState, executeStep, transferHtml, flowValues, instructionLessons, displayedInstruction, current: () => flowNodeForInstruction(displayedInstruction()), state: () => state};\n})();';
 const input = { value: '25' };
 const noop = { textContent: '', setAttribute() {} };
 const context = { document: { querySelector: () => ({ dataset: {}, querySelector: selector => selector === '[data-assembly-input]' ? input : noop }) }, window: { clearInterval() {} } };
@@ -23,9 +23,21 @@ const coverage = new Set();
 for (let celsius = 0; celsius <= 37; celsius++) {
   input.value = String(celsius);
   sim.resetState();
+  assert.equal(sim.flowValues().divide, 'Waiting for division');
+  assert.equal(sim.flowValues().multiply, 'Waiting for multiplication');
+  assert.equal(sim.flowValues().adjustment, 'Waiting for remainder');
   const route = [sim.current()];
   while (!sim.state().halted && sim.state().count < 500) {
     sim.executeStep();
+    const entry = sim.state().history.at(-1);
+    const values = sim.flowValues();
+    assert.ok(!/undefined|NaN/.test(JSON.stringify(values)));
+    if (entry.line.flowNode === 'divide') {
+      assert.equal(values.divide, `C ${sim.state().registers.C} · A ${sim.state().registers.A} remaining`);
+    }
+    if (entry.line.flowNode === 'multiply' && entry.line.op === 'ADD') {
+      assert.ok(values.multiply.endsWith('awaiting DAA'));
+    }
     assert.equal(sim.displayedInstruction().sourceIndex, sim.state().history.at(-1).line.sourceIndex, 'Highlight must match the executed instruction, including jumps and calls');
     const transfer = sim.transferHtml(sim.state().history.at(-1));
     assert.ok(sim.instructionLessons[sim.state().history.at(-1).line.op]?.how, 'Every executed instruction needs a teaching explanation');

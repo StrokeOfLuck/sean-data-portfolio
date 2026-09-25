@@ -54,9 +54,12 @@
     program = [];
     labels = {};
     let pendingLabels = [];
+    let flowNode = "load";
 
     sourceLines.forEach((raw, sourceIndex) => {
       const trimmed = raw.trim();
+      const section = trimmed.match(/^; Flow: ([a-z0-9-]+)$/);
+      if (section) { flowNode = section[1]; return; }
       if (!trimmed || trimmed.startsWith("//")) return;
 
       const codeOnly = raw.split(";")[0].trim();
@@ -77,7 +80,8 @@
           .map((value) => value.trim())
           .filter(Boolean),
         raw,
-        sourceIndex
+        sourceIndex,
+        flowNode
       };
 
       pendingLabels.forEach((label) => {
@@ -266,7 +270,7 @@
     state.pc = next;
     state.count += 1;
     const after = snapshot();
-    state.history.push({ line, step: state.count,
+    state.history.push({ line, step: state.count, after,
       reads: Object.fromEntries(access.reads.map(key => [key, before[key]])),
       writes: Object.fromEntries(access.writes.map(key => [key, {before: before[key], after: after[key]}])) });
     render();
@@ -343,36 +347,7 @@
   }
 
   function flowNodeForInstruction(line) {
-    if (!line) return "halt";
-
-    const sourceLine = line.sourceIndex + 1;
-    if (sourceLine <= 14) return "load";
-    if (sourceLine <= 18) return "zero-check";
-    if (sourceLine <= 23) return "range-check";
-    if (sourceLine <= 29) return "divide";
-    if (sourceLine >= 109 && sourceLine <= 114) return "save-4";
-    if (sourceLine >= 115 && sourceLine <= 120) return "save-3";
-    if (sourceLine >= 122 && sourceLine <= 126) return "save-2";
-    if (sourceLine >= 129 && sourceLine <= 133) return "save-1";
-    if (sourceLine >= 31 && sourceLine <= 37) {
-      return "remainder-4";
-    }
-    if (sourceLine >= 38 && sourceLine <= 39) {
-      return "remainder-3";
-    }
-    if (sourceLine >= 40 && sourceLine <= 41) {
-      return "remainder-2";
-    }
-    if (sourceLine >= 42 && sourceLine <= 43) {
-      return "remainder-1";
-    }
-    if (sourceLine >= 46 && sourceLine <= 48) return "quotient";
-    if (sourceLine >= 49 && sourceLine <= 54) return "multiply";
-    if (sourceLine >= 56 && sourceLine <= 58) return "add-remainder";
-    if (sourceLine >= 59 && sourceLine <= 61) return "add-32";
-    if (sourceLine >= 81 && sourceLine <= 85) return "store";
-    if (sourceLine >= 87 && sourceLine <= 105) return "zero-store";
-    return "halt";
+    return line?.flowNode ?? "halt";
   }
 
   function setFlowText(selector, value) {
@@ -380,14 +355,25 @@
     if (target) target.textContent = value;
   }
 
+  // Preserve each phase's latest real register values as execution moves on.
+  function flowValues() {
+    const latest = node => state.history.findLast(entry => entry.line.flowNode === node);
+    const divide = latest("divide");
+    const product = latest("multiply");
+    const addition = latest("add-remainder");
+    const saved = state.history.findLast(entry => entry.line.flowNode.startsWith("save-") && entry.writes.B);
+    return {
+      divide: divide ? `C ${divide.after.C} · A ${divide.after.A} remaining` : latest("remainder-4") ? "Skipped: input is less than 5" : "Waiting for division",
+      multiply: product ? `A ${hex8(product.after.A)}${product.line.op === "ADD" ? " · awaiting DAA" : ""}` : "Waiting for multiplication",
+      adjustment: addition ? `B ${hex8(addition.after.B)} · A ${hex8(addition.after.A)}${addition.line.op === "ADD" ? " · awaiting DAA" : ""}` : saved ? `Saved in B: ${hex8(saved.after.B)}` : "Waiting for remainder"
+    };
+  }
+
   function renderFlow() {
     if (!state || !elements.flow) return;
 
     const input = state.memory[0x2000] ?? 0;
-    const quotient = Math.floor(input / 5);
-    const remainder = input % 5;
-    const remainderAdjustments = [0, 2, 4, 5, 7];
-    const adjustment = remainderAdjustments[remainder];
+    const values = flowValues();
     const activeNode = flowNodeForInstruction(displayedInstruction());
     state.flowVisited.add(activeNode);
     if (lastFlowNode && activeNode !== lastFlowNode) {
@@ -411,13 +397,13 @@
     setFlowText("[data-flow-input-value]", `${input}°C · ${hex8(input)}`);
     setFlowText(
       "[data-flow-division-value]",
-      `Quotient ${quotient} · remainder ${remainder}`
+      values.divide
     );
     setFlowText(
       "[data-flow-multiply-value]",
-      `${quotient} × 9 = ${quotient * 9}`
+      values.multiply
     );
-    setFlowText("[data-flow-adjustment-value]", `Add ${adjustment}`);
+    setFlowText("[data-flow-adjustment-value]", values.adjustment);
 
     if (state.memory[0x2001] == null) {
       setFlowText("[data-flow-output-value]", "Waiting for output");

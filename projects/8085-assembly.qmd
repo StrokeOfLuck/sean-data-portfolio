@@ -8,7 +8,7 @@ css: assets/8085-assembly/8085-project-v4.css
 
 ::: {.assembly-project-shell}
 
-<p class="assembly-lede"><strong>I wrote this final project in assembly for a microprocessor class focused on the Intel 8085 chip in 2020. I was learning assembly and getting introduced to coding, before AI coding assistants.</strong> I later built this browser-based 8085 simulator to revisit my original code and thought process from 2020. The comments have been copyedited for clarity, but the program logic is unchanged and fully functional. Try a temperature and watch the code, registers and flowchart work together to convert it to Fahrenheit.</p>
+<p class="assembly-lede"><strong>I wrote this final project in assembly for a microprocessor class focused on the Intel 8085 chip in 2020. I was learning assembly and getting introduced to coding, before AI coding assistants.</strong> I later built this browser-based 8085 simulator to revisit my original code and thought process from 2020. The comments have been rewritten for clarity, but the program logic is unchanged and fully functional. Try a temperature and watch the code, registers and flowchart work together to convert it to Fahrenheit.</p>
 
 ```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
