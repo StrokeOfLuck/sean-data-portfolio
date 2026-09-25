@@ -1,4 +1,4 @@
-; Original 2020 instructions and labels; explanations rewritten for this walkthrough.
+; Original 2020 code and logic; comments copyedited for clarity.
 ; Numeric operands use hexadecimal, including values without an h suffix.
 
 ; Flow: load
