@@ -17,6 +17,7 @@ css: assets/8085-assembly/8085-project.css
   <span class="assembly-tag">Technical foundations</span>
 </div>
 
+```{=html}
 <section class="assembly-intro-grid">
   <div>
     <h2>The assignment</h2>
@@ -29,12 +30,14 @@ css: assets/8085-assembly/8085-project.css
     <a href="https://8085simulator.github.io/" target="_blank" rel="noopener">Open Jubin Mitra’s 8085 Simulator ↗</a>
   </div>
 </section>
+```
 
 <section class="assembly-simulator-heading">
   <h2>Step through the program</h2>
   <p>This browser recreation follows the same source while exposing the registers, flags and memory locations involved in the calculation. It implements the instructions used by this project rather than trying to replace a complete 8085 emulator.</p>
 </section>
 
+```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
   <div class="assembly-toolbar">
     <div class="assembly-control-group">
@@ -94,7 +97,9 @@ css: assets/8085-assembly/8085-project.css
     <span data-assembly-detail>Loading the original assembly source.</span>
   </div>
 </div>
+```
 
+```{=html}
 <section class="assembly-method-grid" aria-label="How the program works">
   <div>
     <h3>1. Divide by five</h3>
@@ -109,14 +114,18 @@ css: assets/8085-assembly/8085-project.css
     <p>After adding the rounded remainder contribution and 32, it writes the BCD Fahrenheit value to memory address <code>2001h</code>.</p>
   </div>
 </section>
+```
 
 ## The original flowchart
 
+```{=html}
 <figure class="assembly-flowchart">
   <img src="assets/8085-assembly/flowchart.png" alt="Original flowchart for the 8085 Celsius-to-Fahrenheit program, showing the zero-degree branch, repeated-subtraction division, remainder routines, repeated-addition multiplication and final memory output">
   <figcaption>The flowchart submitted with the program in October 2020.</figcaption>
 </figure>
+```
 
+```{=html}
 <section class="assembly-reflection-grid">
   <div>
     <h2>Why I came back to it</h2>
@@ -129,7 +138,10 @@ css: assets/8085-assembly/8085-project.css
     <p>I appreciate the care he put into making difficult technical material approachable. That example still influences how I try to explain code, data and methodology now.</p>
   </div>
 </section>
+```
 
+```{=html}
 <script src="assets/8085-assembly/8085-project.js"></script>
+```
 
 :::
