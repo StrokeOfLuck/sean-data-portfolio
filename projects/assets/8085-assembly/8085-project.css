@@ -33,8 +33,7 @@
   font-size: 0.75rem;
 }
 
-.assembly-intro-grid,
-.assembly-reflection-grid {
+.assembly-intro-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
   gap: 2rem;
@@ -43,8 +42,7 @@
   border-bottom: 1px solid rgba(127, 127, 127, 0.24);
 }
 
-.assembly-intro-grid h2,
-.assembly-reflection-grid h2 {
+.assembly-intro-grid h2 {
   margin-top: 0;
 }
 
@@ -362,19 +360,20 @@
   text-align: center;
 }
 
-.assembly-note {
-  padding: 1rem 1.1rem;
-  border-left: 4px solid var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), 0.055);
+.assembly-thanks {
+  max-width: 780px;
+  margin: 2.7rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(127, 127, 127, 0.24);
+  line-height: 1.65;
 }
 
-.assembly-note p:last-child {
+.assembly-thanks p:last-child {
   margin-bottom: 0;
 }
 
 @media (max-width: 840px) {
   .assembly-intro-grid,
-  .assembly-reflection-grid,
   .assembly-sim-grid {
     grid-template-columns: 1fr;
   }
