@@ -57,10 +57,115 @@ css: assets/8085-assembly/8085-project.css
   <div class="assembly-sim-grid">
     <div class="assembly-code-panel">
       <div class="assembly-code-bar">
-        <span>PROJECT TO STANDARD.ASM</span>
-        <button data-assembly-source-toggle type="button" aria-pressed="false">Show all source</button>
+        <span data-assembly-panel-title>PROGRAM FLOW</span>
+        <div class="assembly-view-controls" role="group" aria-label="Program view">
+          <button data-assembly-flow-toggle class="is-selected" type="button" aria-pressed="true">Flowchart</button>
+          <button data-assembly-code-toggle type="button" aria-pressed="false">Source</button>
+          <button data-assembly-source-toggle type="button" aria-pressed="false" hidden>Show all source</button>
+        </div>
       </div>
-      <div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"></div>
+
+      <div class="assembly-flow-view" data-assembly-flow aria-label="Interactive recreation of the original program flowchart">
+        <div class="assembly-flow-node" data-flow-node="load">
+          <span class="assembly-flow-kicker">Start</span>
+          <strong>Read Celsius from 2000h</strong>
+          <small data-flow-input-value>25°C · 19h</small>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+
+        <div class="assembly-flow-node is-decision" data-flow-node="zero-check">
+          <span class="assembly-flow-kicker">Decision</span>
+          <strong>Is the input 00h?</strong>
+        </div>
+        <div class="assembly-flow-branches">
+          <div class="assembly-flow-branch" data-flow-choice="zero-yes">
+            <span>Yes</span>
+            <div class="assembly-flow-node is-compact" data-flow-node="zero-store">
+              <strong>Store BCD 32 at 2001h</strong>
+              <small>Then halt</small>
+            </div>
+          </div>
+          <div class="assembly-flow-branch" data-flow-choice="zero-no">
+            <span>No</span>
+            <small>Continue with the conversion</small>
+          </div>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+
+        <div class="assembly-flow-node is-decision" data-flow-node="range-check">
+          <span class="assembly-flow-kicker">Decision</span>
+          <strong>Is the input 01h–04h?</strong>
+          <small data-flow-range-value>Division path</small>
+        </div>
+        <div class="assembly-flow-choice-row" aria-label="Division branch">
+          <span data-flow-choice="below5-yes">Yes · skip division</span>
+          <span data-flow-choice="below5-no">No · divide below</span>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+
+        <div class="assembly-flow-node" data-flow-node="divide">
+          <span class="assembly-flow-kicker">Repeated subtraction</span>
+          <strong>Subtract 5 until the value is less than 5</strong>
+          <small data-flow-division-value>Quotient 5 · remainder 0</small>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+
+        <div class="assembly-flow-remainder-ladder" aria-label="Remainder decisions">
+          <div class="assembly-flow-node is-decision is-compact" data-flow-node="remainder-4">
+            <strong>Remainder 4?</strong><small data-flow-choice="remainder-4">Yes → save 7</small>
+          </div>
+          <div class="assembly-flow-arrow" aria-hidden="true">↓ No</div>
+          <div class="assembly-flow-node is-decision is-compact" data-flow-node="remainder-3">
+            <strong>Remainder 3?</strong><small data-flow-choice="remainder-3">Yes → save 5</small>
+          </div>
+          <div class="assembly-flow-arrow" aria-hidden="true">↓ No</div>
+          <div class="assembly-flow-node is-decision is-compact" data-flow-node="remainder-2">
+            <strong>Remainder 2?</strong><small data-flow-choice="remainder-2">Yes → save 4</small>
+          </div>
+          <div class="assembly-flow-arrow" aria-hidden="true">↓ No</div>
+          <div class="assembly-flow-node is-decision is-compact" data-flow-node="remainder-1">
+            <strong>Remainder 1?</strong><small data-flow-choice="remainder-1">Yes → save 2</small>
+          </div>
+          <div class="assembly-flow-choice-row">
+            <span data-flow-choice="remainder-0">No match · save 0</span>
+          </div>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+
+        <div class="assembly-flow-node" data-flow-node="quotient">
+          <span class="assembly-flow-kicker">Prepare multiplication</span>
+          <strong>Move the quotient into A and H</strong>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+        <div class="assembly-flow-node" data-flow-node="multiply">
+          <span class="assembly-flow-kicker">Repeated addition</span>
+          <strong>Multiply the quotient by 9</strong>
+          <small data-flow-multiply-value>5 × 9 = 45</small>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+        <div class="assembly-flow-node" data-flow-node="add-remainder">
+          <span class="assembly-flow-kicker">Remainder adjustment</span>
+          <strong>Add the saved remainder value</strong>
+          <small data-flow-adjustment-value>Add 0</small>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+        <div class="assembly-flow-node" data-flow-node="add-32">
+          <span class="assembly-flow-kicker">Finish conversion</span>
+          <strong>Add BCD 32 and apply DAA</strong>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+        <div class="assembly-flow-node" data-flow-node="store">
+          <span class="assembly-flow-kicker">Output</span>
+          <strong>Store Fahrenheit at 2001h</strong>
+          <small data-flow-output-value>Waiting for output</small>
+        </div>
+        <div class="assembly-flow-arrow" aria-hidden="true">↓</div>
+        <div class="assembly-flow-node is-terminal" data-flow-node="halt">
+          <strong>Halt</strong>
+        </div>
+      </div>
+
+      <div class="assembly-code-view" data-assembly-code aria-label="Assembly source code" hidden></div>
     </div>
 
     <aside class="assembly-state-panel" aria-label="8085 processor state">
@@ -117,14 +222,7 @@ css: assets/8085-assembly/8085-project.css
 </section>
 ```
 
-## The original flowchart
-
-```{=html}
-<figure class="assembly-flowchart">
-  <img src="assets/8085-assembly/flowchart.png" alt="Original flowchart for the 8085 Celsius-to-Fahrenheit program, showing the zero-degree branch, repeated-subtraction division, remainder routines, repeated-addition multiplication and final memory output">
-  <figcaption>The flowchart submitted with the program in October 2020.</figcaption>
-</figure>
-```
+The interactive chart is a browser-native recreation of the flowchart submitted with the program in October 2020. The wording has been clarified, while the original decision sequence and arithmetic remain unchanged. [View the original PDF](assets/8085-assembly/flowchart.pdf){target="_blank" rel="noopener"}.
 
 ```{=html}
 <section class="assembly-thanks">
