@@ -201,4 +201,25 @@ Collaborative public-facing stock-trading platform built from scraped politician
 :::
 :::
 
+::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/8085-assembly.svg){fig-alt="Miniature recreation of the Intel 8085 assembly source and processor-state interface"}
+<a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Intel 8085 Assembly Project](projects/8085-assembly.qmd){.project-title-link}
+::: {.project-date}
+Fall 2020
+:::
+:::
+::: {.project-tags}
+[Assembly]{.project-tag} [Computer Architecture]{.project-tag} [Technical Foundations]{.project-tag}
+:::
+An early programming project from my EET degree: an interactive reconstruction of an 8085 routine that converts Celsius to BCD Fahrenheit.
+
+[View project →](projects/8085-assembly.qmd){.project-link}
+:::
+:::
+
 ::::
