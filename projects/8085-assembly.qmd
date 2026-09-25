@@ -32,8 +32,8 @@ css: assets/8085-assembly/8085-project-v4.css
       <div class="assembly-code-bar">
         <span>PROJECT TO STANDARD.ASM</span>
         <div class="assembly-source-controls">
-          <a href="assets/8085-assembly/project-to-standard.asm" download>Download the assembly source</a>
           <button data-assembly-source-toggle type="button" aria-pressed="false">Show all source</button>
+          <a href="assets/8085-assembly/project-to-standard.asm" download>Download the assembly source</a>
         </div>
       </div>
 
@@ -94,7 +94,10 @@ css: assets/8085-assembly/8085-project-v4.css
         </svg>
       </div>
 
-      <div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"></div>
+      <div class="assembly-source-body">
+        <section class="assembly-inspector" aria-label="Code inspector" tabindex="-1" data-assembly-inspector></section>
+        <div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"></div>
+      </div>
     </div>
 
     <section class="assembly-state-panel" role="complementary" aria-label="8085 processor state">
@@ -107,16 +110,16 @@ css: assets/8085-assembly/8085-project-v4.css
       <div class="assembly-state-block">
         <div class="assembly-state-label">Flags</div>
         <div class="assembly-flag-row">
-          <div class="assembly-flag"><span>Z</span><b data-assembly-zero>0</b></div>
-          <div class="assembly-flag"><span>CY</span><b data-assembly-carry>0</b></div>
+          <button type="button" class="assembly-flag" data-inspect-state="Z"><span>Z</span><b data-assembly-zero>0</b></button>
+          <button type="button" class="assembly-flag" data-inspect-state="CY"><span>CY</span><b data-assembly-carry>0</b></button>
         </div>
       </div>
 
       <div class="assembly-state-block">
         <div class="assembly-state-label">Memory</div>
         <div class="assembly-memory-row">
-          <div class="assembly-memory"><span>2000h</span><b data-assembly-memory-input>19h</b></div>
-          <div class="assembly-memory"><span>2001h</span><b data-assembly-memory-output>--</b></div>
+          <button type="button" class="assembly-memory" data-inspect-state="2000h"><span>2000h</span><b data-assembly-memory-input>19h</b></button>
+          <button type="button" class="assembly-memory" data-inspect-state="2001h"><span>2001h</span><b data-assembly-memory-output>--</b></button>
         </div>
       </div>
 
@@ -132,23 +135,6 @@ css: assets/8085-assembly/8085-project-v4.css
     <span data-assembly-detail>Loading the original assembly source.</span>
   </div>
 </div>
-```
-
-```{=html}
-<section class="assembly-method-grid" aria-label="How the program works">
-  <div>
-    <h3>1. Divide by five</h3>
-    <p>The program repeatedly subtracts five, using register C to count the quotient and the accumulator to retain the remainder.</p>
-  </div>
-  <div>
-    <h3>2. Multiply by nine</h3>
-    <p>It repeatedly adds the quotient and uses <code>DAA</code> to keep the intermediate value in binary-coded decimal.</p>
-  </div>
-  <div>
-    <h3>3. Store the result</h3>
-    <p>After adding the rounded remainder contribution and 32, it writes the BCD Fahrenheit value to memory address <code>2001h</code>.</p>
-  </div>
-</section>
 ```
 
 ```{=html}

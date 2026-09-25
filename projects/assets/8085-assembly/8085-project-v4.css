@@ -511,3 +511,17 @@
   .assembly-project-shell, #title-block-header { width: 100%; max-width: 100%; }
   .assembly-flow-view { max-width: 100%; }
 }
+
+.assembly-source-body { grid-column: 1; grid-row: 2; min-width: 0; }
+.assembly-inspector { scroll-margin-top: 75px; }
+.assembly-inspector:focus { outline: 2px solid var(--bs-primary); outline-offset: -2px; }
+.assembly-inspector { padding: .75rem; background: rgba(var(--bs-primary-rgb), .045); border-bottom: 1px solid var(--bs-border-color); font-size: .8rem; }
+.assembly-inspector p { margin: .35rem 0; line-height: 1.5; }
+.assembly-inspector button { margin: .35rem .5rem .2rem 0; border: 1px solid var(--bs-border-color); border-radius: .25rem; background: var(--bs-body-bg); color: var(--bs-link-color); padding: .25rem .5rem; font: inherit; }
+button.assembly-register, button.assembly-flag, button.assembly-memory { width: 100%; color: var(--bs-body-color); font: inherit; text-align: left; cursor: pointer; border: 1px solid var(--bs-border-color); border-radius: .3rem; }
+button.assembly-flag, button.assembly-memory { padding: .4rem; background: var(--bs-body-bg); }
+.assembly-code-line.is-inspected { outline: 1px dashed var(--bs-primary); outline-offset: -2px; background: rgba(var(--bs-primary-rgb), .06); }
+.assembly-flow-step[role="button"] { cursor: pointer; }
+.assembly-flow-step[role="button"]:hover > rect, .assembly-flow-step[role="button"]:hover > polygon { stroke: var(--bs-primary); stroke-width: 3; }
+.assembly-flow-step.is-inspected > rect, .assembly-flow-step.is-inspected > polygon { stroke: var(--bs-primary); stroke-width: 3; stroke-dasharray: 6 3; }
+.assembly-simulator button:focus-visible, .assembly-flow-step:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: 3px; }

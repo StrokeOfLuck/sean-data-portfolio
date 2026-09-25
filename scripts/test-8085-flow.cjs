@@ -48,3 +48,23 @@ for (let celsius = 0; celsius <= 37; celsius++) {
 }
 for (const edge of edges) if (edge !== 'start:load') assert.ok(coverage.has(edge), `Uncovered connection ${edge}`);
 console.log('PASS: all 38 inputs produce correct BCD, halt, and follow drawn branches; every executable connection covered.');
+input.value = '25';
+sim.resetState();
+sim.executeStep();
+let trace = sim.state().history.at(-1);
+assert.equal(trace.writes.HL.before, 0);
+assert.equal(trace.writes.HL.after, 0x2000);
+sim.executeStep();
+trace = sim.state().history.at(-1);
+assert.equal(trace.reads['2000h'], 25);
+assert.equal(trace.reads.HL, 0x2000);
+assert.equal(trace.writes.A.before, 0);
+assert.equal(trace.writes.A.after, 25);
+while (!sim.state().halted) sim.executeStep();
+trace = sim.state().history.find(entry => Object.hasOwn(entry.writes, '2001h'));
+assert.equal(trace.reads.A, 0x77);
+assert.equal(trace.writes['2001h'].before, undefined);
+assert.equal(trace.writes['2001h'].after, 0x77);
+sim.resetState();
+assert.equal(sim.state().history.length, 0);
+console.log('PASS: actual input/address reads, register transfers, BCD output writes, and reset trace verified.');

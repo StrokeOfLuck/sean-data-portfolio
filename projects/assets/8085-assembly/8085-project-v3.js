@@ -4,6 +4,7 @@
 
   const sourceUrl = root.dataset.source;
   const elements = {
+    inspector: root.querySelector("[data-assembly-inspector]"),
     input: root.querySelector("[data-assembly-input]"),
     load: root.querySelector("[data-assembly-load]"),
     step: root.querySelector("[data-assembly-step]"),
@@ -32,6 +33,7 @@
   let timer = null;
   let showAllSource = false;
   let lastFlowNode = null;
+  let inspection = null;
 
   const hex8 = (value) =>
     `${((value ?? 0) & 0xff).toString(16).toUpperCase().padStart(2, "0")}h`;
@@ -126,6 +128,8 @@
       last: `Loaded ${input}°C (${hex8(input)}) into memory address 2000h.`
     };
 
+    inspection = null;
+    state.history = [];
     showAllSource = false;
     elements.toggle.textContent = "Show all source";
     elements.toggle.setAttribute("aria-pressed", "false");
@@ -176,6 +180,14 @@
       return;
     }
 
+    if (inspection) {
+      inspection = null;
+      showAllSource = false;
+      elements.toggle.textContent = "Show all source";
+      elements.toggle.setAttribute("aria-pressed", "false");
+    }
+    const before = snapshot();
+    const access = instructionAccess(line);
     const [first, second] = line.operands;
     let next = state.pc + 1;
 
@@ -247,6 +259,10 @@
     state.last = line.raw.trim();
     state.pc = next;
     state.count += 1;
+    const after = snapshot();
+    state.history.push({ line, step: state.count,
+      reads: Object.fromEntries(access.reads.map(key => [key, before[key]])),
+      writes: Object.fromEntries(access.writes.map(key => [key, {before: before[key], after: after[key]}])) });
     render();
   }
 
@@ -291,7 +307,7 @@
     } else {
       const start = Math.max(
         0,
-        Math.min(sourceLines.length - 13, activeSource - 6)
+        Math.min(sourceLines.length - 13, (inspection?.indexes[0] ?? activeSource) - 6)
       );
       indexes = Array.from(
         { length: Math.min(13, sourceLines.length - start) },
@@ -307,18 +323,19 @@
           : raw.trim().startsWith("//")
             ? "assembly-comment-line"
             : "";
+        const inspected = inspection?.indexes.includes(index) ? " is-inspected" : "";
         const active = index === activeSource && !state.halted ? " is-active" : "";
 
-        return `<div class="assembly-code-line ${kind}${active}">
+        return `<div class="assembly-code-line ${kind}${active}${inspected}" data-source-index="${index}">
           <span class="assembly-line-number">${String(index + 1).padStart(3, "0")}</span>
           <span class="assembly-source-text">${formattedLine(raw)}</span>
         </div>`;
       })
       .join("");
+    if (!showAllSource) elements.code.scrollTop = 0;
   }
 
   function flowNodeForInstruction(line) {
-    if (state.halted) return "halt";
     if (!line) return "halt";
 
     const sourceLine = line.sourceIndex + 1;
@@ -364,7 +381,7 @@
     const remainder = input % 5;
     const remainderAdjustments = [0, 2, 4, 5, 7];
     const adjustment = remainderAdjustments[remainder];
-    const activeNode = flowNodeForInstruction(program[state.pc]);
+    const activeNode = state.halted ? "halt" : flowNodeForInstruction(program[state.pc]);
     state.flowVisited.add(activeNode);
     if (lastFlowNode && activeNode !== lastFlowNode) {
       state.flowEdges.add(`${lastFlowNode}:${activeNode}`);
@@ -377,6 +394,7 @@
 
     elements.flow.querySelectorAll("[data-flow-node]").forEach((node) => {
       const name = node.dataset.flowNode;
+      node.classList.toggle("is-inspected", inspection?.node === name);
       node.classList.toggle("is-active", name === activeNode);
       node.classList.toggle("is-visited", state.flowVisited.has(name));
       if (name === activeNode) node.setAttribute("aria-current", "step");
@@ -405,7 +423,7 @@
       );
     }
 
-    if (activeNode !== lastFlowNode && elements.follow.checked) {
+    if (!inspection && activeNode !== lastFlowNode && elements.follow.checked) {
       const activeElement = elements.flow.querySelector(
         `[data-flow-node="${activeNode}"]`
       );
@@ -439,7 +457,119 @@
     return "Store result";
   }
 
+  function snapshot() {
+    return { ...state.registers, ...state.flags, HL: hl(),
+      "2000h": state.memory[0x2000], "2001h": state.memory[0x2001] };
+  }
+
+  // Track the accesses performed by this project's interpreter, including writes
+  // that leave a value unchanged. Memory operands also read the HL address pair.
+  function instructionAccess(line) {
+    const reads = new Set(), writes = new Set();
+    const [a, b] = line.operands;
+    function operand(key, destination = false) {
+      if (key === "M") {
+        ["H", "L", "HL"].forEach(k => reads.add(k));
+        (destination ? writes : reads).add(hex16(hl()));
+      } else {
+        (destination ? writes : reads).add(key);
+        if (destination && (key === "H" || key === "L")) writes.add("HL");
+      }
+    }
+    const flags = (...keys) => keys.forEach(k => writes.add(k));
+    switch (line.op) {
+      case "LXI": ["H", "L", "HL"].forEach(k => writes.add(k)); break;
+      case "MOV": operand(b); operand(a, true); break;
+      case "MVI": operand(a, true); break;
+      case "CMP": operand("A"); operand(a); flags("Z", "CY", "AC"); break;
+      case "ADD": operand("A"); operand(a); operand("A", true); flags("Z", "CY", "AC"); break;
+      case "SUB": operand("A"); operand(a); operand("A", true); flags("Z", "CY"); break;
+      case "INR": case "DCR": operand(a); operand(a, true); flags("Z"); break;
+      case "DAA": ["A", "AC", "CY"].forEach(k => reads.add(k)); operand("A", true); flags("Z", "CY", "AC"); break;
+      case "JC": case "JNC": reads.add("CY"); break;
+      case "CZ": case "RZ": case "JZ": case "JNZ": reads.add("Z"); break;
+    }
+    return { reads: [...reads], writes: [...writes] };
+  }
+
+  const explanations = {
+    load: "HL points to 2000h. MOV A,M copies the Celsius input into accumulator A.",
+    "zero-check": "Compare A with zero. A matching input calls the special 32°F routine.",
+    "zero-store": "Zero Celsius converts directly to BCD 32, stored at 2001h.",
+    "range-check": "Inputs below five skip division; their quotient is zero.",
+    divide: "Repeatedly subtract five from A. C counts the quotient; A retains the remainder.",
+    quotient: "Copy the quotient from C into A and H for repeated addition.",
+    multiply: "Repeatedly add the quotient in H. DAA keeps the running result in binary-coded decimal.",
+    "add-remainder": "Add the rounded remainder contribution saved in B, then adjust to BCD.",
+    "add-32": "Add the Fahrenheit offset of 32 using BCD arithmetic.",
+    store: "Point HL at 2001h and copy the final BCD Fahrenheit value from A into memory.",
+    halt: "Stop execution. The converted temperature remains at memory address 2001h."
+  };
+  const roles = {
+    A: "Accumulator: input, remainder, arithmetic and final result.",
+    B: "Holds five during division, then the rounded remainder contribution.",
+    C: "Counts the quotient, then counts multiplication iterations.",
+    D: "Comparison constant for zero and remainder four.",
+    E: "Comparison constant for remainder three.",
+    H: "High address byte, comparison constant and saved quotient at different stages.",
+    L: "Low address byte and comparison constant at different stages.",
+    HL: "Combined H and L registers. Memory instructions use this pair as an address.",
+    Z: "Zero flag: comparisons and arithmetic set it; conditional calls and jumps read it.",
+    CY: "Carry flag: comparisons, subtraction and addition set it; branches and DAA read it.",
+    "2000h": "Celsius input loaded by the controls and read by MOV A,M.",
+    "2001h": "Output memory: the two-digit BCD Fahrenheit result written by MOV M,A."
+  };
+  function displayValue(key, value) {
+    return value == null ? "not written" : ["Z", "CY", "AC"].includes(key) ? String(value) : key === "HL" ? hex16(value) : hex8(value);
+  }
+  function traceHtml(entry) {
+    const reads = Object.entries(entry.reads).map(([k,v]) => `${k} ${displayValue(k,v)}`).join(" · ");
+    const writes = Object.entries(entry.writes).map(([k,v]) => `${k} ${displayValue(k,v.before)} → ${displayValue(k,v.after)}`).join(" · ");
+    return `<p><strong>Step ${entry.step} · line ${entry.line.sourceIndex + 1}</strong> <code>${escapeHtml(entry.line.raw.split(";")[0].trim())}</code></p>` +
+      (reads ? `<p>Read: ${reads}</p>` : "") + (writes ? `<p>Wrote: ${writes}</p>` : "");
+  }
+  function renderInspector() {
+    const latest = state.history.at(-1);
+    elements.inspector.innerHTML = inspection
+      ? `<strong>${escapeHtml(inspection.title)}</strong><p>${escapeHtml(inspection.description)}</p>${inspection.html || ""}<button type="button" data-inspection-return>Return to execution</button>`
+      : `<strong>Explore the program</strong><p>Click a flowchart step or processor value to inspect its code. Solid blue marks the next instruction; dashed blue marks your selection.</p>${latest ? traceHtml(latest) : ""}`;
+  }
+  function inspect(selection) {
+    if (!state) return;
+    stopRun();
+    inspection = selection;
+    showAllSource = true;
+    elements.toggle.textContent = "Follow execution";
+    elements.toggle.setAttribute("aria-pressed", "true");
+    if (flowDialog.open) flowDialog.close();
+    render();
+    const row = elements.code.querySelector(`[data-source-index="${selection.indexes[0]}"]`);
+    if (row) elements.code.scrollTop += row.getBoundingClientRect().top - elements.code.getBoundingClientRect().top - 20;
+    elements.inspector.focus({ preventScroll: true });
+    elements.inspector.scrollIntoView({ block: "nearest" });
+  }
+  function inspectFlow(name) {
+    const indexes = program.filter(line => flowNodeForInstruction(line) === name).map(line => line.sourceIndex);
+    const latest = [...state.history].reverse().find(entry => indexes.includes(entry.line.sourceIndex));
+    const description = explanations[name] || (name.startsWith("save-")
+      ? "Save the rounded remainder contribution in B for addition after multiplication."
+      : `Compare the remainder in A with ${name.split("-")[1]}. A match calls the corresponding save routine.`);
+    inspect({ node: name, indexes, title: `Inspecting ${name.replaceAll("-", " ")} · paused`, description,
+      html: latest ? traceHtml(latest) : "<p>This section has not executed since the last load.</p>" });
+  }
+  function inspectState(key) {
+    const history = [...state.history].reverse();
+    const read = history.find(entry => Object.hasOwn(entry.reads, key));
+    const write = history.find(entry => Object.hasOwn(entry.writes, key));
+    const entries = [...new Set([read, write].filter(Boolean))].sort((a,b) => b.step - a.step);
+    inspect({ indexes: entries.map(entry => entry.line.sourceIndex),
+      title: `${key} · ${displayValue(key, snapshot()[key])} · paused`, description: roles[key],
+      html: entries.length ? entries.map(entry => `<button type="button" data-inspect-line="${entry.line.sourceIndex}">${entry === write ? "Last write" : "Last read"}${entry === read && entry === write ? " and read" : ""} · line ${entry.line.sourceIndex + 1}</button>${traceHtml(entry)}`).join("")
+        : `<p>${key === "2000h" ? "Loaded by the temperature control." : "Initial value."} No instruction has read or written this value yet.</p>` });
+  }
+
   function render() {
+    renderInspector();
     renderCode();
     renderFlow();
     const registerNames = ["A", "B", "C", "D", "E", "H", "L"];
@@ -447,12 +577,12 @@
     elements.registers.innerHTML =
       registerNames
         .map(
-          (name) => `<div class="assembly-register">
+          (name) => `<button type="button" class="assembly-register" data-inspect-state="${name}" aria-label="Inspect register ${name}">
             <span>${name}</span><strong>${hex8(state.registers[name])}</strong>
-          </div>`
+          </button>`
         )
         .join("") +
-      `<div class="assembly-register"><span>HL</span><strong>${hex16(hl())}</strong></div>`;
+      `<button type="button" class="assembly-register" data-inspect-state="HL" aria-label="Inspect register pair HL"><span>HL</span><strong>${hex16(hl())}</strong></button>`;
 
     elements.steps.textContent = `${state.count} ${state.count === 1 ? "step" : "steps"}`;
     elements.zero.textContent = state.flags.Z;
@@ -474,6 +604,27 @@
     elements.step.disabled = state.halted;
   }
 
+  root.addEventListener("click", event => {
+    const value = event.target.closest("[data-inspect-state]");
+    if (value && state) inspectState(value.dataset.inspectState);
+    if (event.target.closest("[data-inspection-return]")) {
+      inspection = null; showAllSource = false;
+      elements.toggle.textContent = "Show all source";
+      elements.toggle.setAttribute("aria-pressed", "false"); render();
+      elements.step.focus();
+    }
+    const line = event.target.closest("[data-inspect-line]");
+    if (line && inspection) inspect({ ...inspection, indexes: [Number(line.dataset.inspectLine)] });
+  });
+  elements.flow.querySelectorAll("[data-flow-node]").forEach(node => {
+    const name = node.dataset.flowNode;
+    node.setAttribute("role", "button"); node.setAttribute("tabindex", "0");
+    node.setAttribute("aria-label", `Inspect ${name.replaceAll("-", " ")} code`);
+    node.addEventListener("click", () => { if (state) inspectFlow(name); });
+    node.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); if (state) inspectFlow(name); }
+    });
+  });
   elements.load.addEventListener("click", resetState);
   const flowDialog = document.createElement("dialog");
   flowDialog.className = "assembly-flow-dialog";
@@ -496,7 +647,8 @@
   flowDialog.addEventListener("close", () => {
     flowHome.after(elements.flow);
     elements.expand.textContent = "Expand chart";
-    elements.expand.focus();
+    if (inspection) elements.inspector.focus();
+    else elements.expand.focus();
     lastFlowNode = null;
     renderFlow();
   });
@@ -520,7 +672,10 @@
     }, 120);
   });
   elements.toggle.addEventListener("click", () => {
+    inspection = null;
     showAllSource = !showAllSource;
+    renderInspector();
+    renderFlow();
     elements.toggle.textContent = showAllSource
       ? "Follow execution"
       : "Show all source";
