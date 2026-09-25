@@ -11,7 +11,7 @@ const edges = new Set([...page.matchAll(/data-flow-from="([^"]+)" data-flow-to="
 // Isolate the existing interpreter and instruction-to-diagram mapping from rendering.
 let script = fs.readFileSync(asset('8085-project-v3.js'), 'utf8');
 script = script.slice(0, script.indexOf('  function render()')) + '  function render() {}\n';
-script += '\n globalThis.test = {parseSource, resetState, executeStep, current: () => flowNodeForInstruction(program[state.pc]), state: () => state};\n})();';
+script += '\n globalThis.test = {parseSource, resetState, executeStep, transferHtml, instructionLessons, displayedInstruction, current: () => flowNodeForInstruction(displayedInstruction()), state: () => state};\n})();';
 const input = { value: '25' };
 const noop = { textContent: '', setAttribute() {} };
 const context = { document: { querySelector: () => ({ dataset: {}, querySelector: selector => selector === '[data-assembly-input]' ? input : noop }) }, window: { clearInterval() {} } };
@@ -26,6 +26,11 @@ for (let celsius = 0; celsius <= 37; celsius++) {
   const route = [sim.current()];
   while (!sim.state().halted && sim.state().count < 500) {
     sim.executeStep();
+    assert.equal(sim.displayedInstruction().sourceIndex, sim.state().history.at(-1).line.sourceIndex, 'Highlight must match the executed instruction, including jumps and calls');
+    const transfer = sim.transferHtml(sim.state().history.at(-1));
+    assert.ok(sim.instructionLessons[sim.state().history.at(-1).line.op]?.how, 'Every executed instruction needs a teaching explanation');
+    assert.ok(!/undefined|NaN|not written/.test(transfer), `Invalid transfer display: ${transfer}`);
+    assert.ok(transfer.includes('→'), 'Transfer display needs a direction');
     const current = sim.current();
     assert.ok(nodes.includes(current), `Missing diagram node ${current}`);
     if (route.at(-1) !== current) {

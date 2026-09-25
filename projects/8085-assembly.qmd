@@ -8,23 +8,24 @@ css: assets/8085-assembly/8085-project-v4.css
 
 ::: {.assembly-project-shell}
 
-<p class="assembly-lede">I thought it would be fun to revisit my introduction to coding, before AI coding assistants, by building a small 8085 simulator around my original 2020 assembly code and logic. Step through the Celsius-to-Fahrenheit conversion and watch the registers and flowchart update.</p>
+<p class="assembly-lede"><strong>My first programming project: a handwritten final project in Intel 8085 assembly, completed in 2020 before AI coding assistants.</strong> I built this browser simulator later to revisit my original code and logic. Try a temperature and watch the code, registers and flowchart work together to convert it to Fahrenheit.</p>
 
 ```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
   <div class="assembly-toolbar">
     <div class="assembly-control-group">
-      <label>Choose a temperature (0–37°C)
-        <input data-assembly-input type="number" min="0" max="37" value="25" inputmode="numeric">
-      </label>
-      <button data-assembly-load class="assembly-primary" type="button">Load into 2000h</button>
-      <span class="assembly-control-hint">Load it, then press <strong>Run</strong> or <strong>Step</strong>.</span>
+      <label for="assembly-temperature">Choose a temperature (0–37°C)</label>
+      <input id="assembly-temperature" data-assembly-input type="number" min="0" max="37" value="25" inputmode="numeric">
+      <button data-assembly-load class="assembly-primary" type="button" aria-describedby="assembly-load-help">Load temperature</button>
     </div>
     <div class="assembly-button-group">
+      <label>Run speed<select data-assembly-speed><option value="120">Normal</option><option value="700">Slow</option></select></label>
       <button data-assembly-step type="button">Step</button>
       <button data-assembly-run type="button">Run</button>
       <button data-assembly-reset type="button">Restart</button>
     </div>
+    <p class="assembly-toolbar-help" id="assembly-load-help">Load your temperature into memory at <code>2000h</code>, then press <strong>Run</strong> or <strong>Step</strong>.</p>
+    <div class="assembly-examples" aria-label="Guided temperature examples"><span>Try an example:</span><button type="button" data-assembly-example="0">0°C · special case</button><button type="button" data-assembly-example="4">4°C · skips division</button><button type="button" data-assembly-example="25">25°C · full calculation</button><small>Loads the input; press Run or Step to explore.</small></div>
   </div>
 
   <div class="assembly-sim-grid">
@@ -32,7 +33,7 @@ css: assets/8085-assembly/8085-project-v4.css
       <div class="assembly-code-bar">
         <span>PROJECT TO STANDARD.ASM</span>
         <div class="assembly-source-controls">
-          <button data-assembly-source-toggle type="button" aria-pressed="false">Show all source</button>
+          <button data-assembly-source-toggle type="button" aria-haspopup="dialog">Show all source</button>
           <a href="assets/8085-assembly/project-to-standard.asm" download>Download the assembly source</a>
         </div>
       </div>
@@ -44,7 +45,7 @@ css: assets/8085-assembly/8085-project-v4.css
         </div>
         <svg class="assembly-flow-svg" viewBox="0 0 630 2120" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="assembly-flow-svg-title assembly-flow-svg-desc">
           <title id="assembly-flow-svg-title">Celsius to Fahrenheit: original program flow</title>
-          <desc id="assembly-flow-svg-desc">Decisions flow down the left column. Yes branches go right and rejoin below each decision. Zero Celsius stores 32 and goes directly to Halt. Inputs 1 to 4 bypass division. Remainder checks save 7, 5, 4 or 2 before multiplication, addition and output. The highlighted shape is the next step; highlighted arrows show transitions already taken.</desc>
+          <desc id="assembly-flow-svg-desc">Decisions flow down the left column. Yes branches go right and rejoin below each decision. Zero Celsius stores 32 and goes directly to Halt. Inputs 1 to 4 bypass division. Remainder checks save 7, 5, 4 or 2 before multiplication, addition and output. The highlighted shape matches the instruction just executed, or the first instruction before execution begins. Highlighted arrows show transitions already taken.</desc>
           <defs><marker id="assembly-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
           <g class="assembly-flow-edge" data-flow-from="start" data-flow-to="load"><path d="M180 62V95" marker-end="url(#assembly-arrow)"/></g>
           <g class="assembly-flow-edge" data-flow-from="load" data-flow-to="zero-check"><path d="M180 185V220" marker-end="url(#assembly-arrow)"/></g>
@@ -105,10 +106,16 @@ css: assets/8085-assembly/8085-project-v4.css
         <strong>Processor state</strong>
         <span class="assembly-step-count" data-assembly-step-count>0 steps</span>
       </div>
+      <div class="assembly-execution-note" aria-live="polite">
+        <strong data-assembly-phase>Loading</strong>
+        <button type="button" class="assembly-explain-button" data-assembly-explain aria-haspopup="dialog" disabled>Explain instruction</button>
+        <span data-assembly-detail>Loading the original assembly source.</span>
+      </div>
       <div class="assembly-registers" data-assembly-registers></div>
 
       <div class="assembly-state-block">
         <div class="assembly-state-label">Flags</div>
+        <p class="assembly-flags-help">Flags record conditions for later decisions. <strong>Z (Zero)</strong> is 1 when a result is zero or compared values are equal. <strong>CY (Carry)</strong> is 1 after a carry or borrow; during <code>CMP</code>, it means A is smaller. Otherwise, the flag is 0.</p>
         <div class="assembly-flag-row">
           <button type="button" class="assembly-flag" data-inspect-state="Z"><span>Z</span><b data-assembly-zero>0</b></button>
           <button type="button" class="assembly-flag" data-inspect-state="CY"><span>CY</span><b data-assembly-carry>0</b></button>
@@ -124,33 +131,30 @@ css: assets/8085-assembly/8085-project-v4.css
       </div>
 
       <div class="assembly-result-box" aria-live="polite">
-        <span>Decoded result</span>
+        <div class="assembly-result-heading">
+          <span>Decoded result</span>
+          <button type="button" data-assembly-bcd-help aria-haspopup="dialog">What is BCD?</button>
+        </div>
         <strong data-assembly-result>Loading source…</strong>
+        <div class="assembly-thermometer" aria-hidden="true"><div class="assembly-thermometer-track"><i data-assembly-mercury></i></div><span>32–99°F</span></div>
+        <span data-assembly-bcd-storage></span>
+        <p data-assembly-bcd-digits></p>
       </div>
     </section>
   </div>
 
-  <div class="assembly-execution-note" aria-live="polite">
-    <strong data-assembly-phase>Loading</strong>
-    <span data-assembly-detail>Loading the original assembly source.</span>
-  </div>
 </div>
 ```
 
 ```{=html}
 <section class="assembly-background" aria-labelledby="assembly-background-title">
+  <p class="assembly-validation"><strong>Checked across all 38 supported inputs:</strong> each result matches the Celsius-to-Fahrenheit formula, rounded to the nearest whole degree.</p>
   <h2 id="assembly-background-title">Project background</h2>
   <p>While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote this Intel 8085 assembly program. It was my introduction to programming: working directly with registers, memory addresses, flags and jumps.</p>
   <h3>The assignment</h3>
   <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
   <p>The source preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
   <p>The browser recreation implements the instructions used by this project rather than a complete 8085 emulator. The interactive chart follows the shapes, branches and connections of my October 2020 flowchart, with clarified wording and highlighting linked to the assembly instructions. <a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener">View the original PDF</a>.</p>
-</section>
-```
-
-```{=html}
-<section class="assembly-thanks">
-  <p><strong>Thank you to John Clevenger.</strong> His verbal instruction and written <em>ELN 232</em> course text set an early standard for me: technical material could be rigorous while still being clear, visual and digestible. It is a standard I still strive to meet.</p>
 </section>
 ```
 
