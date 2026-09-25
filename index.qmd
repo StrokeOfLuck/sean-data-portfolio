@@ -202,6 +202,27 @@ Collaborative public-facing stock-trading platform built from scraped politician
 :::
 
 ::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image .schism-image}
+![](projects/assets/game-design-sandbox/schism-poster.jpg){fig-alt="Black-and-white Schism game level ending in a red heart"}
+<a href="projects/game-design-sandbox.html" aria-label="Open Game Design Sandbox project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Game Design Sandbox](projects/game-design-sandbox.qmd){.project-title-link}
+::: {.project-date}
+2023–25
+:::
+:::
+::: {.project-tags}
+[Godot]{.project-tag} [Unity]{.project-tag} [Game Design]{.project-tag}
+:::
+A playable collaborative puzzle platformer alongside earlier Unity physics experiments that trace my first work with game engines.
+
+[View project →](projects/game-design-sandbox.qmd){.project-link}
+:::
+:::
+
+::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image}
 ![](projects/assets/cards/8085-assembly.svg){fig-alt="Miniature recreation of the Intel 8085 assembly source and processor-state interface"}
 <a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
