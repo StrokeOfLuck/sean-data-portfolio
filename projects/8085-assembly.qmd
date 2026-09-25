@@ -8,7 +8,7 @@ css: assets/8085-assembly/8085-project-v4.css
 
 ::: {.assembly-project-shell}
 
-<p class="assembly-lede"><strong>My first programming project: a handwritten final project in Intel 8085 assembly, completed in 2020 before AI coding assistants.</strong> I built this browser simulator later to revisit my original code and logic. Try a temperature and watch the code, registers and flowchart work together to convert it to Fahrenheit.</p>
+<p class="assembly-lede"><strong>I wrote this final project in assembly for a microprocessor class focused on the Intel 8085 chip in 2020. I was learning assembly and getting introduced to coding, before AI coding assistants.</strong> I later built this browser-based 8085 simulator to revisit my original code and thought process from 2020. The comments have been copyedited for clarity, but the program logic is unchanged and fully functional. Try a temperature and watch the code, registers and flowchart work together to convert it to Fahrenheit.</p>
 
 ```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
@@ -19,13 +19,13 @@ css: assets/8085-assembly/8085-project-v4.css
       <button data-assembly-load class="assembly-primary" type="button" aria-describedby="assembly-load-help">Load temperature</button>
     </div>
     <div class="assembly-button-group">
-      <label>Run speed<select data-assembly-speed><option value="120">Normal</option><option value="700">Slow</option></select></label>
       <button data-assembly-step type="button">Step</button>
       <button data-assembly-run type="button">Run</button>
       <button data-assembly-reset type="button">Restart</button>
+      <label>Run speed<select data-assembly-speed><option value="120">Normal</option><option value="700">Slow</option></select></label>
     </div>
-    <p class="assembly-toolbar-help" id="assembly-load-help">Load your temperature into memory at <code>2000h</code>, then press <strong>Run</strong> or <strong>Step</strong>.</p>
-    <div class="assembly-examples" aria-label="Guided temperature examples"><span>Try an example:</span><button type="button" data-assembly-example="0">0°C · special case</button><button type="button" data-assembly-example="4">4°C · skips division</button><button type="button" data-assembly-example="25">25°C · full calculation</button><small>Loads the input; press Run or Step to explore.</small></div>
+    <p class="assembly-toolbar-help" id="assembly-load-help">Load an input at <code>2000h</code> or choose an example, then press <strong>Run</strong> or <strong>Step</strong>.</p>
+    <div class="assembly-examples" aria-label="Guided temperature examples" aria-describedby="assembly-load-help"><span>Try an example</span><button type="button" data-assembly-example="0" title="Special case: 32°F" aria-label="0°C · special case">0°C</button><button type="button" data-assembly-example="4" title="Skips division: 39°F" aria-label="4°C · skips division">4°C</button><button type="button" data-assembly-example="25" title="Full calculation: 77°F" aria-label="25°C · full calculation">25°C</button><button type="button" data-assembly-example="37" title="Upper limit: 99°F (rounded)" aria-label="37°C · upper limit">37°C</button></div>
   </div>
 
   <div class="assembly-sim-grid">
@@ -144,18 +144,6 @@ css: assets/8085-assembly/8085-project-v4.css
   </div>
 
 </div>
-```
-
-```{=html}
-<section class="assembly-background" aria-labelledby="assembly-background-title">
-  <p class="assembly-validation"><strong>Checked across all 38 supported inputs:</strong> each result matches the Celsius-to-Fahrenheit formula, rounded to the nearest whole degree.</p>
-  <h2 id="assembly-background-title">Project background</h2>
-  <p>While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote this Intel 8085 assembly program. It was my introduction to programming: working directly with registers, memory addresses, flags and jumps.</p>
-  <h3>The assignment</h3>
-  <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
-  <p>The source preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
-  <p>The browser recreation implements the instructions used by this project rather than a complete 8085 emulator. The interactive chart follows the shapes, branches and connections of my October 2020 flowchart, with clarified wording and highlighting linked to the assembly instructions. <a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener">View the original PDF</a>.</p>
-</section>
 ```
 
 ```{=html}
