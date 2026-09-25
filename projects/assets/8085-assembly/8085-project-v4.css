@@ -59,14 +59,20 @@
   text-underline-offset: 3px;
 }
 
-.assembly-simulator-heading {
-  margin: 2.7rem 0 1rem;
+.assembly-quick-start {
+  margin: 0 0 0.75rem;
+  color: var(--bs-secondary-color);
 }
 
-.assembly-simulator-heading p {
-  max-width: 780px;
-  margin-bottom: 0;
-  color: var(--bs-secondary-color);
+.assembly-background {
+  max-width: 820px;
+  margin: 2.7rem 0;
+  line-height: 1.65;
+}
+
+.assembly-background h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .assembly-simulator {

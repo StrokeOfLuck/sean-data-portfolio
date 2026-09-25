@@ -8,31 +8,9 @@ css: assets/8085-assembly/8085-project-v4.css
 
 ::: {.assembly-project-shell}
 
-<p class="assembly-lede">I wanted to revisit this project because it captures my introduction to programming: working directly with registers, memory addresses, flags and jumps before generative-AI coding assistants became part of everyday programming.</p>
+<p class="assembly-lede">My first programming project: converting Celsius to Fahrenheit in Intel 8085 assembly. Step through my original 2020 code and watch the registers and flowchart update.</p>
 
-<p class="assembly-lede">While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote an Intel 8085 assembly program that converts Celsius inputs into two-digit BCD Fahrenheit.</p>
-
-<div class="assembly-tags" aria-label="Project topics">
-  <span class="assembly-tag">Assembly</span>
-  <span class="assembly-tag">Intel 8085</span>
-  <span class="assembly-tag">BCD arithmetic</span>
-  <span class="assembly-tag">Technical foundations</span>
-</div>
-
-```{=html}
-<section class="assembly-intro-grid">
-  <div>
-    <h2>The assignment</h2>
-    <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
-    <p>The code below preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
-  </div>
-</section>
-```
-
-<section class="assembly-simulator-heading">
-  <h2>Step through the program</h2>
-  <p>This browser recreation follows the same source while exposing the registers, flags and memory locations involved in the calculation. It implements the instructions used by this project rather than trying to replace a complete 8085 emulator.</p>
-</section>
+<p class="assembly-quick-start">Choose a temperature, load it, then press <strong>Run</strong> or <strong>Step</strong>.</p>
 
 ```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
@@ -174,7 +152,16 @@ css: assets/8085-assembly/8085-project-v4.css
 </section>
 ```
 
-The interactive chart is a browser-native recreation of the flowchart submitted with the program in October 2020. Its shapes, branches and connections follow the original layout, with clarified wording and highlighting linked to the assembly instructions. [View the original PDF](assets/8085-assembly/flowchart.pdf){target="_blank" rel="noopener"}.
+```{=html}
+<section class="assembly-background" aria-labelledby="assembly-background-title">
+  <h2 id="assembly-background-title">Project background</h2>
+  <p>While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote this Intel 8085 assembly program. It was my introduction to programming: working directly with registers, memory addresses, flags and jumps.</p>
+  <h3>The assignment</h3>
+  <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
+  <p>The source preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
+  <p>The browser recreation implements the instructions used by this project rather than a complete 8085 emulator. The interactive chart follows the shapes, branches and connections of my October 2020 flowchart, with clarified wording and highlighting linked to the assembly instructions. <a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener">View the original PDF</a>.</p>
+</section>
+```
 
 ```{=html}
 <section class="assembly-thanks">
