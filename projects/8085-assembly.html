@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sean Ryan</title>
+<title>Celsius to Fahrenheit on the Intel 8085 – Sean Ryan</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +29,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,9 +76,8 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="card-selectable.css">
-<link rel="stylesheet" href="project-card-overrides.css">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="assets/8085-assembly/8085-project.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -88,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sean Ryan</span>
     </a>
   </div>
@@ -99,15 +98,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -134,8 +133,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sean Ryan</h1>
-<p class="subtitle lead">Data Journalism · Digital Investigations · Civic Technology</p>
+<h1 class="title">Celsius to Fahrenheit on the Intel 8085</h1>
+<p class="subtitle lead">Assembly programming · Wake Technical Community College · Fall 2020</p>
 </div>
 
 
@@ -152,185 +151,129 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.</p>
-<section id="projects" class="level2">
-<h2 class="anchored" data-anchor-id="projects">Projects</h2>
-<div class="featured-projects">
-<div class="project-card featured-project-card">
-<div class="project-card-art project-card-image park-it-here-image">
-<p><img src="https://datawrapper.dwcdn.net/28Wwl/plain.png" class="img-fluid" alt="Spin geofencing and NCDOT crash map from Park it here?"> <a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
+<div class="assembly-project-shell">
+<p class="assembly-lede">
+While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote an Intel 8085 assembly program that converts Celsius inputs into two-digit BCD Fahrenheit. I came back to it because it captures my introduction to programming: working directly with registers, memory addresses, flags and jumps before generative-AI coding assistants became part of everyday programming.
+</p>
+<div class="assembly-tags" aria-label="Project topics">
+<p><span class="assembly-tag">Assembly</span> <span class="assembly-tag">Intel 8085</span> <span class="assembly-tag">BCD arithmetic</span> <span class="assembly-tag">Technical foundations</span></p>
 </div>
-<div class="project-card-body">
-<section id="park-it-here-e-bike-and-scooter-rules-differ-across-nc-state" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="park-it-here-e-bike-and-scooter-rules-differ-across-nc-state"><a href="./projects/park-it-here.html" class="project-title-link">Park it here? E-bike and scooter rules differ across NC State</a></h3>
-<div class="project-date">
-<p>Sept.&nbsp;2026</p>
+<section class="assembly-intro-grid">
+<div>
+<pre><code>&lt;h2&gt;The assignment&lt;/h2&gt;
+&lt;p&gt;Read a Celsius value from memory address &lt;code&gt;2000h&lt;/code&gt;, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at &lt;code&gt;2001h&lt;/code&gt;, and document the program with a flowchart and comments.&lt;/p&gt;
+&lt;p&gt;The code below preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.&lt;/p&gt;</code></pre>
 </div>
-</section>
-<div class="project-tags">
-<p><span class="project-tag">Data Journalism</span> <span class="project-tag">GIS</span> <span class="project-tag">Reporting</span></p>
-</div>
-<p>Published reporting combining interviews, geofencing data, NCDOT crash records, GIS and Datawrapper maps for Technician.</p>
-<p><a href="./projects/park-it-here.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card featured-project-card">
-<div class="project-card-art project-card-image">
-<p><img src="projects/assets/cards/congressional-stock-network-v3.svg" class="img-fluid" alt="Miniature recreation of the congressional stock trading network interface"> <a href="projects/congressional-stock-network.html" aria-label="Open Congressional Stock Trading Network project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="congressional-stock-trading-network" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="congressional-stock-trading-network"><a href="./projects/congressional-stock-network.html" class="project-title-link">Congressional Stock Trading Network</a></h3>
-<div class="project-date">
-<p>Fall 2026</p>
+<div class="assembly-artifacts" aria-label="Project files">
+<pre><code>&lt;a href="assets/8085-assembly/project-to-standard.asm" download&gt;Download the assembly source&lt;/a&gt;
+&lt;a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener"&gt;Open the original flowchart ↗&lt;/a&gt;
+&lt;a href="https://8085simulator.github.io/" target="_blank" rel="noopener"&gt;Open Jubin Mitra’s 8085 Simulator ↗&lt;/a&gt;</code></pre>
 </div>
 </section>
-<div class="project-tags">
-<p><span class="project-tag">Network Analysis</span> <span class="project-tag">Public Records</span> <span class="project-tag">Congressional Data</span></p>
+<section class="assembly-simulator-heading">
+<h2 class="anchored">
+Step through the program
+</h2>
+<p>
+This browser recreation follows the same source while exposing the registers, flags and memory locations involved in the calculation. It implements the instructions used by this project rather than trying to replace a complete 8085 emulator.
+</p>
+</section>
+<div class="assembly-simulator" data-assembly-simulator="" data-source="assets/8085-assembly/project-to-standard.asm">
+<div class="assembly-toolbar">
+<pre><code>&lt;div class="assembly-control-group"&gt;
+  &lt;label&gt;Celsius input, 0–37
+    &lt;input data-assembly-input type="number" min="0" max="37" value="25" inputmode="numeric"&gt;
+  &lt;/label&gt;
+  &lt;button data-assembly-load class="assembly-primary" type="button"&gt;Load into 2000h&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="assembly-button-group"&gt;
+  &lt;button data-assembly-step type="button"&gt;Step&lt;/button&gt;
+  &lt;button data-assembly-run type="button"&gt;Run&lt;/button&gt;
+  &lt;button data-assembly-reset type="button"&gt;Restart&lt;/button&gt;
+&lt;/div&gt;</code></pre>
 </div>
-<p>Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.</p>
-<p><a href="./projects/congressional-stock-network.html" class="project-link">View project →</a></p>
+<div class="assembly-sim-grid">
+<pre><code>&lt;div class="assembly-code-panel"&gt;
+  &lt;div class="assembly-code-bar"&gt;
+    &lt;span&gt;PROJECT TO STANDARD.ASM&lt;/span&gt;
+    &lt;button data-assembly-source-toggle type="button" aria-pressed="false"&gt;Show all source&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;aside class="assembly-state-panel" aria-label="8085 processor state"&gt;
+  &lt;div class="assembly-state-title"&gt;
+    &lt;strong&gt;Processor state&lt;/strong&gt;
+    &lt;span class="assembly-step-count" data-assembly-step-count&gt;0 steps&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="assembly-registers" data-assembly-registers&gt;&lt;/div&gt;
+
+  &lt;div class="assembly-state-block"&gt;
+    &lt;div class="assembly-state-label"&gt;Flags&lt;/div&gt;
+    &lt;div class="assembly-flag-row"&gt;
+      &lt;div class="assembly-flag"&gt;&lt;span&gt;Z&lt;/span&gt;&lt;b data-assembly-zero&gt;0&lt;/b&gt;&lt;/div&gt;
+      &lt;div class="assembly-flag"&gt;&lt;span&gt;CY&lt;/span&gt;&lt;b data-assembly-carry&gt;0&lt;/b&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="assembly-state-block"&gt;
+    &lt;div class="assembly-state-label"&gt;Memory&lt;/div&gt;
+    &lt;div class="assembly-memory-row"&gt;
+      &lt;div class="assembly-memory"&gt;&lt;span&gt;2000h&lt;/span&gt;&lt;b data-assembly-memory-input&gt;19h&lt;/b&gt;&lt;/div&gt;
+      &lt;div class="assembly-memory"&gt;&lt;span&gt;2001h&lt;/span&gt;&lt;b data-assembly-memory-output&gt;--&lt;/b&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="assembly-result-box" aria-live="polite"&gt;
+    &lt;span&gt;Decoded result&lt;/span&gt;
+    &lt;strong data-assembly-result&gt;Loading source…&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+<div class="assembly-execution-note" aria-live="polite">
+<pre><code>&lt;strong data-assembly-phase&gt;Loading&lt;/strong&gt;
+&lt;span data-assembly-detail&gt;Loading the original assembly source.&lt;/span&gt;</code></pre>
 </div>
 </div>
-<div class="project-card featured-project-card">
-<div class="project-card-art project-card-image stock-image">
-<p><img src="projects/assets/cards/stock-disclosures.svg" class="img-fluid" alt="Clean miniature of the Politician Stock Disclosures PTR extraction interface"> <a href="projects/stock-disclosures.html" aria-label="Open Politician Stock Disclosures project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
+<section class="assembly-method-grid" aria-label="How the program works">
+<div>
+<pre><code>&lt;h3&gt;1. Divide by five&lt;/h3&gt;
+&lt;p&gt;The program repeatedly subtracts five, using register C to count the quotient and the accumulator to retain the remainder.&lt;/p&gt;</code></pre>
 </div>
-<div class="project-card-body">
-<section id="politician-stock-disclosures" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="politician-stock-disclosures"><a href="./projects/stock-disclosures.html" class="project-title-link">Politician Stock Disclosures</a></h3>
-<div class="project-date">
-<p>2024–present</p>
+<div>
+<pre><code>&lt;h3&gt;2. Multiply by nine&lt;/h3&gt;
+&lt;p&gt;It repeatedly adds the quotient and uses &lt;code&gt;DAA&lt;/code&gt; to keep the intermediate value in binary-coded decimal.&lt;/p&gt;</code></pre>
+</div>
+<div>
+<pre><code>&lt;h3&gt;3. Store the result&lt;/h3&gt;
+&lt;p&gt;After adding the rounded remainder contribution and 32, it writes the BCD Fahrenheit value to memory address &lt;code&gt;2001h&lt;/code&gt;.&lt;/p&gt;</code></pre>
 </div>
 </section>
-<div class="project-tags">
-<p><span class="project-tag">Public Records</span> <span class="project-tag">Data Cleaning</span> <span class="project-tag">Civic Technology</span></p>
+<section id="the-original-flowchart" class="level2">
+<h2 class="anchored" data-anchor-id="the-original-flowchart">The original flowchart</h2>
+<figure class="assembly-flowchart figure">
+<img src="assets/8085-assembly/flowchart.png" alt="Original flowchart for the 8085 Celsius-to-Fahrenheit program, showing the zero-degree branch, repeated-subtraction division, remainder routines, repeated-addition multiplication and final memory output" class="figure-img">
+<figcaption>
+The flowchart submitted with the program in October 2020.
+</figcaption>
+</figure>
+<section class="assembly-reflection-grid">
+<div>
+<pre><code>&lt;h2&gt;Why I came back to it&lt;/h2&gt;
+&lt;p&gt;This is not how I would solve a temperature conversion today, which is exactly why the project is worth preserving. The limited instruction set made every operation visible. Division became a loop of subtractions. Multiplication became repeated addition. Decimal output required understanding what the processor stored and how a person would read it.&lt;/p&gt;
+&lt;p&gt;Looking back, I can see the beginning of an approach I still use in data work: break a larger problem into inspectable steps, keep the source visible, and make the transformation understandable to someone following along.&lt;/p&gt;</code></pre>
 </div>
-<p>Turning difficult-to-use financial disclosures into structured data that can be searched, analyzed, and investigated.</p>
-<p><a href="./projects/stock-disclosures.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card featured-project-card">
-<div class="project-card-art project-card-image">
-<p><img src="projects/assets/cards/political-text-analysis.svg" class="img-fluid" alt="Miniature recreation of the Iran event and Truth Social post timeline"> <a href="projects/iran-timeline.html" aria-label="Open Political Text Analysis project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="political-text-analysis" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="political-text-analysis"><a href="./projects/iran-timeline.html" class="project-title-link">Political Text Analysis</a></h3>
-<div class="project-date">
-<p>Fall 2026</p>
-</div>
-</section>
-<div class="project-tags">
-<p><span class="project-tag">NLP</span> <span class="project-tag">Political Data</span> <span class="project-tag">Event Analysis</span></p>
-</div>
-<p>Using computational text analysis to examine political rhetoric around real-world events.</p>
-<p><a href="./projects/iran-timeline.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card featured-project-card">
-<div class="project-card-art project-card-image poster-image">
-<p><img src="projects/assets/cards/tankietube-card.svg" class="img-fluid" alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"> <a href="projects/tankietube.html" aria-label="Open TankieTube project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="tankietube" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="tankietube"><a href="./projects/tankietube.html" class="project-title-link">TankieTube</a></h3>
-<div class="project-date">
-<p>Summer 2026</p>
+<div class="assembly-note">
+<pre><code>&lt;h2&gt;A note on the course text&lt;/h2&gt;
+&lt;p&gt;John Clevenger’s &lt;em&gt;ELN 232: Introduction to Microprocessors&lt;/em&gt; set an early standard for me. It took subjects such as number systems, registers, instruction timing and assembly language and made them visual and digestible.&lt;/p&gt;
+&lt;p&gt;I appreciate the care he put into making difficult technical material approachable. That example still influences how I try to explain code, data and methodology now.&lt;/p&gt;</code></pre>
 </div>
 </section>
-<div class="project-tags">
-<p><span class="project-tag">Digital Methods</span> <span class="project-tag">Text Analysis</span> <span class="project-tag">Internet Research</span></p>
-</div>
-<p>Five-day University of Amsterdam research sprint comparing a Tankie transcript corpus with Tenet Media/Rumble using TF-IDF and sentence-similarity matching.</p>
-<p><a href="./projects/tankietube.html" class="project-link">View project →</a></p>
-</div>
-</div>
-</div>
-<section id="more-projects" class="level3">
-<h3 class="anchored" data-anchor-id="more-projects">More projects</h3>
-<div class="more-projects-grid">
-<div class="project-card compact-project-card">
-<div class="project-card-art project-card-live all-we-are-live">
-<iframe src="https://strokeofluck.github.io/all-we-are-map-box/?preview=1" title="Live preview of the actual All We Are solar installation map" loading="lazy" tabindex="-1" aria-hidden="true">
-</iframe>
-<p><a href="projects/all-we-are-solar-map.html" aria-label="Open All We Are Solar Map project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="all-we-are-solar-map" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="all-we-are-solar-map"><a href="./projects/all-we-are-solar-map.html" class="project-title-link">All We Are Solar Map</a></h3>
-<div class="project-date">
-<p>Spring 2026</p>
-</div>
+<script src="assets/8085-assembly/8085-project.js"></script>
 </section>
-<div class="project-tags">
-<p><span class="project-tag">GIS</span> <span class="project-tag">Nonprofit Data</span> <span class="project-tag">Interactive Visualization</span></p>
-</div>
-<p>Interactive Mapbox visualization turning All We Are’s solar installation records into an explorable map of project sites in Uganda.</p>
-<p><a href="./projects/all-we-are-solar-map.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card compact-project-card">
-<div class="project-card-art project-card-live lyon-live">
-<iframe src="https://www.google.com/maps/d/embed?mid=1gCtK4R45c9pSZ0o5NANokD2_X8GQ5M8&amp;ll=45.7605%2C4.8420&amp;z=11" title="Live preview of the actual Lyon cycling route map" loading="lazy" tabindex="-1" aria-hidden="true">
-</iframe>
-<p><a href="projects/lyon-cycling-map.html" aria-label="Open Lyon Cycling Map project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="lyon-cycling-map" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="lyon-cycling-map"><a href="./projects/lyon-cycling-map.html" class="project-title-link">Lyon Cycling Map</a></h3>
-<div class="project-date">
-<p>Summer 2025</p>
-</div>
-</section>
-<div class="project-tags">
-<p><span class="project-tag">GIS</span> <span class="project-tag">GPS Data</span> <span class="project-tag">Interactive Mapping</span></p>
-</div>
-<p>Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.</p>
-<p><a href="./projects/lyon-cycling-map.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card compact-project-card">
-<div class="project-card-art project-card-image clearhouse-image">
-<p><img src="projects/assets/clearhouse/Image Sep 7, 2026, 03_11_37 PM.png" class="img-fluid" alt="ClearHouse public stock disclosure and trades interface"> <a href="projects/clearhouse.html" aria-label="Open ClearHouse.live project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="clearhouse.live" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="clearhouse.live"><a href="./projects/clearhouse.html" class="project-title-link">ClearHouse.live</a></h3>
-<div class="project-date">
-<p>Winter 2024–25</p>
-</div>
-</section>
-<div class="project-tags">
-<p><span class="project-tag">Web Scraping</span> <span class="project-tag">Public Records</span> <span class="project-tag">Civic Technology</span></p>
-</div>
-<p>Collaborative public-facing stock-trading platform built from scraped politician financial disclosures; my introduction to public-records data pipelines.</p>
-<p><a href="./projects/clearhouse.html" class="project-link">View project →</a></p>
-</div>
-</div>
-<div class="project-card compact-project-card">
-<div class="project-card-art project-card-image">
-<p><img src="projects/assets/cards/8085-assembly.svg" class="img-fluid" alt="Miniature recreation of the Intel 8085 assembly source and processor-state interface"> <a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a></p>
-</div>
-<div class="project-card-body">
-<section id="intel-8085-assembly-project" class="level3 project-card-heading">
-<h3 class="anchored" data-anchor-id="intel-8085-assembly-project"><a href="./projects/8085-assembly.html" class="project-title-link">Intel 8085 Assembly Project</a></h3>
-<div class="project-date">
-<p>Fall 2020</p>
-</div>
-</section>
-<div class="project-tags">
-<p><span class="project-tag">Assembly</span> <span class="project-tag">Computer Architecture</span> <span class="project-tag">Technical Foundations</span></p>
-</div>
-<p>An early programming project from my EET degree: an interactive reconstruction of an 8085 routine that converts Celsius to BCD Fahrenheit.</p>
-<p><a href="./projects/8085-assembly.html" class="project-link">View project →</a></p>
-</div>
-</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -789,5 +732,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Intel 8085 assembly project interface</title>
+  <desc id="desc">A code window beside processor registers and a decoded Celsius-to-Fahrenheit result.</desc>
+  <rect width="1600" height="900" fill="#f5f7f9"/>
+  <rect x="70" y="72" width="1460" height="756" rx="24" fill="#ffffff" stroke="#cfd7de" stroke-width="3"/>
+  <rect x="70" y="72" width="1010" height="756" rx="24" fill="#101820"/>
+  <path d="M1056 72h24v756h-24z" fill="#101820"/>
+  <rect x="70" y="72" width="1460" height="84" rx="24" fill="#e9eef2"/>
+  <path d="M70 132h1460v24H70z" fill="#e9eef2"/>
+  <text x="112" y="122" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#27313a">PROJECT TO STANDARD.ASM</text>
+  <text x="1485" y="122" text-anchor="end" font-family="Arial, sans-serif" font-size="24" fill="#65717c">Intel 8085 · October 2020</text>
+  <rect x="70" y="156" width="1010" height="672" fill="#101820"/>
+  <rect x="70" y="353" width="1010" height="52" fill="#173b62"/>
+  <rect x="70" y="353" width="6" height="52" fill="#6ea8fe"/>
+  <g font-family="Courier New, monospace" font-size="27">
+    <g fill="#72808a" text-anchor="end">
+      <text x="132" y="214">020</text><text x="132" y="263">021</text><text x="132" y="312">022</text>
+      <text x="132" y="385">023</text><text x="132" y="434">024</text><text x="132" y="483">025</text>
+      <text x="132" y="532">026</text><text x="132" y="581">027</text><text x="132" y="630">028</text>
+      <text x="132" y="679">029</text><text x="132" y="728">030</text><text x="132" y="777">031</text>
+    </g>
+    <g fill="#e7edf2">
+      <text x="170" y="214">MVI C,00h</text>
+      <text x="170" y="263">MVI B,05</text>
+      <text x="170" y="312">CMP B</text>
+      <text x="170" y="385">JC LESS_5</text>
+      <text x="170" y="434" fill="#f0b36d">LOOP_D:</text>
+      <text x="170" y="483">SUB B</text>
+      <text x="170" y="532">INR C</text>
+      <text x="170" y="581">CMP B</text>
+      <text x="170" y="630">JNC LOOP_D</text>
+      <text x="170" y="679" fill="#f0b36d">LESS_5:</text>
+      <text x="170" y="728">MVI B,00h</text>
+      <text x="170" y="777">MVI D,04</text>
+    </g>
+    <g fill="#9cb9a9" font-size="22">
+      <text x="410" y="214">;Cleared so quotient starts at zero</text>
+      <text x="410" y="263">;Divisor used for subtraction</text>
+      <text x="410" y="312">;Checks if A is less than 5</text>
+      <text x="410" y="385">;Jumps to LESS_5 code</text>
+      <text x="410" y="483">;Original number minus 5</text>
+      <text x="410" y="532">;Counts up the quotient</text>
+    </g>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <text x="1130" y="218" font-size="26" font-weight="700" fill="#26323d">Processor state</text>
+    <g>
+      <rect x="1130" y="252" width="150" height="92" rx="10" fill="#f0f3f5"/>
+      <rect x="1300" y="252" width="150" height="92" rx="10" fill="#f0f3f5"/>
+      <rect x="1130" y="362" width="150" height="92" rx="10" fill="#f0f3f5"/>
+      <rect x="1300" y="362" width="150" height="92" rx="10" fill="#f0f3f5"/>
+      <g font-size="18" fill="#69747e"><text x="1150" y="282">A</text><text x="1320" y="282">B</text><text x="1150" y="392">C</text><text x="1320" y="392">HL</text></g>
+      <g font-family="Courier New, monospace" font-size="30" font-weight="700" fill="#26323d"><text x="1150" y="324">45h</text><text x="1320" y="324">00h</text><text x="1150" y="434">00h</text><text x="1320" y="434">2001h</text></g>
+    </g>
+    <text x="1130" y="520" font-size="18" font-weight="700" fill="#69747e">MEMORY</text>
+    <text x="1130" y="566" font-family="Courier New, monospace" font-size="26" fill="#26323d">2000h</text>
+    <text x="1450" y="566" text-anchor="end" font-family="Courier New, monospace" font-size="26" font-weight="700" fill="#26323d">19h</text>
+    <path d="M1130 584h320" stroke="#d5dce2" stroke-width="2"/>
+    <text x="1130" y="628" font-family="Courier New, monospace" font-size="26" fill="#26323d">2001h</text>
+    <text x="1450" y="628" text-anchor="end" font-family="Courier New, monospace" font-size="26" font-weight="700" fill="#26323d">77h</text>
+    <rect x="1130" y="682" width="320" height="104" rx="14" fill="#eaf3ff"/>
+    <text x="1155" y="718" font-size="17" fill="#65717c">DECODED RESULT</text>
+    <text x="1155" y="763" font-family="Courier New, monospace" font-size="34" font-weight="700" fill="#26323d">77°F · BCD 77h</text>
+  </g>
+</svg>
