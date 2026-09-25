@@ -3,7 +3,7 @@ title: "Celsius to Fahrenheit on the Intel 8085"
 subtitle: "Assembly programming · Wake Technical Community College · Fall 2020"
 page-layout: full
 toc: false
-css: assets/8085-assembly/8085-project-v2.css
+css: assets/8085-assembly/8085-project-v3.css
 ---
 
 ::: {.assembly-project-shell}
