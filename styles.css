@@ -538,3 +538,11 @@ a {
     display: none;
   }
 }
+
+/* Preserve the ending title and both players in the portfolio thumbnail. */
+.schism-image { background: #000; }
+.schism-image img { object-fit: contain; object-position: center bottom; }
+.project-card:hover .schism-image img { transform: none; }
+
+/* Whole checker squares fit the thumbnail without cropping. */
+@media (min-width: 601px) { .compact-project-card .schism-image { aspect-ratio: 2 / 1; } }

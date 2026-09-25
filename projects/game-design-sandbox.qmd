@@ -1,111 +1,52 @@
 ---
-title: "Game Design Sandbox"
-subtitle: "Physics experiments, cooperative systems and learning by making"
+title: "Game Design"
+description: "Unity experiments and Schism, a cooperative puzzle platformer by Sean Ryan, Ben Antinozzi, and Kyle Setzer."
 page-layout: full
 toc: false
+title-block-banner: false
 css: assets/game-design-sandbox/game-design.css
 include-after-body: assets/game-design-sandbox/game-design.js
 ---
 
-::: {.game-page}
-
 ```{=html}
-<header class="game-intro">
-  <p class="game-eyebrow">Unity experiments · Godot collaboration</p>
-  <p class="game-lede">I began experimenting with game engines in summer 2023, using physics as a way to learn through play. <em>Schism</em>, a collaborative puzzle platformer built in Godot with Ben Antinozzi, turned those loose experiments into a shared system with rules, constraints and an ending.</p>
-  <div class="game-tags" aria-label="Project tools and topics">
-    <span>Unity</span><span>C#</span><span>Godot</span><span>GDScript</span><span>Game design</span>
-  </div>
-</header>
+<div class="game-page">
 
-<section class="schism-section" aria-labelledby="schism-title">
-  <div class="schism-copy">
-    <p class="section-label">Collaborative project · Spring 2025</p>
-    <h2 id="schism-title">Schism</h2>
-    <p class="schism-summary">Two players cross the same level but collide with opposite colors. To reach the exits together, they use swap boxes and chess pieces to change which tiles exist for each player.</p>
 
-    <dl class="project-facts">
-      <div><dt>Team</dt><dd>Sean Ryan + Ben Antinozzi</dd></div>
-      <div><dt>Engine</dt><dd>Godot</dd></div>
-      <div><dt>Genre</dt><dd>Cooperative puzzle platformer</dd></div>
-      <div><dt>Input</dt><dd>Two players, one keyboard</dd></div>
-    </dl>
-  </div>
 
-  <div class="schism-media" data-game-shell>
-    <button class="game-launch" type="button" data-game-launch aria-label="Launch the playable Schism web build">
-      <img src="assets/game-design-sandbox/schism-poster.jpg" alt="Black and white Schism level ending in a red heart">
-      <span class="play-mark" aria-hidden="true">▶</span>
-      <span class="play-label">Launch playable build · desktop keyboard required</span>
-    </button>
-    <div class="game-stage" data-game-stage hidden>
-      <div class="game-status" data-game-status role="status">Loading the game…</div>
-      <iframe data-game-frame data-src="https://strokeofluck.github.io/Schism/" title="Playable Schism game" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>
-    </div>
-  </div>
+
+<section id="schism" class="schism-section" aria-labelledby="schism-title">
+ <div class="schism-heading"><div><p class="eyebrow">Spring 2025</p><h1 id="schism-title">SCHISM</h1></div><p class="schism-definition"><em>schism</em> · noun<br>A formal division or split between people within an organization or movement.</p></div>
+ <div class="project-story"><div><p class="eyebrow">Built together</p><h3>Cooperation is the mechanic.</h3></div><div><p>Two players cross the same level, but collide with opposite colors. A route that works for one can be an obstacle for the other. Swap boxes and chess pieces change the board; progress depends on thinking together.</p></div></div>
+ <div class="controls"><div><img class="player-token" src="assets/game-design-sandbox/kiki.svg" alt="" aria-hidden="true"><div><h3>Kiki · Black player</h3><p><kbd>A</kbd> <kbd>D</kbd> Move <kbd>W</kbd> Jump <kbd>S</kbd> Interact</p></div></div><div><img class="player-token bouba-token" src="assets/game-design-sandbox/bouba.svg" alt="" aria-hidden="true"><div><h3>Bouba · White player</h3><p><kbd>←</kbd> <kbd>→</kbd> Move <kbd>↑</kbd> Jump <kbd>↓</kbd> Interact</p></div></div></div>
+ <div class="game-shell" data-game-shell>
+  <div class="player-bar"><span><i class="live-dot"></i> Godot / Two players / One keyboard</span><span>Browser edition</span></div>
+  <button class="game-launch" data-game-launch type="button"><img src="assets/game-design-sandbox/schism-poster.jpg" alt="Schism's black-and-white final level with a red heart"><span class="launch-card"><span class="play-circle" aria-hidden="true">▶</span><strong>Enter the world</strong><span>Launch Schism · approximately 49 MB</span></span></button>
+  <div class="game-stage" data-game-stage hidden><iframe data-game-frame data-src="assets/game-design-sandbox/play/index.html" title="Schism — cooperative puzzle platformer" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></div>
+  <div class="player-toolbar"><div class="audio-controls"><button type="button" data-mute aria-pressed="false">Mute</button><label for="game-volume">Game volume</label><input id="game-volume" data-volume type="range" min="0" max="100" step="1" value="10"><output for="game-volume" data-volume-value>10%</output><span data-audio-status role="status" class="audio-feedback"></span></div><p class="toolbar-status" data-game-status role="status" aria-live="polite">Loads when you press play.</p><div class="player-actions" hidden><button type="button" data-restart>Restart</button><button type="button" data-fullscreen>Fullscreen ↗</button><button type="button" data-close>Close game</button></div></div>
+
+ </div>
+ <div class="game-details"><p class="keyboard-note">Best on a desktop with a keyboard.<br>On a phone? Explore below, then come back to play.</p><p class="credit">Sean Ryan + Ben Antinozzi + Kyle Setzer<br>CSC 281: Interactive Game Design · NC State<br>Godot / GDScript</p></div>
+
+
 </section>
 
-<section class="play-notes" aria-label="Schism controls">
-  <div>
-    <p class="section-label">Controls</p>
-    <p><strong>Black player</strong> — <kbd>A</kbd> <kbd>D</kbd> to move, <kbd>W</kbd> to jump, <kbd>S</kbd> to interact</p>
-  </div>
-  <div>
-    <p class="section-label">Second player</p>
-    <p><strong>White player</strong> — arrow keys to move and jump; <kbd>↓</kbd> to interact</p>
-  </div>
-  <p class="game-size-note">The browser build is about 49 MB and does not download until you press Launch.</p>
-</section>
+<figure class="intro-film" aria-labelledby="intro-film-caption">
+ <div class="film-heading"><p class="eyebrow">Watch / The ending</p></div>
+ <video autoplay muted loop controls playsinline preload="metadata" poster="assets/game-design-sandbox/schism-poster.jpg" aria-label="Schism heart ending gameplay video" aria-describedby="intro-film-caption">
+  <source src="assets/game-design-sandbox/schism-ending-clean.mp4" type="video/mp4">
+  Your browser cannot play this video. <a href="assets/game-design-sandbox/schism-ending-clean.mp4">Watch the Schism heart ending.</a>
+ </video>
+ <figcaption id="intro-film-caption">The ending of Schism, when the two players finally come together.</figcaption>
+</figure>
 
-<section class="mechanics" aria-labelledby="mechanics-title">
-  <div class="mechanics-heading">
-    <p class="section-label">The central system</p>
-    <h2 id="mechanics-title">One space, two realities</h2>
-  </div>
-  <div class="mechanic-grid">
-    <article>
-      <span class="mechanic-number">01</span>
-      <h3>Opposite collision</h3>
-      <p>The black and white players occupy the same map, but each can stand only on tiles of the opposite color.</p>
-    </article>
-    <article>
-      <span class="mechanic-number">02</span>
-      <h3>Chess as level logic</h3>
-      <p>Stationary pieces flip tiles along legal chess movements, turning familiar rules into paths through the level.</p>
-    </article>
-    <article>
-      <span class="mechanic-number">03</span>
-      <h3>Progress through cooperation</h3>
-      <p>Changing the route for one player can remove it for the other, so both players have to plan before moving.</p>
-    </article>
-  </div>
-</section>
-
-<section class="unity-section" aria-labelledby="unity-title">
-  <div class="unity-heading">
-    <div>
-      <p class="section-label">Summer 2023</p>
-      <h2 id="unity-title">Unity physics experiments</h2>
-    </div>
-    <p>Small, messy experiments in rigid bodies, collisions, spawning and moving environments. They are less a finished game than a record of learning what an engine will let you do.</p>
-  </div>
-
-  <div class="unity-strip">
-    <figure class="unity-frame frame-wide">
-      <img src="assets/game-design-sandbox/unity-car.jpg" alt="A top-down Unity physics test with a car and a rock">
-      <figcaption><span>01</span> Vehicle and collision study</figcaption>
-    </figure>
-    <figure class="unity-frame frame-tall">
-      <img src="assets/game-design-sandbox/unity-physics.jpg" alt="A Unity physics scene filled with many colliding objects">
-      <figcaption><span>02</span> Spawned-object physics test</figcaption>
-    </figure>
-    <figure class="unity-frame frame-wide">
-      <img src="assets/game-design-sandbox/unity-conveyor.jpg" alt="A Unity environment experiment with platforms and moving containers">
-      <figcaption><span>03</span> Moving-environment study</figcaption>
-    </figure>
-  </div>
-</section>
-
+<section id="unity" class="unity-section" aria-labelledby="unity-title"><div class="section-heading"><div><p class="eyebrow">Summer 2023</p><h2 id="unity-title">First steps in Unity</h2></div><p>Some fun GIFs from exploring a game engine for the first time.</p></div>
+<button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Pause animations</button>
+<div class="experiment-grid">
+ <article><button class="image-open" type="button" data-image="unity-car.gif" aria-label="Enlarge vehicle and collision study"><img src="assets/game-design-sandbox/unity-car.gif" data-animation="assets/game-design-sandbox/unity-car.gif" data-still="assets/game-design-sandbox/unity-car.jpg" alt="Top-down Unity scene with a car and rock" loading="lazy"></button></article>
+ <article><button class="image-open" type="button" data-image="unity-physics.gif" aria-label="Enlarge spawned-object physics study"><img src="assets/game-design-sandbox/unity-physics.gif" data-animation="assets/game-design-sandbox/unity-physics.gif" data-still="assets/game-design-sandbox/unity-physics.jpg" alt="Unity physics scene filled with colliding objects" loading="lazy"></button></article>
+ <article><button class="image-open" type="button" data-image="unity-conveyor.gif" aria-label="Enlarge physics bones and musket ball experiment"><img src="assets/game-design-sandbox/unity-conveyor.gif" data-animation="assets/game-design-sandbox/unity-conveyor.gif" data-still="assets/game-design-sandbox/unity-conveyor.jpg" alt="Playing with moving physics bones and shooting a musket ball at objects" loading="lazy"></button></article>
+</div></section>
+<footer class="lab-footer"><a href="../index.html">Back to the portfolio ↗</a></footer>
+<dialog class="image-dialog" aria-label="Experiment image viewer"><button type="button" data-dialog-close aria-label="Close image viewer">Close ×</button><img alt=""><p></p></dialog>
+</div>
 ```
-
-:::

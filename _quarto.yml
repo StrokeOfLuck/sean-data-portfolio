@@ -3,6 +3,7 @@ project:
   render:
     - "*.qmd"
     - "*.md"
+    - "projects/game-design-sandbox.qmd"
     - "!AUTOMATION_SETUP.md"
     - "!projects/assets/"
   resources:
