@@ -593,7 +593,7 @@ a {
 /* On phones the compact card is much taller than the wide Schism artwork.
    Fill that preview area instead of bottom-aligning a contained image, which
    leaves a black letterbox bar above it. */
-@media (max-width: 620px) {
+@media (max-width: 940px) {
   .compact-project-card .schism-image > img.schism-still,
   .compact-project-card .schism-image > img.schism-background,
   .compact-project-card .schism-image > img.schism-hover {
