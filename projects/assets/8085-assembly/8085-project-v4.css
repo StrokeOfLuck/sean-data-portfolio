@@ -189,10 +189,10 @@
   overflow: auto;
   min-width: 0;
   padding: 0 0 1rem;
-  background: #101820;
-  color: #e7edf2;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
   scroll-behavior: auto;
-  scrollbar-color: #53606c #101820;
+  scrollbar-color: #a8b4c0 var(--bs-body-bg);
 }
 
 .assembly-flow-title {
@@ -201,9 +201,9 @@
   z-index: 2;
   margin: 0 0 1rem;
   padding: 0.9rem 1rem;
-  border-bottom: 1px solid #2d3740;
-  background: #101820;
-  color: #96a3ae;
+  border-bottom: 1px solid var(--bs-border-color, #dee2e6);
+  background: var(--bs-body-bg);
+  color: var(--bs-secondary-color, #5f6973);
   font: 0.75rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -418,7 +418,7 @@
     grid-column: 1 !important;
     grid-row: 4 !important;
     max-height: 560px;
-    border-top: 1px solid #2d3740;
+    border-top: 1px solid var(--bs-border-color, #dee2e6);
   }
 
   .assembly-method-grid {
@@ -458,34 +458,36 @@
   .assembly-flow-title {
     margin-inline: 0;
   }
-
+
 }
 
 /* Fixed SVG coordinates preserve the original diagram's branches and merges. */
 .assembly-flow-svg { display: block; width: 100%; min-width: 440px; height: auto; }
 .assembly-flow-step > rect,
 .assembly-flow-step > polygon,
-.assembly-flow-step > path { fill: #172029; stroke: #728495; stroke-width: 1.5; }
+.assembly-flow-step > path { fill: var(--bs-body-bg); stroke: #8494a3; stroke-width: 1.5; }
 .assembly-flow-step > path { fill: none; }
-.assembly-flow-step text { fill: #e7edf2; font: 17px system-ui, sans-serif; dominant-baseline: middle; }
-.assembly-flow-step .assembly-flow-value { fill: #b7c7d6; font-size: 15px; }
+.assembly-flow-step text { fill: var(--bs-body-color); font: 17px system-ui, sans-serif; dominant-baseline: middle; }
+.assembly-flow-step .assembly-flow-value { fill: var(--bs-secondary-color, #5f6973); font-size: 15px; }
 .assembly-flow-step.is-visited > rect,
-.assembly-flow-step.is-visited > polygon { fill: #152a3d; stroke: #78a6cc; }
+.assembly-flow-step.is-visited > polygon { fill: rgba(var(--bs-primary-rgb), .045); stroke: rgba(var(--bs-primary-rgb), .6); }
 .assembly-flow-step.is-active > rect,
-.assembly-flow-step.is-active > polygon { fill: #173b62; stroke: #a8d4ff; stroke-width: 3; }
-.assembly-flow-edge path { fill: none; stroke: #728495; stroke-width: 1.5; }
-.assembly-flow-edge text { fill: #b7c7d6; font: 13px system-ui, sans-serif; paint-order: stroke; stroke: #101820; stroke-width: 5px; }
-.assembly-flow-edge.is-traversed path { stroke: #78a6cc; stroke-width: 2; }
-.assembly-flow-edge.is-active path { stroke: #a8d4ff; stroke-width: 3; }
+.assembly-flow-step.is-active > polygon { fill: rgba(var(--bs-primary-rgb), .12); stroke: var(--bs-primary); stroke-width: 3; }
+.assembly-flow-edge path { fill: none; stroke: #8494a3; stroke-width: 1.5; }
+.assembly-flow-edge text { fill: var(--bs-secondary-color, #5f6973); font: 13px system-ui, sans-serif; paint-order: stroke; stroke: var(--bs-body-bg); stroke-width: 5px; }
+.assembly-flow-edge.is-traversed path { stroke: rgba(var(--bs-primary-rgb), .6); stroke-width: 2; }
+.assembly-flow-edge.is-active path { stroke: var(--bs-primary); stroke-width: 3; }
+.assembly-flow-heading { display: grid; gap: .35rem; }
+.assembly-flow-heading a { font: 600 .8rem/1.35 var(--bs-body-font-family, system-ui); color: var(--bs-link-color); text-underline-offset: 3px; }
 .assembly-flow-title { left: 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .6rem; }
 .assembly-flow-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem; }
-.assembly-flow-controls label { display: flex; align-items: center; gap: .3rem; margin: 0; color: #c6d3df; font: 12px system-ui, sans-serif; }
-.assembly-flow-controls input { accent-color: #8ec1ff; }
-.assembly-flow-controls button { min-height: 32px; padding: .3rem .55rem; border: 1px solid #728495; border-radius: 4px; background: #172029; color: #e7edf2; font: 12px system-ui, sans-serif; }
+.assembly-flow-controls label { display: flex; align-items: center; gap: .3rem; margin: 0; color: var(--bs-body-color); font: 12px system-ui, sans-serif; }
+.assembly-flow-controls input { accent-color: var(--bs-primary); }
+.assembly-flow-controls button { min-height: 32px; padding: .3rem .55rem; border: 1px solid #8494a3; border-radius: 4px; background: var(--bs-body-bg); color: var(--bs-body-color); font: 12px system-ui, sans-serif; }
 .assembly-flow-controls button:focus-visible,
 .assembly-flow-controls input:focus-visible,
-.assembly-flow-view:focus-visible { outline: 2px solid #a8d4ff; outline-offset: -2px; }
-.assembly-flow-dialog { width: min(94vw, 900px); max-width: 94vw; height: 90vh; max-height: 90vh; padding: 0; border: 1px solid #728495; border-radius: 8px; background: #101820; color: #e7edf2; }
+.assembly-flow-view:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: -2px; }
+.assembly-flow-dialog { width: min(94vw, 900px); max-width: 94vw; height: 90vh; max-height: 90vh; padding: 0; border: 1px solid #8494a3; border-radius: 8px; background: var(--bs-body-bg); color: var(--bs-body-color); }
 .assembly-flow-dialog::backdrop { background: rgb(0 0 0 / .7); }
 .assembly-flow-dialog .assembly-flow-view { height: 100%; max-height: none; box-sizing: border-box; }
 .assembly-flow-dialog .assembly-flow-title { top: 0; }
