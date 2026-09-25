@@ -198,15 +198,12 @@ This browser recreation follows the same source while exposing the registers, fl
   <div class="assembly-sim-grid page-columns page-full">
     <div class="assembly-code-panel">
       <div class="assembly-code-bar">
-        <span data-assembly-panel-title="">PROGRAM FLOW</span>
-        <div class="assembly-view-controls" role="group" aria-label="Program view">
-          <button data-assembly-flow-toggle="" class="is-selected" type="button" aria-pressed="true">Flowchart</button>
-          <button data-assembly-code-toggle="" type="button" aria-pressed="false">Source</button>
-          <button data-assembly-source-toggle="" type="button" aria-pressed="false" hidden="">Show all source</button>
-        </div>
+        <span>PROJECT TO STANDARD.ASM</span>
+        <button data-assembly-source-toggle="" type="button" aria-pressed="false">Show all source</button>
       </div>
 
       <div class="assembly-flow-view" data-assembly-flow="" aria-label="Interactive recreation of the original program flowchart">
+        <div class="assembly-flow-title">PROGRAM FLOW</div>
         <div class="assembly-flow-node" data-flow-node="load">
           <span class="assembly-flow-kicker">Start</span>
           <strong>Read Celsius from 2000h</strong>
@@ -306,7 +303,7 @@ This browser recreation follows the same source while exposing the registers, fl
         </div>
       </div>
 
-      <div class="assembly-code-view" data-assembly-code="" aria-label="Assembly source code" hidden=""></div>
+      <div class="assembly-code-view" data-assembly-code="" aria-label="Assembly source code"></div>
     </div>
 
     <aside class="assembly-state-panel" aria-label="8085 processor state">
