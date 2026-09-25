@@ -788,11 +788,13 @@ padding: 24px !important;
 --muted: #667085;
 --border: #cfd7e1;
 --rail: #7f8b98;
---standard: #8a96a3;
---notable: #567a9c;
---high: #9a6b43;
---major: #9a4949;
---context: #84759a;
+/* Event significance uses a neutral light-to-dark scale so these marks
+   cannot be mistaken for the semantic rhetoric colors below. */
+--standard: #a7adb3;
+--notable: #69737d;
+--high: #4f575f;
+--major: #292f35;
+--context: #70777e;
 --threat: #9a4949;
 --victory: #4e7657;
 --diplomacy: #4b719c;
@@ -913,6 +915,7 @@ font-weight: 850;
 }
 .sig-pill.standard {
 background: var(--standard);
+color: var(--ink);
 }
 .sig-pill.notable {
 background: var(--notable);
@@ -1714,7 +1717,7 @@ Next event →
 2026</option><option value="24">July 22,
 2026</option><option value="25">July 24,
 2026</option></select><strong id="eventCounter" class="event-counter">1
-of 26</strong><span class="toolbar-note">Circle size/color = event significance; SVG rail rebuilt for clarity</span>
+of 26</strong><span class="toolbar-note">Circle size/darkness = event significance; SVG rail rebuilt for clarity</span>
 </div>
 <div id="eventViews">
 <section class="event-view" data-event-index="0">
