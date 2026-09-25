@@ -59,8 +59,11 @@
   text-underline-offset: 3px;
 }
 
-.assembly-quick-start {
-  margin: 0 0 0.75rem;
+.assembly-control-hint {
+  align-self: end;
+  padding-block: 0.65rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
   color: var(--bs-secondary-color);
 }
 

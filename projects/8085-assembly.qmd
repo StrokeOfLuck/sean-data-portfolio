@@ -8,18 +8,17 @@ css: assets/8085-assembly/8085-project-v4.css
 
 ::: {.assembly-project-shell}
 
-<p class="assembly-lede">My first programming project: converting Celsius to Fahrenheit in Intel 8085 assembly. Step through my original 2020 code and watch the registers and flowchart update.</p>
-
-<p class="assembly-quick-start">Choose a temperature, load it, then press <strong>Run</strong> or <strong>Step</strong>.</p>
+<p class="assembly-lede">I thought it would be fun to revisit my introduction to coding, before AI coding assistants, by building a small 8085 simulator around my original 2020 assembly code and logic. Step through the Celsius-to-Fahrenheit conversion and watch the registers and flowchart update.</p>
 
 ```{=html}
 <div class="assembly-simulator" data-assembly-simulator data-source="assets/8085-assembly/project-to-standard.asm">
   <div class="assembly-toolbar">
     <div class="assembly-control-group">
-      <label>Celsius input, 0–37
+      <label>Choose a temperature (0–37°C)
         <input data-assembly-input type="number" min="0" max="37" value="25" inputmode="numeric">
       </label>
       <button data-assembly-load class="assembly-primary" type="button">Load into 2000h</button>
+      <span class="assembly-control-hint">Load it, then press <strong>Run</strong> or <strong>Step</strong>.</span>
     </div>
     <div class="assembly-button-group">
       <button data-assembly-step type="button">Step</button>
