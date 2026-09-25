@@ -20585,6 +20585,10 @@ Multi-day Event </span>
   .after-branch .post-scroll .post-track {
     width: 100% !important;
     min-width: 100% !important;
+    /* The desktop event-day row is centered. On mobile that centers the
+       overflowing two-card track itself, leaving half of each card visible.
+       Pin every mobile track to its first snap point instead. */
+    justify-content: flex-start !important;
     gap: 10px;
   }
 
