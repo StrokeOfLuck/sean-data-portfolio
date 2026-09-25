@@ -165,7 +165,7 @@ css: assets/8085-assembly/8085-project-v3.css
       <div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"></div>
     </div>
 
-    <aside class="assembly-state-panel" aria-label="8085 processor state">
+    <section class="assembly-state-panel" role="complementary" aria-label="8085 processor state">
       <div class="assembly-state-title">
         <strong>Processor state</strong>
         <span class="assembly-step-count" data-assembly-step-count>0 steps</span>
@@ -192,7 +192,7 @@ css: assets/8085-assembly/8085-project-v3.css
         <span>Decoded result</span>
         <strong data-assembly-result>Loading source…</strong>
       </div>
-    </aside>
+    </section>
   </div>
 
   <div class="assembly-execution-note" aria-live="polite">
