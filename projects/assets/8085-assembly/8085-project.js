@@ -10,6 +10,10 @@
     run: root.querySelector("[data-assembly-run]"),
     reset: root.querySelector("[data-assembly-reset]"),
     toggle: root.querySelector("[data-assembly-source-toggle]"),
+    flowToggle: root.querySelector("[data-assembly-flow-toggle]"),
+    codeToggle: root.querySelector("[data-assembly-code-toggle]"),
+    panelTitle: root.querySelector("[data-assembly-panel-title]"),
+    flow: root.querySelector("[data-assembly-flow]"),
     code: root.querySelector("[data-assembly-code]"),
     registers: root.querySelector("[data-assembly-registers]"),
     steps: root.querySelector("[data-assembly-step-count]"),
@@ -28,6 +32,8 @@
   let state = null;
   let timer = null;
   let showAllSource = false;
+  let panelView = "flow";
+  let lastFlowNode = null;
 
   const hex8 = (value) =>
     `${((value ?? 0) & 0xff).toString(16).toUpperCase().padStart(2, "0")}h`;
@@ -117,12 +123,14 @@
       calls: [],
       count: 0,
       halted: false,
+      flowVisited: new Set(["load"]),
       last: `Loaded ${input}°C (${hex8(input)}) into memory address 2000h.`
     };
 
     showAllSource = false;
     elements.toggle.textContent = "Show all source";
     elements.toggle.setAttribute("aria-pressed", "false");
+    lastFlowNode = null;
     render();
   }
 
@@ -310,6 +318,143 @@
       .join("");
   }
 
+  function flowNodeForInstruction(line) {
+    if (state.halted) return "halt";
+    if (!line) return "halt";
+
+    const sourceLine = line.sourceIndex + 1;
+    if (sourceLine <= 14) return "load";
+    if (sourceLine <= 18) return "zero-check";
+    if (sourceLine <= 23) return "range-check";
+    if (sourceLine <= 29) return "divide";
+    if ((sourceLine >= 31 && sourceLine <= 37) || (sourceLine >= 109 && sourceLine <= 114)) {
+      return "remainder-4";
+    }
+    if ((sourceLine >= 38 && sourceLine <= 39) || (sourceLine >= 115 && sourceLine <= 120)) {
+      return "remainder-3";
+    }
+    if ((sourceLine >= 40 && sourceLine <= 41) || (sourceLine >= 122 && sourceLine <= 126)) {
+      return "remainder-2";
+    }
+    if ((sourceLine >= 42 && sourceLine <= 43) || (sourceLine >= 129 && sourceLine <= 133)) {
+      return "remainder-1";
+    }
+    if (sourceLine >= 46 && sourceLine <= 48) return "quotient";
+    if (sourceLine >= 49 && sourceLine <= 54) return "multiply";
+    if (sourceLine >= 56 && sourceLine <= 58) return "add-remainder";
+    if (sourceLine >= 59 && sourceLine <= 61) return "add-32";
+    if (sourceLine >= 81 && sourceLine <= 85) return "store";
+    if (sourceLine >= 87 && sourceLine <= 105) return "zero-store";
+    return "halt";
+  }
+
+  function setChoice(name, selected) {
+    elements.flow
+      .querySelectorAll(`[data-flow-choice="${name}"]`)
+      .forEach((choice) => {
+        choice.classList.toggle("is-selected", selected);
+        if (selected) choice.setAttribute("aria-current", "true");
+        else choice.removeAttribute("aria-current");
+      });
+  }
+
+  function setFlowText(selector, value) {
+    const target = elements.flow.querySelector(selector);
+    if (target) target.textContent = value;
+  }
+
+  function renderFlow() {
+    if (!state || !elements.flow) return;
+
+    const input = state.memory[0x2000] ?? 0;
+    const quotient = Math.floor(input / 5);
+    const remainder = input % 5;
+    const remainderAdjustments = [0, 2, 4, 5, 7];
+    const adjustment = remainderAdjustments[remainder];
+    const activeNode = flowNodeForInstruction(program[state.pc]);
+    state.flowVisited.add(activeNode);
+
+    elements.flow.querySelectorAll("[data-flow-node]").forEach((node) => {
+      const name = node.dataset.flowNode;
+      node.classList.toggle("is-active", name === activeNode);
+      node.classList.toggle("is-visited", state.flowVisited.has(name));
+      if (name === activeNode) node.setAttribute("aria-current", "step");
+      else node.removeAttribute("aria-current");
+    });
+
+    setChoice("zero-yes", input === 0);
+    setChoice("zero-no", input !== 0);
+    setChoice("below5-yes", input > 0 && input < 5);
+    setChoice("below5-no", input >= 5);
+    [0, 1, 2, 3, 4].forEach((value) => {
+      setChoice(`remainder-${value}`, remainder === value && input !== 0);
+    });
+
+    setFlowText("[data-flow-input-value]", `${input}°C · ${hex8(input)}`);
+    setFlowText(
+      "[data-flow-range-value]",
+      input === 0
+        ? "Handled by the zero branch"
+        : input < 5
+          ? "Skip repeated subtraction"
+          : "Use repeated subtraction"
+    );
+    setFlowText(
+      "[data-flow-division-value]",
+      `Quotient ${quotient} · remainder ${remainder}`
+    );
+    setFlowText(
+      "[data-flow-multiply-value]",
+      `${quotient} × 9 = ${quotient * 9}`
+    );
+    setFlowText("[data-flow-adjustment-value]", `Add ${adjustment}`);
+
+    if (state.memory[0x2001] == null) {
+      setFlowText("[data-flow-output-value]", "Waiting for output");
+    } else {
+      const bcd = state.memory[0x2001];
+      const decoded = ((bcd >> 4) & 0x0f) * 10 + (bcd & 0x0f);
+      setFlowText(
+        "[data-flow-output-value]",
+        `${decoded}°F · BCD ${hex8(bcd)}`
+      );
+    }
+
+    if (panelView === "flow" && activeNode !== lastFlowNode) {
+      const activeElement = elements.flow.querySelector(
+        `[data-flow-node="${activeNode}"]`
+      );
+      if (activeElement) {
+        const targetTop = Math.max(
+          0,
+          activeElement.offsetTop - elements.flow.clientHeight / 2 + activeElement.offsetHeight / 2
+        );
+        elements.flow.scrollTo({ top: targetTop, behavior: state.count ? "smooth" : "auto" });
+      }
+      lastFlowNode = activeNode;
+    }
+  }
+
+  function setPanelView(view) {
+    panelView = view;
+    const showFlow = view === "flow";
+    elements.flow.hidden = !showFlow;
+    elements.code.hidden = showFlow;
+    elements.toggle.hidden = showFlow;
+    elements.panelTitle.textContent = showFlow ? "PROGRAM FLOW" : "PROJECT TO STANDARD.ASM";
+    elements.flowToggle.classList.toggle("is-selected", showFlow);
+    elements.codeToggle.classList.toggle("is-selected", !showFlow);
+    elements.flowToggle.setAttribute("aria-pressed", String(showFlow));
+    elements.codeToggle.setAttribute("aria-pressed", String(!showFlow));
+
+    if (showFlow) {
+      lastFlowNode = null;
+      renderFlow();
+    } else {
+      renderCode();
+    }
+  }
+
   function phaseName(raw) {
     if (state.halted) return "Complete";
     if (/LXI H,2000|MOV A,M|MVI D,00|CMP D|CZ LOOP_ZERO/.test(raw)) {
@@ -328,6 +473,7 @@
 
   function render() {
     renderCode();
+    renderFlow();
     const registerNames = ["A", "B", "C", "D", "E", "H", "L"];
 
     elements.registers.innerHTML =
@@ -384,6 +530,8 @@
     elements.toggle.setAttribute("aria-pressed", String(showAllSource));
     renderCode();
   });
+  elements.flowToggle.addEventListener("click", () => setPanelView("flow"));
+  elements.codeToggle.addEventListener("click", () => setPanelView("code"));
   elements.input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") resetState();
   });
