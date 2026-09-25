@@ -210,14 +210,14 @@ Each event-date is also assigned a **significance level** (Standard, Notable, Hi
 
 ## Significance levels
 
-The central event circle and the clickable bottom timeline in the visualization are both sized and colored by this classification, derived directly from the UCDP event workbook:
+The central event circle and the clickable bottom timeline in the visualization are both sized and shaded by this classification, derived directly from the UCDP event workbook:
 
 <ul>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#8a96a3;margin-right:8px;vertical-align:middle;"></span><strong>Minor:</strong> another same-day UCDP event date.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#567a9c;margin-right:8px;vertical-align:middle;"></span><strong>Notable:</strong> same-day best estimate ≥ 5, or at least 2 same-day UCDP records.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#9a6b43;margin-right:8px;vertical-align:middle;"></span><strong>High:</strong> same-day best estimate ≥ 10, or at least 3 same-day UCDP records.</li>
-<li><span style="display:inline-block;width:15px;height:15px;border-radius:50%;background:#9a4949;margin-right:8px;vertical-align:middle;"></span><strong>Major:</strong> same-day best death estimate ≥ 25, or same-day civilian deaths ≥ 10.</li>
-<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:white;box-shadow:inset 0 0 0 2px #84759a;margin-right:8px;vertical-align:middle;"></span><strong>Multi-day Event:</strong> a multi-day record begins on that date, but there is no same-day fatality record to assign to that specific date.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#a7adb3;margin-right:8px;vertical-align:middle;"></span><strong>Minor:</strong> another same-day UCDP event date.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#69737d;margin-right:8px;vertical-align:middle;"></span><strong>Notable:</strong> same-day best estimate ≥ 5, or at least 2 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#4f575f;margin-right:8px;vertical-align:middle;"></span><strong>High:</strong> same-day best estimate ≥ 10, or at least 3 same-day UCDP records.</li>
+<li><span style="display:inline-block;width:15px;height:15px;border-radius:50%;background:#292f35;margin-right:8px;vertical-align:middle;"></span><strong>Major:</strong> same-day best death estimate ≥ 25, or same-day civilian deaths ≥ 10.</li>
+<li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:white;box-shadow:inset 0 0 0 2px #70777e;margin-right:8px;vertical-align:middle;"></span><strong>Multi-day Event:</strong> a multi-day record begins on that date, but there is no same-day fatality record to assign to that specific date.</li>
 </ul>
 
 The intent is to visually emphasize dates with more substantial same-day UCDP activity, without assigning an entire multi-day fatality total to the first day of a long record.
@@ -228,7 +228,7 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 2. **Window** the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.
 3. **Score rhetoric with zero-shot classification.** A Hugging Face multi-label zero-shot classifier (`facebook/bart-large-mnli`) scores each post's `content_text` — and only the text, never the UCDP metadata — against six categories: **Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism**, each receiving a continuous 0–1 entailment score.
 4. **Aggregate event-balanced means.** Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn't dominate the pattern.
-5. **Visualize** the result as a connected, per-event timeline: each UCDP event sits at a central node sized/colored by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant category as a small colored badge.
+5. **Visualize** the result as a connected, per-event timeline: each UCDP event sits at a central node sized/shaded by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant category as a small colored badge.
 
 
 ## Rhetorical category guide
