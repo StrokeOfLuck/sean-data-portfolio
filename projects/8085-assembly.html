@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content page-columns page-full column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="assembly-project-shell">
+<div class="assembly-project-shell page-columns page-full">
 <p class="assembly-lede">
 While earning my associate degree in Electronics Engineering Technology at Wake Technical Community College, I wrote an Intel 8085 assembly program that converts Celsius inputs into two-digit BCD Fahrenheit. I came back to it because it captures my introduction to programming: working directly with registers, memory addresses, flags and jumps before generative-AI coding assistants became part of everyday programming.
 </p>
@@ -159,16 +159,16 @@ While earning my associate degree in Electronics Engineering Technology at Wake 
 <p><span class="assembly-tag">Assembly</span> <span class="assembly-tag">Intel 8085</span> <span class="assembly-tag">BCD arithmetic</span> <span class="assembly-tag">Technical foundations</span></p>
 </div>
 <section class="assembly-intro-grid">
-<div>
-<pre><code>&lt;h2&gt;The assignment&lt;/h2&gt;
-&lt;p&gt;Read a Celsius value from memory address &lt;code&gt;2000h&lt;/code&gt;, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at &lt;code&gt;2001h&lt;/code&gt;, and document the program with a flowchart and comments.&lt;/p&gt;
-&lt;p&gt;The code below preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.&lt;/p&gt;</code></pre>
-</div>
-<div class="assembly-artifacts" aria-label="Project files">
-<pre><code>&lt;a href="assets/8085-assembly/project-to-standard.asm" download&gt;Download the assembly source&lt;/a&gt;
-&lt;a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener"&gt;Open the original flowchart ↗&lt;/a&gt;
-&lt;a href="https://8085simulator.github.io/" target="_blank" rel="noopener"&gt;Open Jubin Mitra’s 8085 Simulator ↗&lt;/a&gt;</code></pre>
-</div>
+  <div>
+    <h2 class="anchored">The assignment</h2>
+    <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
+    <p>The code below preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
+  </div>
+  <div class="assembly-artifacts" aria-label="Project files">
+    <a href="assets/8085-assembly/project-to-standard.asm" download="">Download the assembly source</a>
+    <a href="assets/8085-assembly/flowchart.pdf" target="_blank" rel="noopener">Open the original flowchart ↗</a>
+    <a href="https://8085simulator.github.io/" target="_blank" rel="noopener">Open Jubin Mitra’s 8085 Simulator ↗</a>
+  </div>
 </section>
 <section class="assembly-simulator-heading">
 <h2 class="anchored">
@@ -178,96 +178,96 @@ Step through the program
 This browser recreation follows the same source while exposing the registers, flags and memory locations involved in the calculation. It implements the instructions used by this project rather than trying to replace a complete 8085 emulator.
 </p>
 </section>
-<div class="assembly-simulator" data-assembly-simulator="" data-source="assets/8085-assembly/project-to-standard.asm">
-<div class="assembly-toolbar">
-<pre><code>&lt;div class="assembly-control-group"&gt;
-  &lt;label&gt;Celsius input, 0–37
-    &lt;input data-assembly-input type="number" min="0" max="37" value="25" inputmode="numeric"&gt;
-  &lt;/label&gt;
-  &lt;button data-assembly-load class="assembly-primary" type="button"&gt;Load into 2000h&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class="assembly-button-group"&gt;
-  &lt;button data-assembly-step type="button"&gt;Step&lt;/button&gt;
-  &lt;button data-assembly-run type="button"&gt;Run&lt;/button&gt;
-  &lt;button data-assembly-reset type="button"&gt;Restart&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-</div>
-<div class="assembly-sim-grid">
-<pre><code>&lt;div class="assembly-code-panel"&gt;
-  &lt;div class="assembly-code-bar"&gt;
-    &lt;span&gt;PROJECT TO STANDARD.ASM&lt;/span&gt;
-    &lt;button data-assembly-source-toggle type="button" aria-pressed="false"&gt;Show all source&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class="assembly-code-view" data-assembly-code aria-label="Assembly source code"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="assembly-simulator page-columns page-full" data-assembly-simulator="" data-source="assets/8085-assembly/project-to-standard.asm">
+  <div class="assembly-toolbar">
+    <div class="assembly-control-group">
+      <label>Celsius input, 0–37
+        <input data-assembly-input="" type="number" min="0" max="37" value="25" inputmode="numeric">
+      </label>
+      <button data-assembly-load="" class="assembly-primary" type="button">Load into 2000h</button>
+    </div>
+    <div class="assembly-button-group">
+      <button data-assembly-step="" type="button">Step</button>
+      <button data-assembly-run="" type="button">Run</button>
+      <button data-assembly-reset="" type="button">Restart</button>
+    </div>
+  </div>
 
-&lt;aside class="assembly-state-panel" aria-label="8085 processor state"&gt;
-  &lt;div class="assembly-state-title"&gt;
-    &lt;strong&gt;Processor state&lt;/strong&gt;
-    &lt;span class="assembly-step-count" data-assembly-step-count&gt;0 steps&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div class="assembly-registers" data-assembly-registers&gt;&lt;/div&gt;
+  <div class="assembly-sim-grid page-columns page-full">
+    <div class="assembly-code-panel">
+      <div class="assembly-code-bar">
+        <span>PROJECT TO STANDARD.ASM</span>
+        <button data-assembly-source-toggle="" type="button" aria-pressed="false">Show all source</button>
+      </div>
+      <div class="assembly-code-view" data-assembly-code="" aria-label="Assembly source code"></div>
+    </div>
 
-  &lt;div class="assembly-state-block"&gt;
-    &lt;div class="assembly-state-label"&gt;Flags&lt;/div&gt;
-    &lt;div class="assembly-flag-row"&gt;
-      &lt;div class="assembly-flag"&gt;&lt;span&gt;Z&lt;/span&gt;&lt;b data-assembly-zero&gt;0&lt;/b&gt;&lt;/div&gt;
-      &lt;div class="assembly-flag"&gt;&lt;span&gt;CY&lt;/span&gt;&lt;b data-assembly-carry&gt;0&lt;/b&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+    <aside class="assembly-state-panel" aria-label="8085 processor state">
+      <div class="assembly-state-title">
+        <strong>Processor state</strong>
+        <span class="assembly-step-count" data-assembly-step-count="">0 steps</span>
+      </div>
+      <div class="assembly-registers" data-assembly-registers=""></div>
 
-  &lt;div class="assembly-state-block"&gt;
-    &lt;div class="assembly-state-label"&gt;Memory&lt;/div&gt;
-    &lt;div class="assembly-memory-row"&gt;
-      &lt;div class="assembly-memory"&gt;&lt;span&gt;2000h&lt;/span&gt;&lt;b data-assembly-memory-input&gt;19h&lt;/b&gt;&lt;/div&gt;
-      &lt;div class="assembly-memory"&gt;&lt;span&gt;2001h&lt;/span&gt;&lt;b data-assembly-memory-output&gt;--&lt;/b&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+      <div class="assembly-state-block">
+        <div class="assembly-state-label">Flags</div>
+        <div class="assembly-flag-row">
+          <div class="assembly-flag"><span>Z</span><b data-assembly-zero="">0</b></div>
+          <div class="assembly-flag"><span>CY</span><b data-assembly-carry="">0</b></div>
+        </div>
+      </div>
 
-  &lt;div class="assembly-result-box" aria-live="polite"&gt;
-    &lt;span&gt;Decoded result&lt;/span&gt;
-    &lt;strong data-assembly-result&gt;Loading source…&lt;/strong&gt;
-  &lt;/div&gt;
-&lt;/aside&gt;</code></pre>
-</div>
-<div class="assembly-execution-note" aria-live="polite">
-<pre><code>&lt;strong data-assembly-phase&gt;Loading&lt;/strong&gt;
-&lt;span data-assembly-detail&gt;Loading the original assembly source.&lt;/span&gt;</code></pre>
-</div>
+      <div class="assembly-state-block">
+        <div class="assembly-state-label">Memory</div>
+        <div class="assembly-memory-row">
+          <div class="assembly-memory"><span>2000h</span><b data-assembly-memory-input="">19h</b></div>
+          <div class="assembly-memory"><span>2001h</span><b data-assembly-memory-output="">--</b></div>
+        </div>
+      </div>
+
+      <div class="assembly-result-box" aria-live="polite">
+        <span>Decoded result</span>
+        <strong data-assembly-result="">Loading source…</strong>
+      </div>
+    </aside>
+  </div>
+
+  <div class="assembly-execution-note" aria-live="polite">
+    <strong data-assembly-phase="">Loading</strong>
+    <span data-assembly-detail="">Loading the original assembly source.</span>
+  </div>
 </div>
 <section class="assembly-method-grid" aria-label="How the program works">
-<div>
-<pre><code>&lt;h3&gt;1. Divide by five&lt;/h3&gt;
-&lt;p&gt;The program repeatedly subtracts five, using register C to count the quotient and the accumulator to retain the remainder.&lt;/p&gt;</code></pre>
-</div>
-<div>
-<pre><code>&lt;h3&gt;2. Multiply by nine&lt;/h3&gt;
-&lt;p&gt;It repeatedly adds the quotient and uses &lt;code&gt;DAA&lt;/code&gt; to keep the intermediate value in binary-coded decimal.&lt;/p&gt;</code></pre>
-</div>
-<div>
-<pre><code>&lt;h3&gt;3. Store the result&lt;/h3&gt;
-&lt;p&gt;After adding the rounded remainder contribution and 32, it writes the BCD Fahrenheit value to memory address &lt;code&gt;2001h&lt;/code&gt;.&lt;/p&gt;</code></pre>
-</div>
+  <div>
+    <h3 class="anchored">1. Divide by five</h3>
+    <p>The program repeatedly subtracts five, using register C to count the quotient and the accumulator to retain the remainder.</p>
+  </div>
+  <div>
+    <h3 class="anchored">2. Multiply by nine</h3>
+    <p>It repeatedly adds the quotient and uses <code>DAA</code> to keep the intermediate value in binary-coded decimal.</p>
+  </div>
+  <div>
+    <h3 class="anchored">3. Store the result</h3>
+    <p>After adding the rounded remainder contribution and 32, it writes the BCD Fahrenheit value to memory address <code>2001h</code>.</p>
+  </div>
 </section>
 <section id="the-original-flowchart" class="level2">
 <h2 class="anchored" data-anchor-id="the-original-flowchart">The original flowchart</h2>
 <figure class="assembly-flowchart figure">
-<img src="assets/8085-assembly/flowchart.png" alt="Original flowchart for the 8085 Celsius-to-Fahrenheit program, showing the zero-degree branch, repeated-subtraction division, remainder routines, repeated-addition multiplication and final memory output" class="figure-img">
-<figcaption>
-The flowchart submitted with the program in October 2020.
-</figcaption>
+  <img src="assets/8085-assembly/flowchart.png" alt="Original flowchart for the 8085 Celsius-to-Fahrenheit program, showing the zero-degree branch, repeated-subtraction division, remainder routines, repeated-addition multiplication and final memory output" class="figure-img">
+  <figcaption>The flowchart submitted with the program in October 2020.</figcaption>
 </figure>
 <section class="assembly-reflection-grid">
-<div>
-<pre><code>&lt;h2&gt;Why I came back to it&lt;/h2&gt;
-&lt;p&gt;This is not how I would solve a temperature conversion today, which is exactly why the project is worth preserving. The limited instruction set made every operation visible. Division became a loop of subtractions. Multiplication became repeated addition. Decimal output required understanding what the processor stored and how a person would read it.&lt;/p&gt;
-&lt;p&gt;Looking back, I can see the beginning of an approach I still use in data work: break a larger problem into inspectable steps, keep the source visible, and make the transformation understandable to someone following along.&lt;/p&gt;</code></pre>
-</div>
-<div class="assembly-note">
-<pre><code>&lt;h2&gt;A note on the course text&lt;/h2&gt;
-&lt;p&gt;John Clevenger’s &lt;em&gt;ELN 232: Introduction to Microprocessors&lt;/em&gt; set an early standard for me. It took subjects such as number systems, registers, instruction timing and assembly language and made them visual and digestible.&lt;/p&gt;
-&lt;p&gt;I appreciate the care he put into making difficult technical material approachable. That example still influences how I try to explain code, data and methodology now.&lt;/p&gt;</code></pre>
-</div>
+  <div>
+    <h2 class="anchored">Why I came back to it</h2>
+    <p>This is not how I would solve a temperature conversion today, which is exactly why the project is worth preserving. The limited instruction set made every operation visible. Division became a loop of subtractions. Multiplication became repeated addition. Decimal output required understanding what the processor stored and how a person would read it.</p>
+    <p>Looking back, I can see the beginning of an approach I still use in data work: break a larger problem into inspectable steps, keep the source visible, and make the transformation understandable to someone following along.</p>
+  </div>
+  <div class="assembly-note">
+    <h2 class="anchored">A note on the course text</h2>
+    <p>John Clevenger’s <em>ELN 232: Introduction to Microprocessors</em> set an early standard for me. It took subjects such as number systems, registers, instruction timing and assembly language and made them visual and digestible.</p>
+    <p>I appreciate the care he put into making difficult technical material approachable. That example still influences how I try to explain code, data and methodology now.</p>
+  </div>
 </section>
 <script src="assets/8085-assembly/8085-project.js"></script>
 </section>
