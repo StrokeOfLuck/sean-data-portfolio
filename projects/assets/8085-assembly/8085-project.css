@@ -122,25 +122,6 @@
   font: inherit;
 }
 
-.assembly-view-controls {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.35rem;
-}
-
-.assembly-code-bar button.is-selected {
-  border-color: #6ea8fe;
-  background: #173b62;
-  color: #fff;
-}
-
-.assembly-code-bar [hidden],
-.assembly-code-panel > [hidden] {
-  display: none !important;
-}
-
 .assembly-toolbar button.assembly-primary {
   border-color: var(--bs-primary);
   background: var(--bs-primary);
@@ -153,24 +134,26 @@
 
 .assembly-sim-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.72fr) minmax(285px, 0.72fr);
+  grid-template-columns: minmax(0, 1.18fr) minmax(380px, 0.82fr);
+  grid-template-rows: auto auto auto;
 }
 
 .assembly-code-panel {
-  min-width: 0;
-  border-right: 1px solid rgba(127, 127, 127, 0.3);
-  background: #101820;
-  color: #e7edf2;
+  display: contents;
 }
 
 .assembly-code-bar {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.7rem;
   min-height: 46px;
   padding: 0.55rem 0.75rem;
+  border-right: 1px solid #2d3740;
   border-bottom: 1px solid #2d3740;
+  background: #101820;
   color: #96a3ae;
   font: 0.75rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -185,17 +168,41 @@
 }
 
 .assembly-code-view {
+  grid-column: 1;
+  grid-row: 2;
+  max-height: 390px;
+  overflow: auto;
   padding: 0.5rem 0 0.65rem;
+  border-right: 1px solid #2d3740;
+  background: #101820;
+  color: #e7edf2;
   font: 0.75rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  scrollbar-color: #53606c #101820;
 }
 
 .assembly-flow-view {
+  grid-column: 2;
+  grid-row: 1 / span 3;
   position: relative;
-  max-height: 510px;
+  max-height: 720px;
   overflow: auto;
-  padding: 1.35rem 1rem 2rem;
+  padding: 0 1rem 2rem;
+  background: #101820;
+  color: #e7edf2;
   scroll-behavior: smooth;
   scrollbar-color: #53606c #101820;
+}
+
+.assembly-flow-title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0 -1rem 1.35rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #2d3740;
+  background: #101820;
+  color: #96a3ae;
+  font: 0.75rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 .assembly-flow-node {
@@ -376,8 +383,12 @@
 }
 
 .assembly-state-panel {
+  grid-column: 1;
+  grid-row: 3;
   min-width: 0;
   padding: 1rem;
+  border-top: 1px solid rgba(127, 127, 127, 0.3);
+  border-right: 1px solid rgba(127, 127, 127, 0.3);
 }
 
 .assembly-state-title {
@@ -522,9 +533,29 @@
     grid-template-columns: 1fr;
   }
 
-  .assembly-code-panel {
+  .assembly-code-bar {
+    grid-column: 1;
+    grid-row: 1;
     border-right: 0;
-    border-bottom: 1px solid rgba(127, 127, 127, 0.3);
+  }
+
+  .assembly-code-view {
+    grid-column: 1;
+    grid-row: 2;
+    border-right: 0;
+  }
+
+  .assembly-state-panel {
+    grid-column: 1;
+    grid-row: 3;
+    border-right: 0;
+  }
+
+  .assembly-flow-view {
+    grid-column: 1;
+    grid-row: 4;
+    max-height: 560px;
+    border-top: 1px solid #2d3740;
   }
 
   .assembly-method-grid {
@@ -556,14 +587,13 @@
     flex-direction: column;
   }
 
-  .assembly-view-controls {
-    width: 100%;
-    justify-content: flex-start;
+  .assembly-flow-view {
+    max-height: 500px;
+    padding-inline: 0.7rem;
   }
 
-  .assembly-flow-view {
-    max-height: 460px;
-    padding-inline: 0.7rem;
+  .assembly-flow-title {
+    margin-inline: -0.7rem;
   }
 
   .assembly-flow-branches {

@@ -10,9 +10,6 @@
     run: root.querySelector("[data-assembly-run]"),
     reset: root.querySelector("[data-assembly-reset]"),
     toggle: root.querySelector("[data-assembly-source-toggle]"),
-    flowToggle: root.querySelector("[data-assembly-flow-toggle]"),
-    codeToggle: root.querySelector("[data-assembly-code-toggle]"),
-    panelTitle: root.querySelector("[data-assembly-panel-title]"),
     flow: root.querySelector("[data-assembly-flow]"),
     code: root.querySelector("[data-assembly-code]"),
     registers: root.querySelector("[data-assembly-registers]"),
@@ -32,7 +29,6 @@
   let state = null;
   let timer = null;
   let showAllSource = false;
-  let panelView = "flow";
   let lastFlowNode = null;
 
   const hex8 = (value) =>
@@ -420,7 +416,7 @@
       );
     }
 
-    if (panelView === "flow" && activeNode !== lastFlowNode) {
+    if (activeNode !== lastFlowNode) {
       const activeElement = elements.flow.querySelector(
         `[data-flow-node="${activeNode}"]`
       );
@@ -432,26 +428,6 @@
         elements.flow.scrollTo({ top: targetTop, behavior: state.count ? "smooth" : "auto" });
       }
       lastFlowNode = activeNode;
-    }
-  }
-
-  function setPanelView(view) {
-    panelView = view;
-    const showFlow = view === "flow";
-    elements.flow.hidden = !showFlow;
-    elements.code.hidden = showFlow;
-    elements.toggle.hidden = showFlow;
-    elements.panelTitle.textContent = showFlow ? "PROGRAM FLOW" : "PROJECT TO STANDARD.ASM";
-    elements.flowToggle.classList.toggle("is-selected", showFlow);
-    elements.codeToggle.classList.toggle("is-selected", !showFlow);
-    elements.flowToggle.setAttribute("aria-pressed", String(showFlow));
-    elements.codeToggle.setAttribute("aria-pressed", String(!showFlow));
-
-    if (showFlow) {
-      lastFlowNode = null;
-      renderFlow();
-    } else {
-      renderCode();
     }
   }
 
@@ -530,8 +506,6 @@
     elements.toggle.setAttribute("aria-pressed", String(showAllSource));
     renderCode();
   });
-  elements.flowToggle.addEventListener("click", () => setPanelView("flow"));
-  elements.codeToggle.addEventListener("click", () => setPanelView("code"));
   elements.input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") resetState();
   });
