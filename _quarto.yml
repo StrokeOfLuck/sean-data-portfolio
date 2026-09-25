@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "*.md"
     - "projects/game-design-sandbox.qmd"
+    - "projects/technical-communication-design.qmd"
     - "!AUTOMATION_SETUP.md"
     - "!projects/assets/"
   resources:

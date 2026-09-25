@@ -256,4 +256,26 @@ An early programming project from my EET degree: an interactive reconstruction o
 :::
 :::
 
+
+::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/technical-communication-design.webp){fig-alt="Three illustrated equipment guides for laser cutting, waterjet cutting and 3D printing"}
+<a href="projects/technical-communication-design.html" aria-label="Open Technical Communication and Design project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Technical Communication & Design](projects/technical-communication-design.qmd){.project-title-link}
+::: {.project-date}
+Earlier work · NC State
+:::
+:::
+::: {.project-tags}
+[Technical Communication]{.project-tag} [Visual Instruction]{.project-tag} [Design]{.project-tag}
+:::
+Illustrated equipment guides, a team manufacturing report, and hands-on design projects from my fabrication and engineering education work.
+
+[View project →](projects/technical-communication-design.qmd){.project-link}
+:::
+:::
+
 ::::
