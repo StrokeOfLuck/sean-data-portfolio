@@ -966,7 +966,7 @@ featured_json <- toJSON(
 
 <div class="featured-actions">
 <button type="button" class="ptr-button" id="random-ptr-button">Show another PTR</button>
-<a class="ptr-button" id="featured-pdf-link" href="#" target="_blank" rel="noopener">Open original House PDF</a>
+<a class="ptr-button" id="featured-pdf-link" href="#">Open original House PDF</a>
 </div>
 
 <div class="filing-search">
@@ -1022,7 +1022,7 @@ featured_json <- toJSON(
 
 Your browser could not display this PDF inline.
 
-<a id="featured-pdf-fallback-link" href="#" target="_blank" rel="noopener">Open the original House PDF</a>
+<a id="featured-pdf-fallback-link" href="#">Open the original House PDF</a>
 
 </div>
 
@@ -1145,6 +1145,47 @@ cat(
 
     mainLink.href = url;
     fallbackLink.href = url;
+
+
+    const useSameTab =
+      window.matchMedia(
+        "(max-width: 900px), (pointer: coarse)"
+      ).matches;
+
+
+    [
+      mainLink,
+      fallbackLink
+    ].forEach(
+      function(link) {
+
+
+        if (
+          useSameTab
+        ) {
+
+          link.removeAttribute(
+            "target"
+          );
+
+          link.removeAttribute(
+            "rel"
+          );
+
+        } else {
+
+          link.setAttribute(
+            "target",
+            "_blank"
+          );
+
+          link.setAttribute(
+            "rel",
+            "noopener"
+          );
+        }
+      }
+    );
 
 
     viewer.removeAttribute(
