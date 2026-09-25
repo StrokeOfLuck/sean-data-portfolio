@@ -26,9 +26,6 @@ css: assets/8085-assembly/8085-project-v4.css
     <p>Read a Celsius value from memory address <code>2000h</code>, convert any input from 0–37°C into Fahrenheit, store the two-digit binary-coded decimal result at <code>2001h</code>, and document the program with a flowchart and comments.</p>
     <p>The code below preserves the instruction sequence and logic I submitted in 2020, including the commented testing harness and the explanations I wrote while learning the material.</p>
   </div>
-  <div class="assembly-artifacts" aria-label="Project files">
-    <a href="assets/8085-assembly/project-to-standard.asm" download>Download the assembly source</a>
-  </div>
 </section>
 ```
 
@@ -57,7 +54,10 @@ css: assets/8085-assembly/8085-project-v4.css
     <div class="assembly-code-panel">
       <div class="assembly-code-bar">
         <span>PROJECT TO STANDARD.ASM</span>
-        <button data-assembly-source-toggle type="button" aria-pressed="false">Show all source</button>
+        <div class="assembly-source-controls">
+          <a href="assets/8085-assembly/project-to-standard.asm" download>Download the assembly source</a>
+          <button data-assembly-source-toggle type="button" aria-pressed="false">Show all source</button>
+        </div>
       </div>
 
       <div class="assembly-flow-view" data-assembly-flow aria-label="Interactive recreation of the original program flowchart" tabindex="0">

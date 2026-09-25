@@ -35,7 +35,7 @@
 
 .assembly-intro-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 2rem;
   padding: 1.5rem 0;
   border-top: 1px solid rgba(127, 127, 127, 0.24);
@@ -46,13 +46,15 @@
   margin-top: 0;
 }
 
-.assembly-artifacts {
+.assembly-source-controls {
   display: grid;
-  align-content: start;
-  gap: 0.65rem;
+  justify-items: end;
+  gap: 0.45rem;
 }
 
-.assembly-artifacts a {
+.assembly-source-controls a {
+  color: #9dccff;
+  font: 0.8rem/1.35 var(--bs-body-font-family, system-ui);
   font-weight: 600;
   text-underline-offset: 3px;
 }
@@ -448,6 +450,10 @@
   .assembly-code-bar {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .assembly-source-controls {
+    justify-items: start;
   }
 
   .assembly-flow-view {
