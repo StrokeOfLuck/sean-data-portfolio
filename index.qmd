@@ -256,7 +256,7 @@ An early programming project from my EET degree: an interactive reconstruction o
 ::: {.project-card-heading}
 ### [Technical Communication & Design](projects/technical-communication-design.qmd){.project-title-link}
 ::: {.project-date}
-Earlier work · NC State
+2022–2023 · Selected earlier work
 :::
 :::
 ::: {.project-tags}
