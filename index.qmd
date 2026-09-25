@@ -251,7 +251,7 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image}
 ```{=html}
-<div class="t8085-art" data-8085-thumbnail aria-hidden="true"><div class="t8085-window"><div class="t8085-bar"><span>PROJECT TO STANDARD.ASM</span><span>INTEL 8085 · 2020</span></div><div class="t8085-panes"><div class="t8085-code" aria-hidden="true"></div><div class="t8085-temperature" aria-hidden="true"><span class="t8085-small">25°C INPUT</span><span class="t8085-reading">77°F</span><div class="t8085-thermo"><div class="t8085-mercury"></div></div><span class="t8085-phase">Complete</span></div></div></div></div>
+<div class="t8085-art" data-8085-thumbnail aria-hidden="true"><div class="t8085-window"><div class="t8085-bar"><span>CELSIUS TO FAHRENHEIT.ASM</span><span>INTEL 8085 · 2020</span></div><div class="t8085-panes"><div class="t8085-code" aria-hidden="true"></div><div class="t8085-temperature" aria-hidden="true"><span class="t8085-small">25°C INPUT</span><span class="t8085-reading">77°F</span><div class="t8085-thermo"><div class="t8085-mercury"></div></div><span class="t8085-phase">Complete</span></div></div></div></div>
 <script src="projects/assets/cards/8085-thumbnail.js" defer></script>
 ```
 <a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
