@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content page-columns page-full column-page" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="assembly-project-shell page-columns page-full">
+<div class="assembly-project-shell">
 <p class="assembly-lede">
 I wanted to revisit this project because it captures my introduction to programming: working directly with registers, memory addresses, flags and jumps before generative-AI coding assistants became part of everyday programming.
 </p>
@@ -180,7 +180,7 @@ Step through the program
 This browser recreation follows the same source while exposing the registers, flags and memory locations involved in the calculation. It implements the instructions used by this project rather than trying to replace a complete 8085 emulator.
 </p>
 </section>
-<div class="assembly-simulator page-columns page-full" data-assembly-simulator="" data-source="assets/8085-assembly/project-to-standard.asm">
+<div class="assembly-simulator" data-assembly-simulator="" data-source="assets/8085-assembly/project-to-standard.asm">
   <div class="assembly-toolbar">
     <div class="assembly-control-group">
       <label>Celsius input, 0–37
@@ -195,7 +195,7 @@ This browser recreation follows the same source while exposing the registers, fl
     </div>
   </div>
 
-  <div class="assembly-sim-grid page-columns page-full">
+  <div class="assembly-sim-grid">
     <div class="assembly-code-panel">
       <div class="assembly-code-bar">
         <span>PROJECT TO STANDARD.ASM</span>
@@ -306,7 +306,7 @@ This browser recreation follows the same source while exposing the registers, fl
       <div class="assembly-code-view" data-assembly-code="" aria-label="Assembly source code"></div>
     </div>
 
-    <aside class="assembly-state-panel" aria-label="8085 processor state">
+    <section class="assembly-state-panel" role="complementary" aria-label="8085 processor state">
       <div class="assembly-state-title">
         <strong>Processor state</strong>
         <span class="assembly-step-count" data-assembly-step-count="">0 steps</span>
@@ -333,7 +333,7 @@ This browser recreation follows the same source while exposing the registers, fl
         <span>Decoded result</span>
         <strong data-assembly-result="">Loading source…</strong>
       </div>
-    </aside>
+    </section>
   </div>
 
   <div class="assembly-execution-note" aria-live="polite">
