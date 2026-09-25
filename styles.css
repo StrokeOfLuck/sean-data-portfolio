@@ -558,6 +558,5 @@ a {
   pointer-events: none;
   transition: none;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
-}
+/* Motion is explicitly triggered by hover or keyboard focus, never automatic. */
+.schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
