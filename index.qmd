@@ -181,27 +181,6 @@ Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro f
 :::
 
 ::: {.project-card .compact-project-card}
-::: {.project-card-art .project-card-image .clearhouse-image}
-![](projects/assets/clearhouse/Image%20Sep%207,%202026,%2003_11_37%20PM.png){fig-alt="ClearHouse public stock disclosure and trades interface"}
-<a href="projects/clearhouse.html" aria-label="Open ClearHouse.live project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
-:::
-::: {.project-card-body}
-::: {.project-card-heading}
-### [ClearHouse.live](projects/clearhouse.qmd){.project-title-link}
-::: {.project-date}
-Winter 2024–25
-:::
-:::
-::: {.project-tags}
-[Web Scraping]{.project-tag} [Public Records]{.project-tag} [Civic Technology]{.project-tag}
-:::
-Collaborative public-facing stock-trading platform built from scraped politician financial disclosures; my introduction to public-records data pipelines.
-
-[View project →](projects/clearhouse.qmd){.project-link}
-:::
-:::
-
-::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image .schism-image}
 ```{=html}
 <img class="schism-still" src="projects/assets/game-design-sandbox/schism-thumbnail.svg" alt="Schism illustration with checkerboard walls, a red heart, and Kiki and Bouba together">
@@ -226,26 +205,25 @@ A cooperative puzzle platformer built for an NC State game design class.
 :::
 
 ::: {.project-card .compact-project-card}
-::: {.project-card-art .project-card-image}
-![](projects/assets/cards/8085-assembly.svg){fig-alt="Miniature recreation of the Intel 8085 assembly source and processor-state interface"}
-<a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+::: {.project-card-art .project-card-image .clearhouse-image}
+![](projects/assets/clearhouse/Image%20Sep%207,%202026,%2003_11_37%20PM.png){fig-alt="ClearHouse public stock disclosure and trades interface"}
+<a href="projects/clearhouse.html" aria-label="Open ClearHouse.live project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### [Intel 8085 Assembly Project](projects/8085-assembly.qmd){.project-title-link}
+### [ClearHouse.live](projects/clearhouse.qmd){.project-title-link}
 ::: {.project-date}
-Fall 2020
+Winter 2024–25
 :::
 :::
 ::: {.project-tags}
-[Assembly]{.project-tag} [Computer Architecture]{.project-tag} [Technical Foundations]{.project-tag}
+[Web Scraping]{.project-tag} [Public Records]{.project-tag} [Civic Technology]{.project-tag}
 :::
-An early programming project from my EET degree: an interactive reconstruction of an 8085 routine that converts Celsius to BCD Fahrenheit.
+Collaborative public-facing stock-trading platform built from scraped politician financial disclosures; my introduction to public-records data pipelines.
 
-[View project →](projects/8085-assembly.qmd){.project-link}
+[View project →](projects/clearhouse.qmd){.project-link}
 :::
 :::
-
 
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image}
@@ -267,5 +245,27 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 [View project →](projects/technical-communication-design.qmd){.project-link}
 :::
 :::
+
+::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/cards/8085-assembly.svg){fig-alt="Miniature recreation of the Intel 8085 assembly source and processor-state interface"}
+<a href="projects/8085-assembly.html" aria-label="Open Intel 8085 Assembly Project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Intel 8085 Assembly Project](projects/8085-assembly.qmd){.project-title-link}
+::: {.project-date}
+Fall 2020
+:::
+:::
+::: {.project-tags}
+[Assembly]{.project-tag} [Computer Architecture]{.project-tag} [Technical Foundations]{.project-tag}
+:::
+An early programming project from my EET degree: an interactive reconstruction of an 8085 routine that converts Celsius to BCD Fahrenheit.
+
+[View project →](projects/8085-assembly.qmd){.project-link}
+:::
+:::
+
 
 ::::
