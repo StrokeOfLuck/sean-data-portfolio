@@ -1147,47 +1147,6 @@ cat(
     fallbackLink.href = url;
 
 
-    const useSameTab =
-      window.matchMedia(
-        "(max-width: 900px), (pointer: coarse)"
-      ).matches;
-
-
-    [
-      mainLink,
-      fallbackLink
-    ].forEach(
-      function(link) {
-
-
-        if (
-          useSameTab
-        ) {
-
-          link.removeAttribute(
-            "target"
-          );
-
-          link.removeAttribute(
-            "rel"
-          );
-
-        } else {
-
-          link.setAttribute(
-            "target",
-            "_blank"
-          );
-
-          link.setAttribute(
-            "rel",
-            "noopener"
-          );
-        }
-      }
-    );
-
-
     viewer.removeAttribute(
       "data"
     );
