@@ -1,0 +1,26 @@
+{
+  "bbox": [
+    527562.5759090387,
+    5731866.42583488,
+    551410.9287340137,
+    5751740.053189025
+  ],
+  "export": {
+    "href": "https://services.arcgisonline.com/arcgis/rest/directories/arcgisoutput/World_Imagery_MapServer/_ags_mapdf960c039db0440db23506ac2e02995d.jpg",
+    "width": 1920,
+    "height": 1600,
+    "extent": {
+      "xmin": 527562.5759090387,
+      "ymin": 5731866.425834878,
+      "xmax": 551410.9287340137,
+      "ymax": 5751740.053189024,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "scale": 46945.482535963354
+  },
+  "credit": "Source: Esri, Vantor, Earthstar Geographics, and the GIS User Community",
+  "service": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+}
