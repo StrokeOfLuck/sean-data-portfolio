@@ -9,7 +9,7 @@ css:
 include-in-header:
   - text: |
       <link rel="stylesheet" href="project-card-overrides.css?v=guide-preview-2">
-      <link rel="stylesheet" href="projects/assets/cards/8085-thumbnail.css?v=mobile-layout-3">
+      <link rel="stylesheet" href="projects/assets/cards/8085-thumbnail.css?v=mobile-layout-4">
 resources:
   - project-card-overrides.css
 ---
