@@ -79,28 +79,28 @@
   {
     "objectID": "projects/lyon-cycling-map.html",
     "href": "projects/lyon-cycling-map.html",
-    "title": "Lyon Cycling Map",
+    "title": "Lyon, France Cycling Map",
     "section": "",
     "text": "While studying abroad in Lyon in summer 2025 as a Gilman Scholar, I recorded bicycle rides with a GoPro and used the footage’s GPS data to reconstruct the routes and turn them into an interactive map.\nThis was my Gilman Scholarship Follow-on Service Project, designed to document Lyon’s cycling infrastructure and make the city easier for future students to explore.\n\n\n\n\n\n\nOpen the map in Google My Maps ↗\n\n\n\nThe basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden.\n\n\n\n\nThis was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
   },
   {
     "objectID": "projects/lyon-cycling-map.html#interactive-map",
     "href": "projects/lyon-cycling-map.html#interactive-map",
-    "title": "Lyon Cycling Map",
+    "title": "Lyon, France Cycling Map",
     "section": "",
     "text": "Open the map in Google My Maps ↗"
   },
   {
     "objectID": "projects/lyon-cycling-map.html#how-i-made-it",
     "href": "projects/lyon-cycling-map.html#how-i-made-it",
-    "title": "Lyon Cycling Map",
+    "title": "Lyon, France Cycling Map",
     "section": "",
     "text": "The basic workflow was:\n\nRecord rides around Lyon with a GoPro.\nExtract the GPS coordinates associated with the footage.\nOrganize the location data into usable routes.\nLoad the routes into Google My Maps to create an interactive view of where I had ridden."
   },
   {
     "objectID": "projects/lyon-cycling-map.html#why-i-like-this-project",
     "href": "projects/lyon-cycling-map.html#why-i-like-this-project",
-    "title": "Lyon Cycling Map",
+    "title": "Lyon, France Cycling Map",
     "section": "",
     "text": "This was my Gilman Scholarship Follow-on Service Project while studying abroad in Lyon, France. I recorded my rides, extracted the GPS coordinates from the footage, organized the routes, and turned them into an interactive map that other people could explore.\nI like this project because the data came directly from something I was doing in the real world. It was an early example of using data and mapping to document an experience and make it useful to other people."
   },
