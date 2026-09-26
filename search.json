@@ -277,7 +277,7 @@
     "href": "projects/tankietube.html",
     "title": "TankieTube",
     "section": "",
-    "text": "TankieTube was a five-day collaborative research sprint at the University of Amsterdam. Our team compared “natively digital” Marxist-Leninist YouTube creators with formal political organizations.\nProject leads: Gavin Mueller and Ema Kinsel.\nTeam: Luca Ghiselli, Ada Paul, Sean Ryan, and Jo Walton.\nMy part focused on the Tenet/Rumble comparison, and I also helped make the final poster. This was my first real hands-on exposure to Google Colab, very large text datasets, and computational internet research."
+    "text": "TankieTube was a five-day collaborative research sprint at the University of Amsterdam. Our team compared “natively digital” Marxist-Leninist YouTube creators with formal political organizations.\nProject leads: Gavin Mueller and Ema Kinsel.\nTeam: Luca Ghiselli, Ada Paul, Sean Ryan, and Jo Walton.\nMy part focused on the Tenet/Rumble comparison, and I also helped make the final poster. This was my first time using Google Colab to analyze text datasets too large to read manually. It developed my interest in digital investigations and computational internet research."
   },
   {
     "objectID": "projects/tankietube.html#project-poster",
@@ -299,13 +299,6 @@
     "title": "TankieTube",
     "section": "What the team found",
     "text": "What the team found\nThe broader dataset covered 23 YouTube channels, nine political organizations, ~2.4 million YouTuber comments, ~107.4K organization comments, and over 6,000 hours of audio.\n\nThe YouTubers and formal organizations focused on noticeably different topics.\nYouTubers appeared more shaped by platform dynamics, while organizations looked more like traditional social-movement activism.\nThe team also found some aesthetic convergence between older organizations and newer YouTube-driven Marxism-Leninism."
-  },
-  {
-    "objectID": "projects/tankietube.html#why-it-mattered-to-me",
-    "href": "projects/tankietube.html#why-it-mattered-to-me",
-    "title": "TankieTube",
-    "section": "Why it mattered to me",
-    "text": "Why it mattered to me\nFive days of working inside datasets that were far too large to read manually made computational research feel much more concrete. It helped push my interests toward digital investigations and data-driven online research."
   },
   {
     "objectID": "projects/tankietube.html#sources-and-project-links",
