@@ -9,3 +9,40 @@
 .fabrication-project .section:first-of-type{border-top:0}
 .fabrication-project .viewer{max-width:95vw}
 .fabrication-project .guide-cover img{margin:0}
+
+/* Arduino Workshop interactive proposal */
+
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+
+html{ scroll-behavior: smooth; }
+#arduino-workshop{scroll-margin-top:85px}.arduino-intro{max-width:900px}.arduino-download{margin:12px 0 20px}.arduino-download span{display:block;font-size:.85em;color:#687078;margin-top:3px}#arduino-document{display:block;width:100%;height:1180px;border:0;background:transparent}
+#arduino-workshop .arduino-heading-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,290px);gap:28px;align-items:center;margin-bottom:18px}#arduino-workshop .arduino-intro{margin-bottom:0}#arduino-workshop .arduino-download{margin:0;line-height:1.45}#arduino-workshop .arduino-download a{display:inline-block}#arduino-workshop .arduino-download span{margin-top:6px}@media(max-width:760px){#arduino-workshop .arduino-heading-layout{grid-template-columns:1fr;gap:12px}}
+#arduino-workshop .arduino-title-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px}#arduino-workshop .arduino-title-row p{margin-left:auto;text-align:right}#arduino-workshop .arduino-heading-layout{align-items:start}#arduino-workshop .arduino-intro{margin-top:0}@media(max-width:760px){#arduino-workshop .arduino-title-row{display:block}#arduino-workshop .arduino-title-row p{text-align:left;margin-left:0}}
+#arduino-workshop .arduino-heading-layout{align-items:end}#arduino-workshop .arduino-intro{margin:0;line-height:1.45}#arduino-workshop .arduino-download span{line-height:1.45}@media(max-width:760px){#arduino-workshop .arduino-heading-layout{align-items:start}}
+
+#arduino-workshop .arduino-title-row{margin:0 0 8px;padding:0;min-height:0;gap:12px}
+#arduino-workshop .arduino-title-row h2{margin:0;padding:0;border:0;line-height:1.2}
+#arduino-workshop .arduino-title-row p{margin:0 0 0 auto;padding:0;line-height:1.3}
+#arduino-workshop .arduino-heading-layout{margin:0 0 12px;padding:0;column-gap:24px;row-gap:8px}
+#arduino-workshop .arduino-download{margin:0;padding:0;line-height:1.3}
+#arduino-workshop .arduino-download span{margin-top:2px;line-height:1.3}
+#arduino-workshop .arduino-intro{margin:0;line-height:1.3}
+@media(max-width:760px){#arduino-workshop .arduino-title-row p{margin:4px 0 0}#arduino-workshop .arduino-heading-layout{gap:8px}}
+
+.fabrication-project #arduino-workshop{padding-bottom:16px;margin-bottom:0}.fabrication-project #arduino-workshop + #cad{padding-top:24px}#arduino-document{margin-bottom:0;vertical-align:top}
