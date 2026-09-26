@@ -14,6 +14,11 @@ on:
 permissions:
   contents: write
 
+# Both workflows write gh-pages; serialize them to avoid competing pushes.
+concurrency:
+  group: portfolio-pages-writer
+  cancel-in-progress: false
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -70,6 +75,25 @@ jobs:
 
       - name: Render site
         run: quarto render
+
+      - name: Verify mobile preview is included in the rendered homepage
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class Scripts(HTMLParser):
+              sources = []
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'script':
+                      self.sources.append(dict(attrs).get('src', '').split('?')[0])
+
+          page = Scripts()
+          page.feed(Path('_site/index.html').read_text(encoding='utf-8'))
+          preview = 'projects/assets/cards/mobile-scroll-preview.js'
+          assert preview in page.sources, 'Homepage does not load mobile scroll previews'
+          assert Path('_site', preview).is_file(), 'Mobile scroll preview asset is missing'
+          PY
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
