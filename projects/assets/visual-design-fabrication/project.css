@@ -136,7 +136,7 @@ body:has(dialog[open]){overflow:hidden}
 .visual-design-project .originalgallery .stack{display:grid;gap:26px}
 .visual-design-project .originalgallery .document{max-width:710px;margin:auto}
 .visual-design-project .originalgallery .carriage{grid-template-columns:460fr 656fr;gap:28px}
-.visual-design-project .originalgallery .scuba{grid-template-columns:558fr 362fr;max-width:949px;margin:auto}
+.visual-design-project .originalgallery .scuba{grid-template-columns:558fr 362fr;max-width:100%;margin:auto}
 .visual-design-project .originalgallery .sprite{grid-template-columns:460fr 558fr}
 .visual-design-project .originalgallery .bonus{margin-top:32px}
 .visual-design-project .originalgallery .final{grid-template-columns:460fr 558fr}
