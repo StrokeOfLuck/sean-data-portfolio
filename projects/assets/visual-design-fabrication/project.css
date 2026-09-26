@@ -153,14 +153,15 @@ body:has(dialog[open]){overflow:hidden}
 .visual-design-project .stone-comparison figure>.art{aspect-ratio:1.22;height:auto;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:5px}
 .visual-design-project .stone-comparison figure:first-child img{width:100%;height:100%;object-fit:contain}
 .visual-design-project .stone-comparison .sticker-original{display:none}
-.visual-design-project .sticker-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 12px;width:100%;padding:8px}
-.visual-design-project .sticker-tile:nth-child(9){grid-column:2}
-.visual-design-project .sticker-tile:nth-child(10){grid-column:3}
+.visual-design-project .sticker-tiles{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:18px 6px;width:100%;padding:8px}
+.visual-design-project .sticker-tile{grid-column:span 2}
+.visual-design-project .sticker-tile:nth-child(1),.visual-design-project .sticker-tile:nth-child(8){grid-column:2 / span 2}
+.visual-design-project .sticker-tile:nth-child(4){grid-column:1 / span 2}
 .visual-design-project .sticker-tile{display:block;position:relative;overflow:hidden;aspect-ratio:128/118}
 .visual-design-project .originalgallery .sticker-tile img{width:1000%;height:auto;max-width:none;border-radius:0}
 .visual-design-project .stone-comparison figcaption{margin-top:12px}
 @media(max-width:750px){.visual-design-project .originalgallery .grid.stone-comparison{grid-template-columns:1fr}
-.visual-design-project .sticker-tiles{gap:12px 8px;padding:6px}
+.visual-design-project .sticker-tiles{gap:12px 4px;padding:6px}
 .visual-design-project .stone-comparison figure>.sticker-board{aspect-ratio:1.22}}
 .visual-design-project{max-width:none;padding:0;font-family:inherit;font-size:inherit;background:transparent}.visual-design-project .intro{padding-top:18px}.visual-design-project .gallery-intro{max-width:none}
 #title-block-header{display:none}.visual-design-project .originalgallery h2{border-bottom:0;padding-bottom:0}
