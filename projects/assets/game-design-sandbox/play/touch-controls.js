@@ -77,5 +77,25 @@
  window.addEventListener('pagehide', releaseAll);
  window.addEventListener('resize', releaseAll);
  document.addEventListener('visibilitychange', () => { if (document.hidden) releaseAll(); });
+ // The original Godot LevelResetManager binds reset_level to R. Send that
+ // input to the running game instead of reloading its frame and losing progress.
+ let resetTimer;
+ function releaseReset() {
+  if (!resetTimer) return;
+  clearTimeout(resetTimer); resetTimer = null;
+  canvas.dispatchEvent(new KeyboardEvent('keyup', {key:'r',code:'KeyR',keyCode:82,which:82,bubbles:true,cancelable:true}));
+ }
+ window.addEventListener('message', event => {
+  if (event.source !== parent || event.origin !== location.origin || !ready) return;
+  if (event.data?.game !== 'schism' || event.data.command !== 'restart-level' || resetTimer) return;
+  releaseAll();
+  canvas.focus({preventScroll:true});
+  canvas.dispatchEvent(new KeyboardEvent('keydown', {key:'r',code:'KeyR',keyCode:82,which:82,bubbles:true,cancelable:true}));
+  // Leave time for Godot's process loop to consume is_action_just_pressed.
+  resetTimer = setTimeout(releaseReset, 100);
+ });
+ window.addEventListener('blur', releaseReset);
+ window.addEventListener('pagehide', releaseReset);
+ document.addEventListener('visibilitychange', () => { if (document.hidden) releaseReset(); });
  window.schismTouchControls = {enabled, ready() {ready = true; document.documentElement.classList.add('game-ready');}};
 })();
