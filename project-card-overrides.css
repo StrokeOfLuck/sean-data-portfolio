@@ -47,13 +47,37 @@
   }
   .technical-guide-covers { width: 100%; }
 }
-@media (max-width: 600px) {
-  .technical-guides-image { display: flex; align-items: center; }
+/* Folded phones and unfolded/tablet widths share one readable cover. */
+@media (max-width: 940px) {
+  .compact-project-card .project-card-art.technical-guides-image {
+    display: flex;
+    align-items: center;
+    min-height: 0;
+  }
   .technical-guide-covers {
     grid-template-columns: minmax(0, 1fr);
-    padding: 6px;
+    padding: 3px;
     width: 100%;
   }
-  /* Keep the laser cover as the mobile thumbnail. */
   .technical-guide-covers img:not(:first-child) { display: none; }
+  .compact-project-card.technical-guides-card .project-card-body {
+    justify-content: center;
+    padding: 0.7rem 0.85rem;
+  }
+  .compact-project-card.technical-guides-card .project-card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    margin-bottom: 0.55rem;
+  }
+  .compact-project-card.technical-guides-card .project-date { white-space: normal; }
+  .compact-project-card.technical-guides-card .project-date p { margin: 0; }
+  .compact-project-card.technical-guides-card .project-tags { margin-bottom: 0.55rem; }
+  .compact-project-card.technical-guides-card .project-link { margin-top: 0; }
+}
+
+@media (min-width: 621px) and (max-width: 940px) {
+  .compact-project-card.technical-guides-card {
+    grid-template-columns: minmax(180px, 28%) minmax(0, 1fr);
+  }
 }
