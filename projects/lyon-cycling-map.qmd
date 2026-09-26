@@ -1,5 +1,5 @@
 ---
-title: "Lyon Cycling Map"
+title: "Lyon, France Cycling Map"
 subtitle: "GPS video mapping · Gilman Scholarship project · Lyon, France · Summer 2025"
 page-layout: full
 toc: false
