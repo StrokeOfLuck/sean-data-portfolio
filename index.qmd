@@ -13,6 +13,7 @@ include-in-header:
       <link rel="stylesheet" href="projects/assets/cards/clearhouse-thumbnail.css?v=1">
 resources:
   - project-card-overrides.css
+  - projects/assets/cards/mobile-scroll-preview.js
 ---
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
@@ -355,3 +356,7 @@ My 2020 assembly class project, revisited through a browser-based Intel 8085 sim
 
 
 ::::
+
+```{=html}
+<script src="projects/assets/cards/mobile-scroll-preview.js?v=1" defer></script>
+```
