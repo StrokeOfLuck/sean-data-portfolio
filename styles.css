@@ -566,11 +566,6 @@ a {
 .schism-image > img.schism-hover { opacity: 0; }
 .schism-image > img.schism-hover { z-index: 1; }
 @media (prefers-reduced-motion: no-preference) {
-  .schism-image:is(:hover, :focus-within) > img.schism-background,
-  .schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
-}
-@media (prefers-reduced-motion: no-preference) and (hover: none),
-       (prefers-reduced-motion: no-preference) and (pointer: coarse) {
-  .schism-image > img.schism-background,
-  .schism-image > img.schism-hover { opacity: 1; }
+  .project-card:is(:hover, :focus-within) .schism-image > img.schism-background,
+  .project-card:is(:hover, :focus-within) .schism-image > img.schism-hover { opacity: 1; }
 }
