@@ -126,6 +126,7 @@ body:has(dialog[open]){overflow:hidden}
 @media(max-width:750px){.visual-design-project .originalgallery .stone-comparison{grid-template-columns:1fr}}
 .visual-design-project .originalgallery .photo-pairs h3{text-align:left;margin:0 0 16px}
 .visual-design-project .photo-pairs figcaption{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 8px}
+.visual-design-project .photo-pairs .art img{aspect-ratio:11/8;object-fit:cover}
 .visual-design-project .originalgallery section{padding:42px 0;border-bottom:1px solid var(--line)}
 .visual-design-project .originalgallery h2{font-size:28px;margin:0 0 28px}
 .visual-design-project .originalgallery h3{text-align:center;font-size:19px;margin:18px 0 5px}
