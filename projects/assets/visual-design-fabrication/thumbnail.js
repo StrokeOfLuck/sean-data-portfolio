@@ -53,7 +53,7 @@
       timer = setTimeout(tick, frame === 0 ? 220 : 30);
     };
     const update = () => {
-      const next = hovered || focused;
+      const next = !document.hidden && (hovered || focused);
       if (next === playing) return;
       playing = next;
       clearTimeout(timer);
@@ -64,8 +64,11 @@
     sheet.onload = () => { paint(); if (playing) timer = setTimeout(tick, 220); };
     sheet.src = canvas.dataset.frames;
     paint();
-    card.addEventListener('pointerenter', e => { hovered = e.pointerType !== 'touch'; update(); });
-    card.addEventListener('pointerleave', () => { hovered = false; update(); });
+    // Match the 8085 and ClearHouse cards, including touch-generated mouse events.
+    card.addEventListener('mouseenter', () => { hovered = true; update(); });
+    card.addEventListener('mouseleave', () => { hovered = false; update(); });
+    card.addEventListener('pointercancel', () => { hovered = false; update(); });
+    document.addEventListener('visibilitychange', update);
     card.addEventListener('focusin', () => { focused = true; update(); });
     card.addEventListener('focusout', e => { focused = card.contains(e.relatedTarget); update(); });
   });
