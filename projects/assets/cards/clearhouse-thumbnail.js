@@ -8,6 +8,10 @@
   let frame = 0;
   let hovering = false;
   let focused = false;
+  let visible = false;
+  let active = false;
+  const touchLayout = window.matchMedia('(hover: none), (pointer: coarse)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function render(progress) {
     numbers.forEach((element, index) => {
@@ -30,24 +34,43 @@
   }
 
   function stop() {
-    if (hovering || focused) return;
     cancelAnimationFrame(frame);
     thumbnail.classList.remove('is-active');
     render(1);
   }
 
+  function update() {
+    const shouldAnimate = !document.hidden && !reducedMotion.matches &&
+      (hovering || focused || (touchLayout.matches && visible));
+    if (shouldAnimate === active) return;
+    active = shouldAnimate;
+    if (active) start();
+    else stop();
+  }
+
+  // Touch screens have no hover, including wide unfolded phone screens.
+  // Start on entry and stop offscreen; resizing does not restart an active run.
+  const observer = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    update();
+  });
+  observer.observe(root);
+  touchLayout.addEventListener('change', update);
+  reducedMotion.addEventListener('change', update);
+  document.addEventListener('visibilitychange', update);
+
   // Listen on the art wrapper because its project link overlays the thumbnail.
   root.addEventListener('pointerenter', event => {
     if (event.pointerType === 'touch') return;
     hovering = true;
-    if (!focused) start();
+    update();
   });
-  root.addEventListener('pointerleave', () => { hovering = false; stop(); });
-  root.addEventListener('pointercancel', () => { hovering = false; stop(); });
-  root.addEventListener('focusin', () => { focused = true; if (!hovering) start(); });
+  root.addEventListener('pointerleave', () => { hovering = false; update(); });
+  root.addEventListener('pointercancel', () => { hovering = false; update(); });
+  root.addEventListener('focusin', () => { focused = true; update(); });
   root.addEventListener('focusout', event => {
     if (root.contains(event.relatedTarget)) return;
     focused = false;
-    stop();
+    update();
   });
 })();
