@@ -30,7 +30,7 @@
   .t8085-small,.t8085-reading,.t8085-phase{grid-column:2;justify-content:center;min-width:0}
   .t8085-reading{height:auto;font-size:24px}
   .t8085-reading.t8085-calculating{font-size:9px}
-  .t8085-thermo{grid-column:3;grid-row:1 / 4;width:12px;height:48px}
+  .t8085-thermo{grid-column:3;grid-row:1 / 4;width:12px;height:48px;left:-6px}
   .t8085-code{grid-row:2;border-right:0;padding:2px 0}
   .t8085-row{gap:5px;padding:1px 4px;font-size:8px}
   .t8085-number{min-width:18px}
