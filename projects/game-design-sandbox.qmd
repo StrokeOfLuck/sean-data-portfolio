@@ -40,10 +40,10 @@ include-after-body: assets/game-design-sandbox/game-design.js
  <figcaption id="intro-film-caption">The ending of Schism, when the two players finally come together.</figcaption>
 </figure>
 
-<section id="unity" class="unity-section" aria-labelledby="unity-title"><div class="section-heading"><div><p class="eyebrow">Summer 2023</p><h2 id="unity-title">First steps in Unity</h2></div><p>Some fun GIFs from exploring a game engine for the first time.</p></div>
+<section id="unity" class="unity-section" aria-labelledby="unity-title"><div class="section-heading"><div><p class="eyebrow">Summer 2023</p><h2 id="unity-title">First steps in Unity</h2></div><p>Some fun experiments with movement, collisions, and physics while learning Unity for the first time.</p></div>
 <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">Pause animations</button>
 <div class="experiment-grid">
- <article><button class="image-open" type="button" data-image="unity-car.gif" aria-label="Enlarge vehicle and collision study"><img src="assets/game-design-sandbox/unity-car.gif" data-animation="assets/game-design-sandbox/unity-car.gif" data-still="assets/game-design-sandbox/unity-car.jpg" alt="Top-down Unity scene with a car and rock" loading="lazy"></button></article>
+ <article><button class="image-open" type="button" data-image="unity-car.gif" aria-label="Enlarge vehicle and collision study"><img src="assets/game-design-sandbox/unity-car.gif" data-animation="assets/game-design-sandbox/unity-car.gif" data-still="assets/game-design-sandbox/unity-car.jpg" alt="Top-down Unity scene with a car" loading="lazy"></button></article>
  <article><button class="image-open" type="button" data-image="unity-physics.gif" aria-label="Enlarge spawned-object physics study"><img src="assets/game-design-sandbox/unity-physics.gif" data-animation="assets/game-design-sandbox/unity-physics.gif" data-still="assets/game-design-sandbox/unity-physics.jpg" alt="Unity physics scene filled with colliding objects" loading="lazy"></button></article>
  <article><button class="image-open" type="button" data-image="unity-conveyor.gif" aria-label="Enlarge physics bones and musket ball experiment"><img src="assets/game-design-sandbox/unity-conveyor.gif" data-animation="assets/game-design-sandbox/unity-conveyor.gif" data-still="assets/game-design-sandbox/unity-conveyor.jpg" alt="Playing with moving physics bones and shooting a musket ball at objects" loading="lazy"></button></article>
 </div></section>
