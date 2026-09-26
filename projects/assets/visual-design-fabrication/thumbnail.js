@@ -45,6 +45,17 @@
         context.drawImage(cleanup, 0, 4, 180, 132);
         context.restore();
       }
+      // Thin only an over-wide front bezel; the emerging side remains original.
+      if (frame < 5) {
+        const x = [25, null, 34, null, null][frame];
+        if (x !== null) {
+          context.save();
+          context.globalAlpha = 1 - frame / 5;
+          context.fillStyle = 'rgb(194,195,199)';
+          context.fillRect(x, 62, 3, 66);
+          context.restore();
+        }
+      }
     };
     const tick = () => {
       if (!playing) return;
