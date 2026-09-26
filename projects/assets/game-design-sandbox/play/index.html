@@ -20,6 +20,9 @@ body {
 
 #canvas {
 	display: block;
+	width: 100%;
+	height: 100dvh;
+	object-fit: contain;
 }
 
 #canvas:focus {
@@ -115,14 +118,13 @@ body {
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":6820272,"index.wasm":43682606},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
-if (window.schismTouchControls.enabled) {
- GODOT_CONFIG.canvasResizePolicy = 0;
- const canvas = document.getElementById('canvas');
- // Trim unused horizontal camera space on touch screens. Keep the original
- // vertical field of view so taller puzzle rooms remain visible.
- canvas.width = 800;
- canvas.height = 648;
-}
+// Keep the visible game world consistent on desktop, mobile, fullscreen, and
+// high-DPI screens. CSS scales this viewport; browser size must not reveal
+// neighboring puzzle rooms. Preserve the existing vertical field of view.
+GODOT_CONFIG.canvasResizePolicy = 0;
+const canvas = document.getElementById('canvas');
+canvas.width = 800;
+canvas.height = 648;
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
