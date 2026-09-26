@@ -1,6 +1,5 @@
 document.querySelectorAll('.honors-preview-card').forEach(card => {
   const video = card.querySelector('video');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let hovering = false;
   let wanted = false;
   const stop = () => {
@@ -10,7 +9,7 @@ document.querySelectorAll('.honors-preview-card').forEach(card => {
     if (video.readyState > 0) video.currentTime = 0;
   };
   const start = () => {
-    if (reducedMotion.matches || document.hidden) return;
+    if (document.hidden) return;
     wanted = true;
     video.muted = true;
     video.play().catch(stop);
@@ -19,12 +18,11 @@ document.querySelectorAll('.honors-preview-card').forEach(card => {
     if (wanted) card.classList.add('is-previewing');
     else stop();
   });
-  card.addEventListener('pointerenter', event => {
-    if (event.pointerType !== 'mouse') return;
+  card.addEventListener('mouseenter', () => {
     hovering = true;
     start();
   });
-  card.addEventListener('pointerleave', () => {
+  card.addEventListener('mouseleave', () => {
     hovering = false;
     if (!card.contains(document.activeElement)) stop();
   });
@@ -32,7 +30,7 @@ document.querySelectorAll('.honors-preview-card').forEach(card => {
   card.addEventListener('focusout', event => {
     if (!hovering && !card.contains(event.relatedTarget)) stop();
   });
-  reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) stop(); });
+  card.addEventListener('pointercancel', () => { hovering = false; stop(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
   new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting) { hovering = false; stop(); }
