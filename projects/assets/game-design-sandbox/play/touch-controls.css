@@ -1,0 +1,44 @@
+/* Touch controls live inside the game frame, so they also work in fullscreen. */
+.touch-controls { display: none; }
+html.touch-game { --touch-dock: 132px; }
+.touch-game body { height: 100dvh; }
+.touch-game #canvas {
+ width: 100% !important;
+ height: calc(100% - var(--touch-dock)) !important;
+ object-fit: contain;
+}
+.touch-game .touch-controls {
+ position: fixed; inset: auto 0 0; height: var(--touch-dock); box-sizing: border-box;
+ display: flex; justify-content: space-between; align-items: center;
+ padding: 6px max(10px, env(safe-area-inset-right)) 6px max(10px, env(safe-area-inset-left));
+ background: #181a1e; border-top: 1px solid #41454c; color: #eee;
+ font: 11px/1.2 system-ui, sans-serif; user-select: none; -webkit-user-select: none;
+ touch-action: none; visibility: hidden;
+}
+.touch-game.game-ready .touch-controls { visibility: visible; }
+.touch-pad { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: 18px 44px 44px; gap: 3px; }
+.touch-pad-label { grid-column: 1 / -1; text-align: center; letter-spacing: .04em; }
+.touch-key { padding: 0; border-radius: 9px; border: 1px solid #69717c; background: #30353c; color: white; font: 24px/1 system-ui; touch-action: none; -webkit-touch-callout: none; }
+.touch-key[data-direction="up"] { grid-column: 2; }
+.touch-key[data-direction="left"] { grid-column: 1; grid-row: 3; }
+.touch-key[data-direction="down"] { grid-column: 2; grid-row: 3; }
+.touch-key[data-direction="right"] { grid-column: 3; grid-row: 3; }
+.touch-pad-white .touch-key { background: #e2e5e9; color: #15171a; }
+.touch-key.is-held { background: #ad302b; border-color: #ffb6af; color: white; }
+.touch-key:focus-visible { outline: 2px solid #89c7ff; outline-offset: 1px; }
+@media (orientation: landscape) and (min-width: 600px) {
+ .touch-controls { padding-inline: max(24px, env(safe-area-inset-left)) max(24px, env(safe-area-inset-right)); }
+}
+/* Landscape uses side rails instead of spending the short screen on a dock. */
+@media (min-width: 600px) and (max-height: 500px) {
+ .touch-game #canvas {
+  width: calc(100% - 300px) !important;
+  height: 100% !important;
+  margin-inline: 150px;
+ }
+ .touch-game .touch-controls {
+  height: 100%; padding: 6px; background: transparent; border: 0;
+  pointer-events: none;
+ }
+ .touch-pad { pointer-events: auto; }
+}
