@@ -1,5 +1,5 @@
 ---
-title: "Technical Communication & Design"
+title: "Technical Communication & Prototyping"
 subtitle: "Visual instruction · Technical documentation · Hands-on design"
 page-layout: full
 toc: false
