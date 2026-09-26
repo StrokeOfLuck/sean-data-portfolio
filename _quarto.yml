@@ -5,6 +5,7 @@ project:
     - "*.md"
     - "projects/game-design-sandbox.qmd"
     - "projects/technical-communication-design.qmd"
+    - "projects/visual-design-fabrication.qmd"
     - "!AUTOMATION_SETUP.md"
     - "!projects/assets/"
   resources:
