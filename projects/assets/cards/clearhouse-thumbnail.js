@@ -2,15 +2,14 @@
 (() => {
   const root = document.querySelector('.clearhouse-image');
   if (!root) return;
+  const card = root.closest('.project-card');
   const thumbnail = root.querySelector('.ch-thumbnail');
   const numbers = Array.from(root.querySelectorAll('.ch-number'));
   const totals = numbers.map(element => Number(element.textContent.replaceAll(',', '')));
   let frame = 0;
   let hovering = false;
   let focused = false;
-  let visible = false;
   let active = false;
-  const touchLayout = window.matchMedia('(hover: none), (pointer: coarse)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function render(progress) {
@@ -41,35 +40,26 @@
 
   function update() {
     const shouldAnimate = !document.hidden && !reducedMotion.matches &&
-      (hovering || focused || (touchLayout.matches && visible));
+      (hovering || focused);
     if (shouldAnimate === active) return;
     active = shouldAnimate;
     if (active) start();
     else stop();
   }
 
-  // Touch screens have no hover, including wide unfolded phone screens.
-  // Start on entry and stop offscreen; resizing does not restart an active run.
-  const observer = new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
-    update();
-  });
-  observer.observe(root);
-  touchLayout.addEventListener('change', update);
   reducedMotion.addEventListener('change', update);
   document.addEventListener('visibilitychange', update);
 
-  // Listen on the art wrapper because its project link overlays the thumbnail.
-  root.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'touch') return;
+  // Match the 8085 card: preview on whole-card hover or keyboard focus.
+  card.addEventListener('mouseenter', () => {
     hovering = true;
     update();
   });
-  root.addEventListener('pointerleave', () => { hovering = false; update(); });
-  root.addEventListener('pointercancel', () => { hovering = false; update(); });
-  root.addEventListener('focusin', () => { focused = true; update(); });
-  root.addEventListener('focusout', event => {
-    if (root.contains(event.relatedTarget)) return;
+  card.addEventListener('mouseleave', () => { hovering = false; update(); });
+  card.addEventListener('pointercancel', () => { hovering = false; update(); });
+  card.addEventListener('focusin', () => { focused = true; update(); });
+  card.addEventListener('focusout', event => {
+    if (card.contains(event.relatedTarget)) return;
     focused = false;
     update();
   });
