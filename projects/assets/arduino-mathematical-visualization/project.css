@@ -1,0 +1,31 @@
+
+.honors-project{max-width:1200px;margin:0 auto;color:#343a40}
+.honors-project h1{font-size:34px;line-height:1.2;margin:0 0 8px;font-weight:700}
+.honors-project h2{font-size:28px;line-height:1.25;margin:0 0 8px;font-weight:600;border:0;padding:0}
+.honors-project .subtitle{font-size:21px;font-weight:300;margin:0 0 28px}
+.honors-project .lede{max-width:880px;margin:0 0 12px}
+.honors-project .meta,.honors-project .duration{font-size:14px;color:#6c757d}
+.honors-project .overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin:28px 0}
+.honors-project .overview a{color:inherit;text-decoration:none}
+.honors-project .overview img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.honors-project .overview a>span{display:flex;justify-content:space-between;font-weight:600;font-size:19px;padding-top:10px}
+.honors-project .archive{border-left:3px solid #c5d3e3;padding:4px 0 4px 18px;margin:30px 0 8px;font-size:16px}
+.honors-project .archive p{margin:5px 0 0;color:#62696f}
+.honors-project .project{padding:42px 0;border-bottom:1px solid #dee2e6}
+.honors-project .section-title{display:flex;justify-content:space-between;gap:20px;margin-bottom:24px}
+.honors-project .section-title p{margin:0;color:#6c757d;font-size:16px}
+.honors-project .duration{white-space:nowrap;padding-top:8px}
+.honors-project .project-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:32px}
+.honors-project .youtube-player{display:block;width:100%;height:auto;aspect-ratio:16/9;min-height:200px;border:0;background:#141619}
+.honors-project .video-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 0}
+.honors-project .video-links a{font-size:13px;color:#375aab;text-decoration:none}
+.honors-project .video-links .demo-link{display:inline-flex;align-items:center;min-height:44px;padding:6px 8px;font-size:14px;font-weight:600;border-radius:4px}
+.honors-project .demo-link:hover{background:#eaf0f8}
+.honors-project a:focus-visible{outline:3px solid #5e89cc;outline-offset:3px}
+.honors-project .description p{margin:0 0 14px;font-size:17px}
+.honors-project .closing{padding-top:38px}
+@media(max-width:760px){.honors-project .project-grid{grid-template-columns:1fr;gap:22px}.honors-project .section-title{display:block}.honors-project .duration{display:block}.honors-project .project{padding:32px 0}.honors-project h1{font-size:30px}}
+@media(max-width:480px){.honors-project .overview{grid-template-columns:1fr;gap:16px}.honors-project .overview a{display:grid;grid-template-columns:125px 1fr;gap:16px;align-items:center}.honors-project .overview a>span{font-size:17px;padding:0}}
+
+#title-block-header{display:none}
+
