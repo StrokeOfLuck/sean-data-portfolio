@@ -1,0 +1,102 @@
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var embedDesktop = params.get("embed") === "1";
+  var forceDesktop = params.get("view") === "desktop" && (embedDesktop || window.innerWidth > 600);
+
+  if (forceDesktop) {
+    document.documentElement.classList.add("archive-force-desktop");
+  }
+  if (embedDesktop) {
+    document.documentElement.classList.add("archive-embed-desktop");
+  }
+
+  function fitEmbeddedDesktop() {
+    if (!embedDesktop) return;
+    var scale = Math.min(1, window.innerWidth / 1200);
+    document.body.style.zoom = String(scale);
+    document.body.style.minWidth = "1200px";
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fitEmbeddedDesktop);
+  } else {
+    fitEmbeddedDesktop();
+  }
+  window.addEventListener("resize", fitEmbeddedDesktop);
+
+  /* The compact mobile/tablet header is visual archive chrome. Rather than
+     opening a stale menu/search UI, send both controls to the live article. */
+  var articleUrl = "https://technicianonline.com/162505/news/park-it-here-e-bike-and-scooter-rules-differ-across-nc-state/";
+  document.addEventListener("click", function (event) {
+    var control = event.target.closest(
+      ".sno-header-wrap-mobile .sno-hac-menu-icon, .sno-header-wrap-mobile .sno-hac-search-icon, .sno-header-wrap-tablet .sno-hac-menu-icon, .sno-header-wrap-tablet .sno-hac-search-icon"
+    );
+    if (!control) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    var opened = window.open(articleUrl, "_blank");
+    if (opened) opened.opener = null;
+  }, true);
+})();
+</script>
+<style id="archive-portfolio-overrides">
+html.archive-force-desktop .sno-header-wrap-desktop { display: block !important; }
+html.archive-force-desktop .sno-header-wrap-tablet,
+html.archive-force-desktop .sno-header-wrap-mobile { display: none !important; }
+html.archive-force-desktop .sno-footer-wrap-desktop,
+html.archive-force-desktop .sno-footer-wrap-desktop-footer { display: block !important; }
+html.archive-force-desktop .sno-footer-wrap-tablet,
+html.archive-force-desktop .sno-footer-wrap-mobile,
+html.archive-force-desktop .sno-footer-wrap-tablet-footer,
+html.archive-force-desktop .sno-footer-wrap-mobile-footer { display: none !important; }
+
+/* The Mac-window preview is a scaled desktop capture. Hide the floating
+   share rail there so it cannot cover the article while scrolling. */
+html.archive-embed-desktop .sno-story-social-icons {
+  display: none !important;
+}
+
+/* Direct mobile viewing keeps Technician's share controls, but moves them
+   beneath the story rather than letting them float over maps and text. */
+@media only screen and (max-width: 600px) {
+  html:not(.archive-force-desktop) .sno-story-social-icons {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 18px 20px !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icons-side {
+    position: static !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .sno-row-icon {
+    float: none !important;
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 !important;
+  }
+  html:not(.archive-force-desktop) .sno-story-social-icons .print-row-icon {
+    display: none !important;
+  }
+}
+</style>
