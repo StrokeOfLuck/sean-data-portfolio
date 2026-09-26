@@ -37,3 +37,9 @@ body:has(.game-page){background:#f4f2eb;color:#242820}body:has(.game-page) #titl
 .unity-section .section-heading{display:block;margin-bottom:16px}.unity-section .section-heading h2{font-size:26px;letter-spacing:-.025em;line-height:1.2;margin-top:6px}.unity-section .section-heading>p{font-size:15px;line-height:1.5;margin-top:8px}.unity-section{padding:26px 0}
 
 @media(min-width:761px){.schism-heading{align-items:end}.schism-heading>.schism-definition{margin-bottom:0}}
+
+/* Reserve a separate touch-control dock below the mobile game viewport. */
+@media (any-pointer: coarse) {
+ .game-stage { aspect-ratio: auto; height: clamp(350px, calc(56.25vw + 144px), 650px); }
+ .game-shell:fullscreen .game-stage { height: auto; min-height: 0; }
+}

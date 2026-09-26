@@ -19,13 +19,13 @@ include-after-body: assets/game-design-sandbox/game-design.js
  <div class="project-story"><div><p class="eyebrow">Built together</p><h3>Cooperation is the mechanic.</h3></div><div><p>Two players cross the same level, but collide with opposite colors. A route that works for one can be an obstacle for the other. Swap boxes and chess pieces change the board; progress depends on thinking together.</p></div></div>
  <div class="controls"><div><img class="player-token" src="assets/game-design-sandbox/kiki.svg" alt="" aria-hidden="true"><div><h3>Kiki · Black player</h3><p><kbd>A</kbd> <kbd>D</kbd> Move <kbd>W</kbd> Jump <kbd>S</kbd> Interact</p></div></div><div><img class="player-token bouba-token" src="assets/game-design-sandbox/bouba.svg" alt="" aria-hidden="true"><div><h3>Bouba · White player</h3><p><kbd>←</kbd> <kbd>→</kbd> Move <kbd>↑</kbd> Jump <kbd>↓</kbd> Interact</p></div></div></div>
  <div class="game-shell" data-game-shell>
-  <div class="player-bar"><span><i class="live-dot"></i> Godot / Two players / One keyboard</span><span>Browser edition</span></div>
+  <div class="player-bar"><span><i class="live-dot"></i> Godot / Two players / Keyboard or touch</span><span>Browser edition</span></div>
   <button class="game-launch" data-game-launch type="button"><img src="assets/game-design-sandbox/schism-poster.jpg" alt="Schism's black-and-white final level with a red heart"><span class="launch-card"><span class="play-circle" aria-hidden="true">▶</span><strong>Enter the world</strong><span>Launch Schism · approximately 49 MB</span></span></button>
   <div class="game-stage" data-game-stage hidden><iframe data-game-frame data-src="assets/game-design-sandbox/play/index.html" title="Schism — cooperative puzzle platformer" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></div>
   <div class="player-toolbar"><div class="audio-controls"><button type="button" data-mute aria-pressed="false">Mute</button><label for="game-volume">Game volume</label><input id="game-volume" data-volume type="range" min="0" max="100" step="1" value="10"><output for="game-volume" data-volume-value>10%</output><span data-audio-status role="status" class="audio-feedback"></span></div><p class="toolbar-status" data-game-status role="status" aria-live="polite">Loads when you press play.</p><div class="player-actions" hidden><button type="button" data-restart>Restart</button><button type="button" data-fullscreen>Fullscreen ↗</button><button type="button" data-close>Close game</button></div></div>
 
  </div>
- <div class="game-details"><p class="keyboard-note">Best on a desktop with a keyboard.<br>On a phone? Explore below, then come back to play.</p><p class="credit">Sean Ryan + Ben Antinozzi + Kyle Setzer<br>CSC 281: Interactive Game Design · NC State<br>Godot / GDScript</p></div>
+ <div class="game-details"><p class="keyboard-note">Keyboard or touch controls.<br>On mobile, use the left pad for Kiki and the right pad for Bouba. Up jumps; down interacts. Landscape gives you more room.</p><p class="credit">Sean Ryan + Ben Antinozzi + Kyle Setzer<br>CSC 281: Interactive Game Design · NC State<br>Godot / GDScript</p></div>
 
 
 </section>
