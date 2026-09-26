@@ -191,6 +191,8 @@ Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro f
 <img class="schism-still" src="projects/assets/game-design-sandbox/schism-thumbnail.svg" alt="Schism illustration with checkerboard walls, a red heart, and Kiki and Bouba together">
 <img class="schism-background" src="projects/assets/game-design-sandbox/schism-thumbnail-background.svg" alt="" aria-hidden="true">
 <img class="schism-hover" src="projects/assets/game-design-sandbox/schism-thumbnail-hover.gif" alt="" aria-hidden="true" loading="eager">
+<button type="button" class="schism-preview-toggle" aria-pressed="false" aria-label="Play Kiki and Bouba jumping preview" hidden>Play preview</button>
+<script src="projects/assets/cards/schism-thumbnail.js" defer></script>
 ```
 <a href="projects/game-design-sandbox.html" aria-label="Open Game Design project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::

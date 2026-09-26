@@ -569,3 +569,15 @@ a {
   .project-card:is(:hover, :focus-within) .schism-image > img.schism-background,
   .project-card:is(:hover, :focus-within) .schism-image > img.schism-hover { opacity: 1; }
 }
+
+/* A deliberate play action also works when system motion is reduced. */
+.project-card .schism-image[data-playing="true"] > img.schism-background,
+.project-card .schism-image[data-playing="true"] > img.schism-hover { opacity: 1; }
+.project-card .schism-image[data-playing="false"] > img.schism-background,
+.project-card .schism-image[data-playing="false"] > img.schism-hover { opacity: 0; }
+.schism-preview-toggle {
+ position: absolute; top: 8px; right: 8px; z-index: 4;
+ border: 1px solid #ffffff80; border-radius: 5px; padding: 6px 9px;
+ background: #16191de6; color: white; font: 12px/1.2 system-ui; cursor: pointer;
+}
+.schism-preview-toggle:focus-visible { outline: 2px solid #8bcaff; outline-offset: 2px; }
