@@ -309,7 +309,7 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 <img src="projects/assets/arduino-mathematical-visualization/rocket-poster.jpg?v=all-leds-3" alt="Close-up of the Wake Tech rocket display and colored LEDs on my Arduino prototype">
 <video class="honors-hover-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="projects/assets/arduino-mathematical-visualization/rocket-preview.mp4?v=clean-2" type="video/mp4"></video>
 <script src="projects/assets/arduino-mathematical-visualization/thumbnail.js?v=mobile-lcd-1" defer></script>
-<link rel="stylesheet" href="projects/assets/arduino-mathematical-visualization/thumbnail.css?v=rocket-right-2">
+<link rel="stylesheet" href="projects/assets/arduino-mathematical-visualization/thumbnail.css?v=rocket-bottom-3">
 ```
 <a href="projects/arduino-mathematical-visualization.html" aria-label="Open Arduino and Mathematical Visualization project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
