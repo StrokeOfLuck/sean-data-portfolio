@@ -169,11 +169,11 @@ Interactive Mapbox visualization turning All We Are's solar installation records
 <script src="projects/assets/lyon/thumbnail.js?v=5" defer></script>
 ```
 
-<a href="projects/lyon-cycling-map.html" aria-label="Open Lyon Cycling Map project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+<a href="projects/lyon-cycling-map.html" aria-label="Open Lyon, France Cycling Map project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
 ::: {.project-card-heading}
-### [Lyon Cycling Map](projects/lyon-cycling-map.qmd){.project-title-link}
+### [Lyon, France Cycling Map](projects/lyon-cycling-map.qmd){.project-title-link}
 ::: {.project-date}
 Summer 2025
 :::
@@ -181,7 +181,7 @@ Summer 2025
 ::: {.project-tags}
 [GIS]{.project-tag} [GPS Data]{.project-tag} [Interactive Mapping]{.project-tag}
 :::
-Cycling routes in Lyon reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.
+Cycling routes in Lyon, France, reconstructed from GPS coordinates extracted from GoPro footage and turned into an interactive map.
 
 [View project →](projects/lyon-cycling-map.qmd){.project-link}
 :::
