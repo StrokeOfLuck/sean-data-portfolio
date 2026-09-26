@@ -1,4 +1,13 @@
 .honors-preview-art{position:relative}
 .honors-preview-art .honors-hover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
 .honors-preview-card.is-previewing .honors-hover-video{opacity:1}
-@media(prefers-reduced-motion:reduce){.honors-preview-card .honors-hover-video{display:none}}
+/* Match the other cards: motion only follows deliberate hover or focus. */
+@media(max-width:620px){
+  .honors-preview-card .honors-preview-art img,
+  .honors-preview-card .honors-preview-art .honors-hover-video{
+    object-fit:cover;
+    object-position:58% 65%;
+    transform:scale(1.25);
+    transform-origin:58% 65%;
+  }
+}
