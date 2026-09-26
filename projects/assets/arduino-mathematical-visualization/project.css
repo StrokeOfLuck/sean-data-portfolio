@@ -28,4 +28,3 @@
 @media(max-width:480px){.honors-project .overview{grid-template-columns:1fr;gap:16px}.honors-project .overview a{display:grid;grid-template-columns:125px 1fr;gap:16px;align-items:center}.honors-project .overview a>span{font-size:17px;padding:0}}
 
 #title-block-header{display:none}
-
