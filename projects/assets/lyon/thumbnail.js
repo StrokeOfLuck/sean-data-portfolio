@@ -11,7 +11,9 @@
   const ns = 'http://www.w3.org/2000/svg';
   const total = 5000;
   let pause = 0, hovering = false, focused = false;
-  const loop = () => visible && !document.hidden && !reduce.matches && (!hover.matches || hovering || focused);
+  // Deliberate preview takes precedence over the automatic-motion preference.
+  const preview = () => hovering || focused;
+  const loop = () => visible && !document.hidden && (preview() || (!reduce.matches && !hover.matches));
   let routes, bounds, ready, raf = 0, start = null, playing = false;
   let visible = false, keyboard = false, request = 0;
   const merc = (lon, lat) => [(lon + 180) / 360 * 524288,
@@ -117,7 +119,7 @@
     const token = ++request;
     try {
       await load();
-      if (token !== request || !visible || document.hidden || reduce.matches || (playing && !restart)) return;
+      if (token !== request || !visible || document.hidden || (reduce.matches && !preview()) || (playing && !restart)) return;
       clearTimeout(pause); cancelAnimationFrame(raf);
       start = null; playing = true; reveal(0);
       raf = requestAnimationFrame(tick);
@@ -158,7 +160,7 @@
     else if (loop()) play(true);
   });
   reduce.addEventListener('change', () => {
-    if (reduce.matches) stop();
+    if (reduce.matches && !preview()) stop();
     else if (loop()) play(true);
   });
 })();
