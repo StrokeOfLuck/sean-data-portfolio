@@ -306,7 +306,7 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 ::: {.project-card .compact-project-card .honors-preview-card}
 ::: {.project-card-art .project-card-image .honors-preview-art}
 ```{=html}
-<img src="projects/assets/arduino-mathematical-visualization/rocket-poster.jpg" alt="Close-up of the Wake Tech rocket display and colored LEDs on my Arduino prototype">
+<img src="projects/assets/arduino-mathematical-visualization/rocket-poster.jpg?v=sharp-2" alt="Close-up of the Wake Tech rocket display and colored LEDs on my Arduino prototype">
 <video class="honors-hover-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="projects/assets/arduino-mathematical-visualization/rocket-preview.mp4?v=rocket-1" type="video/mp4"></video>
 <script src="projects/assets/arduino-mathematical-visualization/thumbnail.js?v=mobile-lcd-1" defer></script>
 <link rel="stylesheet" href="projects/assets/arduino-mathematical-visualization/thumbnail.css?v=rocket-1">
