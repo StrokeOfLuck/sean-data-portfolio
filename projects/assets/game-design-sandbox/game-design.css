@@ -66,3 +66,8 @@ body.side-by-side-open { overflow: hidden; }
 .side-by-side .player-toolbar .audio-controls input { width: 80px; }
 /* Keep the site navigation from covering the fallback player's exit button. */
 body.side-by-side-open #quarto-header { visibility: hidden; }
+/* Carry Schism's paper background through Quarto's site footer. */
+body:has(.game-page) .footer,
+body:has(.game-page) .nav-footer {
+  background-color: #f4f2eb;
+}
