@@ -10,9 +10,8 @@
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
   const ns = 'http://www.w3.org/2000/svg';
   const total = 5000;
-  const replay = art.querySelector('.lyon-replay');
-  let pause = 0, hovering = false, focused = false, manual = false;
-  const loop = () => visible && !document.hidden && (manual || (!reduce.matches && (!hover.matches || hovering || focused)));
+  let pause = 0, hovering = false, focused = false;
+  const loop = () => visible && !document.hidden && !reduce.matches && (!hover.matches || hovering || focused);
   let routes, bounds, ready, raf = 0, start = null, playing = false;
   let visible = false, keyboard = false, request = 0;
   const merc = (lon, lat) => [(lon + 180) / 360 * 524288,
@@ -118,7 +117,7 @@
     const token = ++request;
     try {
       await load();
-      if (token !== request || !visible || document.hidden || (reduce.matches && !manual) || (playing && !restart)) return;
+      if (token !== request || !visible || document.hidden || reduce.matches || (playing && !restart)) return;
       clearTimeout(pause); cancelAnimationFrame(raf);
       start = null; playing = true; reveal(0);
       raf = requestAnimationFrame(tick);
@@ -129,7 +128,7 @@
       const wasVisible = visible;
       visible = entry.isIntersecting && entry.intersectionRatio >= .5;
       if (visible && !wasVisible) play(true);
-      else if (!visible) { manual = false; stop(); }
+      else if (!visible) stop();
     }
   }, { threshold: [.5] }).observe(art);
   card.addEventListener('pointerenter', event => {
@@ -154,13 +153,11 @@
       if (!loop()) stop();
     }
   });
-  replay.addEventListener('click', () => { manual = true; play(true); });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stop();
     else if (loop()) play(true);
   });
   reduce.addEventListener('change', () => {
-    manual = false;
     if (reduce.matches) stop();
     else if (loop()) play(true);
   });
