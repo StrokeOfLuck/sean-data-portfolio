@@ -118,7 +118,9 @@ const GODOT_THREADS_ENABLED = false;
 if (window.schismTouchControls.enabled) {
  GODOT_CONFIG.canvasResizePolicy = 0;
  const canvas = document.getElementById('canvas');
- canvas.width = 1152;
+ // Trim unused horizontal camera space on touch screens. Keep the original
+ // vertical field of view so taller puzzle rooms remain visible.
+ canvas.width = 800;
  canvas.height = 648;
 }
 const engine = new Engine(GODOT_CONFIG);

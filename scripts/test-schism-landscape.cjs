@@ -36,19 +36,24 @@ const server = http.createServer(async (req, res) => {
    const errors = []; page.on('pageerror', e => errors.push(e.message));
    await page.goto(url);
    const mode = page.locator('[data-landscape-mode]');
+   const oneLine = await page.locator('.landscape-mode-bar').evaluate(bar => {
+    const b=bar.querySelector('button').getBoundingClientRect(),p=bar.querySelector('p').getBoundingClientRect();
+    return p.left>=b.right && p.top>=b.top && p.bottom<=b.bottom && bar.scrollWidth<=bar.clientWidth;
+   });
+   assert.equal(oneLine,true,'button and hint fit on one line');
    assert.equal(await mode.textContent(),'Play side by side ↔');
    await mode.click();
    await page.waitForFunction(()=>orientationRequests.length === 1);
    assert.deepEqual(await page.evaluate(()=>orientationRequests),['landscape']);
    assert.equal(await page.evaluate(()=>!!document.fullscreenElement),!fallback);
    assert.equal(await mode.getAttribute('aria-pressed'),'true');
-   assert.match(await page.locator('[data-landscape-hint]').textContent(), /Turn your phone sideways/);
+   assert.match(await page.locator('[data-landscape-hint]').textContent(), /Rotate phone/);
    const game = page.frameLocator('[data-game-frame]');
    await game.locator('html.game-ready').waitFor({state:'attached',timeout:60000});
    const client = await context.newCDPSession(page);
    await client.send('Emulation.setDeviceMetricsOverride',{width:844,height:390,deviceScaleFactor:1,mobile:true,screenOrientation:{type:'landscapePrimary',angle:90}});
    await page.waitForTimeout(250);
-   assert.match(await page.locator('[data-landscape-hint]').textContent(),/Kiki on the left/);
+   assert.match(await page.locator('[data-landscape-hint]').textContent(),/Kiki left/);
    const geometry = await game.locator('#canvas').evaluate(canvas => {
     const c=canvas.getBoundingClientRect();const pads=[...document.querySelectorAll('.touch-pad')].map(e=>e.getBoundingClientRect());
     return {separate:pads[0].right<=c.left && pads[1].left>=c.right,visible:pads.every(r=>r.top>=0&&r.bottom<=innerHeight)};

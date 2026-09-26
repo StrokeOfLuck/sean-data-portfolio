@@ -9,10 +9,10 @@
  let enteredFullscreen = false;
  let generation = 0;
  function updateHint() {
-  hint.textContent = !active ? 'Landscape · one player at each end'
+  hint.textContent = !active ? '2 players'
    : matchMedia('(orientation: portrait)').matches
-    ? 'Turn your phone sideways. If it stays upright, turn on auto-rotate.'
-    : 'Kiki on the left · Bouba on the right · Up jumps, down interacts';
+    ? 'Rotate phone ↔'
+    : 'Kiki left · Bouba right';
  }
  function unlock() {
   try { screen.orientation?.unlock?.(); } catch { /* Some browsers cannot lock orientation. */ }
