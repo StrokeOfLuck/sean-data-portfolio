@@ -1,29 +1,5 @@
 /* Portfolio styling */
 
-/* Shared paper background, matched to the Schism project. Keep project
-   artwork and embedded applications in their original color palettes. */
-:root {
-  --portfolio-paper: #f4f2eb;
-  --bs-body-bg: var(--portfolio-paper);
-  --bs-body-bg-rgb: 244, 242, 235;
-}
-
-body,
-#quarto-header,
-#quarto-header .navbar,
-.nav-footer {
-  background-color: var(--portfolio-paper);
-}
-
-#quarto-header .navbar {
-  --bs-navbar-color: #50544b;
-  --bs-navbar-hover-color: #242820;
-  --bs-navbar-active-color: #242820;
-  --bs-navbar-brand-color: #242820;
-  --bs-navbar-brand-hover-color: #242820;
-  border-bottom: 1px solid #d5d7cc;
-}
-
 body {
   font-size: 1.05rem;
 }

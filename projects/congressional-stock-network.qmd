@@ -22,7 +22,7 @@ footer.footer {
   padding: 0 !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
-  background: var(--portfolio-paper, #f4f2eb) !important;
+  background: #f8f9fa !important;
 }
 
 #quarto-header .navbar,
