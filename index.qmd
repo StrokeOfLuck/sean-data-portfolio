@@ -307,7 +307,7 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 ::: {.project-card-art .project-card-image .honors-preview-art}
 ```{=html}
 <img src="projects/assets/arduino-mathematical-visualization/sine-wave.jpg" alt="Glowing lamp, LEDs, and LCD on my Arduino sine-wave prototype">
-<video class="honors-hover-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="projects/assets/arduino-mathematical-visualization/sine-preview.mp4" type="video/mp4"></video>
+<video class="honors-hover-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"><source src="projects/assets/arduino-mathematical-visualization/sine-preview.mp4?v=red-led-2" type="video/mp4"></video>
 <script src="projects/assets/arduino-mathematical-visualization/thumbnail.js?v=mobile-lcd-1" defer></script>
 <link rel="stylesheet" href="projects/assets/arduino-mathematical-visualization/thumbnail.css?v=mobile-lcd-1">
 ```
