@@ -1,0 +1,30 @@
+.clearhouse-image *{box-sizing:border-box}
+.clearhouse-image .ch-thumbnail{width:365px;max-width:100%;height:184px;padding:26px 13px 23px;background:#171717;border-radius:12px 12px 0 0;font-family:Arial,Helvetica,sans-serif;color:#e5e7eb}
+.clearhouse-image .ch-wordmark{display:flex;align-items:baseline;justify-content:center;font-size:29px;line-height:34px;font-weight:700;letter-spacing:-.8px;white-space:nowrap}
+.clearhouse-image .ch-house{color:#2196f3}
+.clearhouse-image .ch-live{color:#ef4444;font-size:12px;line-height:16px;letter-spacing:0;margin-left:7px}
+.clearhouse-image .ch-thumbnail.is-active .ch-live{animation:ch-original-pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+.clearhouse-image .ch-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;margin-top:23px}
+.clearhouse-image .ch-metric{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.clearhouse-image .ch-icon{display:flex;justify-content:center;align-items:center;height:21px}
+.clearhouse-image .ch-icon svg{width:17px;height:17px;stroke-width:1.65}
+.clearhouse-image .ch-blue{color:#03a9f4}.clearhouse-image .ch-pink{color:#ec6090}.clearhouse-image .ch-purple{color:#b82bc5}.clearhouse-image .ch-green{color:#4caf50}
+.clearhouse-image .ch-number{font-size:17px;line-height:20px;font-weight:700;font-variant-numeric:tabular-nums;color:#f3f4f6}
+.clearhouse-image .ch-label{font-size:10px;line-height:13px;color:#9ca3af}
+@keyframes ch-original-pulse{50%{opacity:.5}}
+.project-card-art.clearhouse-image { background: #171717; container-type: inline-size; display: flex; align-items: center; justify-content: center; }
+.clearhouse-image .ch-thumbnail { width: 100%; height: auto; padding: 22px 10px; border-radius: 0; }
+.clearhouse-image .ch-label-short { display: none; }
+@container (max-width: 285px) {
+  .clearhouse-image .ch-wordmark { font-size: 24px; }
+  .clearhouse-image .ch-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 4px; margin-top: 18px; }
+  .clearhouse-image .ch-label-full { display: none; }
+  .clearhouse-image .ch-label-short { display: inline; }
+}
+@container (max-width: 175px) {
+  .clearhouse-image .ch-thumbnail { padding: 14px 4px; }
+  .clearhouse-image .ch-wordmark { font-size: clamp(12px, 12cqi, 18px); letter-spacing: -.6px; }
+  .clearhouse-image .ch-live { font-size: 8px; margin-left: 3px; }
+  .clearhouse-image .ch-number { font-size: 15px; }
+  .clearhouse-image .ch-label { font-size: 9px; }
+}
