@@ -539,79 +539,36 @@ a {
   }
 }
 
-/* Preserve the ending title and both players in the portfolio thumbnail. */
-.schism-image { background: #000; }
-.schism-image img { object-fit: contain; object-position: center bottom; }
-.project-card:hover .schism-image img { transform: none; }
-
-/* Whole checker squares fit the thumbnail without cropping. */
-@media (min-width: 601px) { .compact-project-card .schism-image { aspect-ratio: 2 / 1; } }
-
-/* Use the approved animated preview without inline SVG sizing dependencies. */
-.schism-image { position: relative; }
-.schism-image > img.schism-hover {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: none;
+/* One vector scene fills the card at any aspect ratio. Centered cropping
+   keeps the heart and both characters visible without letterboxing. */
+.compact-project-card .schism-image {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #4b4b4b;
 }
-/* Motion is explicitly triggered by hover or keyboard focus, never automatic. */
-.schism-image:is(:hover, :focus-within) > img.schism-hover { opacity: 1; }
-
-.schism-image > img.schism-background { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; transition: none; }
-.schism-image:is(:hover, :focus-within) > img.schism-background { opacity: 1; }
-.schism-image > img.schism-hover { z-index: 1; }
-
-
-/* Keep the Schism thumbnail inside its card at narrow widths.
-   Absolutely position all preview layers so the SVG's intrinsic dimensions
-   cannot enlarge the first grid column or overlap the project text. */
-.schism-image > img.schism-still,
-.schism-image > img.schism-background,
-.schism-image > img.schism-hover {
+.schism-image > .schism-thumbnail {
   position: absolute;
   inset: 0;
   display: block;
-  width: 100% !important;
-  max-width: 100%;
-  height: 100% !important;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-}
-
-.schism-image {
-  min-width: 0;
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
 }
-
-
-/* On phones the compact card is much taller than the wide Schism artwork.
-   Fill that preview area instead of bottom-aligning a contained image, which
-   leaves a black letterbox bar above it. */
-@media (max-width: 940px) {
-  .compact-project-card .schism-image > img.schism-still,
-  .compact-project-card .schism-image > img.schism-background,
-  .compact-project-card .schism-image > img.schism-hover {
-    object-fit: cover;
-    object-position: center center;
-  }
+@keyframes schism-hop {
+  0%, 65%, 100% { transform: translateY(0); }
+  28% { transform: translateY(-34px); }
 }
-
-
-/* Touch devices do not have a reliable hover state. Keep the Schism animated
-   preview visible on mobile/tablet while preserving hover-to-animate on desktop. */
-@media (hover: none), (pointer: coarse) {
-  .schism-image > img.schism-still {
-    opacity: 0;
+@media (prefers-reduced-motion: no-preference) {
+  .schism-image:is(:hover, :focus-within) .schism-kiki,
+  .schism-image:is(:hover, :focus-within) .schism-bouba {
+    animation: schism-hop 1.15s ease-in-out infinite;
   }
-
-  .schism-image > img.schism-background,
-  .schism-image > img.schism-hover {
-    opacity: 1;
-  }
+  .schism-image:is(:hover, :focus-within) .schism-bouba { animation-delay: 160ms; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: none),
+       (prefers-reduced-motion: no-preference) and (pointer: coarse) {
+  .schism-image .schism-kiki,
+  .schism-image .schism-bouba { animation: schism-hop 1.15s ease-in-out infinite; }
+  .schism-image .schism-bouba { animation-delay: 160ms; }
 }
