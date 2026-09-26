@@ -246,7 +246,7 @@ Collaborative public-facing stock-trading platform built from scraped politician
 ::: {.project-card-heading}
 ### [Technical Communication & Design](projects/technical-communication-design.qmd){.project-title-link}
 ::: {.project-date}
-2022–2023 · Selected earlier work
+2021–2023 · Selected earlier work
 :::
 :::
 ::: {.project-tags}
