@@ -312,7 +312,7 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 ::: {.project-card-heading}
 ### [Arduino & Mathematical Visualization](projects/arduino-mathematical-visualization.qmd){.project-title-link}
 ::: {.project-date}
-2021–2022 · Selected earlier work
+2021–2022
 :::
 :::
 ::: {.project-tags}
