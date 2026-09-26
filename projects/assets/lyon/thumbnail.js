@@ -10,8 +10,11 @@
   const hover = matchMedia('(hover: hover) and (pointer: fine)');
   const ns = 'http://www.w3.org/2000/svg';
   const total = 5000;
+  const replay = art.querySelector('.lyon-replay');
+  let pause = 0, hovering = false, focused = false, manual = false;
+  const loop = () => visible && !document.hidden && (manual || (!reduce.matches && (!hover.matches || hovering || focused)));
   let routes, bounds, ready, raf = 0, start = null, playing = false;
-  let visible = false, played = false, keyboard = false, request = 0;
+  let visible = false, keyboard = false, request = 0;
   const merc = (lon, lat) => [(lon + 180) / 360 * 524288,
     (1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2 * 524288];
   const center = merc(4.842, 45.7605);
@@ -57,7 +60,7 @@
     }
   }
   function stop() {
-    ++request; cancelAnimationFrame(raf); playing = false; start = null;
+    ++request; clearTimeout(pause); cancelAnimationFrame(raf); playing = false; start = null;
     if (routes) reveal(total);
   }
   function tick(now) {
@@ -66,7 +69,10 @@
     const elapsed = Math.min(total, now - start);
     reveal(elapsed);
     if (elapsed < total) raf = requestAnimationFrame(tick);
-    else { playing = false; start = null; }
+    else {
+      playing = false; start = null;
+      if (loop()) pause = setTimeout(() => { if (loop()) play(true); }, 1200);
+    }
   }
   async function load() {
     if (ready) return ready;
@@ -112,25 +118,50 @@
     const token = ++request;
     try {
       await load();
-      if (token !== request || !visible || document.hidden || reduce.matches || (playing && !restart)) return;
-      cancelAnimationFrame(raf);
-      played = true; start = null; playing = true; reveal(0);
+      if (token !== request || !visible || document.hidden || (reduce.matches && !manual) || (playing && !restart)) return;
+      clearTimeout(pause); cancelAnimationFrame(raf);
+      start = null; playing = true; reveal(0);
       raf = requestAnimationFrame(tick);
     } catch (error) { console.warn('Lyon thumbnail: using satellite fallback.', error); }
   }
   new IntersectionObserver(entries => {
     for (const entry of entries) {
+      const wasVisible = visible;
       visible = entry.isIntersecting && entry.intersectionRatio >= .5;
-      if (visible && !played) play();
-      else if (!visible) stop();
+      if (visible && !wasVisible) play(true);
+      else if (!visible) { manual = false; stop(); }
     }
   }, { threshold: [.5] }).observe(art);
   card.addEventListener('pointerenter', event => {
-    if (event.pointerType === 'mouse' && hover.matches) play(true);
+    if (event.pointerType === 'mouse' && hover.matches) {
+      hovering = true; play(true);
+    }
+  });
+  card.addEventListener('pointerleave', event => {
+    if (event.pointerType === 'mouse') {
+      hovering = false;
+      if (!loop()) stop();
+    }
   });
   document.addEventListener('keydown', event => { if (event.key === 'Tab') keyboard = true; });
   document.addEventListener('pointerdown', () => { keyboard = false; }, true);
-  card.addEventListener('focusin', () => { if (keyboard) play(true); });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
-  reduce.addEventListener('change', () => { if (reduce.matches) stop(); });
+  card.addEventListener('focusin', event => {
+    if (keyboard && !card.contains(event.relatedTarget)) { focused = true; play(true); }
+  });
+  card.addEventListener('focusout', event => {
+    if (!card.contains(event.relatedTarget)) {
+      focused = false;
+      if (!loop()) stop();
+    }
+  });
+  replay.addEventListener('click', () => { manual = true; play(true); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else if (loop()) play(true);
+  });
+  reduce.addEventListener('change', () => {
+    manual = false;
+    if (reduce.matches) stop();
+    else if (loop()) play(true);
+  });
 })();

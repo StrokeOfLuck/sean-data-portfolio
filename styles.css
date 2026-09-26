@@ -572,3 +572,7 @@ a {
  animation: schism-character-hop 1s linear infinite;
 }
 .project-card:is(:hover, :focus-within) .schism-bouba { animation-delay: 120ms; }
+
+/* Manual replay also supports users who disable automatic motion. */
+.lyon-replay { position: absolute; z-index: 4; right: 4px; bottom: 3px; border: 1px solid #ffffff70; border-radius: 4px; padding: 3px 6px; background: #17251ee6; color: #fff; font: 11px/1.4 sans-serif; cursor: pointer; min-height: 28px; }
+.lyon-replay:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
