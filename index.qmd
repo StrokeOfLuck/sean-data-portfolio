@@ -228,8 +228,14 @@ Collaborative public-facing stock-trading platform built from scraped politician
 :::
 
 ::: {.project-card .compact-project-card}
-::: {.project-card-art .project-card-image}
-![](projects/assets/cards/technical-communication-design.webp){fig-alt="Three illustrated equipment guides for laser cutting, waterjet cutting and 3D printing"}
+::: {.project-card-art .project-card-image .technical-guides-image}
+```{=html}
+<div class="technical-guide-covers">
+<img src="https://strokeofluck.github.io/technical-communication-design/guides/laser-proofread-1.jpg" alt="Thunder Laser guide cover" loading="lazy">
+<img src="https://strokeofluck.github.io/technical-communication-design/guides/wazer-proofread-1.jpg" alt="WAZER waterjet guide cover" loading="lazy">
+<img src="https://strokeofluck.github.io/technical-communication-design/guides/printer-proofread-1.jpg" alt="LulzBot guide cover" loading="lazy">
+</div>
+```
 <a href="projects/technical-communication-design.html" aria-label="Open Technical Communication and Design project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
