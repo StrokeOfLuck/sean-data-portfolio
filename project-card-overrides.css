@@ -16,3 +16,28 @@
     transform-origin: 100% 100% !important;
   }
 }
+
+/* Preserve complete guide covers with the approved narrow margins. */
+.compact-project-card .project-card-art.technical-guides-image {
+  aspect-ratio: auto;
+  background: #eef3f5;
+}
+.technical-guide-covers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 5px;
+  padding: 6px;
+}
+.project-card .technical-guide-covers img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  object-fit: contain;
+  transform: none;
+}
+@media (max-width: 600px) {
+  .technical-guides-image { display: flex; align-items: center; }
+  .technical-guide-covers { gap: 2px; padding: 3px; width: 100%; }
+}
