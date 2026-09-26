@@ -26,3 +26,5 @@
  dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 })();
 </script>
+
+<script src="assets/game-design-sandbox/landscape-mode.js"></script>
