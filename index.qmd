@@ -232,7 +232,7 @@ A cooperative puzzle platformer built for an NC State game design class.
       <div class="ch-metric"><span class="ch-icon ch-green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 3 4 4-4 4M20 7H4m4 14-4-4 4-4M4 17h16"/></svg></span><span class="ch-number">22,963</span><span class="ch-label"><span class="ch-label-full">Transactions</span><span class="ch-label-short">Trades</span></span></div>
     </div>
   </div>
-<script src="projects/assets/cards/clearhouse-thumbnail.js?v=touch-preview-2" defer></script>
+<script src="projects/assets/cards/clearhouse-thumbnail.js?v=card-preview-3" defer></script>
 ```
 <a href="projects/clearhouse.html" aria-label="Open ClearHouse.live project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
