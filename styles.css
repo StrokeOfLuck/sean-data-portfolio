@@ -192,14 +192,15 @@ a {
   background: #171717;
 }
 
-/* Google My Maps has a fixed chrome bar and zoom controls.
-   Crop those outside the card while keeping the actual map/route. */
-.lyon-live iframe {
-  top: -124px;
-  left: -38px;
-  width: calc(100% + 86px);
-  height: calc(100% + 250px);
-}
+/* Static satellite imagery and a full-resolution GPS overlay share one crop. */
+.lyon-live { background: #1c2c25; }
+.lyon-satellite, .lyon-routes { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lyon-satellite { object-fit: cover; }
+.lyon-routes { opacity: 0; }
+.lyon-live.is-ready .lyon-routes { opacity: 1; }
+.lyon-live.is-ready .lyon-satellite { visibility: hidden; }
+.lyon-attribution { position: absolute; bottom: 3px; left: 4px; z-index: 4; padding: 1px 3px; border-radius: 2px; color: #fff !important; background: rgba(0,0,0,.64); font: 8px/1.4 sans-serif; text-decoration: none; }
+.lyon-attribution:hover, .lyon-attribution:focus-visible { text-decoration: underline; }
 
 .project-card-body {
   position: relative;
