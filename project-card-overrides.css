@@ -37,6 +37,16 @@
   object-fit: contain;
   transform: none;
 }
+/* Match the neighboring preview heights when cards are stacked vertically. */
+@media (min-width: 941px) {
+  .compact-project-card .project-card-art.technical-guides-image {
+    aspect-ratio: 16 / 8.1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .technical-guide-covers { width: 100%; }
+}
 @media (max-width: 600px) {
   .technical-guides-image { display: flex; align-items: center; }
   .technical-guide-covers { gap: 2px; padding: 3px; width: 100%; }
