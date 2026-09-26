@@ -7,7 +7,9 @@ toc: false
 css:
   - card-selectable.css
   - project-card-overrides.css
-  - projects/assets/cards/8085-thumbnail.css
+include-in-header:
+  - text: |
+      <link rel="stylesheet" href="projects/assets/cards/8085-thumbnail.css?v=mobile-layout-2">
 ---
 
 I use data, public records, computational methods, and visualization to investigate politics, technology, and public institutions.
