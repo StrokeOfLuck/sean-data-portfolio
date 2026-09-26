@@ -342,7 +342,7 @@ Fall 2020
 ::: {.project-tags}
 [Assembly]{.project-tag} [Computer Architecture]{.project-tag} [Technical Foundations]{.project-tag}
 :::
-I wrote this final project in assembly for a microprocessor class focused on the Intel 8085 in 2020. At the time, I was learning assembly and being introduced to programming, before AI coding assistants became part of everyday development. I later built this browser-based 8085 simulator to revisit my original code and thought process from 2020.
+My 2020 assembly class project, revisited through a browser-based Intel 8085 simulator I built.
 
 [View project →](projects/8085-assembly.qmd){.project-link}
 :::
