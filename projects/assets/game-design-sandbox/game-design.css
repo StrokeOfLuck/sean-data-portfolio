@@ -46,9 +46,9 @@ body:has(.game-page){background:#f4f2eb;color:#242820}body:has(.game-page) #titl
 /* Shared-phone play keeps the game in view even without native fullscreen. */
 .landscape-mode-bar { display: none; }
 @media (any-pointer: coarse) {
- .landscape-mode-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; padding: 10px 12px; border-bottom: 1px solid #343b2d; }
- .landscape-mode-bar button { min-height: 44px; border: 1px solid #bfdc77; border-radius: 6px; padding: 8px 14px; background: #c5e580; color: #17200d; font: 600 13px system-ui; }
- .landscape-mode-bar p { margin: 0; color: #d5ddcb; font: 12px/1.4 system-ui; }
+ .landscape-mode-bar { display: flex; align-items: center; flex-wrap: nowrap; gap: 8px; padding: 4px 10px; border-bottom: 1px solid #343b2d; }
+ .landscape-mode-bar button { min-height: 44px; border: 1px solid #bfdc77; border-radius: 6px; padding: 8px 14px; background: #c5e580; color: #17200d; font: 600 12px system-ui; white-space: nowrap; flex-shrink: 0; }
+ .landscape-mode-bar p { margin: 0; color: #d5ddcb; font: 11px/1.4 system-ui; white-space: nowrap; }
 }
 body.side-by-side-open { overflow: hidden; }
 .game-shell.side-by-side {
@@ -64,8 +64,5 @@ body.side-by-side-open { overflow: hidden; }
 .side-by-side .player-toolbar .audio-controls label,
 .side-by-side [data-fullscreen] { display: none; }
 .side-by-side .player-toolbar .audio-controls input { width: 80px; }
-@media (orientation: portrait) {
- .side-by-side .landscape-mode-bar p { flex-basis: 100%; }
-}
 /* Keep the site navigation from covering the fallback player's exit button. */
 body.side-by-side-open #quarto-header { visibility: hidden; }
