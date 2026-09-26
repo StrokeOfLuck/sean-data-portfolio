@@ -56,6 +56,14 @@
           context.restore();
         }
       }
+      // Mirror the right screen edge around x=75.5 in the front-facing still.
+      if (frame === 0) {
+        context.fillStyle = 'rgb(95,87,79)';
+        context.fillRect(34, 68, 6, 3);
+        context.fillRect(34, 119, 6, 3);
+        context.fillStyle = 'rgb(255,236,39)';
+        context.fillRect(34, 71, 3, 48);
+      }
     };
     const tick = () => {
       if (!playing) return;
