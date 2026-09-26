@@ -305,6 +305,27 @@ Illustrated equipment guides, a team manufacturing report, and hands-on design p
 
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image}
+![](projects/assets/arduino-mathematical-visualization/sine-wave.jpg){fig-alt="Glowing lamp, LEDs, and LCD on my Arduino sine-wave prototype"}
+<a href="projects/arduino-mathematical-visualization.html" aria-label="Open Arduino and Mathematical Visualization project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Arduino & Mathematical Visualization](projects/arduino-mathematical-visualization.qmd){.project-title-link}
+::: {.project-date}
+2021–2022 · Selected earlier work
+:::
+:::
+::: {.project-tags}
+[Arduino]{.project-tag} [Programming]{.project-tag} [Electronics]{.project-tag}
+:::
+Three Wake Tech honors builds using light, a rotary encoder, and ultrasonic sensors to give mathematical ideas a physical, interactive form.
+
+[View project →](projects/arduino-mathematical-visualization.qmd){.project-link}
+:::
+:::
+
+::: {.project-card .compact-project-card}
+::: {.project-card-art .project-card-image}
 ```{=html}
 <div class="t8085-art" data-8085-thumbnail aria-hidden="true"><div class="t8085-window"><div class="t8085-bar"><span>CELSIUS TO FAHRENHEIT.ASM</span><span>INTEL 8085 · 2020</span></div><div class="t8085-panes"><div class="t8085-code" aria-hidden="true"></div><div class="t8085-temperature" aria-hidden="true"><span class="t8085-small">25°C INPUT</span><span class="t8085-reading">77°F</span><div class="t8085-thermo"><div class="t8085-mercury"></div></div><span class="t8085-phase">Complete</span></div></div></div></div>
 <script src="projects/assets/cards/8085-thumbnail.js" defer></script>
