@@ -47,12 +47,14 @@
       }
       // Thin only an over-wide front bezel; the emerging side remains original.
       if (frame < 5) {
-        const x = [25, null, 34, null, null][frame];
+        // Retain three extra canvas pixels on the left dark edge.
+        // At the reviewed card size this adds one displayed pixel.
+        const x = [25.6, null, 34.6, null, null][frame];
         if (x !== null) {
           context.save();
           context.globalAlpha = 1 - frame / 5;
           context.fillStyle = 'rgb(194,195,199)';
-          context.fillRect(x, 62, 3, 66);
+          context.fillRect(x, 62, 2.4, 66);
           context.restore();
         }
       }
