@@ -699,7 +699,7 @@ page-layout: full
   <div class="hud-drive" aria-label="Bike controls">
     <button id="left" aria-label="Move left"></button>
     <button id="right" aria-label="Move right"></button>
-    <button id="jump">Jump</button>
+    <button id="jump" title="Jump (Space, Up Arrow, or W)">Jump</button>
   </div>
 </div>
 
@@ -2513,7 +2513,7 @@ function bodyHitsBike(b) {
     const k=e.key.toLowerCase();
     if(k==='a' || k==='arrowleft') { bike.left=true; e.preventDefault(); }
     if(k==='d' || k==='arrowright') { bike.right=true; e.preventDefault(); }
-    if(e.code==='Space') { jump(); e.preventDefault(); }
+    if(e.code==='Space' || k==='arrowup' || k==='w') { jump(); e.preventDefault(); }
     if(k==='r') { reset(); e.preventDefault(); }
   }
 
