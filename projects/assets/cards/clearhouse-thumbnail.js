@@ -10,7 +10,6 @@
   let hovering = false;
   let focused = false;
   let active = false;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function render(progress) {
     numbers.forEach((element, index) => {
@@ -39,15 +38,13 @@
   }
 
   function update() {
-    const shouldAnimate = !document.hidden && !reducedMotion.matches &&
-      (hovering || focused);
+    const shouldAnimate = !document.hidden && (hovering || focused);
     if (shouldAnimate === active) return;
     active = shouldAnimate;
     if (active) start();
     else stop();
   }
 
-  reducedMotion.addEventListener('change', update);
   document.addEventListener('visibilitychange', update);
 
   // Match the 8085 card: preview on whole-card hover or keyboard focus.
