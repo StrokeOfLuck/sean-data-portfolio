@@ -71,3 +71,5 @@ body:has(.game-page) .footer,
 body:has(.game-page) .nav-footer {
   background-color: #f4f2eb;
 }
+/* Give the white player icon a soft edge against the paper background. */
+.bouba-token { filter: drop-shadow(0 0 1px #555); }
