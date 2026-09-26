@@ -6,8 +6,8 @@
   .honors-preview-card .honors-preview-art img,
   .honors-preview-card .honors-preview-art .honors-hover-video{
     object-fit:cover;
-    object-position:58% 65%;
-    transform:scale(1.25);
-    transform-origin:58% 65%;
+    object-position:58% 50%;
+    transform:none;
+    transform-origin:58% 50%;
   }
 }
