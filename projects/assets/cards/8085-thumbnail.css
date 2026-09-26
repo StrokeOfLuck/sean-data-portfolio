@@ -14,3 +14,26 @@
 .t8085-phase{font:8px system-ui;color:#647b90;min-height:13px;text-align:center}
 @media(prefers-reduced-motion:reduce){.t8085-mercury{transition:none}}
 
+/* Size the preview to its card, including narrow phone and tablet columns. */
+.t8085-bar{gap:8px;align-items:center;white-space:nowrap}
+.t8085-bar > span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.t8085-bar > span:last-child{flex-shrink:0}
+.t8085-panes{grid-template-columns:minmax(0,1fr) minmax(78px,28%)}
+.t8085-code,.t8085-temperature{min-width:0}
+.t8085-small,.t8085-reading{white-space:nowrap}
+
+@container (max-width: 200px){
+  .t8085-bar{justify-content:center;padding-inline:4px}
+  .t8085-bar > span:first-child{display:none}
+  .t8085-panes{grid-template-columns:minmax(0,1fr);grid-template-rows:76px minmax(0,1fr)}
+  .t8085-temperature{grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 12px;grid-template-rows:14px 30px 14px;column-gap:6px;row-gap:0;padding:8px;border-bottom:1px solid #e3e9ef;text-align:center}
+  .t8085-small,.t8085-reading,.t8085-phase{grid-column:1;justify-content:center;min-width:0}
+  .t8085-reading{height:auto;font-size:24px}
+  .t8085-reading.t8085-calculating{font-size:9px}
+  .t8085-thermo{grid-column:2;grid-row:1 / 4;width:12px;height:48px}
+  .t8085-code{grid-row:2;border-right:0;padding:2px 0}
+  .t8085-row{gap:5px;padding:1px 4px;font-size:8px}
+  .t8085-number{min-width:18px}
+}
+
+
