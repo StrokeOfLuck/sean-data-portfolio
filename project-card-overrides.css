@@ -49,5 +49,11 @@
 }
 @media (max-width: 600px) {
   .technical-guides-image { display: flex; align-items: center; }
-  .technical-guide-covers { gap: 2px; padding: 3px; width: 100%; }
+  .technical-guide-covers {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 6px;
+    width: 100%;
+  }
+  /* Keep the laser cover as the mobile thumbnail. */
+  .technical-guide-covers img:not(:first-child) { display: none; }
 }
