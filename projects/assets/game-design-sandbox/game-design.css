@@ -43,3 +43,29 @@ body:has(.game-page){background:#f4f2eb;color:#242820}body:has(.game-page) #titl
  .game-stage { aspect-ratio: auto; height: clamp(350px, calc(56.25vw + 144px), 650px); }
  .game-shell:fullscreen .game-stage { height: auto; min-height: 0; }
 }
+/* Shared-phone play keeps the game in view even without native fullscreen. */
+.landscape-mode-bar { display: none; }
+@media (any-pointer: coarse) {
+ .landscape-mode-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; padding: 10px 12px; border-bottom: 1px solid #343b2d; }
+ .landscape-mode-bar button { min-height: 44px; border: 1px solid #bfdc77; border-radius: 6px; padding: 8px 14px; background: #c5e580; color: #17200d; font: 600 13px system-ui; }
+ .landscape-mode-bar p { margin: 0; color: #d5ddcb; font: 12px/1.4 system-ui; }
+}
+body.side-by-side-open { overflow: hidden; }
+.game-shell.side-by-side {
+ position: fixed; inset: 0; z-index: 10000; width: 100%; height: 100dvh;
+ box-sizing: border-box; display: flex; flex-direction: column; border: 0; border-radius: 0;
+ padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.side-by-side .landscape-mode-bar { display: flex; flex-shrink: 0; }
+.side-by-side .player-bar { display: none; }
+.game-shell.side-by-side .game-stage { flex: 1; min-height: 0; height: auto; aspect-ratio: auto; }
+.side-by-side .player-toolbar { flex-shrink: 0; padding: 6px 10px; gap: 6px 12px; }
+.side-by-side .player-toolbar .toolbar-status,
+.side-by-side .player-toolbar .audio-controls label,
+.side-by-side [data-fullscreen] { display: none; }
+.side-by-side .player-toolbar .audio-controls input { width: 80px; }
+@media (orientation: portrait) {
+ .side-by-side .landscape-mode-bar p { flex-basis: 100%; }
+}
+/* Keep the site navigation from covering the fallback player's exit button. */
+body.side-by-side-open #quarto-header { visibility: hidden; }
