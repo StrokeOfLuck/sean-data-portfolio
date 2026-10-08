@@ -68,6 +68,14 @@ jobs:
             any::glue
             any::purrr
 
+      # Hosted runners may include a newer Quarto. setup@v2 cannot downgrade
+      # that package, so remove it before installing our pinned version.
+      - name: Remove runner-provided Quarto
+        run: |
+          if dpkg-query -W quarto >/dev/null 2>&1; then
+            sudo apt-get remove --yes quarto
+          fi
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
