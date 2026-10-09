@@ -74,3 +74,28 @@
   .compact-project-card.technical-guides-card .project-tags { margin-bottom: 0.55rem; }
   .compact-project-card.technical-guides-card .project-link { margin-top: 0; }
 }
+
+/* Keep the previous story immediately after the newest feature, at a smaller size. */
+.featured-projects .recent-reporting-card {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 0;
+}
+.featured-projects .recent-reporting-card .project-card-art {
+  aspect-ratio: auto;
+  min-height: 210px;
+  border-bottom: 0;
+  border-right: 1px solid rgba(127, 127, 127, .16);
+}
+.featured-projects .recent-reporting-card .project-card-body { padding: 1rem 1.3rem; }
+.featured-projects .recent-reporting-card .project-card-heading h3 { font-size: 1.2rem; }
+.featured-projects .recent-reporting-card .project-card-body > p { margin-bottom: .6rem; }
+.featured-project-card .housing-map-image img {
+  object-fit: cover !important;
+  object-position: 62% center !important;
+  transform: none !important;
+}
+@media (max-width: 600px) {
+  .featured-projects .recent-reporting-card { grid-template-columns: 1fr; }
+  .featured-projects .recent-reporting-card .project-card-art { aspect-ratio: 16 / 8; min-height: 0; }
+}
