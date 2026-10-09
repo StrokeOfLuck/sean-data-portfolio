@@ -50,10 +50,12 @@ jobs:
               (folder / name).write_bytes(base64.b64decode((folder / (name + '.b64')).read_text()))
           PYTHON
 
-      - name: Remove captured cursors from housing snapshot
+      - name: Capture housing snapshot with fully loaded map
+        if: ${{ hashFiles('projects/assets/housing-affordability/snapshot-map-ready.json') == '' }}
         run: |
-          python3 -m pip install Pillow
-          python3 scripts/clean_housing_snapshot.py
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+          python3 scripts/capture_housing_snapshot.py
 
       - name: Checkout pinned housing graphics archive
         if: ${{ hashFiles('projects/assets/housing-affordability/graphics/technician-embed.html') == '' }}
