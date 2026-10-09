@@ -48,7 +48,7 @@ Rental listings, university housing rates, interviews and interactive affordabil
 
 ::: {.project-card .featured-project-card .recent-reporting-card}
 ::: {.project-card-art .project-card-image .park-it-here-image}
-![](https://datawrapper.dwcdn.net/fmUon/plain.png){fig-alt="Lime scooter parking and riding restrictions around NC State from Park it here?"}
+![](https://datawrapper.dwcdn.net/Ww6ig/plain.png){fig-alt="Lime parking restrictions and bicycle crash markers around NC State from Park it here?"}
 <a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
