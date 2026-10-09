@@ -85,7 +85,7 @@
 
 /* Match the neighboring featured rows; the map must not set the row height. */
 @media (min-width: 881px) {
-  .featured-projects .recent-reporting-card {
+  .featured-projects .featured-project-card:not(:first-child) {
     height: 300px;
     min-height: 300px;
   }
