@@ -75,8 +75,31 @@
   .compact-project-card.technical-guides-card .project-link { margin-top: 0; }
 }
 
-.featured-project-card .housing-map-image img {
+/* Frame the campus boundary around its center, away from the map legend. */
+.featured-projects .featured-project-card .project-card-art.project-card-image.housing-map-image img {
   object-fit: cover !important;
-  object-position: 62% center !important;
-  transform: none !important;
+  object-position: 49% 39% !important;
+  transform: translate(1%, 11%) scale(1.35) !important;
+  transform-origin: 49% 39% !important;
+}
+
+/* Match the neighboring featured rows; the map must not set the row height. */
+@media (min-width: 881px) {
+  .featured-projects .recent-reporting-card {
+    height: 300px;
+    min-height: 300px;
+  }
+  .featured-projects .recent-reporting-card .project-card-art {
+    height: 100%;
+    min-height: 0;
+  }
+  .featured-projects .recent-reporting-card .project-card-art p {
+    position: absolute;
+    inset: 0;
+  }
+  .featured-projects .recent-reporting-card .project-card-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

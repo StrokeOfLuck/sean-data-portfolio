@@ -33,49 +33,25 @@ jobs:
           ref: gh-pages
           path: site
 
-      - name: Sync latest publication snapshot into repository
+      - name: Verify committed high-resolution publication snapshot
         run: |
-          set -euo pipefail
-
-          SNAPSHOT='source/projects/assets/park-it-here/technician-publication-snapshot.png'
-          TMP='/tmp/technician-publication-snapshot.png'
-          DRIVE_URL='https://drive.google.com/uc?export=download&id=1ME743-sSD243gDGnAgk4nuSaxt24VyGw'
-          EXPECTED_SHA='afe97d08cff006030ad5a28678d10d6562e5c97d3989fbca3cf0038d55141acb'
-
-          curl -L --fail --retry 3 --retry-delay 2 \
-            -A 'Mozilla/5.0' \
-            "$DRIVE_URL" \
-            -o "$TMP"
-
-          ACTUAL_SHA="$(sha256sum "$TMP" | awk '{print $1}')"
-          if [ "$ACTUAL_SHA" != "$EXPECTED_SHA" ]; then
-            echo "Snapshot hash mismatch"
-            echo "Expected: $EXPECTED_SHA"
-            echo "Actual:   $ACTUAL_SHA"
-            file "$TMP" || true
-            exit 1
-          fi
-
-          mkdir -p "$(dirname "$SNAPSHOT")"
-          mv "$TMP" "$SNAPSHOT"
-
-          python3 - <<'PY'
+          python3 - <<'PYTHON'
           from pathlib import Path
-
-          qmd = Path('source/projects/park-it-here.qmd')
-          text = qmd.read_text(encoding='utf-8')
-          drive = 'https://drive.google.com/file/d/1ME743-sSD243gDGnAgk4nuSaxt24VyGw/view?usp=drivesdk'
-          local = 'assets/park-it-here/technician-publication-snapshot.png'
-          if drive in text:
-              text = text.replace(drive, local)
-              qmd.write_text(text, encoding='utf-8')
-
-          obsolete = Path('source/projects/assets/park-it-here/technician-publication-snapshot.jpg.b64')
-          if obsolete.exists():
-              obsolete.unlink()
-          PY
-
-          echo "Verified exact snapshot: $(stat -c%s "$SNAPSHOT") bytes"
+          import hashlib, struct
+          snapshot = Path('source/projects/assets/park-it-here/technician-publication-snapshot.png')
+          parts = sorted((snapshot.parent / 'snapshot-parts').glob('part-*'))
+          if parts:
+              snapshot.write_bytes(b''.join(part.read_bytes() for part in parts))
+              for part in parts:
+                  part.unlink()
+              (snapshot.parent / 'snapshot-parts').rmdir()
+          data = snapshot.read_bytes()
+          assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Snapshot must be a PNG'
+          width, height = struct.unpack('>II', data[16:24])
+          assert width >= 4000 and height >= 20000, 'High-resolution snapshot missing'
+          print(f'Verified committed snapshot: {width} x {height}; {len(data):,} bytes')
+          print(hashlib.sha256(data).hexdigest())
+          PYTHON
 
       - name: Commit source snapshot and cleanup
         working-directory: source
@@ -88,7 +64,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Source snapshot already current.'
           else
-            git commit -m 'Replace Technician publication snapshot'
+            git commit -m 'Preserve full-resolution Technician publication snapshot [skip ci]'
             git push origin main
           fi
 
