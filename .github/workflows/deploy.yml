@@ -50,6 +50,11 @@ jobs:
               (folder / name).write_bytes(base64.b64decode((folder / (name + '.b64')).read_text()))
           PYTHON
 
+      - name: Remove captured cursors from housing snapshot
+        run: |
+          python3 -m pip install Pillow
+          python3 scripts/clean_housing_snapshot.py
+
       - name: Checkout pinned housing graphics archive
         if: ${{ hashFiles('projects/assets/housing-affordability/graphics/technician-embed.html') == '' }}
         uses: actions/checkout@v4
