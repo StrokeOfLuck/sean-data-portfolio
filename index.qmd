@@ -123,7 +123,7 @@ Fall 2026
 :::
 :::
 ::: {.project-tags}
-[NLP]{.project-tag} [Political Data]{.project-tag} [Event Analysis]{.project-tag}
+[Text Analysis]{.project-tag} [Political Data]{.project-tag} [Iran Conflict]{.project-tag}
 :::
 Using computational text analysis to examine political rhetoric around real-world events.
 
