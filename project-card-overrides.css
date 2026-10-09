@@ -6,16 +6,16 @@
   width: 160% !important;
   max-width: none !important;
   height: auto !important;
-  transform: translate(-64%, -47%) !important;
+  transform: translate(-64%, -30%) !important;
 }
 
 .project-card:hover .park-it-here-image img {
-  transform: translate(-64%, -47%) !important;
+  transform: translate(-64%, -30%) !important;
 }
 
 @media (max-width: 880px) {
   .featured-project-card .project-card-art.park-it-here-image img {
-    transform: translate(-64%, -47%) !important;
+    transform: translate(-64%, -30%) !important;
   }
 }
 
