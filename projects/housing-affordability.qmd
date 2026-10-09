@@ -10,7 +10,8 @@ toc: false
 #title-block-header { display:none !important; }
 
 .park-project-shell {
-  width:min(94vw, 1320px);
+  width:100%;
+  max-width:1320px;
   margin:2rem auto 3rem;
 }
 
@@ -183,7 +184,7 @@ toc: false
 
 @media (max-width: 620px) {
   .park-project-shell {
-    width:min(95vw, 1320px);
+    width:100%;
     margin:1rem auto 2rem;
   }
   .park-project-card {
@@ -199,7 +200,7 @@ toc: false
   <div class="park-project-card">
     <section class="park-project-copy">
       <div class="park-eyebrow">Published reporting</div>
-      <h1 class="park-title">Can NC State Students Afford to Live Near Campus?</h1>
+      <h2 class="park-title">Can NC State Students Afford to Live Near Campus?</h2>
       <div class="park-meta">Technician &nbsp;·&nbsp; Oct. 8, 2026</div>
       <p class="park-summary">Published reporting combining interviews, advertised rental listings, university housing rates and an interactive affordability model to examine the cost of living near NC State.</p>
       <div class="park-tags" aria-label="Project tags">
