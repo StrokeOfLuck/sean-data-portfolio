@@ -57,6 +57,11 @@ jobs:
           python3 -m playwright install --with-deps chromium
           python3 scripts/capture_housing_snapshot.py
 
+      - name: Clean floating controls from snapshot margin
+        run: |
+          python3 -m pip install Pillow
+          python3 scripts/clean_housing_snapshot.py
+
       - name: Checkout pinned housing graphics archive
         if: ${{ hashFiles('projects/assets/housing-affordability/graphics/technician-embed.html') == '' }}
         uses: actions/checkout@v4
