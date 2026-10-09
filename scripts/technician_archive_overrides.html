@@ -59,9 +59,9 @@ html.archive-embed-desktop .sno-story-social-icons {
   display: none !important;
 }
 
-/* Direct mobile viewing keeps Technician's share controls, but moves them
-   beneath the story rather than letting them float over maps and text. */
-@media only screen and (max-width: 600px) {
+/* Direct phone/tablet viewing, including unfolded touchscreens, keeps
+   share controls beneath the story so they cannot cover maps or text. */
+@media (max-width: 1100px), (hover: none) and (pointer: coarse) {
   html:not(.archive-force-desktop) .sno-story-social-icons {
     position: static !important;
     inset: auto !important;
