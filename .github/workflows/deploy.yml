@@ -51,9 +51,9 @@ jobs:
           PYTHON
 
       - name: Capture housing snapshot with fully loaded map
-        if: ${{ hashFiles('projects/assets/housing-affordability/snapshot-map-ready.json') == '' }}
+        if: ${{ hashFiles('projects/assets/housing-affordability/snapshot-map-ready-v2.json') == '' }}
         run: |
-          python3 -m pip install playwright
+          python3 -m pip install playwright Pillow
           python3 -m playwright install --with-deps chromium
           python3 scripts/capture_housing_snapshot.py
 

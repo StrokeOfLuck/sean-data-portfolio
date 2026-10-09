@@ -3,12 +3,14 @@ import base64
 import functools
 import http.server
 import json
+import io
+from PIL import Image
 from pathlib import Path
 import threading
 from playwright.sync_api import sync_playwright
 
 folder = Path('projects/assets/housing-affordability')
-marker = folder / 'snapshot-map-ready.json'
+marker = folder / 'snapshot-map-ready-v2.json'
 if marker.exists():
     print('Map-complete snapshot already saved')
     raise SystemExit(0)
@@ -47,7 +49,17 @@ try:
         page.wait_for_timeout(3000)
         page.mouse.move(0, 0)
         map_frame.locator('#map').screenshot(path=str(folder / 'snapshot-map-check.png'))
-        page.screenshot(path=str(folder / 'publication-snapshot.png'), full_page=True, timeout=120000)
+        # Viewport captures avoid Chromium/SwiftShader repeating tall screenshots
+        # after its GPU texture limit. Stitch at exact observed scroll offsets.
+        page.evaluate('window.scrollTo(0, 0)')
+        height = page.evaluate('document.documentElement.scrollHeight')
+        canvas = Image.new('RGB', (2560, height * 2), 'white')
+        for offset in range(0, height, 900):
+            actual = page.evaluate('(y) => { window.scrollTo(0, y); return window.scrollY; }', offset)
+            page.wait_for_timeout(250)
+            tile = Image.open(io.BytesIO(page.screenshot(timeout=120000))).convert('RGB')
+            canvas.paste(tile, (0, round(actual * 2)))
+        canvas.save(folder / 'publication-snapshot.png')
         path = folder / 'publication-snapshot.png'
         path.with_suffix('.png.b64').write_text(base64.b64encode(path.read_bytes()).decode('ascii') + '\n')
         marker.write_text(json.dumps({'source':'article.html with preserved repo graphics', 'viewport_width':1280, 'device_scale_factor':2, 'map_style_loaded':True, 'map_tiles_loaded':True}, indent=2) + '\n')
