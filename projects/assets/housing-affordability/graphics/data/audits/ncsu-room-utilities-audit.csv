@@ -1,0 +1,148 @@
+﻿listing_id,listing,advertised_price,rent_low_numeric,rent_high_numeric,advertised_midpoint_excel,distance_miles,distance_band,any_utility_classification_basis,core_utilities_included_from_structured_fields,all_5_core_structured,portal_utility_line_items_verbatim,description_utility_wording_verbatim,all_utilities_explicit_manual,all_utilities_exact_wording,all_utilities_manual_review_note,internet_wifi_explicit,internet_wifi_evidence,required_monthly_fees_portal,original_listing_url
+ocpet5b7hm,Modern/High Ceilings 2bed/2 bath,"$1,250",1250.00,1250.00,=AVERAGE(D2:E2),1.026552005,>1–3 mi,Structured utility fields,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/modern-high-ceilings-2bed-2-bath/ocpet5b7hm
+7e6kx1w,Centennial Ridge Student Housing,"$599 - $2,157",599.00,2157.00,=AVERAGE(D3:E3),2.372144719,>1–3 mi,Structured utility fields,Electricity; Heat; Water/Sewer,No,"Air Conditioning: Included
+Electricity: Included
+Heat: Included
+High-Speed Internet: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/centennial-ridge-student-housing/7e6kx1w
+ocpw46rjcl,Brand New Luxury Furnished Townhome | 4 Bed /  3.5 Bath | 5 Min to NC State & 3 Mins to Fenton +shop,"$900 - $1,050",900.00,1050.00,=AVERAGE(D4:E4),3.334997030,>3–5 mi,Saved description,,No,,"All utilities included
+High-speed internet included",Yes,All utilities included,Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,High-speed internet included,None,https://offcampus.dasa.ncsu.edu/housing/property/brand-new-luxury-furnished-townhome-4-bed-3-5-bath-5-min-to-nc-state-and-3-mins-to-fenton-shop/ocpw46rjcl
+ocpchygggd,Hurry 2 Rooms Left! – 4BR/4BA Condo Near NC State  – All Utilities & Internet Included!,$695,695.00,695.00,=AVERAGE(D5:E5),2.192366298,>1–3 mi,Structured utility fields + saved description,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Recycling: Included
+Trash Removal: Included
+Water/Sewer: Included","Rent is $695 per month per room and includes all utilities (electricity, water, and internet), with no hidden fees.",Yes,"Rent is $695 per month per room and includes all utilities (electricity, water, and internet), with no hidden fees.",Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,"High-Speed Internet: Included | Rent is $695 per month per room and includes all utilities (electricity, water, and internet), with no hidden fees.",None,https://offcampus.dasa.ncsu.edu/housing/property/hurry-2-rooms-left-4br-4ba-condo-near-nc-state-all-utilities-and-internet-included/ocpchygggd
+ocpesl9n3p,maisonNC --- Fully Furnished minutes away from Wolfline and Shopping,$750,750.00,750.00,=AVERAGE(D6:E6),1.619349362,>1–3 mi,Saved description,,No,,"All utilities, wifi (google fiber) and parking included in the rent.",Yes,"All utilities, wifi (google fiber) and parking included in the rent.",Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,"All utilities, wifi (google fiber) and parking included in the rent.",None,https://offcampus.dasa.ncsu.edu/housing/property/maisonnc-fully-furnished-minutes-away-from-wolfline-and-shopping/ocpesl9n3p
+ocpcm3jede,maisonNC --- Fully Furnished minutes away from Wolfline and Shopping,$750,750.00,750.00,=AVERAGE(D7:E7),1.600371218,>1–3 mi,Structured utility fields + saved description,Electricity; Heat; Water/Sewer,No,"Cable: Included
+Electricity: Included
+Heat: Included
+High-Speed Internet: Included
+Recycling: Included
+Water/Sewer: Included","Rent includes all utilities, wifi and parking.",Yes,"Rent includes all utilities, wifi and parking.",Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,"High-Speed Internet: Included | Rent includes all utilities, wifi and parking.",None,https://offcampus.dasa.ncsu.edu/housing/property/maisonnc-fully-furnished-minutes-away-from-wolfline-and-shopping/ocpcm3jede
+ocpnx5c0kn,Modern & spacious 3BR/3BA Apartment w/View,"$1,000",1000.00,1000.00,=AVERAGE(D8:E8),1.036129373,>1–3 mi,Structured utility fields,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,None,https://offcampus.dasa.ncsu.edu/housing/property/modern-and-spacious-3br-3ba-apartment-w-view/ocpnx5c0kn
+ocpjeweyz6,All Girls Unit - Room with Private Bathroom at  University Woods at Centennial Condominiums,$645,645.00,645.00,=AVERAGE(D9:E9),2.188347488,>1–3 mi,Structured utility fields + saved description,Trash Removal,No,"Recycling: Included
+Trash Removal: Included","Included: sewer, trash
+Not included: Water, Internet and Electricity (shared among roommates)",No,,,Yes,"Not included: Water, Internet and Electricity (shared among roommates)",None,https://offcampus.dasa.ncsu.edu/housing/property/all-girls-unit-room-with-private-bathroom-at-university-woods-at-centennial-condominiums/ocpjeweyz6
+0smdl31,Paloma Raleigh,"$749 - $1,599",749.00,1599.00,=AVERAGE(D10:E10),2.624931081,>1–3 mi,Structured utility fields,Gas; Heat; Trash Removal; Water/Sewer,No,"Air Conditioning: Included
+Cable: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/paloma-raleigh/0smdl31
+ocppjxdd3r,Collegeview Duplex--Brand New Luxury Housing within walking distance to NCSU,$900 - $950,900.00,950.00,=AVERAGE(D11:E11),0.249152533,0–1 mi,Structured utility fields,Trash Removal,No,"Recycling: Included
+Trash Removal: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/collegeview-duplex-brand-new-luxury-housing-within-walking-distance-to-ncsu/ocppjxdd3r
+ocpe1n95cm,Big Promotion w/best price ever. Move in Immediately . MarcomTowns. Great location nice,$950,950.00,950.00,=AVERAGE(D12:E12),0.243489368,0–1 mi,Structured utility fields,Trash Removal,No,"Recycling: Included
+Trash Removal: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/big-promotion-w-best-price-ever-move-in-immediately-marcomtowns-great-location-nice/ocpe1n95cm
+ocp2evl6hb,University Oaks -,$725,725.00,725.00,=AVERAGE(D13:E13),0.440031949,0–1 mi,Structured utility fields + saved description,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Recycling: Included
+Trash Removal: Included
+Water/Sewer: Included","Parking, utilities, internet - included.",No,,,Yes,"High-Speed Internet: Included | Parking, utilities, internet - included.",None,https://offcampus.dasa.ncsu.edu/housing/property/university-oaks/ocp2evl6hb
+ocpvlydr3e,Reavis ---Brand New Luxury Housing within walking distance to NCSU,$925 - $975,925.00,975.00,=AVERAGE(D14:E14),0.846079213,0–1 mi,Structured utility fields,Trash Removal,No,"Recycling: Included
+Trash Removal: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/reavis-brand-new-luxury-housing-within-walking-distance-to-ncsu/ocpvlydr3e
+ocpxdxd79p,4BR/4BA Condo| On Wolfline | Preleasing 27-28 Special $850 Util/Parking Incld | Mile to Campus,$875,875.00,875.00,=AVERAGE(D15:E15),0.655411437,0–1 mi,Structured utility fields + saved description,Electricity; Heat; Trash Removal; Water/Sewer,No,"Electricity: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included","* All utilities included: Electric, water, trash, and unlimited Google Fiber High-Speed Internet",Yes,"* All utilities included: Electric, water, trash, and unlimited Google Fiber High-Speed Internet",Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,"High-Speed Internet: Included | * All utilities included: Electric, water, trash, and unlimited Google Fiber High-Speed Internet",None,https://offcampus.dasa.ncsu.edu/housing/property/4br-4ba-condo-on-wolfline-preleasing-27-28-special-850-util-parking-incld-mile-to-campus/ocpxdxd79p
+ocpm68s5sh,Burt Drive Townhouses---Brand New Luxury Housing within walking distance to NCSU,"$1,050",1050.00,1050.00,=AVERAGE(D16:E16),0.339887457,0–1 mi,Structured utility fields,Trash Removal,No,"Recycling: Included
+Trash Removal: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/burt-drive-townhouses-brand-new-luxury-housing-within-walking-distance-to-ncsu/ocpm68s5sh
+z8cfdjw,Campus Crossings Raleigh,$685 - $870,685.00,870.00,=AVERAGE(D17:E17),2.420198986,>1–3 mi,Structured utility fields,Electricity; Heat; Trash Removal; Water/Sewer,No,"Air Conditioning: Included
+Electricity: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/campus-crossings-raleigh/z8cfdjw
+ocp6mp93ms,Newly Renovated - All Girls Unit Room with Private Bathroom,$645,645.00,645.00,=AVERAGE(D18:E18),2.193838767,>1–3 mi,Saved description,,No,,"Included: sewer, trash
+Not included: Water, Internet and Electricity (shared among roommates)",No,,,Yes,"Not included: Water, Internet and Electricity (shared among roommates)",Not reported,https://offcampus.dasa.ncsu.edu/housing/property/newly-renovated-all-girls-unit-room-with-private-bathroom/ocp6mp93ms
+5x5ph7m,Redpoint Raleigh,$899 - $995,899.00,995.00,=AVERAGE(D19:E19),2.696273350,>1–3 mi,Structured utility fields,Gas; Heat; Trash Removal; Water/Sewer,No,"Air Conditioning: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/redpoint-raleigh/5x5ph7m
+jjs8f07,Village Green Student Housing,$649 - $839,649.00,839.00,=AVERAGE(D20:E20),1.932509975,>1–3 mi,Structured utility fields,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Air Conditioning: Included
+Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/village-green-student-housing/jjs8f07
+ocpbhbkvy9,Voyager House,$800,800.00,800.00,=AVERAGE(D21:E21),1.884049975,>1–3 mi,Structured utility fields,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Recycling: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,None,https://offcampus.dasa.ncsu.edu/housing/property/voyager-house/ocpbhbkvy9
+e13mz5m,University Suites Student Housing,$699 - $799,699.00,799.00,=AVERAGE(D22:E22),2.292134880,>1–3 mi,Structured utility fields,Electricity; Trash Removal; Water/Sewer,No,"Electricity: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/university-suites-student-housing/e13mz5m
+ocpepvxvln,Village Green Student Living,$831,831.00,831.00,=AVERAGE(D23:E23),1.815869405,>1–3 mi,Saved description,,No,,The price of parking and all utilities are included in the base rent fee of ~$831/month.,Yes,The price of parking and all utilities are included in the base rent fee of ~$831/month.,Manual review: saved wording explicitly states all utilities are included/inclusive.,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/village-green-student-living/ocpepvxvln
+ocpgxr290w,Spacious Forest Park Two-Room Suite + Private Bath - Walk to Campus (Includes Utilities),"$1,225",1225.00,1225.00,=AVERAGE(D24:E24),1.604060636,>1–3 mi,Saved listing title,,No,,Spacious Forest Park Two-Room Suite + Private Bath - Walk to Campus (Includes Utilities),No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/spacious-forest-park-two-room-suite-private-bath-walk-to-campus-includes-utilities/ocpgxr290w
+ocpsd8dpj6,Spacious En-suite with private patio and garage parking in Crescent Ridge Townhome Community,$900,900.00,900.00,=AVERAGE(D25:E25),2.725369678,>1–3 mi,Structured utility fields + saved description,Electricity; Gas; Heat; Trash Removal; Water/Sewer,Yes,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Recycling: Included
+Trash Removal: Included
+Water/Sewer: Included",Internet and utilities are included as well as garage parking and access to the neighborhood pool.,No,,,Yes,High-Speed Internet: Included | Internet and utilities are included as well as garage parking and access to the neighborhood pool.,None,https://offcampus.dasa.ncsu.edu/housing/property/spacious-en-suite-with-private-patio-and-garage-parking-in-crescent-ridge-townhome-community/ocpsd8dpj6
+ocp2gxtxqc,The Station,$969,969.00,969.00,=AVERAGE(D26:E26),2.152909218,>1–3 mi,Saved description,,No,,"The unit includes in-unit laundry, parking, and utilities are included, making it super convenient and hassle-free.",No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/the-station/ocp2gxtxqc
+ocppbmmgnt,5 bedroom townhome available near NC State,$650,650.00,650.00,=AVERAGE(D27:E27),2.375235559,>1–3 mi,Structured utility fields,Trash Removal,No,"Recycling: Included
+Trash Removal: Included",,No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/5-bedroom-townhome-available-near-nc-state/ocppbmmgnt
+ocpx51p4tm,Condo near NCSU,$800,800.00,800.00,=AVERAGE(D28:E28),1.625432361,>1–3 mi,Saved description,,No,,"All utilities (wifi, electricity, water) are included.",No,,,Yes,"All utilities (wifi, electricity, water) are included.",None,https://offcampus.dasa.ncsu.edu/housing/property/condo-near-ncsu/ocpx51p4tm
+ocphdtdgk2,105 Friendly Drive! Furnished Room Rentals with Utilities!,"$775 - $1,050",775.00,1050.00,=AVERAGE(D29:E29),0.734302196,0–1 mi,Structured utility fields + saved description,Electricity; Heat; Trash Removal; Water/Sewer,No,"Cable: Included
+Electricity: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",High-Speed Internet & Utilities INCLUDED – Stay connected and stress-free.,No,,,Yes,High-Speed Internet: Included | High-Speed Internet & Utilities INCLUDED – Stay connected and stress-free.,$10,https://offcampus.dasa.ncsu.edu/housing/property/105-friendly-drive-furnished-room-rentals-with-utilities/ocphdtdgk2
+ocp4lh373j,"Hub Raleigh – 4x2 Lease Takeover, Available Now","$1,199",1199.00,1199.00,=AVERAGE(D30:E30),1.249575868,>1–3 mi,Saved description,,No,,"This is a 4 bedroom / 2 bathroom furnished unit with utilities included in rent ($1,199/month); parking is available separately if needed.",No,,,No,,None,https://offcampus.dasa.ncsu.edu/housing/property/hub-raleigh-4x2-lease-takeover-available-now/ocp4lh373j
+se736e5,College Inn,"$859 - $1,275",859.00,1275.00,=AVERAGE(D31:E31),0.246460777,0–1 mi,Structured utility fields,Electricity; Gas; Heat; Water/Sewer,No,"Electricity: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/college-inn/se736e5
+ocp0gblz91,Great value in beautiful SW Raleigh,$850,850.00,850.00,=AVERAGE(D32:E32),3.494769248,>3–5 mi,Saved description,,No,,"ALL utilities included (i.e., high speed internet, electricity/gas, water, etc.).",Yes,"ALL utilities included (i.e., high speed internet, electricity/gas, water, etc.).",Manual review: saved wording explicitly states all utilities are included/inclusive.,Yes,"ALL utilities included (i.e., high speed internet, electricity/gas, water, etc.).",None,https://offcampus.dasa.ncsu.edu/housing/property/great-value-in-beautiful-sw-raleigh/ocp0gblz91
+ocpteqgjg8,Huge modern studio suite- private entrance and beth- near NCSU,"$1,150",1150.00,1150.00,=AVERAGE(D33:E33),2.969896437,>1–3 mi,Saved description,,No,,"Stress-Free Living: Rent includes electricity, water, gas, trash, and ultra-high-speed Wi-Fi (capped at reasonable monthly usage).",No,,,Yes,"Stress-Free Living: Rent includes electricity, water, gas, trash, and ultra-high-speed Wi-Fi (capped at reasonable monthly usage).",None,https://offcampus.dasa.ncsu.edu/housing/property/huge-modern-studio-suite-private-entrance-and-beth-near-ncsu/ocpteqgjg8
+ocp4t7wmxk,University Oaks,$725,725.00,725.00,=AVERAGE(D34:E34),0.456914407,0–1 mi,Saved description,,No,,"Utilities included: Water, WiFi, and electricity!",No,,,Yes,"Utilities included: Water, WiFi, and electricity!",None,https://offcampus.dasa.ncsu.edu/housing/property/university-oaks/ocp4t7wmxk
+ocpq99qjpx,Apartment close to NCSU,$645,645.00,645.00,=AVERAGE(D35:E35),1.653317243,>1–3 mi,Structured utility fields + saved description,Electricity; Water/Sewer,No,"Electricity: Included
+Water/Sewer: Included",All appliances and utilities are included in the rent for a hassle-free living experience.,No,,,No,,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/apartment-close-to-ncsu/ocpq99qjpx
+ocps6ymwl7,University Woods,$600,600.00,600.00,=AVERAGE(D36:E36),2.123645671,>1–3 mi,Structured utility fields + saved description,Electricity; Water/Sewer,No,"Electricity: Included
+Water/Sewer: Included",Water and electric are included with a cap.,No,,,No,,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/university-woods/ocps6ymwl7
+ocpvgtpebg,Lake Park Condos- Room Rental with Utilities,$500 - $600,500.00,600.00,=AVERAGE(D37:E37),1.637356936,>1–3 mi,Structured utility fields + saved description,Electricity; Water/Sewer,No,"Electricity: Included
+Water/Sewer: Included",Water and electric are included with a cap.,No,,,No,,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/lake-park-condos-room-rental-with-utilities/ocpvgtpebg
+5hme2mn,The Station Raleigh,"$749 - $1,930",749.00,1930.00,=AVERAGE(D38:E38),2.173712249,>1–3 mi,Structured utility fields,Gas; Heat; Trash Removal; Water/Sewer,No,"Air Conditioning: Included
+Cable: Included
+Gas: Included
+Heat: Included
+High-Speed Internet: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,Yes,High-Speed Internet: Included,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/the-station-raleigh/5hme2mn
+lpl9fce,"2850 Sanderford Rd (Raleigh, NC)",$650,650.00,650.00,=AVERAGE(D39:E39),4.772916888,>3–5 mi,Structured utility fields + saved description,Electricity; Trash Removal; Water/Sewer,No,"Electricity: Included
+Trash Removal: Included
+Water/Sewer: Included","Water, sewage, trash, internet and power all included",No,,,Yes,"Water, sewage, trash, internet and power all included",Not reported,https://offcampus.dasa.ncsu.edu/housing/property/2850-sanderford-rd-raleigh-nc/lpl9fce
+ocp67ldb5s,The Wilde,$860,860.00,860.00,=AVERAGE(D40:E40),2.038270328,>1–3 mi,Saved description,,No,,The $860 rent is all inclusive of fees and utilities outside of 1 time administrative fees.,Yes,The $860 rent is all inclusive of fees and utilities outside of 1 time administrative fees.,Manual review: saved wording explicitly states all utilities are included/inclusive.,No,,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/the-wilde/ocp67ldb5s
+ocp0psn632,An apartments with 3 bed and 3 bath for NC State Students www.ncstudentsliving.com,$650,650.00,650.00,=AVERAGE(D41:E41),2.262000465,>1–3 mi,Structured utility fields,Trash Removal; Water/Sewer,No,"Recycling: Included
+Trash Removal: Included
+Water/Sewer: Included",,No,,,No,,Not reported,https://offcampus.dasa.ncsu.edu/housing/property/an-apartments-with-3-bed-and-3-bath-for-nc-state-students-www-ncstudentsliving-com/ocp0psn632
+ocp5lwrmvq,"Convenient Kaplan Dr property near NCSU buses, park, grocery, with parking space & private bathroom",$675,675.00,675.00,=AVERAGE(D42:E42),0.716855117,0–1 mi,Saved description,,No,,"Base rent is $675, so listed price is with utilities and internet.",No,,,Yes,"Base rent is $675, so listed price is with utilities and internet.",Not reported,https://offcampus.dasa.ncsu.edu/housing/property/convenient-kaplan-dr-property-near-ncsu-buses-park-grocery-with-parking-space-and-private-bathroom/ocp5lwrmvq
+COUNT,Excel count of 41 listings,,=COUNT(D2:D42),=COUNT(E2:E42),=COUNT(F2:F42),,,,,,,,,,,No,,,
+SUM,Sum of advertised listing values,,=SUM(D2:D42),=SUM(E2:E42),=SUM(F2:F42),,,,,,,,,,,No,,,
+MEAN,Mean advertised rent using listing midpoints,,=AVERAGE(D2:D42),=AVERAGE(E2:E42),=AVERAGE(F2:F42),,,,,,,,,,,No,,,
+SUM ÷ COUNT CHECK,Same mean calculated explicitly,,=D45/D44,=E45/E44,=F45/F44,,,,,,,,,,,No,,,

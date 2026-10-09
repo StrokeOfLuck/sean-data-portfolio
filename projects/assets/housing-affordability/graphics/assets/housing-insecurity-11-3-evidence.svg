@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="950" viewBox="0 0 1340 950" role="img" aria-labelledby="title desc">
+  <title id="title">NC State housing insecurity definition and Table 3 excerpt</title>
+  <desc id="desc">Recreated excerpt from the March 2024 NC State report. Housing insecurity was measured by asking whether students were confident they could pay for their current housing through the end of the school year. Table 3 reports 153 of 1,354 students, or 11.3 percent, as housing insecure.</desc>
+  <rect width="1340" height="950" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#111111">
+    <text x="42" y="58" font-size="33" font-weight="700">Housing Insecurity.</text>
+    <text x="338" y="58" font-size="31">In addition to the items related to homelessness, students</text>
+    <text x="42" y="102" font-size="31">were asked a single question about their housing security. The question was “Are you</text>
+    <text x="42" y="146" font-size="31">confident about your ability to pay for the place you're currently staying, so you can</text>
+    <text x="42" y="190" font-size="31">remain there at least until the end of the school year?” (yes/no). This item was included</text>
+    <text x="42" y="234" font-size="31">in the 2020 survey as well.</text>
+
+    <text x="42" y="320" font-size="30">Table 3</text>
+    <text x="42" y="380" font-size="31" font-style="italic">Prevalence of Challenges Faced by Students</text>
+
+    <rect x="42" y="420" width="1255" height="72" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="492" width="1255" height="52" fill="#cfcfcf" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="544" width="1255" height="56" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="600" width="1255" height="56" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="656" width="1255" height="52" fill="#cfcfcf" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="708" width="1255" height="56" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+    <rect x="42" y="764" width="1255" height="56" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+
+    <line x1="900" y1="420" x2="900" y2="820" stroke="#111111" stroke-width="2"/>
+    <line x1="1105" y1="420" x2="1105" y2="820" stroke="#111111" stroke-width="2"/>
+
+    <text x="58" y="466" font-size="28">Challenge</text>
+    <text x="924" y="456" font-size="27">Number of</text>
+    <text x="945" y="484" font-size="27">Students</text>
+    <text x="1133" y="456" font-size="27">Percentage</text>
+    <text x="1155" y="484" font-size="27">of Students</text>
+
+    <text x="58" y="528" font-size="29">Food Security (n = 1349)</text>
+    <text x="78" y="584" font-size="28">Insecure</text><text x="975" y="584" font-size="28">406</text><text x="1174" y="584" font-size="28">30%</text>
+    <text x="78" y="640" font-size="28">Secure</text><text x="975" y="640" font-size="28">943</text><text x="1174" y="640" font-size="28">70%</text>
+    <text x="58" y="692" font-size="29">Housing Security (n = 1354)</text>
+    <text x="78" y="748" font-size="28" font-weight="700">Insecure</text><text x="972" y="748" font-size="28" font-weight="700">153</text><text x="1162" y="748" font-size="28" font-weight="700">11.3%</text>
+    <text x="78" y="804" font-size="28">Secure</text><text x="963" y="804" font-size="28">1201</text><text x="1157" y="804" font-size="28">88.7%</text>
+
+    <text x="42" y="882" font-size="22" fill="#666666">Recreated from the March 2024 NC State report for readable web reference. See the linked report for the original pages.</text>
+  </g>
+</svg>

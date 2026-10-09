@@ -1,0 +1,34 @@
+{
+  "lpl9fce": {
+    "category": "Per bedroom",
+    "note": "September 13 source description identifies a room in a five-bedroom house with shared kitchen/bathroom. Reclassified as room/per-bedroom; September 9 price retained."
+  },
+  "ocpgxr290w": {
+    "category": "Per bedroom",
+    "note": "September 13 source describes one housemate renting a bedroom plus office and private bath, with shared common spaces. Classified as a per-person room/suite, not an entire dwelling; September 9 price retained."
+  },
+  "ocpteqgjg8": {
+    "category": "Per bedroom",
+    "note": "September 13 source describes a single-occupancy private suite with shared kitchen and laundry. Classified as a per-person room/suite, not a self-contained whole dwelling; September 9 price retained."
+  },
+  "61y0ywr": {
+    "exclude_basis": true,
+    "note": "Hub Raleigh advertises individual leases, studios and multi-bedroom plans, but saved flags mark every plan as whole-unit. Cannot reliably allocate the single $799–$1,599 property range between personal and dwelling prices. Excluded pending plan-level pricing confirmation."
+  },
+  "vw4rv9e": {
+    "exclude_basis": true,
+    "note": "Signature at Varsity's saved studio/one-bedroom prices exceed its four/five-bedroom prices; all flags nevertheless say whole-unit. This is a pricing-basis review flag, not proof of an error. Excluded pending confirmation of plan-level basis; no inferred correction."
+  },
+  "6mnn0qr": {
+    "exclude_basis": true,
+    "note": "September 13 portal shows one-bedroom whole-unit prices and two/three-bedroom per-bedroom prices. The saved property range mixes these bases. Excluded rather than treating all floor plans as independent listings or assigning the whole range to one group."
+  },
+  "ocp2k6k5g8": {
+    "exclude_occupancy": "Shared bedroom",
+    "note": "September 20 manual bedroom review found the listing explicitly offered one of two beds in a shared furnished master bedroom. Preserved in the 76-listing bedroom audit but excluded from article rent means."
+  },
+  "ocpqh8kxbz": {
+    "exclude_occupancy": "Unclear",
+    "note": "September 20 manual bedroom review could not determine bedroom exclusivity from the saved photos and description. Preserved in the 76-listing bedroom audit but excluded from article rent means."
+  }
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NC State housing graphic</title>
+<style>html,body{margin:0;background:#fff}iframe{display:block;width:100%;border:0}#status{font:14px Arial;padding:12px}</style>
+</head>
+<body>
+<div id="status" role="status">Loading graphic…</div>
+<script>
+(() => {
+  const figures = {
+    budget: ['.budget-graphic', 'Official NC State housing budgets'],
+    rooms: ['section.graphic:not(.budget-graphic)', 'Residence hall monthly equivalent'],
+    map: ['.off-campus-embed', 'Off-campus housing map and rent comparison'],
+    rates: ['.housing-rate-original-embed', 'University Housing rate increases'],
+    wages: ['.work-wages-original-embed', 'Student work earnings'],
+    resources: ['.resources-original-embed', 'Room rent and student monthly resources']
+  };
+  const key = new URLSearchParams(location.search).get('figure');
+  const figure = figures[key];
+  const status = document.getElementById('status');
+  if (!figure) { status.textContent = 'Choose a graphic: budget, rooms, map, rates, wages or resources.'; return; }
+  document.title = figure[1];
+  const frame = document.createElement('iframe');
+  frame.title = figure[1];
+  frame.src = 'draft-story-0915.html';
+  frame.style.height = '800px';
+  frame.style.visibility = 'hidden';
+  frame.addEventListener('load', () => {
+    try {
+      const doc = frame.contentDocument;
+      const main = doc.querySelector('main');
+      const block = main.querySelector(figure[0]);
+      if (!block) throw new Error('Graphic unavailable');
+      const style = doc.createElement('style');
+      style.textContent = 'html,body{margin:0!important;padding:0!important}main{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}main>*{display:none!important}main>'+figure[0]+'{display:block!important;margin:0!important;padding-top:0!important;border-top:0!important}.off-campus-embed iframe{min-height:0!important}';
+      doc.head.appendChild(style);
+      status.remove();
+      frame.style.visibility = 'visible';
+      let scheduled = false;
+      function measure() {
+        scheduled = false;
+        const height = Math.ceil(block.getBoundingClientRect().height + 6);
+        if (height > 6 && frame.style.height !== height + 'px') {
+          frame.style.height = height + 'px';
+          parent.postMessage({type:'ncsu-rent-embed-height',figure:key,height}, '*');
+        }
+      }
+      function schedule() { if (!scheduled) { scheduled = true; requestAnimationFrame(measure); } }
+      new ResizeObserver(schedule).observe(block);
+      window.addEventListener('resize', schedule);
+      frame.contentWindow.dispatchEvent(new Event('resize'));
+      block.querySelectorAll('iframe').forEach(child => {
+        child.contentWindow.dispatchEvent(new Event('resize'));
+      });
+      schedule();
+      setTimeout(schedule, 300);
+      setTimeout(schedule, 1200);
+    } catch (error) {
+      status.textContent = 'Unable to load this graphic. Open the article to view it.';
+    }
+  });
+  document.body.appendChild(frame);
+})();
+</script>
+</body>
+</html>

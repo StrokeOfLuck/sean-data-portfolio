@@ -1,0 +1,3 @@
+(function(){
+  document.write('<script src="assets/reference-math-core.js?v=20260920-cleanrefs2"><\/script><script src="assets/winter-break-reference.js?v=20260920-source-image"><\/script><script src="assets/donna-mcgalliard-reference.js?v=20260915-donna"><\/script><script src="assets/pete-barrie-references.js?v=20260920-cleanrefs"><\/script><script src="assets/housing-double-inventory-reference.js?v=20260915-double-inventory"><\/script><script src="assets/resnet-toggle-reference.js?v=20260915-resnet-toggle"><\/script><script src="assets/housing-coa-2024-reference.js?v=20260916-housing-coa"><\/script>');
+})();

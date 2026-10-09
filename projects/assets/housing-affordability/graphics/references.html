@@ -1,0 +1,2377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NCSU Rent Article — Reporting References</title>
+<style>
+:root {
+  --paper:#ffffff;
+  --ink:#202020;
+  --muted:#6c675f;
+  --line:#ddd8cf;
+  --soft:#f8f6f1;
+  --soft2:#fbfaf7;
+  --accent:#8b1f2d;
+  --link:#2b5f97;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#fff;
+  color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+main {
+  width:min(980px,100%);
+  margin:0 auto;
+  padding:28px 20px 50px;
+}
+.kicker {
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  color:var(--accent);
+}
+h1 {
+  margin:6px 0 6px;
+  font:700 31px/1.08 Georgia,"Times New Roman",serif;
+}
+.deck {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  max-width:740px;
+}
+.refs {
+  margin-top:24px;
+  display:grid;
+  gap:18px;
+}
+.ref {
+  border:1px solid var(--line);
+  background:var(--soft2);
+}
+.ref-head {
+  padding:14px 16px 12px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+}
+.ref-no {
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.ref-title {
+  margin-top:4px;
+  font:700 22px/1.15 Georgia,"Times New Roman",serif;
+}
+.tags {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.tag {
+  padding:4px 7px;
+  border:1px solid #cfc9bf;
+  background:#fff;
+  border-radius:999px;
+  color:#58534c;
+  font-size:9px;
+  font-weight:750;
+}
+.ref-body {
+  padding:16px;
+}
+.meta-grid {
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:7px 14px;
+  font-size:11.5px;
+  line-height:1.4;
+}
+.meta-label {
+  color:var(--muted);
+  font-weight:750;
+}
+.meta-value a {
+  color:var(--link);
+  word-break:break-all;
+}
+.rule {
+  border:0;
+  border-top:1px solid var(--line);
+  margin:16px 0;
+}
+h2 {
+  margin:0 0 8px;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  color:var(--muted);
+}
+.citation {
+  background:#fff;
+  border-left:3px solid var(--accent);
+  padding:10px 12px;
+  font-size:12px;
+  line-height:1.5;
+}
+.facts {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.fact {
+  border:1px solid #e7e2da;
+  background:#fff;
+  padding:10px 11px;
+}
+.fact-label {
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+  font-weight:800;
+}
+.fact-value {
+  margin-top:4px;
+  font-size:12px;
+  line-height:1.4;
+}
+.evidence {
+  margin-top:12px;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:10px;
+}
+.evidence img {
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  margin-left:auto;
+  margin-right:auto;
+  image-rendering:auto;
+}
+.evidence > a {
+  display:block;
+  text-align:center;
+}
+.ref-image-frame {
+  overflow-x:auto;
+}
+.ref-image-frame a {
+  display:block;
+}
+.ref-image-frame img {
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  margin:0 auto;
+  image-rendering:auto;
+}
+
+.evidence-pair {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.evidence-pair .evidence {
+  margin-top:0;
+}
+.caption {
+  margin-top:7px;
+  color:var(--muted);
+  font-size:9.5px;
+  line-height:1.35;
+}
+.use-note {
+  margin-top:12px;
+  padding:10px 12px;
+  background:#f3f0e9;
+  font-size:11px;
+  line-height:1.45;
+}
+
+.ref-table-wrap {
+  overflow-x:auto;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.ref-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:11px;
+  font-variant-numeric:tabular-nums;
+}
+.ref-table th,
+.ref-table td {
+  padding:7px 9px;
+  border-bottom:1px solid #ece8e1;
+  text-align:right;
+  white-space:nowrap;
+}
+.ref-table th {
+  background:var(--soft);
+  color:var(--muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.ref-table th:first-child,
+.ref-table td:first-child {
+  text-align:left;
+}
+.ref-table tbody tr:last-child td {
+  border-bottom:0;
+}
+.ref-table .peak-row td {
+  background:#fbf5eb;
+  font-weight:700;
+}
+.ref-table .latest-row td {
+  background:#f1f5f7;
+  font-weight:700;
+}
+.filter-note {
+  margin:10px 0 12px;
+  padding:10px 12px;
+  background:#f3f0e9;
+  font-size:11px;
+  line-height:1.45;
+}
+.filter-note code {
+  background:#fff;
+  padding:1px 4px;
+  border:1px solid #e2ddd5;
+  border-radius:3px;
+}
+
+
+.trend-table-wrap {
+  overflow-x:auto;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.trend-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:11px;
+  font-variant-numeric:tabular-nums;
+}
+.trend-table th {
+  padding:8px 10px;
+  text-align:right;
+  background:var(--soft);
+  color:var(--muted);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  border-bottom:1px solid var(--line);
+}
+.trend-table th:first-child,
+.trend-table td:first-child { text-align:left; }
+.trend-table td {
+  padding:7px 10px;
+  text-align:right;
+  border-bottom:1px solid #ece8e1;
+}
+.trend-table tbody tr:last-child td { border-bottom:0; }
+.trend-table .peak-row td { background:#fbf5eb; font-weight:700; }
+.trend-table .latest-row td { background:#f1f5f7; font-weight:700; }
+
+
+.audit-source-link {
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 11px;
+  border:1px solid #bdb6ab;
+  border-radius:4px;
+  background:#fff;
+  color:var(--link);
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+}
+.audit-source-link:hover {
+  text-decoration:underline;
+}
+.audit-source-note {
+  margin-top:10px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.45;
+}
+
+.audit-checker-callout {
+  margin:18px 0 6px;
+  padding:16px 18px;
+  border:2px solid var(--accent);
+  border-radius:6px;
+  background:#fff7f5;
+  text-align:center;
+}
+.audit-checker-callout a {
+  display:block;
+  color:var(--accent);
+  font:700 24px/1.18 Georgia,"Times New Roman",serif;
+  text-decoration:none;
+}
+.audit-checker-callout a:hover,
+.audit-checker-callout a:focus-visible {
+  text-decoration:underline;
+}
+
+
+.audit-map-embed {
+  margin-top:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  overflow:hidden;
+}
+.audit-map-embed iframe {
+  display:block;
+  width:100%;
+  height:1040px;
+  border:0;
+  background:#fff;
+}
+
+
+
+.reference-search {
+  position:sticky;
+  top:12px;
+  z-index:20;
+  margin-top:20px;
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 24px rgba(31,27,22,.08);
+  backdrop-filter:blur(10px);
+}
+.reference-search-row {
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.reference-search-box {
+  position:relative;
+  flex:1;
+  min-width:0;
+}
+.reference-search-icon {
+  position:absolute;
+  left:12px;
+  top:50%;
+  width:16px;
+  height:16px;
+  transform:translateY(-50%);
+  color:var(--muted);
+  pointer-events:none;
+}
+.reference-search-input {
+  width:100%;
+  height:42px;
+  padding:0 42px 0 38px;
+  border:1px solid #cfc9bf;
+  border-radius:7px;
+  outline:none;
+  background:#fff;
+  color:var(--ink);
+  font:600 13px/1 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  transition:border-color .16s ease, box-shadow .16s ease;
+}
+.reference-search-input::placeholder {
+  color:#8a847a;
+  font-weight:500;
+}
+.reference-search-input:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(139,31,45,.10);
+}
+.reference-search-clear {
+  position:absolute;
+  right:7px;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  height:28px;
+  border:0;
+  border-radius:5px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:18px;
+  line-height:1;
+}
+.reference-search-clear:hover,
+.reference-search-clear:focus-visible {
+  background:var(--soft);
+  color:var(--ink);
+}
+.reference-search-clear[hidden] {
+  display:none;
+}
+.reference-search-count {
+  flex:0 0 auto;
+  min-width:82px;
+  color:var(--muted);
+  font-size:10.5px;
+  font-weight:750;
+  text-align:right;
+  white-space:nowrap;
+}
+.reference-search-help {
+  margin:7px 2px 0;
+  color:var(--muted);
+  font-size:9.5px;
+  line-height:1.35;
+}
+.reference-search-help kbd {
+  display:inline-block;
+  min-width:18px;
+  padding:1px 5px;
+  border:1px solid #d8d2c8;
+  border-bottom-width:2px;
+  border-radius:4px;
+  background:#fff;
+  color:#59544c;
+  font:700 9px/1.35 Inter,system-ui,sans-serif;
+  text-align:center;
+}
+.reference-no-results {
+  display:none;
+  padding:26px 18px;
+  border:1px dashed #cfc9bf;
+  background:var(--soft2);
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+  line-height:1.5;
+}
+.reference-no-results strong {
+  display:block;
+  margin-bottom:4px;
+  color:var(--ink);
+  font:700 17px/1.2 Georgia,"Times New Roman",serif;
+}
+.ref[hidden] {
+  display:none !important;
+}
+
+@media(max-width:700px) {
+  main { padding:20px 12px 36px; }
+  .ref-head { flex-direction:column; }
+  .tags { justify-content:flex-start; }
+  .meta-grid { grid-template-columns:1fr; gap:2px; }
+  .meta-label { margin-top:8px; }
+  .facts { grid-template-columns:1fr; }
+  .evidence-pair { grid-template-columns:1fr; }
+
+  .reference-search { top:6px; margin-top:16px; padding:8px; }
+  .reference-search-row { gap:7px; }
+  .reference-search-input { height:40px; font-size:12px; }
+  .reference-search-count { min-width:auto; font-size:9.5px; }
+  .reference-search-help { display:none; }
+  .audit-checker-callout { padding:14px 12px; }
+  .audit-checker-callout a { font-size:21px; }
+}
+
+
+/* Residence hall range + rate-change chart */
+.range-source-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.range-source-card {
+  border:1px solid var(--line);
+  background:#fff;
+  padding:11px 12px;
+}
+.range-source-card .range-kicker {
+  color:var(--muted);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.range-source-card .range-name {
+  margin-top:5px;
+  font-size:12px;
+  font-weight:750;
+  line-height:1.35;
+}
+.range-source-card .range-rate {
+  margin-top:4px;
+  font-size:12px;
+  line-height:1.35;
+}
+.rate-change-chart{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
+.rate-change-axis,
+.rate-change-row{
+  display:grid;
+  grid-template-columns:minmax(300px,1.25fr) 92px minmax(260px,1fr) 58px;
+  gap:12px;
+  align-items:center;
+}
+.rate-change-axis{
+  margin-bottom:8px;
+}
+.rate-change-type-heading,
+.rate-change-dollar-heading{
+  color:var(--muted);
+  font-size:8.5px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.rate-change-dollar-heading{
+  text-align:center;
+}
+.rate-change-axis-plot{
+  position:relative;
+  height:32px;
+}
+.rate-change-axis-tick{
+  position:absolute;
+  bottom:-15px;
+  transform:translateX(-50%);
+  color:var(--muted);
+  font-size:8.5px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.rate-change-axis-tick.first{transform:none}
+.rate-change-axis-tick.last{transform:translateX(-100%)}
+.rate-change-benchmark-label{
+  position:absolute;
+  left:38.75%;
+  bottom:-15px;
+  transform:translateX(-50%);
+  color:#6fb4f2;
+  font-size:8.5px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+}
+.rate-change-benchmark-label::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:13px;
+  height:27px;
+  border-left:2px solid #6fb4f2;
+}
+.rate-change-label{
+  font-size:10px;
+  line-height:1.28;
+}
+.rate-change-label strong{
+  display:block;
+  color:var(--ink);
+  font-size:10.5px;
+}
+.rate-change-dollar{
+  text-align:center;
+  font-size:10.5px;
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
+}
+.rate-change-mobile-dollar{display:none}
+.rate-change-plot{
+  position:relative;
+  height:18px;
+}
+.rate-change-plot::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  border-top:1px solid var(--line);
+}
+.rate-change-benchmark-line{
+  position:absolute;
+  left:38.75%;
+  top:-13px;
+  bottom:-13px;
+  border-left:2px solid #6fb4f2;
+  z-index:1;
+}
+.rate-change-dot{
+  position:absolute;
+  top:50%;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:var(--accent);
+  box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--accent);
+  z-index:2;
+}
+.rate-change-value{
+  text-align:right;
+  font-size:10.5px;
+  font-weight:820;
+  font-variant-numeric:tabular-nums;
+}
+@media(max-width:800px){
+  .rate-change-axis,
+  .rate-change-row{
+    grid-template-columns:minmax(0,1fr) 48px;
+    gap:4px 8px;
+  }
+  .rate-change-axis .rate-change-type-heading,
+  .rate-change-axis .rate-change-dollar-heading,
+  .rate-change-axis > div:last-child,
+  .rate-change-dollar{display:none}
+  .rate-change-axis-plot{
+    grid-column:1 / -1;
+    height:32px;
+  }
+  .rate-change-plot{
+    grid-column:1 / -1;
+    grid-row:2;
+  }
+  .rate-change-value{
+    grid-column:2;
+    grid-row:1;
+  }
+  .rate-change-mobile-dollar{
+    display:inline;
+    margin-left:2px;
+    color:var(--muted);
+    font-size:.9em;
+    font-weight:750;
+    white-space:nowrap;
+  }
+}
+
+
+/* Recreated NC State housing rates table */
+.housing-rate-table-wrap {
+  margin-top:10px;
+  overflow-x:auto;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.housing-rate-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:11.5px;
+  line-height:1.35;
+  font-variant-numeric:tabular-nums;
+}
+.housing-rate-table th {
+  padding:11px 12px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:800;
+  text-align:left;
+  vertical-align:middle;
+}
+.housing-rate-table td {
+  padding:9px 12px;
+  border-bottom:1px solid #ece8e1;
+  vertical-align:top;
+}
+.housing-rate-table tbody tr:nth-child(even) td {
+  background:var(--soft);
+}
+.housing-rate-table tbody tr:last-child td {
+  border-bottom:0;
+}
+.housing-rate-table th:nth-child(2),
+.housing-rate-table th:nth-child(3),
+.housing-rate-table td:nth-child(2),
+.housing-rate-table td:nth-child(3) {
+  text-align:right;
+  white-space:nowrap;
+}
+.housing-rate-table td:first-child {
+  font-weight:650;
+}
+.housing-rate-table-note {
+  margin-top:8px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.45;
+}
+@media(max-width:700px) {
+  .housing-rate-table {
+    min-width:620px;
+  }
+}
+
+.band-math-wrap{margin-top:10px;overflow-x:auto;border:1px solid var(--line)}.band-math-table{min-width:1280px;width:100%;border-collapse:collapse;font-size:10px;font-variant-numeric:tabular-nums}.band-math-table th,.band-math-table td{padding:8px 9px;border-bottom:1px solid #ece8e1;text-align:left;vertical-align:top;white-space:nowrap}.band-math-table th{background:var(--soft);color:var(--muted);font-size:8.5px;text-transform:uppercase;letter-spacing:.05em}.band-math-table td:nth-child(1),.band-math-table td:nth-child(2){font-weight:700}.distance-band-method{margin-top:12px}
+
+
+/* Clear return link from reporting references to the main article */
+.article-back-link {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 9px;
+  border:1px solid currentColor;
+  border-radius:4px;
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease;
+}
+.article-back-link:hover {
+  background:var(--accent);
+  color:#fff;
+}
+.article-back-link:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+.method-scroll{overflow-x:auto;margin:16px 0}.method-table{border-collapse:collapse;width:100%;font-size:12px}.method-table td,.method-table th{padding:10px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}.method-table th{background:#f4f1ec}.method-table td{min-width:90px}.method-table td:last-child{min-width:150px}.ref-body p,.ref-body li{line-height:1.65}.ref-body li{margin-bottom:9px}.method-nav{line-height:2;margin:16px 0}.audit-download{display:inline-block;padding:10px;background:#8b1f2d;color:white!important;border-radius:4px}details summary{cursor:pointer;font-weight:700}details[open] .method-table td:last-child{min-width:360px}.ref{scroll-margin-top:130px}
+#room-rent-audit{scroll-margin-top:185px;}
+#residence-hall-monthly-math{scroll-margin-top:165px;}
+#main-campus-private-bedroom-math{scroll-margin-top:165px;}
+#ncsu-housing-rates-2026-27{margin-top:18px;}
+@media(max-width:700px){
+  #ncsu-housing-rates-2026-27{margin-top:12px;}
+}
+.survey-highlight{margin:0;padding:16px;border-left:4px solid var(--accent);background:#fff2cc;color:var(--ink);font-size:15px;font-weight:650;line-height:1.65}
+
+.winter-break-source {
+  margin-top:12px;
+  border:1px solid var(--line);
+  background:#fff;
+  padding:12px;
+}
+.winter-break-source a {
+  display:block;
+}
+.winter-break-source-image {
+  display:block;
+  width:min(100%, 664px);
+  height:auto;
+  margin:0 auto;
+}
+.winter-break-source .caption {
+  margin-top:9px;
+}
+
+/* Cost-of-attendance housing budget compared with every published housing category */
+.housing-budget-summary {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:12px 0;
+}
+.housing-budget-summary .fact { min-width:0; }
+.housing-budget-audit-wrap {
+  margin-top:12px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.housing-budget-audit {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:10.5px;
+  line-height:1.35;
+  font-variant-numeric:tabular-nums;
+}
+.housing-budget-audit th,
+.housing-budget-audit td {
+  padding:9px 8px;
+  border-bottom:1px solid #e5e0d8;
+  text-align:right;
+  vertical-align:top;
+  overflow-wrap:anywhere;
+}
+.housing-budget-audit th {
+  background:var(--accent);
+  color:#fff;
+  font-size:9.5px;
+  font-weight:800;
+}
+.housing-budget-audit th:first-child,
+.housing-budget-audit td:first-child {
+  width:29%;
+  text-align:left;
+}
+.housing-budget-audit th:nth-child(2) { width:13%; }
+.housing-budget-audit th:nth-child(3) { width:13%; }
+.housing-budget-audit th:nth-child(4) { width:12%; }
+.housing-budget-audit th:nth-child(5) { width:14%; }
+.housing-budget-audit th:nth-child(6) { width:13%; }
+.housing-budget-audit th:nth-child(7) { width:6%; }
+.housing-budget-audit tbody tr:nth-child(even) td { background:var(--soft); }
+.housing-budget-audit tbody tr:last-child td { border-bottom:0; }
+.housing-budget-audit .within-budget td { background:#edf7ef; }
+.housing-budget-audit .over-budget td:last-child { background:#faeaea; }
+.housing-budget-audit .within-budget td:last-child {
+  background:#dff1e3;
+  color:#235f31;
+  font-weight:800;
+}
+.housing-budget-audit td:first-child { font-weight:700; }
+.housing-budget-formula {
+  margin-top:10px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.5;
+}
+.housing-budget-source-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:12px;
+}
+.housing-budget-source-grid .evidence { margin-top:0; }
+.housing-budget-source-grid .evidence:first-child { grid-column:1 / -1; }
+
+@media(max-width:700px) {
+  .housing-budget-summary,
+  .housing-budget-source-grid { grid-template-columns:1fr; }
+  .housing-budget-source-grid .evidence:first-child { grid-column:auto; }
+  .housing-budget-audit-wrap {
+    border:0;
+    background:transparent;
+  }
+  .housing-budget-audit,
+  .housing-budget-audit tbody,
+  .housing-budget-audit tr,
+  .housing-budget-audit td {
+    display:block;
+    width:100%;
+  }
+  .housing-budget-audit { font-size:11px; }
+  .housing-budget-audit thead {
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+  .housing-budget-audit tr {
+    margin-bottom:12px;
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  .housing-budget-audit td,
+  .housing-budget-audit td:first-child {
+    display:grid;
+    grid-template-columns:minmax(118px,42%) minmax(0,1fr);
+    gap:10px;
+    width:100%;
+    padding:8px 10px;
+    text-align:right;
+  }
+  .housing-budget-audit td:first-child {
+    background:var(--accent) !important;
+    color:#fff;
+  }
+  .housing-budget-audit td::before {
+    content:attr(data-label);
+    color:var(--muted);
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.04em;
+    text-align:left;
+    text-transform:uppercase;
+  }
+  .housing-budget-audit td:first-child::before { color:#f4d9dc; }
+  .housing-budget-audit tr:last-child { margin-bottom:0; }
+}
+
+
+  /* Compact interview quote audio players */
+  .quote-audio{
+    margin-top:9px;
+    padding-top:9px;
+    border-top:1px solid #e7e3dc;
+  }
+  .quote-audio + .quote-audio{ margin-top:8px; }
+  .quote-audio-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:5px;
+    color:#5f5b55;
+    font:700 10px/1.3 Arial, Helvetica, sans-serif;
+    letter-spacing:.02em;
+  }
+  .quote-audio-head span:last-child{
+    color:#817b73;
+    font-weight:400;
+  }
+  .quote-audio audio{
+    display:block;
+    width:100%;
+    max-width:520px;
+    height:34px;
+  }
+  @media (max-width:620px){
+    .quote-audio-head{ align-items:flex-start; flex-direction:column; gap:2px; }
+    .quote-audio audio{ max-width:none; }
+  }
+  /* End interview quote audio players */
+
+
+  .verbatim-quote{
+    margin:0;
+    line-height:1.48;
+  }
+  .verbatim-quote + .verbatim-quote{ margin-top:7px; }
+  .verbatim-speaker{ font-weight:700; }
+  .quote-audio + .verbatim-quote{ margin-top:12px; padding-top:10px; border-top:1px solid #e7e3dc; }
+
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker"><a class="article-back-link" href="index.html" aria-label="Back to NCSU rent article"><span aria-hidden="true">←</span> Back to NCSU rent article</a></div>
+  <h1>References & step-by-step math</h1>
+  <div class="deck">Sources, calculations and downloadable audits for the current draft. References are ordered roughly by how directly they support the story and its interactive calculations, with the most-used and most-clickable audits first.</div>
+
+  <section class="reference-search" id="reference-search" role="search" aria-label="Search reporting references">
+    <div class="reference-search-row">
+      <div class="reference-search-box">
+        <svg class="reference-search-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input class="reference-search-input" id="reference-search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search references, sources, topics, or keywords…" aria-describedby="reference-search-help reference-search-count">
+        <button class="reference-search-clear" id="reference-search-clear" type="button" aria-label="Clear search" title="Clear search" hidden>×</button>
+      </div>
+      <div class="reference-search-count" id="reference-search-count" aria-live="polite"></div>
+    </div>
+    <div class="reference-search-help" id="reference-search-help">Searches titles, organizations, tags, notes, facts, and citations. Press <kbd>/</kbd> to search or <kbd>Esc</kbd> to clear.</div>
+  </section>
+
+  <div class="refs">
+
+    <div class="reference-no-results" id="reference-no-results">
+      <strong>No references found</strong>
+      Try a broader keyword or clear the search.
+    </div>
+
+
+
+<article class="ref" id="room-rent-audit"><div class="ref-head"><div><div class="ref-no">Start here: room-rent methodology + Excel audit</div><div class="ref-title">Room-rent methodology and distance-band audit</div></div></div><div class="ref-body"><span id="rental-method"></span>
+<p><a class="audit-download" href="data/audits/ncsu-room-rent-audit.xlsx?v=20260921-all-campus-bands" download="ncsu-room-rent-audit.xlsx">Download current multi-tab Excel audit (.xlsx)</a></p>
+<p><strong>The workbook is the easiest way to verify the room-rent math.</strong> It keeps the saved Sept. 9 advertised prices fixed and applies the final Sept. 20 bedroom-occupancy decisions. The written rent-and-earnings comparison uses <strong>74 Main Campus listings</strong>, while the workbook also mirrors the Centennial and Biomedical campus states available in the interactive.</p>
+<ol>
+<li id="main-campus-private-bedroom-math"><strong>Summary:</strong> shows the three campus totals and the worked Main Campus calculation. The 74 Main Campus listing midpoints sum to <strong>$64,271.50</strong>; $64,271.50 ÷ 74 = <strong>$868.53 per month</strong>, displayed in the article as about $869.</li>
+<li><strong>Main all three bands (74):</strong> mirrors the interactive when <strong>Main</strong> is selected. It contains the exact 74-listing article sample and reconciles <strong>18 + 46 + 10 = 74</strong> across the 0–1, &gt;1–3 and &gt;3–5 mile bands.</li>
+<li><strong>Centennial all bands (74):</strong> mirrors the interactive when <strong>Centennial</strong> is selected and provides the formula-backed all-bands total for that campus reference point.</li>
+<li><strong>Biomedical all bands (70):</strong> mirrors the interactive when <strong>Biomedical</strong> is selected. Its all-bands averages are <strong>$828.17 low, $933.93 high and $881.05 midpoint</strong>, which display in the article as <strong>$828–$934</strong> with a midpoint of <strong>$881</strong>.</li>
+<li><strong>Individual distance-band tabs:</strong> the 0–1, &gt;1–3 and &gt;3–5 mile sheets for each campus show every underlying offer's low price, high price, midpoint, distance, listing ID and original listing URL, with formula-backed checks below each list.</li>
+<li><strong>Candidate review / occupancy exclusions:</strong> preserves the Sept. 20 bedroom review, including the explicitly shared-bedroom offer and the listing whose bedroom occupancy could not be determined.</li>
+</ol>
+<hr class="rule">
+<h2>Method and limits</h2>
+<p><strong>What is measured:</strong> what one student is advertised a private bedroom or single-person suite for. Whole-unit prices are excluded because the listing does not establish one student’s share, and the analysis does not divide apartment prices by an assumed number of roommates.</p>
+<p><strong>Observation and calculation:</strong> one portal listing ID receives one vote. Each listing contributes one advertised midpoint, calculated as (low price + high price) ÷ 2. The Main Campus mean is the sum of the 74 listing midpoints ÷ 74; fixed-price listings have identical low and high values. The article rounds the displayed result to whole dollars.</p>
+<p><strong>Limits:</strong> this is a descriptive Sept. 9 snapshot of advertisements on NC State’s Off-Campus Housing portal, not a random sample of Raleigh rentals or NC State students. A listing is not a distinct building, tenant, vacant bed or signed lease. The mean is not weighted by vacant beds, bedrooms, residents or enrollment, and advertised prices vary in fee and utility coverage.</p>
+
+</div></article>
+
+<article class="ref" id="utility-inclusion-audit">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Utility-inclusion audit</div>
+      <div class="ref-title">What the advertised room rent says it includes</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Sept. 9 snapshot</span>
+      <span class="tag">41 utility-including listings</span>
+      <span class="tag">8 all-utilities statements</span>
+    </div>
+  </div>
+  <div class="ref-body">
+    <div class="survey-highlight"><strong>Utility review:</strong> 41 of the 74 Main Campus private-bedroom analytic listings (<strong>55.4%</strong>) explicitly establish at least one core utility as included through the saved portal utility fields, saved listing wording or both. Eight listings (<strong>10.8%</strong>) explicitly state in their saved wording that all utilities are included or that the rent is inclusive of all utilities; their mean advertised midpoint is <strong>$823.25 per month</strong>. <strong>Six of those eight also explicitly include internet or Wi-Fi; those six have a mean advertised midpoint of $815.83 per month.</strong></div>
+    <p>The broader 41-listing measure means <strong>at least one</strong> of the selected core utilities — electricity, gas, heat, trash removal or water/sewer — is affirmatively included. It does not mean exactly one utility, and it does not mean all utilities. The eight-listing measure is a manual review of explicit saved wording and is identified row by row in the audit rather than inferred from missing portal checkboxes. Neither of the two occupancy-excluded listings was in the 41-listing utility-inclusion group, so the subgroup counts stay 41 and 8 while the denominator changes from 76 candidates to 74 analytic listings.</p>
+    <div class="facts">
+      <div class="fact"><div class="fact-label">At least one core utility included</div><div class="fact-value"><strong>41 of 74 · 55.4%</strong><br>Mean advertised midpoint: <strong>$878.11/mo</strong></div></div>
+      <div class="fact"><div class="fact-label">Explicitly says all utilities included</div><div class="fact-value"><strong>8 of 74 · 10.8%</strong><br>Mean advertised midpoint: <strong>$823.25/mo</strong></div></div>
+      <div class="fact"><div class="fact-label">Structured-field cross-check</div><div class="fact-value"><strong>7 listings</strong> have all five selected core portal utility fields marked <code>Included</code>. This is retained as a cross-check, not the headline all-utilities definition.</div></div>
+      <div class="fact" id="utility-internet-math"><div class="fact-label">All utilities + internet/Wi-Fi</div><div class="fact-value"><strong>6 of 8 · 75%</strong> of the all-utilities listings, or <strong>6 of 74 · 8.1%</strong> of the full private-bedroom analytic sample, explicitly include internet or Wi-Fi. Mean advertised midpoint: <strong>$815.83/mo</strong>. The other two all-utilities listings do not specifically mention internet, so internet is not assumed for them.</div></div>
+    </div>
+    <p><a class="audit-download" href="data/audits/ncsu-room-utilities-audit.xlsx?v=20260921-source74">Download utility Excel audit</a></p>
+    <div class="use-note"><strong>How to audit the 41-of-74 figure:</strong> the workbook now opens on <strong>Source population (74)</strong>, containing every Main Campus private-bedroom listing in the article denominator. The <strong>41 listings</strong> with affirmative evidence that at least one selected core utility is included are marked “Yes” and <strong>highlighted green</strong> in that full 74-row sheet. <strong>Utility evidence (41)</strong> preserves the detailed saved portal fields and listing wording behind those classifications. <strong>All utilities stated (8)</strong> contains the narrower all-utilities subset; the six listings that also explicitly include internet or Wi-Fi are highlighted green there. This keeps the denominator visible instead of presenting the 41 qualifying listings as though they were the complete source population.</div>
+    <div class="use-note"><strong>Interpretation:</strong> a listing not counted in the 41 is not automatically a listing where the tenant pays every utility. It means the saved material used for this audit did not affirmatively establish one of the selected core utilities as included.</div>
+  </div>
+</article>
+
+<article class="ref" id="ncsu-housing-rates-2026-27">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">On-campus housing source</div>
+      <div class="ref-title">NC State University Housing — 2025–26 and Projected 2026–27 Housing Rates</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Primary source</span>
+      <span class="tag">NC State</span>
+      <span class="tag">Housing rates</span>
+    </div>
+  </div>
+
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Organization</div>
+      <div class="meta-value">NC State University Housing</div>
+
+      <div class="meta-label">Page title</div>
+      <div class="meta-value">Costs</div>
+
+      <div class="meta-label">URL</div>
+      <div class="meta-value"><a href="https://housing.dasa.ncsu.edu/residential-communities/costs/" target="_blank" rel="noopener noreferrer">NC State University Housing — Costs</a></div>
+
+      <div class="meta-label">Rates shown</div>
+      <div class="meta-value">2025–2026 semester rates and projected 2026–2027 semester rates</div>
+
+      <div class="meta-label">Accessed</div>
+      <div class="meta-value">Sept. 10, 2026</div>
+
+      <div class="meta-label">Source type</div>
+      <div class="meta-value">Official university housing rate schedule</div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>Reference citation</h2>
+    <div class="citation">
+      North Carolina State University, University Housing. “Costs.” Academic-year housing rates, including 2025–2026 rates and projected 2026–2027 rates. Accessed Sept. 10, 2026.
+    </div>
+
+    <hr class="rule">
+
+    <h2>Housing rates visible in saved evidence</h2>
+    <div class="housing-rate-table-wrap" id="housing-rate-source-table">
+      <table class="housing-rate-table" aria-label="NC State housing semester rates for 2025 to 2026 and projected 2026 to 2027">
+        <thead>
+          <tr>
+            <th>Housing Type/Location</th>
+            <th>2025/2026</th>
+            <th>2026/2027<br>Projected</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Doubles</td><td>$3,800</td><td>$3,970</td></tr>
+          <tr><td>Singles</td><td>$4,275</td><td>$4,600</td></tr>
+          <tr><td>Wolf Village/Wolf Ridge — 1 bedroom/studio</td><td>$5,000</td><td>$5,375</td></tr>
+          <tr><td>Wolf Village/Wolf Ridge — 2, 3 or 4 bedrooms</td><td>$4,500</td><td>$4,780</td></tr>
+          <tr><td>E.S. King — 1-bedroom undergraduate double</td><td>$4,125</td><td>$4,350</td></tr>
+          <tr><td>E.S. King/Western Manor — studio</td><td>$3,900</td><td>$4,150</td></tr>
+          <tr><td>E.S. King/Western Manor — 1 bedroom</td><td>$4,375</td><td>$4,600</td></tr>
+          <tr><td>E.S. King/Western Manor — 2 bedroom</td><td>$5,000</td><td>$5,300</td></tr>
+          <tr><td>Coastal Quarters — single</td><td>$4,225</td><td>$4,350</td></tr>
+          <tr><td>Coastal Quarters — double</td><td>$3,950</td><td>$4,025</td></tr>
+          <tr><td>ResNet (required fee)</td><td>$150</td><td>$150</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="housing-rate-table-note">
+      Coastal Quarters residents also pay a <strong>$150 communication fee</strong>. Housing rates are semester charges and 2026–27 figures are projected.
+    </div>
+
+    <hr class="rule">
+
+    <h2>Article comparison rates</h2>
+    <div class="range-source-grid">
+      <div class="range-source-card">
+        <div class="range-kicker">Standard residence-hall double*</div>
+        <div class="range-name">Source row: Doubles</div>
+        <div class="range-rate"><strong>$3,970</strong> projected per semester</div>
+      </div>
+      <div class="range-source-card">
+        <div class="range-kicker">Standard residence-hall single</div>
+        <div class="range-name">Source row: Singles</div>
+        <div class="range-rate"><strong>$4,600</strong> projected per semester</div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>Article use:</strong> These are NC State's published <strong>standard residence-hall</strong> double and single rows used in the article. The <strong>$4,600 single is a published rate, not an average</strong>. Coastal Quarters, E.S. King/Western Manor and Wolf Village/Wolf Ridge are separate housing categories and are not used to set the article's standard single or double benchmark.
+    </div>
+
+    <hr class="rule">
+
+<h2>Saved evidence</h2>
+    <div class="evidence">
+      <img src="assets/references/ncsu-university-housing-costs-2026-09-10.webp" alt="NC State University Housing Costs page showing semester housing rates for 2025–26 and projected 2026–27">
+      <div class="caption">Screenshot saved Sept. 10, 2026. The linked NC State Housing page is the source of record.</div>
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="residence-hall-monthly-math">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Residence-hall calculation</div>
+      <div class="ref-title">Standard Single and Double — Monthly Equivalent Math</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Calculation</span>
+      <span class="tag">ResNet</span>
+      <span class="tag">Winter break</span>
+    </div>
+  </div>
+  <div class="ref-body">
+<h2>Step-by-step monthly equivalent math</h2>
+    <div class="use-note">
+      <strong>Method note:</strong> NC State lists these as semester charges, not monthly rent. For the two residence-hall figures used in the article, the projected standard room rate is combined with the required <strong>$150 ResNet fee</strong>, doubled for fall + spring, and divided by a <strong>9-month academic year</strong>. Both figures are <strong>per student</strong>.
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Residence hall double*</div>
+        <div class="fact-value">
+          <strong>Standard double:</strong> ($3,970 + $150 ResNet) × 2 ÷ 9 = <strong>$915.56/month ≈ $916</strong>
+        </div>
+      </div>
+
+      <div class="fact">
+        <div class="fact-label">Residence hall single</div>
+        <div class="fact-value">
+          <strong>Standard single:</strong> ($4,600 + $150 ResNet) × 2 ÷ 9 = <strong>$1,055.56/month ≈ $1,056</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>* Double means a shared room occupied by two students.</strong> Residence-hall rates are charged per student, not per room.
+    </div>
+
+    <div class="use-note">
+      <strong>Adding full winter break:</strong> The checkbox uses NC State's <strong>$360 full-break charge for 2025–26</strong> as a reference because the 2026–27 winter-break rate has not yet been posted. The $360 is a separate one-time break charge, so it is added <strong>after</strong> the fall + spring semester charges are combined, then the total is divided by the same 9-month comparison period.
+      <div style="margin-top:8px"><a href="https://housing.dasa.ncsu.edu/assignments/break-and-transition-housing/" target="_blank" rel="noopener noreferrer">NC State University Housing — Winter Break Housing costs</a></div>
+    </div>
+
+    <div class="winter-break-source">
+      <a href="https://housing.dasa.ncsu.edu/assignments/break-and-transition-housing/" target="_blank" rel="noopener noreferrer" aria-label="Open the NC State University Housing winter break source page">
+        <img class="winter-break-source-image" src="assets/references/ncsu-winter-break-costs-2025-26.png?v=20260920-sourcefix" alt="NC State University Housing source excerpt showing the 2025–26 Winter Break Housing cost of $360, or $15 per night">
+      </a>
+      <div class="caption"><strong>Official source excerpt.</strong> NC State University Housing’s Break and Transition Housing page. Select the image to open the source page.</div>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Residence hall double* + full winter break</div>
+        <div class="fact-value">
+          <strong>Standard double:</strong> (($3,970 + $150 ResNet) × 2 + $360 winter break) ÷ 9 = <strong>$955.56/month ≈ $956</strong>
+        </div>
+      </div>
+
+      <div class="fact">
+        <div class="fact-label">Residence hall single + full winter break</div>
+        <div class="fact-value">
+          <strong>Standard single:</strong> (($4,600 + $150 ResNet) × 2 + $360 winter break) ÷ 9 = <strong>$1,095.56/month ≈ $1,096</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="housing-budget-vs-published-rates">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Cost-of-attendance housing audit</div>
+      <div class="ref-title">NC State Housing Budget Compared With Published 2026–27 Housing Rates</div>
+    </div>
+    <div class="tags">
+      <span class="tag">9-month math</span>
+      <span class="tag">Required fees included</span>
+      <span class="tag">Historical comparison</span>
+    </div>
+  </div>
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Cost-of-attendance source</div>
+      <div class="meta-value"><a href="https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/" target="_blank" rel="noopener noreferrer">NC State Undergraduate Student Estimated Cost of Attendance</a></div>
+      <div class="meta-label">Housing-rate source</div>
+      <div class="meta-value"><a href="https://housing.dasa.ncsu.edu/residential-communities/costs/" target="_blank" rel="noopener noreferrer">NC State University Housing — Costs</a></div>
+      <div class="meta-label">Historical source</div>
+      <div class="meta-value"><a href="https://osf.io/preprints/psyarxiv/t46jv_v1" target="_blank" rel="noopener noreferrer">Mary E. Haskett, <em>Food and Housing Security Among NC State Students</em></a></div>
+    </div>
+
+    <div class="housing-budget-summary">
+      <div class="fact"><div class="fact-label">2026–27 on-campus housing estimate</div><div class="fact-value"><strong>$8,738</strong> for full-time fall and spring enrollment</div></div>
+      <div class="fact"><div class="fact-label">Nine-month equivalents</div><div class="fact-value"><strong>$970.89 on campus</strong><br>$8,738 ÷ 9<br><strong>$1,089.78 off campus</strong><br>$9,808 ÷ 9</div></div>
+      <div class="fact"><div class="fact-label">Published categories within estimate</div><div class="fact-value"><strong>3 of 10</strong> after required fees are included</div></div>
+    </div>
+
+    <h2>Recreated comparison table</h2>
+    <div class="housing-budget-audit-wrap">
+      <table class="housing-budget-audit" aria-label="NC State 2026 to 2027 housing rates compared with the cost-of-attendance housing estimate">
+        <thead>
+          <tr>
+            <th>Housing type or location</th>
+            <th>Rate per semester</th>
+            <th>Two semesters</th>
+            <th>Required fees</th>
+            <th>Academic-year total</th>
+            <th>Nine-month equivalent</th>
+            <th>Within $8,738?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="within-budget"><td data-label="Housing type or location">Doubles</td><td data-label="Rate per semester">$3,970</td><td data-label="Two semesters">$7,940</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$8,240</td><td data-label="Nine-month equivalent">$915.56</td><td data-label="Within $8,738?">Yes</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">Singles</td><td data-label="Rate per semester">$4,600</td><td data-label="Two semesters">$9,200</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$9,500</td><td data-label="Nine-month equivalent">$1,055.56</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">Wolf Village or Wolf Ridge, one bedroom or studio</td><td data-label="Rate per semester">$5,375</td><td data-label="Two semesters">$10,750</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$11,050</td><td data-label="Nine-month equivalent">$1,227.78</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">Wolf Village or Wolf Ridge, two, three or four bedrooms</td><td data-label="Rate per semester">$4,780</td><td data-label="Two semesters">$9,560</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$9,860</td><td data-label="Nine-month equivalent">$1,095.56</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">E.S. King, one-bedroom undergraduate double</td><td data-label="Rate per semester">$4,350</td><td data-label="Two semesters">$8,700</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$9,000</td><td data-label="Nine-month equivalent">$1,000.00</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="within-budget"><td data-label="Housing type or location">E.S. King or Western Manor, studio</td><td data-label="Rate per semester">$4,150</td><td data-label="Two semesters">$8,300</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$8,600</td><td data-label="Nine-month equivalent">$955.56</td><td data-label="Within $8,738?">Yes</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">E.S. King or Western Manor, one bedroom</td><td data-label="Rate per semester">$4,600</td><td data-label="Two semesters">$9,200</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$9,500</td><td data-label="Nine-month equivalent">$1,055.56</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">E.S. King or Western Manor, two bedroom</td><td data-label="Rate per semester">$5,300</td><td data-label="Two semesters">$10,600</td><td data-label="Required fees">$300</td><td data-label="Academic-year total">$10,900</td><td data-label="Nine-month equivalent">$1,211.11</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="over-budget"><td data-label="Housing type or location">Coastal Quarters, single</td><td data-label="Rate per semester">$4,350</td><td data-label="Two semesters">$8,700</td><td data-label="Required fees">$600</td><td data-label="Academic-year total">$9,300</td><td data-label="Nine-month equivalent">$1,033.33</td><td data-label="Within $8,738?">No</td></tr>
+          <tr class="within-budget"><td data-label="Housing type or location">Coastal Quarters, double</td><td data-label="Rate per semester">$4,025</td><td data-label="Two semesters">$8,050</td><td data-label="Required fees">$600</td><td data-label="Academic-year total">$8,650</td><td data-label="Nine-month equivalent">$961.11</td><td data-label="Within $8,738?">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="housing-budget-formula"><strong>Calculation:</strong> academic-year total = (projected semester room rate × 2) + required fees for two semesters. The required ResNet fee adds $300 for the academic year. Coastal Quarters adds the $300 ResNet total and its separate $300 communication-fee total. Nine-month equivalent = academic-year total ÷ 9.</div>
+
+    <hr class="rule">
+    <h2>Historical comparison with Haskett’s report</h2>
+    <div class="facts">
+      <div class="fact"><div class="fact-label">2023–24 report</div><div class="fact-value"><strong>$7,996</strong> published housing estimate for approximately nine months; <strong>$888 per month</strong> as reported. The report found the estimate could cover <strong>4 of 14</strong> on-campus residence halls, excluding two halls at half cost.</div></div>
+      <div class="fact"><div class="fact-label">2026–27 comparison</div><div class="fact-value"><strong>$8,738</strong> housing estimate; <strong>$970.89 per month</strong> across nine months. The calculation above finds <strong>3 of 10</strong> current categories within the estimate after required fees.</div></div>
+    </div>
+    <div class="use-note"><strong>Interpretation:</strong> The housing categories and rates changed between the two comparisons, so the counts should not be treated as identical measures. Both calculations show the official housing estimate falling below most published on-campus housing options available in their respective periods.</div>
+
+    <hr class="rule">
+    <h2>Original source images</h2>
+    <div class="housing-budget-source-grid">
+      <div class="evidence">
+        <a href="https://osf.io/preprints/psyarxiv/t46jv_v1" target="_blank" rel="noopener noreferrer"><img src="assets/references/haskett-housing-budget-2023-original.png" alt="Original excerpt from Mary Haskett's report describing the 2023 to 2024 housing estimate and how many residence halls it could cover"></a>
+        <div class="caption"><strong>Original report excerpt.</strong> Select the image to open the study.</div>
+      </div>
+      <div class="evidence">
+        <a href="https://housing.dasa.ncsu.edu/residential-communities/costs/" target="_blank" rel="noopener noreferrer"><img src="assets/references/ncsu-housing-rates-2026-27-original.png" alt="Original NC State University Housing table showing projected 2026 to 2027 semester rates and the required ResNet fee"></a>
+        <div class="caption"><strong>Original University Housing excerpt.</strong> Projected rates are per semester. Select the image to open the official source.</div>
+      </div>
+      <div class="evidence">
+        <a href="https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/" target="_blank" rel="noopener noreferrer"><img src="assets/references/ncsu-coa-housing-2026-27-original.png" alt="Original NC State cost-of-attendance table showing an 8738 dollar on-campus housing estimate for a North Carolina resident in 2026 to 2027"></a>
+        <div class="caption"><strong>Original cost-of-attendance excerpt.</strong> Select the image to open the official source.</div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="university-housing-interview">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Reporting interview</div>
+      <div class="ref-title">NC State University Housing Interview — Donna McGalliard and Peter Fraccaroli</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Primary reporting</span>
+      <span class="tag">University Housing</span>
+      <span class="tag">September 2026</span>
+    </div>
+  </div>
+
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Interviewees</div>
+      <div class="meta-value"><strong>Donna McGalliard</strong> and <strong>Peter Fraccaroli</strong>, NC State University Housing</div>
+
+      <div class="meta-label">McGalliard title</div>
+      <div class="meta-value">Associate Vice Chancellor and Associate Dean, Student Life and Advocacy; Executive Director of University Housing</div>
+
+      <div class="meta-label">Fraccaroli title</div>
+      <div class="meta-value">Director, Facilities and Business Operations, University Housing</div>
+
+      <div class="meta-label">Format</div>
+      <div class="meta-value">Reporter interview with NC State University Housing officials, September 2026</div>
+
+      <div class="meta-label">Title verification</div>
+      <div class="meta-value"><a href="https://housing.dasa.ncsu.edu/staff/dpmcgall/" target="_blank" rel="noopener noreferrer">Donna McGalliard staff profile</a> · <a href="https://housing.dasa.ncsu.edu/staff/pdfracca/" target="_blank" rel="noopener noreferrer">Peter Fraccaroli staff profile</a></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>What the interview supports in the article</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Double-room inventory</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Peter Fraccaroli:</span> “Most of our inventory, just so you know, is double occupancy rooms. Right. So over 70% of our rooms are double occupancy rooms.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Fraccaroli — over 70% double occupancy</span></div>
+            <audio controls preload="metadata" aria-label="Play Peter Fraccaroli saying over 70 percent of University Housing rooms are double occupancy">
+              <source src="assets/audio/interview-excerpts/15-fraccaroli-double-occupancy-70-percent-quote.mp3?v=20260923-corrected" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Value and comparison</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Donna McGalliard:</span> “But those double rooms are for sure the best kind of value and the largest part of our inventory on campus.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>McGalliard — “best kind of value”</span></div>
+            <audio controls preload="metadata" aria-label="Play Donna McGalliard saying best kind of value">
+              <source src="assets/audio/interview-excerpts/03-mcgalliard-best-value-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Donna McGalliard:</span> “Yeah, I think also, Sean, it's actually a little bit hard to compare double rooms on campus to an off campus apartment. If you compare it apartment to apartment, that's probably a better comparison because you're really looking at apples and oranges in a lot of ways.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>McGalliard — “apples and oranges”</span></div>
+            <audio controls preload="metadata" aria-label="Play Donna McGalliard discussing apples and oranges">
+              <source src="assets/audio/interview-excerpts/04-mcgalliard-apples-oranges-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Academic-year contract</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Donna McGalliard:</span> “For us, you can literally arrive in August, you leave at the beginning of May, you're done.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>McGalliard — August to May</span></div>
+            <audio controls preload="metadata" aria-label="Play Donna McGalliard discussing the August to May housing term">
+              <source src="assets/audio/interview-excerpts/05-mcgalliard-august-may-quote.mp3?v=20260923-trimmed" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">What goes into housing rates</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Donna McGalliard:</span> “Trying to describe the comprehensive nature of what goes into these numbers. And this committee of the board of trustees has that information already because, I mean, again, we're—we're trying to not only adjust for utility costs that we have to pay for, we're—we're adjusting for, you know, the cost of the elevator contract and the grounds and housekeeping and landscaping and roof contracts. Like all of the things go into setting a rate to include the money to provide activities, the money for the staff that is taking care of the buildings, the ones who are living there, providing the behavioral response, et cetera.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>McGalliard — comprehensive housing costs</span></div>
+            <audio controls preload="metadata" aria-label="Play Donna McGalliard discussing costs included in housing rates">
+              <source src="assets/audio/interview-excerpts/06-mcgalliard-comprehensive-costs-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>Affordability question:</strong> When asked what specific numerical affordability target University Housing uses when setting rates, officials did not identify one during the interview.
+    </div>
+
+    <div class="use-note">
+      <strong>Source distinction:</strong> This card documents statements made by University Housing officials. Published semester rates, ResNet charges and the article’s monthly-equivalent calculations are documented separately in the housing-rate and monthly-math references above.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="thomas-barrie-interview">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Reporting interview</div>
+      <div class="ref-title">Thomas Barrie Interview — NC State Housing Affordability</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Primary reporting</span>
+      <span class="tag">Housing</span>
+      <span class="tag">NC State</span>
+    </div>
+  </div>
+
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Interviewee</div>
+      <div class="meta-value"><strong>Thomas Barrie</strong>, Emeritus Professor of Architecture; housing educator and founder of the Affordable Housing and Sustainable Communities Initiative</div>
+
+      <div class="meta-label">Format</div>
+      <div class="meta-value">Recorded reporter interview, approximately 32 minutes, September 2026</div>
+
+      <div class="meta-label">Profile verification</div>
+      <div class="meta-value"><a href="https://design.ncsu.edu/people/tmbarrie/" target="_blank" rel="noopener noreferrer">NC State College of Design — Thomas Barrie</a></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>What the interview supports in the article</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Raleigh rent context</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Thomas Barrie:</span> “You know, rent has gone down. It's dipped a little bit in downtown Raleigh, and it's because we've actually built a lot of rental housing.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Sean Ryan:</span> “Yes, that's true.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Thomas Barrie:</span> “But it's still very expensive.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Barrie — rent dipped, still expensive</span></div>
+            <audio controls preload="metadata" aria-label="Play Thomas Barrie discussing Raleigh rents">
+              <source src="assets/audio/interview-excerpts/01-barrie-rent-quote.mp3?v=20260922-corrected" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Student work and academic pressure</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Thomas Barrie:</span> “So how much are you working?” And they'll tell me, and I'll say, “Do you need to work that much?” And then often the answer is, “I do.” And then I'll say, “Okay, let's work with that,” right? So, you know, take them at face value.</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Barrie — student work hours / “face value”</span></div>
+            <audio controls preload="metadata" aria-label="Play Thomas Barrie discussing student work hours and taking their financial reality at face value">
+              <source src="assets/audio/interview-excerpts/07-barrie-working-quote.mp3?v=20260922-corrected" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">University response</div>
+        <div class="fact-value">Barrie argued that NC State should be more proactive and consider directly building affordable and supportive student housing or partnering with nonprofit housing developers.</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Housing-support model</div>
+        <div class="fact-value">He described supportive housing as pairing affordable housing with services such as case management and resource connections.</div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>Source distinction:</strong> This card documents Barrie’s interview statements. His published NC State housing work and faculty profile are documented separately elsewhere on this page.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="mary-haskett-interview">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Reporting interview</div>
+      <div class="ref-title">Mary Haskett Interview — Student Homelessness and Housing Insecurity</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Primary reporting</span>
+      <span class="tag">Housing insecurity</span>
+      <span class="tag">NC State</span>
+    </div>
+  </div>
+
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Interviewee</div>
+      <div class="meta-value"><strong>Mary Haskett</strong>, professor emerita of psychology at NC State and a founder of Housing Options for Students Today (HOST)</div>
+
+      <div class="meta-label">Format</div>
+      <div class="meta-value">Recorded reporter interview, September 21, 2026</div>
+
+      <div class="meta-label">Research</div>
+      <div class="meta-value"><a href="https://doi.org/10.31234/osf.io/t46jv" target="_blank" rel="noopener noreferrer">Homelessness and Food &amp; Housing Insecurity among College Students: Third Wave</a></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>What the interview supports in the article</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">University response</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “Their response is one of what I refer to as charity.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Haskett — “charity”</span></div>
+            <audio controls preload="metadata" aria-label="Play Mary Haskett describing the response as charity">
+              <source src="assets/audio/interview-excerpts/12-haskett-charity-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “What is official is housing scholarships through Pack Essentials. I don't know how many of those are available, but those are funded by donors. That's not even university money.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Sean Ryan:</span> “Gotcha.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “Right? So the university is not making any investment in those scholarships.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Haskett — donor-funded scholarships</span></div>
+            <audio controls preload="metadata" aria-label="Play Mary Haskett discussing donor-funded housing scholarships">
+              <source src="assets/audio/interview-excerpts/13-haskett-donor-scholarships-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Enrollment and completion</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “It's not about—it's not about just increasing enrollment.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Sean Ryan:</span> “Yeah.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “You need to increase graduation.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Sean Ryan:</span> “Yeah.”</div>
+          <div class="verbatim-quote"><span class="verbatim-speaker">Mary Haskett:</span> “Right? And—and students can't graduate if they're dropping out because they can't afford to live here.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Haskett — enrollment and graduation</span></div>
+            <audio controls preload="metadata" aria-label="Play Mary Haskett discussing enrollment, graduation and housing affordability">
+              <source src="assets/audio/interview-excerpts/14-haskett-enrollment-graduation-quote.mp3?v=20260922-corrected" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>Source distinction:</strong> This card documents Haskett’s interview statements. The survey findings and original report excerpts are documented in the March 2024 report reference on this page.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="alden-hearn-interview">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Reporting interview</div>
+      <div class="ref-title">Alden Hearn Interview — HOST Housing Navigator</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Primary reporting</span>
+      <span class="tag">HOST</span>
+      <span class="tag">Housing insecurity</span>
+    </div>
+  </div>
+
+  <div class="ref-body">
+    <div class="meta-grid">
+      <div class="meta-label">Interviewee</div>
+      <div class="meta-value"><strong>Alden Hearn</strong>, Housing Navigator, Housing Options for Students Today (HOST)</div>
+
+      <div class="meta-label">Format</div>
+      <div class="meta-value">Recorded reporter interview, approximately 51 minutes, September 2026</div>
+
+      <div class="meta-label">Organization</div>
+      <div class="meta-value"><a href="https://www.hostnc.org/" target="_blank" rel="noopener noreferrer">Housing Options for Students Today (HOST)</a></div>
+    </div>
+
+    <hr class="rule">
+
+    <h2>What the interview supports in the article</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Fees can change the apparent rent</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “So, if you're a student and you're thinking, okay, I can relocate to Wake County because I'm seeing places that only cost $700, you know, with the aid that I get, I'll be able to get a job and I can use my aid to supplement that no problem. But then once you're leased up, and you've got the guarantor waiver program and the amenities fee, potentially other fees, you know, it often pushes towards $1,000 a month.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — $700 advertised rent and added fees</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn discussing added fees on advertised student rent">
+              <source src="assets/audio/interview-excerpts/02-hearn-fees-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Students served</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “And so over the course of about three, maybe three and a half years, we've served just over 100 students, which gives you an idea of what our annual capacity is roughly.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — “just over 100 students”</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn discussing the number of students HOST has served">
+              <source src="assets/audio/interview-excerpts/08-hearn-100-students-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Fragile housing stability</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “So, a lot of students are willing to take a chance on a housing situation where they think they can make ends meet, but a single setback, you know, like if you get sick and you're out of work for a couple of weeks, or if you lose your job, or if your car breaks down, you know, just falling behind a few weeks or a month of income can basically torpedo the stability of that housing because there's no other income coming in that'll help you catch up. Once you're evicted, then your options really narrow.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — setback and eviction</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn discussing setbacks and eviction">
+              <source src="assets/audio/interview-excerpts/09-hearn-setback-eviction-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Student homelessness can be invisible</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “So yeah, we really believe that it's sort of a an invisible problem in a lot of ways, both because of assumptions that people might make about, you know, if someone's in college, that means that their, you know, basic needs are stable.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — “an invisible problem”</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn describing student homelessness as an invisible problem">
+              <source src="assets/audio/interview-excerpts/10-hearn-invisible-problem-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Couch surfing and housing gaps</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “And also, you know, I think among college students, what homelessness looks like, you know, we worked with a lot of students that maybe because of sort of a popular narrative expect that they're going to struggle with housing while they're in college. And so might, you know, fill in gaps by staying in a vehicle or especially couch surfing with friends if they don't have family that they can return to during breaks.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — vehicle stays and couch surfing</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn discussing vehicle stays and couch surfing">
+              <source src="assets/audio/interview-excerpts/11-hearn-couch-surfing-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Scale of the problem</div>
+        <div class="fact-value">
+          <div class="verbatim-quote"><span class="verbatim-speaker">Alden Hearn:</span> “Yeah, I mean, housing has been a difficult issue in Raleigh and Wake County for a while now. And, you know, it doesn't just affect college students. So I feel like given the scale of the need, I don't think, you know, that HOST or, you know, programs like HOST are going to be the solution. You know, I imagine it requires buy-in from, you know, community leadership and, you know, university leadership to address the problem. But I also see what NC State's doing to, you know, try and support their students. So yeah, I'm not sure what the ultimate solution there is.”</div>
+          <div class="quote-audio">
+            <div class="quote-audio-head"><span>Listen to quoted passage</span><span>Hearn — scale of need and leadership</span></div>
+            <audio controls preload="metadata" aria-label="Play Alden Hearn discussing the scale of housing need and community and university leadership">
+              <source src="assets/audio/interview-excerpts/16-hearn-scale-leadership-quote.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Program capacity</div>
+        <div class="fact-value">He described a small active host pool and said referrals for housing support can exceed the number of volunteer host placements available.</div>
+      </div>
+    </div>
+
+    <div class="use-note">
+      <strong>Off-the-record boundary:</strong> The transcript marks a later discussion about international students as off the record. That material is not used in this reference card.
+    </div>
+
+    <div class="use-note">
+      <strong>Source distinction:</strong> This card documents Hearn’s interview statements. HOST’s general mission and contact information are documented separately in the HOST organizational reference.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="housing-rate-change">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Housing-rate change</div>
+      <div class="ref-title">Projected 2026–27 Housing Rate Increases</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Calculated comparison</span>
+      <span class="tag">2025–26 → 2026–27</span>
+      <span class="tag">BLS context</span>
+    </div>
+  </div>
+  <div class="ref-body">
+<h2>Projected rate increase from 2025–26 to 2026–27</h2>
+    <div class="use-note">
+      <strong>Calculation:</strong> (2026–27 projected room rate − 2025–26 room rate) ÷ 2025–26 room rate × 100. This chart compares the published <strong>room-rate rows only</strong>; ResNet and the Coastal Quarters communication fee are excluded so the year-to-year rate change is like-for-like. The dot plot mirrors the article graphic, with the August 2026 BLS <strong>lodging while at school</strong> increase of <strong>3.1%</strong> shown as a reference line.
+    </div>
+
+    <div class="rate-change-chart" aria-label="Projected percentage increase in NC State housing rates from 2025–26 to 2026–27. Dots show each housing rate increase on a zero to eight percent scale; a vertical line marks the August 2026 BLS lodging-while-at-school increase of 3.1 percent.">
+      <div class="rate-change-axis" aria-hidden="true">
+        <div class="rate-change-type-heading">Housing type/location</div>
+        <div class="rate-change-dollar-heading">Dollar increase</div>
+        <div class="rate-change-axis-plot">
+          <span class="rate-change-benchmark-label">Lodging while at school 3.1%</span>
+          <span class="rate-change-axis-tick first" style="left:0%">0%</span>
+          <span class="rate-change-axis-tick" style="left:75%">6%</span>
+          <span class="rate-change-axis-tick last" style="left:100%">8%</span>
+        </div>
+        <div></div>
+      </div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Doubles</strong>$3,800 → $3,970 <span class="rate-change-mobile-dollar">(+$170)</span></div><div class="rate-change-dollar">+$170</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:55.875%"></span></div><div class="rate-change-value">4.47%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Singles</strong>$4,275 → $4,600 <span class="rate-change-mobile-dollar">(+$325)</span></div><div class="rate-change-dollar">+$325</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:95%"></span></div><div class="rate-change-value">7.60%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Wolf Village/Wolf Ridge — 1 bedroom/studio</strong>$5,000 → $5,375 <span class="rate-change-mobile-dollar">(+$375)</span></div><div class="rate-change-dollar">+$375</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:93.75%"></span></div><div class="rate-change-value">7.50%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Wolf Village/Wolf Ridge — 2, 3 or 4 bedrooms</strong>$4,500 → $4,780 <span class="rate-change-mobile-dollar">(+$280)</span></div><div class="rate-change-dollar">+$280</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:77.75%"></span></div><div class="rate-change-value">6.22%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>E.S. King — 1-bedroom undergraduate double</strong>$4,125 → $4,350 <span class="rate-change-mobile-dollar">(+$225)</span></div><div class="rate-change-dollar">+$225</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:68.125%"></span></div><div class="rate-change-value">5.45%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>E.S. King/Western Manor — studio</strong>$3,900 → $4,150 <span class="rate-change-mobile-dollar">(+$250)</span></div><div class="rate-change-dollar">+$250</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:80.125%"></span></div><div class="rate-change-value">6.41%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>E.S. King/Western Manor — 1 bedroom</strong>$4,375 → $4,600 <span class="rate-change-mobile-dollar">(+$225)</span></div><div class="rate-change-dollar">+$225</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:64.25%"></span></div><div class="rate-change-value">5.14%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>E.S. King/Western Manor — 2 bedroom</strong>$5,000 → $5,300 <span class="rate-change-mobile-dollar">(+$300)</span></div><div class="rate-change-dollar">+$300</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:75%"></span></div><div class="rate-change-value">6.00%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Coastal Quarters — single</strong>$4,225 → $4,350 <span class="rate-change-mobile-dollar">(+$125)</span></div><div class="rate-change-dollar">+$125</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:37%"></span></div><div class="rate-change-value">2.96%</div></div>
+      <div class="rate-change-row"><div class="rate-change-label"><strong>Coastal Quarters — double</strong>$3,950 → $4,025 <span class="rate-change-mobile-dollar">(+$75)</span></div><div class="rate-change-dollar">+$75</div><div class="rate-change-plot"><span class="rate-change-benchmark-line"></span><span class="rate-change-dot" style="left:23.75%"></span></div><div class="rate-change-value">1.90%</div></div>
+    </div>
+
+    <div class="use-note">
+      The largest projected increase among the listed room-rate rows is the standard <strong>Single</strong> rate at <strong>7.60%</strong>; the smallest is the <strong>Coastal Quarters double</strong> at <strong>1.90%</strong>.
+    </div>
+    <div class="use-note">
+      <strong>BLS price context:</strong> Over the 12 months ending August 2026, <strong>lodging while at school increased 3.1%</strong>, <strong>rent of primary residence increased 2.7%</strong>, and the <strong>all-items CPI-U increased 3.4%</strong>. <a href="https://www.bls.gov/news.release/archives/cpi_09112026.htm" target="_blank" rel="noopener noreferrer">Official BLS CPI release</a>. BLS defines “lodging while at school” as housing owned, leased or controlled by a college or university, including eligible on- or off-campus housing. <a href="https://www.bls.gov/cpi/additional-resources/entry-level-item-descriptions.htm" target="_blank" rel="noopener noreferrer">BLS category definition</a>.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="bedroom-occupancy-audit">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Manual bedroom-occupancy audit</div>
+      <div class="ref-title">Saved listing photos and descriptions — private vs. shared bedrooms</div>
+    </div>
+    <div class="tags">
+      <span class="tag">Sept. 9 snapshot</span>
+      <span class="tag">Manual review</span>
+      <span class="tag">76 listings</span>
+    </div>
+  </div>
+  <div class="ref-body">
+    <p>
+      <a class="audit-download" href="data/audits/ncsu-room-bedroom-visual-audit.html?v=20260920-final" target="_blank" rel="noopener noreferrer">Open the visual audit</a>
+      &nbsp;
+      <a class="audit-source-link" href="data/audits/ncsu-room-bedroom-visual-audit.csv?v=20260920-final" download>Download finalized CSV</a>
+    </p>
+    <div class="facts">
+      <div class="fact"><div class="fact-label">Appeared to offer a private bedroom</div><div class="fact-value"><strong>74 of 76</strong></div></div>
+      <div class="fact"><div class="fact-label">Explicit shared bedroom</div><div class="fact-value"><strong>1 of 76</strong></div></div>
+      <div class="fact"><div class="fact-label">Could not be determined</div><div class="fact-value"><strong>1 of 76</strong></div></div>
+      <div class="fact"><div class="fact-label">Review completed</div><div class="fact-value"><strong>Sept. 20, 2026</strong></div></div>
+    </div>
+    <div class="use-note">
+      <strong>Method:</strong> Each listing in the Main Campus room sample was manually reviewed using the saved Sept. 9 listing photographs and description. A listing was coded as a private bedroom when the saved material appeared to show or describe a sleeping room intended for one occupant; as shared when multiple occupants were shown or explicitly described as sharing the sleeping room; and as unclear when the available material did not establish the arrangement.
+    </div>
+    <div class="use-note">
+      <strong>Result wording:</strong> The visual audit supports saying that <strong>74 of 76 reviewed listings appeared to offer a bedroom intended for one occupant</strong>. One listing explicitly offered one of two beds in a shared bedroom, and one could not be determined from the available material. <strong>The article’s Main Campus rent analysis uses the 74 appeared-private listings and excludes the shared and unclear listings.</strong>
+    </div>
+    <div class="audit-source-note">
+      The CSV is the frozen classification record. The visual audit is a reader-facing inspection tool containing the saved photo links, descriptions, prior text-only evidence and finalized classifications. The original listing pages may change after the Sept. 9 snapshot.
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="audit-downloads"><div class="ref-head"><div><div class="ref-no">Additional evidence</div><div class="ref-title">Source files, review log and broader audit</div></div></div><div class="ref-body">
+<p>The <a href="#room-rent-audit">room-only workbook above</a> reproduces the article directly. The broader audit retains whole-unit calculations and additional checks for readers who want to inspect the earlier, wider analysis. It predates the Sept. 20 bedroom-occupancy refinement, so use the updated room-only workbook above for the article’s final room sample.</p>
+<p><a href="data/audits/ncsu-rent-audit.xlsx?v=20260913-kept2" download>Download the broader Excel audit</a></p>
+<p class="audit-checker-callout"><a href="rental-map-audit.html">Open the map and searchable listing checker →</a></p>
+<details><summary>What the broader workbook includes</summary>
+<p>Its Kept tab contains 131 usable listings from the earlier pricing review: 78 room offers and 53 whole-unit offers. The final room article subsequently excludes two of those room offers after the bedroom-occupancy review. Its Excluded tab contains 37 records: 25 price exclusions within the study area and 12 outside all three five-mile areas. These definitions differ from the updated room-only workbook, where 92 records are outside the room article. Reasons may overlap; each ID is counted once.</p>
+<p>Filter Kept to <strong>Price basis = Per bedroom</strong> to inspect the earlier 78-offer room set. For the final article sample, use the updated room-only workbook: Main Campus contains 74 appeared-private listings after excluding one explicitly shared-bedroom listing and one occupancy-unclear listing.</p>
+<p>The broader file also retains sensitivity checks, housing-rate calculations, optional personal-budget inputs and a whole-unit sharing example. Those additional inputs are not part of the article interface.</p>
+<div id="worked-whole"></div>
+</details>
+<details><summary>Open the classification and exclusion log</summary><div id="review-log" class="method-scroll"></div></details>
+<p><strong>Raw and review data:</strong> <a href="data/reviewed-rentals.csv" download>all reviewed listings (.csv)</a> · <a href="data/reviewed-rentals.json">review data and source hashes</a> · <a href="data/review-decisions.json">classification evidence</a> · <a href="https://github.com/StrokeOfLuck/ncsu-rent-article/blob/main/scripts/build_analysis.py">analysis code</a>.</p>
+<p>Saved source files: <a href="data/ncsu-properties.csv">properties</a>, <a href="data/ncsu-floorplans.csv">floor plans</a>, <a href="data/ncsu-fees.csv">fees</a>, <a href="data/ncsu-amenities.csv">amenities</a>. <a href="https://github.com/StrokeOfLuck/ncsu-rent-article/blob/main/docs/scraper-README.md">Collection instructions</a>.</p>
+</div></article>
+
+
+
+<article class="ref" id="distance-math"><span id="kepler-distance-audit"></span><div class="ref-head"><div><div class="ref-no">Geography</div><div class="ref-title">Straight-line distances, band edges and campus overlap</div></div></div><div class="ref-body">
+<p>Reference coordinates (latitude, longitude): Main <code>35.77951, −78.68168</code>; Centennial <code>35.76870, −78.67750</code>; Centennial Biomedical <code>35.79847, −78.70408</code>. These are fixed map reference points, not the nearest campus entrance or perimeter. The portal’s own travel-distance field is not used.</p>
+<ol><li>Convert latitudes and longitudes from degrees to radians: radians = degrees × π ÷ 180.</li><li>Calculate <code>a = sin²(Δlatitude/2) + cos(latitude₁) × cos(latitude₂) × sin²(Δlongitude/2)</code>.</li><li>Calculate miles = <code>2 × 3958.7613 × asin(√a)</code>. The equivalent atan2 form is used in the website build.</li><li>Assign an unrounded distance: <code>d ≤ 1</code>; <code>1 &lt; d ≤ 3</code>; <code>3 &lt; d ≤ 5</code>. Never round a distance before deciding its band.</li></ol>
+<p>Example: Brook Hill is about 3.000166 miles from the Centennial point, just 0.87 feet outside the three-mile threshold. It belongs to the &gt;3–5 band under these coordinates; geocoding precision can change such edge cases. The workbook shows feet to the nearest 1-, 3- or 5-mile edge and flags listings within 100 feet for inspection. This flag does not imply a measured geocoding error. Straight-line proximity does not establish walking, cycling, bus or driving time.</p>
+<p>NC State Facilities GIS perimeter and building layers provide visual context, not the distance origin. <a href="data/ncsu-campus-perimeters.geojson">Saved perimeters</a> · <a href="data/ncsu-campus-buildings.geojson">Saved buildings</a>. The Kepler maps below let readers inspect listing locations and distance bands. They contain the broader listing set, including whole-unit offers, so their counts differ from the room-only Excel audit.</p>
+<p><strong>Main Campus Kepler maps:</strong> <a href="https://kepler.gl/demo/map?mapUrl=https%3A%2F%2Fraw.githubusercontent.com%2FStrokeOfLuck%2Fncsu-rent-article%2Fmain%2Fdata%2Fkepler%2Fncsu-rent-main-campus_0-1mi-distance.kepler.gl.json" target="_blank" rel="noopener noreferrer">0–1 mile</a> · <a href="https://kepler.gl/demo/map?mapUrl=https%3A%2F%2Fraw.githubusercontent.com%2FStrokeOfLuck%2Fncsu-rent-article%2Fmain%2Fdata%2Fkepler%2Fncsu-rent-main-campus_1-3mi-distance.kepler.gl.json" target="_blank" rel="noopener noreferrer">More than 1–3 miles</a> · <a href="https://kepler.gl/demo/map?mapUrl=https%3A%2F%2Fraw.githubusercontent.com%2FStrokeOfLuck%2Fncsu-rent-article%2Fmain%2Fdata%2Fkepler%2Fncsu-rent-main-campus_3-5mi-distance.kepler.gl.json" target="_blank" rel="noopener noreferrer">More than 3–5 miles</a> · <a href="https://kepler.gl/demo/map?mapUrl=https%3A%2F%2Fraw.githubusercontent.com%2FStrokeOfLuck%2Fncsu-rent-article%2Fmain%2Fdata%2Fkepler%2Fncsu-rent-main-campus_radius-circles.kepler.gl.json" target="_blank" rel="noopener noreferrer">1-, 3- and 5-mile circles</a></p>
+</div></article>
+
+<article class="ref" id="aid-math"><div class="ref-head"><div><div class="ref-no">Earnings and aid comparison</div><div class="ref-title">What the aid checkboxes mean</div></div></div><div class="ref-body">
+<p>The article starts with wages alone. The two optional checkboxes add NC State’s reported <strong>need-based grant average</strong> and <strong>need-based loan average</strong>. They are historical award benchmarks, not a standard FAFSA award or an estimate of a student’s refund.</p>
+<p><strong>Assumption: tuition and school fees are covered separately.</strong> Checking a box treats the full selected award as available for living expenses. Actual refunds may be smaller. The grant and loan averages describe different recipient groups; selecting both creates a hypothetical combination, not a typical aid package. Loans must be repaid. Food, books, transport and other expenses also compete for these funds.</p>
+<h2>Source figures</h2>
+<p><a href="https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2025-26.v1.pdf">NC State Common Data Set 2025–26</a>, Section H, reports <strong>2024–25 final</strong> aid data. H2 K (PDF page 33) gives a $14,743 average need-based scholarship/grant award for full-time undergraduate recipients. H2 M (PDF page 34) gives a $4,106 average need-based loan for its full-time undergraduate recipients, excluding PLUS, unsubsidized and private alternative loans. Neither figure is an average across every NC State student or a 2026–27 award estimate.</p>
+<p><a href="https://studentservices.ncsu.edu/finances/scholarships-and-financial-aid/receive-your-financial-aid/">NC State’s financial aid disbursement instructions</a> state: “Financial aid must be used first to pay any outstanding tuition and fees, room rent and meal plan charges and textbook charges, if applicable, for each semester.” Only aid exceeding billed charges may be refunded. Dividing an academic-year award by 12 is a common-period comparison for this article, not a monthly disbursement schedule or evidence that the student receives summer aid.</p>
+<div class="evidence" style="margin-top:14px">
+  <a href="https://studentservices.ncsu.edu/finances/scholarships-and-financial-aid/receive-your-financial-aid/" target="_blank" rel="noopener noreferrer"><img src="assets/references/ncsu-financial-aid-applied-to-charges-original.png?v=20260922-original" alt="Original screenshot of Step 8 of NC State's financial aid instructions stating that financial aid must first pay outstanding tuition and fees, room rent, meal plan charges and applicable textbook charges."></a>
+  <div class="caption"><strong>Original NC State excerpt.</strong> Financial aid is applied to university charges first. Select the image to open the official NC State source.</div>
+</div>
+<h2>Step-by-step calculation</h2>
+<ol>
+<li><strong>Gross monthly wages:</strong> hourly wage × weekly hours × 52 ÷ 12. At 20 hours/week, $15/hour gives $1,300.00/month and $7.25/hour gives $628.33/month. This assumes steady work throughout the year, before taxes.</li>
+<li><strong>Grant equivalent, if checked:</strong> $14,743 ÷ 12 = $1,228.58/month. Otherwise add $0.</li>
+<li><strong>Borrowed funds, if checked:</strong> $4,106 ÷ 12 = $342.17/month. Otherwise add $0.</li>
+<li><strong>Monthly resources:</strong> gross wages + selected grant equivalent + selected borrowed funds. At $15/hour and 20 hours/week with both boxes checked, the total is $2,870.75/month.</li>
+<li><strong>Rent share:</strong> the selected campus’s unrounded mean room midpoint ÷ monthly resources × 100. The examples below use Main Campus, matching the article’s default. A rounded percentage near 30% is labeled &gt;30% or &lt;30% when needed.</li>
+</ol>
+<div id="budget-worked" class="use-note"></div><div id="aid-presets-math" class="method-scroll"></div>
+<h2>Work-study context</h2>
+<p><a href="https://emas.ncsu.edu/employment/federal-work-study-program/">NC State Federal Work-Study</a> lists a general $7.25–$15/hour range, with exceptions for higher pay, and generally advises no more than 20 hours/week. These are published guidelines, not a measurement of what every student worker earns. Actual work-study earnings are limited by the award and funded work period.</p>
+<p>The wages above illustrate steady employment at those rates. They do not project year-round FWS funding. The separate 15-week column is simply wage × hours × 15: at 20 hours/week, $2,175 at $7.25 or $4,500 at $15, before any award cap. The broader workbook retains a separate calculation applying an actual award cap.</p>
+<details><summary>Hourly-pay control and calculation details</summary>
+<p>The left card stays at $7.25/hour; the right starts at $15/hour. Both use the same hours and aid selections. The right card accepts cents, while the minus and plus buttons change pay by $1. Reset $15 restores the default. A custom wage is a comparison, not a claim of FWS eligibility. The upper earnings table retains its fixed $7.25 and $15 rates.</p>
+<p>The comparison uses 52 paid weeks and 12 months. Zero wages with no selected aid leave the percentage undefined. Invalid input retains the last valid calculation and shows a correction message. All calculations use unrounded inputs; rounding occurs only in the displayed result.</p>
+</details>
+</div></article>
+
+<article class="ref" id="ncsu-fws-15-current">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Current NC State wages</div>
+          <div class="ref-title">Actual NC State $15/Hour Federal Work-Study Position — Undergraduate Research</div>
+        </div>
+        <div class="tags">
+          <span class="tag">NC State</span>
+          <span class="tag">Federal Work-Study</span>
+          <span class="tag">$15/hour</span>
+          <span class="tag">Current benchmark</span>
+        </div>
+      </div>
+
+      <div class="ref-body"><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Organization</div>
+          <div class="meta-value">North Carolina State University, Office of Undergraduate Research</div>
+
+          <div class="meta-label">Page title</div>
+          <div class="meta-value">OUR Federal Work-Study Research Assistant Program</div>
+
+          <div class="meta-label">URL</div>
+          <div class="meta-value"><a href="https://undergradresearch.dasa.ncsu.edu/our-federal-work-study-research-assistant-positions/" target="_blank" rel="noopener noreferrer">OUR Federal Work-Study Research Assistant Program</a></div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">Current official NC State Federal Work-Study program page</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Key fact for reporting</h2>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Actual $15/hour NC State position</div>
+            <div class="fact-value">NC State's Office of Undergraduate Research says students selected for its Federal Work-Study Research Assistant Program <strong>earn $15 per hour</strong>, up to the maximum allowed by the student's individual work-study award.</div>
+          </div>
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> This is direct evidence that <strong>$15 per hour is an actual wage being paid in a current NC State Federal Work-Study program</strong>. It does not explain why NC State selected $15 as the normal upper end of its FWS wage guidelines, and it should not be described as a university-wide student minimum.
+        </div>
+      </div>
+    </article>
+
+<article class="ref" id="federal-minimum-wage">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Wages and earnings</div>
+          <div class="ref-title">Federal and North Carolina Minimum Wage — $7.25</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Federal source</span>
+          <span class="tag">Minimum wage</span>
+          <span class="tag">Wages</span>
+          <span class="tag">Historical benchmark</span>
+        </div>
+      </div>
+
+      <div class="ref-body">
+  <p class="use-note"><strong>North Carolina cross-check.</strong> The N.C. Department of Labor lists the state minimum wage at <strong>$7.25 per hour</strong>, matching the federal baseline used in the article. <a href="https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned/minimum-wage-nc" target="_blank" rel="noopener">NC Department of Labor — Minimum Wage in N.C.</a></p><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Organization</div>
+          <div class="meta-value">U.S. Department of Labor, Wage and Hour Division</div>
+
+          <div class="meta-label">Page title</div>
+          <div class="meta-value">History of Federal Minimum Wage Rates Under the Fair Labor Standards Act, 1938–2009</div>
+
+          <div class="meta-label">URL</div>
+          <div class="meta-value"><a href="https://www.dol.gov/agencies/whd/minimum-wage/history/chart" target="_blank" rel="noopener noreferrer">U.S. Department of Labor minimum-wage history table</a></div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">Official federal wage history</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Key fact for reporting</h2>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Federal minimum wage</div>
+            <div class="fact-value">The federal minimum wage for covered, nonexempt workers became <strong>$7.25 per hour on July 24, 2009</strong>. It therefore remained $7.25 throughout the article's 2017–2026 rent comparison period.</div>
+          </div>
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> Primary federal source for the $7.25 wage baseline and for showing that the federal minimum wage did not change during the 2017–2026 rent trend used in the article.
+        </div>
+      </div>
+    </article>
+
+<article class="ref" id="hud-30-percent">
+  <div class="ref-head">
+    <div>
+      <div class="ref-no">Affordability definition</div>
+      <div class="ref-title">HUD’s household benchmark versus this personal scenario</div>
+    </div>
+    <div class="tags">
+      <span class="tag">HUD</span>
+      <span class="tag">30% benchmark</span>
+      <span class="tag">50% severe burden</span>
+    </div>
+  </div>
+  <div class="ref-body">
+    <p><a href="https://www.huduser.gov/portal/datasets/cp/CHAS/bg_chas.html" target="_blank" rel="noopener noreferrer">HUD CHAS background and definitions</a> defines <strong>cost burden</strong> as monthly housing costs, including utilities, that <strong>exceed 30% of monthly income</strong>.</p>
+
+    <p>For the higher threshold, <a href="https://www.hud.gov/sites/dfiles/PIH/documents/FY24_ICDBG_FAQs.pdf#page=8" target="_blank" rel="noopener noreferrer">HUD FY24 ICDBG Frequently Asked Questions — Q29, page 8</a> notes a housing-cost-greater-than-50% threshold in its IHBG context. HUD CHAS uses the term <strong>severe cost burden</strong> for monthly housing costs, including utilities, that <strong>exceed 50% of monthly income</strong>.</p>
+
+    <p>This article’s calculation can include a grant and loans, and advertised rents do not consistently include all housing costs. It therefore reports a <strong>modeled share of one student’s monthly resources</strong>, not a formal HUD household cost-burden classification. The rent measure represents the advertised price for one student’s private bedroom or single-person accommodation.</p>
+  </div>
+</article>
+
+<article class="ref" id="cost-of-attendance"><div class="ref-head"><div><div class="ref-no">University benchmarks</div><div class="ref-title">Academic-year housing budgets and residence-hall equivalents</div></div></div><div class="ref-body">
+<p><a href="https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/">NC State’s 2026–27 undergraduate cost of attendance</a> lists housing budgets of $8,738 on campus and $9,808 off campus for full-time fall and spring enrollment. These are budgeting allowances, not measured mean rents, twelve-month quotes or a promise that a student will find housing at that price.</p>
+<p><a href="https://housing.dasa.ncsu.edu/residential-communities/costs/">University Housing’s projected 2026–27 rates</a>: double room ($3,970 semester rent + $150 required ResNet) × 2 semesters = $8,240; $8,240 ÷ 9 months = <strong>$915.56/month per student</strong>. Single room ($4,600 + $150) × 2 = $9,500; $9,500 ÷ 9 = <strong>$1,055.56/month</strong>. Nine months is the display convention for an academic year, not nine equal monthly bills. Summer is excluded and winter-break arrangements may cost extra. On-campus furnishings, utilities and services differ from off-campus contracts.</p>
+<p>Year-to-year room-rate change = (new semester rate − old semester rate) ÷ old semester rate × 100. Example for a double: ($3,970 − $3,800) ÷ $3,800 × 100 = <strong>4.47%</strong>. The chart uses room charges alone in both years and excludes ResNet and Coastal Quarters communication fees; the monthly room examples include ResNet. The full published rate table remains below and is reproduced with formulas in the broader workbook.</p>
+</div></article>
+
+<article class="ref" id="student-housing-cds-2024">
+  <div class="ref-head"><div><div class="ref-no">Student housing</div><div class="ref-title">NC State Common Data Set: Where undergraduates live</div></div></div>
+  <div class="ref-body">
+    <p><a href="https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2024-25.v3.pdf#page=28" target="_blank" rel="noopener noreferrer">2024–25 Common Data Set: Section F1, Student Life, page 28 of 50</a></p>
+    <h2>Highlighted housing figures</h2>
+    <div class="ref-image-frame">
+      <a href="https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2024-25.v3.pdf#page=28" target="_blank" rel="noopener noreferrer"><img src="assets/ncsu-cds-2024-f1-housing.svg?v=20260920-fix" alt="Readable recreation of the NC State 2024–25 Common Data Set Section F1 housing rows, showing the percentages for first-time, first-year students and all undergraduates." style="display:block;max-width:100%;height:auto;border:1px solid #d8d3ca;"></a>
+      <div class="caption"><strong>Readable recreation.</strong> Section F1 housing rows redrawn as a crisp vector excerpt from the official PDF. Select the image to open the original PDF.</div>
+    </div>
+
+    <h2 style="margin-top:16px">Original source excerpt</h2>
+    <div class="ref-image-frame">
+      <a href="https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2024-25.v3.pdf#page=28" target="_blank" rel="noopener noreferrer"><img src="assets/references/ncsu-cds-2024-f1-original.png?v=20260920-original" alt="Original screenshot of the NC State 2024–25 Common Data Set Section F1 housing rows showing 97 percent and 38 percent in college-owned, operated, or affiliated housing and 3 percent and 62 percent living off campus or commuting." style="border:1px solid #d8d3ca;"></a>
+      <div class="caption"><strong>Original excerpt.</strong> Screenshot from the official 2024–25 NC State Common Data Set PDF, shown without redrawing. Select the image to open the original PDF.</div>
+    </div>
+  </div>
+</article>
+
+<article class="ref" id="first-year-housing-requirement">
+  <div class="ref-head"><div><div class="ref-no">University Housing policy</div><div class="ref-title">NC State first-year housing requirement</div></div></div>
+  <div class="ref-body">
+    <h2>Highlighted passage</h2>
+    <blockquote class="survey-highlight">Living on campus is an essential part of the Wolfpack experience: that’s why students are required to live in University Housing their first year.</blockquote>
+    <p><a href="https://housing.dasa.ncsu.edu/assignments/incoming-students/first-year-requirement/" target="_blank" rel="noopener noreferrer">NC State University Housing: First-Year Requirement</a></p>
+  </div>
+</article>
+
+<article class="ref" id="student-housing-insecurity-2024"><div class="ref-head"><div><div class="ref-no">Housing insecurity and support</div><div class="ref-title">2024 survey findings cited in November 2025</div></div></div><div class="ref-body"><h2>Highlighted passage</h2><blockquote class="survey-highlight">Results from the same survey reported that 11.3% of students reported housing insecurity within the previous 30 days at the time of the survey and 14% of students had experienced homelessness at some point in the prior year.</blockquote><p><a href="https://vptm.ehps.ncsu.edu/2025/11/19/helping-the-nc-state-community-navigate-hunger-and-homelessness-during-the-semester/" target="_blank" rel="noopener noreferrer">Helping the NC State Community Navigate Hunger and Homelessness During the Semester</a> · NC State Department of Risk Assessment · Published November 19, 2025.</p><div class="use-note">“The same survey” refers to the <strong>2024 NC State food and housing insecurity survey</strong> discussed immediately before this passage. Housing insecurity covers the previous 30 days; homelessness covers the prior year. Keep these measures and dates distinct from the 2020 source. <a href="#ncsu-2024-food-housing-report">See the existing 2024 report reference and student-pay recommendations.</a></div></div></article>
+
+<article class="ref" id="student-homelessness-2020"><div class="ref-head"><div><div class="ref-no">Housing insecurity and support</div><div class="ref-title">2020 NC State student homelessness study</div></div></div><div class="ref-body"><h2>Highlighted passage</h2><blockquote class="survey-highlight">A representative survey of undergraduate and graduate students at North Carolina State University finds that almost 10% of students experienced homelessness in the previous year, and more than 14% of students dealt with food insecurity in the previous 30 days.</blockquote><p><a href="https://news.ncsu.edu/2020/02/student-homelessness-study/" target="_blank" rel="noopener noreferrer">NC State News: Almost 10% of NC State Students Experienced Homelessness</a> · Published February 4, 2020.</p><div class="use-note">Historical survey findings reported in 2020. The passage uses two different recall periods: the previous year for homelessness and the previous 30 days for food insecurity.</div></div></article>
+
+<article class="ref" id="ncsu-2024-food-housing-report">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Student basic-needs research</div>
+          <div class="ref-title">NC State Food and Housing Insecurity Report — Student Pay Recommendations</div>
+        </div>
+        <div class="tags">
+          <span class="tag">NC State</span>
+          <span class="tag">Basic needs</span>
+          <span class="tag">Student wages</span>
+          <span class="tag">March 2024</span>
+        </div>
+      </div>
+
+      <div class="ref-body"><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Organization</div>
+          <div class="meta-value">NC State Food and Housing Insecurity Steering Committee / Pack Essentials</div>
+
+          <div class="meta-label">Report</div>
+          <div class="meta-value">Homelessness and Food &amp; Housing Insecurity among NC State Students — March 2024</div>
+
+          <div class="meta-label">Archived report PDF</div>
+          <div class="meta-value"><a href="assets/2023-food-and-housing-insecurity.pdf" target="_blank" rel="noopener noreferrer">March 2024 NC State report — saved copy</a></div>
+
+          <div class="meta-label">Required on-campus living evidence</div>
+          <div class="meta-value"><a href="assets/2023-food-and-housing-insecurity.pdf#page=28" target="_blank" rel="noopener noreferrer">Open the saved report at page 28</a></div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">NC State campus basic-needs report and recommendations</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Key findings for reporting</h2>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Student-pay recommendation</div>
+            <div class="fact-value">The March 2024 report recommended a <strong>campus-wide salary study of student workers</strong>, including work-study positions, along with regular cost-of-living adjustments.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">FWS wage concern</div>
+            <div class="fact-value">The report specifically discussed NC State's <strong>$7.25–$15 Federal Work-Study range</strong> and argued that, because universities have flexibility in setting work-study pay, the <strong>minimum should be raised significantly</strong>.</div>
+          </div>
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> NC State-specific evidence that the university's low-end student wage was being questioned internally by 2024. This source supports the reporting question of why the FWS range still begins at $7.25; it does <strong>not</strong> explain why $15 was selected as the normal upper limit.
+        </div>
+      </div>
+    </article>
+
+<article class="ref" id="host-contact"><div class="ref-head"><div><div class="ref-no">Housing insecurity and support</div><div class="ref-title">HOST: Temporary housing for college students</div></div></div><div class="ref-body"><p><strong>Housing Options for Students Today (HOST) is a registered 501(c)(3) nonprofit that connects college students facing homelessness with community hosts who provide temporary housing.</strong> Its goal is to help students stay in school while they work toward stable housing, with a vision of every college student in Wake County being safely housed.</p><p><a href="https://www.hostnc.org/" target="_blank" rel="noopener noreferrer">About HOST and its mission</a></p><p><a href="https://www.hostnc.org/contact-us" target="_blank" rel="noopener noreferrer">HOST: Contact Us</a></p><div class="meta-grid"><div class="meta-label">Email</div><div class="meta-value"><a href="mailto:info@hostnc.org">info@hostnc.org</a></div><div class="meta-label">Call or text</div><div class="meta-value"><a href="tel:+19842864151">984-286-4151</a></div></div><p>The contact page also links to the general inquiry, student enrollment and host home interest forms.</p></div></article>
+
+<article class="ref" id="raleigh-rent-trend">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Market context</div>
+          <div class="ref-title">Apartment List Rent Estimates — Raleigh Rent Trend</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Dataset</span>
+          <span class="tag">Raleigh</span>
+          <span class="tag">Rent trend</span>
+          <span class="tag">Apartment List</span>
+        </div>
+      </div>
+
+      <div class="ref-body"><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Source page</div>
+          <div class="meta-value"><a href="https://www.apartmentlist.com/research/category/data-rent-estimates" target="_blank" rel="noopener noreferrer">Apartment List Rent Estimates data downloads</a></div>
+
+          <div class="meta-label">Dataset used</div>
+          <div class="meta-value"><strong>Apartment List Rent Estimates 2026-08</strong> (CSV)</div>
+
+          <div class="meta-label">Filter for Raleigh</div>
+          <div class="meta-value"><strong>location_name = Raleigh, NC</strong> and <strong>location_type = City</strong>; then use the <strong>1br</strong> and <strong>2br</strong> rows.</div>
+
+          <div class="meta-label">Comparison used</div>
+          <div class="meta-value">August of each year, 2017–2026. Percent change is measured against August 2017.</div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+        </div>
+
+        <div class="use-note">
+          <strong>How to reproduce:</strong> Download the CSV from Apartment List, filter the dataset to Raleigh, NC (City), and read the <strong>2017_08 through 2026_08</strong> columns for the <strong>1br</strong> and <strong>2br</strong> rows. The “overall” row is not used in the article trend table.
+        </div>
+
+        <hr class="rule">
+
+        <h2>Raleigh August rent trend</h2>
+        <div class="trend-table-wrap">
+          <table class="trend-table">
+            <thead>
+              <tr>
+                <th>August</th>
+                <th>1 bedroom</th>
+                <th>Change vs. 2017</th>
+                <th>2 bedroom</th>
+                <th>Change vs. 2017</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+              <td>2017</td>
+              <td>$975</td>
+              <td>Baseline</td>
+              <td>$1,111</td>
+              <td>Baseline</td>
+            </tr>
+            <tr>
+              <td>2018</td>
+              <td>$989</td>
+              <td>+1.4%</td>
+              <td>$1,127</td>
+              <td>+1.4%</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td>$1,034</td>
+              <td>+6.1%</td>
+              <td>$1,179</td>
+              <td>+6.1%</td>
+            </tr>
+            <tr>
+              <td>2020</td>
+              <td>$1,035</td>
+              <td>+6.2%</td>
+              <td>$1,180</td>
+              <td>+6.2%</td>
+            </tr>
+            <tr>
+              <td>2021</td>
+              <td>$1,226</td>
+              <td>+25.7%</td>
+              <td>$1,397</td>
+              <td>+25.7%</td>
+            </tr>
+            <tr class="peak-row">
+              <td>2022</td>
+              <td>$1,367</td>
+              <td>+40.2%</td>
+              <td>$1,558</td>
+              <td>+40.2%</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td>$1,334</td>
+              <td>+36.8%</td>
+              <td>$1,521</td>
+              <td>+36.9%</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>$1,260</td>
+              <td>+29.2%</td>
+              <td>$1,436</td>
+              <td>+29.3%</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td>$1,233</td>
+              <td>+26.5%</td>
+              <td>$1,405</td>
+              <td>+26.5%</td>
+            </tr>
+            <tr class="latest-row">
+              <td>2026</td>
+              <td>$1,212</td>
+              <td>+24.3%</td>
+              <td>$1,381</td>
+              <td>+24.3%</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="use-note">
+          <strong>Takeaway:</strong> Raleigh 1-bedroom and 2-bedroom rents peaked at about <strong>40% above August 2017 levels in 2022</strong>. By August 2026 they had eased, but both remained about <strong>24% above 2017</strong>.
+        </div>
+        <div class="use-note">
+          <strong>Article wording note:</strong> Raleigh rents peaked in 2022 and remained above 2017 levels in 2026, but this graphic focuses on the housing options students are most likely to compare directly.
+        </div>
+      </div>
+    </article>
+
+<article class="ref" id="ncsu-affordable-supportive-housing">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Housing policy background</div>
+          <div class="ref-title">NC State Design — Affordable and Supportive Housing for NC State Students</div>
+        </div>
+        <div class="tags">
+          <span class="tag">NC State</span>
+          <span class="tag">Affordable housing</span>
+          <span class="tag">Student housing</span>
+          <span class="tag">Historical context</span>
+        </div>
+      </div>
+
+      <div class="ref-body"><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Organization</div>
+          <div class="meta-value">NC State College of Design, Affordable Housing + Sustainable Communities Initiative</div>
+
+          <div class="meta-label">Document</div>
+          <div class="meta-value">Affordable and Supportive Housing for NC State Students</div>
+
+          <div class="meta-label">Project director</div>
+          <div class="meta-value">Thomas Barrie, Emeritus Professor of Architecture</div>
+
+          <div class="meta-label">Faculty profile</div>
+          <div class="meta-value"><a href="https://design.ncsu.edu/people/tmbarrie/" target="_blank" rel="noopener noreferrer">Thomas Barrie — NC State College of Design</a></div>
+
+          <div class="meta-label">PDF</div>
+          <div class="meta-value"><a href="https://outreach.design.ncsu.edu/ah%2Bsc/wp-content/uploads/2019/09/Affordable-Housing-for-NC-State.pdf" target="_blank" rel="noopener noreferrer">NC State Design project poster</a></div>
+
+          <div class="meta-label">Project page</div>
+          <div class="meta-value"><a href="https://outreach.design.ncsu.edu/ah%2Bsc/affordable-and-supportive-housing-for-nc-state-students/" target="_blank" rel="noopener noreferrer">Affordable and Supportive Housing for NC State Students</a></div>
+
+          <div class="meta-label">Published</div>
+          <div class="meta-value">2019</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">NC State faculty/student housing research and design project</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Key facts for reporting</h2>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Housing and attendance costs</div>
+            <div class="fact-value">The project reported that, over the preceding ten years, <strong>average Raleigh housing prices and costs for attending NC State had risen approximately 50%</strong>.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Wage context</div>
+            <div class="fact-value">The same NC State project noted that <strong>the minimum wage had remained at $7.25 per hour</strong> while family incomes had not kept pace.</div>
+          </div>
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> NC State-specific historical context showing that student housing affordability and a stagnant $7.25 minimum wage were already identified as concerns by university researchers in 2019.
+        </div>
+      </div>
+    </article>
+
+<article class="ref" id="ncsu-dining-current-wage">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Current NC State wages</div>
+          <div class="ref-title">Current NC State Dining Student Wages — Fall 2026</div>
+        </div>
+        <div class="tags">
+          <span class="tag">NC State</span>
+          <span class="tag">Student wages</span>
+          <span class="tag">Dining</span>
+          <span class="tag">Fall 2026</span>
+        </div>
+      </div>
+
+      <div class="ref-body"><p class="use-note"><strong>Supporting reporting source.</strong> Retained from the original reference log. Historical wage, survey and market figures below are background; they are not inputs to the revised rent or personal-resource calculations above.</p>
+        <div class="meta-grid">
+          <div class="meta-label">Organization</div>
+          <div class="meta-value">NC State Campus Enterprises / NC State Dining</div>
+
+          <div class="meta-label">Position</div>
+          <div class="meta-value">Student Cook at Wolves’ Den — Fall 2026</div>
+
+          <div class="meta-label">URL</div>
+          <div class="meta-value"><a href="https://campusenterprises.ncsu.edu/dept/hr/opportunities/student/view/?job_id=pu9otqm0if" target="_blank" rel="noopener noreferrer">Current NC State Dining student job posting</a></div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">Current official NC State student-employment posting</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Key facts for reporting</h2>
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-label">Tier 1 starting wage</div>
+            <div class="fact-value">The Fall 2026 posting starts student employees at <strong>$11 per hour</strong> during the training-level Tier 1.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Tier 2 wage</div>
+            <div class="fact-value">After demonstrating sufficient skills, students are eligible for promotion to <strong>$12 per hour</strong>.</div>
+          </div>
+          <div class="fact">
+            <div class="fact-label">Federal Work-Study</div>
+            <div class="fact-value">The position is listed as <strong>Federal Work-Study eligible</strong>, showing that Dining's current wage structure can sit above the $7.25 FWS floor.</div>
+          </div>
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> Current contextual example of an NC State student job that pays above the $7.25 floor. It is not an input to the article’s Federal Work-Study wage model.
+        </div>
+      </div>
+    </article>
+
+
+
+<article class="ref" id="bls-housing-cpi-benchmarks"><div class="ref-head"><div><div class="ref-no">National price context</div><div class="ref-title">August 2026 CPI benchmarks, with a fixed release link</div></div></div><div class="ref-body">
+<p>The <a href="https://www.bls.gov/news.release/archives/cpi_09112026.htm">BLS August 2026 CPI release, published September 11, 2026</a> reports August-to-August increases of <strong>3.1% for lodging while at school</strong>, 2.7% for rent of primary residence and 3.4% for all items. The reference uses this fixed August comparison; a rolling “latest release” link would eventually point to a different month.</p>
+<p><a href="https://www.bls.gov/cpi/additional-resources/entry-level-item-descriptions.htm">BLS category definitions</a>: lodging while at school covers college/university owned, leased or controlled housing. Merely advertising a private rental on the NC State referral portal does not put it in that CPI category. Rent of primary residence is the closer national comparison for private off-campus rents. These national twelve-month changes provide context; they do not estimate NC State’s local rent inflation or explain an individual room-rate increase.</p>
+<div class="use-note"><strong>Reporting note:</strong> The draft graphic shown to University Housing during the Sept. 15 interview used the July 2026 lodging-while-at-school figure of 3.0%. This reference was updated to the newer August 2026 BLS reading of 3.1%. Housing officials should not be characterized as having responded specifically to the 3.1% figure.</div>
+</div></article>
+
+<article class="ref" id="map-basemap-attribution">
+      <div class="ref-head">
+        <div>
+          <div class="ref-no">Map attribution</div>
+          <div class="ref-title">Interactive Map Basemap Attribution — MapLibre, OpenFreeMap, OpenMapTiles and OpenStreetMap</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Mapping</span>
+          <span class="tag">Basemap</span>
+          <span class="tag">Technical attribution</span>
+        </div>
+      </div>
+
+      <div class="ref-body">
+        <div class="meta-grid">
+          <div class="meta-label">Map renderer</div>
+          <div class="meta-value"><a href="https://maplibre.org/maplibre-gl-js/docs/" target="_blank" rel="noopener noreferrer">MapLibre GL JS</a></div>
+
+          <div class="meta-label">Basemap / style</div>
+          <div class="meta-value"><a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> — Positron style used by the current interactive</div>
+
+          <div class="meta-label">Map tile/style attribution</div>
+          <div class="meta-value"><a href="https://openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a></div>
+
+          <div class="meta-label">Underlying map data</div>
+          <div class="meta-value"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></div>
+
+          <div class="meta-label">Accessed</div>
+          <div class="meta-value">Sept. 9, 2026</div>
+
+          <div class="meta-label">Source type</div>
+          <div class="meta-value">Interactive-map software, basemap service and geographic basemap data</div>
+        </div>
+
+        <hr class="rule">
+
+        <h2>Current on-map attribution</h2>
+        <div class="citation">
+          MapLibre | OpenFreeMap © OpenMapTiles Data from OpenStreetMap
+        </div>
+
+        <div class="use-note">
+          <strong>Article use:</strong> Technical attribution for the map background and renderer. These services provide the basemap and map display; they are <strong>not</strong> the source of the rental prices, listing locations or affordability calculations used in the article.
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<script src="assets/reviewed-data.js"></script>
+<script src="assets/rent-analysis.js?v=20260913-room-methods"></script>
+<script src="assets/reference-math.js?v=20260920-cleanrefs2"></script>
+<script>
+(() => {
+  const input = document.getElementById('reference-search-input');
+  const clear = document.getElementById('reference-search-clear');
+  const count = document.getElementById('reference-search-count');
+  const empty = document.getElementById('reference-no-results');
+  const refs = [...document.querySelectorAll('.refs > .ref')];
+
+  const normalize = value => value
+    .toLocaleLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[–—−]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const index = refs.map(ref => ({
+    ref,
+    text: normalize(ref.textContent)
+  }));
+
+  const render = () => {
+    const query = normalize(input.value);
+    const terms = query.split(' ').filter(Boolean);
+    let visible = 0;
+
+    index.forEach(({ ref, text }) => {
+      const matches = !terms.length || terms.every(term => text.includes(term));
+      ref.hidden = !matches;
+      if (matches) visible += 1;
+    });
+
+    clear.hidden = !query;
+    empty.style.display = visible ? 'none' : 'block';
+    count.textContent = query
+      ? `${visible} of ${refs.length}`
+      : `${refs.length} references`;
+  };
+
+  input.addEventListener('input', render);
+  clear.addEventListener('click', () => {
+    input.value = '';
+    render();
+    input.focus();
+  });
+
+  document.addEventListener('keydown', event => {
+    const active = document.activeElement;
+    const typing = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+
+    if (event.key === '/' && !typing) {
+      event.preventDefault();
+      input.focus();
+      input.select();
+    }
+
+    if (event.key === 'Escape' && input.value) {
+      input.value = '';
+      render();
+      input.focus();
+    }
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
