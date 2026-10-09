@@ -6,16 +6,16 @@
   width: 160% !important;
   max-width: none !important;
   height: auto !important;
-  transform: translate(-64%, -38%) !important;
+  transform: translate(-64%, -42%) !important;
 }
 
 .project-card:hover .park-it-here-image img {
-  transform: translate(-64%, -38%) !important;
+  transform: translate(-64%, -42%) !important;
 }
 
 @media (max-width: 880px) {
   .featured-project-card .project-card-art.park-it-here-image img {
-    transform: translate(-64%, -38%) !important;
+    transform: translate(-64%, -42%) !important;
   }
 }
 
@@ -109,3 +109,6 @@
   }
 }
 
+
+/* Render the original vector map at the thumbnail's native screen resolution. */
+.housing-map-image iframe {position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;}
