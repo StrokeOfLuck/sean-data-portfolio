@@ -277,6 +277,13 @@ html.archive-embed-desktop .sno-story-social-icons {
 </style>
 <style>.sno-story-body-content iframe{display:block;width:100%;border:0;max-width:100%}.sno-story-byline.byline-post-164314{font-family:"Karla"!important}.sno-story-social-icons .print-row-icon{display:none!important}
 .sno-story-social-icons .sno-row-icon-ring{background-repeat:no-repeat!important;background-position:center!important}
+/* Local SVG backgrounds are the single icon layer. The inherited bike
+   stylesheet also draws glyphs on the ring itself, beyond its child icons. */
+#wrap .sno-story-social-icons .sno-row-icon .sno-row-icon-ring::before,
+#wrap .sno-story-social-icons .sno-row-icon .sno-row-icon-ring::after {
+  content: none !important;
+  display: none !important;
+}
 /* Local SVG backgrounds provide the icons; suppress duplicate font/SVG glyphs. */
 .sno-story-social-icons .sno-row-icon-ring > i,
 .sno-story-social-icons .sno-row-icon-ring > svg{display:none!important}
