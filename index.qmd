@@ -46,7 +46,7 @@ Rental listings, university housing rates, interviews and interactive affordabil
 
 
 
-::: {.project-card .compact-project-card .recent-reporting-card}
+::: {.project-card .featured-project-card .recent-reporting-card}
 ::: {.project-card-art .project-card-image .park-it-here-image}
 ![](https://datawrapper.dwcdn.net/28Wwl/plain.png){fig-alt="Spin geofencing and NCDOT crash map from Park it here?"}
 <a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
@@ -131,7 +131,14 @@ Using computational text analysis to examine political rhetoric around real-worl
 :::
 :::
 
-::: {.project-card .featured-project-card}
+
+::::
+
+### More projects
+
+:::: {.more-projects-grid}
+
+::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
 ![](projects/assets/cards/tankietube-card.svg){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
 <a href="projects/tankietube.html" aria-label="Open TankieTube project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
@@ -152,11 +159,6 @@ Five-day University of Amsterdam research sprint comparing a Tankie transcript c
 :::
 :::
 
-::::
-
-### More projects
-
-:::: {.more-projects-grid}
 
 
 ::: {.project-card .compact-project-card}
