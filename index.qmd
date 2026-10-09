@@ -23,6 +23,27 @@ I use data, public records, computational methods, and visualization to investig
 :::: {.featured-projects}
 
 ::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image}
+![](projects/assets/housing-affordability/wolf-village.jpg){fig-alt="Baffin Hall at Wolf Village; photo by Diego Melchor / Technician"}
+<a href="projects/housing-affordability.html" aria-label="Open housing affordability reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Can NC State Students Afford to Live Near Campus?](projects/housing-affordability.qmd){.project-title-link}
+::: {.project-date}
+Oct. 2026
+:::
+:::
+::: {.project-tags}
+[Data Journalism]{.project-tag} [Housing]{.project-tag} [Reporting]{.project-tag}
+:::
+Published reporting combining rental listings, university housing rates, interviews and interactive affordability graphics. Includes a preserved article and source archive.
+
+[View project →](projects/housing-affordability.qmd){.project-link}
+:::
+:::
+
+::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image .park-it-here-image}
 ![](https://datawrapper.dwcdn.net/28Wwl/plain.png){fig-alt="Spin geofencing and NCDOT crash map from Park it here?"}
 <a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>

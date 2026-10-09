@@ -40,6 +40,47 @@ jobs:
           repository: StrokeOfLuck/house-ptr-scraper
           path: house-ptr-scraper
 
+      - name: Restore housing article archive images
+        run: |
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import base64
+          folder = Path('projects/assets/housing-affordability')
+          for name in ['wolf-village.jpg', 'publication-snapshot.png']:
+              (folder / name).write_bytes(base64.b64decode((folder / (name + '.b64')).read_text()))
+          PYTHON
+
+      - name: Checkout pinned housing graphics archive
+        if: ${{ hashFiles('projects/assets/housing-affordability/graphics/technician-embed.html') == '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: StrokeOfLuck/ncsu-rent-article
+          ref: e9be82f9423762715fd6eda7e0b4cc9a4f36ef09
+          path: housing-archive-source
+
+      - name: Preserve housing graphics and evidence with portfolio
+        run: |
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import shutil
+          source = Path('housing-archive-source')
+          target = Path('projects/assets/housing-affordability/graphics')
+          if not (target / 'technician-embed.html').exists():
+              target.mkdir(parents=True, exist_ok=True)
+              for name in ['assets', 'data', 'docs']:
+                  shutil.copytree(source / name, target / name, dirs_exist_ok=True, ignore=shutil.ignore_patterns('.*'))
+              for file in source.glob('*.html'):
+                  shutil.copy2(file, target / file.name)
+          PYTHON
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add projects/assets/housing-affordability
+          if ! git diff --cached --quiet; then
+            git commit -m 'Persist housing article graphics and evidence archive [skip ci]'
+            git push origin HEAD:main
+          fi
+          rm -rf housing-archive-source
+
       - name: Restore static Technician article PDF
         run: |
           python3 -m scripts.restore_technician_pdf

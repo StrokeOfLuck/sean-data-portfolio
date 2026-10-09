@@ -1,0 +1,240 @@
+---
+pagetitle: "Can NC State Students Afford to Live Near Campus?"
+page-layout: full
+title-block-banner: false
+toc: false
+---
+
+<style>
+.quarto-title-block,
+#title-block-header { display:none !important; }
+
+.park-project-shell {
+  width:min(94vw, 1320px);
+  margin:2rem auto 3rem;
+}
+
+.park-project-card {
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  padding:2rem;
+  border:1px solid rgba(127,127,127,.24);
+  border-radius:.9rem;
+  background:var(--bs-body-bg);
+  box-shadow:0 .5rem 1.6rem rgba(0,0,0,.055);
+}
+
+.park-project-copy {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:.15rem 0;
+}
+
+.park-eyebrow {
+  margin:0 0 .65rem;
+  color:var(--bs-primary);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.park-title {
+  margin:0;
+  font-size:clamp(2rem, 3.4vw, 3.35rem);
+  line-height:1.04;
+  font-weight:750;
+  letter-spacing:-.025em;
+}
+
+.park-meta {
+  margin:.8rem 0 1.55rem;
+  color:var(--bs-secondary-color);
+  font-size:1.03rem;
+}
+
+.park-summary {
+  margin:0 0 1.35rem;
+  font-size:1.08rem;
+  line-height:1.58;
+}
+
+.park-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.42rem;
+  margin:0 0 1.5rem;
+}
+
+.park-tags span {
+  display:inline-block;
+  padding:.24rem .62rem;
+  border:1px solid rgba(var(--bs-primary-rgb), .18);
+  border-radius:999px;
+  background:rgba(var(--bs-primary-rgb), .065);
+  color:var(--bs-primary);
+  font-size:.78rem;
+}
+
+.park-actions {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:.75rem;
+}
+
+.park-actions a {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  width:100%;
+  min-height:48px;
+  padding:.72rem 1rem;
+  border-radius:.42rem;
+  font-weight:700;
+  text-decoration:none !important;
+  transition:transform 140ms ease, box-shadow 140ms ease;
+}
+
+.park-actions a:hover {
+  transform:translateY(-1px);
+}
+
+.park-primary {
+  color:#fff !important;
+  border:1px solid var(--bs-primary);
+  background:var(--bs-primary);
+}
+
+.park-secondary {
+  color:var(--bs-body-color) !important;
+  border:1px solid rgba(127,127,127,.35);
+  background:var(--bs-body-bg);
+}
+
+.park-preview-wrap {
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-width:0;
+}
+
+.park-browser {
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border:1px solid rgba(99,108,118,.28);
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 .9rem 2rem rgba(18,29,41,.13);
+}
+
+.park-browser-bar {
+  position:relative;
+  height:32px;
+  border-bottom:1px solid #d7dce1;
+  background:#f3f5f7;
+}
+
+.park-window-dots {
+  position:absolute;
+  top:50%;
+  left:12px;
+  display:flex;
+  gap:6px;
+  transform:translateY(-50%);
+}
+
+.park-window-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.park-dot-red { background:#ff5f57; }
+.park-dot-yellow { background:#febc2e; }
+.park-dot-green { background:#28c840; }
+
+.park-article-frame {
+  display:block;
+  width:100%;
+  height:700px;
+  border:0;
+  background:#fff;
+}
+
+.park-bottom-nav {
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  margin:1.35rem .25rem 0;
+  padding-top:1rem;
+  border-top:1px solid rgba(127,127,127,.22);
+  font-size:.92rem;
+}
+
+@media (max-width: 700px) {
+  .park-actions {
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .park-project-shell {
+    width:min(95vw, 1320px);
+    margin:1rem auto 2rem;
+  }
+  .park-project-card {
+    gap:1.25rem;
+    padding:1rem;
+  }
+  .park-article-frame { height:560px; }
+}
+</style>
+
+```{=html}
+<div class="park-project-shell">
+  <div class="park-project-card">
+    <section class="park-project-copy">
+      <div class="park-eyebrow">Published reporting</div>
+      <h1 class="park-title">Can NC State Students Afford to Live Near Campus?</h1>
+      <div class="park-meta">Technician &nbsp;·&nbsp; Oct. 8, 2026</div>
+      <p class="park-summary">Published reporting combining interviews, advertised rental listings, university housing rates and an interactive affordability model to examine the cost of living near NC State.</p>
+      <div class="park-tags" aria-label="Project tags">
+        <span>Data Journalism</span>
+        <span>Housing</span>
+        <span>Reporting</span>
+        <span>Interactive Graphics</span>
+        <span>Interviews</span>
+      </div>
+    </section>
+
+    <section class="park-preview-wrap" aria-label="Preview of the published Technician article">
+      <div class="park-browser">
+        <div class="park-browser-bar" aria-hidden="true">
+          <div class="park-window-dots">
+            <span class="park-window-dot park-dot-red"></span>
+            <span class="park-window-dot park-dot-yellow"></span>
+            <span class="park-window-dot park-dot-green"></span>
+          </div>
+        </div>
+        <iframe class="park-article-frame" src="assets/housing-affordability/article.html" title="Scrollable preserved housing article with interactive graphics" loading="eager"></iframe>
+      </div>
+    </section>
+
+    <p class="park-summary" style="font-size:.9rem;margin:0">Archived Oct. 9, 2026. The article, photo, interactive graphics, data and source materials are saved with this portfolio.</p>
+    <div class="park-actions">
+      <a class="park-primary" href="https://technicianonline.com/164314/news/can-nc-state-students-afford-to-live-near-campus/" target="_blank" rel="noopener noreferrer">Read on Technician ↗</a>
+      <a class="park-secondary" href="assets/housing-affordability/article.html" target="_blank" rel="noopener noreferrer">Open preserved article ↗</a>
+      <a class="park-secondary" href="assets/housing-affordability/publication-snapshot.png" target="_blank" rel="noopener noreferrer">View publication snapshot ↗</a>
+    </div>
+  </div>
+
+  <nav class="park-bottom-nav" aria-label="Project navigation">
+    <a href="../index.html">← Back to projects</a>
+    <span></span>
+  </nav>
+</div>
+```
