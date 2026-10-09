@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="390" viewBox="0 0 1600 390" role="img" aria-labelledby="title desc">
+  <title id="title">NC State 2024–25 Common Data Set Section F1 housing figures</title>
+  <desc id="desc">Excerpt of Section F1 showing that 97 percent of first-time first-year students and 38 percent of undergraduates live in college-owned, operated, or affiliated housing, while 3 percent and 62 percent respectively live off campus or commute.</desc>
+  <rect width="1600" height="390" fill="#ffffff"/>
+  <text x="44" y="52" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#111111">F1. Student Life — housing figures</text>
+  <text x="44" y="86" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#555555">Common Data Set 2024–2025</text>
+
+  <rect x="44" y="118" width="1512" height="88" fill="#d9d9d9" stroke="#222222" stroke-width="2"/>
+  <line x1="1088" y1="118" x2="1088" y2="350" stroke="#222222" stroke-width="2"/>
+  <line x1="1334" y1="118" x2="1334" y2="350" stroke="#222222" stroke-width="2"/>
+
+  <text x="1211" y="151" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">
+    <tspan x="1211" dy="0">First-time, first-</tspan>
+    <tspan x="1211" dy="28">year students</tspan>
+  </text>
+  <text x="1445" y="166" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#111111">Undergraduates</text>
+
+  <rect x="44" y="206" width="1512" height="72" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <line x1="1088" y1="206" x2="1088" y2="278" stroke="#222222" stroke-width="2"/>
+  <line x1="1334" y1="206" x2="1334" y2="278" stroke="#222222" stroke-width="2"/>
+  <text x="62" y="250" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">Percent who live in college-owned, -operated, or -affiliated housing</text>
+  <text x="1211" y="250" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">97.00</text>
+  <text x="1445" y="250" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">38.00</text>
+
+  <rect x="44" y="278" width="1512" height="72" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <line x1="1088" y1="278" x2="1088" y2="350" stroke="#222222" stroke-width="2"/>
+  <line x1="1334" y1="278" x2="1334" y2="350" stroke="#222222" stroke-width="2"/>
+  <text x="62" y="322" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">Percent who live off campus or commute</text>
+  <text x="1211" y="322" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">3.00</text>
+  <text x="1445" y="322" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#111111">62.00</text>
+</svg>

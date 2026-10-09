@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" role="img" aria-labelledby="title desc">
+  <title id="title">University Housing rate increase from 2025–26 to 2026–27</title>
+  <desc id="desc">Dot plot of projected NC State University Housing room-rate increases. Eight of ten listed housing options increase by more than the Bureau of Labor Statistics 3.0 percent lodging-while-at-school benchmark.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#171717}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;fill:#66615b}
+    .title{font-size:28px;font-weight:800}
+    .deck{font-size:14px;fill:#5f5b55}
+    .axis{font-size:11px;fill:#77716a}
+    .label{font-size:12.5px;font-weight:700}
+    .value{font-size:12.5px;font-weight:800;text-anchor:end}
+    .delta{font-size:10px;font-weight:600;fill:#77716a;text-anchor:end}
+    .grid{stroke:#ddd9d1;stroke-width:1}
+    .track{stroke:#e8e4dd;stroke-width:2}
+    .benchmark{stroke:#6fa9d8;stroke-width:2}
+    .dot{fill:#8b1f2d}
+    .dot-below{fill:#77716a}
+    .note{font-size:10.5px;fill:#66615b}
+    .source{font-size:9.5px;fill:#77716a}
+  </style>
+  <rect width="1000" height="610" fill="#fff"/>
+
+  <text x="34" y="34" class="eyebrow">NC STATE UNIVERSITY HOUSING</text>
+  <text x="34" y="69" class="title">University Housing rate increase from 2025–26 to 2026–27*</text>
+  <text x="34" y="96" class="deck">Eight of 10 published housing options rise faster than the BLS lodging-while-at-school benchmark.</text>
+
+  <text x="34" y="132" class="axis" font-weight="800">Housing type/location</text>
+  <text x="390" y="132" class="axis">0%</text>
+  <text x="507.5" y="132" class="axis" text-anchor="middle">2%</text>
+  <text x="625" y="132" class="axis" text-anchor="middle">4%</text>
+  <text x="742.5" y="132" class="axis" text-anchor="middle">6%</text>
+  <text x="860" y="132" class="axis" text-anchor="middle">8%</text>
+
+  <line x1="390" y1="140" x2="390" y2="527" class="grid"/>
+  <line x1="507.5" y1="140" x2="507.5" y2="527" class="grid"/>
+  <line x1="625" y1="140" x2="625" y2="527" class="grid"/>
+  <line x1="742.5" y1="140" x2="742.5" y2="527" class="grid"/>
+  <line x1="860" y1="140" x2="860" y2="527" class="grid"/>
+
+  <line x1="566.25" y1="140" x2="566.25" y2="527" class="benchmark"/>
+  <rect x="486" y="110" width="160" height="18" rx="3" fill="#fff"/>
+  <text x="566.25" y="123" text-anchor="middle" font-size="10.5" font-weight="800" fill="#5d93bf">BLS lodging while at school 3.0%</text>
+
+  <g>
+    <text x="34" y="163" class="label">Doubles</text>
+    <line x1="390" y1="159" x2="860" y2="159" class="track"/>
+    <circle cx="652.8" cy="159" r="5.5" class="dot"/>
+    <text x="958" y="158" class="value">4.47%</text>
+    <text x="958" y="172" class="delta">+$170/semester</text>
+  </g>
+  <g>
+    <text x="34" y="201" class="label">Singles</text>
+    <line x1="390" y1="197" x2="860" y2="197" class="track"/>
+    <circle cx="836.6" cy="197" r="5.5" class="dot"/>
+    <text x="958" y="196" class="value">7.60%</text>
+    <text x="958" y="210" class="delta">+$325/semester</text>
+  </g>
+  <g>
+    <text x="34" y="239" class="label">Wolf Village/Wolf Ridge — 1 bedroom/studio</text>
+    <line x1="390" y1="235" x2="860" y2="235" class="track"/>
+    <circle cx="830.6" cy="235" r="5.5" class="dot"/>
+    <text x="958" y="234" class="value">7.50%</text>
+    <text x="958" y="248" class="delta">+$375/semester</text>
+  </g>
+  <g>
+    <text x="34" y="277" class="label">Wolf Village/Wolf Ridge — 2, 3 or 4 bedrooms</text>
+    <line x1="390" y1="273" x2="860" y2="273" class="track"/>
+    <circle cx="755.6" cy="273" r="5.5" class="dot"/>
+    <text x="958" y="272" class="value">6.22%</text>
+    <text x="958" y="286" class="delta">+$280/semester</text>
+  </g>
+  <g>
+    <text x="34" y="315" class="label">E.S. King — 1-bedroom undergraduate double</text>
+    <line x1="390" y1="311" x2="860" y2="311" class="track"/>
+    <circle cx="710.5" cy="311" r="5.5" class="dot"/>
+    <text x="958" y="310" class="value">5.45%</text>
+    <text x="958" y="324" class="delta">+$225/semester</text>
+  </g>
+  <g>
+    <text x="34" y="353" class="label">E.S. King/Western Manor — studio</text>
+    <line x1="390" y1="349" x2="860" y2="349" class="track"/>
+    <circle cx="766.6" cy="349" r="5.5" class="dot"/>
+    <text x="958" y="348" class="value">6.41%</text>
+    <text x="958" y="362" class="delta">+$250/semester</text>
+  </g>
+  <g>
+    <text x="34" y="391" class="label">E.S. King/Western Manor — 1 bedroom</text>
+    <line x1="390" y1="387" x2="860" y2="387" class="track"/>
+    <circle cx="692.1" cy="387" r="5.5" class="dot"/>
+    <text x="958" y="386" class="value">5.14%</text>
+    <text x="958" y="400" class="delta">+$225/semester</text>
+  </g>
+  <g>
+    <text x="34" y="429" class="label">E.S. King/Western Manor — 2 bedroom</text>
+    <line x1="390" y1="425" x2="860" y2="425" class="track"/>
+    <circle cx="742.5" cy="425" r="5.5" class="dot"/>
+    <text x="958" y="424" class="value">6.00%</text>
+    <text x="958" y="438" class="delta">+$300/semester</text>
+  </g>
+  <g>
+    <text x="34" y="467" class="label">Coastal Quarters — single</text>
+    <line x1="390" y1="463" x2="860" y2="463" class="track"/>
+    <circle cx="563.8" cy="463" r="5.5" class="dot-below"/>
+    <text x="958" y="462" class="value">2.96%</text>
+    <text x="958" y="476" class="delta">+$125/semester</text>
+  </g>
+  <g>
+    <text x="34" y="505" class="label">Coastal Quarters — double</text>
+    <line x1="390" y1="501" x2="860" y2="501" class="track"/>
+    <circle cx="501.6" cy="501" r="5.5" class="dot-below"/>
+    <text x="958" y="500" class="value">1.90%</text>
+    <text x="958" y="514" class="delta">+$75/semester</text>
+  </g>
+
+  <line x1="34" y1="543" x2="966" y2="543" stroke="#ddd9d1"/>
+  <text x="34" y="565" class="note">* Percentage change = (projected 2026–27 semester room rate − 2025–26 semester room rate) ÷ 2025–26 rate.</text>
+  <text x="34" y="582" class="source">Room charges only; ResNet and communication fees are excluded from the year-to-year comparison. BLS benchmark: July 2026 12-month change for lodging while at school.</text>
+  <text x="34" y="599" class="source">Sources: NC State University Housing published rates and U.S. Bureau of Labor Statistics CPI.</text>
+</svg>

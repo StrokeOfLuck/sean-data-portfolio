@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NC State Room Listing Visual Audit</title>
+<style>
+:root{
+  --red:#cc0000; --ink:#15171a; --muted:#66707b; --bg:#f5f6f7; --panel:#fff;
+  --line:#dde1e5; --soft:#eef0f2; --green:#137a48; --orange:#a84f00;
+  --blue:#285b9b; --danger:#a71e22; --shadow:0 1px 2px rgba(0,0,0,.04),0 10px 28px rgba(0,0,0,.035);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topin{max-width:1540px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;gap:11px;align-items:center;min-width:0}
+.brandmark{width:10px;height:38px;border-radius:3px;background:var(--red);flex:none}
+.brand b{display:block;font-size:15px}
+.brand small{display:block;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font-weight:700;color:#30343a}
+.btn:hover{background:#f7f8f9}
+.btn.dark{background:#191b1e;color:white;border-color:#191b1e}
+.btn.red{background:var(--red);color:#fff;border-color:var(--red)}
+.wrap{max-width:1540px;margin:auto;padding:18px}
+.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin:3px 0 13px}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:32px;line-height:1.05;margin:0 0 6px}
+.hero p{margin:0;color:var(--muted);max-width:880px;font-size:14px;line-height:1.45}
+.tabs{display:flex;background:#e8eaed;padding:4px;border-radius:9px;gap:3px;flex:none}
+.tab{border:0;background:transparent;border-radius:7px;padding:8px 10px;font-weight:750;color:#606872}
+.tab.active{background:#fff;color:#111;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.summary{display:grid;grid-template-columns:2fr repeat(5,minmax(80px,.48fr));border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:13px;box-shadow:var(--shadow)}
+.summary>div{background:white;padding:11px 13px}
+.progressline{display:flex;justify-content:space-between;gap:12px;font-size:12px;font-weight:800}
+.bar{height:8px;background:#eceff1;border-radius:999px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--red);width:0}
+.metric{text-align:center}
+.metric b{font-size:18px;display:block}
+.metric span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.workspace{display:grid;grid-template-columns:280px minmax(0,1fr) 355px;gap:13px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.sidehead{padding:10px;border-bottom:1px solid var(--line);display:grid;gap:7px}
+.search{width:100%;border:1px solid var(--line);background:#fafbfc;border-radius:7px;padding:9px 10px}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.filters select{border:1px solid var(--line);border-radius:7px;padding:7px;background:#fff;color:#444;font-size:12px}
+.list{height:calc(100vh - 250px);min-height:500px;overflow:auto}
+.listrow{display:grid;grid-template-columns:55px minmax(0,1fr);gap:9px;padding:10px;border-bottom:1px solid var(--line);cursor:pointer}
+.listrow:hover{background:#fafbfc}
+.listrow.active{background:#fff2f2;box-shadow:inset 3px 0 var(--red)}
+.thumb{height:55px;border-radius:6px;background:#e0e3e7;overflow:hidden;border:1px solid #d7dade}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .none{height:100%;display:grid;place-items:center;font-size:9px;color:#7a828a;text-align:center;padding:4px}
+.lname{font-size:12px;font-weight:800;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lmeta{font-size:11px;color:var(--muted);margin-top:3px}
+.lstatus{font-size:10px;font-weight:800;margin-top:4px}
+.private{color:var(--green)} .shared{color:var(--orange)} .unclear{color:#59616a} .exclude{color:var(--danger)}
+.viewhead{padding:11px 13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.viewhead small{display:block;color:var(--muted);margin-top:2px}
+.viewerbody{padding:14px}
+.titleline{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:11px}
+.titleline h2{font-size:20px;margin:0 0 4px;line-height:1.2}
+.price{font-size:27px;font-weight:900;letter-spacing:-.5px}
+.submeta{font-size:12px;color:var(--muted);margin-top:3px}
+.source{white-space:nowrap;text-decoration:none}
+.photo{position:relative;background:#e6e8eb;border:1px solid #d6dade;border-radius:9px;overflow:hidden;aspect-ratio:16/9;display:grid;place-items:center}
+.photo img{width:100%;height:100%;object-fit:contain;background:#191b1e;display:block}
+.phnone{color:#6d747c;text-align:center;font-weight:700}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,0,0,.67);color:#fff;font-size:23px;display:grid;place-items:center}
+.arrow.prev{left:9px}.arrow.next{right:9px}
+.photocount{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;border-radius:999px;padding:5px 8px;font-size:11px}
+.caption{font-size:11px;color:#5f6770;margin:6px 1px 0;min-height:16px}
+.strip{display:flex;gap:6px;overflow:auto;padding:8px 0 1px}
+.strip button{flex:0 0 72px;height:50px;border:2px solid transparent;padding:0;border-radius:6px;overflow:hidden;background:#e2e5e8}
+.strip button.active{border-color:var(--red)}
+.strip img{width:100%;height:100%;object-fit:cover;display:block}
+.metaChips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:11px;border-radius:999px;background:#f0f2f4;padding:5px 8px;color:#555e67}
+.desc{margin-top:11px;border:1px solid var(--line);background:#fafbfc;border-radius:8px;padding:12px}
+.desc strong{display:block;font-size:12px;margin-bottom:6px}
+.desc p{white-space:pre-wrap;margin:0;line-height:1.48;font-size:13px;color:#35393e;max-height:230px;overflow:auto}
+.textaudit{margin-top:10px;border:1px solid #e2e4e7;border-radius:8px;padding:11px;background:#fff}
+.textaudit summary{cursor:pointer;font-weight:800;font-size:12px}
+.textgrid{display:grid;gap:7px;margin-top:9px;font-size:12px}
+.textgrid span{color:var(--muted)}
+.classify{padding:14px}
+.classify h2{font-family:Georgia,"Times New Roman",serif;font-size:22px;margin:0}
+.savehint{font-size:11px;color:var(--muted);margin:3px 0 11px}
+.question{font-weight:800;font-size:13px;margin-bottom:5px}
+.choice{width:100%;border:1px solid var(--line);background:white;text-align:left;border-radius:8px;padding:11px 12px;margin:6px 0}
+.choice:hover{background:#fafbfc}
+.choice b{display:block;font-size:14px}
+.choice span{font-size:11px;color:var(--muted)}
+.choice.selected.private{border-color:#76c69b;background:#effaf4}
+.choice.selected.shared{border-color:#efad70;background:#fff5eb}
+.choice.selected.unclear{border-color:#aab2ba;background:#f5f7f8}
+.choice.selected.exclude{border-color:#e09a9d;background:#fff1f1}
+label{display:block;font-size:11px;font-weight:800;margin:12px 0 5px}
+textarea{width:100%;min-height:115px;border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical;background:#fbfcfd}
+.smallnote{font-size:10px;color:var(--muted);line-height:1.4;margin-top:6px}
+.classactions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:11px}
+.keyboard{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);font-size:10px;color:#737b84;line-height:1.5}
+kbd{border:1px solid #ccd1d6;background:#f7f8f9;border-radius:4px;padding:1px 4px;font-size:9px}
+.hidden{display:none!important}
+.reference{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.refhead{padding:15px;border-bottom:1px solid var(--line)}
+.refhead h2{font-family:Georgia,"Times New Roman",serif;margin:0 0 6px;font-size:23px}
+.refhead p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.refcontrols{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.refcontrols input,.refcontrols select{border:1px solid var(--line);border-radius:7px;padding:8px;background:#fff}
+.tablewrap{overflow:auto;max-height:70vh}
+table{width:100%;border-collapse:collapse;min-width:980px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:12px}
+th{position:sticky;top:0;background:#fafbfc;z-index:2;text-transform:uppercase;letter-spacing:.04em;font-size:10px;color:#626a73}
+td.notes{max-width:330px}
+.pill{display:inline-block;font-size:10px;font-weight:800;border-radius:999px;padding:4px 7px;background:#eef1f3}
+.pill.private{background:#e9f7ef}.pill.shared{background:#fff0e3}.pill.exclude{background:#fdeced}
+.method{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:var(--shadow)}
+.method h3{font-family:Georgia,"Times New Roman",serif;margin:0 0 6px;font-size:19px}
+.method p{font-size:12px;color:#4d545b;line-height:1.5;margin:0}
+.toast{position:fixed;right:18px;bottom:18px;background:#202327;color:#fff;padding:10px 13px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.22);font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:100}
+.toast.show{opacity:1}
+@media(max-width:1100px){
+  .workspace{grid-template-columns:250px minmax(0,1fr)}
+  .classify{grid-column:1/-1}
+  .list{height:650px}
+  .summary{grid-template-columns:1fr 1fr 1fr}
+  .progresscell{grid-column:1/-1}
+}
+@media(max-width:740px){
+  .topin,.wrap{padding-left:10px;padding-right:10px}
+  .topin{align-items:flex-start}
+  .actions .btn.secondary{display:none}
+  .hero{display:block}
+  .tabs{margin-top:10px;width:max-content}
+  .summary{grid-template-columns:1fr 1fr}
+  .progresscell{grid-column:1/-1}
+  .workspace{display:block}
+  .panel{margin-bottom:10px}
+  .list{height:220px;min-height:0}
+  .titleline{display:block}
+  .source{display:inline-block;margin-top:8px}
+  .photo{aspect-ratio:4/3}
+  .hero h1{font-size:28px}
+  .brand small{max-width:190px}
+}
+
+.floatnav{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  z-index:90;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:7px;
+  border:1px solid rgba(0,0,0,.12);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-radius:999px;
+  box-shadow:0 10px 34px rgba(0,0,0,.18);
+}
+.floatnav .btn{
+  border-radius:999px;
+  padding:10px 15px;
+  min-width:108px;
+}
+.floatnav .floatcount{
+  min-width:90px;
+  text-align:center;
+  font-size:11px;
+  font-weight:800;
+  color:#59616a;
+  padding:0 4px;
+}
+@media(max-width:740px){
+  body{padding-bottom:74px}
+  .floatnav{
+    left:10px;
+    right:10px;
+    bottom:10px;
+    transform:none;
+    justify-content:space-between;
+    border-radius:14px;
+  }
+  .floatnav .btn{
+    flex:1;
+    min-width:0;
+    padding:11px 10px;
+  }
+  .floatnav .floatcount{
+    min-width:76px;
+  }
+}
+
+
+.classdock{
+  position:fixed;
+  right:18px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:88;
+  width:178px;
+  display:grid;
+  gap:7px;
+  padding:8px;
+  border:1px solid rgba(0,0,0,.12);
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-radius:14px;
+  box-shadow:0 12px 36px rgba(0,0,0,.18);
+}
+.classdock .docktitle{
+  font-size:10px;
+  font-weight:900;
+  color:#6b737c;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:1px 4px 3px;
+}
+.dockchoice{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:10px;
+  padding:10px 11px;
+  text-align:left;
+  font-weight:850;
+  line-height:1.15;
+}
+.dockchoice:hover{background:#f8f9fa}
+.dockchoice.private{color:var(--green)}
+.dockchoice.shared{color:var(--orange)}
+.dockchoice.unclear{color:#59616a}
+.dockchoice.exclude{color:var(--danger)}
+.dockchoice.selected.private{border-color:#76c69b;background:#effaf4}
+.dockchoice.selected.shared{border-color:#efad70;background:#fff5eb}
+.dockchoice.selected.unclear{border-color:#aab2ba;background:#f5f7f8}
+.dockchoice.selected.exclude{border-color:#e09a9d;background:#fff1f1}
+.dockchoice small{
+  display:block;
+  margin-top:3px;
+  font-size:9px;
+  font-weight:700;
+  color:#7a828a;
+}
+@media(max-width:1280px){
+  .classdock{
+    right:10px;
+    width:154px;
+  }
+}
+@media(max-width:1100px){
+  body{padding-bottom:154px}
+  .classdock{
+    left:10px;
+    right:10px;
+    top:auto;
+    bottom:70px;
+    transform:none;
+    width:auto;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    border-radius:14px;
+    padding:7px;
+  }
+  .classdock .docktitle{display:none}
+  .dockchoice{
+    text-align:center;
+    padding:9px 8px;
+  }
+  .dockchoice small{display:none}
+  .floatnav{bottom:10px}
+}
+@media(max-width:520px){
+  .dockchoice{font-size:12px}
+}
+
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="topin">
+    <div class="brand">
+      <div class="brandmark"></div>
+      <div><b>NC State Room Listing Visual Audit</b><small>Finalized Sept. 20, 2026 • Sept. 9 snapshot • 76 room listings</small></div>
+    </div>
+    <div class="actions">
+      <button class="btn secondary" id="backupBtn">Backup JSON</button>
+      <label class="btn secondary" for="restoreInput" style="margin:0">Restore backup</label>
+      <input id="restoreInput" type="file" accept=".json,application/json" hidden>
+      <button class="btn dark" id="exportBtn">Export local copy</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Does the renter get the bedroom to themselves?</h1>
+      <p>Finalized manual review of the saved Sept. 9 listing photographs and descriptions. The published classifications are loaded from the frozen audit CSV; any changes you click here affect only your local browser.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="review">Review</button>
+      <button class="tab" data-tab="reference">Reference table</button>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="progresscell">
+      <div class="progressline"><span id="progressText">0 of 76 reviewed</span><span id="progressPct">0%</span></div>
+      <div class="bar"><i id="bar"></i></div>
+    </div>
+    <div class="metric"><b id="mPrivate">0</b><span>Private</span></div>
+    <div class="metric"><b id="mShared">0</b><span>Shared</span></div>
+    <div class="metric"><b id="mUnclear">0</b><span>Unclear</span></div>
+    <div class="metric"><b id="mExclude">0</b><span>Exclude</span></div>
+    <div class="metric"><b id="mRemain">76</b><span>Remaining</span></div>
+  </div>
+
+  <div id="reviewView">
+    <div class="workspace">
+      <aside class="panel">
+        <div class="sidehead">
+          <input class="search" id="search" placeholder="Search listing, ID, price…">
+          <div class="filters">
+            <select id="statusFilter">
+              <option value="all">All decisions</option>
+              <option value="unreviewed">Unreviewed</option>
+              <option value="reviewed">Reviewed</option>
+              <option value="Private bedroom">Private</option>
+              <option value="Shared bedroom">Shared</option>
+              <option value="Unclear">Unclear</option>
+              <option value="Exclude">Exclude</option>
+            </select>
+            <select id="bandFilter">
+              <option value="all">All distances</option>
+              <option value="0–1 mi">0–1 mi</option>
+              <option value=">1–3 mi">&gt;1–3 mi</option>
+              <option value=">3–5 mi">&gt;3–5 mi</option>
+              <option value="other">Other / no band</option>
+            </select>
+          </div>
+        </div>
+        <div class="list" id="list"></div>
+      </aside>
+
+      <main class="panel">
+        <div class="viewhead">
+          <div><b id="counter"></b><small id="siteId"></small></div>
+          <div><button class="btn" id="prevBtn">← Previous</button> <button class="btn red" id="nextBtn">Next →</button></div>
+        </div>
+        <div class="viewerbody">
+          <div class="titleline">
+            <div>
+              <h2 id="name"></h2>
+              <div><span class="price" id="price"></span></div>
+              <div class="submeta" id="submeta"></div>
+            </div>
+            <a class="btn source" id="source" target="_blank" rel="noopener">Original listing ↗</a>
+          </div>
+          <div class="photo" id="photoBox">
+            <img id="mainPhoto" alt="Listing photo">
+            <div class="phnone hidden" id="noPhoto">No saved photo URL for this listing.</div>
+            <button class="arrow prev" id="photoPrev" aria-label="Previous photo">‹</button>
+            <button class="arrow next" id="photoNext" aria-label="Next photo">›</button>
+            <div class="photocount" id="photoCount"></div>
+          </div>
+          <div class="caption" id="caption"></div>
+          <div class="strip" id="strip"></div>
+          <div class="metaChips" id="chips"></div>
+
+          <div class="desc">
+            <strong>Saved Sept. 9 listing description</strong>
+            <p id="description"></p>
+          </div>
+
+          <details class="textaudit">
+            <summary>Existing text-only audit evidence</summary>
+            <div class="textgrid">
+              <div><span>Prior text judgment:</span> <b id="textDoor"></b></div>
+              <div><span>Evidence status:</span> <b id="textAudit"></b></div>
+              <div><span>Evidence excerpt:</span> <span id="textEvidence"></span></div>
+              <div><span>Why:</span> <span id="textRationale"></span></div>
+            </div>
+          </details>
+        </div>
+      </main>
+
+      <section class="panel classify">
+        <h2>Manual visual review</h2>
+        <div class="savehint"><strong>Final reference:</strong> 74 private, 1 shared, 1 unclear. Clicking a different choice changes only your local copy.</div>
+        <div class="question">Based on the saved listing material, what can you establish?</div>
+
+        <button class="choice private" data-value="Private bedroom"><b>Private bedroom</b><span>One occupant appears to have the sleeping room to themselves.</span></button>
+        <button class="choice shared" data-value="Shared bedroom"><b>Shared bedroom</b><span>The listing shows or states multiple occupants sharing the sleeping room.</span></button>
+        <button class="choice unclear" data-value="Unclear"><b>Unclear</b><span>The available photos/text do not establish bedroom exclusivity.</span></button>
+        <button class="choice exclude" data-value="Exclude"><b>Exclude</b><span>Not a usable room listing for this audit.</span></button>
+
+        <label for="notes">Evidence note</label>
+        <textarea id="notes" placeholder="Example: Bedroom photo shows one bed; description says “your own private bedroom.”"></textarea>
+        <div class="smallnote">Keep the note factual: what the photo or listing text actually shows or says. “Unclear” is a valid result.</div>
+
+        <div class="classactions">
+          <button class="btn" id="clearBtn">Clear decision</button>
+          <button class="btn red" id="saveNextBtn">Save & next</button>
+        </div>
+        <div class="keyboard"><kbd>1</kbd> private &nbsp; <kbd>2</kbd> shared &nbsp; <kbd>3</kbd> unclear &nbsp; <kbd>4</kbd> exclude &nbsp; <kbd>N</kbd> next &nbsp; <kbd>←</kbd>/<kbd>→</kbd> photos</div>
+      </section>
+    </div>
+  </div>
+
+  <div id="referenceView" class="hidden">
+    <div class="reference">
+      <div class="refhead">
+        <h2>Audit reference table</h2>
+        <p>This is the public-facing structure I’d use after review. It shows your coding decision beside the source listing and preserves the evidence note without republishing the listing photographs.</p>
+        <div class="refcontrols">
+          <input id="refSearch" placeholder="Search reference table…">
+          <select id="refFilter"><option value="all">All rows</option><option value="reviewed">Reviewed only</option><option value="unreviewed">Unreviewed only</option></select>
+        </div>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>ID</th><th>Listing</th><th>Price</th><th>Distance</th><th>Manual classification</th><th>Evidence note</th><th>Reviewed</th><th>Source</th></tr></thead>
+          <tbody id="refBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="method">
+      <h3>Method note</h3>
+      <p>Each listing is manually reviewed using the saved Sept. 9, 2026 listing description and available listing photographs. The reviewer codes whether the material establishes a private bedroom, a shared bedroom, remains unclear, or should be excluded. “Unclear” is used when the available material does not establish whether the sleeping room is exclusive to one occupant. The exported audit preserves the listing ID, source URL, classification, evidence note, review date, prior text-only audit result and saved photo count.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="classdock" id="classDock">
+  <div class="docktitle">Classify listing</div>
+  <button class="dockchoice private" data-dock-value="Private bedroom">Private bedroom<small>1</small></button>
+  <button class="dockchoice shared" data-dock-value="Shared bedroom">Shared bedroom<small>2</small></button>
+  <button class="dockchoice unclear" data-dock-value="Unclear">Unclear<small>3</small></button>
+  <button class="dockchoice exclude" data-dock-value="Exclude">Exclude<small>4</small></button>
+</div>
+
+<div class="floatnav" id="floatNav">
+  <button class="btn" id="floatPrev">← Previous</button>
+  <div class="floatcount" id="floatCount">1 / 76</div>
+  <button class="btn red" id="floatNext">Next →</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="ncsu-room-bedroom-visual-audit-data-1.js"></script>
+<script src="ncsu-room-bedroom-visual-audit-data-2.js"></script>
+<script src="ncsu-room-bedroom-visual-audit-data-3.js"></script>
+<script src="ncsu-room-bedroom-visual-audit-data-4.js"></script>
+<script>
+const listings = window.ROOM_AUDIT_LISTINGS || [];
+const KEY = "ncsu-room-visual-audit-2026-09-09-final-v1";
+const FINALIZED = {"ocpet5b7hm":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"7e6kx1w":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpw46rjcl":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpchygggd":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpesl9n3p":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpcm3jede":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpnx5c0kn":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpjeweyz6":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"0smdl31":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocppjxdd3r":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpe1n95cm":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp2evl6hb":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpvlydr3e":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpxdxd79p":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpm68s5sh":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp2k0px98":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"z8cfdjw":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp6mp93ms":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"75medjw":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp6wsb4yt":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"5x5ph7m":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"syvz9l4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocph8n0fc0":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpx3vt61n":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpwwwe8yh":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"5je4q3n":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"h2l8mh2":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpszex2v4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"jjs8f07":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"0pm7tt3":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpbhbkvy9":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"e13mz5m":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpepvxvln":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpgxr290w":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpsd8dpj6":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"xcp87fm":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpsq86tm4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp2gxtxqc":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"pxc3rhs":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocppbmmgnt":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp176ghy4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpx51p4tm":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"x5wd0zn":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocphdtdgk2":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp4lh373j":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp5cx5drn":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"se736e5":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp1ddchy6":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"kf77vv8":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocphycq162":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"hz5leg1":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpszqbd35":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"jkg82q6":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp0gblz91":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpteqgjg8":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"33f756e":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"zfenc9w":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"49jmmdh":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"bq6wzsb":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp4t7wmxk":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp90bdzb4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpq99qjpx":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocps6ymwl7":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"9m73sq5":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpvgtpebg":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"5hme2mn":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"lpl9fce":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpd9wnxdk":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp67ldb5s":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp0psn632":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpk5yz73b":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp5lwrmvq":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpq292qyw":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocpqh8kxbz":{"classification":"Unclear","notes":"","reviewed":"2026-09-20"},"ocpsnmx4w4":{"classification":"Private bedroom","notes":"","reviewed":"2026-09-20"},"ocp2k6k5g8":{"classification":"Shared bedroom","notes":"","reviewed":"2026-09-20"}};
+let saved = {};
+try {
+  const local = JSON.parse(localStorage.getItem(KEY) || "{}");
+  saved = Object.keys(local).length ? local : JSON.parse(JSON.stringify(FINALIZED));
+} catch(e) {
+  saved = JSON.parse(JSON.stringify(FINALIZED));
+}
+let current = 0, photoIndex = 0, noteTimer = null;
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const decision = id => saved[id] || {classification:"", notes:"", reviewed:""};
+const classSlug = v => v==="Private bedroom"?"private":v==="Shared bedroom"?"shared":v==="Exclude"?"exclude":"unclear";
+
+function today(){
+  const d = new Date();
+  const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+function toast(msg){
+  $("#toast").textContent=msg; $("#toast").classList.add("show");
+  setTimeout(()=>$("#toast").classList.remove("show"),1400);
+}
+function persist(){
+  localStorage.setItem(KEY, JSON.stringify(saved));
+  updateSummary(); renderList(); renderReference();
+}
+function filteredIndices(){
+  const q=$("#search").value.trim().toLowerCase(), sf=$("#statusFilter").value, bf=$("#bandFilter").value;
+  return listings.map((l,i)=>({l,i})).filter(({l})=>{
+    const d=decision(l.id), hay=`${l.id} ${l.name} ${l.price} ${l.beds} ${l.description}`.toLowerCase();
+    if(q && !hay.includes(q)) return false;
+    if(sf==="unreviewed" && d.classification) return false;
+    if(sf==="reviewed" && !d.classification) return false;
+    if(!["all","unreviewed","reviewed"].includes(sf) && d.classification!==sf) return false;
+    if(bf!=="all"){
+      if(bf==="other"){ if(["0–1 mi",">1–3 mi",">3–5 mi"].includes(l.band)) return false; }
+      else if(l.band!==bf) return false;
+    }
+    return true;
+  });
+}
+function renderList(){
+  const el=$("#list"); el.innerHTML="";
+  const matches=filteredIndices();
+  if(!matches.length){el.innerHTML='<div style="padding:20px;color:#6b737c;text-align:center;font-size:12px">No listings match these filters.</div>';return;}
+  matches.forEach(({l,i})=>{
+    const d=decision(l.id), row=document.createElement("div");
+    row.className="listrow"+(i===current?" active":"");
+    const thumb=l.images?.[0]?.url;
+    row.innerHTML=`<div class="thumb">${thumb?`<img loading="lazy" src="${esc(thumb)}" alt="">`:`<div class="none">No photo</div>`}</div>
+      <div><div class="lname">${esc(l.name)}</div><div class="lmeta">${esc(l.price)} • ${formatDistance(l.distance)}</div>
+      <div class="lstatus ${classSlug(d.classification)}">${esc(d.classification || "Not reviewed")}</div></div>`;
+    row.onclick=()=>{saveNotes();current=i;photoIndex=0;render();};
+    el.appendChild(row);
+  });
+}
+function formatDistance(v){
+  if(v===null || v===undefined || v==="") return "distance unavailable";
+  const n=Number(v); return Number.isFinite(n)?`${n.toFixed(2)} mi`:`${v}`;
+}
+function renderPhoto(){
+  const l=listings[current], imgs=l.images||[], has=imgs.length>0;
+  $("#mainPhoto").classList.toggle("hidden",!has);
+  $("#noPhoto").classList.toggle("hidden",has);
+  $("#photoPrev").classList.toggle("hidden",!has || imgs.length<2);
+  $("#photoNext").classList.toggle("hidden",!has || imgs.length<2);
+  $("#photoCount").classList.toggle("hidden",!has);
+  if(has){
+    photoIndex=Math.max(0,Math.min(photoIndex,imgs.length-1));
+    $("#mainPhoto").src=imgs[photoIndex].url;
+    $("#mainPhoto").alt=imgs[photoIndex].caption || "Listing photo";
+    $("#photoCount").textContent=`Photo ${photoIndex+1} of ${imgs.length}`;
+    $("#caption").textContent=imgs[photoIndex].caption || "";
+  } else { $("#caption").textContent=""; }
+  const strip=$("#strip"); strip.innerHTML="";
+  imgs.forEach((im,idx)=>{
+    const b=document.createElement("button"); b.className=idx===photoIndex?"active":"";
+    b.innerHTML=`<img loading="lazy" src="${esc(im.url)}" alt="${esc(im.caption||"Thumbnail")}">`;
+    b.onclick=()=>{photoIndex=idx;renderPhoto();};
+    strip.appendChild(b);
+  });
+}
+function render(){
+  const l=listings[current], d=decision(l.id);
+  $("#counter").textContent=`Listing ${current+1} of ${listings.length}`;
+  $("#floatCount").textContent=`${current+1} / ${listings.length}`;
+  $("#siteId").textContent=l.id;
+  $("#name").textContent=l.name;
+  $("#price").textContent=l.price || "Price unavailable";
+  $("#submeta").textContent=[formatDistance(l.distance)+" from Main Campus",l.band,l.beds,l.address].filter(Boolean).join(" • ");
+  $("#source").href=l.url;
+  $("#description").textContent=l.description || "No saved description was available.";
+  $("#textDoor").textContent=l.textDoorBed || "—";
+  $("#textAudit").textContent=l.textAudit || "—";
+  $("#textEvidence").textContent=l.textEvidence || "—";
+  $("#textRationale").textContent=l.textRationale || "—";
+  $("#chips").innerHTML=[
+    l.band?`Distance band: ${l.band}`:"",
+    l.beds?`Listing beds: ${l.beds}`:"",
+    `${l.images?.length||0} saved photo URL${(l.images?.length||0)===1?"":"s"}`,
+    l.textAudit?`Text audit: ${l.textAudit}`:""
+  ].filter(Boolean).map(x=>`<span class="chip">${esc(x)}</span>`).join("");
+  $("#notes").value=d.notes||"";
+  $$(".choice").forEach(b=>b.classList.toggle("selected",b.dataset.value===d.classification));
+  $$(".dockchoice").forEach(b=>b.classList.toggle("selected",b.dataset.dockValue===d.classification));
+  renderPhoto(); renderList(); updateSummary(); renderReference();
+}
+function setClass(v){
+  const l=listings[current], d=decision(l.id);
+  saved[l.id]={...d,classification:v,reviewed:d.reviewed||today()};
+  persist(); render();
+}
+function saveNotes(){
+  const l=listings[current], val=$("#notes").value, d=decision(l.id);
+  if(val===d.notes) return;
+  saved[l.id]={...d,notes:val};
+  persist();
+}
+function move(delta){
+  saveNotes(); current=(current+delta+listings.length)%listings.length; photoIndex=0; render();
+}
+function updateSummary(){
+  const all=listings.map(l=>decision(l.id)).filter(d=>d.classification);
+  const count=v=>all.filter(d=>d.classification===v).length, n=all.length, pct=Math.round(n/listings.length*100);
+  $("#progressText").textContent=`${n} of ${listings.length} reviewed`; $("#progressPct").textContent=`${pct}%`; $("#bar").style.width=pct+"%";
+  $("#mPrivate").textContent=count("Private bedroom"); $("#mShared").textContent=count("Shared bedroom"); $("#mUnclear").textContent=count("Unclear"); $("#mExclude").textContent=count("Exclude"); $("#mRemain").textContent=listings.length-n;
+}
+function exportRows(){
+  return listings.map(l=>{
+    const d=decision(l.id);
+    return {
+      listing_id:l.id, listing:l.name, advertised_price:l.price, distance_miles:l.distance??"", distance_band:l.band, beds:l.beds,
+      manual_classification:d.classification||"", evidence_note:d.notes||"", reviewed_date:d.reviewed||"",
+      prior_text_judgment:l.textDoorBed, prior_text_audit_status:l.textAudit, prior_text_evidence:l.textEvidence,
+      saved_photo_count:l.images?.length||0, original_listing_url:l.url
+    };
+  });
+}
+function csvCell(v){return `"${String(v??"").replaceAll('"','""')}"`;}
+function exportCSV(){
+  saveNotes(); const rows=exportRows(), head=Object.keys(rows[0]);
+  const csv=[head,...rows.map(r=>head.map(k=>r[k]))].map(r=>r.map(csvCell).join(",")).join("\n");
+  const blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="ncsu-room-visual-audit-2026-09-09.csv"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast("Audit CSV exported");
+}
+function backupJSON(){
+  saveNotes(); const blob=new Blob([JSON.stringify({version:1,snapshot:"2026-09-09",saved},null,2)],{type:"application/json"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="ncsu-room-audit-backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast("Backup exported");
+}
+function restoreJSON(file){
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const obj=JSON.parse(reader.result); const incoming=obj.saved||obj;
+      if(!incoming || typeof incoming!=="object") throw new Error();
+      saved=incoming; persist(); render(); toast("Backup restored");
+    }catch(e){alert("That file does not look like a valid audit backup.");}
+  };
+  reader.readAsText(file);
+}
+function renderReference(){
+  const q=$("#refSearch")?.value.trim().toLowerCase()||"", f=$("#refFilter")?.value||"all";
+  $("#refBody").innerHTML=listings.filter(l=>{
+    const d=decision(l.id), hay=`${l.id} ${l.name} ${l.price} ${d.classification} ${d.notes}`.toLowerCase();
+    if(q&&!hay.includes(q)) return false;
+    if(f==="reviewed"&&!d.classification) return false;
+    if(f==="unreviewed"&&d.classification) return false;
+    return true;
+  }).map(l=>{
+    const d=decision(l.id), c=d.classification||"Not reviewed";
+    return `<tr><td><b>${esc(l.id)}</b></td><td>${esc(l.name)}</td><td>${esc(l.price)}</td><td>${esc(formatDistance(l.distance))}</td>
+      <td><span class="pill ${classSlug(c)}">${esc(c)}</span></td><td class="notes">${esc(d.notes||"")}</td><td>${esc(d.reviewed||"—")}</td>
+      <td><a href="${esc(l.url)}" target="_blank" rel="noopener">Listing ↗</a></td></tr>`;
+  }).join("");
+}
+
+$$(".choice").forEach(b=>b.onclick=()=>setClass(b.dataset.value));
+$$(".dockchoice").forEach(b=>b.onclick=()=>setClass(b.dataset.dockValue));
+$("#notes").addEventListener("input",()=>{clearTimeout(noteTimer);noteTimer=setTimeout(saveNotes,250);});
+$("#prevBtn").onclick=()=>move(-1); $("#nextBtn").onclick=()=>move(1); $("#saveNextBtn").onclick=()=>move(1);
+$("#floatPrev").onclick=()=>move(-1); $("#floatNext").onclick=()=>move(1);
+$("#clearBtn").onclick=()=>{delete saved[listings[current].id];persist();render();toast("Decision cleared");};
+$("#photoPrev").onclick=()=>{const n=listings[current].images?.length||0;if(n){photoIndex=(photoIndex-1+n)%n;renderPhoto();}};
+$("#photoNext").onclick=()=>{const n=listings[current].images?.length||0;if(n){photoIndex=(photoIndex+1)%n;renderPhoto();}};
+$("#search").addEventListener("input",renderList); $("#statusFilter").onchange=renderList; $("#bandFilter").onchange=renderList;
+$("#exportBtn").onclick=exportCSV; $("#backupBtn").onclick=backupJSON;
+$("#restoreInput").onchange=e=>{if(e.target.files?.[0]) restoreJSON(e.target.files[0]); e.target.value="";};
+$("#refSearch").addEventListener("input",renderReference); $("#refFilter").onchange=renderReference;
+$$(".tab").forEach(t=>t.onclick=()=>{
+  $$(".tab").forEach(x=>x.classList.toggle("active",x===t));
+  const ref=t.dataset.tab==="reference"; $("#reviewView").classList.toggle("hidden",ref); $("#referenceView").classList.toggle("hidden",!ref);
+  $("#floatNav").classList.toggle("hidden",ref);
+  $("#classDock").classList.toggle("hidden",ref);
+  if(ref) renderReference();
+});
+document.addEventListener("keydown",e=>{
+  if(["TEXTAREA","INPUT","SELECT"].includes(document.activeElement.tagName)) return;
+  if(e.key==="1") setClass("Private bedroom"); else if(e.key==="2") setClass("Shared bedroom"); else if(e.key==="3") setClass("Unclear"); else if(e.key==="4") setClass("Exclude");
+  else if(e.key.toLowerCase()==="n") move(1);
+  else if(e.key==="ArrowLeft") $("#photoPrev").click(); else if(e.key==="ArrowRight") $("#photoNext").click();
+});
+render();
+</script>
+</body>
+</html>

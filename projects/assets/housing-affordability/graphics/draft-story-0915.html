@@ -1,0 +1,1540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Can NC State Students Afford to Live Near Campus?</title>
+<style>
+  :root {
+    --ink:#171717;
+    --muted:#66615b;
+    --line:#ddd9d1;
+    --soft:#faf9f6;
+    --red:#8b1f2d;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  main {
+    width:min(920px, calc(100% - 36px));
+    margin:0 auto;
+    padding:34px 0 70px;
+  }
+  .topbar {
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+    margin:0 0 18px;
+  }
+  .draft-label {
+    color:#777;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .references-link {
+    color:#315d86;
+    font-size:11px;
+    font-weight:700;
+    text-decoration:none;
+  }
+  .references-link:hover { text-decoration:underline; }
+  .story-title {
+    margin:0 0 22px;
+    font:700 clamp(30px, 4vw, 38px)/1.12 Georgia, "Times New Roman", serif;
+    letter-spacing:-.02em;
+    white-space:nowrap;
+  }
+  .lede {
+    max-width:none;
+    width:100%;
+    margin:0 0 18px;
+    font-size:19px;
+    line-height:1.28;
+  }
+  .graphic {
+    position:relative;
+    border:1px solid var(--line);
+    background:var(--soft);
+    padding:14px 14px 10px;
+  }
+  .graphic-sources {
+    position:absolute;
+    top:10px;
+    right:12px;
+    max-width:58%;
+    color:#5f5b55;
+    font-size:8px;
+    line-height:1.35;
+    text-align:right;
+  }
+  .graphic-sources a { color:#315d86; }
+  .eyebrow {
+    margin:0 0 2px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .graphic h2 {
+    margin:0 0 12px;
+    font-size:16px;
+    line-height:1.1;
+  }
+  .method {
+    margin:0 0 14px;
+    max-width:800px;
+    color:#5e5a55;
+    font-size:9.5px;
+    line-height:1.35;
+  }
+  .rate-grid,
+  .budget-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:34px;
+  }
+  .rate {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:16px;
+    align-items:end;
+    padding-bottom:11px;
+  }
+  .name {
+    font-size:10px;
+    font-weight:800;
+    margin-bottom:3px;
+  }
+  .detail {
+    color:#5f5b55;
+    font-size:8.5px;
+    line-height:1.25;
+  }
+  .amount {
+    text-align:right;
+    white-space:nowrap;
+  }
+  .amount strong {
+    display:block;
+    font-size:21px;
+    line-height:1;
+  }
+  .amount span {
+    display:block;
+    margin-top:3px;
+    font-size:7px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .amount .monthly-equivalent {
+    margin-top:4px;
+    color:#4f4a45;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:0;
+    line-height:1.2;
+    text-transform:none;
+  }
+  .break-option {
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin:1px 0 12px;
+    padding:9px 10px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#fff;
+  }
+  .break-option input[type="checkbox"] {
+    margin:1px 0 0;
+    accent-color:var(--red);
+  }
+  .break-option label {
+    cursor:pointer;
+    font-size:9px;
+    line-height:1.35;
+  }
+  .break-option strong { font-size:9.5px; }
+  .break-option .break-note {
+    display:block;
+    margin-top:2px;
+    color:#66615b;
+  }
+  .section-rule {
+    border-top:1px solid var(--line);
+    margin:0 0 11px;
+    padding-top:10px;
+  }
+  .budget-heading-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .budget-title {
+    margin:0;
+    font-size:14px;
+    font-weight:800;
+  }
+  .budget-title-line {
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .budget-source {
+    flex:0 0 auto;
+    padding-top:1px;
+    color:#5f5b55;
+    font-size:8px;
+    line-height:1.35;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .budget-source a { color:#315d86; }
+  .budget-sub {
+    margin:0;
+    color:#5f5b55;
+    font-size:8.5px;
+  }
+  .budget-grid {
+    align-items:start;
+  }
+  .budget {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:16px;
+    align-items:start;
+  }
+  .budget-copy {
+    align-self:center;
+  }
+  .budget .amount {
+    align-self:start;
+  }
+  .budget strong {
+    font-size:21px;
+  }
+  /* Keep the opening budget visual compact without changing the other graphics. */
+  .budget-graphic {
+    padding-top:10px;
+    padding-bottom:8px;
+  }
+  .budget-graphic .budget-title-line {
+    margin-bottom:8px;
+  }
+  @media (min-width:701px) {
+    .budget-graphic .budget {
+      gap:10px;
+    }
+    .budget-graphic .detail {
+      white-space:nowrap;
+    }
+  }
+  .story-copy {
+    max-width:none;
+    width:100%;
+    margin:30px 0 0;
+    font:17px/1.55 Georgia, "Times New Roman", serif;
+  }
+  .story-copy.graphic-bridge {
+    margin-top:18px;
+  }
+  .story-copy p {
+    margin:0 0 16px;
+  }
+  .story-copy + .story-copy {
+    margin-top:0;
+  }
+  .story-copy a {
+    color:#315d86;
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .story-copy blockquote {
+    margin:20px 0 16px;
+    padding:0 0 0 18px;
+    border-left:3px solid var(--red);
+    font-size:19px;
+    line-height:1.45;
+  }
+  .trend-note {
+    margin:10px 0 0;
+    color:#66615b;
+    font:12px/1.45 Arial, Helvetica, sans-serif;
+  }
+  .off-campus-embed {
+    margin-top:24px;
+    border-top:1px solid #ece9e3;
+    padding-top:18px;
+  }
+  .off-campus-embed iframe {
+    display:block;
+    width:100%;
+    min-height:760px;
+    border:0;
+    background:#fff;
+  }
+  .continue {
+    margin-top:34px;
+    border-top:1px solid #ece9e3;
+    padding-top:22px;
+    color:#aaa49b;
+    font:italic 15px Georgia, serif;
+  }
+  @media (max-width:700px) {
+    main { width:min(100% - 24px, 920px); padding-top:24px; }
+    .story-title {
+      font-size:28px;
+      white-space:normal;
+      overflow-wrap:break-word;
+    }
+    .lede { font-size:18px; }
+    .graphic-sources {
+      position:static;
+      max-width:none;
+      margin:0 0 12px;
+      text-align:left;
+    }
+    .budget-heading-row {
+      flex-direction:column;
+      gap:3px;
+    }
+    .budget-title-line {
+      display:block;
+    }
+    .budget-title-line .budget-title {
+      margin-bottom:2px;
+    }
+    .budget-source {
+      padding-top:0;
+      text-align:left;
+      white-space:normal;
+    }
+    .rate-grid,
+    .budget-grid { grid-template-columns:1fr; gap:8px; }
+    .rate { border-bottom:1px solid #e7e3dc; }
+    .amount strong { font-size:19px; }
+    .story-copy { font-size:16px; }
+    .story-copy blockquote { font-size:18px; }
+  }
+
+
+/* Original University Housing rate panel embed */
+.housing-rate-original-embed{
+  margin:18px 0 0;
+}
+.housing-rate-original-embed iframe{
+  display:block;
+  width:100%;
+  min-height:0;
+  border:0;
+  background:#fff;
+}
+/* End original University Housing rate panel embed */
+
+
+
+/* ResNet comparison toggle */
+.break-option + .break-option{
+  margin-top:-12px;
+  border-top:0;
+}
+/* End ResNet comparison toggle */
+
+
+
+/* Original work-study wages panel embed */
+.work-wages-original-embed{
+  margin:10px 0 0;
+}
+.work-wages-original-embed iframe{
+  display:block;
+  width:100%;
+  min-height:260px;
+  border:0;
+  background:#fff;
+}
+/* End original work-study wages panel embed */
+
+
+
+/* Compact comparison options */
+.comparison-options{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin:1px 0 12px;
+}
+.comparison-options .break-option{
+  margin:0;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  align-items:center;
+}
+.comparison-options .break-option + .break-option{
+  margin-top:0;
+  border-top:1px solid var(--line);
+}
+.comparison-options .break-note{
+  display:inline;
+  margin:0 0 0 5px;
+}
+@media (max-width:700px){
+  .comparison-options{ grid-template-columns:1fr; gap:6px; }
+  .comparison-options .break-note{ display:block; margin:2px 0 0; }
+}
+/* End compact comparison options */
+
+
+
+/* Monthly resources comparison embed */
+.resources-original-embed{
+  margin:18px 0 0;
+}
+.resources-original-embed iframe{
+  display:block;
+  width:100%;
+  min-height:0;
+  border:0;
+  background:#fff;
+}
+.resources-original-embed + .story-copy{
+  margin-top:14px;
+}
+/* End monthly resources comparison embed */
+
+
+
+/* Lede/body type consistency */
+.lede{
+  font-family:Georgia, "Times New Roman", serif;
+  line-height:1.45;
+}
+/* End lede/body type consistency */
+
+/* Keep article text and figures on the same responsive content rail. */
+html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+main > section, iframe { min-width:0; max-width:100%; }
+.lede, .story-copy { overflow-wrap:break-word; }
+.story-copy blockquote { font-size:inherit; line-height:inherit; }
+@media (max-width:980px) {
+  .graphic-sources { position:static; max-width:none; margin-bottom:12px; text-align:left; }
+  .rate-grid, .budget-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
+  .rate, .budget { grid-template-columns:minmax(0,1fr) auto; gap:12px; }
+  .graphic .name { font-size:12px; }
+  .graphic .detail, .method, .budget-sub { font-size:11px; line-height:1.45; }
+  .graphic-sources { font-size:10px; }
+  .break-option label { font-size:11px; }
+  .lede, .story-copy { font-size:18px; line-height:1.55; }
+}
+@media (max-width:420px) {
+  .rate, .budget { grid-template-columns:minmax(0,1fr); gap:8px; }
+  .amount { text-align:left; white-space:normal; }
+}
+
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <div class="draft-label">Article draft</div>
+    <a class="references-link" href="references.html">References</a>
+  </div>
+
+  <h1 class="story-title">Can NC State Students Afford to Live Near Campus?</h1>
+
+  <p class="lede">For many NC State students, college marks a new chapter of independence. That often includes a new home. But that independence comes at a price. For students already balancing tuition, food and other expenses, housing can quickly become one of the largest costs of attending college.</p>
+
+  <section class="graphic budget-graphic" aria-label="Official NC State housing budget estimates">
+    <div class="budget-heading-row">
+      <div class="budget-heading-main">
+        <div class="eyebrow">NC State budget estimates</div>
+        <div class="budget-title-line">
+          <div class="budget-title">Official NC State housing budgets</div>
+          <div class="budget-sub">2026–27 cost-of-attendance housing estimates for full-time fall + spring enrollment.</div>
+        </div>
+      </div>
+      <div class="budget-source">Source: <a href="https://studentservices.ncsu.edu/finances/estimated-cost-of-attendance/undergraduate-student-estimated-cost-of-attendance/">NC State Cost of Attendance</a></div>
+    </div>
+    <div class="budget-grid">
+      <div class="budget">
+        <div class="budget-copy">
+          <div class="name">NC State on-campus housing budget</div>
+        </div>
+        <div class="amount"><strong>$8,738</strong><span>academic year</span><span class="monthly-equivalent">≈ $971/month over 9 months</span></div>
+      </div>
+      <div class="budget">
+        <div class="budget-copy">
+          <div class="name">NC State off-campus housing budget</div>
+        </div>
+        <div class="amount"><strong>$9,808</strong><span>academic year</span><span class="monthly-equivalent">≈ $1,090/month over 9 months</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-copy graphic-bridge" aria-label="NC State housing budget comparison">
+    <p>NC State estimates that a student living on campus will spend $8,738 on housing during the 2026–27 academic year, compared with $9,808 for a student living off campus. The on-campus budget’s roughly $971 monthly equivalent is enough to cover the standard residence hall double shown below, but it falls short of the standard single.</p>
+  </section>
+
+  <section class="graphic" aria-label="NC State on-campus room rates">
+    <div class="graphic-sources">Sources: <a href="https://housing.dasa.ncsu.edu/residential-communities/costs/">University Housing rates</a> · <a href="https://housing.dasa.ncsu.edu/assignments/break-and-transition-housing/">Winter Break Housing</a> · <a href="references.html?v=20260920-winter-break-math#residence-hall-monthly-math">See monthly-equivalent math</a></div>
+
+    <div class="eyebrow">On campus room rates</div>
+    <h2>Residence hall monthly equivalent</h2>
+    <p class="method">Projected 2026–27 residence hall rates are based on official NC State housing rates and converted from two semester charges to a <strong>9-month academic-year monthly equivalent</strong>. Calculations include the required <strong>$150-per-semester ResNet fee</strong>, which is paid to OIT for internet access rather than University Housing.<br><br>Summer is excluded. Winter break is a separate housing term for most residents and is included only when selected below.</p>
+
+    <div class="rate-grid">
+      <div class="rate">
+        <div>
+          <div class="name">Residence hall double (shared room)</div>
+          <div class="detail">$3,970/semester housing (+$150/semester required ResNet fee; paid to OIT for internet, not University Housing)</div>
+        </div>
+        <div class="amount"><strong id="double-monthly">≈ $916/month</strong><span>per student</span></div>
+      </div>
+      <div class="rate">
+        <div>
+          <div class="name">Residence hall single</div>
+          <div class="detail">$4,600/semester housing (+$150/semester required ResNet fee; paid to OIT for internet, not University Housing)</div>
+        </div>
+        <div class="amount"><strong id="single-monthly">≈ $1,056/month</strong><span>per student</span></div>
+      </div>
+    </div>
+
+    <div class="comparison-options">
+      <div class="break-option">
+        <input type="checkbox" id="winter-break">
+        <label for="winter-break"><strong>Full winter break (+$360)</strong> <span class="break-note">2025–26 reference rate; 2026–27 rate not yet posted.</span></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-copy" aria-label="Off-campus housing transition">
+    <p>The gap extends beyond the standard single. Once required fees are included, only three of the 10 housing categories published by University Housing fall within NC State’s $8,738 on-campus estimate. The finding is consistent with a <a href="references.html#housing-budget-vs-published-rates">2023 report by Mary Haskett</a>, professor emerita of psychology at NC State, which found that the University’s housing estimate at the time could cover only four of 14 on-campus residence halls.</p>
+
+    <p>Students in their first year are generally required to live on campus, but a majority of NC State undergraduates, 62%, <a href="references.html#student-housing-cds-2024">live off campus or commute, according to the University’s Common Data Set.</a></p>
+
+    <p>Thomas Barrie, an NC State professor of architecture who directs the University’s Affordable Housing and Sustainable Communities Initiative and teaches housing policy, said increased construction has helped cool the rental market.</p>
+
+    <blockquote>“Rent has gone down. It’s dipped a little bit in downtown Raleigh, and it’s because we’ve actually built a lot of rental housing,” Barrie said. “But it’s still very expensive.”</blockquote>
+  </section>
+
+  <section class="off-campus-embed" aria-label="Interactive off-campus housing map and rent listing summary">
+    <iframe id="off-campus-frame" src="index.html?v=20260920-draft-embed-guard" title="NC State off-campus housing map, advertised room rents and campus room comparison" loading="eager"></iframe>
+  </section>
+
+  <section class="story-copy" aria-label="University Housing response and comparison">
+    <p>While the Sept. 9 snapshot of listings from NC State’s Off-Campus Housing site found a lower mean advertised private-bedroom rent than either single or double residence hall monthly equivalent, the prices do not necessarily include the same costs.</p>
+
+    <p><a href="references.html#alden-hearn-interview">Alden Hearn</a>, housing navigator for HOST, a Wake County nonprofit serving college students experiencing homelessness or housing insecurity, said additional charges can substantially change what initially appears to be an affordable rent.</p>
+
+    <blockquote>“So, if you’re a student and you’re thinking, okay, I can relocate to Wake County because I’m seeing places that only cost $700, you know, with the aid that I get, I’ll be able to get a job and I can use my aid to supplement that no problem,” Hearn said. “But then once you’re leased up, and you’ve got the guarantor waiver program and the amenities fee, potentially other fees, you know, it often pushes towards $1,000 a month.”</blockquote>
+
+    <p>Of the listings in the Sept. 9 scrape, 74 were identified as offering a bedroom intended for one occupant. Those listings had a mean advertised price of <a href="references.html?v=20260920-xlsx-audit#room-rent-audit">about $869 per month</a>. Six listings, about 8% of the sample, explicitly advertised both all utilities and internet or Wi-Fi as included; their mean advertised rent was <a href="references.html#utility-internet-math">about $816 per month</a>.</p>
+
+    <p>NC State housing officials said more than 70% of residence hall room inventory is double occupancy. The double room price shown above represents one student’s cost to share a bedroom with another student, with a monthly equivalent of <a href="references.html?v=20260920-winter-break-math#residence-hall-monthly-math">about $916 per student</a>. Residence hall rates include utilities, laundry, maintenance and student support, while internet is billed through a separate required ResNet fee.</p>
+
+    <p><a href="references.html#university-housing-interview">Donna McGalliard</a>, associate vice chancellor and associate dean for Student Life and Advocacy and executive director of University Housing, described double rooms as Housing’s “best kind of value.” She called the comparison between residence hall doubles and per-bedroom prices advertised off campus “apples and oranges,” saying University Housing compares on-campus apartments with off-campus apartments and considers amenities when setting rates.</p>
+
+    <p>For students, the practical question may still be which fruit offers more for the price.</p>
+
+    <p>Housing officials also emphasized that NC State students can sign an academic-year housing agreement rather than paying for housing through the summer. Summer housing is separate, and most residents who remain on campus during winter break pay an additional charge. McGalliard said that shorter contract is one of the advantages of living on campus.</p>
+
+    <blockquote>“For us, you can literally arrive in August, you leave at the beginning of May, you’re done,” McGalliard said.</blockquote>
+
+    <p>McGalliard said the complexity of operating campus housing makes it difficult to reduce its rates to a simple comparison.</p>
+
+    <blockquote>“Trying to describe the comprehensive nature of what goes into these numbers. And this committee of the board of trustees has that information already because, I mean, again, we’re—we’re trying to not only adjust for utility costs that we have to pay for, we’re—we’re adjusting for, you know, the cost of the elevator contract and the grounds and housekeeping and landscaping and roof contracts. Like all of the things go into setting a rate to include the money to provide activities, the money for the staff that is taking care of the buildings, the ones who are living there, providing the behavioral response, et cetera,” McGalliard said.</blockquote>
+
+    <p>When asked what specific numerical affordability target University Housing uses when setting rates, officials did not identify one during the interview. Its published projections show that eight of 10 housing options are expected to increase by more than the 3.1% national increase in the Bureau of Labor Statistics’ lodging-while-at-school index from August 2025 to August 2026.</p>
+  </section>
+
+  <section class="housing-rate-original-embed" aria-label="NC State University Housing projected rate increases compared with inflation">
+    <iframe id="housing-rate-frame" src="index.html?v=20260920-housing-link-row-fix" title="University Housing rate increase from 2025–26 to 2026–27, with wages and price benchmarks" loading="eager"></iframe>
+  </section>
+
+  <section class="story-copy" aria-label="Student wages and Federal Work-Study">
+    <p>As prices rise, students have to stretch each dollar further. <a href="https://www.labor.nc.gov/workplace-rights/employee-rights-regarding-time-worked-and-wages-earned/minimum-wage-nc" target="_blank" rel="noopener noreferrer">North Carolina’s minimum wage has remained $7.25 an hour since July 2009.</a> <a href="https://emas.ncsu.edu/employment/federal-work-study-program/" target="_blank" rel="noopener noreferrer">NC State’s Federal Work-Study program</a> lists an allowable wage range of $7.25 to $15 an hour, with higher wages requiring a case-by-case exception. The university says work-study students generally should work no more than 20 hours per week, although they may hold another non-work-study job at the same time.</p>
+  </section>
+
+  <section class="work-wages-original-embed" aria-label="Illustrative student work earnings at selected hours">
+    <iframe id="work-wages-frame" src="index.html?v=20260917-mobile" title="Illustrative gross earnings and Federal Work-Study hours" loading="eager"></iframe>
+  </section>
+
+  <section class="story-copy" aria-label="Student work hours and academic pressure">
+    <p><a href="references.html#thomas-barrie-interview">Professor Barrie</a> said he often asks students who are struggling in their architecture studio courses how much they are working and whether they can afford to cut back.</p>
+
+    <blockquote>“So how much are you working?” Barrie said he asks students. “And they’ll tell me, and I’ll say, ‘Do you need to work that much?’ And then often the answer is, ‘I do.’”</blockquote>
+
+    <p>For those students, Barrie said, the answer is to take that financial reality “at face value” and work with it.</p>
+  </section>
+
+  <section class="story-copy" aria-label="Room rent and student monthly resources">
+    <p>To compare advertised room rents with the resources available to a working student, this analysis uses the <a href="references.html#hud-30-percent">U.S. Department of Housing and Urban Development’s 30% housing cost-burden benchmark</a>. HUD considers households spending more than 30% of their income on housing cost burdened and says they may have difficulty affording other necessities such as food, clothing, transportation, and medical care.</p>
+
+    <p>The interactive comparison uses wages ranging from North Carolina’s $7.25 minimum wage to $15 an hour and allows readers to add NC State’s reported average need-based grant or need-based loan award. Because grants and loans are not the same as household income, the 30% line is a reference rather than a formal HUD cost-burden determination.</p>
+
+  </section>
+
+  <section class="resources-original-embed" aria-label="How room rent compares with a student’s monthly resources">
+    <iframe id="resources-frame" src="index.html?v=20260917-mobile" title="How does room rent compare with a student’s monthly resources?" loading="eager"></iframe>
+  </section>
+
+  <section class="story-copy" aria-label="Affordability comparison findings">
+    <p>At $15 an hour and NC State’s general work-study guideline of 20 hours per week, a student would have a gross monthly equivalent of about $1,300. The $869 mean advertised Main Campus private-bedroom rent would consume about <strong>67% of those gross wages</strong>. Adding the average need-based loan lowers the illustrative share to about <strong>53%</strong>, while adding the average need-based grant lowers it to about <strong>34%</strong>. Combining both average awards in the hypothetical model brings the share to <strong>just over 30%</strong>. At 40 hours per week, twice the work-study guideline, the rent would consume about <strong>33% of gross wages</strong> without financial aid.</p>
+
+    <p>Across the hours modeled, wages between North Carolina’s $7.25 minimum wage and NC State’s standard $15 work-study ceiling never bring the rent below <strong>HUD’s 30% housing cost-burden benchmark</strong>. Wages above $15 require a case-by-case exception. In this hypothetical model, only scenarios that include a need-based grant or loan can fall below that line.</p>
+
+    <p>However, the “Compare with need-based aid” tool treats the full average award as available for rent and does not first subtract tuition or other university charges. <a href="references.html#aid-math">NC State says, “Financial aid must be used first to pay any outstanding tuition and fees, room rent and meal plan charges and textbook charges, if applicable, for each semester.”</a> The amount actually available for off campus rent may therefore be much smaller.</p>
+  </section>
+
+  <section class="story-copy" aria-label="Housing insecurity and HOST">
+    <p>The consequences of those strained housing budgets show up in <a href="https://www.hostnc.org/" target="_blank" rel="noopener noreferrer">HOST</a>’s work. The nonprofit began serving students in fall 2022 and became fully operational in early 2023. Since then, “we’ve served just over 100 students,” Hearn said.</p>
+
+    <p>For students already stretching their income to afford housing, Hearn said one unexpected expense can be enough to put their housing at risk.</p>
+
+    <blockquote>“So, a lot of students are willing to take a chance on a housing situation where they think they can make ends meet, but a single setback, you know, like if you get sick and you’re out of work for a couple of weeks, or if you lose your job, or if your car breaks down, you know, just falling behind a few weeks or a month of income can basically torpedo the stability of that housing because there’s no other income coming in that’ll help you catch up,” Hearn said. “Once you’re evicted, then your options really narrow.”</blockquote>
+
+    <p>Hearn called student homelessness “an invisible problem,” saying people often assume college students’ basic needs are stable.</p>
+
+    <blockquote>“And also, you know, I think among college students, what homelessness looks like, you know, we worked with a lot of students that maybe because of sort of a popular narrative expect that they’re going to struggle with housing while they’re in college,” Hearn said. “And so might, you know, fill in gaps by staying in a vehicle or especially couch surfing with friends if they don’t have family that they can return to during breaks.”</blockquote>
+
+    <p>That pattern also appeared in a <a href="references.html#student-housing-insecurity-2024">2023 NC State student survey</a> analyzed in a report authored by Mary Haskett, professor emerita of psychology and a founder of HOST. The study found that <strong>14% of respondents, or 190 of 1,357 students, experienced homelessness during the previous year</strong>. Temporarily staying with a relative or friend, including couch surfing until the student found other housing, was the most commonly reported form of homelessness.</p>
+
+    <p>Students who had lived in a residence hall at some point during the year experienced a slightly higher rate of homelessness, 15.6%, than students who had not, 12.5%. The difference was not statistically significant, meaning the study does not establish that living in a residence hall increased the likelihood of homelessness. The researchers concluded that residence hall living did not protect students from experiencing homelessness.</p>
+
+    <p>Hearn said programs like HOST cannot meet the scale of the need without greater involvement from community and university leaders.</p>
+
+    <p>Haskett characterized NC State’s response to student housing insecurity as insufficient.</p>
+
+    <blockquote>“Their response is one of what I refer to as charity,” Haskett said.</blockquote>
+
+    <p>She pointed to housing-related scholarships as one example.</p>
+
+    <blockquote>“Those are funded by donors. That's not even university money,” Haskett said. “So the university is not making any investment in those scholarships.”</blockquote>
+
+    <p>For Haskett, the consequences extend beyond where students live to whether they finish college.</p>
+
+    <blockquote>“It's not about just increasing enrollment,” Haskett said. “You need to increase graduation. Students can't graduate if they're dropping out because they can't afford to live here.”</blockquote>
+  </section>
+</main>
+<script>
+(function(){
+  const winterBox=document.getElementById('winter-break');
+  const resnetBox=document.getElementById('resnet-fee');
+  const doubleOut=document.getElementById('double-monthly');
+  const singleOut=document.getElementById('single-monthly');
+  function money(n){ return Math.round(n).toLocaleString('en-US'); }
+  function render(){
+    const winter=winterBox && winterBox.checked ? 360 : 0;
+    const resnet=150;
+    const doubleYear=(3970+resnet)*2+winter;
+    const singleYear=(4600+resnet)*2+winter;
+    doubleOut.textContent='≈ $'+money(doubleYear/9)+'/month';
+    singleOut.textContent='≈ $'+money(singleYear/9)+'/month';
+    const suffix='per student';
+    if(doubleOut.nextElementSibling) doubleOut.nextElementSibling.textContent=suffix;
+    if(singleOut.nextElementSibling) singleOut.nextElementSibling.textContent=suffix;
+  }
+  if(winterBox) winterBox.addEventListener('change',render);
+  if(resnetBox) resnetBox.addEventListener('change',render);
+  render();
+})();
+
+(function(){
+  const frame=document.getElementById('off-campus-frame');
+  if(!frame) return;
+
+  function trimFrame(){
+    try {
+      const d=frame.contentDocument;
+      if(!d) return;
+
+      // This iframe is a clipped view of index.html. Never let a normal link
+      // replace the embedded map/summary with References or the audit page.
+      try {
+        const currentPath=new URL(frame.contentWindow.location.href).pathname;
+        if(!/\/index\.html$/.test(currentPath)){
+          frame.src='index.html?v=20260920-draft-embed-guard';
+          return;
+        }
+      } catch(e) {}
+
+      const wrapper=d.querySelector('.wrapper');
+      const mapStage=d.querySelector('.map-stage');
+      const summaryBlock=d.querySelector('.rent-summary-block');
+      if(!wrapper || !mapStage || !summaryBlock) return;
+
+      const mapNote=[...wrapper.children].find(el =>
+        el.classList && el.classList.contains('footer-note') &&
+        el.textContent.includes('This article compares advertised room and per-bedroom prices')
+      );
+
+      [...wrapper.children].forEach(el => {
+        const keep=el===mapStage || el===mapNote || el===summaryBlock;
+        el.style.display=keep ? '' : 'none';
+      });
+
+      [...summaryBlock.children].forEach(el => {
+        el.style.display=el.classList.contains('combined-summary') ? '' : 'none';
+      });
+
+      const combinedCard=d.querySelector('.combined-card');
+      const housingMonthly=combinedCard && combinedCard.querySelector('.housing-monthly');
+      if(combinedCard && housingMonthly){
+        let afterHousing=false;
+        [...combinedCard.children].forEach(el => {
+          if(afterHousing) el.style.display='none';
+          if(el===housingMonthly) afterHousing=true;
+        });
+      }
+
+      const overall=d.querySelector('.room-overall-line');
+      const priceNote=overall && overall.nextElementSibling;
+      const benchmarkRow=d.querySelector('.rent-benchmark-row');
+      if(benchmarkRow && overall && combinedCard){
+        const cards=[...benchmarkRow.querySelectorAll(':scope > .rent-benchmark')];
+        const single=cards.find(el => el.textContent.toLowerCase().includes('single'));
+        const shared=cards.find(el => el.textContent.toLowerCase().includes('double'));
+
+        benchmarkRow.querySelectorAll('.rent-benchmark-note').forEach(note => {
+          if(note.textContent.includes('$150 required ResNet fee') && !note.textContent.includes('paid to OIT')){
+            note.textContent=note.textContent.replace('$4,600/semester + $150 required ResNet fee','$4,600/semester housing (+$150/semester required ResNet fee; paid to OIT for internet, not University Housing)').replace('$3,970/semester + $150 required ResNet fee','$3,970/semester housing (+$150/semester required ResNet fee; paid to OIT for internet, not University Housing)').replace('$150 required ResNet fee','$150 required ResNet fee (paid to OIT for internet, not University Housing)');
+          }
+        });
+
+        let strip=d.querySelector('.draft-comparison-strip');
+        if(!strip){
+          strip=d.createElement('div');
+          strip.className='draft-comparison-strip';
+          overall.parentNode.insertBefore(strip,overall);
+        }
+        strip.appendChild(overall);
+        if(single) strip.appendChild(single);
+        if(shared) strip.appendChild(shared);
+        housingMonthly.style.display='none';
+
+        const overallSpan=overall.querySelector(':scope > span');
+        const overallValue=overallSpan && overallSpan.querySelector('strong');
+        if(overallSpan && overallValue && !overall.querySelector('.draft-overall-topline')){
+          const topline=d.createElement('div');
+          topline.className='draft-overall-topline';
+          const label=d.createElement('span');
+          label.className='draft-overall-label';
+          label.textContent='Midpoint of displayed mean range';
+          const mathLink=d.createElement('a');
+          mathLink.className='draft-housing-math-link';
+          mathLink.href='references.html?v=20260920-winter-break-math#residence-hall-monthly-math';
+          mathLink.textContent='See monthly-equivalent math';
+          topline.append(label,mathLink);
+          overall.insertBefore(topline,overallSpan);
+          overall.insertBefore(overallValue,overallSpan);
+          overallSpan.remove();
+        }
+
+        if(!overall.querySelector('.draft-offcampus-note')){
+          const note=d.createElement('p');
+          note.className='draft-offcampus-note';
+          note.innerHTML='<strong>Advertised rent only.</strong> Utilities and fees vary by listing; some are included and some are excluded as extra charges.';
+          overall.appendChild(note);
+        }
+        if(priceNote && priceNote.classList.contains('housing-monthly-note')){
+          priceNote.style.display='none';
+        }
+
+        let breakRow=d.querySelector('.draft-campus-break-row');
+        if(!breakRow){
+          breakRow=d.createElement('div');
+          breakRow.className='draft-campus-break-row';
+          breakRow.style.display='flex';
+          breakRow.style.alignItems='center';
+          breakRow.style.justifyContent='space-between';
+          breakRow.style.gap='12px';
+          breakRow.innerHTML='<div class="draft-campus-break-control"><label><input type="checkbox" class="draft-campus-break-checkbox"> <strong>Add full winter break (+$360)</strong></label><span class="draft-campus-break-meta"><span class="draft-campus-break-year">2025–26 rate</span><span class="draft-campus-break-info" tabindex="0" role="img" aria-label="Uses NC State’s 2025–26 full-break rate of $360 at $15 per night. The 2026–27 winter-break charge and dates have not yet been posted, so this is a reference scenario." title="Uses NC State’s 2025–26 full-break rate of $360 ($15/night). The 2026–27 winter-break charge and dates have not yet been posted, so this is a reference scenario.">ⓘ</span></span></div>';
+          strip.insertBefore(breakRow, strip.children[1] || null);
+        }
+
+        const embeddedBox=breakRow.querySelector('.draft-campus-break-checkbox');
+        const embeddedResnetBox=breakRow.querySelector('.draft-campus-resnet-checkbox');
+        const parentBox=document.getElementById('winter-break');
+        const parentResnetBox=document.getElementById('resnet-fee');
+        const singleValue=single && single.querySelector('.rent-benchmark-value');
+        const sharedValue=shared && shared.querySelector('.rent-benchmark-value');
+
+        function renderEmbeddedCampus(winterChecked,resnetChecked){
+          const winter=winterChecked ? 360 : 0;
+          const resnet=150;
+          const singleMonthly=Math.round(((4600+resnet)*2+winter)/9).toLocaleString('en-US');
+          const sharedMonthly=Math.round(((3970+resnet)*2+winter)/9).toLocaleString('en-US');
+          const suffix='per student';
+          if(singleValue) singleValue.innerHTML='≈ $'+singleMonthly+'/month<span>'+suffix+'</span>';
+          if(sharedValue) sharedValue.innerHTML='≈ $'+sharedMonthly+'/month<span>'+suffix+'</span>';
+          if(embeddedBox) embeddedBox.checked=!!winterChecked;
+          if(embeddedResnetBox) embeddedResnetBox.checked=!!resnetChecked;
+          if(embeddedResnetBox) embeddedResnetBox.checked=!!resnetChecked;
+          if(embeddedResnetBox) embeddedResnetBox.checked=!!resnetChecked;
+          if(embeddedResnetBox) embeddedResnetBox.checked=!!resnetChecked;
+          if(embeddedResnetBox) embeddedResnetBox.checked=!!resnetChecked;
+        }
+
+        if(embeddedBox && !embeddedBox.dataset.bound){
+          embeddedBox.dataset.bound='1';
+          embeddedBox.addEventListener('change',()=>{
+            renderEmbeddedCampus(embeddedBox.checked,parentResnetBox ? parentResnetBox.checked : true);
+            if(parentBox && parentBox.checked!==embeddedBox.checked){
+              parentBox.checked=embeddedBox.checked;
+              parentBox.dispatchEvent(new Event('change'));
+            }
+            setTimeout(resize,0);
+          });
+        }
+
+        if(embeddedResnetBox && !embeddedResnetBox.dataset.bound){
+          embeddedResnetBox.dataset.bound='1';
+          embeddedResnetBox.addEventListener('change',()=>{
+            renderEmbeddedCampus(parentBox ? parentBox.checked : false,embeddedResnetBox.checked);
+            if(parentResnetBox && parentResnetBox.checked!==embeddedResnetBox.checked){
+              parentResnetBox.checked=embeddedResnetBox.checked;
+              parentResnetBox.dispatchEvent(new Event('change'));
+            }
+            setTimeout(resize,0);
+          });
+        }
+
+        if(parentBox){
+          renderEmbeddedCampus(parentBox.checked,parentResnetBox ? parentResnetBox.checked : true);
+          if(!parentBox.dataset.offCampusLinked){
+            parentBox.dataset.offCampusLinked='1';
+            parentBox.addEventListener('change',()=>{
+              renderEmbeddedCampus(parentBox.checked,parentResnetBox ? parentResnetBox.checked : true);
+              setTimeout(resize,0);
+            });
+          }
+        }
+        if(parentResnetBox && !parentResnetBox.dataset.offCampusLinked){
+          parentResnetBox.dataset.offCampusLinked='1';
+          parentResnetBox.addEventListener('change',()=>{
+            renderEmbeddedCampus(parentBox ? parentBox.checked : false,parentResnetBox.checked);
+            setTimeout(resize,0);
+          });
+        }
+
+        if(!d.getElementById('draft-comparison-style')){
+          const style=d.createElement('style');
+          style.id='draft-comparison-style';
+          style.textContent=`
+            .draft-comparison-strip{
+              display:grid;
+              grid-template-columns:repeat(3,minmax(0,1fr));
+              margin-top:0;
+              border-top:0;
+              border-bottom:0;
+              background:#fff;
+            }
+            .draft-comparison-strip > *{
+              min-width:0;
+              padding:14px 16px 13px !important;
+              border:0 !important;
+              border-right:1px solid var(--line) !important;
+              background:#fff !important;
+            }
+            .draft-comparison-strip > *:nth-child(2),
+            .draft-comparison-strip > *:nth-child(3){
+              border-bottom:1px solid var(--line) !important;
+            }
+            .draft-comparison-strip > *:last-child{
+              border-right:0 !important;
+            }
+            .draft-comparison-strip .room-overall-line{
+              display:flex !important;
+              flex-direction:column;
+              justify-content:space-between;
+              gap:14px;
+              height:100%;
+              margin:0 !important;
+              padding-top:20px !important;
+              padding-bottom:13px !important;
+            }
+            .draft-comparison-strip .draft-room-audit-link{
+              grid-column:1;
+              grid-row:1;
+              justify-self:end;
+              align-self:start;
+              margin:0;
+              padding:0;
+              font-size:9px;
+              line-height:1.35;
+              text-align:right;
+            }
+            .draft-comparison-strip .draft-campus-break-row{
+              display:flex !important;
+              align-items:center !important;
+              justify-content:space-between !important;
+              gap:12px !important;
+            }
+            .draft-comparison-strip .draft-campus-break-control{
+              flex:1 1 auto;
+              min-width:0;
+              display:flex;
+              align-items:center;
+              gap:7px;
+              flex-wrap:nowrap;
+            }
+            .draft-campus-break-meta{
+              display:inline-flex;
+              align-items:center;
+              gap:6px;
+              flex:0 0 auto;
+            }
+            .draft-comparison-strip .draft-overall-topline{
+              display:grid;
+              grid-template-columns:minmax(0,1fr) auto;
+              align-items:start;
+              gap:10px;
+              width:100%;
+            }
+            .draft-comparison-strip .draft-overall-label{
+              font-size:12px;
+              font-weight:800;
+              line-height:1.2;
+            }
+            .draft-comparison-strip .draft-housing-math-link{
+              justify-self:end;
+              margin:0;
+              padding:0;
+              font-size:9px;
+              font-weight:400;
+              line-height:1.35;
+              text-align:right;
+              white-space:nowrap;
+            }
+            .draft-comparison-strip .draft-offcampus-note{
+              grid-column:1 / -1;
+            }
+            .draft-comparison-strip .room-overall-line > span{
+              display:flex;
+              flex-direction:column;
+              align-items:flex-start;
+              gap:11px;
+              font-size:12px;
+              font-weight:800;
+              line-height:1.2;
+            }
+            .draft-comparison-strip .room-overall-line strong{
+              display:block;
+              margin:0;
+              font:700 31px/1 Georgia,\"Times New Roman\",serif;
+            }
+            .draft-offcampus-note{
+              margin:auto 0 0 !important;
+              padding:9px 0 0 !important;
+              border-top:1px solid var(--line);
+              color:#625d56;
+              font-size:9px !important;
+              font-weight:400 !important;
+              line-height:1.35 !important;
+            }
+            .draft-offcampus-note strong{
+              display:inline !important;
+              font:700 9px/1.35 Arial,sans-serif !important;
+            }
+            .draft-offcampus-note a{white-space:nowrap;}
+            .draft-comparison-strip .rent-benchmark{
+              display:block !important;
+            }
+            .draft-comparison-strip .rent-benchmark-label{
+              font-size:12px !important;
+              line-height:1.2;
+            }
+            .draft-comparison-strip .rent-benchmark-note{
+              margin-top:4px;
+              font-size:9.5px !important;
+              line-height:1.25;
+            }
+            .draft-comparison-strip .rent-benchmark-value{
+              margin-top:7px;
+              text-align:left !important;
+              font-size:24px !important;
+              white-space:normal;
+              overflow-wrap:normal;
+              line-height:1 !important;
+            }
+            .draft-comparison-strip .rent-benchmark-value span{
+              display:block;
+              margin-top:4px;
+              font-size:8px !important;
+              line-height:1.1;
+            }
+            .draft-campus-break-row{
+              display:grid;
+              grid-template-columns:1fr;
+              margin:8px 0 0;
+              background:#fff;
+              border-top:1px solid var(--line);
+              border-bottom:1px solid var(--line);
+            }
+            .draft-campus-break-control{
+              grid-column:1 / -1;
+              display:flex;
+              align-items:center;
+              gap:7px;
+              min-width:0;
+              padding:8px 16px 9px;
+              border-left:0;
+              color:#514d47;
+              font-size:9.5px;
+              line-height:1.25;
+            }
+            .draft-campus-option-divider{
+              width:1px;
+              align-self:stretch;
+              min-height:22px;
+              margin:0 4px;
+              background:var(--line);
+            }
+            .draft-campus-resnet-note{
+              color:#746f68;
+              white-space:normal;
+              line-height:1.25;
+              flex:0 1 auto;
+            }
+            .draft-campus-break-control label{
+              display:flex;
+              align-items:center;
+              gap:6px;
+              cursor:pointer;
+            }
+            .draft-campus-break-control input{
+              margin:0;
+              accent-color:#8b1f2d;
+            }
+            .draft-campus-break-year{
+              color:#746f68;
+              white-space:nowrap;
+            }
+            .draft-campus-break-info{
+              cursor:help;
+              color:#315d86;
+              font-size:12px;
+              line-height:1;
+            }
+            /* Attach campus-only controls to the two residence-hall cards. */
+            .draft-comparison-strip > *:nth-child(1){
+              grid-column:1;
+              grid-row:1 / span 2;
+              border-top:1px solid var(--line) !important;
+              border-bottom:1px solid var(--line) !important;
+            }
+            .draft-comparison-strip > .draft-campus-break-row{
+              grid-column:2 / 4 !important;
+              grid-row:1;
+              margin:0 !important;
+              padding:0 !important;
+              border-top:1px solid var(--line) !important;
+              border-bottom:1px solid var(--line) !important;
+              border-left:1px solid var(--line) !important;
+              border-right:0 !important;
+              background:#fff !important;
+            }
+            .draft-comparison-strip > *:nth-child(3){
+              grid-column:2;
+              grid-row:2;
+              border-bottom:1px solid var(--line) !important;
+            }
+            .draft-comparison-strip > *:nth-child(4){
+              grid-column:3;
+              grid-row:2;
+              border-bottom:1px solid var(--line) !important;
+              border-right:0 !important;
+            }
+            .draft-comparison-strip .draft-campus-break-control{
+              grid-column:1 / -1;
+              border-left:0;
+            }
+
+            @media(max-width:800px){
+              .draft-comparison-strip > *:nth-child(1),
+              .draft-comparison-strip > .draft-campus-break-row,
+              .draft-comparison-strip > *:nth-child(3),
+              .draft-comparison-strip > *:nth-child(4){
+                grid-column:1 !important;
+                grid-row:auto !important;
+              }
+              .draft-comparison-strip > .draft-campus-break-row{
+                border-left:0 !important;
+              }
+
+              .draft-comparison-strip{grid-template-columns:1fr;}
+              .draft-comparison-strip > *{
+                border-right:0 !important;
+                border-bottom:1px solid var(--line) !important;
+              }
+              .draft-comparison-strip > *:last-child{border-bottom:0 !important;}
+              .draft-campus-break-row{grid-template-columns:1fr;}
+              .draft-comparison-strip > .draft-campus-break-row{
+                display:block !important;
+              }
+              .draft-comparison-strip .draft-campus-break-control{
+                display:grid !important;
+                grid-template-columns:minmax(0,1fr) auto;
+                gap:5px 10px;
+                width:100%;
+                padding-bottom:4px;
+              }
+              .draft-comparison-strip .draft-campus-break-control label{
+                min-width:0;
+                display:flex;
+                align-items:center;
+                gap:7px;
+              }
+              .draft-comparison-strip .draft-campus-break-meta{
+                display:inline-flex;
+                align-items:center;
+                justify-self:end;
+                gap:5px;
+                white-space:nowrap;
+              }
+              .draft-comparison-strip .draft-overall-topline{
+                grid-template-columns:minmax(0,1fr) auto;
+                gap:8px;
+              }
+              .draft-comparison-strip .draft-housing-math-link{
+                margin:0 !important;
+                padding:0 !important;
+                text-align:right;
+                white-space:nowrap;
+              }
+              .draft-comparison-strip .room-overall-line{
+                grid-template-columns:minmax(0,1fr) auto;
+                padding-bottom:6px !important;
+              }
+              .draft-comparison-strip .draft-room-audit-link{
+                grid-column:2;
+                max-width:120px;
+                white-space:normal;
+              }
+              .draft-comparison-strip .room-overall-line > span{
+                grid-column:1;
+                grid-row:1;
+              }
+              .draft-campus-break-control{
+                grid-column:1;
+                border-left:0;
+                flex-wrap:wrap;
+              }
+              .draft-campus-option-divider{display:none;}
+            }
+          `;
+          d.head.appendChild(style);
+        }
+      }
+
+      // Links in the embedded source open outside the iframe so the map stays put.
+      d.querySelectorAll('a[href]').forEach(a=>{
+        if((a.getAttribute('href')||'').startsWith('#')) return;
+        a.setAttribute('target','_blank');
+        a.setAttribute('rel','noopener noreferrer');
+      });
+
+      // Catch links created later by map popups or other dynamic UI.
+      if(!d.documentElement.dataset.draftLinkGuard){
+        d.documentElement.dataset.draftLinkGuard='1';
+        d.addEventListener('click',ev=>{
+          const a=ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+          if(!a) return;
+          const href=a.getAttribute('href')||'';
+          if(!href || href.startsWith('#')) return;
+          a.setAttribute('target','_blank');
+          a.setAttribute('rel','noopener noreferrer');
+        },true);
+      }
+
+      wrapper.style.width='100%';
+      wrapper.style.maxWidth='none';
+      wrapper.style.padding='0';
+      d.documentElement.style.background='#fff';
+      d.body.style.margin='0';
+      d.body.style.background='#fff';
+
+      const resize=()=>{
+        frame.style.height=Math.ceil(wrapper.getBoundingClientRect().height+4)+'px';
+        try { frame.contentWindow.dispatchEvent(new Event('resize')); } catch(e) {}
+      };
+      resize();
+      setTimeout(resize,250);
+      setTimeout(resize,900);
+      // The summary and map can change after loading or rotating a phone.
+      if(frame.contentWindow.ResizeObserver){
+        let lastHeight=0;
+        const ro=new frame.contentWindow.ResizeObserver(()=>{
+          const height=Math.ceil(wrapper.getBoundingClientRect().height+4);
+          if(height!==lastHeight){lastHeight=height; frame.style.height=height+'px';}
+        });
+        ro.observe(wrapper);
+      }
+    } catch(e) {
+      // Same-origin GitHub Pages embed should allow trimming; if it does not, leave the source page intact.
+    }
+  }
+
+  frame.addEventListener('load',trimFrame);
+})();
+
+
+// Reuse the original University Housing rate panel 1:1 from index.html.
+(function(){
+  const frame=document.getElementById('housing-rate-frame');
+  if(!frame) return;
+
+  function trimHousingRate(){
+    try {
+      const d=frame.contentDocument;
+      if(!d) return;
+      const wrapper=d.querySelector('.wrapper');
+      const block=d.querySelector('.housing-rate-change-block');
+      if(!wrapper || !block) return;
+
+      [...wrapper.children].forEach(el => {
+        el.style.display = el===block ? '' : 'none';
+      });
+
+      wrapper.style.width='100%';
+      wrapper.style.maxWidth='none';
+      wrapper.style.margin='0';
+      wrapper.style.padding='0';
+      block.style.margin='0';
+      block.style.paddingTop='0';
+      block.style.borderTop='0';
+      d.documentElement.style.background='#fff';
+      d.body.style.margin='0';
+      d.body.style.background='#fff';
+
+      const resize=()=>{
+        frame.style.height=Math.ceil(block.getBoundingClientRect().height+4)+'px';
+      };
+      resize();
+      setTimeout(resize,250);
+      setTimeout(resize,900);
+      if(frame.contentWindow.ResizeObserver){
+        const ro=new frame.contentWindow.ResizeObserver(resize);
+        ro.observe(block);
+      }
+    } catch(e) {
+      // Same-origin GitHub Pages embed should allow trimming; otherwise leave source page intact.
+    }
+  }
+
+  frame.addEventListener('load',trimHousingRate);
+})();
+
+
+
+// Reuse the original work-study earnings block 1:1 from index.html.
+(function(){
+  const frame=document.getElementById('work-wages-frame');
+  if(!frame) return;
+
+  function trimWorkWages(){
+    try {
+      const d=frame.contentDocument;
+      if(!d) return;
+      const wrapper=d.querySelector('.wrapper');
+      const workGrid=d.querySelector('.work-grid.clean-work-grid');
+      const block=workGrid && workGrid.closest('section.block');
+      if(!wrapper || !block) return;
+      const sectionLabel=block.querySelector('.section-label');
+      if(sectionLabel) sectionLabel.style.display='none';
+
+      [...wrapper.children].forEach(el => {
+        el.style.display = el===block ? '' : 'none';
+      });
+
+      wrapper.style.width='100%';
+      wrapper.style.maxWidth='none';
+      wrapper.style.margin='0';
+      wrapper.style.padding='0';
+      block.style.margin='0';
+      d.documentElement.style.background='#fff';
+      d.body.style.margin='0';
+      d.body.style.background='#fff';
+
+      const resize=()=>{
+        frame.style.height=Math.ceil(block.getBoundingClientRect().height+4)+'px';
+      };
+      resize();
+      setTimeout(resize,250);
+      setTimeout(resize,900);
+      if(frame.contentWindow.ResizeObserver){
+        const ro=new frame.contentWindow.ResizeObserver(resize);
+        ro.observe(block);
+      }
+    } catch(e) {
+      // Same-origin GitHub Pages embed should allow trimming; otherwise leave source page intact.
+    }
+  }
+
+  frame.addEventListener('load',trimWorkWages);
+})();
+
+
+
+// Reuse the original monthly-resources affordability block 1:1 from index.html.
+(function(){
+  const frame=document.getElementById('resources-frame');
+  if(!frame) return;
+
+  function trimResources(){
+    try {
+      const d=frame.contentDocument;
+      if(!d) return;
+      const wrapper=d.querySelector('.wrapper');
+      let block=d.querySelector('.affordability-block');
+      if(!block){
+        const candidates=[...d.querySelectorAll('section.block, section, .block')];
+        block=candidates.find(el => /HOW DOES ROOM RENT COMPARE WITH A STUDENT.?S MONTHLY RESOURCES/i.test(el.textContent || '')) ||
+              candidates.find(el => /Compare with need-based aid/i.test(el.textContent || ''));
+      }
+      if(!wrapper || !block) return;
+
+      [...wrapper.children].forEach(el => {
+        el.style.display = el===block ? '' : 'none';
+      });
+
+      wrapper.style.width='100%';
+      wrapper.style.maxWidth='none';
+      wrapper.style.margin='0';
+      wrapper.style.padding='0';
+      block.style.margin='0';
+      d.documentElement.style.background='#fff';
+      d.body.style.margin='0';
+      d.body.style.background='#fff';
+
+      if(!d.getElementById('draft-resources-layout-style')){
+        const style=d.createElement('style');
+        style.id='draft-resources-layout-style';
+        style.textContent=`
+          @media (min-width:901px){
+            .burden-grid{
+              grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+            }
+            .burden-grid > .burden-card{
+              grid-row:span 5;
+              grid-template-rows:subgrid;
+            }
+          }
+        `;
+        d.head.appendChild(style);
+      }
+
+      const resize=()=>{
+        frame.style.height=Math.ceil(block.getBoundingClientRect().height+4)+'px';
+      };
+      resize();
+      setTimeout(resize,250);
+      setTimeout(resize,900);
+      if(frame.contentWindow.ResizeObserver){
+        const ro=new frame.contentWindow.ResizeObserver(resize);
+        ro.observe(block);
+      }
+    } catch(e) {
+      // Same-origin GitHub Pages embed should allow trimming; otherwise leave source page intact.
+    }
+  }
+
+  frame.addEventListener('load',trimResources);
+})();
+
+
+
+// Sync all visible hour sliders across the work and affordability embeds.
+(function(){
+  const workFrame=document.getElementById('work-wages-frame');
+  const resourcesFrame=document.getElementById('resources-frame');
+  if(!workFrame || !resourcesFrame) return;
+
+  let syncing=false;
+
+  function hourSliders(){
+    const out=[];
+    try {
+      const d=workFrame.contentDocument;
+      const slider=d && d.querySelector('#hours');
+      if(slider) out.push(slider);
+    } catch(e) {}
+    try {
+      const d=resourcesFrame.contentDocument;
+      if(d) out.push(...d.querySelectorAll('.mini-hours-slider'));
+    } catch(e) {}
+    return out;
+  }
+
+  function syncFrom(source, includeChange){
+    if(syncing) return;
+    syncing=true;
+    const value=source.value;
+    hourSliders().forEach(target=>{
+      if(target===source || target.value===value) return;
+      target.value=value;
+      const w=target.ownerDocument.defaultView;
+      target.dispatchEvent(new w.Event('input',{bubbles:true}));
+      if(includeChange) target.dispatchEvent(new w.Event('change',{bubbles:true}));
+    });
+    syncing=false;
+  }
+
+  function bind(){
+    hourSliders().forEach(slider=>{
+      if(slider.dataset.draftHoursSynced) return;
+      slider.dataset.draftHoursSynced='1';
+      slider.addEventListener('input',()=>syncFrom(slider,false));
+      slider.addEventListener('change',()=>syncFrom(slider,true));
+    });
+  }
+
+  function afterLoad(){
+    setTimeout(bind,0);
+    setTimeout(bind,250);
+    setTimeout(bind,900);
+  }
+
+  workFrame.addEventListener('load',afterLoad);
+  resourcesFrame.addEventListener('load',afterLoad);
+  afterLoad();
+})();
+
+// Keep embedded figure widths and heights in sync when mobile viewports change.
+(function(){
+  document.querySelectorAll('iframe').forEach(frame=>{
+    frame.addEventListener('load',()=>{
+      const d=frame.contentDocument;
+      if(!d) return;
+      const style=d.createElement('style');
+      style.textContent=`
+        html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        .wrapper, .block, .combined-card { min-width:0; max-width:100%; }
+        .burden-card > .card-rent-area {
+          width:100%; max-width:100%; margin:12px 0 0;
+          display:grid; grid-template-columns:auto minmax(0,1fr); gap:8px;
+        }
+        .card-rent-area select { width:100%; min-width:0; max-width:100%; }
+        /* Keep the scale attached to its bar, independent of label height. */
+        .draft-burden-plot { grid-column:3; grid-row:1; min-width:0; align-self:center; }
+        .draft-burden-plot .burden-axis-scale {
+          height:12px; margin-top:16px; color:#8a857d;
+          font-size:9px; font-variant-numeric:tabular-nums; line-height:12px;
+        }
+        .draft-burden-plot .burden-axis-scale span { top:0; }
+        @media(max-width:900px) {
+          .burden-grid { grid-template-columns:minmax(0,1fr) !important; }
+          .burden-grid > .burden-card { grid-row:auto; grid-template-rows:auto auto 1fr auto auto; }
+          .aid-options { grid-template-columns:minmax(0,1fr); }
+          .aid-copy { min-width:0; }
+          .aid-name { white-space:normal; }
+          .burden-grid > .burden-legend {
+            grid-template-columns:max-content max-content minmax(100px,1fr);
+            column-gap:8px;
+            row-gap:3px;
+            align-items:center;
+          }
+          .burden-grid > .burden-legend > .legend-column {
+            min-width:0;
+            gap:2px;
+          }
+          .burden-grid > .burden-legend .legend-piece {
+            display:flex;
+            align-items:center;
+            gap:4px;
+            font-size:8.5px;
+            white-space:nowrap;
+          }
+          .burden-grid > .burden-legend > .legend-action {
+            grid-column:3;
+            grid-row:1;
+            justify-self:end;
+            align-self:center;
+          }
+          .burden-grid > .burden-legend .hud-info-btn {
+            max-width:120px;
+            white-space:normal;
+          }
+        }
+        @media(max-width:600px) {
+          .room-band-table { width:100%; table-layout:fixed; }
+          .room-band-table th, .room-band-table td { padding:9px 4px; white-space:normal; overflow-wrap:break-word; }
+          .room-band-table th { font-size:10px; letter-spacing:.02em; }
+          .room-band-table td { font-size:12px; }
+          .summary-campus-buttons { width:100%; min-width:0; }
+          .summary-campus-buttons .campus-btn { min-width:0; padding:8px 4px; font-size:11px; }
+          .draft-campus-break-control { min-width:0; }
+          .draft-campus-break-control label { align-items:flex-start; }
+          .draft-campus-break-control input { flex-shrink:0; }
+          .burden-grid > .burden-legend {
+            grid-template-columns:max-content max-content minmax(86px,1fr);
+            gap:3px 6px;
+            padding:8px;
+          }
+          .burden-grid > .burden-legend .legend-piece {
+            gap:3px;
+            font-size:8px;
+          }
+          .burden-grid > .burden-legend > .legend-action {
+            grid-column:3;
+            grid-row:1;
+          }
+          .burden-grid > .burden-legend .hud-info-btn {
+            max-width:100px;
+            padding:6px;
+            font-size:8px;
+          }
+        }
+      `;
+      d.head.appendChild(style);
+      d.querySelectorAll('.burden-chart').forEach(chart=>{
+        const row=chart.querySelector('.burden-row');
+        const track=row && row.querySelector('.burden-track');
+        const axis=chart.querySelector('.burden-axis');
+        const scale=axis && axis.querySelector('.burden-axis-scale');
+        if(!track || !scale) return;
+        const plot=d.createElement('div');
+        plot.className='draft-burden-plot';
+        row.insertBefore(plot,track);
+        plot.append(track,scale);
+        axis.remove();
+      });
+      const wrapper=d.querySelector('.wrapper');
+      if(!wrapper) return;
+      let lastWidth=0;
+      let scheduled=false;
+      function measure(){
+        scheduled=false;
+        const width=wrapper.getBoundingClientRect().width;
+        const height=Math.ceil(wrapper.getBoundingClientRect().height+4);
+        if(frame.style.height!==height+'px') frame.style.height=height+'px';
+        if(width!==lastWidth){
+          lastWidth=width;
+          frame.contentWindow.dispatchEvent(new Event('resize'));
+        }
+      }
+      function schedule(){
+        if(!scheduled){scheduled=true; requestAnimationFrame(measure);}
+      }
+      if(window.ResizeObserver) new ResizeObserver(schedule).observe(wrapper);
+      window.addEventListener('resize',schedule);
+      if(d.fonts) d.fonts.ready.then(schedule);
+      schedule();
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
