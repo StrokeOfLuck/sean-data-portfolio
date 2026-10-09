@@ -22,6 +22,28 @@ I use data, public records, computational methods, and visualization to investig
 
 :::: {.featured-projects}
 
+::: {.project-card .featured-project-card}
+::: {.project-card-art .project-card-image .housing-map-image}
+![](projects/assets/housing-affordability/rent-map-thumbnail.png){fig-alt="Actual NC State rent map showing private-bedroom listings and campus boundaries"}
+<a href="projects/housing-affordability.html" aria-label="Open housing affordability reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
+:::
+::: {.project-card-body}
+::: {.project-card-heading}
+### [Can NC State Students Afford to Live Near Campus?](projects/housing-affordability.qmd){.project-title-link}
+::: {.project-date}
+Oct. 2026
+:::
+:::
+::: {.project-tags}
+[Data Journalism]{.project-tag} [Housing]{.project-tag} [Reporting]{.project-tag}
+:::
+Rental listings, university housing rates, interviews and interactive affordability graphics for Technician. Includes a preserved article and source archive.
+
+[View project →](projects/housing-affordability.qmd){.project-link}
+:::
+:::
+
+
 
 
 ::: {.project-card .featured-project-card}
@@ -113,27 +135,6 @@ Five-day University of Amsterdam research sprint comparing a Tankie transcript c
 ### More projects
 
 :::: {.more-projects-grid}
-
-::: {.project-card .compact-project-card}
-::: {.project-card-art .project-card-image .housing-map-image}
-![](projects/assets/housing-affordability/rent-map-thumbnail.png){fig-alt="Actual NC State rent map showing private-bedroom listings and campus boundaries"}
-<a href="projects/housing-affordability.html" aria-label="Open housing affordability reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
-:::
-::: {.project-card-body}
-::: {.project-card-heading}
-### [Can NC State Students Afford to Live Near Campus?](projects/housing-affordability.qmd){.project-title-link}
-::: {.project-date}
-Oct. 2026
-:::
-:::
-::: {.project-tags}
-[Data Journalism]{.project-tag} [Housing]{.project-tag} [Reporting]{.project-tag}
-:::
-Rental listings, university housing rates, interviews and interactive affordability graphics for Technician. Includes a preserved article and source archive.
-
-[View project →](projects/housing-affordability.qmd){.project-link}
-:::
-:::
 
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image .park-it-here-image}
