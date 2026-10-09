@@ -8,7 +8,7 @@ css:
   - card-selectable.css
 include-in-header:
   - text: |
-      <link rel="stylesheet" href="project-card-overrides.css?v=campus-crops-13">
+      <link rel="stylesheet" href="project-card-overrides.css?v=tankie-vector-14">
       <link rel="stylesheet" href="projects/assets/cards/8085-thumbnail.css?v=mobile-layout-4">
       <link rel="stylesheet" href="projects/assets/cards/clearhouse-thumbnail.css?v=1">
 resources:
@@ -140,7 +140,7 @@ Using computational text analysis to examine political rhetoric around real-worl
 
 ::: {.project-card .compact-project-card}
 ::: {.project-card-art .project-card-image .poster-image}
-![](projects/assets/cards/tankietube-card.svg){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
+![](projects/assets/cards/tankietube-card.svg?v=vector-2){fig-alt="Actual TankieTube University of Amsterdam Digital Methods project poster artwork"}
 <a href="projects/tankietube.html" aria-label="Open TankieTube project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
 :::
 ::: {.project-card-body}
