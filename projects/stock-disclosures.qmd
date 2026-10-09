@@ -615,6 +615,10 @@ if (!"amount_max" %in% names(ptr)) {
 }
 
 
+if (!"amount_exact" %in% names(ptr)) {
+  ptr$amount_exact <- NA_real_
+}
+
 ptr_prepared <- ptr |>
   mutate(
 
@@ -691,12 +695,17 @@ ptr_prepared <- ptr |>
         )
       ),
 
+    amount_exact_num = suppressWarnings(as.numeric(amount_exact)),
+
     amount_display =
       case_when(
 
         !is.na(amount_category) &
           trimws(amount_category) != "" ~
             amount_category,
+
+        !is.na(amount_exact_num) ~
+          paste0("$", formatC(amount_exact_num, format = "f", digits = 2, big.mark = ",")),
 
         !is.na(amount_max_num) &
           amount_max_num <= 1000 ~
@@ -741,7 +750,7 @@ ptr_prepared <- ptr |>
           ),
 
         TRUE ~
-          ""
+          "Not extracted"
       )
 
   )
@@ -1784,7 +1793,7 @@ document.addEventListener(
 </script>
 
 
-The table defaults to cleaned records suitable for analysis. High-QA records can be included using the debug control beneath the table.
+The table defaults to cleaned records suitable for analysis. Records flagged for high review are hidden by default, including from search results. If a filing is missing from your search, check **Debug mode** beneath the table to include those records.
 
 Use the global search box or individual column filters to search by filing ID, politician, ticker, asset, district, transaction type, or date.
 
