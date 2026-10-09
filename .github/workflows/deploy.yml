@@ -46,7 +46,7 @@ jobs:
           from pathlib import Path
           import base64
           folder = Path('projects/assets/housing-affordability')
-          for name in ['wolf-village.jpg', 'publication-snapshot.png']:
+          for name in ['wolf-village.jpg', 'publication-snapshot.png', 'rent-map-thumbnail.png']:
               (folder / name).write_bytes(base64.b64decode((folder / (name + '.b64')).read_text()))
           PYTHON
 

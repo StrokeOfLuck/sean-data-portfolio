@@ -221,7 +221,7 @@ toc: false
             <span class="park-window-dot park-dot-green"></span>
           </div>
         </div>
-        <iframe class="park-article-frame" src="assets/housing-affordability/article.html" title="Scrollable preserved housing article with interactive graphics" loading="eager"></iframe>
+        <iframe class="park-article-frame" src="assets/housing-affordability/desktop-embed.html" title="Scrollable preserved housing article with interactive graphics" loading="eager"></iframe>
       </div>
     </section>
 

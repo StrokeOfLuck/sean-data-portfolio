@@ -20,6 +20,15 @@ summary: >
   R, GIS, APIs, and text and network analysis.
   
 experience:
+  - title: "Correspondent"
+    org: "Technician, NC State's student newspaper"
+    location: "Raleigh, NC"
+    start: "2026"
+    end: "Present"
+    bullets:
+      - "Report on campus issues using interviews, public records, data analysis, and interactive graphics"
+      - "Published reporting on student housing affordability and campus e-bike and scooter rules"
+
   - title: "Teaching Assistant, Graphic Communications"
     org: "North Carolina State University"
     location: "Raleigh, NC"
@@ -71,11 +80,12 @@ volunteer:
       - "Write grant applications and support fundraising, including securing grant funding for co-op programs"
 
 projects:
-  - title: "Park it here? E-bike and scooter rules"
+  - title: "Published Data Reporting — Technician"
     year: "Fall 2026"
     bullets:
-      - "Published a reported Technician article combining interviews, GIS analysis, geofencing data, and NCDOT crash records"
-    url: "https://strokeofluck.github.io/sean-data-portfolio/projects/park-it-here.html"
+      - "Analyzed rental listings, university housing rates, and student wages and aid for a reported housing affordability article"
+      - "Combined interviews, geofencing data, GIS analysis, and NCDOT crash records for e-bike and scooter reporting"
+    url: "https://strokeofluck.github.io/sean-data-portfolio/projects/housing-affordability.html"
 
   - title: "Politician Stock Disclosures"
     year: "2024–Present"

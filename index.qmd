@@ -22,47 +22,25 @@ I use data, public records, computational methods, and visualization to investig
 
 :::: {.featured-projects}
 
-::: {.project-card .featured-project-card}
-::: {.project-card-art .project-card-image}
-![](projects/assets/housing-affordability/wolf-village.jpg){fig-alt="Baffin Hall at Wolf Village; photo by Diego Melchor / Technician"}
-<a href="projects/housing-affordability.html" aria-label="Open housing affordability reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
-:::
-::: {.project-card-body}
-::: {.project-card-heading}
-### [Can NC State Students Afford to Live Near Campus?](projects/housing-affordability.qmd){.project-title-link}
-::: {.project-date}
-Oct. 2026
-:::
-:::
-::: {.project-tags}
-[Data Journalism]{.project-tag} [Housing]{.project-tag} [Reporting]{.project-tag}
-:::
-Published reporting combining rental listings, university housing rates, interviews and interactive affordability graphics. Includes a preserved article and source archive.
-
-[View project →](projects/housing-affordability.qmd){.project-link}
-:::
-:::
-
-::: {.project-card .featured-project-card}
-::: {.project-card-art .project-card-image .park-it-here-image}
-![](https://datawrapper.dwcdn.net/28Wwl/plain.png){fig-alt="Spin geofencing and NCDOT crash map from Park it here?"}
-<a href="projects/park-it-here.html" aria-label="Open Park it here? published reporting project" style="position:absolute;inset:0;z-index:3;display:block;"></a>
-:::
-::: {.project-card-body}
-::: {.project-card-heading}
-### [Park it here? E-bike and scooter rules differ across NC State](projects/park-it-here.qmd){.project-title-link}
-::: {.project-date}
-Sept. 2026
-:::
-:::
-::: {.project-tags}
-[Data Journalism]{.project-tag} [GIS]{.project-tag} [Reporting]{.project-tag}
-:::
-Published reporting combining interviews, geofencing data, NCDOT crash records, GIS and Datawrapper maps for Technician.
-
-[View project →](projects/park-it-here.qmd){.project-link}
-:::
-:::
+```{=html}
+<section class="project-card reporting-collection" aria-labelledby="reporting-title">
+  <div class="reporting-heading">
+    <h3 id="reporting-title">Published reporting</h3>
+    <span class="project-date">Technician · Fall 2026</span>
+  </div>
+  <p class="reporting-intro">Data reporting combining interviews, public records and interactive graphics.</p>
+  <div class="reporting-articles">
+    <a class="reporting-article" href="projects/housing-affordability.html">
+      <img src="projects/assets/housing-affordability/rent-map-thumbnail.png" alt="Actual NC State rent map showing private-bedroom listings and campus boundaries" loading="lazy">
+      <span><strong>Can NC State Students Afford to Live Near Campus?</strong><small>Oct. 2026 · Housing costs and student resources</small><span class="reporting-open">View article archive →</span></span>
+    </a>
+    <a class="reporting-article" href="projects/park-it-here.html">
+      <img src="https://datawrapper.dwcdn.net/28Wwl/plain.png" alt="Spin geofencing and NCDOT crash map" loading="lazy">
+      <span><strong>Park it here? E-bike and scooter rules differ across NC State</strong><small>Sept. 2026 · Geofencing, parking and crash records</small><span class="reporting-open">View article archive →</span></span>
+    </a>
+  </div>
+</section>
+```
 
 ::: {.project-card .featured-project-card}
 ::: {.project-card-art .project-card-image}
