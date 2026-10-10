@@ -1,5 +1,6 @@
 /* Final fidelity fixes measured against the live Technician capture. */
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400&family=Playfair+Display:wght@400&family=Source+Serif+4:wght@400;700&display=swap");
+/* Use the captured vendor font faces already loaded by the archive.
+   A second Google Fonts load can replace them after the first paint. */
 
 /* Technician's fixed desktop social rail geometry. */
 .sno-story-social-icons .sno-row-icons {
@@ -639,7 +640,7 @@
 
   .sno-hac-inner-desktop-5 .sno-hac-submit-search-button {
     display: block !important;
-    width: auto !important;
+    width: 32px !important;
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900 !important;
   }
