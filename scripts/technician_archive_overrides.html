@@ -43,6 +43,18 @@
 })();
 </script>
 <style id="archive-portfolio-overrides">
+/* Gecko rounds the restored bike page's footer origin eight layout units
+   above the publication. Correct that measured phase without changing its
+   typography, column geometry, or the scaled portfolio preview. */
+@supports (-moz-appearance: none) {
+  @media (min-width: 601px) {
+    html:not(.archive-embed-desktop) footer {
+      position: relative;
+      top: 0.133333px;
+    }
+  }
+}
+
 html.archive-force-desktop .sno-header-wrap-desktop { display: block !important; }
 html.archive-force-desktop .sno-header-wrap-tablet,
 html.archive-force-desktop .sno-header-wrap-mobile { display: none !important; }
