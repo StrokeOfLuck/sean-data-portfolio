@@ -10,7 +10,7 @@ import threading
 from playwright.sync_api import sync_playwright
 
 folder = Path('projects/assets/housing-affordability')
-marker = folder / 'snapshot-map-ready-v2.json'
+marker = folder / 'snapshot-map-ready-v3.json'
 if marker.exists():
     print('Map-complete snapshot already saved')
     raise SystemExit(0)
@@ -47,6 +47,10 @@ try:
         # Trigger any remaining lazy photos before taking a full-page capture.
         page.evaluate("document.querySelectorAll('img').forEach(i => i.loading = 'eager')")
         page.wait_for_timeout(3000)
+        # Hide floating share controls before every viewport capture, including
+        # the final viewport where they overlap the dark publication footer.
+        page.add_style_tag(content='.sno-story-social-icons { visibility: hidden !important; }')
+        assert page.locator('.sno-story-social-icons').evaluate("el => getComputedStyle(el).visibility") == 'hidden'
         page.mouse.move(0, 0)
         map_frame.locator('#map').screenshot(path=str(folder / 'snapshot-map-check.png'))
         # Viewport captures avoid Chromium/SwiftShader repeating tall screenshots
@@ -62,7 +66,7 @@ try:
         canvas.save(folder / 'publication-snapshot.png')
         path = folder / 'publication-snapshot.png'
         path.with_suffix('.png.b64').write_text(base64.b64encode(path.read_bytes()).decode('ascii') + '\n')
-        marker.write_text(json.dumps({'source':'article.html with preserved repo graphics', 'viewport_width':1280, 'device_scale_factor':2, 'map_style_loaded':True, 'map_tiles_loaded':True}, indent=2) + '\n')
+        marker.write_text(json.dumps({'source':'article.html with preserved repo graphics', 'viewport_width':1280, 'device_scale_factor':2, 'map_style_loaded':True, 'map_tiles_loaded':True, 'floating_share_controls_hidden':True}, indent=2) + '\n')
         browser.close()
 finally:
     server.shutdown()
