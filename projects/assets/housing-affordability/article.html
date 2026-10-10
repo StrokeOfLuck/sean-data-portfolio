@@ -280,7 +280,26 @@ html.archive-embed-desktop .sno-story-social-icons {
    child glyphs so only the shared SVG/font layer appears. */
 .sno-story-social-icons .sno-row-icon-ring > i,
 .sno-story-social-icons .sno-row-icon-ring > svg{display:none!important}
-</style></head>
+</style>
+<style id="housing-icon-fidelity">
+@media (min-width: 601px) {
+  /* Keep the same fixed hitbox and glyph alignment as Technician. */
+  #wrap .sno-hac-inner-desktop-5 .sno-hac-submit-search-button {
+    width: 32px !important;
+  }
+  #wrap .sno-story-social-icons .print-row-icon {
+    display: grid !important;
+  }
+}
+</style>
+<script>
+document.addEventListener('click', function (event) {
+  if (!event.target.closest('.sno-story-social-icons .print-row-icon')) return;
+  event.preventDefault();
+  window.print();
+});
+</script>
+</head>
 <body data-rsssl="1" class=" sno-animate-active">
 <div id="wrap" class="bodywrap" data-desktop-breakpoint="1200" data-tablet-breakpoint="900" data-mobile-breakpoint="600" data-post-template="full">
     <a href="#sno-sites-main-content" class="skip-to-content">Skip to Content</a>
