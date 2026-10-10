@@ -276,22 +276,11 @@ html.archive-embed-desktop .sno-story-social-icons {
 }
 </style>
 <style>.sno-story-body-content iframe{display:block;width:100%;border:0;max-width:100%}.sno-story-byline.byline-post-164314{font-family:"Karla"!important}.sno-story-social-icons .print-row-icon{display:none!important}
-.sno-story-social-icons .sno-row-icon-ring{background-repeat:no-repeat!important;background-position:center!important}
-/* Local SVG backgrounds are the single icon layer. The inherited bike
-   stylesheet also draws glyphs on the ring itself, beyond its child icons. */
-#wrap .sno-story-social-icons .sno-row-icon .sno-row-icon-ring::before,
-#wrap .sno-story-social-icons .sno-row-icon .sno-row-icon-ring::after {
-  content: none !important;
-  display: none !important;
-}
-/* Local SVG backgrounds provide the icons; suppress duplicate font/SVG glyphs. */
+/* Use the bike archive’s shared icon rendering. Hide the original WordPress
+   child glyphs so only the shared SVG/font layer appears. */
 .sno-story-social-icons .sno-row-icon-ring > i,
 .sno-story-social-icons .sno-row-icon-ring > svg{display:none!important}
-#wrap .sno-story-social-icons .comment-row-icon .sno-row-icon-ring{background-image:url("../park-it-here/icons/comments.svg")!important;background-size:25px 20px!important}
-#wrap .sno-story-social-icons .like-row-icon .sno-row-icon-ring{background-image:url("../park-it-here/icons/thumbs-up.svg")!important;background-size:20px 20px!important}
-#wrap .sno-story-social-icons .facebook-row-icon .sno-row-icon-ring{background-image:url("../park-it-here/icons/facebook-f.svg")!important;background-size:12px 22px!important}
-#wrap .sno-story-social-icons .twitter-row-icon .sno-row-icon-ring{background-image:url("../park-it-here/icons/x-twitter.svg")!important;background-size:20px 20px!important}
-#wrap .sno-story-social-icons .email-row-icon .sno-row-icon-ring{background-image:url("../park-it-here/icons/envelope.svg")!important;background-size:22px 18px!important}</style></head>
+</style></head>
 <body data-rsssl="1" class=" sno-animate-active">
 <div id="wrap" class="bodywrap" data-desktop-breakpoint="1200" data-tablet-breakpoint="900" data-mobile-breakpoint="600" data-post-template="full">
     <a href="#sno-sites-main-content" class="skip-to-content">Skip to Content</a>
