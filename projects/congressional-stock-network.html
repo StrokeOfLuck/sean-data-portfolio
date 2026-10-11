@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Explore reported 2025 House stock purchases, compare members’ shared stocks, and review source records and textbook-linked methodology.">
 
 <title>Congressional Stock Trading Network – Sean Ryan</title>
 <style>
@@ -312,7 +313,7 @@ body.network-project-app {
 <div id="network-loader-message">Loading congressional stock data…</div>
 </div>
 </div>
-<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&amp;v=47fd5c37" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen=""></iframe>
+<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&amp;v=2025-1.1-ee870ac" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen=""></iframe>
 </div>
 </div>
 <script>
@@ -366,7 +367,7 @@ body.network-project-app {
   });
 
   window.addEventListener("message", function (event) {
-    if (event.origin !== window.location.origin) return;
+    if (event.origin !== new URL(frame.src).origin || event.source !== frame.contentWindow) return;
 
     if (
       event.data &&
