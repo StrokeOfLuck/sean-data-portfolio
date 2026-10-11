@@ -139,6 +139,10 @@ main.content :not(pre) > code {
   overflow-wrap: anywhere;
   white-space: normal;
 }
+#results .table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
 
 /* Keep the methodology page header completely in normal document flow.
    Some mobile browsers can leave a composited ghost of Quarto's fixed/
@@ -604,6 +608,8 @@ The original workbook preserves the original source values and formulas, with hi
 [Unannotated original workbook on GitHub ↗](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx)
 
 [UCDP official Candidate releases and codebook ↗](https://ucdp.uu.se/downloads/)
+
+[Download the official August 2026 CSV, version 26.0.8 ↗](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv). This is the raw global monthly release. The updated Excel workbook and U.S.-involved CSV on this page combine the reviewed Iran records from January–June, July, and August.
 
 Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics.
 
