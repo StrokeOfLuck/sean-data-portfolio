@@ -43,6 +43,28 @@ def significance(rows):
     reason=f'{len(exact)} same-day UCDP records; best death estimate {best}; {civilian} civilian deaths' if exact else f'No same-day fatality record; {len(rows)} multi-day record starts here'
     return level,label,reason
 
+def event_card(rows,level,label,reason,quality_flags):
+    count=len(rows)
+    same_day=sum(r['date_start']==r['date_end'] for r in rows)
+    multi_day=count-same_day
+    noun='event' if count==1 else 'events'
+    title=f'{count} {noun} on this date' if not multi_day else f'{count} event '+('record' if count==1 else 'records')+' grouped at this start date'
+    timing=''
+    if multi_day:
+        parts=[]
+        if same_day:
+            parts.append(f'{same_day} same-day '+('record' if same_day==1 else 'records'))
+        parts.append(f'{multi_day} multi-day '+('record starts' if multi_day==1 else 'records start')+' here')
+        timing='<p class="event-card-timing">'+esc(' · '.join(parts))+'.</p>'
+    entries=[]
+    for e in rows:
+        dates=e['date_start'] if e['date_start']==e['date_end'] else e['date_start']+' to '+e['date_end']+' (multi-day)'
+        headline=esc(e['involvement_evidence']).replace('\r','&#13;').replace('\n','&#10;')
+        entries.append(f'<li data-ucdp-id="{esc(e["id"])}"><div class="event-record-meta"><strong>UCDP {esc(e["id"])}</strong> · {esc(e["where_coordinates"])}<br>{esc(dates)}</div><blockquote class="event-record-headline">{headline}</blockquote></li>')
+    shared='<p class="event-card-note">A shared headline can support more than one UCDP record.</p>' if len({e['involvement_evidence'] for e in rows})<count else ''
+    records=''.join(f'<li><strong>UCDP {esc(e["id"])} · {esc(e["us_involvement"])}</strong><br>{esc(e["date_start"])} to {esc(e["date_end"])} · date precision {esc(e["date_prec"])} · coding: {esc(e["code_status"])}<br>Source fatalities: best {e["best"]}, low {e["low"]}, high {e["high"]}.<br>{esc(quality_flags.get(e["id"],""))}<br>{esc(plain(e["source_headline"]))}</li>' for e in rows)
+    return f'<div class="event-card"><div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div><div class="event-card-title">{esc(title)}</div>{timing}<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<span class="sig-pill {level}">{label} event day</span><div class="event-card-meta">{esc(reason)}</div><details class="event-evidence"><summary>Event records &amp; source headlines</summary><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details></div>'
+
 def post_card(row,scores):
     text=plain(row['content_text'])
     values=scores[row['truth_id']]
@@ -123,12 +145,8 @@ def build():
                 means[offset].append(values)
         summaries.append(row)
         evidence=by_date[day]
-        headlines=list(dict.fromkeys(re.sub(r'^(?:Urgent:|(?:\d(?:st|nd|rd|th) )?LD Writethru:)\s*','',plain(e['involvement_evidence']),flags=re.I) for e in evidence))
-        title=' · '.join(headlines[:2])
-        if len(title)>230:title=title[:227]+'…'
-        locations=' · '.join(dict.fromkeys(e['where_coordinates'] for e in evidence))
-        records=''.join(f'<li><strong>UCDP {esc(e["id"])} · {esc(e["us_involvement"])}</strong><br>{esc(e["date_start"])} to {esc(e["date_end"])} · date precision {esc(e["date_prec"])} · coding: {esc(e["code_status"])}<br>Source fatalities: best {e["best"]}, low {e["low"]}, high {e["high"]}.<br>{esc(manifest.get("upstream_quality_flags",{}).get(e["id"],""))}<br>{esc(plain(e["source_headline"]))}</li>' for e in evidence)
-        event_html.append(f'''<section class="event-view" data-event-index="{index}" data-event-date="{day}" aria-label="{anchor:%B %d, %Y}"><div class="event-stage"><div class="event-top"><div class="event-card"><div class="event-card-label">UCDP · U.S. INVOLVEMENT</div><div class="event-card-title">{esc(title)}</div><div class="event-card-meta">{esc(locations)}</div><span class="sig-pill {level}">{label} event day</span><div class="event-card-meta">{esc(reason)}</div><details class="event-evidence"><summary>Event records &amp; source headlines</summary><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details></div><div class="eventday-zone"><div class="eventday-label">Event day · {len(subsets[0])} posts</div>{group(subsets[0],scores,row['windows']['0']['partial'])}</div></div><div class="rail-wrap"><div class="rail-line"></div><div class="branch-node before-node"></div><div class="center-node {level}"></div><div class="branch-node after-node"></div><div class="before-date">{anchor-timedelta(days=1):%b %d}</div><div class="node-date">{anchor:%B %d, %Y}</div><div class="after-date">{anchor+timedelta(days=1):%b %d}</div></div><div class="branch-area"><div class="branch before-branch"><div class="branch-heading"><strong>Day before</strong><span>{len(subsets[-1])} posts</span></div>{group(subsets[-1],scores,row['windows']['-1']['partial'])}</div><div class="branch after-branch"><div class="branch-heading"><strong>Day after</strong><span>{len(subsets[1])} posts</span></div>{group(subsets[1],scores,row['windows']['1']['partial'])}</div></div></div></section>''')
+        card=event_card(evidence,level,label,reason,manifest.get('upstream_quality_flags',{}))
+        event_html.append(f'''<section class="event-view" data-event-index="{index}" data-event-date="{day}" aria-label="{anchor:%B %d, %Y}"><div class="event-stage"><div class="event-top">{card}<div class="eventday-zone"><div class="eventday-label">Event day · {len(subsets[0])} posts</div>{group(subsets[0],scores,row['windows']['0']['partial'])}</div></div><div class="rail-wrap"><div class="rail-line"></div><div class="branch-node before-node"></div><div class="center-node {level}"></div><div class="branch-node after-node"></div><div class="before-date">{anchor-timedelta(days=1):%b %d}</div><div class="node-date">{anchor:%B %d, %Y}</div><div class="after-date">{anchor+timedelta(days=1):%b %d}</div></div><div class="branch-area"><div class="branch before-branch"><div class="branch-heading"><strong>Day before</strong><span>{len(subsets[-1])} posts</span></div>{group(subsets[-1],scores,row['windows']['-1']['partial'])}</div><div class="branch after-branch"><div class="branch-heading"><strong>Day after</strong><span>{len(subsets[1])} posts</span></div>{group(subsets[1],scores,row['windows']['1']['partial'])}</div></div></div></section>''')
         tip=f'{anchor:%B %d, %Y} — {label}: {reason}'
         nodes.append(f'<button class="timeline-node {level}" data-event-index="{index}" data-event-date="{day}" type="button" title="{esc(tip)}" aria-label="{esc(tip)}"><span class="timeline-dot"></span><span class="timeline-date">{anchor:%b %d}</span></button>')
     overall={str(k):{f:mean(x[f] for x in means[k]) for f in FRAMES} for k in WINDOWS}
@@ -148,7 +166,7 @@ def build():
     text=replace_one(text,r'<(?:h3|p) class="subtitle">.*?</(?:h3|p)>','<p class="subtitle">Explore the posts before, during, and after U.S.-involved conflict events.</p>')
     text=replace_one(text,r'<p class="lede-question">.*?</p>','<p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p>')
     text=re.sub(r'<section id="refresh-overview"[^>]*>.*?</section>','',text,flags=re.S)
-    overview=f'''<section id="refresh-overview" aria-label="Dataset snapshot"><dl class="snapshot-stats"><div class="snapshot-stat"><dt>U.S.-involved event records</dt><dd>{len(events)}</dd></div><div class="snapshot-stat" title="Several UCDP records can share a start date; each distinct date has one timeline point."><dt>Distinct event start dates</dt><dd>{len(dates)}</dd></div><div class="snapshot-stat"><dt>Unique matched posts</dt><dd>{len(scores)}</dd></div></dl></section>'''
+    overview=f'''<section id="refresh-overview" aria-label="Timeline at a glance"><dl class="snapshot-stats"><div class="snapshot-stat"><dt>Dates to explore</dt><dd>{len(dates)}</dd></div><div class="snapshot-stat"><dt>Unique matched posts</dt><dd>{len(scores)}</dd></div></dl></section>'''
     intro='''<header class="timeline-intro"><div class="intro-copy"><h1 class="title toc-ignore">Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events</h1><p class="subtitle">Explore the posts before, during, and after U.S.-involved conflict events.</p></div><div class="writeup-cta"><a href="../../political-text-analysis.html" target="_top">Full write-up &amp; methodology →</a></div><p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p><p class="intro-help">Choose a date with Previous/Next, the date selector, or the timeline below. Explore the posts from the day before, the event day, and the day after.</p></header>'''
     if '<header class="timeline-intro">' in text:
         text=replace_one(text,r'<header class="timeline-intro">.*?</header>',intro+overview)
