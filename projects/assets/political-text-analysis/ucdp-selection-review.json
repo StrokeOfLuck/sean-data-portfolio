@@ -1,0 +1,486 @@
+{
+  "reviewed_at": "2026-10-11",
+  "basis": "Project selection decisions, not official UCDP classifications. All 80 supplied headline/source fields reviewed; full AFP reports additionally checked for 629301 and 629300. Original per-record exclusion rationales were not logged. These are current decisions, not reconstructed historical reasons. Other full articles have not been exhaustively reviewed; unverified U.S. involvement is not proof of absence.",
+  "decisions": {
+    "620876": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 1st LD Writethru: Death toll rises to 148 in U.S.-Israeli attack on Iranian school",
+      "evidence_url": ""
+    },
+    "620877": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran leader Khamenei killed in massive US and Israeli attack",
+      "evidence_url": ""
+    },
+    "620878": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Headline attributes the commanders' deaths to Israel; no U.S. role is documented in the supplied fields.",
+      "evidence_url": ""
+    },
+    "620879": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "One supplied headline explicitly attributes the border-force attack to Israel; the other does not name an attacker. No U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "621091": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US-Israel attacks on Iran: Death toll and injuries live tracker",
+      "evidence_url": ""
+    },
+    "621092": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports three deaths in western-Iran strikes but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "621096": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Headline explicitly describes an Israeli airstrike; no U.S. role is documented in the supplied fields.",
+      "evidence_url": ""
+    },
+    "625182": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran reports 3,468 dead in war with US, Israel: official",
+      "evidence_url": ""
+    },
+    "625183": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US says it killed leader of unit that tried to assassinate Trump",
+      "evidence_url": ""
+    },
+    "625185": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports 20 deaths in Shiraz strikes but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625186": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports eight deaths in central-Iran strikes but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625187": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US, Israel hit five oil sites in and near Tehran: official",
+      "evidence_url": ""
+    },
+    "625190": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports drone attacks killing Tehran security forces but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625192": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Supplied headlines report a blast near a Tehran rally without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625193": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports an Isfahan industrial-area missile strike but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625194": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Headline explicitly attributes the strikes and intelligence-officer deaths to Israel; no U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "625196": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Supplied headlines attribute the Basij leadership strikes to the Israeli military; no U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "625197": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headlines discuss and confirm Larijani's death. An Israeli defence minister is named as a source, but the supplied fields do not establish U.S. participation.",
+      "evidence_url": ""
+    },
+    "625198": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "One headline attributes the intelligence-minister killing to Israel; the other confirms the death. No U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "625357": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports a Chinese national dying in the Tehran conflict but does not identify the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625358": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran Revolutionary Guards say US-Israel strikes kill spokesman",
+      "evidence_url": ""
+    },
+    "625359": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports an attack on a coastal broadcaster without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625361": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Supplied headlines identify Israeli claims about the IRGC navy-commander killing; no U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "625362": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline combines Shiraz and Abu Dhabi deaths; the Iran record does not establish a U.S. role in the Shiraz incident.",
+      "evidence_url": ""
+    },
+    "625363": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran emergency workers search for survivors after deadly US-Israel attacks",
+      "evidence_url": ""
+    },
+    "625364": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran emergency workers search for survivors after deadly US-Israel attacks",
+      "evidence_url": ""
+    },
+    "625365": {
+      "included": false,
+      "category": "U.S. mention only",
+      "reason": "The live-blog headline mentions threats to U.S. and Israeli universities and Houthi missiles; it does not establish U.S. participation in this Bushehr record.",
+      "evidence_url": ""
+    },
+    "625366": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US, Israeli strikes hit Iran port city near Hormuz strait: state media",
+      "evidence_url": ""
+    },
+    "625367": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 5 killed in U.S.-Israeli raid on port city in Iran",
+      "evidence_url": ""
+    },
+    "625368": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Deadly US-Israeli strikes damage religious site in Iran: media",
+      "evidence_url": ""
+    },
+    "625369": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: At least 15 killed in U.S.-Israeli strikes across two Iranian provinces",
+      "evidence_url": ""
+    },
+    "625371": {
+      "included": false,
+      "category": "U.S. mention only",
+      "reason": "U.S. sanctions on the general identify a sanctioning authority, not the actor responsible for the killing.",
+      "evidence_url": ""
+    },
+    "625372": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports an IRGC elite-unit commander killed without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "625373": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 1st LD Writethru: 8 killed, 95 wounded in U.S.-Israeli attacks on bridge in N. Iran",
+      "evidence_url": ""
+    },
+    "625374": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 1st LD Writethru: Death toll rises to 13 from U.S.-Israeli attacks on bridge in N. Iran",
+      "evidence_url": ""
+    },
+    "628242": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US-Israeli strike hits trade terminal at Iran-Iraq border, killing one: media",
+      "evidence_url": ""
+    },
+    "629298": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US-Israeli strike on Iran's Bushehr nuclear plant kills one: state media",
+      "evidence_url": ""
+    },
+    "629300": {
+      "included": false,
+      "category": "Israeli claim / Trump comment",
+      "reason": "One headline reports Trump commenting on Tehran deaths; the AFP article does not specify who attacked. The other headline attributes the oil-official strike to Israel. U.S. participation is unverified.",
+      "evidence_url": "https://www.arabnews.com/node/2638804/middle-east"
+    },
+    "629301": {
+      "included": true,
+      "category": "U.S. rescue-operation context",
+      "reason": "Included after review: the AFP report links five reported deaths in Boyer-Ahmad to the U.S. pilot-rescue operation. This documents U.S. operation context; the report does not explicitly identify the strike actor. UCDP coding remains provisional (Check deaths).",
+      "evidence_url": "https://www.thedailystar.net/news/world/us-israel-war-iran/news/five-killed-iran-strikes-during-us-pilot-rescue-iranian-media-4144001"
+    },
+    "629302": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US-Israeli strikes kill five Guards members in northwest Iran: state media",
+      "evidence_url": ""
+    },
+    "629304": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports a residential-area attack south of Tehran without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "629305": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US-Israeli strikes kill Iran Guards intelligence chief: Guards",
+      "evidence_url": ""
+    },
+    "629306": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran’s top university bombed as US, Israel intensify attacks",
+      "evidence_url": ""
+    },
+    "629307": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran’s top university bombed as US, Israel intensify attacks",
+      "evidence_url": ""
+    },
+    "629308": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran’s top university bombed as US, Israel intensify attacks",
+      "evidence_url": ""
+    },
+    "629309": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Headline attributes the Quds Force commander killing to Israel; no U.S. role is documented in the supplied fields.",
+      "evidence_url": ""
+    },
+    "629310": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports strikes outside Tehran without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "629311": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 1st LD: 2 killed, 3 wounded in U.S.-Israeli attack on railway bridge in C. Iran",
+      "evidence_url": ""
+    },
+    "629312": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Synagogue in Tehran ‘completely destroyed’ in US-Israeli attack",
+      "evidence_url": ""
+    },
+    "629313": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Synagogue in Tehran ‘completely destroyed’ in US-Israeli attack",
+      "evidence_url": ""
+    },
+    "629314": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US, Israel strike Iran petrochemicals hub",
+      "evidence_url": ""
+    },
+    "629315": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports a former foreign minister dying from attack wounds without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "629398": {
+      "included": false,
+      "category": "Demining aftermath",
+      "reason": "Headline reports Iranian soldiers killed while demining. It does not establish U.S. participation in the incident or identify the origin of the ordnance.",
+      "evidence_url": ""
+    },
+    "629399": {
+      "included": true,
+      "category": "Joint U.S.–Israel attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: More than 40 Iranian seafarers killed during US-Israeli war: Union leader\n\n\nAU \n\n\nErin Hale",
+      "evidence_url": ""
+    },
+    "629402": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran says US military killed five civilians in attacks on passenger boats",
+      "evidence_url": ""
+    },
+    "629412": {
+      "included": false,
+      "category": "U.S. speaker only",
+      "reason": "Rubio reporting sailor deaths does not establish U.S. responsibility or participation in the fatal incidents. This multi-day record also has best fatalities 0.",
+      "evidence_url": ""
+    },
+    "633711": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports an Ilam airstrike without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "633791": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports a wounded man dying in Lorestan; the supplied fields do not establish who caused the wounds or a U.S. role.",
+      "evidence_url": ""
+    },
+    "635421": {
+      "included": false,
+      "category": "Israeli attribution; U.S. unverified",
+      "reason": "Both supplied headlines attribute the air-defence officer deaths to Israeli strikes; no U.S. role is documented.",
+      "evidence_url": ""
+    },
+    "637517": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran state media says member of Revolutionary Guards killed in US strikes",
+      "evidence_url": ""
+    },
+    "637518": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Eight Iran military personnel killed in US strikes: state media",
+      "evidence_url": ""
+    },
+    "637519": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran army says eight members killed in latest US attack",
+      "evidence_url": ""
+    },
+    "637520": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strikes kill three in western Iran: Iranian state media",
+      "evidence_url": ""
+    },
+    "637521": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran health ministry says 14 killed in two days of US strikes",
+      "evidence_url": ""
+    },
+    "637523": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Overnight US strikes killed Iranian soldier: media",
+      "evidence_url": ""
+    },
+    "637524": {
+      "included": false,
+      "category": "U.S. role unverified",
+      "reason": "Headline reports attacks in southern Iran without identifying the attacker or a U.S. operation.",
+      "evidence_url": ""
+    },
+    "637525": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 1 killed, several wounded in U.S. overnight strikes on 2 provinces in Iran",
+      "evidence_url": ""
+    },
+    "637526": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strikes kill one, wound 4 in southwest Iran: state media",
+      "evidence_url": ""
+    },
+    "637528": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Several killed in latest U.S. strikes on Iran",
+      "evidence_url": ""
+    },
+    "637532": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: 3rd LD: At least 3 killed, 4 injured in fresh U.S. strikes on Iran -- media",
+      "evidence_url": ""
+    },
+    "637534": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strikes Iran, vows to reimpose naval blockade",
+      "evidence_url": ""
+    },
+    "637540": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strikes killed seven military personnel in southeast: Iran army",
+      "evidence_url": ""
+    },
+    "637542": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: At least 7 people killed as US airstrikes target bridges in southern Iran, Iranian state\ntelevision reports",
+      "evidence_url": ""
+    },
+    "637545": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strikes kill 3, wound 8 in southern Iran: Iranian state media",
+      "evidence_url": ""
+    },
+    "637547": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran says US attacks over three weeks killed 50, injured more than 500",
+      "evidence_url": ""
+    },
+    "637553": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran says US attack on southwest kills at least four people",
+      "evidence_url": ""
+    },
+    "637563": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US strike kills three in Qeshm: Iranian media",
+      "evidence_url": ""
+    },
+    "637567": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Iran's Guards say three members killed in US attack on northwest",
+      "evidence_url": ""
+    },
+    "637743": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: US launches new strikes as Iran warns of regional turmoil",
+      "evidence_url": ""
+    },
+    "640608": {
+      "included": true,
+      "category": "U.S. attribution",
+      "reason": "Selected headline explicitly identifies U.S. or joint U.S.–Israel action: Urgent: Iran's IRGC says several killed, wounded in U.S. attack on Larak island, vows\n\"response and punishment\"",
+      "evidence_url": ""
+    }
+  }
+}

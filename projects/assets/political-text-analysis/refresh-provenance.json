@@ -21,10 +21,10 @@
   "archive_source": "https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts",
   "archive_revision": "eaeb102e183204635582de3eaae6c741cd383c32",
   "archive_cutoff_utc": "2026-08-31T12:09:00Z",
-  "scope": "Country Iran; reviewed source headlines explicitly attributing lethal violence to the U.S. or joint U.S.-Israel action. Israel-only and ambiguous attribution excluded. Shared dyad membership alone is insufficient.",
+  "scope": "Country Iran; documented U.S. or joint U.S.-Israel action, including lethal incidents reported in a U.S. operation context. The April 5 pilot-rescue record documents operation context without explicit strike-actor attribution. Shared dyad membership, U.S. commentary, or sanctions alone are insufficient. Records with no documented U.S. role in the reviewed evidence are withheld, not proven Israel-only.",
   "post_selection": "Preserves the original 87 reviewed posts. Later original text posts match Iran/Iranian, Tehran, Hormuz, or Khamenei; quotes and reblogs excluded. Text-only analysis does not read attached media.",
   "counts": {
-    "ucdp_records": 48,
+    "ucdp_records": 49,
     "ucdp_start_dates": 28,
     "unique_matched_posts": 90,
     "post_event_pairs": 132
@@ -36,7 +36,8 @@
     "Kept original 87 scores after checking source text equivalence apart from whitespace; scored 3 new posts with the same six descriptions and hypothesis template.",
     "August 31 archive coverage ends 08:09 EDT; its after-window is displayed and excluded from aggregate means.",
     "No-post windows are absent observations, not numeric zero scores.",
-    "Event-day posts cannot establish advance warning: UCDP provides calendar dates without intraday timestamps."
+    "Event-day posts cannot establish advance warning: UCDP provides calendar dates without intraday timestamps.",
+    "Selection review added UCDP 629301, April 5, Boyer-Ahmad: five reported deaths during the U.S. pilot-rescue operation. Strike actor unspecified in the AFP report. April 5 already exists, so date groups, post windows and rhetoric means are unchanged. This addition also raises the selected same-day fatality total for April 5 from 5 to 10."
   ],
   "model": {
     "name": "facebook/bart-large-mnli",
@@ -63,7 +64,7 @@
   },
   "files": {
     "ucdp-us-involved-through-august-2026.csv": {
-      "sha256_lf": "d49dc03c841554067f67bbc956dd71b6096b4f111ec3816847cf44e8614d8b49"
+      "sha256_lf": "ebb25001e54ce912000843705d9a6db15b02a849dbdba4552ade25c8e9b4a136"
     },
     "post-event-windows-through-august-2026.csv": {
       "sha256_lf": "e41b53ce5da55d654e6dd7e85e409e3c5e2fcd0b52493804c9f0b5febfab4060"
@@ -89,7 +90,7 @@
         "sha256": "282ebf3c7b9c16738847a0b44fc489625ab9f7f72986e9ed516afc385fe1a211"
       },
       "ucdp-updated-through-august-2026.xlsx": {
-        "sha256": "8ef1e9994d049777261cb43fccf92fb1fecd183810048262670a3a485cc07987"
+        "sha256": "0a0c7359fee366b25ed9e6ca0387a39ca2e4342a6bc2e87612bb14e746532799"
       }
     }
   },
@@ -97,12 +98,18 @@
     "scope": "Country Iran; UCDP conflict_new_id 16905; official Candidate releases January–June, July, and August 2026.",
     "counts": {
       "source": 80,
-      "used": 48,
-      "excluded": 32,
+      "used": 49,
+      "excluded": 31,
       "usedStartDates": 28
     },
     "filename": "ucdp-iran-source-pool-through-august-2026.csv",
-    "sha256_lf": "c88a21cc9c55d3e12eaf1050c9e3e3de47a90aa9fe6c3f8bfdbee076feb6fda2",
-    "selection": "Included rows are matched by persistent UCDP id to the reviewed timeline extract; excluded rows are marked without inventing individual exclusion reasons."
-  }
+    "sha256_lf": "f7265de38ef6ed9ed530b301c17dcf3216269b0c0e34f14e9e8bbd4db4fe11c7",
+    "selection": "Current decisions for all 80 records are documented in ucdp-selection-review.json. Reasons describe the October 11 review, not undocumented historical exclusions. Unverified U.S. involvement is not proof of absence."
+  },
+  "selection_review": {
+    "filename": "ucdp-selection-review.json",
+    "sha256_lf": "e87885e9bf32561099467504a0fcd44d27782778d241a8cae9abca2a167949bf",
+    "basis": "Project selection decisions, not official UCDP classifications. All 80 supplied headline/source fields reviewed; full AFP reports additionally checked for 629301 and 629300. Original per-record exclusion rationales were not logged. These are current decisions, not reconstructed historical reasons. Other full articles have not been exhaustively reviewed; unverified U.S. involvement is not proof of absence."
+  },
+  "extract_text_normalization": "Selected CSV text uses LF line endings and ISO calendar dates. Source words and numerical values are preserved. Unmodified official CSV files retain original bytes; the source-pool CSV retains the original source-field strings."
 }

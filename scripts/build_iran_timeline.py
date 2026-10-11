@@ -43,7 +43,7 @@ def significance(rows):
     reason=f'{len(exact)} same-day UCDP records; best death estimate {best}; {civilian} civilian deaths' if exact else f'No same-day fatality record; {len(rows)} multi-day record starts here'
     return level,label,reason
 
-def event_card(rows,level,label,reason,quality_flags):
+def event_card(rows,level,label,reason,quality_flags,decisions):
     count=len(rows)
     same_day=sum(r['date_start']==r['date_end'] for r in rows)
     multi_day=count-same_day
@@ -60,7 +60,10 @@ def event_card(rows,level,label,reason,quality_flags):
     for e in rows:
         dates=e['date_start'] if e['date_start']==e['date_end'] else e['date_start']+' to '+e['date_end']+' (multi-day)'
         headline=esc(e['involvement_evidence']).replace('\r','&#13;').replace('\n','&#10;')
-        entries.append(f'<li data-ucdp-id="{esc(e["id"])}"><div class="event-record-meta"><strong>UCDP {esc(e["id"])}</strong> · {esc(e["where_coordinates"])}<br>{esc(dates)}</div><blockquote class="event-record-headline">{headline}</blockquote></li>')
+        context=''
+        if e['us_involvement']=='US operation context':
+            context='<p class="event-card-note">U.S. pilot-rescue operation context; the report does not explicitly identify the strike actor. <a href="'+esc(decisions[e['id']]['evidence_url'])+'" target="_blank" rel="noopener noreferrer">Read the AFP report ↗</a></p>'
+        entries.append(f'<li data-ucdp-id="{esc(e["id"])}"><div class="event-record-meta"><strong>UCDP {esc(e["id"])}</strong> · {esc(e["where_coordinates"])}<br>{esc(dates)}</div><blockquote class="event-record-headline">{headline}</blockquote>{context}</li>')
     shared='<p class="event-card-note">A shared headline can support more than one UCDP record.</p>' if len({e['involvement_evidence'] for e in rows})<count else ''
     records=''.join(f'<li><strong>UCDP {esc(e["id"])} · {esc(e["us_involvement"])}</strong><br>{esc(e["date_start"])} to {esc(e["date_end"])} · date precision {esc(e["date_prec"])} · coding: {esc(e["code_status"])}<br>Source fatalities: best {e["best"]}, low {e["low"]}, high {e["high"]}.<br>{esc(quality_flags.get(e["id"],""))}<br>{esc(plain(e["source_headline"]))}</li>' for e in rows)
     return f'<div class="event-card"><div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div><div class="event-card-title">{esc(title)}</div>{timing}<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<span class="sig-pill {level}">{label} event day</span><div class="event-card-meta">{esc(reason)}</div><details class="event-evidence"><summary>Event records &amp; source headlines</summary><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details></div>'
@@ -98,6 +101,10 @@ def build():
     windows=read('post-event-windows-through-august-2026.csv')
     raw_scores=read('rhetoric-scores-through-august-2026.csv')
     manifest=json.loads((ASSETS/'refresh-provenance.json').read_text(encoding='utf-8'))
+    assert hashlib.sha256((ASSETS/'ucdp-selection-review.json').read_text(encoding='utf-8').encode('utf-8')).hexdigest()==manifest['selection_review']['sha256_lf'], 'Selection-review checksum mismatch'
+    review=json.loads((ASSETS/'ucdp-selection-review.json').read_text(encoding='utf-8'))
+    assert len(events)==manifest['counts']['ucdp_records']
+    assert {r['id'] for r in events}=={id for id,decision in review['decisions'].items() if decision['included']}
     for filename,record in manifest['files'].items():
         # Git may check text out with CRLF on Windows; verify canonical UTF-8/LF.
         canonical=(ASSETS/filename).read_text(encoding='utf-8').encode('utf-8')
@@ -111,7 +118,7 @@ def build():
     by_date=defaultdict(list)
     for r in events:
         assert r['date_start']<=r['date_end']
-        assert r['country']=='Iran' and r['us_involvement'] in ['US','Joint US-Israel']
+        assert r['country']=='Iran' and r['us_involvement'] in ['US','Joint US-Israel','US operation context']
         assert int(r['low'])<=int(r['best'])<=int(r['high']) or r['id'] in manifest.get('upstream_quality_flags',{}), 'Unreviewed fatality interval inconsistency'
         by_date[r['date_start']].append(r)
     dates=sorted(by_date)
@@ -145,7 +152,7 @@ def build():
                 means[offset].append(values)
         summaries.append(row)
         evidence=by_date[day]
-        card=event_card(evidence,level,label,reason,manifest.get('upstream_quality_flags',{}))
+        card=event_card(evidence,level,label,reason,manifest.get('upstream_quality_flags',{}),review['decisions'])
         event_html.append(f'''<section class="event-view" data-event-index="{index}" data-event-date="{day}" aria-label="{anchor:%B %d, %Y}"><div class="event-stage"><div class="event-top">{card}<div class="eventday-zone"><div class="eventday-label">Event day · {len(subsets[0])} posts</div>{group(subsets[0],scores,row['windows']['0']['partial'])}</div></div><div class="rail-wrap"><div class="rail-line"></div><div class="branch-node before-node"></div><div class="center-node {level}"></div><div class="branch-node after-node"></div><div class="before-date">{anchor-timedelta(days=1):%b %d}</div><div class="node-date">{anchor:%B %d, %Y}</div><div class="after-date">{anchor+timedelta(days=1):%b %d}</div></div><div class="branch-area"><div class="branch before-branch"><div class="branch-heading"><strong>Day before</strong><span>{len(subsets[-1])} posts</span></div>{group(subsets[-1],scores,row['windows']['-1']['partial'])}</div><div class="branch after-branch"><div class="branch-heading"><strong>Day after</strong><span>{len(subsets[1])} posts</span></div>{group(subsets[1],scores,row['windows']['1']['partial'])}</div></div></div></section>''')
         tip=f'{anchor:%B %d, %Y} — {label}: {reason}'
         nodes.append(f'<button class="timeline-node {level}" data-event-index="{index}" data-event-date="{day}" type="button" title="{esc(tip)}" aria-label="{esc(tip)}"><span class="timeline-dot"></span><span class="timeline-date">{anchor:%b %d}</span></button>')

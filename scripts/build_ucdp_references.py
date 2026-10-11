@@ -16,6 +16,7 @@ POOL = ASSETS / 'ucdp-iran-source-pool-through-august-2026.csv'
 EXTRACT = ASSETS / 'ucdp-us-involved-through-august-2026.csv'
 PROVENANCE = ASSETS / 'refresh-provenance.json'
 EXTRA = ['ucdp_release', 'included_in_current_timeline', 'selection_note']
+REVIEW = ASSETS / 'ucdp-selection-review.json'
 
 def read(path):
     with path.open(encoding='utf-8-sig', newline='') as file:
@@ -24,9 +25,12 @@ def read(path):
 
 def build(source_dir=None):
     manifest = json.loads(PROVENANCE.read_text(encoding='utf-8'))
+    review = json.loads(REVIEW.read_text(encoding='utf-8'))
+    assert hashlib.sha256(REVIEW.read_text(encoding='utf-8').encode('utf-8')).hexdigest() == manifest['selection_review']['sha256_lf']
+    decisions = review['decisions']
     used_columns, used = read(EXTRACT)
     by_id = {r['id']: r for r in used}
-    assert len(by_id) == len(used) == 48
+    assert len(by_id) == len(used) == manifest['counts']['ucdp_records']
     if source_dir:
         pool = {}
         for source in manifest['ucdp_sources']:
@@ -41,7 +45,9 @@ def build(source_dir=None):
         for row in source_rows:
             selected = row['id'] in by_id
             row['included_in_current_timeline'] = 'Yes' if selected else 'No'
-            row['selection_note'] = ('Selected: ' + by_id[row['id']]['involvement_evidence']) if selected else 'Not retained in the reviewed U.S.-involved subset. Inspect the source headline to audit attribution.'
+            decision = decisions[row['id']]
+            assert decision['included'] == selected, 'Selection review does not match extract: ' + row['id']
+            row['selection_note'] = decision['reason']
         with POOL.open('w', encoding='utf-8', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=source_columns+EXTRA, lineterminator='\n')
             writer.writeheader()
@@ -51,6 +57,8 @@ def build(source_dir=None):
     selected_ids = {row['id'] for row in source_rows if row['included_in_current_timeline'] == 'Yes'}
     assert len(source_ids) == len(source_rows) == 80
     assert selected_ids == set(by_id), 'Reference selection must exactly match the timeline extract'
+    assert source_ids == set(decisions), 'Every source record must have a documented current decision'
+    assert all(row['selection_note'] == decisions[row['id']]['reason'] for row in source_rows)
     assert all(row['country'] == 'Iran' and row['conflict_new_id'] == '16905' for row in source_rows)
     assert all(row['date_start'][:4] == '2026' for row in source_rows)
     assert max(row['date_start'][:10] for row in source_rows) == '2026-08-30'
@@ -62,13 +70,14 @@ def build(source_dir=None):
         'sourceColumns': source_columns, 'usedColumns': used_columns,
         'source': source_rows, 'used': used,
         'qualityFlags': manifest.get('upstream_quality_flags', {}),
+        'selectionReview': review,
     }
     (ASSETS/'ucdp-reference-data.json').write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
     manifest['reference_source_pool'] = {
         'scope': payload['scope'], 'counts': payload['counts'],
         'filename': POOL.name,
         'sha256_lf': hashlib.sha256(POOL.read_text(encoding='utf-8').encode('utf-8')).hexdigest(),
-        'selection': 'Included rows are matched by persistent UCDP id to the reviewed timeline extract; excluded rows are marked without inventing individual exclusion reasons.',
+        'selection': 'Current decisions for all 80 records are documented in ucdp-selection-review.json. Reasons describe the October 11 review, not undocumented historical exclusions. Unverified U.S. involvement is not proof of absence.',
     }
     PROVENANCE.write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(payload['counts']))
