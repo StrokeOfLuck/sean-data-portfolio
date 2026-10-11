@@ -83,7 +83,7 @@ Fall 2026
 ::: {.project-tags}
 [Network Analysis]{.project-tag} [Public Records]{.project-tag} [Congressional Data]{.project-tag}
 :::
-Interactive network of reported 2025 House stock purchases, shared companies, committees, and subcommittees with transaction-date-aware committee matching.
+Explore reported 2025 House stock purchases, compare members' shared stocks, and review filing records and textbook-linked methods. Includes dated committee context and documented coverage limits.
 
 [View project →](projects/congressional-stock-network.qmd){.project-link}
 :::

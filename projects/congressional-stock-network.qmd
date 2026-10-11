@@ -1,5 +1,6 @@
 ---
 pagetitle: "Congressional Stock Trading Network"
+description: "Explore reported 2025 House stock purchases, compare members' shared stocks, and review source records and textbook-linked methodology."
 page-layout: full
 title-block-banner: false
 toc: false
@@ -186,7 +187,7 @@ body.network-project-app {
 <div id="network-loader-message">Loading congressional stock data…</div>
 </div>
 </div>
-<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&v=47fd5c37" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
+<iframe id="congress-network-frame" src="https://strokeofluck.github.io/congressional-stock-network-2025/?embed=1&v=2025-1.1-ee870ac" title="Interactive Congressional Stock Trading Network" loading="eager" allowfullscreen></iframe>
 </div>
 </div>
 ```
@@ -242,7 +243,7 @@ body.network-project-app {
   });
 
   window.addEventListener("message", function (event) {
-    if (event.origin !== window.location.origin) return;
+    if (event.origin !== new URL(frame.src).origin || event.source !== frame.contentWindow) return;
 
     if (
       event.data &&
