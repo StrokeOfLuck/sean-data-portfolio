@@ -92,5 +92,17 @@
         "sha256": "8ef1e9994d049777261cb43fccf92fb1fecd183810048262670a3a485cc07987"
       }
     }
+  },
+  "reference_source_pool": {
+    "scope": "Country Iran; UCDP conflict_new_id 16905; official Candidate releases January–June, July, and August 2026.",
+    "counts": {
+      "source": 80,
+      "used": 48,
+      "excluded": 32,
+      "usedStartDates": 28
+    },
+    "filename": "ucdp-iran-source-pool-through-august-2026.csv",
+    "sha256_lf": "c88a21cc9c55d3e12eaf1050c9e3e3de47a90aa9fe6c3f8bfdbee076feb6fda2",
+    "selection": "Included rows are matched by persistent UCDP id to the reviewed timeline extract; excluded rows are marked without inventing individual exclusion reasons."
   }
 }

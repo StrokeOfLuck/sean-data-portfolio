@@ -143,6 +143,15 @@ main.content :not(pre) > code {
   max-width: 100%;
   overflow-x: auto;
 }
+.ucdp-reference-window {
+  display: block;
+  width: 100%;
+  height: 590px;
+  border: 1px solid #cbd7e2;
+  border-radius: 10px;
+  background: #fff;
+  margin: 14px 0 24px;
+}
 
 /* Keep the methodology page header completely in normal document flow.
    Some mobile browsers can leave a composited ghost of Quarto's fixed/
@@ -218,6 +227,36 @@ The October 11, 2026 refresh aligns **48 UCDP Candidate records across 28 event 
 Post timestamps and post-window membership use **America/New_York (EST/EDT)**. UCDP event dates remain source-coded calendar dates; no intraday event time is available, so a day-before post is not necessarily a full 24-hour lead. Events on adjacent dates can reuse the same post in different windows. Multi-day records appear as context at their start date without assigning their whole fatality total to that day.
 
 The archive ends **August 31 at 08:09 EDT**. Its partial day-after window is displayed but excluded from the comparison. Empty windows are kept in the timeline and omitted from score averages; an absent post is not a zero score.
+
+## UCDP source and selection
+
+**What this source is:** the UCDP Candidate Events Dataset records lethal organized violence using event dates, locations, actor coding, fatality estimates, and cited source reports. Candidate records are provisional and can be revised.
+
+**Why it is used here:** UCDP supplies documented event dates around which to group Trump's posts. The events are selected from UCDP independently of the rhetoric scores. This provides a consistent reference for comparing language before, on, and after recorded conflict events.
+
+### Official source records, with selection highlighted
+
+This window shows **80 original UCDP source records** from the January–June, July, and August 2026 releases, after restricting the global data to **Iran and conflict ID 16905** (Iran–Israel/United States). It is the source pool before the reviewed U.S.-involvement selection. The complete global CSV releases are linked below.
+
+**Yellow identifies the 48 records extracted for the current timeline. Gray identifies the 32 records excluded from the reviewed subset.** Each row also has a text label, so the selection is clear without relying on color. Inclusion requires a source headline explicitly attributing lethal violence to U.S. or joint U.S.–Israel action. Israel-only and unclear-attribution records were not retained. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.
+
+Search or filter this window to inspect either group. Click a UCDP ID to read all the source fields. The inclusion flags reproduce the reviewed extract; individual exclusion reasons were not recorded, so the viewer exposes the original headlines for inspection.
+
+<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Official UCDP source records with included and excluded rows marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy"></iframe>
+
+[Open the source window separately](assets/political-text-analysis/ucdp-reference-viewer.html?view=source) · [Download the source pool with selection flags](assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv)
+
+### Exact records used by the timeline
+
+This second window contains **only the 48 selected UCDP records**, matching the timeline's CSV by persistent record ID. Their **28 event start dates** define the before/event-day/after post windows. Multiple records can share one start date, and a multi-day record can cover a longer interval. Record counts therefore do not represent independent intervention onsets, and multi-day fatality totals are not assigned to the first day.
+
+July 30 is included as an event date even though it has no matched posts. The August release adds the U.S.-attributed August 30 Larak Island event, **UCDP 640608**. Use the release filter to view that August record directly.
+
+<iframe class="ucdp-reference-window" id="ucdp-used-reference" title="Exact UCDP records used by the current Iran timeline" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=used" loading="lazy"></iframe>
+
+[Open the used-records window separately](assets/political-text-analysis/ucdp-reference-viewer.html?view=used) · [Download the exact used-records CSV](assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv)
+
+**Official source files:** [January–June 26.01.26.06](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv), [July 26.0.7](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv), and [August 26.0.8](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv). [Dataset documentation and codebook](https://ucdp.uu.se/downloads/).
 
 ## Significance levels
 
@@ -617,7 +656,7 @@ Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and S
 
 [Current build script and frozen extracts on GitHub ↗](https://github.com/Strokeofluck/sean-data-portfolio/blob/main/scripts/build_iran_timeline.py)
 
-Run `python scripts/build_iran_timeline.py` from the portfolio repository. It validates source IDs, post-window membership, score coverage, and fatality intervals before rebuilding the page. The three input CSVs and source-version manifest are saved beside the timeline.
+Run `python scripts/build_iran_timeline.py` from the portfolio repository. It validates source IDs, post-window membership, score coverage, and fatality intervals before rebuilding the page. Run `python scripts/build_ucdp_references.py` to rebuild the two reference viewers' data from the frozen source-pool and used-record extracts. To reconstruct the source pool from the three official CSV downloads, pass `--source-dir PATH`; their recorded checksums must match. The input CSVs and source-version manifest are saved beside the timeline.
 
 [Source versions and refresh provenance](assets/political-text-analysis/refresh-provenance.json)
 

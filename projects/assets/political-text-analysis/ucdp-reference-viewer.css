@@ -1,0 +1,46 @@
+:root {color-scheme:light; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:#263746; background:#fff}
+* {box-sizing:border-box}
+body {margin:0; font-size:14px}
+main {height:100vh; display:flex; flex-direction:column; padding:14px; min-width:0; overflow:hidden}
+header {flex:none; padding-bottom:8px; border-bottom:1px solid #dce2e9}
+h1 {font-size:18px; margin:0 0 5px; font-weight:700}
+h2 {font-size:18px}
+p {margin:0; line-height:1.5}
+#viewSummary {color:#536477; font-size:13px}
+#recordBrowser {display:flex; flex:1; flex-direction:column; min-height:0; min-width:0}
+#controls {display:flex; gap:10px; flex-wrap:wrap; padding-top:10px}
+label {display:flex; flex-direction:column; gap:4px; font-weight:650; font-size:12px; min-width:0}
+label.search {flex:1; min-width:160px}
+input,select,button {font:inherit; border:1px solid #b9c7d4; border-radius:5px; background:white; color:inherit; min-height:34px; padding:6px 9px}
+input,select {font-weight:400; width:100%; min-width:0}
+button {cursor:pointer}
+button:hover {background:#eef3f8}
+button:disabled {opacity:.4; cursor:default}
+:focus-visible {outline:3px solid #4b87c0; outline-offset:2px}
+.view-notes {display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:8px 0; font-size:12px}
+#legend {color:#526271}
+#export {font-size:12px; min-height:30px; border:1px solid #b9c7d4; border-radius:5px; padding:6px 9px; text-decoration:none; color:#175c94; display:inline-block; text-align:center}
+#export:hover {background:#eef3f8}
+.swatch {display:inline-block; width:11px; height:11px; border:1px solid #b6c3cc; vertical-align:middle; margin-right:4px}
+.swatch.included,.included {background:#fff3ce}
+.swatch.excluded,.excluded {background:#f0f2f4}
+.table-window {flex:1; min-height:140px; overflow:auto; border:1px solid #d5dee6; border-radius:5px; min-width:0}
+table {border-collapse:separate; border-spacing:0; width:100%; table-layout:fixed; min-width:1070px}
+th {position:sticky; top:0; background:#e7eef5; color:#253c51; z-index:1; text-align:left; padding:10px 8px; border-bottom:1px solid #b8c8d8; font-size:12px}
+td {padding:9px 8px; vertical-align:top; border-bottom:1px solid #dce2e8; line-height:1.5; font-size:12px; overflow-wrap:anywhere}
+th:nth-child(1) {width:145px} th:nth-child(2) {width:90px} th:nth-child(3),th:nth-child(4) {width:104px} th:nth-child(5) {width:140px} th:nth-child(6) {width:100px} th:nth-child(7) {width:380px}
+td button {padding:2px 0; min-height:26px; border:0; background:transparent; color:#175c94; text-decoration:underline; font-weight:650}
+.headline {display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+.status {display:block; font-weight:650; margin-bottom:2px}
+.status-note {font-size:11px; color:#596876}
+.sr-only {position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
+footer {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; padding-top:9px; font-size:12px}
+footer div {display:flex; align-items:center; gap:8px}
+footer button {min-height:30px; padding:4px 8px}
+#inspector {flex:1; min-height:0; overflow:auto; padding:12px 0}
+#inspector[hidden],#recordBrowser[hidden],#selectionControl[hidden] {display:none}
+#recordNote {padding:10px; background:#eef3f8; font-size:13px; margin-bottom:14px}
+dl {margin:0}
+.field {display:grid; grid-template-columns:170px 1fr; gap:12px; border-top:1px solid #e0e5eb; padding:8px 0; font-size:12px}
+dt {font-weight:650; overflow-wrap:anywhere} dd {margin:0; white-space:pre-wrap; overflow-wrap:anywhere}
+@media(max-width:520px) {main {padding:10px} #controls label {flex:1; min-width:100px} #controls .search {flex-basis:100%} .view-notes {padding:6px 0} .field {grid-template-columns:1fr; gap:4px} footer div {gap:5px} #export {width:100%} }
