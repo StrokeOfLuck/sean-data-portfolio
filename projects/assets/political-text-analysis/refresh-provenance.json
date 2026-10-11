@@ -111,5 +111,20 @@
     "sha256_lf": "e87885e9bf32561099467504a0fcd44d27782778d241a8cae9abca2a167949bf",
     "basis": "Project selection decisions, not official UCDP classifications. All 80 supplied headline/source fields reviewed; full AFP reports additionally checked for 629301 and 629300. Original per-record exclusion rationales were not logged. These are current decisions, not reconstructed historical reasons. Other full articles have not been exhaustively reviewed; unverified U.S. involvement is not proof of absence."
   },
-  "extract_text_normalization": "Selected CSV text uses LF line endings and ISO calendar dates. Source words and numerical values are preserved. Unmodified official CSV files retain original bytes; the source-pool CSV retains the original source-field strings."
+  "extract_text_normalization": "Selected CSV text uses LF line endings and ISO calendar dates. Source words and numerical values are preserved. Unmodified official CSV files retain original bytes; the source-pool CSV retains the original source-field strings.",
+  "selection_step_exports": {
+    "iran_records": {
+      "filename": "ucdp-all-iran-through-august-2026.csv",
+      "records": 172,
+      "scope": "All records with country Iran across the three official releases; all original UCDP fields plus the source release.",
+      "sha256_lf": "2afe3cd35652133423135262684725cfb486118686706eabafe4dc1222dc7b19"
+    },
+    "start_date_groups": {
+      "filename": "ucdp-event-start-date-groups-through-august-2026.csv",
+      "rows": 28,
+      "underlying_records": 49,
+      "scope": "One row per selected start date, with the complete member-ID list and same-day/multi-day record counts. No selected records are discarded.",
+      "sha256_lf": "98bb335e3c7882ba2998eeeb177b6229285e6bb9e255477c5c37c7023714b926"
+    }
+  }
 }
