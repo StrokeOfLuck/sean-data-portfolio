@@ -1,10 +1,10 @@
 /* Final presentation rules for the October 2026 source refresh. */
 html { scroll-behavior:smooth; }
-#refresh-overview { margin:0 0 20px; padding:18px 20px; background:#f1f5fa; border:1px solid #d5dfe9; border-radius:14px; }
-#refresh-overview p { margin:10px 0; font-size:14px; line-height:1.5; }
-.snapshot-stats { display:flex; flex-wrap:wrap; gap:12px 30px; font-size:14px; color:#526173; }
-.snapshot-stats strong { font-size:24px; color:#17202a; margin-right:4px; }
-.signal-caveat { border-left:3px solid #4b719c; padding-left:12px; }
+#refresh-overview { margin:0 0 20px; padding:4px 0 20px; border-bottom:1px solid var(--border,#cfd7e1); }
+.snapshot-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; max-width:900px; margin:0; }
+.snapshot-stat { display:flex; align-items:baseline; gap:10px; min-width:0; }
+.snapshot-stat dt { font-size:14px; line-height:1.4; font-weight:400; color:var(--muted,#667085); }
+.snapshot-stat dd { order:-1; margin:0; font-size:28px; line-height:1.2; font-weight:750; color:var(--ink,#17202a); }
 .coverage-note { font-size:12px!important; line-height:1.45; color:#526173; }
 .subtitle { margin:0 0 12px; color:#526173; }
 .lede-question { font-size:17px; line-height:1.5; margin-bottom:16px; }
@@ -35,10 +35,11 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 @media(max-width:600px) {
   body { padding:20px 14px 32px!important; }
   h1.title { font-size:26px; line-height:1.18; }
-  #refresh-overview { padding:14px; }
-  .snapshot-stats { gap:10px; justify-content:space-between; }
-  .snapshot-stats span { flex:1 1 27%; font-size:11px; }
-  .snapshot-stats strong { display:block; font-size:22px; }
+  #refresh-overview { padding:0 0 16px; }
+  .snapshot-stats { gap:14px; }
+  .snapshot-stat { flex-direction:column; align-items:flex-start; gap:4px; }
+  .snapshot-stat dt { font-size:11px; }
+  .snapshot-stat dd { font-size:24px; }
   .summary-table th, .summary-table td { padding:9px 4px; font-size:11px; }
   .summary-table th:first-child { width:31%; }
   .summary-table th small { font-size:9px; }
