@@ -1,0 +1,65 @@
+/* Final presentation rules for the October 2026 source refresh. */
+html { scroll-behavior:smooth; }
+#refresh-overview { margin:0 0 20px; padding:18px 20px; background:#f1f5fa; border:1px solid #d5dfe9; border-radius:14px; }
+#refresh-overview p { margin:10px 0; font-size:14px; line-height:1.5; }
+.snapshot-stats { display:flex; flex-wrap:wrap; gap:12px 30px; font-size:14px; color:#526173; }
+.snapshot-stats strong { font-size:24px; color:#17202a; margin-right:4px; }
+.signal-caveat { border-left:3px solid #4b719c; padding-left:12px; }
+.coverage-note { font-size:12px!important; line-height:1.45; color:#526173; }
+.subtitle { margin:0 0 12px; color:#526173; }
+.lede-question { font-size:17px; line-height:1.5; margin-bottom:16px; }
+.summary-table { min-width:0; table-layout:fixed; }
+.summary-panel > summary { cursor:pointer; padding:15px 18px; font-weight:750; font-size:15px; }
+.usage-note { padding:12px 16px!important; }
+.usage-note summary { cursor:pointer; font-size:13px; font-weight:700; }
+.usage-note p { margin:10px 0 0; font-size:13px; }
+.summary-table caption { text-align:left; font-size:12px; color:#526173; margin-bottom:10px; }
+.summary-table th:first-child { width:28%; }
+.summary-table th small { display:block; font-size:11px; font-weight:400; color:#526173; margin-top:4px; }
+.summary-score { grid-template-columns:minmax(0,1fr) 34px; }
+.event-evidence { margin-top:10px; font-size:12px; font-weight:400; }
+.event-evidence summary { cursor:pointer; color:#3f78b8; font-weight:700; }
+.event-evidence ul { padding-left:18px; }
+.event-evidence li { margin:0 0 12px; overflow-wrap:anywhere; }
+#color-window-controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; padding:12px 0; font-size:13px; }
+#colorWindow { min-height:42px; border:1px solid #b7c4d1; border-radius:8px; padding:6px 10px; background:#fff; color:#17202a; }
+#colorWindowNote { color:#526173; font-size:12px; }
+.rhetoric-color-legend { display:flex; flex-wrap:wrap; gap:9px 14px; font-size:12px; }
+.rhetoric-color-legend span { display:inline-flex; align-items:center; gap:6px; }
+.rhetoric-color-legend i { display:inline-block; width:11px; height:11px; border-radius:50%; }
+.rhetoric-color-note { font-size:12px; color:#526173; }
+.event-card-title { line-height:1.4; }
+#event-explorer { scroll-margin-top:20px; }
+button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline:3px solid #3574b6; outline-offset:3px; }
+.mobile-window-tab[aria-pressed="true"] { box-shadow:inset 0 -3px #4b719c; }
+@media(max-width:600px) {
+  body { padding:20px 14px 32px!important; }
+  h1.title { font-size:26px; line-height:1.18; }
+  #refresh-overview { padding:14px; }
+  .snapshot-stats { gap:10px; justify-content:space-between; }
+  .snapshot-stats span { flex:1 1 27%; font-size:11px; }
+  .snapshot-stats strong { display:block; font-size:22px; }
+  .summary-table th, .summary-table td { padding:9px 4px; font-size:11px; }
+  .summary-table th:first-child { width:31%; }
+  .summary-table th small { font-size:9px; }
+  .summary-track { display:none; }
+  .summary-score { display:block; text-align:center; }
+  .panel-body { padding:14px; }
+  .summary-table th { overflow-wrap:anywhere; }
+  .timeline-key-row .timeline-legend { flex-wrap:wrap!important; }
+}
+@media(max-width:900px) {
+  .viewer-toolbar { display:grid!important; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important; gap:8px!important; }
+  #prevEvent { grid-column:1!important; grid-row:1!important; }
+  #eventCounter { grid-column:2!important; grid-row:1!important; align-self:center; font-size:11px; }
+  #nextEvent { grid-column:3!important; grid-row:1!important; }
+  #eventSelect { grid-column:1/-1!important; grid-row:2!important; width:100%; }
+  .viewer-toolbar button { font-size:12px!important; padding:8px 4px!important; }
+  .branch { padding:0!important; }
+  .branch-heading { display:none!important; }
+  .branch::before { display:none!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after { scroll-behavior:auto!important; transition:none!important; }
+}

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Trump Truth Social Posts Around UCDP Iran Events"
+pagetitle: "Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events"
 page-layout: full
 title-block-banner: false
 toc: false
@@ -33,6 +33,7 @@ main.content,
 <div class="column-screen" style="margin: 0;">
 <iframe
   id="iran-timeline-frame"
+  title="Trump rhetoric around U.S.-involved Iran events"
   src="assets/political-text-analysis/trump-iran-connected-timeline.html"
   style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;"
   loading="lazy">
@@ -56,6 +57,17 @@ main.content,
 
       if (doc.body) {
         doc.body.classList.remove("has-shared-nav");
+        const resizeFrame = () => {
+          const height = Math.ceil(doc.body.scrollHeight + 40);
+          if (Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+            frame.style.height = height + "px";
+          }
+        };
+        if (!frame._contentObserver) {
+          frame._contentObserver = new ResizeObserver(resizeFrame);
+          frame._contentObserver.observe(doc.body);
+        }
+        resizeFrame();
       }
     } catch (error) {
       /* Same-origin on the deployed site; fail quietly during local previews. */
