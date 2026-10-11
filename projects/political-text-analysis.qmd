@@ -221,6 +221,8 @@ The U.S. involvement focus is deliberate. Israel-only events are excluded. This 
 
 The October 11, 2026 refresh aligns **48 UCDP Candidate records across 28 event start dates** with **90 unique matched posts (132 post/event pairs)**. All 47 records in the prior extract are retained. The August release adds **UCDP 640608, August 30 at Larak Island**, whose source headlines explicitly describe a U.S. attack; its best fatality estimate is 2 (low–high 2–3). July 30 is now shown even though no posts match its windows.
 
+**Why 48 records but 28 dates?** UCDP can record multiple events with the same start date. The timeline groups those records at one date point, so 48 records produce 28 distinct date points. For example, July 30 has two selected records, one in Qeshm and one in northwest Iran, but only one timeline date. Multi-day records use their recorded start date as an anchor.
+
 - **UCDP Candidate:** January–June version 26.01.26.06, July 26.0.7, and August 26.0.8. Inclusion requires the country to be Iran and reviewed source headlines to explicitly attribute the lethal event to U.S. or joint U.S.–Israel action. The combined Israel/U.S. dyad cannot establish U.S. involvement on its own. Candidate records are provisional.
 - **Truth Social archive:** the [Cameronk199 public archive](https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts), revision `eaeb102e183204635582de3eaae6c741cd383c32`. The original 87 reviewed posts are preserved; later original text posts matching Iran/Iranian, Tehran, Hormuz, or Khamenei extend the extract. Quote posts and reblogs are excluded. Attached images and videos are not classified.
 
