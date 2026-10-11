@@ -1,0 +1,1106 @@
+{
+  "overall": {
+    "-1": {
+      "Threat": 0.558044360832326,
+      "Victory": 0.6881349889990238,
+      "Diplomacy": 0.22516192177251454,
+      "Ceasefire / Ending": 0.35867245872283265,
+      "Blame Allies": 0.0678535993804597,
+      "Media Criticism": 0.3305217323691717
+    },
+    "0": {
+      "Threat": 0.5054772245906696,
+      "Victory": 0.7690263614219006,
+      "Diplomacy": 0.2104135696362584,
+      "Ceasefire / Ending": 0.34510450639874873,
+      "Blame Allies": 0.14130443018441313,
+      "Media Criticism": 0.35895877247394037
+    },
+    "1": {
+      "Threat": 0.4845270719814358,
+      "Victory": 0.6996707000686521,
+      "Diplomacy": 0.27170955790668755,
+      "Ceasefire / Ending": 0.39100891781050623,
+      "Blame Allies": 0.1123854595546921,
+      "Media Criticism": 0.3511452108917255
+    }
+  },
+  "window_event_counts": {
+    "-1": 21,
+    "0": 22,
+    "1": 21
+  },
+  "events": [
+    {
+      "date": "2026-02-28",
+      "label": "Major",
+      "reason": "2 same-day UCDP records; best death estimate 162; 155 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.8182908892631531,
+            "Victory": 0.7978043854236603,
+            "Diplomacy": 0.012981237843632698,
+            "Ceasefire / Ending": 0.1844196654856205,
+            "Blame Allies": 0.0446703415364027,
+            "Media Criticism": 0.49984461069107056
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 5,
+          "means": {
+            "Threat": 0.9543991327285767,
+            "Victory": 0.9668501734733581,
+            "Diplomacy": 0.05916439965367317,
+            "Ceasefire / Ending": 0.3439748868346214,
+            "Blame Allies": 0.09422183195129037,
+            "Media Criticism": 0.36473061740398405
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-04",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 1; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 4,
+          "means": {
+            "Threat": 0.7925385311245918,
+            "Victory": 0.9352643489837646,
+            "Diplomacy": 0.07848095474764705,
+            "Ceasefire / Ending": 0.36670469120144844,
+            "Blame Allies": 0.07823738134175073,
+            "Media Criticism": 0.43979268707334995
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.17673583328723907,
+            "Victory": 0.6196945905685425,
+            "Diplomacy": 0.802966296672821,
+            "Ceasefire / Ending": 0.4647217094898224,
+            "Blame Allies": 0.0007572337635792792,
+            "Media Criticism": 0.070813849568367
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.11353140324354172,
+            "Victory": 0.15011274814605713,
+            "Diplomacy": 0.17142245173454285,
+            "Ceasefire / Ending": 0.2860073745250702,
+            "Blame Allies": 0.017363857477903366,
+            "Media Criticism": 0.07623643428087234
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-08",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 4; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9520094990730286,
+            "Victory": 0.959315836429596,
+            "Diplomacy": 0.061423592269420624,
+            "Ceasefire / Ending": 0.287180632352829,
+            "Blame Allies": 0.029204584658145905,
+            "Media Criticism": 0.45422831177711487
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.032937705516815186,
+            "Victory": 0.6283805966377258,
+            "Diplomacy": 0.048978012055158615,
+            "Ceasefire / Ending": 0.33660632371902466,
+            "Blame Allies": 0.01367999892681837,
+            "Media Criticism": 0.14775033295154572
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 4,
+          "means": {
+            "Threat": 0.5931317806243896,
+            "Victory": 0.7097785249352455,
+            "Diplomacy": 0.23449923392035998,
+            "Ceasefire / Ending": 0.33478908031247556,
+            "Blame Allies": 0.03402428445406258,
+            "Media Criticism": 0.22298894310370088
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-20",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 1; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 4,
+          "means": {
+            "Threat": 0.46035908441990614,
+            "Victory": 0.47325488133355975,
+            "Diplomacy": 0.29998484486714005,
+            "Ceasefire / Ending": 0.25049432646483183,
+            "Blame Allies": 0.03268158121500164,
+            "Media Criticism": 0.29297769628465176
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.646808460354805,
+            "Victory": 0.9592220187187195,
+            "Diplomacy": 0.0035056837368756533,
+            "Ceasefire / Ending": 0.4275336265563965,
+            "Blame Allies": 0.5022549945861101,
+            "Media Criticism": 0.6939014196395874
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.9446212351322174,
+            "Victory": 0.9667498171329498,
+            "Diplomacy": 0.38976405607536435,
+            "Ceasefire / Ending": 0.3889322584727779,
+            "Blame Allies": 0.05506615526974201,
+            "Media Criticism": 0.5673116520047188
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-27",
+      "label": "Notable",
+      "reason": "2 same-day UCDP records; best death estimate 8; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.497024717895935,
+            "Victory": 0.6389958560466766,
+            "Diplomacy": 0.4899243861436844,
+            "Ceasefire / Ending": 0.41779999683300656,
+            "Blame Allies": 0.3462985963560641,
+            "Media Criticism": 0.4364832937717438
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.07073614746332169,
+            "Victory": 0.9915895462036133,
+            "Diplomacy": 0.3207983374595642,
+            "Ceasefire / Ending": 0.8019712567329407,
+            "Blame Allies": 0.015833808109164238,
+            "Media Criticism": 0.21610794961452484
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.9586610794067383,
+            "Victory": 0.9216153025627136,
+            "Diplomacy": 0.11488039698451757,
+            "Ceasefire / Ending": 0.42570915818214417,
+            "Blame Allies": 0.03977555874735117,
+            "Media Criticism": 0.23626659065485
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-29",
+      "label": "Notable",
+      "reason": "1 same-day UCDP records; best death estimate 5; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.9586610794067383,
+            "Victory": 0.9216153025627136,
+            "Diplomacy": 0.11488039698451757,
+            "Ceasefire / Ending": 0.42570915818214417,
+            "Blame Allies": 0.03977555874735117,
+            "Media Criticism": 0.23626659065485
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.826682984828949,
+            "Victory": 0.9948158860206604,
+            "Diplomacy": 0.0607040598988533,
+            "Ceasefire / Ending": 0.15918828547000885,
+            "Blame Allies": 0.010923916473984718,
+            "Media Criticism": 0.16255000233650208
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.7306157052516937,
+            "Victory": 0.6134224385023117,
+            "Diplomacy": 0.3166128543089144,
+            "Ceasefire / Ending": 0.3468070924282074,
+            "Blame Allies": 0.014669741678517312,
+            "Media Criticism": 0.17336037568747997
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-30",
+      "label": "High",
+      "reason": "1 same-day UCDP records; best death estimate 11; 5 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.826682984828949,
+            "Victory": 0.9948158860206604,
+            "Diplomacy": 0.0607040598988533,
+            "Ceasefire / Ending": 0.15918828547000885,
+            "Blame Allies": 0.010923916473984718,
+            "Media Criticism": 0.16255000233650208
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.7306157052516937,
+            "Victory": 0.6134224385023117,
+            "Diplomacy": 0.3166128543089144,
+            "Ceasefire / Ending": 0.3468070924282074,
+            "Blame Allies": 0.014669741678517312,
+            "Media Criticism": 0.17336037568747997
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.6710660606622696,
+            "Victory": 0.968791663646698,
+            "Diplomacy": 0.06992270145565271,
+            "Ceasefire / Ending": 0.438730426132679,
+            "Blame Allies": 0.9447927176952362,
+            "Media Criticism": 0.5709646642208099
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-03-31",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 4; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.7306157052516937,
+            "Victory": 0.6134224385023117,
+            "Diplomacy": 0.3166128543089144,
+            "Ceasefire / Ending": 0.3468070924282074,
+            "Blame Allies": 0.014669741678517312,
+            "Media Criticism": 0.17336037568747997
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.6710660606622696,
+            "Victory": 0.968791663646698,
+            "Diplomacy": 0.06992270145565271,
+            "Ceasefire / Ending": 0.438730426132679,
+            "Blame Allies": 0.9447927176952362,
+            "Media Criticism": 0.5709646642208099
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.6312546730041504,
+            "Victory": 0.9311299622058868,
+            "Diplomacy": 0.10276705189608037,
+            "Ceasefire / Ending": 0.7067960798740387,
+            "Blame Allies": 0.05312774237245321,
+            "Media Criticism": 0.30089031904935837
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-04-02",
+      "label": "High",
+      "reason": "1 same-day UCDP records; best death estimate 13; 8 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.6312546730041504,
+            "Victory": 0.9311299622058868,
+            "Diplomacy": 0.10276705189608037,
+            "Ceasefire / Ending": 0.7067960798740387,
+            "Blame Allies": 0.05312774237245321,
+            "Media Criticism": 0.30089031904935837
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.9930120408535004,
+            "Victory": 0.9874262809753418,
+            "Diplomacy": 0.4533553854562342,
+            "Ceasefire / Ending": 0.21769988909363747,
+            "Blame Allies": 0.0844578891992569,
+            "Media Criticism": 0.6211355924606323
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.929825484752655,
+            "Victory": 0.973555862903595,
+            "Diplomacy": 0.7435215711593628,
+            "Ceasefire / Ending": 0.7417476177215576,
+            "Blame Allies": 0.20442190766334534,
+            "Media Criticism": 0.727604866027832
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-04-04",
+      "label": "High",
+      "reason": "3 same-day UCDP records; best death estimate 7; 1 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.929825484752655,
+            "Victory": 0.973555862903595,
+            "Diplomacy": 0.7435215711593628,
+            "Ceasefire / Ending": 0.7417476177215576,
+            "Blame Allies": 0.20442190766334534,
+            "Media Criticism": 0.727604866027832
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 3,
+          "means": {
+            "Threat": 0.6687983411053816,
+            "Victory": 0.9752205610275269,
+            "Diplomacy": 0.4576535769738257,
+            "Ceasefire / Ending": 0.35240496198336285,
+            "Blame Allies": 0.03361580598478516,
+            "Media Criticism": 0.3291671499609947
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.45205995440483093,
+            "Victory": 0.9265565872192383,
+            "Diplomacy": 0.05299568176269531,
+            "Ceasefire / Ending": 0.1309345836440722,
+            "Blame Allies": 0.1694352732350429,
+            "Media Criticism": 0.4561243951320648
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-04-05",
+      "label": "Notable",
+      "reason": "1 same-day UCDP records; best death estimate 5; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.6687983411053816,
+            "Victory": 0.9752205610275269,
+            "Diplomacy": 0.4576535769738257,
+            "Ceasefire / Ending": 0.35240496198336285,
+            "Blame Allies": 0.03361580598478516,
+            "Media Criticism": 0.3291671499609947
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 3,
+          "means": {
+            "Threat": 0.45205995440483093,
+            "Victory": 0.9265565872192383,
+            "Diplomacy": 0.05299568176269531,
+            "Ceasefire / Ending": 0.1309345836440722,
+            "Blame Allies": 0.1694352732350429,
+            "Media Criticism": 0.4561243951320648
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-04-06",
+      "label": "Major",
+      "reason": "4 same-day UCDP records; best death estimate 35; 6 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.45205995440483093,
+            "Victory": 0.9265565872192383,
+            "Diplomacy": 0.05299568176269531,
+            "Ceasefire / Ending": 0.1309345836440722,
+            "Blame Allies": 0.1694352732350429,
+            "Media Criticism": 0.4561243951320648
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 5,
+          "means": {
+            "Threat": 0.19850536564481444,
+            "Victory": 0.3656069093500264,
+            "Diplomacy": 0.23346224138513208,
+            "Ceasefire / Ending": 0.44776749759912493,
+            "Blame Allies": 0.02723085070028901,
+            "Media Criticism": 0.45367096066474916
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-04-07",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 2; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 5,
+          "means": {
+            "Threat": 0.19850536564481444,
+            "Victory": 0.3656069093500264,
+            "Diplomacy": 0.23346224138513208,
+            "Ceasefire / Ending": 0.44776749759912493,
+            "Blame Allies": 0.02723085070028901,
+            "Media Criticism": 0.45367096066474916
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 6,
+          "means": {
+            "Threat": 0.3240184804890305,
+            "Victory": 0.6348881510396799,
+            "Diplomacy": 0.5632806110661477,
+            "Ceasefire / Ending": 0.43944908988972503,
+            "Blame Allies": 0.08596955953786771,
+            "Media Criticism": 0.43043380479017895
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-05-04",
+      "label": "Notable",
+      "reason": "1 same-day UCDP records; best death estimate 5; 5 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.00240704114548862,
+            "Victory": 0.16126354038715363,
+            "Diplomacy": 0.2992732524871826,
+            "Ceasefire / Ending": 0.06321408599615097,
+            "Blame Allies": 0.01913611590862274,
+            "Media Criticism": 0.4018090069293976
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9042803645133972,
+            "Victory": 0.969580888748169,
+            "Diplomacy": 0.0056308237835764885,
+            "Ceasefire / Ending": 0.11962331086397171,
+            "Blame Allies": 0.3110591471195221,
+            "Media Criticism": 0.4142480194568634
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.06344595551490784,
+            "Victory": 0.9718988537788391,
+            "Diplomacy": 0.8728080987930298,
+            "Ceasefire / Ending": 0.5593169927597046,
+            "Blame Allies": 0.00342518906109035,
+            "Media Criticism": 0.0974903404712677
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-06-27",
+      "label": "Multi-day Event",
+      "reason": "No same-day fatality record; 1 multi-day record starts here",
+      "windows": {
+        "-1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.27334410697221756,
+            "Victory": 0.6521546840667725,
+            "Diplomacy": 0.11488016066141427,
+            "Ceasefire / Ending": 0.5963713675737381,
+            "Blame Allies": 0.08693472668528557,
+            "Media Criticism": 0.6103232204914093
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.4999137814156711,
+            "Victory": 0.721044197678566,
+            "Diplomacy": 0.29953390441369265,
+            "Ceasefire / Ending": 0.48477762937545776,
+            "Blame Allies": 0.019667790737003088,
+            "Media Criticism": 0.19468357041478157
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.06233109161257744,
+            "Victory": 0.8919343948364258,
+            "Diplomacy": 0.062195248901844025,
+            "Ceasefire / Ending": 0.23376783728599548,
+            "Blame Allies": 0.3657042682170868,
+            "Media Criticism": 0.9653729796409607
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "label": "High",
+      "reason": "3 same-day UCDP records; best death estimate 9; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9883502721786499,
+            "Victory": 0.3225049376487732,
+            "Diplomacy": 0.0002647912479005754,
+            "Ceasefire / Ending": 0.10018161684274673,
+            "Blame Allies": 0.08282288908958435,
+            "Media Criticism": 0.4147989749908447
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 3; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9883502721786499,
+            "Victory": 0.3225049376487732,
+            "Diplomacy": 0.0002647912479005754,
+            "Ceasefire / Ending": 0.10018161684274673,
+            "Blame Allies": 0.08282288908958435,
+            "Media Criticism": 0.4147989749908447
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 2,
+          "means": {
+            "Threat": 0.758853942155838,
+            "Victory": 0.7200394570827484,
+            "Diplomacy": 0.4572623807180207,
+            "Ceasefire / Ending": 0.47418126318370923,
+            "Blame Allies": 0.03529922664165497,
+            "Media Criticism": 0.30974648892879486
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 1; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.05928885564208031,
+            "Victory": 0.7600816488265991,
+            "Diplomacy": 0.010527275502681732,
+            "Ceasefire / Ending": 0.040689703077077866,
+            "Blame Allies": 0.039624303579330444,
+            "Media Criticism": 0.2444433718919754
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-13",
+      "label": "Notable",
+      "reason": "2 same-day UCDP records; best death estimate 4; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.05928885564208031,
+            "Victory": 0.7600816488265991,
+            "Diplomacy": 0.010527275502681732,
+            "Ceasefire / Ending": 0.040689703077077866,
+            "Blame Allies": 0.039624303579330444,
+            "Media Criticism": 0.2444433718919754
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.41023409614960354,
+            "Victory": 0.7709073126316071,
+            "Diplomacy": 0.3187300885717074,
+            "Ceasefire / Ending": 0.548383375008901,
+            "Blame Allies": 0.028362630575429648,
+            "Media Criticism": 0.36186276997129124
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 3; 3 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.05928885564208031,
+            "Victory": 0.7600816488265991,
+            "Diplomacy": 0.010527275502681732,
+            "Ceasefire / Ending": 0.040689703077077866,
+            "Blame Allies": 0.039624303579330444,
+            "Media Criticism": 0.2444433718919754
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 3,
+          "means": {
+            "Threat": 0.41023409614960354,
+            "Victory": 0.7709073126316071,
+            "Diplomacy": 0.3187300885717074,
+            "Ceasefire / Ending": 0.548383375008901,
+            "Blame Allies": 0.028362630575429648,
+            "Media Criticism": 0.36186276997129124
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.0006131006521172822,
+            "Victory": 0.4626886546611786,
+            "Diplomacy": 0.4043828248977661,
+            "Ceasefire / Ending": 0.4603613018989563,
+            "Blame Allies": 0.00208098697476089,
+            "Media Criticism": 0.13530200719833374
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "label": "Notable",
+      "reason": "1 same-day UCDP records; best death estimate 7; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.41023409614960354,
+            "Victory": 0.7709073126316071,
+            "Diplomacy": 0.3187300885717074,
+            "Ceasefire / Ending": 0.548383375008901,
+            "Blame Allies": 0.028362630575429648,
+            "Media Criticism": 0.36186276997129124
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.0006131006521172822,
+            "Victory": 0.4626886546611786,
+            "Diplomacy": 0.4043828248977661,
+            "Ceasefire / Ending": 0.4603613018989563,
+            "Blame Allies": 0.00208098697476089,
+            "Media Criticism": 0.13530200719833374
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "label": "Notable",
+      "reason": "1 same-day UCDP records; best death estimate 7; 1 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.0006131006521172822,
+            "Victory": 0.4626886546611786,
+            "Diplomacy": 0.4043828248977661,
+            "Ceasefire / Ending": 0.4603613018989563,
+            "Blame Allies": 0.00208098697476089,
+            "Media Criticism": 0.13530200719833374
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 3; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.0608518086373806,
+            "Victory": 0.27021732926368713,
+            "Diplomacy": 0.19303569197654724,
+            "Ceasefire / Ending": 0.32586145401000977,
+            "Blame Allies": 0.03990912437438965,
+            "Media Criticism": 0.31740811467170715
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 1; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.0608518086373806,
+            "Victory": 0.27021732926368713,
+            "Diplomacy": 0.19303569197654724,
+            "Ceasefire / Ending": 0.32586145401000977,
+            "Blame Allies": 0.03990912437438965,
+            "Media Criticism": 0.31740811467170715
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 3,
+          "means": {
+            "Threat": 0.6843021909395853,
+            "Victory": 0.652077982823054,
+            "Diplomacy": 0.26983211166225374,
+            "Ceasefire / Ending": 0.45976167917251587,
+            "Blame Allies": 0.07130345438296597,
+            "Media Criticism": 0.4666987458864848
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9298276305198669,
+            "Victory": 0.43677738308906555,
+            "Diplomacy": 0.011537205427885056,
+            "Ceasefire / Ending": 0.4061053693294525,
+            "Blame Allies": 0.08940259367227554,
+            "Media Criticism": 0.22070926427841187
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 2; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9298276305198669,
+            "Victory": 0.43677738308906555,
+            "Diplomacy": 0.011537205427885056,
+            "Ceasefire / Ending": 0.4061053693294525,
+            "Blame Allies": 0.08940259367227554,
+            "Media Criticism": 0.22070926427841187
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.9994822144508362,
+            "Victory": 0.9651946425437927,
+            "Diplomacy": 0.00027934988611377776,
+            "Ceasefire / Ending": 0.007259785663336515,
+            "Blame Allies": 0.010550477541983128,
+            "Media Criticism": 0.07489487528800964
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.3279316753808719,
+            "Victory": 0.279481526153783,
+            "Diplomacy": 0.3231286498485133,
+            "Ceasefire / Ending": 0.13087483185033003,
+            "Blame Allies": 0.016186846769414842,
+            "Media Criticism": 0.1411304686528941
+          },
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 4; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 3,
+          "means": {
+            "Threat": 0.3279316753808719,
+            "Victory": 0.279481526153783,
+            "Diplomacy": 0.3231286498485133,
+            "Ceasefire / Ending": 0.13087483185033003,
+            "Blame Allies": 0.016186846769414842,
+            "Media Criticism": 0.1411304686528941
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 2,
+          "means": {
+            "Threat": 0.18132413923740387,
+            "Victory": 0.530823141336441,
+            "Diplomacy": 0.25103630870580673,
+            "Ceasefire / Ending": 0.3565734997391701,
+            "Blame Allies": 0.19054477009922266,
+            "Media Criticism": 0.28794947639107704
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "label": "Notable",
+      "reason": "2 same-day UCDP records; best death estimate 6; 3 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "0": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        },
+        "1": {
+          "count": 0,
+          "means": null,
+          "partial": false
+        }
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "label": "Minor",
+      "reason": "1 same-day UCDP records; best death estimate 2; 0 civilian deaths",
+      "windows": {
+        "-1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.7662529349327087,
+            "Victory": 0.9916102290153503,
+            "Diplomacy": 0.27369144558906555,
+            "Ceasefire / Ending": 0.674311101436615,
+            "Blame Allies": 0.00807327963411808,
+            "Media Criticism": 0.08372349292039871
+          },
+          "partial": false
+        },
+        "0": {
+          "count": 1,
+          "means": {
+            "Threat": 0.10646043717861176,
+            "Victory": 0.9351450800895691,
+            "Diplomacy": 0.23494498431682587,
+            "Ceasefire / Ending": 0.7059019207954407,
+            "Blame Allies": 0.4903584420681,
+            "Media Criticism": 0.9068198800086975
+          },
+          "partial": false
+        },
+        "1": {
+          "count": 1,
+          "means": {
+            "Threat": 0.19810593128204346,
+            "Victory": 0.452160120010376,
+            "Diplomacy": 0.005178202874958515,
+            "Ceasefire / Ending": 0.11685751378536224,
+            "Blame Allies": 0.057253647595644,
+            "Media Criticism": 0.9674403071403503
+          },
+          "partial": true
+        }
+      }
+    }
+  ]
+}

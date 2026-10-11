@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Trump Truth Social Posts Around UCDP Iran Events – Sean Ryan</title>
+<title>Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events – Sean Ryan</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -158,7 +158,7 @@ main.content,
 }
 </style>
 <div class="column-screen" style="margin: 0;">
-<iframe id="iran-timeline-frame" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;" loading="lazy">
+<iframe id="iran-timeline-frame" title="Trump rhetoric around U.S.-involved Iran events" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: calc(100vh - 64px); border: 0; display: block;" loading="lazy">
 </iframe>
 </div>
 <script>
@@ -178,6 +178,17 @@ main.content,
 
       if (doc.body) {
         doc.body.classList.remove("has-shared-nav");
+        const resizeFrame = () => {
+          const height = Math.ceil(doc.body.scrollHeight + 40);
+          if (Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+            frame.style.height = height + "px";
+          }
+        };
+        if (!frame._contentObserver) {
+          frame._contentObserver = new ResizeObserver(resizeFrame);
+          frame._contentObserver.observe(doc.body);
+        }
+        resizeFrame();
       }
     } catch (error) {
       /* Same-origin on the deployed site; fail quietly during local previews. */

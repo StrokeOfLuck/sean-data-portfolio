@@ -1,0 +1,330 @@
+{
+  "counts": {
+    "rows": 132,
+    "unique_posts": 90,
+    "ucdp_event_start_dates": 28,
+    "event_dates_with_any_posts": 27,
+    "dates_with_complete_windows": {
+      "-1": 21,
+      "0": 22,
+      "1": 21
+    },
+    "reused_posts": 32,
+    "max_dates_per_post": 3
+  },
+  "unpaired_threat_means": {
+    "-1": 0.5580443608323259,
+    "0": 0.5054772245906695,
+    "1": 0.48452707198143574
+  },
+  "before_vs_day": {
+    "n_dates": 18,
+    "n_episodes": 8,
+    "before_mean": 0.5709949027912916,
+    "comparison_mean": 0.5031146421258907,
+    "difference": 0.06788026066540084,
+    "median_difference": 0.11402268707752222,
+    "positive_dates": 11,
+    "negative_dates": 7,
+    "paired_t_95_ci": [
+      -0.16221806574698652,
+      0.29797858707778824
+    ],
+    "paired_t_p_two_sided_exploratory": 0.5419334016736245,
+    "wilcoxon_p_two_sided_exploratory": 0.49507904052734375,
+    "episode_bootstrap_95_ci": [
+      -0.16562300881357966,
+      0.3517064712886211
+    ],
+    "leave_one_episode_out_difference_range": [
+      0.01781017049535306,
+      0.13151279746745834
+    ],
+    "event_dates": [
+      "2026-03-04",
+      "2026-03-08",
+      "2026-03-20",
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-04-05",
+      "2026-05-04",
+      "2026-06-27",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-20",
+      "2026-07-22",
+      "2026-07-24",
+      "2026-08-30"
+    ]
+  },
+  "before_vs_after": {
+    "n_dates": 16,
+    "n_episodes": 7,
+    "before_mean": 0.5965688393286352,
+    "comparison_mean": 0.5228922586227175,
+    "difference": 0.07367658070591765,
+    "median_difference": 0.18331496976315978,
+    "positive_dates": 11,
+    "negative_dates": 5,
+    "paired_t_95_ci": [
+      -0.14987849528168543,
+      0.2972316566935207
+    ],
+    "paired_t_p_two_sided_exploratory": 0.493151833233058,
+    "wilcoxon_p_two_sided_exploratory": 0.40374755859375,
+    "episode_bootstrap_95_ci": [
+      -0.06441574448194255,
+      0.26667762053881544
+    ],
+    "leave_one_episode_out_difference_range": [
+      0.03332121089424215,
+      0.11087249613379958
+    ],
+    "event_dates": [
+      "2026-03-04",
+      "2026-03-08",
+      "2026-03-20",
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-04-06",
+      "2026-05-04",
+      "2026-06-27",
+      "2026-07-09",
+      "2026-07-14",
+      "2026-07-20",
+      "2026-07-22"
+    ]
+  },
+  "three_complete_windows": {
+    "n_dates": 14,
+    "n_episodes": 7,
+    "before_mean": 0.578906514476763,
+    "comparison_mean": 0.5939718519137906,
+    "difference": -0.015065337437027596,
+    "median_difference": -0.005052469670772608,
+    "positive_dates": 7,
+    "negative_dates": 7,
+    "paired_t_95_ci": [
+      -0.294633144334838,
+      0.2645024694607828
+    ],
+    "paired_t_p_two_sided_exploratory": 0.9091006280025405,
+    "wilcoxon_p_two_sided_exploratory": 0.9031982421875,
+    "episode_bootstrap_95_ci": [
+      -0.3528759613289454,
+      0.2940179578228189
+    ],
+    "leave_one_episode_out_difference_range": [
+      -0.103008511136674,
+      0.075739589329301
+    ],
+    "event_dates": [
+      "2026-03-04",
+      "2026-03-08",
+      "2026-03-20",
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-05-04",
+      "2026-06-27",
+      "2026-07-14",
+      "2026-07-20",
+      "2026-07-22"
+    ],
+    "after_mean": 0.5292083450116306
+  },
+  "episodes": {
+    "0": [
+      "2026-02-28"
+    ],
+    "1": [
+      "2026-03-04"
+    ],
+    "2": [
+      "2026-03-08"
+    ],
+    "3": [
+      "2026-03-20"
+    ],
+    "4": [
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-04-05",
+      "2026-04-06",
+      "2026-04-07"
+    ],
+    "5": [
+      "2026-05-04"
+    ],
+    "6": [
+      "2026-06-27"
+    ],
+    "7": [
+      "2026-07-08",
+      "2026-07-09",
+      "2026-07-12",
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-18",
+      "2026-07-20",
+      "2026-07-22",
+      "2026-07-24"
+    ],
+    "8": [
+      "2026-08-30"
+    ]
+  },
+  "other_frames_before_vs_day": {
+    "Threat": {
+      "n_dates": 18,
+      "difference": 0.06788026066540084
+    },
+    "Victory": {
+      "n_dates": 18,
+      "difference": -0.1074165266990248
+    },
+    "Diplomacy": {
+      "n_dates": 18,
+      "difference": -0.0056169959279941395
+    },
+    "Ceasefire / Ending": {
+      "n_dates": 18,
+      "difference": 0.0011890818347671498
+    },
+    "Blame Allies": {
+      "n_dates": 18,
+      "difference": -0.09687570230340094
+    },
+    "Media Criticism": {
+      "n_dates": 18,
+      "difference": -0.01942244854203805
+    }
+  },
+  "exact_day_only_before_vs_day": {
+    "n_dates": 17,
+    "n_episodes": 7,
+    "before_mean": 0.5885037731335899,
+    "comparison_mean": 0.5033029280500213,
+    "difference": 0.08520084508356875,
+    "median_difference": 0.1319780945777892,
+    "positive_dates": 11,
+    "negative_dates": 6,
+    "paired_t_95_ci": [
+      -0.15691011378808167,
+      0.32731180395521914
+    ],
+    "paired_t_p_two_sided_exploratory": 0.4664801270602897,
+    "wilcoxon_p_two_sided_exploratory": 0.3778228759765625,
+    "episode_bootstrap_95_ci": [
+      -0.15586003053285108,
+      0.4178446090580629
+    ],
+    "leave_one_episode_out_difference_range": [
+      0.03308391080402848,
+      0.16135300346003434
+    ],
+    "event_dates": [
+      "2026-03-04",
+      "2026-03-08",
+      "2026-03-20",
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-04-05",
+      "2026-05-04",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-20",
+      "2026-07-22",
+      "2026-07-24",
+      "2026-08-30"
+    ]
+  },
+  "without_new_august_date_before_vs_day": {
+    "n_dates": 17,
+    "n_episodes": 7,
+    "before_mean": 0.5595091361947376,
+    "comparison_mean": 0.5264472424169071,
+    "difference": 0.03306189377783048,
+    "median_difference": 0.09606727957725525,
+    "positive_dates": 10,
+    "negative_dates": 7,
+    "paired_t_95_ci": [
+      -0.19932845931150153,
+      0.2654522468671625
+    ],
+    "paired_t_p_two_sided_exploratory": 0.7668443809724825,
+    "wilcoxon_p_two_sided_exploratory": 0.7118988037109375,
+    "episode_bootstrap_95_ci": [
+      -0.2262520755840731,
+      0.2915300599848613
+    ],
+    "leave_one_episode_out_difference_range": [
+      -0.026783955745243754,
+      0.09149534484943918
+    ],
+    "event_dates": [
+      "2026-03-04",
+      "2026-03-08",
+      "2026-03-20",
+      "2026-03-27",
+      "2026-03-29",
+      "2026-03-30",
+      "2026-03-31",
+      "2026-04-02",
+      "2026-04-04",
+      "2026-04-05",
+      "2026-05-04",
+      "2026-06-27",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-20",
+      "2026-07-22",
+      "2026-07-24"
+    ]
+  },
+  "post_count_means": {
+    "-1": 1.9523809523809523,
+    "0": 1.8636363636363635,
+    "1": 2.3333333333333335
+  },
+  "paired_post_count_means": {
+    "-1": 2.0,
+    "0": 1.7777777777777777
+  },
+  "independent_verification": "Paired sample sizes and means agree with separate stdlib calculation from the published event summaries to 1e-12.",
+  "methods": {
+    "scores": "Existing six-frame BART-MNLI zero-shot scores, no model refit.",
+    "unit": "Mean Threat score of matched posts within an event-date and relative-day window; pair only the same event dates.",
+    "missingness": "Do not impute no-post windows as zero. Exclude partial Aug 31 after-window.",
+    "bootstrap": "30,000 resamples of whole chronological episodes; event dates separated by at most 3 days joined into one episode. Event weighting retained. Random seed 20261011.",
+    "limitations": [
+      "Exploratory uncertainty only; very few episodes and ongoing-conflict dependence.",
+      "Event-date-selected posts cannot estimate false alarms or predictive precision without non-event days.",
+      "No held-out forecast evaluation.",
+      "Threat prompt includes completed attacks and does not isolate future intent.",
+      "Scores are not calibrated event probabilities.",
+      "Requiring complete windows changes the selected sample; it is a sensitivity check, not a correction for missingness."
+    ]
+  }
+}

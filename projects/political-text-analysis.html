@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Computational analysis of political rhetoric around real-world events.">
+<meta name="description" content="A descriptive comparison of Trump’s rhetoric around U.S.-involved lethal conflict events in Iran.">
 
-<title>Political Text Analysis – Sean Ryan</title>
+<title>Trump’s Iran Rhetoric: Methods and Sources – Sean Ryan</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -134,7 +134,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#question" id="toc-question" class="nav-link active" data-scroll-target="#question">Question</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#significance-levels" id="toc-significance-levels" class="nav-link" data-scroll-target="#significance-levels">Significance levels</a></li>
+  <li><a href="#ucdp-source-and-selection" id="toc-ucdp-source-and-selection" class="nav-link" data-scroll-target="#ucdp-source-and-selection">UCDP source and selection</a>
+  <ul class="collapse">
+  <li><a href="#official-source-records-with-selection-highlighted" id="toc-official-source-records-with-selection-highlighted" class="nav-link" data-scroll-target="#official-source-records-with-selection-highlighted">Official source records, with selection highlighted</a></li>
+  <li><a href="#exact-records-used-by-the-timeline" id="toc-exact-records-used-by-the-timeline" class="nav-link" data-scroll-target="#exact-records-used-by-the-timeline">Exact records used by the timeline</a></li>
+  </ul></li>
+  <li><a href="#event-activity-levels" id="toc-event-activity-levels" class="nav-link" data-scroll-target="#event-activity-levels">Event activity levels</a></li>
   <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
   <li><a href="#rhetorical-category-guide" id="toc-rhetorical-category-guide" class="nav-link" data-scroll-target="#rhetorical-category-guide">Rhetorical category guide</a>
   <ul class="collapse">
@@ -147,7 +152,9 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#further-research-testing-advance-warning" id="toc-further-research-testing-advance-warning" class="nav-link" data-scroll-target="#further-research-testing-advance-warning">Further research: testing advance warning</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#references-and-downloads" id="toc-references-and-downloads" class="nav-link" data-scroll-target="#references-and-downloads">References and downloads</a></li>
   <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
   </ul>
 </nav>
@@ -157,12 +164,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Political Text Analysis</h1>
+<h1 class="title">Trump’s Iran Rhetoric: Methods and Sources</h1>
 </div>
 
 <div>
   <div class="description">
-    Computational analysis of political rhetoric around real-world events.
+    A descriptive comparison of Trump’s rhetoric around U.S.-involved lethal conflict events in Iran.
   </div>
 </div>
 
@@ -309,6 +316,24 @@ ul.task-list li input[type="checkbox"] {
   line-height: 1.4;
   overflow-wrap: anywhere;
 }
+/* Keep long archive revisions inside the article on narrow screens. */
+main.content :not(pre) > code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+#results .table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.ucdp-reference-window {
+  display: block;
+  width: 100%;
+  height: 590px;
+  border: 1px solid #cbd7e2;
+  border-radius: 10px;
+  background: #fff;
+  margin: 14px 0 24px;
+}
 
 /* Keep the methodology page header completely in normal document flow.
    Some mobile browsers can leave a composited ghost of Quarto's fixed/
@@ -368,24 +393,48 @@ body.nav-fixed {
 </script>
 <section id="question" class="level2">
 <h2 class="anchored" data-anchor-id="question">Question</h2>
-<p>How does Donald Trump’s Iran-related Truth Social rhetoric change in the day before, day of, and day after UCDP-recorded U.S. or joint U.S.–Israel conflict events, and is threat language elevated beforehand?</p>
+<p>How does Donald Trump’s rhetoric differ before, during, and after UCDP-recorded lethal conflict events in Iran with explicit U.S. involvement?</p>
+<p>The U.S. involvement focus is deliberate. Israel-only events are excluded. This is a descriptive study of language around recorded conflict events. Advance warning is an exploratory hypothesis; the current evidence does not establish a reliable predictive signal.</p>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>Two sources are aligned by date:</p>
+<p>The October 11, 2026 refresh aligns <strong>48 UCDP Candidate records across 28 event start dates</strong> with <strong>90 unique matched posts (132 post/event pairs)</strong>. All 47 records in the prior extract are retained. The August release adds <strong>UCDP 640608, August 30 at Larak Island</strong>, whose source headlines explicitly describe a U.S. attack; its best fatality estimate is 2 (low–high 2–3). July 30 is now shown even though no posts match its windows.</p>
 <ul>
-<li><strong>Trump’s Truth Social posts.</strong> The full public archive of his original posts (not reblogs) is pulled from a Hugging Face dataset, filtered to calendar-year 2026 and to posts mentioning Iran (401 posts YTD as of this snapshot).</li>
-<li><strong>UCDP conflict events.</strong> The Uppsala Conflict Data Program’s Georeferenced Event Dataset, filtered to events with US or joint US–Israel involvement related to the Iran conflict (through July 2026). UCDP is manually researcher-coded from primary reporting on organized violence, which makes it a more reliable “ground truth” for event timing and severity than automated event trackers like GDELT, though its inclusion rule (battle-related fatalities) means it can miss purely diplomatic or political moments that don’t involve violence.</li>
+<li><strong>UCDP Candidate:</strong> January–June version 26.01.26.06, July 26.0.7, and August 26.0.8. Inclusion requires the country to be Iran and reviewed source headlines to explicitly attribute the lethal event to U.S. or joint U.S.–Israel action. The combined Israel/U.S. dyad cannot establish U.S. involvement on its own. Candidate records are provisional.</li>
+<li><strong>Truth Social archive:</strong> the <a href="https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts">Cameronk199 public archive</a>, revision <code>eaeb102e183204635582de3eaae6c741cd383c32</code>. The original 87 reviewed posts are preserved; later original text posts matching Iran/Iranian, Tehran, Hormuz, or Khamenei extend the extract. Quote posts and reblogs are excluded. Attached images and videos are not classified.</li>
 </ul>
-<p>For each UCDP event, a <strong>1-day event window</strong> (day before / day of / day after, in Eastern time) is built around it, and any Iran-related Trump posts falling in that window are attached. This produces 393 unique event-dates with matched posts, spanning 543 underlying UCDP event records.</p>
-<p>Each event-date is also assigned a <strong>significance level</strong> (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded “Major” based on same-day death tolls in the dozens to low hundreds. The exact rule is below.</p>
+<p>Post timestamps and post-window membership use <strong>America/New_York (EST/EDT)</strong>. UCDP event dates remain source-coded calendar dates; no intraday event time is available, so a day-before post is not necessarily a full 24-hour lead. Events on adjacent dates can reuse the same post in different windows. Multi-day records appear as context at their start date without assigning their whole fatality total to that day.</p>
+<p>The archive ends <strong>August 31 at 08:09 EDT</strong>. Its partial day-after window is displayed but excluded from the comparison. Empty windows are kept in the timeline and omitted from score averages; an absent post is not a zero score.</p>
 </section>
-<section id="significance-levels" class="level2">
-<h2 class="anchored" data-anchor-id="significance-levels">Significance levels</h2>
-<p>The central event circle and the clickable bottom timeline in the visualization are both sized and shaded by this classification, derived directly from the UCDP event workbook:</p>
+<section id="ucdp-source-and-selection" class="level2">
+<h2 class="anchored" data-anchor-id="ucdp-source-and-selection">UCDP source and selection</h2>
+<p><strong>What this source is:</strong> the UCDP Candidate Events Dataset records lethal organized violence using event dates, locations, actor coding, fatality estimates, and cited source reports. Candidate records are provisional and can be revised.</p>
+<p><strong>Why it is used here:</strong> UCDP supplies documented event dates around which to group Trump’s posts. The events are selected from UCDP independently of the rhetoric scores. This provides a consistent reference for comparing language before, on, and after recorded conflict events.</p>
+<section id="official-source-records-with-selection-highlighted" class="level3">
+<h3 class="anchored" data-anchor-id="official-source-records-with-selection-highlighted">Official source records, with selection highlighted</h3>
+<p>This window shows <strong>80 original UCDP source records</strong> from the January–June, July, and August 2026 releases, after restricting the global data to <strong>Iran and conflict ID 16905</strong> (Iran–Israel/United States). It is the source pool before the reviewed U.S.-involvement selection. The complete global CSV releases are linked below.</p>
+<p><strong>Yellow identifies the 48 records extracted for the current timeline. Gray identifies the 32 records excluded from the reviewed subset.</strong> Each row also has a text label, so the selection is clear without relying on color. Inclusion requires a source headline explicitly attributing lethal violence to U.S. or joint U.S.–Israel action. Israel-only and unclear-attribution records were not retained. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.</p>
+<p>Search or filter this window to inspect either group. Click a UCDP ID to read all the source fields. The inclusion flags reproduce the reviewed extract; individual exclusion reasons were not recorded, so the viewer exposes the original headlines for inspection.</p>
+<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Official UCDP source records with included and excluded rows marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy">
+</iframe>
+<p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=source">Open the source window separately</a> · <a href="assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv">Download the source pool with selection flags</a></p>
+</section>
+<section id="exact-records-used-by-the-timeline" class="level3">
+<h3 class="anchored" data-anchor-id="exact-records-used-by-the-timeline">Exact records used by the timeline</h3>
+<p>This second window contains <strong>only the 48 selected UCDP records</strong>, matching the timeline’s CSV by persistent record ID. Their <strong>28 event start dates</strong> define the before/event-day/after post windows. Multiple records can share one start date, and a multi-day record can cover a longer interval. Record counts therefore do not represent independent intervention onsets, and multi-day fatality totals are not assigned to the first day.</p>
+<p>July 30 is included as an event date even though it has no matched posts. The August release adds the U.S.-attributed August 30 Larak Island event, <strong>UCDP 640608</strong>. Use the release filter to view that August record directly.</p>
+<iframe class="ucdp-reference-window" id="ucdp-used-reference" title="Exact UCDP records used by the current Iran timeline" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=used" loading="lazy">
+</iframe>
+<p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=used">Open the used-records window separately</a> · <a href="assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv">Download the exact used-records CSV</a></p>
+<p><strong>Official source files:</strong> <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv">January–June 26.01.26.06</a>, <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv">July 26.0.7</a>, and <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">August 26.0.8</a>. <a href="https://ucdp.uu.se/downloads/">Dataset documentation and codebook</a>.</p>
+</section>
+</section>
+<section id="event-activity-levels" class="level2">
+<h2 class="anchored" data-anchor-id="event-activity-levels">Event activity levels</h2>
+<p>The central event circle and the clickable bottom timeline use the following display categories, based on UCDP fatality estimates and record counts. These thresholds are defined for this visualization; they are not UCDP classifications or tests of statistical significance.</p>
 <ul>
 <li>
-<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#a7adb3;margin-right:8px;vertical-align:middle;"></span><strong>Minor:</strong> another same-day UCDP event date.
+<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#a7adb3;margin-right:8px;vertical-align:middle;"></span><strong>Minor:</strong> a same-day record below the Notable, High, and Major thresholds.
 </li>
 <li>
 <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#69737d;margin-right:8px;vertical-align:middle;"></span><strong>Notable:</strong> same-day best estimate ≥ 5, or at least 2 same-day UCDP records.
@@ -405,17 +454,17 @@ body.nav-fixed {
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
 <ol type="1">
-<li><strong>Collect</strong> Trump’s Truth Social posts (Hugging Face archive) and UCDP’s Iran-conflict event records (filtered Excel export), both refreshed periodically as new data becomes available.</li>
-<li><strong>Window</strong> the two datasets together: for every UCDP event, pull Iran-related posts from the day before, day of, and day after.</li>
+<li><strong>Collect</strong> Trump’s Truth Social posts from the archived snapshot and UCDP’s Iran-conflict records from the versioned CSV releases. Preserve the reviewed U.S.-involved selection.</li>
+<li><strong>Window</strong> the two datasets together: for every distinct UCDP event start date, pull Iran-related posts from the day before, day of, and day after.</li>
 <li><strong>Score rhetoric with zero-shot classification.</strong> A Hugging Face multi-label zero-shot classifier (<code>facebook/bart-large-mnli</code>) scores each post’s <code>content_text</code> — and only the text, never the UCDP metadata — against six categories: <strong>Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism</strong>, each receiving a continuous 0–1 entailment score.</li>
-<li><strong>Aggregate event-balanced means.</strong> Because posting volume varies a lot day to day, scores are first averaged within each event, then averaged across events — so a single high-volume posting day doesn’t dominate the pattern.</li>
-<li><strong>Visualize</strong> the result as a connected, per-event timeline: each UCDP event sits at a central node sized/shaded by significance, with the day-before/day-of/day-after posts and their six rhetorical scores branching around it. Each post is also tagged with its single dominant category as a small colored badge.</li>
+<li><strong>Aggregate means by event start date.</strong> Average post scores within each date’s window, then average those date means. Each date with matched posts contributes equally, so a high-volume posting day does not dominate the comparison.</li>
+<li><strong>Visualize</strong> each event start date at a central node sized and shaded by its activity level, with posts from before, on, and after that date branching around it. Each post also has a small colored badge for its highest-scoring category.</li>
 </ol>
 </section>
 <section id="rhetorical-category-guide" class="level2">
 <h2 class="anchored" data-anchor-id="rhetorical-category-guide">Rhetorical category guide</h2>
 <p>The six categories are <strong>multi-label</strong>: the model evaluates each one independently, so a single post can score highly in more than one category. In computational text analysis these are often called rhetorical “frames,” but this page uses <strong>category</strong> as the plainer label. The values are model entailment scores, not calibrated probabilities.</p>
-<p>Each card below is the <strong>highest-scoring post for that category</strong> among the 87 unique posts in the current 26-event analysis subset. The full archived post is shown directly in the card, followed by that post’s scores across all six categories and a link to the original Truth Social post.</p>
+<p>Each card below is the <strong>highest-scoring post for that category</strong> among the original 87-post snapshot (these illustrative examples are retained from that snapshot). The full archived post is shown directly in the card, followed by that post’s scores across all six categories and a link to the original Truth Social post.</p>
 <section id="threat" class="level3">
 <h3 class="anchored" data-anchor-id="threat">Threat</h3>
 <p>Military threats, escalation, retaliation, ultimatums, warnings, strikes, or destruction directed at Iran.</p>
@@ -688,7 +737,7 @@ body.nav-fixed {
 <a href="assets/political-text-analysis/trump-iran-connected-timeline.html" target="_blank" rel="noopener noreferrer">Open the timeline in its own full-width page ↗</a> — recommended on desktop, since the embed below is narrower than the page it’s showing and falls back to the mobile layout.
 </p>
 <div class="column-page" style="margin: 1.5rem 0;">
-<iframe id="political-timeline-frame" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;" loading="lazy">
+<iframe id="political-timeline-frame" title="Explore posts around U.S.-involved Iran events" src="assets/political-text-analysis/trump-iran-connected-timeline.html" style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;" loading="lazy">
 </iframe>
 </div>
 <script>
@@ -708,27 +757,82 @@ body.nav-fixed {
   cleanPoliticalTimelineChrome();
 })();
 </script>
-<p>The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post’s single dominant category), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.</p>
-<p><strong>The clearest evidence for telegraphing:</strong> average Threat language is actually <em>higher the day before</em> a UCDP event (0.55) than on the event day itself (0.52) or the day after (0.48). It’s also visible in individual posts — in the day before the April 6 event (34 killed in strikes on Iran’s Guards intelligence chief and a university), Trump wrote: <em>“Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!!”</em> — naming the target categories before further strikes happened.</p>
-<p><strong>Blame Allies</strong> and <strong>Media Criticism</strong> were added as later passes after the first four labels. Blame Allies (criticizing NATO/European allies for not helping) is low overall but ticks up on the event day (0.13) versus the day before (0.07) and day after (0.11). Media Criticism (attacking press coverage as biased or fake) varies a lot post-to-post (from near 0 to near 1) but doesn’t move much across the three windows (0.34–0.35 throughout) — a real, variable signal at the post level that just isn’t specifically tied to event timing. (A different sixth label, Self-Credit, was tried and dropped earlier — it scored near-ceiling on almost every post regardless of timing, which made it more a constant feature of the voice than a useful signal.)</p>
+<p>The timeline groups posts around each UCDP event start date and shows their scores for Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism. A small badge identifies each post’s highest-scoring category. The summary compares average scores across the before, event-day, and after windows, giving each date with posts equal weight. On narrow screens, use the tabs to switch between windows; on wider screens, the three windows appear side by side.</p>
+<p><strong>Descriptive findings:</strong> Victory framing is prominent across the sampled windows, with mean scores of 0.688 before, 0.769 on the event day, and 0.700 after. Threat scores average 0.558 before, 0.505 on the event day, and 0.485 after. These are model entailment scores, not probabilities of a military event. Each column averages only dates with posts in that window: 21 before, 22 on the event day, and 21 after.</p>
+<p>Comparing the same event dates shows how sensitive the apparent day-before Threat increase is to the available sample:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Threat comparison</th>
+<th style="text-align: right;">Event dates</th>
+<th style="text-align: right;">Before</th>
+<th style="text-align: right;">Event day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Posts available before and on the event day</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0.571</td>
+<td style="text-align: right;">0.503</td>
+</tr>
+<tr class="even">
+<td>Posts available in all three windows</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.579</td>
+<td style="text-align: right;">0.594</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The paired before-minus-event-day difference is +0.068. An exploratory 95% interval from resampling chronological episodes spans approximately −0.166 to +0.352, including no difference. Episodes join event dates no more than three days apart; only eight episodes contribute to this comparison. Requiring all three windows changes the sample and removes the day-before advantage. This sensitivity check does not correct missingness. The evidence supports describing rhetoric around events, while the advance-warning hypothesis remains inconclusive. <a href="assets/political-text-analysis/indicator-check.json">Inspect the numerical checks</a>.</p>
+</section>
+<section id="further-research-testing-advance-warning" class="level2">
+<h2 class="anchored" data-anchor-id="further-research-testing-advance-warning">Further research: testing advance warning</h2>
+<ol type="1">
+<li>Use only posts available before the outcome date. Keep event-day and day-after language as context, not advance predictors.</li>
+<li>Compare the day-before signal with comparable days during the same conflict on which no qualifying U.S.-involved event is recorded. “No UCDP record” is not proof that no operation occurred.</li>
+<li>Define the flag and horizon on an earlier development period, then evaluate on later held-out dates. Report false alarms, missed events, precision, recall, and the underlying event rate.</li>
+<li>Account for clustered event dates and repeated posts; separate new intervention onsets from follow-on actions during ongoing operations. Sensitivity checks should exclude imprecisely dated and multi-day anchors.</li>
+<li>Audit classifier labels by hand. The current Threat description includes both warnings and reports of completed strikes, and some non-threat language can receive a high score. Text-only scores also miss signals carried in attached media.</li>
+</ol>
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
 <ul>
-<li><strong>Small sample.</strong> 87 unique posts are scored across the 26 events shown here (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader’s rhetoric during one specific conflict, not a generalizable claim.</li>
-<li><strong>Zero-shot labels are heuristic.</strong> The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model’s association between text and label names, not a validated measure of intent or sentiment.</li>
-<li><strong>UCDP’s fatality-based inclusion criterion</strong> means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn’t involve violence — so “no nearby UCDP event” doesn’t mean “nothing happened.”</li>
-<li><strong>No counterfactual baseline.</strong> This only looks at posts already inside event windows — it doesn’t compare day-before Threat language ahead of strikes against day-before Threat language on dates where no strike ultimately happened. Without that comparison, elevated day-before Threat could reflect genuine advance signaling, or it could just be Trump’s ordinary baseline level of threatening rhetoric during an active conflict, which happens to precede strikes only because strikes were frequent during this period.</li>
-<li>Both the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester.</li>
+<li><strong>Selected sample:</strong> 90 unique posts and 28 start dates in one leader’s rhetoric during one conflict. Empty windows are visible but have no rhetoric score. The original post selection was reviewed manually and is preserved, so this is not a fresh exhaustive classification of the full archive.</li>
+<li><strong>No non-event baseline or held-out warning evaluation yet.</strong> This is an exploratory timeline, not an operational prediction tool.</li>
+<li><strong>Unequal denominators and overlapping windows:</strong> before/day-of/after means are not a paired independent sample. Several dates can share the same post; a previous-day post may be reacting to an earlier strike.</li>
+<li><strong>Provisional event timing and attribution:</strong> UCDP Candidate records can be revised. Source-coded dates lack intraday timing; shared dyad coding alone does not identify the attacker.</li>
+<li><strong>Fatality-based inclusion:</strong> the event set does not cover every military operation, diplomatic moment, sanction, or negotiation.</li>
+<li><strong>Model scores:</strong> BART entailment scores are uncalibrated and heuristic, not probabilities of intervention or validated measures of intent. The classifier is not fine-tuned for this domain.</li>
+<li><strong>Snapshot coverage:</strong> August 31 is incomplete in the post archive, and later UCDP months are not part of the latest listed August release.</li>
 </ul>
+</section>
+<section id="references-and-downloads" class="level2">
+<h2 class="anchored" data-anchor-id="references-and-downloads">References and downloads</h2>
+<p>The two Excel workbooks below use the same U.S.-involvement scope and retain the UCDP record IDs so they can be compared directly. They are reviewed extracts from UCDP Candidate, rather than the complete global releases.</p>
+<ul>
+<li><strong><a href="assets/political-text-analysis/ucdp-original-through-july-2026-highlighted.xlsx">Original UCDP extract with selected dates highlighted</a>:</strong> 47 records, 27 start dates, through July. Yellow marks the 26 dates used in the original post analysis. July 30 had no matched posts and was absent from the original timeline.</li>
+<li><strong><a href="assets/political-text-analysis/ucdp-updated-through-august-2026.xlsx">Updated UCDP extract and date comparison</a>:</strong> 48 records, 28 start dates, through August. Yellow marks original selected dates, green marks the added August 30 event, and gray marks July 30, restored to the timeline with no matched posts.</li>
+</ul>
+<p>The original workbook preserves the original source values and formulas, with highlights and selection notes added. The updated workbook includes a <strong>Date comparison</strong> sheet listing all 28 start dates, event IDs, original selection status, and matched-post counts. July 30 is a restored display date, not a newly added UCDP record.</p>
+<p><a href="https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx">Unannotated original workbook on GitHub ↗</a></p>
+<p><a href="https://ucdp.uu.se/downloads/">UCDP official Candidate releases and codebook ↗</a></p>
+<p><a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">Download the official August 2026 CSV, version 26.0.8 ↗</a>. This is the raw global monthly release. The updated Excel workbook and U.S.-involved CSV on this page combine the reviewed Iran records from January–June, July, and August.</p>
+<p>Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), <em>Introducing the UCDP Candidate Events Dataset</em>, Research &amp; Politics.</p>
 </section>
 <section id="reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
-<p><a href="https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb">Open the analysis notebook in Colab ↗</a><br>
-Runs the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.</p>
-<p><a href="https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis">Analysis code and data on GitHub ↗</a><br>
-Contains the notebook, source data, and project README.</p>
-<p>The <strong>Colab notebook</strong> reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same.</p>
+<p><a href="https://github.com/Strokeofluck/sean-data-portfolio/blob/main/scripts/build_iran_timeline.py">Current build script and frozen extracts on GitHub ↗</a></p>
+<p>Run <code>python scripts/build_iran_timeline.py</code> from the portfolio repository. It validates source IDs, post-window membership, score coverage, and fatality intervals before rebuilding the page. Run <code>python scripts/build_ucdp_references.py</code> to rebuild the two reference viewers’ data from the frozen source-pool and used-record extracts. To reconstruct the source pool from the three official CSV downloads, pass <code>--source-dir PATH</code>; their recorded checksums must match. The input CSVs and source-version manifest are saved beside the timeline.</p>
+<p><a href="assets/political-text-analysis/refresh-provenance.json">Source versions and refresh provenance</a></p>
+<p><a href="assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv">Download the U.S.-involved event extract</a></p>
+<p><a href="assets/political-text-analysis/post-event-windows-through-august-2026.csv">Download matched post windows</a></p>
+<p><a href="assets/political-text-analysis/rhetoric-scores-through-august-2026.csv">Download the frozen rhetoric scores</a></p>
+<p><a href="https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb">Original Colab analysis notebook ↗</a></p>
+<p>The earlier notebook documents the six model descriptions and scoring approach. Its July workbook and original cache are historical inputs; the current portfolio build uses the versioned August extracts above.</p>
 
 
 </section>

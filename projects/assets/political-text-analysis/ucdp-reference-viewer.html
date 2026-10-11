@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UCDP source and selection viewer</title>
+<link rel="stylesheet" href="ucdp-reference-viewer.css">
+</head>
+<body>
+<main>
+  <header><h1 id="viewTitle">UCDP records</h1><p id="viewSummary" aria-live="polite">Loading reviewed records…</p></header>
+  <div id="recordBrowser">
+    <form id="controls" aria-label="Filter records" onsubmit="return false">
+      <label class="search">Search records<input id="search" type="search" placeholder="ID, date, place, or headline"></label>
+      <label>Release<select id="release"><option value="all">All releases through August</option><option value="26.01.26.06">January–June</option><option value="26.0.7">July</option><option value="26.0.8">August</option></select></label>
+      <label id="selectionControl">Selection<select id="selection"><option value="all">All source records</option><option value="included">Included in timeline</option><option value="excluded">Excluded from subset</option></select></label>
+    </form>
+    <div class="view-notes"><p id="legend"></p><a id="export" href="ucdp-iran-source-pool-through-august-2026.csv" download>Download all source records (CSV)</a></div>
+    <div class="table-window" tabindex="0" role="region" aria-label="Scrollable UCDP records">
+      <table><caption id="tableCaption" class="sr-only">UCDP source records</caption><thead><tr><th id="selectionHeading">Selection</th><th>UCDP ID</th><th>Start date</th><th>End date</th><th>Place</th><th>Best fatalities</th><th>Source headline</th></tr></thead><tbody id="records"></tbody></table>
+    </div>
+    <footer><span id="resultCount" role="status"></span><div><button id="previous" type="button">Previous</button><span id="pageCount"></span><button id="next" type="button">Next</button></div></footer>
+  </div>
+  <section id="inspector" aria-label="Full UCDP record" hidden>
+    <button id="back" type="button">← Back to records</button><h2 id="recordTitle"></h2><p id="recordNote"></p><dl id="recordFields"></dl>
+  </section>
+</main>
+<script src="ucdp-reference-viewer.js"></script>
+</body>
+</html>
