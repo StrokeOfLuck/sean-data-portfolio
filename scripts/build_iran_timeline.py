@@ -123,7 +123,7 @@ def build():
                 means[offset].append(values)
         summaries.append(row)
         evidence=by_date[day]
-        headlines=list(dict.fromkeys(plain(e['involvement_evidence']) for e in evidence))
+        headlines=list(dict.fromkeys(re.sub(r'^(?:Urgent:|(?:\d(?:st|nd|rd|th) )?LD Writethru:)\s*','',plain(e['involvement_evidence']),flags=re.I) for e in evidence))
         title=' · '.join(headlines[:2])
         if len(title)>230:title=title[:227]+'…'
         locations=' · '.join(dict.fromkeys(e['where_coordinates'] for e in evidence))
@@ -151,6 +151,7 @@ def build():
     text=replace_one(text,r'(<div class="writeup-cta">.*?</div>)',re.search(r'<div class="writeup-cta">.*?</div>',text,re.S)[0]+overview)
     text=replace_one(text,r'<table class="summary-table">.*?</table>',table)
     text=replace_one(text,r'<h2>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2>Rhetoric around event dates</h2><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
+    text=re.sub(r'<div class="viewer-note">\s*(<p><strong>Connected timeline view\.</strong>.*?</p>)\s*</div>',r'<details class="viewer-note usage-note"><summary>How to use the timeline</summary>\1</details>',text,count=1,flags=re.S)
     text=text.replace('<div class="panel">\n<div class="panel-body">','<details class="panel summary-panel"><summary>Compare rhetoric around event dates</summary>\n<div class="panel-body">',1)
     text=re.sub(r'</div>\s*</div>\s*(?=<div class="viewer")','</div>\n</details>\n',text,count=1)
     stages=list(re.finditer(r'<section class="event-view".*?</section>',text,re.S))
