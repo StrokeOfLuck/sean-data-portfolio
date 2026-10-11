@@ -3,3 +3,5 @@ projects/assets/political-text-analysis/ucdp-official/*.csv -text -diff
 # Do not rewrite line breaks inside quoted source fields on Windows checkout.
 projects/assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv -text
 projects/assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv -text
+projects/assets/political-text-analysis/ucdp-all-iran-through-august-2026.csv -text
+projects/assets/political-text-analysis/ucdp-event-start-date-groups-through-august-2026.csv -text

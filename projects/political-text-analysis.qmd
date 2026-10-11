@@ -673,15 +673,17 @@ Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and S
 
 ::: {.selection-table-window role="region" tabindex="0" aria-label="Selection steps; scroll horizontally on narrow screens"}
 
-| Stage | Kept | What was cut and why |
-|:--|--:|:--|
-| Full January–August releases | 13,685 source rows | Worldwide starting files, before any project filter. |
-| Country: Iran | 172 records | 13,513 rows coded to other countries; this study covers events located in Iran. |
-| Iran–Israel/U.S. conflict (`conflict_new_id = 16905`) | 80 records | 92 Iran records in other UCDP conflicts; they fall outside this study's conflict scope. |
-| Documented U.S. involvement | 49 records | 31 records whose reviewed evidence does not establish a U.S. role. Joint U.S.–Israel action and the U.S. pilot-rescue context are kept. |
-| Group by recorded start date | 28 date groups | No further exclusions. Multiple records with the same start date share one clickable point. |
+| Stage | Kept | What was cut and why | CSV at this step |
+|:--|--:|:--|:--|
+| Full January–August releases | 13,685 source rows | Worldwide starting files, before any project filter. | <a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_01_26_06.csv" download aria-label="Download full January–June release CSV">Jan–Jun ↓</a><br><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_7.csv" download aria-label="Download full July release CSV">July ↓</a><br><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_8.csv" download aria-label="Download full August release CSV">August ↓</a> |
+| Country: Iran | 172 records | 13,513 rows coded to other countries; this study covers events located in Iran. | <a href="assets/political-text-analysis/ucdp-all-iran-through-august-2026.csv" download aria-label="Download 172 Iran records CSV">CSV ↓</a> |
+| Iran–Israel/U.S. conflict (`conflict_new_id = 16905`) | 80 records | 92 Iran records in other UCDP conflicts; they fall outside this study's conflict scope. | <a href="assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv" download aria-label="Download 80 Iran conflict records with selection reasons CSV">CSV ↓</a> |
+| Documented U.S. involvement | 49 records | 31 records whose reviewed evidence does not establish a U.S. role. Joint U.S.–Israel action and the U.S. pilot-rescue context are kept. | <a href="assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv" download aria-label="Download 49 selected U.S. involvement records CSV">CSV ↓</a> |
+| Group by recorded start date | 28 date groups | No further exclusions. Multiple records with the same start date share one clickable point. | <a href="assets/political-text-analysis/ucdp-event-start-date-groups-through-august-2026.csv" download aria-label="Download 28 start date groups and member record IDs CSV">CSV ↓</a> |
 
 :::
+
+Each download shows the data retained at that step. The 172-record CSV preserves the official Iran fields and identifies each record's release. The 80-record CSV adds inclusion flags and selection reasons. The 49-record CSV contains the selected events. The 28-row CSV is a grouping summary: it lists every selected UCDP ID and the same-day/multi-day record counts for each date.
 
 The three global files contain 13,685 rows and 13,659 distinct UCDP IDs. The 26 repeated IDs are outside the Iran subset; all 172 Iran records have distinct IDs. Iran contributes 121 records from January–June, 39 from July, and 12 from August. The conflict filter retains 59, 20, and 1 respectively.
 
