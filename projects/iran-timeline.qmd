@@ -1,5 +1,5 @@
 ---
-pagetitle: "Trump Truth Social Posts Around UCDP Iran Events"
+pagetitle: "Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events"
 page-layout: full
 title-block-banner: false
 toc: false

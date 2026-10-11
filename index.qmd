@@ -125,7 +125,7 @@ Fall 2026
 ::: {.project-tags}
 [Text Analysis]{.project-tag} [Political Data]{.project-tag} [Iran Conflict]{.project-tag}
 :::
-Using computational text analysis to examine political rhetoric around real-world events.
+Comparing Trump’s rhetoric before, during, and after U.S.-involved conflict events in Iran.
 
 [View project →](projects/iran-timeline.qmd){.project-link}
 :::

@@ -1,6 +1,6 @@
 ---
-title: "Political Text Analysis"
-description: "Computational analysis of political rhetoric around real-world events."
+title: "Trump’s Iran Rhetoric: Methods and Sources"
+description: "A descriptive comparison of Trump’s rhetoric around U.S.-involved lethal conflict events in Iran."
 ---
 
 
@@ -134,6 +134,11 @@ description: "Computational analysis of political rhetoric around real-world eve
   line-height: 1.4;
   overflow-wrap: anywhere;
 }
+/* Keep long archive revisions inside the article on narrow screens. */
+main.content :not(pre) > code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
 
 /* Keep the methodology page header completely in normal document flow.
    Some mobile browsers can leave a composited ghost of Quarto's fixed/
@@ -195,9 +200,9 @@ body.nav-fixed {
 
 ## Question
 
-Can we observe a warning signal in Donald Trump's Iran-related Truth Social posts before a UCDP-recorded event with explicit U.S. involvement?
+How does Donald Trump's rhetoric differ before, during, and after UCDP-recorded lethal conflict events in Iran with explicit U.S. involvement?
 
-The U.S. intervention focus is deliberate. Israel-only events are excluded. This timeline explores a potential advance signal; it does not yet validate an intervention alarm.
+The U.S. involvement focus is deliberate. Israel-only events are excluded. This is a descriptive study of language around recorded conflict events. Advance warning is an exploratory hypothesis; the current evidence does not establish a reliable predictive signal.
 
 ## Data
 
@@ -554,9 +559,22 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
 
 The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post's single dominant category), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.
 
-**Descriptive result:** the refreshed day-before Threat mean is reported in the timeline alongside event-day and day-after means. Each column averages only event dates with posts in that window, so the denominators differ. A higher day-before mean alone does not establish a useful warning flag or statistical significance.
+**Descriptive findings:** Victory framing is prominent across the sampled windows, with mean scores of 0.688 before, 0.769 on the event day, and 0.700 after. Threat scores average 0.558 before, 0.505 on the event day, and 0.485 after. These are model entailment scores, not probabilities of a military event. Each column averages only dates with posts in that window: 21 before, 22 on the event day, and 21 after.
 
-## What would test a warning flag?
+Comparing the same event dates shows how sensitive the apparent day-before Threat increase is to the available sample:
+
+::: {.table-responsive}
+
+| Threat comparison | Event dates | Before | Event day |
+|---|---:|---:|---:|
+| Posts available before and on the event day | 18 | 0.571 | 0.503 |
+| Posts available in all three windows | 14 | 0.579 | 0.594 |
+
+:::
+
+The paired before-minus-event-day difference is +0.068. An exploratory 95% interval from resampling chronological episodes spans approximately −0.166 to +0.352, including no difference. Episodes join event dates no more than three days apart; only eight episodes contribute to this comparison. Requiring all three windows changes the sample and removes the day-before advantage. This sensitivity check does not correct missingness. The evidence supports describing rhetoric around events, while the advance-warning hypothesis remains inconclusive. [Inspect the numerical checks](assets/political-text-analysis/indicator-check.json).
+
+## Further research: testing advance warning
 
 1. Use only posts available before the outcome date. Keep event-day and day-after language as context, not advance predictors.
 2. Compare the day-before signal with comparable days during the same conflict on which no qualifying U.S.-involved event is recorded. "No UCDP record" is not proof that no operation occurred.
@@ -573,6 +591,21 @@ The interactive timeline above shows, for each UCDP event, the surrounding Trump
 - **Fatality-based inclusion:** the event set does not cover every military operation, diplomatic moment, sanction, or negotiation.
 - **Model scores:** BART entailment scores are uncalibrated and heuristic, not probabilities of intervention or validated measures of intent. The classifier is not fine-tuned for this domain.
 - **Snapshot coverage:** August 31 is incomplete in the post archive, and later UCDP months are not part of the latest listed August release.
+
+## References and downloads
+
+The two Excel workbooks below use the same U.S.-involvement scope and retain the UCDP record IDs so they can be compared directly. They are reviewed extracts from UCDP Candidate, rather than the complete global releases.
+
+- **[Original UCDP extract with selected dates highlighted](assets/political-text-analysis/ucdp-original-through-july-2026-highlighted.xlsx):** 47 records, 27 start dates, through July. Yellow marks the 26 dates used in the original post analysis. July 30 had no matched posts and was absent from the original timeline.
+- **[Updated UCDP extract and date comparison](assets/political-text-analysis/ucdp-updated-through-august-2026.xlsx):** 48 records, 28 start dates, through August. Yellow marks original selected dates, green marks the added August 30 event, and gray marks July 30, restored to the timeline with no matched posts.
+
+The original workbook preserves the original source values and formulas, with highlights and selection notes added. The updated workbook includes a **Date comparison** sheet listing all 28 start dates, event IDs, original selection status, and matched-post counts. July 30 is a restored display date, not a newly added UCDP record.
+
+[Unannotated original workbook on GitHub ↗](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx)
+
+[UCDP official Candidate releases and codebook ↗](https://ucdp.uu.se/downloads/)
+
+Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics.
 
 ## Reproducibility
 
@@ -591,5 +624,3 @@ Run `python scripts/build_iran_timeline.py` from the portfolio repository. It va
 [Original Colab analysis notebook ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)
 
 The earlier notebook documents the six model descriptions and scoring approach. Its July workbook and original cache are historical inputs; the current portfolio build uses the versioned August extracts above.
-
-Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics. [UCDP downloads and codebook](https://ucdp.uu.se/downloads/).

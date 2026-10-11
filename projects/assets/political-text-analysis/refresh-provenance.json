@@ -72,5 +72,25 @@
       "sha256_lf": "eaf77423b8b664cf1bfaf04e043a6580001e5c36d86119176f613d918e43807b"
     }
   },
-  "file_checksum_format": "SHA-256 of UTF-8 text with LF line endings; portable across Git checkouts."
+  "file_checksum_format": "SHA-256 of UTF-8 text with LF line endings; portable across Git checkouts.",
+  "comparison_workbooks": {
+    "original_source_sha256": "64e9f044ede59e3e95e42a541942d18a2dc67e14e251b1e9d9ff150669326780",
+    "original_values_and_formulas_preserved": true,
+    "original_selected_dates": 26,
+    "original_extract_start_dates": 27,
+    "updated_extract_start_dates": 28,
+    "highlight_key": {
+      "yellow": "Dates used in original post analysis",
+      "gray": "July 30 restored without matched posts",
+      "green": "August 30 added U.S.-involved event"
+    },
+    "files": {
+      "ucdp-original-through-july-2026-highlighted.xlsx": {
+        "sha256": "282ebf3c7b9c16738847a0b44fc489625ab9f7f72986e9ed516afc385fe1a211"
+      },
+      "ucdp-updated-through-august-2026.xlsx": {
+        "sha256": "8ef1e9994d049777261cb43fccf92fb1fecd183810048262670a3a485cc07987"
+      }
+    }
+  }
 }
