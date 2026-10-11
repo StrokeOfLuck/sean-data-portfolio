@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "*.md"
     - "projects/housing-affordability.qmd"
+    - "projects/congressional-stock-network.qmd"
     - "projects/arduino-mathematical-visualization.qmd"
     - "projects/game-design-sandbox.qmd"
     - "projects/technical-communication-design.qmd"
