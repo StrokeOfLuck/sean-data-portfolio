@@ -456,8 +456,8 @@
     },
     {
       "date": "2026-04-05",
-      "label": "Notable",
-      "reason": "1 same-day UCDP records; best death estimate 5; 0 civilian deaths",
+      "label": "High",
+      "reason": "2 same-day UCDP records; best death estimate 10; 0 civilian deaths",
       "windows": {
         "-1": {
           "count": 3,
