@@ -63,13 +63,14 @@
   },
   "files": {
     "ucdp-us-involved-through-august-2026.csv": {
-      "sha256": "0b38ba7579985a9cf1059e20f6274911f3b9c3cb0f990c4bb3c3af9bd0589088"
+      "sha256_lf": "d49dc03c841554067f67bbc956dd71b6096b4f111ec3816847cf44e8614d8b49"
     },
     "post-event-windows-through-august-2026.csv": {
-      "sha256": "d0ef040c02d0dee5ab6d2f5b43c779af3725c31dcd75e32fdbb6a021f3056085"
+      "sha256_lf": "e41b53ce5da55d654e6dd7e85e409e3c5e2fcd0b52493804c9f0b5febfab4060"
     },
     "rhetoric-scores-through-august-2026.csv": {
-      "sha256": "16f77f75b26d2467579001538889dce697d213c0c57efde03901d4b59e1b45af"
+      "sha256_lf": "eaf77423b8b664cf1bfaf04e043a6580001e5c36d86119176f613d918e43807b"
     }
-  }
+  },
+  "file_checksum_format": "SHA-256 of UTF-8 text with LF line endings; portable across Git checkouts."
 }

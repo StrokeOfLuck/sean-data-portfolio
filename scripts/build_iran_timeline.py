@@ -77,7 +77,9 @@ def build():
     raw_scores=read('rhetoric-scores-through-august-2026.csv')
     manifest=json.loads((ASSETS/'refresh-provenance.json').read_text(encoding='utf-8'))
     for filename,record in manifest['files'].items():
-        assert hashlib.sha256((ASSETS/filename).read_bytes()).hexdigest()==record['sha256'], 'Source checksum mismatch: '+filename
+        # Git may check text out with CRLF on Windows; verify canonical UTF-8/LF.
+        canonical=(ASSETS/filename).read_text(encoding='utf-8').encode('utf-8')
+        assert hashlib.sha256(canonical).hexdigest()==record['sha256_lf'], 'Source checksum mismatch: '+filename
     scores={r['truth_id']:{f:float(r[f]) for f in FRAMES} for r in raw_scores}
     assert len(scores)==len(raw_scores), 'Duplicate score IDs'
     assert len(events)==len({r['id'] for r in events}), 'Duplicate event IDs'
