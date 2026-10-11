@@ -1,0 +1,2 @@
+# Preserve original UCDP download bytes for provenance verification.
+projects/assets/political-text-analysis/ucdp-official/*.csv -text -diff

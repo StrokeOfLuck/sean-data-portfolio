@@ -236,17 +236,31 @@ The archive ends **August 31 at 08:09 EDT**. Its partial day-after window is dis
 
 **Why it is used here:** UCDP supplies documented event dates around which to group Trump's posts. The events are selected from UCDP independently of the rhetoric scores. This provides a consistent reference for comparing language before, on, and after recorded conflict events.
 
-### Official source records, with selection highlighted
+### Full official UCDP CSV releases
 
-This window shows **80 original UCDP source records** from the January–June, July, and August 2026 releases, after restricting the global data to **Iran and conflict ID 16905** (Iran–Israel/United States). It is the source pool before the reviewed U.S.-involvement selection. The complete global CSV releases are linked below.
+These downloads contain the **complete, unfiltered worldwide records** in the three UCDP Candidate releases used for this project. The CSV copies preserve the original downloaded files. Release names link to UCDP's official originals.
 
-**Yellow identifies the 48 records extracted for the current timeline. Gray identifies the 32 records excluded from the reviewed subset.** Each row also has a text label, so the selection is clear without relying on color. Inclusion requires a source headline explicitly attributing lethal violence to U.S. or joint U.S.–Israel action. Israel-only and unclear-attribution records were not retained. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.
+| Release | Global records | Full CSV |
+|:--|--:|:--|
+| [January–June 2026](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv)<br>Version 26.01.26.06 | 10,051 | <a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_01_26_06.csv" download aria-label="Download full January–June 2026 CSV">CSV ↓</a> |
+| [July 2026](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv)<br>Version 26.0.7 | 1,828 | <a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_7.csv" download aria-label="Download full July 2026 CSV">CSV ↓</a> |
+| [August 2026](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv)<br>Version 26.0.8 | 1,806 | <a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_8.csv" download aria-label="Download full August 2026 CSV">CSV ↓</a> |
+
+**Selection path:** full global CSV releases → **172 records in Iran** → **80 records for the Iran–Israel/U.S. conflict** → **48 reviewed U.S.-involved records** → **28 clickable date groups**. The [reference selection steps](#how-the-reference-files-were-narrowed) explain each stage.
+
+[UCDP dataset documentation and codebook ↗](https://ucdp.uu.se/downloads/)
+
+### Filtered Iran conflict records, with selection highlighted
+
+This window shows the **80-record filtered Iran/conflict source pool** described above. Use the full CSV downloads above to inspect the worldwide releases.
+
+**Yellow identifies the 48 records extracted for the current timeline. Gray identifies the 32 records outside the reviewed subset.** Each row also has a text label, so the selection is clear without relying on color. The reviewed selection focuses on source headlines explicitly attributing lethal violence to U.S. or joint U.S.–Israel action. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.
 
 Search or filter this window to inspect either group. Click a UCDP ID to read all the source fields. The inclusion flags reproduce the reviewed extract; individual exclusion reasons were not recorded, so the viewer exposes the original headlines for inspection.
 
-<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Official UCDP source records with included and excluded rows marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy"></iframe>
+<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Filtered Iran conflict records with timeline selection marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy"></iframe>
 
-[Open the source window separately](assets/political-text-analysis/ucdp-reference-viewer.html?view=source) · [Download the source pool with selection flags](assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv)
+[Open the filtered source window separately](assets/political-text-analysis/ucdp-reference-viewer.html?view=source) · [Download the 80-record filtered pool with selection flags](assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv)
 
 ### Exact records used by the timeline
 
@@ -257,8 +271,6 @@ July 30 is included as an event date even though it has no matched posts. The Au
 <iframe class="ucdp-reference-window" id="ucdp-used-reference" title="Exact UCDP records used by the current Iran timeline" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=used" loading="lazy"></iframe>
 
 [Open the used-records window separately](assets/political-text-analysis/ucdp-reference-viewer.html?view=used) · [Download the exact used-records CSV](assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv)
-
-**Official source files:** [January–June 26.01.26.06](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv), [July 26.0.7](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv), and [August 26.0.8](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv). [Dataset documentation and codebook](https://ucdp.uu.se/downloads/).
 
 ## Event activity levels
 
@@ -639,6 +651,29 @@ The paired before-minus-event-day difference is +0.068. An exploratory 95% inter
 
 ## References and downloads
 
+### Full official UCDP CSVs
+
+The following downloads are unmodified global UCDP Candidate files. The 80-record source viewer and 48-record timeline CSV are project extracts from these releases.
+
+- **[Full January–June 2026 CSV](assets/political-text-analysis/ucdp-official/GEDEvent_v26_01_26_06.csv):** version 26.01.26.06; 10,051 global records. [Original at UCDP ↗](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv).
+- **[Full July 2026 CSV](assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_7.csv):** version 26.0.7; 1,828 global records. [Original at UCDP ↗](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv).
+- **[Full August 2026 CSV](assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_8.csv):** version 26.0.8; 1,806 global records. [Original at UCDP ↗](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv).
+
+[UCDP official Candidate releases and codebook ↗](https://ucdp.uu.se/downloads/)
+
+Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics.
+
+### How the reference files were narrowed
+
+1. **Start with the full global releases:** the January–June, July, and August UCDP Candidate CSVs linked above contain worldwide records.
+2. **Focus on Iran:** keeping records with `country = Iran` gives **172 records** across the three releases: 121 from January–June, 39 from July, and 12 from August.
+3. **Focus on the Iran–Israel/U.S. conflict:** keeping `conflict_new_id = 16905` gives **80 records**: 59 from January–June, 20 from July, and 1 from August. These are the records in the filtered source viewer.
+4. **Focus on reviewed U.S. involvement:** the timeline uses **48 records** from the reviewed U.S. or joint U.S.–Israel extract: the original 47 records plus the August 30 Larak Island record, **UCDP 640608**. The review looks for source headlines explicitly attributing lethal violence to the U.S. or joint action; shared Israel/U.S. conflict coding alone does not establish U.S. involvement.
+
+The remaining **32 records in the 80-record pool** are outside that reviewed extract. Their individual exclusion reasons were not recorded; their source fields remain available for inspection. The **48 selected records share 28 start dates**, which become the timeline's clickable date groups.
+
+### Reviewed project extracts
+
 The two Excel workbooks below use the same U.S.-involvement scope and retain the UCDP record IDs so they can be compared directly. They are reviewed extracts from UCDP Candidate, rather than the complete global releases.
 
 - **[Original UCDP extract with selected dates highlighted](assets/political-text-analysis/ucdp-original-through-july-2026-highlighted.xlsx):** 47 records, 27 start dates, through July. Yellow marks the 26 dates used in the original post analysis. July 30 had no matched posts and was absent from the original timeline.
@@ -647,12 +682,6 @@ The two Excel workbooks below use the same U.S.-involvement scope and retain the
 The original workbook preserves the original source values and formulas, with highlights and selection notes added. The updated workbook includes a **Date comparison** sheet listing all 28 start dates, event IDs, original selection status, and matched-post counts. July 30 is a restored display date, not a newly added UCDP record.
 
 [Unannotated original workbook on GitHub ↗](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx)
-
-[UCDP official Candidate releases and codebook ↗](https://ucdp.uu.se/downloads/)
-
-[Download the official August 2026 CSV, version 26.0.8 ↗](https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv). This is the raw global monthly release. The updated Excel workbook and U.S.-involved CSV on this page combine the reviewed Iran records from January–June, July, and August.
-
-Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics.
 
 ## Reproducibility
 

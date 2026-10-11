@@ -7,16 +7,16 @@
   const columns = usedMode ? data.usedColumns : data.sourceColumns;
   let filtered = rows, page = 0;
   const pageSize = 15;
-  get('viewTitle').textContent = usedMode ? 'Records used in the current timeline' : 'Official UCDP source records';
-  get('viewSummary').textContent = usedMode ? `${data.counts.used} selected records across ${data.counts.usedStartDates} start dates · January–August 2026` : `${data.counts.source} source records · ${data.counts.used} included · ${data.counts.excluded} excluded · January–August 2026`;
+  get('viewTitle').textContent = usedMode ? 'Records used in the current timeline' : 'Filtered Iran conflict records';
+  get('viewSummary').textContent = usedMode ? `${data.counts.used} selected records across ${data.counts.usedStartDates} start dates · January–August 2026` : `${data.counts.source} records in Iran, conflict 16905 · ${data.counts.used} included · ${data.counts.excluded} outside the reviewed subset · January–August 2026`;
   get('selectionControl').hidden = usedMode;
   get('export').href=usedMode?'ucdp-us-involved-through-august-2026.csv':'ucdp-iran-source-pool-through-august-2026.csv';
-  get('export').textContent=usedMode?`Download all ${data.counts.used} used records (CSV)`:`Download all ${data.counts.source} source records (CSV)`;
+  get('export').textContent=usedMode?`Download all ${data.counts.used} used records (CSV)`:`Download ${data.counts.source} filtered records (CSV)`;
   get('selectionHeading').textContent = usedMode ? 'U.S. involvement' : 'Selection';
   get('tableCaption').textContent = usedMode ? 'Exact reviewed UCDP records used by the current timeline' : 'Official Iran-conflict source pool with timeline selection marked';
   if (usedMode) get('legend').textContent = 'These record IDs exactly match the current timeline extract. Click an ID to inspect all fields.';
   else {
-    get('legend').innerHTML = '<span class="swatch included"></span>Yellow: extracted for the timeline. <span class="swatch excluded"></span>Gray: excluded from the reviewed subset. Click an ID to inspect the source.';
+    get('legend').innerHTML = '<span class="swatch included"></span>Yellow: extracted for the timeline. <span class="swatch excluded"></span>Gray: outside the reviewed subset. Click an ID to inspect the source.';
   }
   const included = row => usedMode || row.included_in_current_timeline === 'Yes';
   const normalizeRelease = value => value.includes('26.01.26.06') ? '26.01.26.06' : value.includes('26.0.7') ? '26.0.7' : '26.0.8';
