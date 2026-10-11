@@ -8,6 +8,7 @@ import argparse
 import csv
 import hashlib
 import json
+from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,11 +18,54 @@ EXTRACT = ASSETS / 'ucdp-us-involved-through-august-2026.csv'
 PROVENANCE = ASSETS / 'refresh-provenance.json'
 EXTRA = ['ucdp_release', 'included_in_current_timeline', 'selection_note']
 REVIEW = ASSETS / 'ucdp-selection-review.json'
+IRAN = ASSETS / 'ucdp-all-iran-through-august-2026.csv'
+DATE_GROUPS = ASSETS / 'ucdp-event-start-date-groups-through-august-2026.csv'
 
 def read(path):
     with path.open(encoding='utf-8-sig', newline='') as file:
         reader = csv.DictReader(file)
         return reader.fieldnames, list(reader)
+
+def export_steps(manifest, used, source_dir):
+    iran = {}
+    source_columns = None
+    for source in manifest['ucdp_sources']:
+        path = source_dir / source['url'].split('/')[-1]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == source['sha256'], f'Official source checksum mismatch: {path.name}'
+        columns, rows = read(path)
+        assert source_columns is None or columns == source_columns, 'Official release schema changed'
+        source_columns = columns
+        for row in rows:
+            if row['country'] == 'Iran':
+                iran[row['id']] = {**row, 'ucdp_release': source['version']}
+    assert len(iran) == 172
+    with IRAN.open('w', encoding='utf-8', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=source_columns+['ucdp_release'], lineterminator='\n')
+        writer.writeheader()
+        writer.writerows(sorted(iran.values(), key=lambda row: (row['date_start'], int(row['id']))))
+    groups = defaultdict(list)
+    for row in used:
+        groups[row['date_start']].append(row)
+    group_rows = []
+    for day, rows in sorted(groups.items()):
+        same_day = sum(row['date_start'] == row['date_end'] for row in rows)
+        group_rows.append({
+            'event_start_date': day,
+            'record_count': len(rows),
+            'ucdp_ids': '; '.join(row['id'] for row in sorted(rows, key=lambda row: int(row['id']))),
+            'same_day_record_count': same_day,
+            'multi_day_record_count': len(rows)-same_day,
+        })
+    assert len(group_rows) == manifest['counts']['ucdp_start_dates']
+    assert sum(row['record_count'] for row in group_rows) == len(used)
+    with DATE_GROUPS.open('w', encoding='utf-8', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=list(group_rows[0]), lineterminator='\n')
+        writer.writeheader()
+        writer.writerows(group_rows)
+    return {
+        'iran_records': {'filename': IRAN.name, 'records': len(iran), 'scope': 'All records with country Iran across the three official releases; all original UCDP fields plus the source release.'},
+        'start_date_groups': {'filename': DATE_GROUPS.name, 'rows': len(group_rows), 'underlying_records': len(used), 'scope': 'One row per selected start date, with the complete member-ID list and same-day/multi-day record counts. No selected records are discarded.'},
+    }
 
 def build(source_dir=None):
     manifest = json.loads(PROVENANCE.read_text(encoding='utf-8'))
@@ -63,6 +107,10 @@ def build(source_dir=None):
     assert all(row['date_start'][:4] == '2026' for row in source_rows)
     assert max(row['date_start'][:10] for row in source_rows) == '2026-08-30'
     used = sorted(used, key=lambda r: (r['date_start'], int(r['id'])))
+    steps = export_steps(manifest, used, source_dir or ASSETS/'ucdp-official')
+    for record in steps.values():
+        record['sha256_lf'] = hashlib.sha256((ASSETS/record['filename']).read_text(encoding='utf-8').encode('utf-8')).hexdigest()
+    manifest['selection_step_exports'] = steps
     payload = {
         'scope': 'Country Iran; UCDP conflict_new_id 16905; official Candidate releases January–June, July, and August 2026.',
         'counts': {'source': len(source_rows), 'used': len(used), 'excluded': len(source_rows)-len(used), 'usedStartDates': len({r['date_start'] for r in used})},
