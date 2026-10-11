@@ -149,15 +149,20 @@ def build():
     text=replace_one(text,r'<p class="lede-question">.*?</p>','<p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p>')
     text=re.sub(r'<section id="refresh-overview"[^>]*>.*?</section>','',text,flags=re.S)
     overview=f'''<section id="refresh-overview" aria-label="Dataset snapshot"><dl class="snapshot-stats"><div class="snapshot-stat"><dt>U.S.-involved event records</dt><dd>{len(events)}</dd></div><div class="snapshot-stat" title="Several UCDP records can share a start date; each distinct date has one timeline point."><dt>Distinct event start dates</dt><dd>{len(dates)}</dd></div><div class="snapshot-stat"><dt>Unique matched posts</dt><dd>{len(scores)}</dd></div></dl></section>'''
-    text=replace_one(text,r'(<div class="writeup-cta">.*?</div>)',re.search(r'<div class="writeup-cta">.*?</div>',text,re.S)[0]+overview)
+    intro='''<header class="timeline-intro"><div class="intro-copy"><h1 class="title toc-ignore">Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events</h1><p class="subtitle">Explore the posts before, during, and after U.S.-involved conflict events.</p></div><div class="writeup-cta"><a href="../../political-text-analysis.html" target="_top">Full write-up &amp; methodology →</a></div><p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p><p class="intro-help">Choose a date with Previous/Next, the date selector, or the timeline below. Explore the posts from the day before, the event day, and the day after.</p></header>'''
+    if '<header class="timeline-intro">' in text:
+        text=replace_one(text,r'<header class="timeline-intro">.*?</header>',intro+overview)
+    else:
+        text=replace_one(text,r'<h1 class="title toc-ignore">.*?<div class="writeup-cta">.*?</div>',intro+overview)
     text=replace_one(text,r'<table class="summary-table">.*?</table>',table)
-    text=replace_one(text,r'<h2>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2>Rhetoric around event dates</h2><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
-    text=re.sub(r'<div class="viewer-note">\s*(<p><strong>Connected timeline view\.</strong>.*?</p>)\s*</div>',r'<details class="viewer-note usage-note"><summary>How to use the timeline</summary>\1</details>',text,count=1,flags=re.S)
-    text=text.replace('<div class="panel">\n<div class="panel-body">','<details class="panel summary-panel"><summary>Compare rhetoric around event dates</summary>\n<div class="panel-body">',1)
-    text=re.sub(r'</div>\s*</div>\s*(?=<div class="viewer")','</div>\n</details>\n',text,count=1)
+    text=replace_one(text,r'<h2(?: id="rhetoric-comparison-title")?>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2 id="rhetoric-comparison-title">Rhetoric around event dates</h2><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
+    text=re.sub(r'<details class="viewer-note usage-note">.*?</details>','',text,count=1,flags=re.S)
+    text=re.sub(r'<details class="panel summary-panel"(?: open)?>\s*<summary>.*?</summary>','<section class="panel summary-panel" aria-labelledby="rhetoric-comparison-title">',text,count=1,flags=re.S)
+    text=re.sub(r'</div>\s*</details>\s*(?=<div class="viewer")','</div>\n</section>\n',text,count=1)
     stages=list(re.finditer(r'<section class="event-view".*?</section>',text,re.S))
     assert stages
     text=text[:stages[0].start()]+''.join(event_html)+text[stages[-1].end():]
+    text=text.replace('<div class="event-card-label">UCDP · U.S. INVOLVEMENT</div>','<div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div>')
     text=replace_one(text,r'<select id="eventSelect"[^>]*>.*?</select>','<select id="eventSelect" aria-label="Choose an event date">'+''.join(f'<option value="{i}">{date.fromisoformat(d):%B %d, %Y}</option>' for i,d in enumerate(dates))+'</select>')
     text=replace_one(text,r'<strong class="event-counter" id="eventCounter"[^>]*>.*?</strong>',f'<strong class="event-counter" id="eventCounter" aria-live="polite">1 of {len(dates)}</strong>')
     text=replace_one(text,r'<span class="toolbar-note">.*?</span>','<span class="toolbar-note">Size = same-day event severity; color window is selectable below</span>')
@@ -166,7 +171,10 @@ def build():
     assert markers
     text=text[:markers[0].start()]+''.join(nodes)+text[markers[-1].end():]
     text=text.replace('No tweet scored on event day','No posts in selected window')
-    text=replace_one(text,r'<details class="rhetoric-color-note">.*?</details>','<details class="rhetoric-color-note"><summary>How to read the bubbles</summary><p>Color shows the highest mean category in the selected post window; it does not measure the chance of intervention. Gray means no matched posts. Exact ties split colors evenly. Size describes same-day fatalities and record count; multi-day totals are not assigned to their start date.</p></details>')
+    text=replace_one(text,r'<details class="rhetoric-color-note">.*?</details>','<details class="rhetoric-color-note"><summary>How to read the bubbles</summary><p>Color shows the highest mean category in the selected post window; it does not measure the chance of intervention. Gray means no matched posts. <span id="timelineTieExplanation" hidden>Exact ties split colors evenly. </span>Size describes same-day fatalities and record count; multi-day totals are not assigned to their start date.</p></details>')
+    text=re.sub(r'<span[^>]*>(<i[^>]*></i>Tied leaders: split colors)</span>',r'<span id="timelineTieLegend" hidden>\1</span>',text,count=1)
+    text=re.sub(r'<p class="timeline-source-note">.*?</p>','',text,flags=re.S)
+    text=replace_one(text,r'<div class="global-timeline-title">\s*<strong>(?:Event timeline|UCDP event timeline)</strong>\s*</div>','<div class="global-timeline-title"><strong>UCDP event timeline</strong></div><p class="timeline-source-note">The Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence. Its documented event dates anchor the before/event-day/after post comparison.</p>')
     text=re.sub(r'<div id="color-window-controls">.*?</div>','',text,flags=re.S)
     text=text.replace('<div class="timeline-key-row">','<div id="color-window-controls"><label for="colorWindow">Color bubbles by posts from</label><select id="colorWindow"><option value="-1">Day before</option><option value="0">Event day</option><option value="1">Day after</option></select><span id="colorWindowNote" aria-live="polite"></span></div><div class="timeline-key-row">',1)
     # Open the before window by default on mobile as the first chronological window.
