@@ -34,6 +34,14 @@ html { scroll-behavior:smooth; }
 .rhetoric-color-legend i { display:inline-block; width:11px; height:11px; border-radius:50%; }
 .rhetoric-color-note { font-size:12px; color:#526173; }
 .event-card-title { line-height:1.4; }
+.event-card-timing { margin:6px 0 0; font-size:13px; line-height:1.5; font-weight:600; }
+.event-card-note { margin:8px 0; font-size:12px; line-height:1.5; color:var(--muted,#667085); }
+.event-records { margin:12px 0 16px; padding-left:22px; }
+.event-records li { padding-left:3px; }
+.event-records li::marker { font-weight:700; }
+.event-records li + li { margin-top:12px; padding-top:12px; border-top:1px solid var(--border,#cfd7e1); }
+.event-record-meta { font-size:12px; line-height:1.5; color:var(--muted,#667085); overflow-wrap:anywhere; }
+.event-records .event-record-headline { margin:6px 0 0; padding:0; border:0; background:none; color:inherit; font-size:14px; font-weight:650; line-height:1.5; overflow-wrap:anywhere; }
 .event-card-label { text-transform:none!important; letter-spacing:.015em!important; line-height:1.5; }
 .timeline-source-note { margin:0 0 8px; font-size:12px; line-height:1.5; color:var(--muted,#667085); }
 #event-explorer { scroll-margin-top:20px; }
