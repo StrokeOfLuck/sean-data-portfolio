@@ -8,6 +8,8 @@ project:
     - "projects/game-design-sandbox.qmd"
     - "projects/technical-communication-design.qmd"
     - "projects/visual-design-fabrication.qmd"
+    - "projects/iran-timeline.qmd"
+    - "projects/political-text-analysis.qmd"
     - "!AUTOMATION_SETUP.md"
     - "!projects/assets/"
   resources:

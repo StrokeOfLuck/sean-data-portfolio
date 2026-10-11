@@ -195,18 +195,20 @@ body.nav-fixed {
 
 ## Question
 
-How does Donald Trump's Iran-related Truth Social rhetoric change in the day before, day of, and day after UCDP-recorded U.S. or joint U.S.–Israel conflict events, and is threat language elevated beforehand?
+Can we observe a warning signal in Donald Trump's Iran-related Truth Social posts before a UCDP-recorded event with explicit U.S. involvement?
+
+The U.S. intervention focus is deliberate. Israel-only events are excluded. This timeline explores a potential advance signal; it does not yet validate an intervention alarm.
 
 ## Data
 
-Two sources are aligned by date:
+The October 11, 2026 refresh aligns **48 UCDP Candidate records across 28 event start dates** with **90 unique matched posts (132 post/event pairs)**. All 47 records in the prior extract are retained. The August release adds **UCDP 640608, August 30 at Larak Island**, whose source headlines explicitly describe a U.S. attack; its best fatality estimate is 2 (low–high 2–3). July 30 is now shown even though no posts match its windows.
 
-- **Trump's Truth Social posts.** The full public archive of his original posts (not reblogs) is pulled from a Hugging Face dataset, filtered to calendar-year 2026 and to posts mentioning Iran (401 posts YTD as of this snapshot).
-- **UCDP conflict events.** The Uppsala Conflict Data Program's Georeferenced Event Dataset, filtered to events with US or joint US–Israel involvement related to the Iran conflict (through July 2026). UCDP is manually researcher-coded from primary reporting on organized violence, which makes it a more reliable "ground truth" for event timing and severity than automated event trackers like GDELT, though its inclusion rule (battle-related fatalities) means it can miss purely diplomatic or political moments that don't involve violence.
+- **UCDP Candidate:** January–June version 26.01.26.06, July 26.0.7, and August 26.0.8. Inclusion requires the country to be Iran and reviewed source headlines to explicitly attribute the lethal event to U.S. or joint U.S.–Israel action. The combined Israel/U.S. dyad cannot establish U.S. involvement on its own. Candidate records are provisional.
+- **Truth Social archive:** the [Cameronk199 public archive](https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts), revision `eaeb102e183204635582de3eaae6c741cd383c32`. The original 87 reviewed posts are preserved; later original text posts matching Iran/Iranian, Tehran, Hormuz, or Khamenei extend the extract. Quote posts and reblogs are excluded. Attached images and videos are not classified.
 
-For each UCDP event, a **1-day event window** (day before / day of / day after, in Eastern time) is built around it, and any Iran-related Trump posts falling in that window are attached. This produces 393 unique event-dates with matched posts, spanning 543 underlying UCDP event records.
+Post timestamps and post-window membership use **America/New_York (EST/EDT)**. UCDP event dates remain source-coded calendar dates; no intraday event time is available, so a day-before post is not necessarily a full 24-hour lead. Events on adjacent dates can reuse the same post in different windows. Multi-day records appear as context at their start date without assigning their whole fatality total to that day.
 
-Each event-date is also assigned a **significance level** (Standard, Notable, High, Major, or Context) from same-day UCDP record count, best fatality estimate, and civilian death count — e.g., 2026-02-28 and 2026-04-06 are both coded "Major" based on same-day death tolls in the dozens to low hundreds. The exact rule is below.
+The archive ends **August 31 at 08:09 EDT**. Its partial day-after window is displayed but excluded from the comparison. Empty windows are kept in the timeline and omitted from score averages; an absent post is not a zero score.
 
 ## Significance levels
 
@@ -235,7 +237,7 @@ The intent is to visually emphasize dates with more substantial same-day UCDP ac
 
 The six categories are **multi-label**: the model evaluates each one independently, so a single post can score highly in more than one category. In computational text analysis these are often called rhetorical “frames,” but this page uses **category** as the plainer label. The values are model entailment scores, not calibrated probabilities.
 
-Each card below is the **highest-scoring post for that category** among the 87 unique posts in the current 26-event analysis subset. The full archived post is shown directly in the card, followed by that post's scores across all six categories and a link to the original Truth Social post.
+Each card below is the **highest-scoring post for that category** among the original 87-post snapshot (these illustrative examples are retained from that snapshot). The full archived post is shown directly in the card, followed by that post's scores across all six categories and a link to the original Truth Social post.
 
 ### Threat
 
@@ -525,6 +527,7 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
 <div class="column-page" style="margin: 1.5rem 0;">
 <iframe
   id="political-timeline-frame"
+  title="Explore posts around U.S.-involved Iran events"
   src="assets/political-text-analysis/trump-iran-connected-timeline.html"
   style="width: 100%; height: 900px; border: 1px solid #444; border-radius: 8px;"
   loading="lazy">
@@ -551,24 +554,42 @@ Criticizing, blaming, or attacking mainstream news media, journalists, or press 
 
 The interactive timeline above shows, for each UCDP event, the surrounding Trump posts and their per-post Threat/Victory/Diplomacy/Ceasefire/Blame Allies/Media Criticism scores (plus a small badge showing that post's single dominant category), and a summary comparison of event-balanced averages across the day-before/day-of/day-after windows. The timeline itself is responsive: on wide viewports (like the standalone page above) it shows the full connected rail with day-before/day-of/day-after branches side by side; on narrow viewports (including this embedded version, since its column is narrower than the 900px breakpoint) it collapses into a tab switcher instead.
 
-**The clearest evidence for telegraphing:** average Threat language is actually *higher the day before* a UCDP event (0.55) than on the event day itself (0.52) or the day after (0.48). It's also visible in individual posts — in the day before the April 6 event (34 killed in strikes on Iran's Guards intelligence chief and a university), Trump wrote: *"Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!!"* — naming the target categories before further strikes happened.
+**Descriptive result:** the refreshed day-before Threat mean is reported in the timeline alongside event-day and day-after means. Each column averages only event dates with posts in that window, so the denominators differ. A higher day-before mean alone does not establish a useful warning flag or statistical significance.
 
-**Blame Allies** and **Media Criticism** were added as later passes after the first four labels. Blame Allies (criticizing NATO/European allies for not helping) is low overall but ticks up on the event day (0.13) versus the day before (0.07) and day after (0.11). Media Criticism (attacking press coverage as biased or fake) varies a lot post-to-post (from near 0 to near 1) but doesn't move much across the three windows (0.34–0.35 throughout) — a real, variable signal at the post level that just isn't specifically tied to event timing. (A different sixth label, Self-Credit, was tried and dropped earlier — it scored near-ceiling on almost every post regardless of timing, which made it more a constant feature of the voice than a useful signal.)
+## What would test a warning flag?
+
+1. Use only posts available before the outcome date. Keep event-day and day-after language as context, not advance predictors.
+2. Compare the day-before signal with comparable days during the same conflict on which no qualifying U.S.-involved event is recorded. "No UCDP record" is not proof that no operation occurred.
+3. Define the flag and horizon on an earlier development period, then evaluate on later held-out dates. Report false alarms, missed events, precision, recall, and the underlying event rate.
+4. Account for clustered event dates and repeated posts; separate new intervention onsets from follow-on actions during ongoing operations. Sensitivity checks should exclude imprecisely dated and multi-day anchors.
+5. Audit classifier labels by hand. The current Threat description includes both warnings and reports of completed strikes, and some non-threat language can receive a high score. Text-only scores also miss signals carried in attached media.
 
 ## Limitations
 
-- **Small sample.** 87 unique posts are scored across the 26 events shown here (many event-windows have no matching Trump post at all), and results should be read as a descriptive pattern within one leader's rhetoric during one specific conflict, not a generalizable claim.
-- **Zero-shot labels are heuristic.** The classifier was never fine-tuned on this domain; label probabilities reflect a general-purpose model's association between text and label names, not a validated measure of intent or sentiment.
-- **UCDP's fatality-based inclusion criterion** means the event set may under-represent diplomatically significant moments (sanctions, negotiation breakdowns) that didn't involve violence — so "no nearby UCDP event" doesn't mean "nothing happened."
-- **No counterfactual baseline.** This only looks at posts already inside event windows — it doesn't compare day-before Threat language ahead of strikes against day-before Threat language on dates where no strike ultimately happened. Without that comparison, elevated day-before Threat could reflect genuine advance signaling, or it could just be Trump's ordinary baseline level of threatening rhetoric during an active conflict, which happens to precede strikes only because strikes were frequent during this period.
-- Both the Truth Social archive and the UCDP extract are periodic snapshots (current through mid-2026), not a live feed; this page will be refreshed as new data comes in this semester.
+- **Selected sample:** 90 unique posts and 28 start dates in one leader's rhetoric during one conflict. Empty windows are visible but have no rhetoric score. The original post selection was reviewed manually and is preserved, so this is not a fresh exhaustive classification of the full archive.
+- **No non-event baseline or held-out warning evaluation yet.** This is an exploratory timeline, not an operational prediction tool.
+- **Unequal denominators and overlapping windows:** before/day-of/after means are not a paired independent sample. Several dates can share the same post; a previous-day post may be reacting to an earlier strike.
+- **Provisional event timing and attribution:** UCDP Candidate records can be revised. Source-coded dates lack intraday timing; shared dyad coding alone does not identify the attacker.
+- **Fatality-based inclusion:** the event set does not cover every military operation, diplomatic moment, sanction, or negotiation.
+- **Model scores:** BART entailment scores are uncalibrated and heuristic, not probabilities of intervention or validated measures of intent. The classifier is not fine-tuned for this domain.
+- **Snapshot coverage:** August 31 is incomplete in the post archive, and later UCDP months are not part of the latest listed August release.
 
 ## Reproducibility
 
-[Open the analysis notebook in Colab ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)  
-Runs the event-window data preparation, zero-shot scoring, event-balanced comparisons, and the base connected timeline.
+[Current build script and frozen extracts on GitHub ↗](https://github.com/Strokeofluck/sean-data-portfolio/blob/main/scripts/build_iran_timeline.py)
 
-[Analysis code and data on GitHub ↗](https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis)  
-Contains the notebook, source data, and project README.
+Run `python scripts/build_iran_timeline.py` from the portfolio repository. It validates source IDs, post-window membership, score coverage, and fatality intervals before rebuilding the page. The three input CSVs and source-version manifest are saved beside the timeline.
 
-The **Colab notebook** reproduces the analysis and base timeline. The live portfolio version adds presentation-only layout, navigation, and styling changes afterward, so it may not look pixel-for-pixel identical even though the underlying analysis is the same.
+[Source versions and refresh provenance](assets/political-text-analysis/refresh-provenance.json)
+
+[Download the U.S.-involved event extract](assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv)
+
+[Download matched post windows](assets/political-text-analysis/post-event-windows-through-august-2026.csv)
+
+[Download the frozen rhetoric scores](assets/political-text-analysis/rhetoric-scores-through-august-2026.csv)
+
+[Original Colab analysis notebook ↗](https://colab.research.google.com/github/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/Trump_Iran_Connected_Timeline_ZeroShot_Colab.ipynb)
+
+The earlier notebook documents the six model descriptions and scoring approach. Its July workbook and original cache are historical inputs; the current portfolio build uses the versioned August extracts above.
+
+Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), *Introducing the UCDP Candidate Events Dataset*, Research & Politics. [UCDP downloads and codebook](https://ucdp.uu.se/downloads/).

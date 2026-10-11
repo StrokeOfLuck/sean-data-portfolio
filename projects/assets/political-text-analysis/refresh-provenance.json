@@ -1,0 +1,75 @@
+{
+  "refreshed_at": "2026-10-11",
+  "ucdp_coverage_through": "2026-08-31",
+  "ucdp_sources": [
+    {
+      "version": "26.01.26.06",
+      "url": "https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv",
+      "sha256": "68dd3d363b8edf4808bd6bf6f5d0412c3c722ffb1db367aeb8eff48bab80589a"
+    },
+    {
+      "version": "26.0.7",
+      "url": "https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv",
+      "sha256": "9fc2c6dd85eee91845512e8ef1055281d9fd028fb98748a6f2a27c6e8aa8c562"
+    },
+    {
+      "version": "26.0.8",
+      "url": "https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv",
+      "sha256": "2ad6e0b2bfdbaa31873716a3455096923a8539519d69d96aeeea2d0f44a34593"
+    }
+  ],
+  "archive_source": "https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts",
+  "archive_revision": "eaeb102e183204635582de3eaae6c741cd383c32",
+  "archive_cutoff_utc": "2026-08-31T12:09:00Z",
+  "scope": "Country Iran; reviewed source headlines explicitly attributing lethal violence to the U.S. or joint U.S.-Israel action. Israel-only and ambiguous attribution excluded. Shared dyad membership alone is insufficient.",
+  "post_selection": "Preserves the original 87 reviewed posts. Later original text posts match Iran/Iranian, Tehran, Hormuz, or Khamenei; quotes and reblogs excluded. Text-only analysis does not read attached media.",
+  "counts": {
+    "ucdp_records": 48,
+    "ucdp_start_dates": 28,
+    "unique_matched_posts": 90,
+    "post_event_pairs": 132
+  },
+  "change_notes": [
+    "Added UCDP 640608, August 30, Larak Island: explicit U.S. attack attribution; best fatalities 2, low 2, high 3.",
+    "Restored July 30 (637563 and 637567), previously omitted because its post windows were empty.",
+    "Existing 47 event IDs preserved; official fields reconciled by persistent id against Jan-Jun and July sources.",
+    "Kept original 87 scores after checking source text equivalence apart from whitespace; scored 3 new posts with the same six descriptions and hypothesis template.",
+    "August 31 archive coverage ends 08:09 EDT; its after-window is displayed and excluded from aggregate means.",
+    "No-post windows are absent observations, not numeric zero scores.",
+    "Event-day posts cannot establish advance warning: UCDP provides calendar dates without intraday timestamps."
+  ],
+  "model": {
+    "name": "facebook/bart-large-mnli",
+    "multi_label": true,
+    "hypothesis_template": "This text expresses {}.",
+    "transformers_new_posts": "4.57.6",
+    "torch_new_posts": "2.12.0+cpu",
+    "scored_new_posts": [
+      "117178907347016649",
+      "117185823993660126",
+      "117190043060363335"
+    ],
+    "calibrated_probabilities": false
+  },
+  "baseline_reviewed_workbook": "https://github.com/Strokeofluck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx",
+  "validation": {
+    "duplicate_event_ids": 0,
+    "duplicate_post_event_pairs": 0,
+    "dropped_original_event_ids": 0,
+    "dropped_original_post_ids": 0
+  },
+  "upstream_quality_flags": {
+    "625182": "Official Jan-Jun source has low=best=2417 and high=2401. Preserve source values and flag the inconsistency. This cumulative multi-day record is excluded from same-day fatality severity."
+  },
+  "files": {
+    "ucdp-us-involved-through-august-2026.csv": {
+      "sha256": "0b38ba7579985a9cf1059e20f6274911f3b9c3cb0f990c4bb3c3af9bd0589088"
+    },
+    "post-event-windows-through-august-2026.csv": {
+      "sha256": "d0ef040c02d0dee5ab6d2f5b43c779af3725c31dcd75e32fdbb6a021f3056085"
+    },
+    "rhetoric-scores-through-august-2026.csv": {
+      "sha256": "16f77f75b26d2467579001538889dce697d213c0c57efde03901d4b59e1b45af"
+    }
+  }
+}
