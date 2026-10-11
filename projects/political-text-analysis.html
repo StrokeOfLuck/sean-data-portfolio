@@ -136,7 +136,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#ucdp-source-and-selection" id="toc-ucdp-source-and-selection" class="nav-link" data-scroll-target="#ucdp-source-and-selection">UCDP source and selection</a>
   <ul class="collapse">
-  <li><a href="#official-source-records-with-selection-highlighted" id="toc-official-source-records-with-selection-highlighted" class="nav-link" data-scroll-target="#official-source-records-with-selection-highlighted">Official source records, with selection highlighted</a></li>
+  <li><a href="#full-official-ucdp-csv-releases" id="toc-full-official-ucdp-csv-releases" class="nav-link" data-scroll-target="#full-official-ucdp-csv-releases">Full official UCDP CSV releases</a></li>
+  <li><a href="#filtered-iran-conflict-records-with-selection-highlighted" id="toc-filtered-iran-conflict-records-with-selection-highlighted" class="nav-link" data-scroll-target="#filtered-iran-conflict-records-with-selection-highlighted">Filtered Iran conflict records, with selection highlighted</a></li>
   <li><a href="#exact-records-used-by-the-timeline" id="toc-exact-records-used-by-the-timeline" class="nav-link" data-scroll-target="#exact-records-used-by-the-timeline">Exact records used by the timeline</a></li>
   </ul></li>
   <li><a href="#event-activity-levels" id="toc-event-activity-levels" class="nav-link" data-scroll-target="#event-activity-levels">Event activity levels</a></li>
@@ -154,7 +155,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#further-research-testing-advance-warning" id="toc-further-research-testing-advance-warning" class="nav-link" data-scroll-target="#further-research-testing-advance-warning">Further research: testing advance warning</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-  <li><a href="#references-and-downloads" id="toc-references-and-downloads" class="nav-link" data-scroll-target="#references-and-downloads">References and downloads</a></li>
+  <li><a href="#references-and-downloads" id="toc-references-and-downloads" class="nav-link" data-scroll-target="#references-and-downloads">References and downloads</a>
+  <ul class="collapse">
+  <li><a href="#full-official-ucdp-csvs" id="toc-full-official-ucdp-csvs" class="nav-link" data-scroll-target="#full-official-ucdp-csvs">Full official UCDP CSVs</a></li>
+  <li><a href="#how-the-reference-files-were-narrowed" id="toc-how-the-reference-files-were-narrowed" class="nav-link" data-scroll-target="#how-the-reference-files-were-narrowed">How the reference files were narrowed</a></li>
+  <li><a href="#reviewed-project-extracts" id="toc-reviewed-project-extracts" class="nav-link" data-scroll-target="#reviewed-project-extracts">Reviewed project extracts</a></li>
+  </ul></li>
   <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
   </ul>
 </nav>
@@ -187,6 +193,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
+.selection-table-window {max-width:100%; overflow-x:auto; margin-bottom:1rem;}
+.selection-table-window table {min-width:600px;}
+.selection-table-window:focus-visible {outline:3px solid #4b87c0; outline-offset:2px;}
 /* Compact Truth Social-style examples used in the methodology guide. */
 .truth-example-card {
   --threat: #9a4949;
@@ -394,14 +403,14 @@ body.nav-fixed {
 <section id="question" class="level2">
 <h2 class="anchored" data-anchor-id="question">Question</h2>
 <p>How does Donald Trump’s rhetoric differ before, during, and after UCDP-recorded lethal conflict events in Iran with explicit U.S. involvement?</p>
-<p>The U.S. involvement focus is deliberate. Israel-only events are excluded. This is a descriptive study of language around recorded conflict events. Advance warning is an exploratory hypothesis; the current evidence does not establish a reliable predictive signal.</p>
+<p>The U.S. involvement focus is deliberate. Joint U.S.–Israel events are kept, along with lethal incidents reported in a U.S. operation context. Records without a documented U.S. role in the reviewed evidence are withheld; this does not prove that the U.S. was uninvolved. This is a descriptive study of language around recorded conflict events. Advance warning is an exploratory hypothesis; the current evidence does not establish a reliable predictive signal.</p>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>The October 11, 2026 refresh aligns <strong>48 UCDP Candidate records across 28 event start dates</strong> with <strong>90 unique matched posts (132 post/event pairs)</strong>. All 47 records in the prior extract are retained. The August release adds <strong>UCDP 640608, August 30 at Larak Island</strong>, whose source headlines explicitly describe a U.S. attack; its best fatality estimate is 2 (low–high 2–3). July 30 is now shown even though no posts match its windows.</p>
-<p><strong>Why 48 records but 28 dates?</strong> UCDP can record multiple events with the same start date. The timeline groups those records at one date point, so 48 records produce 28 distinct date points. For example, July 30 has two selected records, one in Qeshm and one in northwest Iran, but only one timeline date. Multi-day records use their recorded start date as an anchor.</p>
+<p>The October 11, 2026 refresh aligns <strong>49 UCDP Candidate records across 28 event start dates</strong> with <strong>90 unique matched posts (132 post/event pairs)</strong>. All 47 records in the prior extract are retained. The August release adds <strong>UCDP 640608, August 30 at Larak Island</strong>, whose source headlines explicitly describe a U.S. attack; its best fatality estimate is 2 (low–high 2–3). The selection review also adds <strong>UCDP 629301, April 5 in Boyer-Ahmad county</strong>, reporting five deaths during the U.S. pilot-rescue operation. July 30 is now shown even though no posts match its windows.</p>
+<p><strong>Why 49 records but 28 dates?</strong> UCDP can record multiple events with the same start date. The timeline groups those records at one date point, so 49 records produce 28 distinct date points. No records are discarded in this grouping. For example, April 5 now contains the pilot-rescue record and a separate joint U.S.–Israel strike record in Ardebil. Multi-day records use their recorded start date as an anchor.</p>
 <ul>
-<li><strong>UCDP Candidate:</strong> January–June version 26.01.26.06, July 26.0.7, and August 26.0.8. Inclusion requires the country to be Iran and reviewed source headlines to explicitly attribute the lethal event to U.S. or joint U.S.–Israel action. The combined Israel/U.S. dyad cannot establish U.S. involvement on its own. Candidate records are provisional.</li>
+<li><strong>UCDP Candidate:</strong> January–June version 26.01.26.06, July 26.0.7, and August 26.0.8. Inclusion requires an Iran record in conflict 16905 and reviewed evidence documenting U.S. or joint U.S.–Israel action, or a lethal incident reported during a U.S. operation. The combined Israel/U.S. dyad cannot establish U.S. involvement on its own. Candidate records are provisional.</li>
 <li><strong>Truth Social archive:</strong> the <a href="https://huggingface.co/datasets/Cameronk199/donald-trump-truth-social-posts">Cameronk199 public archive</a>, revision <code>eaeb102e183204635582de3eaae6c741cd383c32</code>. The original 87 reviewed posts are preserved; later original text posts matching Iran/Iranian, Tehran, Hormuz, or Khamenei extend the extract. Quote posts and reblogs are excluded. Attached images and videos are not classified.</li>
 </ul>
 <p>Post timestamps and post-window membership use <strong>America/New_York (EST/EDT)</strong>. UCDP event dates remain source-coded calendar dates; no intraday event time is available, so a day-before post is not necessarily a full 24-hour lead. Events on adjacent dates can reuse the same post in different windows. Multi-day records appear as context at their start date without assigning their whole fatality total to that day.</p>
@@ -411,23 +420,55 @@ body.nav-fixed {
 <h2 class="anchored" data-anchor-id="ucdp-source-and-selection">UCDP source and selection</h2>
 <p><strong>What this source is:</strong> the Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence using event dates, locations, actor coding, fatality estimates, and cited source reports. Candidate records are provisional and can be revised.</p>
 <p><strong>Why it is used here:</strong> UCDP supplies documented event dates around which to group Trump’s posts. The events are selected from UCDP independently of the rhetoric scores. This provides a consistent reference for comparing language before, on, and after recorded conflict events.</p>
-<section id="official-source-records-with-selection-highlighted" class="level3">
-<h3 class="anchored" data-anchor-id="official-source-records-with-selection-highlighted">Official source records, with selection highlighted</h3>
-<p>This window shows <strong>80 original UCDP source records</strong> from the January–June, July, and August 2026 releases, after restricting the global data to <strong>Iran and conflict ID 16905</strong> (Iran–Israel/United States). It is the source pool before the reviewed U.S.-involvement selection. The complete global CSV releases are linked below.</p>
-<p><strong>Yellow identifies the 48 records extracted for the current timeline. Gray identifies the 32 records excluded from the reviewed subset.</strong> Each row also has a text label, so the selection is clear without relying on color. Inclusion requires a source headline explicitly attributing lethal violence to U.S. or joint U.S.–Israel action. Israel-only and unclear-attribution records were not retained. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.</p>
-<p>Search or filter this window to inspect either group. Click a UCDP ID to read all the source fields. The inclusion flags reproduce the reviewed extract; individual exclusion reasons were not recorded, so the viewer exposes the original headlines for inspection.</p>
-<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Official UCDP source records with included and excluded rows marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy">
+<section id="full-official-ucdp-csv-releases" class="level3">
+<h3 class="anchored" data-anchor-id="full-official-ucdp-csv-releases">Full official UCDP CSV releases</h3>
+<p>These downloads contain the <strong>complete, unfiltered worldwide records</strong> in the three UCDP Candidate releases used for this project. The CSV copies preserve the original downloaded files. Release names link to UCDP’s official originals.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Release</th>
+<th style="text-align: right;">Global records</th>
+<th style="text-align: left;">Full CSV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv">January–June 2026</a><br>Version 26.01.26.06</td>
+<td style="text-align: right;">10,051</td>
+<td style="text-align: left;"><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_01_26_06.csv" download="" aria-label="Download full January–June 2026 CSV">CSV ↓</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv">July 2026</a><br>Version 26.0.7</td>
+<td style="text-align: right;">1,828</td>
+<td style="text-align: left;"><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_7.csv" download="" aria-label="Download full July 2026 CSV">CSV ↓</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">August 2026</a><br>Version 26.0.8</td>
+<td style="text-align: right;">1,806</td>
+<td style="text-align: left;"><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_8.csv" download="" aria-label="Download full August 2026 CSV">CSV ↓</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Selection path:</strong> full global CSV releases → <strong>172 records in Iran</strong> → <strong>80 records for the Iran–Israel/U.S. conflict</strong> → <strong>49 records with documented U.S. involvement</strong> → <strong>28 clickable date groups</strong>. The <a href="#how-the-reference-files-were-narrowed">reference selection steps</a> explain what was cut and why.</p>
+<p><a href="https://ucdp.uu.se/downloads/">UCDP dataset documentation and codebook ↗</a></p>
+</section>
+<section id="filtered-iran-conflict-records-with-selection-highlighted" class="level3">
+<h3 class="anchored" data-anchor-id="filtered-iran-conflict-records-with-selection-highlighted">Filtered Iran conflict records, with selection highlighted</h3>
+<p>This window shows the <strong>80-record filtered Iran/conflict source pool</strong> described above. Use the full CSV downloads above to inspect the worldwide releases.</p>
+<p><strong>Yellow identifies the 49 records included in the timeline. Gray identifies the 31 records withheld because the reviewed evidence does not establish a U.S. role.</strong> Each row has a text label and a selection basis. Joint U.S.–Israel events remain included. Membership in the combined Israel/U.S. dyad alone does not establish U.S. involvement.</p>
+<p>Search or filter this window to inspect either group. Click a UCDP ID to read its current selection reason and all source fields. These reasons were documented in the October 11 review. Historical per-record exclusion reasons were not logged. The review checks all 80 supplied headline/source fields, plus the full AFP reports for the pilot-rescue record and UCDP 629300; it is not an exhaustive review of every full article.</p>
+<iframe class="ucdp-reference-window" id="ucdp-source-reference" title="Filtered Iran conflict records with timeline selection marked" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=source" loading="lazy">
 </iframe>
-<p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=source">Open the source window separately</a> · <a href="assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv">Download the source pool with selection flags</a></p>
+<p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=source">Open the filtered source window separately</a> · <a href="assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv">Download the 80-record filtered pool with selection flags</a></p>
 </section>
 <section id="exact-records-used-by-the-timeline" class="level3">
 <h3 class="anchored" data-anchor-id="exact-records-used-by-the-timeline">Exact records used by the timeline</h3>
-<p>This second window contains <strong>only the 48 selected UCDP records</strong>, matching the timeline’s CSV by persistent record ID. Their <strong>28 event start dates</strong> define the before/event-day/after post windows. Multiple records can share one start date, and a multi-day record can cover a longer interval. Record counts therefore do not represent independent intervention onsets, and multi-day fatality totals are not assigned to the first day.</p>
+<p>This second window contains <strong>only the 49 selected UCDP records</strong>, matching the timeline’s CSV by persistent record ID. Their <strong>28 event start dates</strong> define the before/event-day/after post windows. Multiple records can share one start date, and a multi-day record can cover a longer interval. Record counts therefore do not represent independent intervention onsets, and multi-day fatality totals are not assigned to the first day.</p>
 <p>July 30 is included as an event date even though it has no matched posts. The August release adds the U.S.-attributed August 30 Larak Island event, <strong>UCDP 640608</strong>. Use the release filter to view that August record directly.</p>
+<p><strong>Pilot-rescue inclusion:</strong> <a href="https://www.thedailystar.net/news/world/us-israel-war-iran/news/five-killed-iran-strikes-during-us-pilot-rescue-iranian-media-4144001">the AFP report for UCDP 629301</a> links five reported deaths to the U.S. rescue operation. It does not explicitly identify the strike actor, so the project labels this record <strong>U.S. operation context</strong>. The official fields remain unchanged. Adding it changes April 5’s selected same-day fatality total from 5 to 10 and the display category from Notable to High. April 5 was already a timeline date, so post windows and rhetoric averages are unchanged.</p>
 <iframe class="ucdp-reference-window" id="ucdp-used-reference" title="Exact UCDP records used by the current Iran timeline" src="assets/political-text-analysis/ucdp-reference-viewer.html?view=used" loading="lazy">
 </iframe>
 <p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=used">Open the used-records window separately</a> · <a href="assets/political-text-analysis/ucdp-us-involved-through-august-2026.csv">Download the exact used-records CSV</a></p>
-<p><strong>Official source files:</strong> <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv">January–June 26.01.26.06</a>, <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv">July 26.0.7</a>, and <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">August 26.0.8</a>. <a href="https://ucdp.uu.se/downloads/">Dataset documentation and codebook</a>.</p>
 </section>
 </section>
 <section id="event-activity-levels" class="level2">
@@ -455,7 +496,7 @@ body.nav-fixed {
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
 <ol type="1">
-<li><strong>Collect</strong> Trump’s Truth Social posts from the archived snapshot and UCDP’s Iran-conflict records from the versioned CSV releases. Preserve the reviewed U.S.-involved selection.</li>
+<li><strong>Collect</strong> Trump’s Truth Social posts from the archived snapshot and UCDP’s Iran-conflict records from the versioned CSV releases. Apply the documented U.S.-involvement selection decisions.</li>
 <li><strong>Window</strong> the two datasets together: for every distinct UCDP event start date, pull Iran-related posts from the day before, day of, and day after.</li>
 <li><strong>Score rhetoric with zero-shot classification.</strong> A Hugging Face multi-label zero-shot classifier (<code>facebook/bart-large-mnli</code>) scores each post’s <code>content_text</code> — and only the text, never the UCDP metadata — against six categories: <strong>Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism</strong>, each receiving a continuous 0–1 entailment score.</li>
 <li><strong>Aggregate means by event start date.</strong> Average post scores within each date’s window, then average those date means. Each date with matched posts contributes equally, so a high-volume posting day does not dominate the comparison.</li>
@@ -761,7 +802,7 @@ body.nav-fixed {
 <p>The timeline groups posts around each UCDP event start date and shows their scores for Threat, Victory, Diplomacy, Ceasefire/Ending, Blame Allies, and Media Criticism. A small badge identifies each post’s highest-scoring category. The summary compares average scores across the before, event-day, and after windows, giving each date with posts equal weight. On narrow screens, use the tabs to switch between windows; on wider screens, the three windows appear side by side.</p>
 <p><strong>Descriptive findings:</strong> Victory framing is prominent across the sampled windows, with mean scores of 0.688 before, 0.769 on the event day, and 0.700 after. Threat scores average 0.558 before, 0.505 on the event day, and 0.485 after. These are model entailment scores, not probabilities of a military event. Each column averages only dates with posts in that window: 21 before, 22 on the event day, and 21 after.</p>
 <p>Comparing the same event dates shows how sensitive the apparent day-before Threat increase is to the available sample:</p>
-<div class="table-responsive">
+<div class="selection-table-window" role="region" tabindex="0" aria-label="Threat comparison; scroll horizontally on narrow screens">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -806,6 +847,7 @@ body.nav-fixed {
 <li><strong>No non-event baseline or held-out warning evaluation yet.</strong> This is an exploratory timeline, not an operational prediction tool.</li>
 <li><strong>Unequal denominators and overlapping windows:</strong> before/day-of/after means are not a paired independent sample. Several dates can share the same post; a previous-day post may be reacting to an earlier strike.</li>
 <li><strong>Provisional event timing and attribution:</strong> UCDP Candidate records can be revised. Source-coded dates lack intraday timing; shared dyad coding alone does not identify the attacker.</li>
+<li><strong>Event-selection coverage:</strong> the current review checks supplied headline/source fields for all 80 Iran-conflict records, with two full AFP reports additionally checked. The 31 withheld records are not proven Israel-only. Further source review could establish U.S. involvement and expand the sample. The rescue record documents U.S. operation context with the strike actor unspecified.</li>
 <li><strong>Fatality-based inclusion:</strong> the event set does not cover every military operation, diplomatic moment, sanction, or negotiation.</li>
 <li><strong>Model scores:</strong> BART entailment scores are uncalibrated and heuristic, not probabilities of intervention or validated measures of intent. The classifier is not fine-tuned for this domain.</li>
 <li><strong>Snapshot coverage:</strong> August 31 is incomplete in the post archive, and later UCDP months are not part of the latest listed August release.</li>
@@ -813,16 +855,108 @@ body.nav-fixed {
 </section>
 <section id="references-and-downloads" class="level2">
 <h2 class="anchored" data-anchor-id="references-and-downloads">References and downloads</h2>
+<section id="full-official-ucdp-csvs" class="level3">
+<h3 class="anchored" data-anchor-id="full-official-ucdp-csvs">Full official UCDP CSVs</h3>
+<p>The following downloads are unmodified global UCDP Candidate files. The 80-record source viewer and 49-record timeline CSV are project extracts from these releases.</p>
+<ul>
+<li><strong><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_01_26_06.csv">Full January–June 2026 CSV</a>:</strong> version 26.01.26.06; 10,051 global records. <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_01_26_06.csv">Original at UCDP ↗</a>.</li>
+<li><strong><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_7.csv">Full July 2026 CSV</a>:</strong> version 26.0.7; 1,828 global records. <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_7.csv">Original at UCDP ↗</a>.</li>
+<li><strong><a href="assets/political-text-analysis/ucdp-official/GEDEvent_v26_0_8.csv">Full August 2026 CSV</a>:</strong> version 26.0.8; 1,806 global records. <a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">Original at UCDP ↗</a>.</li>
+</ul>
+<p><a href="https://ucdp.uu.se/downloads/">UCDP official Candidate releases and codebook ↗</a></p>
+<p>Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), <em>Introducing the UCDP Candidate Events Dataset</em>, Research &amp; Politics.</p>
+</section>
+<section id="how-the-reference-files-were-narrowed" class="level3">
+<h3 class="anchored" data-anchor-id="how-the-reference-files-were-narrowed">How the reference files were narrowed</h3>
+<div class="selection-table-window" role="region" tabindex="0" aria-label="Selection steps; scroll horizontally on narrow screens">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Stage</th>
+<th style="text-align: right;">Kept</th>
+<th style="text-align: left;">What was cut and why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Full January–August releases</td>
+<td style="text-align: right;">13,685 source rows</td>
+<td style="text-align: left;">Worldwide starting files, before any project filter.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Country: Iran</td>
+<td style="text-align: right;">172 records</td>
+<td style="text-align: left;">13,513 rows coded to other countries; this study covers events located in Iran.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Iran–Israel/U.S. conflict (<code>conflict_new_id = 16905</code>)</td>
+<td style="text-align: right;">80 records</td>
+<td style="text-align: left;">92 Iran records in other UCDP conflicts; they fall outside this study’s conflict scope.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Documented U.S. involvement</td>
+<td style="text-align: right;">49 records</td>
+<td style="text-align: left;">31 records whose reviewed evidence does not establish a U.S. role. Joint U.S.–Israel action and the U.S. pilot-rescue context are kept.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group by recorded start date</td>
+<td style="text-align: right;">28 date groups</td>
+<td style="text-align: left;">No further exclusions. Multiple records with the same start date share one clickable point.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The three global files contain 13,685 rows and 13,659 distinct UCDP IDs. The 26 repeated IDs are outside the Iran subset; all 172 Iran records have distinct IDs. Iran contributes 121 records from January–June, 39 from July, and 12 from August. The conflict filter retains 59, 20, and 1 respectively.</p>
+<p><strong>Why the selected count changed from 48 to 49:</strong> the original 47 records and the August 30 Larak Island record were preserved in the initial refresh. The subsequent review restored <strong>UCDP 629301</strong>, reporting five deaths during the U.S. pilot-rescue operation on April 5. The revised selection contains <strong>26 joint U.S.–Israel records, 22 U.S.-attributed records, and 1 U.S. operation-context record</strong>. This is a documented selected sample, not a claim that every U.S.-involved incident has been identified.</p>
+<section id="why-31-records-are-withheld" class="level4">
+<h4 class="anchored" data-anchor-id="why-31-records-are-withheld">Why 31 records are withheld</h4>
+<div class="selection-table-window" role="region" tabindex="0" aria-label="Withheld record breakdown; scroll horizontally on narrow screens">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Current selection basis</th>
+<th style="text-align: right;">Records</th>
+<th style="text-align: left;">Why withheld</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Explicit Israeli attribution</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">The supplied headlines identify Israeli action without documenting a U.S. role.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U.S. role unverified in the other reviewed records</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">17 do not establish U.S. participation, 3 mention U.S. officials, sanctions, or warnings without linking the U.S. to the incident, 1 combines Trump’s comment with an Israeli strike claim, and 1 concerns Iranian demining deaths without establishing the ordnance’s origin.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Unverified does not mean absent.</strong> The original exclusion rationales were not logged. These are the current October 11 decisions based on the evidence actually reviewed, rather than invented historical explanations. All 80 supplied headline/source fields were checked; full AFP articles were additionally checked for the rescue record and UCDP 629300. Other full articles remain to be reviewed if stronger U.S. attribution is needed.</p>
+<p><a href="assets/political-text-analysis/ucdp-reference-viewer.html?view=source&amp;selection=excluded">Inspect all 31 withheld records and their individual reasons</a> · <a href="assets/political-text-analysis/ucdp-iran-source-pool-through-august-2026.csv">Download all 80 filtered records with selection reasons</a> · <a href="assets/political-text-analysis/ucdp-selection-review.json">Download the dated selection review (JSON)</a></p>
+</section>
+</section>
+<section id="reviewed-project-extracts" class="level3">
+<h3 class="anchored" data-anchor-id="reviewed-project-extracts">Reviewed project extracts</h3>
 <p>The two Excel workbooks below use the same U.S.-involvement scope and retain the UCDP record IDs so they can be compared directly. They are reviewed extracts from UCDP Candidate, rather than the complete global releases.</p>
 <ul>
 <li><strong><a href="assets/political-text-analysis/ucdp-original-through-july-2026-highlighted.xlsx">Original UCDP extract with selected dates highlighted</a>:</strong> 47 records, 27 start dates, through July. Yellow marks the 26 dates used in the original post analysis. July 30 had no matched posts and was absent from the original timeline.</li>
-<li><strong><a href="assets/political-text-analysis/ucdp-updated-through-august-2026.xlsx">Updated UCDP extract and date comparison</a>:</strong> 48 records, 28 start dates, through August. Yellow marks original selected dates, green marks the added August 30 event, and gray marks July 30, restored to the timeline with no matched posts.</li>
+<li><strong><a href="assets/political-text-analysis/ucdp-updated-through-august-2026.xlsx">Updated UCDP extract and date comparison</a>:</strong> 49 records, 28 start dates, through August, including the restored April 5 rescue-operation record. Yellow marks original selected dates, green marks the added August 30 event, and gray marks July 30, restored to the timeline with no matched posts.</li>
 </ul>
 <p>The original workbook preserves the original source values and formulas, with highlights and selection notes added. The updated workbook includes a <strong>Date comparison</strong> sheet listing all 28 start dates, event IDs, original selection status, and matched-post counts. July 30 is a restored display date, not a newly added UCDP record.</p>
 <p><a href="https://github.com/StrokeOfLuck/trump-iran-rhetoric-analysis/blob/main/data/UCDP_Iran_US_or_Joint_US_Involvement_2026_through_July.xlsx">Unannotated original workbook on GitHub ↗</a></p>
-<p><a href="https://ucdp.uu.se/downloads/">UCDP official Candidate releases and codebook ↗</a></p>
-<p><a href="https://ucdp.uu.se/downloads/candidateged/GEDEvent_v26_0_8.csv">Download the official August 2026 CSV, version 26.0.8 ↗</a>. This is the raw global monthly release. The updated Excel workbook and U.S.-involved CSV on this page combine the reviewed Iran records from January–June, July, and August.</p>
-<p>Please cite UCDP Candidate as: Hegre, Håvard, Mihai Croicu, Kristine Eck, and Stina Högbladh (2020), <em>Introducing the UCDP Candidate Events Dataset</em>, Research &amp; Politics.</p>
+</section>
 </section>
 <section id="reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>

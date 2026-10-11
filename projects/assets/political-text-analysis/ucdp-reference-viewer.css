@@ -33,6 +33,7 @@ td button {padding:2px 0; min-height:26px; border:0; background:transparent; col
 .headline {display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
 .status {display:block; font-weight:650; margin-bottom:2px}
 .status-note {font-size:11px; color:#596876}
+.selection-basis {display:block; margin-top:4px; color:#344b60}
 .sr-only {position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
 footer {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; padding-top:9px; font-size:12px}
 footer div {display:flex; align-items:center; gap:8px}
