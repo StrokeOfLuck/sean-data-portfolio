@@ -232,7 +232,7 @@ The archive ends **August 31 at 08:09 EDT**. Its partial day-after window is dis
 
 ## UCDP source and selection
 
-**What this source is:** the UCDP Candidate Events Dataset records lethal organized violence using event dates, locations, actor coding, fatality estimates, and cited source reports. Candidate records are provisional and can be revised.
+**What this source is:** the Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence using event dates, locations, actor coding, fatality estimates, and cited source reports. Candidate records are provisional and can be revised.
 
 **Why it is used here:** UCDP supplies documented event dates around which to group Trump's posts. The events are selected from UCDP independently of the rhetoric scores. This provides a consistent reference for comparing language before, on, and after recorded conflict events.
 
