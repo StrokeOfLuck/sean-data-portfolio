@@ -1,7 +1,7 @@
 /* Final presentation rules for the October 2026 source refresh. */
 html { scroll-behavior:smooth; }
 #refresh-overview { margin:0 0 20px; padding:4px 0 20px; border-bottom:1px solid var(--border,#cfd7e1); }
-.snapshot-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; max-width:900px; margin:0; }
+.snapshot-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:600px; margin:0; }
 .snapshot-stat { display:flex; align-items:baseline; gap:10px; min-width:0; }
 .snapshot-stat dt { font-size:14px; line-height:1.4; font-weight:400; color:var(--muted,#667085); }
 .snapshot-stat dd { order:-1; margin:0; font-size:28px; line-height:1.2; font-weight:750; color:var(--ink,#17202a); }
