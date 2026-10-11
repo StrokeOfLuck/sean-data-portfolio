@@ -9,10 +9,12 @@
   document.head.appendChild(style);
   function updateColors() {
     const rules = [];
+    let hasTies = false;
     data.events.forEach((event,index) => {
       const window = event.windows[control.value];
       const sorted = window.means ? data.frames.map((name,i) => ({name,i,value:window.means[name]})).sort((a,b)=>b.value-a.value) : [];
       const leaders = sorted.filter(x => Math.abs(x.value-sorted[0].value)<1e-12);
+      if(leaders.length>1) hasTies = true;
       let fill = leaders.length ? colors[leaders[0].i] : '#89919a';
       const root=document.querySelector('.svg-timeline');
       if(leaders.length>1 && root) {
@@ -49,6 +51,10 @@
       rules.push(`.timeline-node[data-event-index="${index}"] .timeline-dot{background:${background}!important}.svg-timeline .timeline-svg-event[data-event-index="${index}"] .timeline-svg-dot{fill:${fill}!important}`);
     });
     style.textContent=rules.join('\n');
+    const tieLegend = document.getElementById('timelineTieLegend');
+    const tieExplanation = document.getElementById('timelineTieExplanation');
+    if(tieLegend) tieLegend.hidden = !hasTies;
+    if(tieExplanation) tieExplanation.hidden = !hasTies;
     document.getElementById('colorWindowNote').textContent=`${names[control.value]} category scores; colors are not intervention probabilities.`;
   }
   control.addEventListener('change',updateColors);
