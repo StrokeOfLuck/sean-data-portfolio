@@ -80,6 +80,10 @@ def apply_feedback(text, summaries, overall, frames, counts, record_count, post_
     text = re.sub(r'(<h2 class="selected-event-heading"[^>]*>.*?</h2>)(?:<h2 class="selected-event-heading"[^>]*>.*?</h2>)+', r'\1', text, flags=re.S)
     # Remove prior severity section on a repeated build.
     text = re.sub(r'<section id="severity-analysis".*?</section>', '', text, flags=re.S)
+    text = re.sub(r'<dialog id="event-records-dialog".*?</dialog>', '', text, flags=re.S)
+    dialog = '''<dialog id="event-records-dialog" aria-labelledby="event-records-title">
+<div class="event-dialog-header"><h2 id="event-records-title">Event records</h2><button type="button" class="event-dialog-close" aria-label="Close event details" autofocus>Close <span aria-hidden="true">×</span></button></div>
+<div id="event-records-content" class="event-dialog-content"></div></dialog>'''
     section = '''<section id="severity-analysis" class="panel" aria-labelledby="severity-title"><div class="panel-body">
 <h2 id="severity-title">Event severity and rhetoric</h2>
 <p>Do higher-fatality dates coincide with different rhetoric? Each dot is one date with same-day UCDP records and matched posts. The four panels share the same axes.</p>
@@ -92,5 +96,5 @@ def apply_feedback(text, summaries, overall, frames, counts, record_count, post_
 </div></section>'''
     # The first script after the viewer is the retained navigation controller.
     at = text.index('<script>', text.index('<div class="viewer"'))
-    text = text[:at] + section + text[at:]
+    text = text[:at] + dialog + section + text[at:]
     return text

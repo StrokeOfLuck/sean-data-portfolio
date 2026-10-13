@@ -76,6 +76,62 @@
   });
 
   const heading = document.getElementById('selected-event-heading');
+  const recordsDialog = document.getElementById('event-records-dialog');
+  let recordsOpener = null;
+  let parentScrollStyle = null;
+  function positionRecordsDialog() {
+    let top = 12, height = window.innerHeight - 24;
+    // The portfolio expands this iframe to its full document height. Position
+    // its top-layer dialog inside the visible outer viewport, not that height.
+    try {
+      if (window.frameElement && window.parent !== window) {
+        const frame = window.frameElement.getBoundingClientRect();
+        const header = window.parent.document.querySelector('#quarto-header');
+        const visibleTop = Math.max(frame.top, 0, header?.getBoundingClientRect().bottom || 0);
+        top = visibleTop - frame.top + 12;
+        height = Math.min(window.parent.innerHeight, frame.bottom) - visibleTop - 24;
+      }
+    } catch (_) { /* Standalone or cross-origin embeds use their own viewport. */ }
+    recordsDialog.style.top = top + 'px';
+    recordsDialog.style.maxHeight = Math.max(120, height) + 'px';
+  }
+  document.querySelectorAll('.event-details-button').forEach(button => {
+    button.addEventListener('click', () => {
+      recordsOpener = button;
+      const view = button.closest('.event-view');
+      const template = document.getElementById(button.dataset.eventTemplate);
+      const date = new Date(view.dataset.eventDate + 'T12:00:00Z').toLocaleDateString('en-US', {
+        timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric'
+      });
+      document.getElementById('event-records-title').textContent = date + ' · ' + button.closest('.event-card').querySelector('.event-card-title').textContent;
+      document.getElementById('event-records-content').replaceChildren(template.content.cloneNode(true));
+      positionRecordsDialog();
+      try {
+        if (window.parent !== window) {
+          parentScrollStyle = window.parent.document.documentElement.style.overflow;
+          window.parent.document.documentElement.style.overflow = 'hidden';
+        }
+      } catch (_) { /* No parent scroll lock is needed in standalone mode. */ }
+      recordsDialog.showModal();
+    });
+  });
+  recordsDialog.querySelector('.event-dialog-close').addEventListener('click', () => recordsDialog.close());
+  recordsDialog.addEventListener('click', event => {
+    if (event.target !== recordsDialog) return;
+    const bounds = recordsDialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) recordsDialog.close();
+  });
+  recordsDialog.addEventListener('close', () => {
+    if (parentScrollStyle !== null) {
+      window.parent.document.documentElement.style.overflow = parentScrollStyle;
+      parentScrollStyle = null;
+    }
+    if (recordsOpener?.isConnected) recordsOpener.focus({preventScroll:true});
+  });
+  window.addEventListener('resize', () => { if (recordsDialog.open) positionRecordsDialog(); });
+  try {
+    if (window.parent !== window) window.parent.addEventListener('resize', () => { if (recordsDialog.open) positionRecordsDialog(); });
+  } catch (_) { /* Cross-origin parent cannot be observed. */ }
   function syncSelection() {
     const active = document.querySelector('.event-view.is-active');
     if (!active) return;

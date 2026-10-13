@@ -48,15 +48,13 @@ def event_card(rows,level,label,reason,quality_flags,decisions):
     count=len(rows)
     same_day=sum(r['date_start']==r['date_end'] for r in rows)
     multi_day=count-same_day
-    noun='event' if count==1 else 'events'
-    title=f'{count} {noun} on this date' if not multi_day else f'{count} event '+('record' if count==1 else 'records')+' grouped at this start date'
-    timing=''
+    title=f'{count} event '+('record' if count==1 else 'records')
+    parts=[]
+    if same_day:
+        parts.append(f'{same_day} same-day '+('record' if same_day==1 else 'records'))
     if multi_day:
-        parts=[]
-        if same_day:
-            parts.append(f'{same_day} same-day '+('record' if same_day==1 else 'records'))
         parts.append(f'{multi_day} multi-day '+('record starts' if multi_day==1 else 'records start')+' here')
-        timing='<p class="event-card-timing">'+esc(' · '.join(parts))+'.</p>'
+    timing='<p class="event-card-timing">'+esc(' · '.join(parts))+'.</p>'
     entries=[]
     for e in rows:
         dates=e['date_start'] if e['date_start']==e['date_end'] else e['date_start']+' to '+e['date_end']+' (multi-day)'
@@ -67,7 +65,9 @@ def event_card(rows,level,label,reason,quality_flags,decisions):
         entries.append(f'<li data-ucdp-id="{esc(e["id"])}"><div class="event-record-meta"><strong>UCDP {esc(e["id"])}</strong> · {esc(e["where_coordinates"])}<br>{esc(dates)}</div><blockquote class="event-record-headline">{headline}</blockquote>{context}</li>')
     shared='<p class="event-card-note">A shared headline can support more than one UCDP record.</p>' if len({e['involvement_evidence'] for e in rows})<count else ''
     records=''.join(f'<li><strong>UCDP {esc(e["id"])} · {esc(e["us_involvement"])}</strong><br>{esc(e["date_start"])} to {esc(e["date_end"])} · date precision {esc(e["date_prec"])} · coding: {esc(e["code_status"])}<br>Source fatalities: best {e["best"]}, low {e["low"]}, high {e["high"]}.<br>{esc(quality_flags.get(e["id"],""))}<br>{esc(plain(e["source_headline"]))}</li>' for e in rows)
-    return f'<div class="event-card"><div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div><div class="event-card-title">{esc(title)}</div>{timing}<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<span class="sig-pill {level}">{label} event day</span><div class="event-card-meta">{esc(reason)}</div><details class="event-evidence"><summary>Event records &amp; source headlines</summary><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details></div>'
+    template_id='event-records-'+rows[0]['date_start']
+    evidence=f'<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim. Multi-day records start on this date but extend beyond it.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<details class="event-evidence"><summary>Source fields and fatality estimates</summary><p>{esc(reason)}.</p><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details>'
+    return f'<div class="event-card event-card-compact"><div class="event-card-label">UCDP · U.S. involvement</div><div class="event-card-summary"><div><div class="event-card-title">{esc(title)}</div>{timing}</div><span class="sig-pill {level}">{label}</span></div><button class="event-details-button" type="button" aria-haspopup="dialog" aria-controls="event-records-dialog" data-event-template="{template_id}">View event details <span aria-hidden="true">↗</span></button><template id="{template_id}">{evidence}</template></div>'
 
 def post_card(row,scores):
     text=plain(row['content_text'])
