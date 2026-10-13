@@ -1,0 +1,1041 @@
+{
+  "-1": {
+    "rows": [
+      {
+        "date": "2026-03-04",
+        "index": 1,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 4,
+        "means": {
+          "Threat": 0.7925385311245918,
+          "Victory": 0.9352643489837646,
+          "Diplomacy": 0.07848095474764705,
+          "Ceasefire / Ending": 0.36670469120144844,
+          "Blame Allies": 0.07823738134175073,
+          "Media Criticism": 0.43979268707334995
+        }
+      },
+      {
+        "date": "2026-03-08",
+        "index": 2,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 1,
+        "means": {
+          "Threat": 0.9520094990730286,
+          "Victory": 0.959315836429596,
+          "Diplomacy": 0.061423592269420624,
+          "Ceasefire / Ending": 0.287180632352829,
+          "Blame Allies": 0.029204584658145905,
+          "Media Criticism": 0.45422831177711487
+        }
+      },
+      {
+        "date": "2026-03-20",
+        "index": 3,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 4,
+        "means": {
+          "Threat": 0.46035908441990614,
+          "Victory": 0.47325488133355975,
+          "Diplomacy": 0.29998484486714005,
+          "Ceasefire / Ending": 0.25049432646483183,
+          "Blame Allies": 0.03268158121500164,
+          "Media Criticism": 0.29297769628465176
+        }
+      },
+      {
+        "date": "2026-03-27",
+        "index": 4,
+        "fatalities": 8,
+        "low": 8,
+        "high": 8,
+        "count": 3,
+        "means": {
+          "Threat": 0.497024717895935,
+          "Victory": 0.6389958560466766,
+          "Diplomacy": 0.4899243861436844,
+          "Ceasefire / Ending": 0.41779999683300656,
+          "Blame Allies": 0.3462985963560641,
+          "Media Criticism": 0.4364832937717438
+        }
+      },
+      {
+        "date": "2026-03-29",
+        "index": 5,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 2,
+        "means": {
+          "Threat": 0.9586610794067383,
+          "Victory": 0.9216153025627136,
+          "Diplomacy": 0.11488039698451757,
+          "Ceasefire / Ending": 0.42570915818214417,
+          "Blame Allies": 0.03977555874735117,
+          "Media Criticism": 0.23626659065485
+        }
+      },
+      {
+        "date": "2026-03-30",
+        "index": 6,
+        "fatalities": 11,
+        "low": 11,
+        "high": 11,
+        "count": 1,
+        "means": {
+          "Threat": 0.826682984828949,
+          "Victory": 0.9948158860206604,
+          "Diplomacy": 0.0607040598988533,
+          "Ceasefire / Ending": 0.15918828547000885,
+          "Blame Allies": 0.010923916473984718,
+          "Media Criticism": 0.16255000233650208
+        }
+      },
+      {
+        "date": "2026-03-31",
+        "index": 7,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 2,
+        "means": {
+          "Threat": 0.7306157052516937,
+          "Victory": 0.6134224385023117,
+          "Diplomacy": 0.3166128543089144,
+          "Ceasefire / Ending": 0.3468070924282074,
+          "Blame Allies": 0.014669741678517312,
+          "Media Criticism": 0.17336037568747997
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "index": 8,
+        "fatalities": 13,
+        "low": 13,
+        "high": 13,
+        "count": 2,
+        "means": {
+          "Threat": 0.6312546730041504,
+          "Victory": 0.9311299622058868,
+          "Diplomacy": 0.10276705189608037,
+          "Ceasefire / Ending": 0.7067960798740387,
+          "Blame Allies": 0.05312774237245321,
+          "Media Criticism": 0.30089031904935837
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "index": 9,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 1,
+        "means": {
+          "Threat": 0.929825484752655,
+          "Victory": 0.973555862903595,
+          "Diplomacy": 0.7435215711593628,
+          "Ceasefire / Ending": 0.7417476177215576,
+          "Blame Allies": 0.20442190766334534,
+          "Media Criticism": 0.727604866027832
+        }
+      },
+      {
+        "date": "2026-04-05",
+        "index": 10,
+        "fatalities": 10,
+        "low": 10,
+        "high": 10,
+        "count": 3,
+        "means": {
+          "Threat": 0.6687983411053816,
+          "Victory": 0.9752205610275269,
+          "Diplomacy": 0.4576535769738257,
+          "Ceasefire / Ending": 0.35240496198336285,
+          "Blame Allies": 0.03361580598478516,
+          "Media Criticism": 0.3291671499609947
+        }
+      },
+      {
+        "date": "2026-04-06",
+        "index": 11,
+        "fatalities": 35,
+        "low": 35,
+        "high": 35,
+        "count": 3,
+        "means": {
+          "Threat": 0.45205995440483093,
+          "Victory": 0.9265565872192383,
+          "Diplomacy": 0.05299568176269531,
+          "Ceasefire / Ending": 0.1309345836440722,
+          "Blame Allies": 0.1694352732350429,
+          "Media Criticism": 0.4561243951320648
+        }
+      },
+      {
+        "date": "2026-05-04",
+        "index": 13,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 1,
+        "means": {
+          "Threat": 0.00240704114548862,
+          "Victory": 0.16126354038715363,
+          "Diplomacy": 0.2992732524871826,
+          "Ceasefire / Ending": 0.06321408599615097,
+          "Blame Allies": 0.01913611590862274,
+          "Media Criticism": 0.4018090069293976
+        }
+      },
+      {
+        "date": "2026-07-09",
+        "index": 16,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.9883502721786499,
+          "Victory": 0.3225049376487732,
+          "Diplomacy": 0.0002647912479005754,
+          "Ceasefire / Ending": 0.10018161684274673,
+          "Blame Allies": 0.08282288908958435,
+          "Media Criticism": 0.4147989749908447
+        }
+      },
+      {
+        "date": "2026-07-14",
+        "index": 19,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.05928885564208031,
+          "Victory": 0.7600816488265991,
+          "Diplomacy": 0.010527275502681732,
+          "Ceasefire / Ending": 0.040689703077077866,
+          "Blame Allies": 0.039624303579330444,
+          "Media Criticism": 0.2444433718919754
+        }
+      },
+      {
+        "date": "2026-07-15",
+        "index": 20,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 3,
+        "means": {
+          "Threat": 0.41023409614960354,
+          "Victory": 0.7709073126316071,
+          "Diplomacy": 0.3187300885717074,
+          "Ceasefire / Ending": 0.548383375008901,
+          "Blame Allies": 0.028362630575429648,
+          "Media Criticism": 0.36186276997129124
+        }
+      },
+      {
+        "date": "2026-07-16",
+        "index": 21,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 1,
+        "means": {
+          "Threat": 0.0006131006521172822,
+          "Victory": 0.4626886546611786,
+          "Diplomacy": 0.4043828248977661,
+          "Ceasefire / Ending": 0.4603613018989563,
+          "Blame Allies": 0.00208098697476089,
+          "Media Criticism": 0.13530200719833374
+        }
+      },
+      {
+        "date": "2026-07-20",
+        "index": 23,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 1,
+        "means": {
+          "Threat": 0.0608518086373806,
+          "Victory": 0.27021732926368713,
+          "Diplomacy": 0.19303569197654724,
+          "Ceasefire / Ending": 0.32586145401000977,
+          "Blame Allies": 0.03990912437438965,
+          "Media Criticism": 0.31740811467170715
+        }
+      },
+      {
+        "date": "2026-07-22",
+        "index": 24,
+        "fatalities": 2,
+        "low": 2,
+        "high": 2,
+        "count": 1,
+        "means": {
+          "Threat": 0.9298276305198669,
+          "Victory": 0.43677738308906555,
+          "Diplomacy": 0.011537205427885056,
+          "Ceasefire / Ending": 0.4061053693294525,
+          "Blame Allies": 0.08940259367227554,
+          "Media Criticism": 0.22070926427841187
+        }
+      },
+      {
+        "date": "2026-07-24",
+        "index": 25,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 3,
+        "means": {
+          "Threat": 0.3279316753808719,
+          "Victory": 0.279481526153783,
+          "Diplomacy": 0.3231286498485133,
+          "Ceasefire / Ending": 0.13087483185033003,
+          "Blame Allies": 0.016186846769414842,
+          "Media Criticism": 0.1411304686528941
+        }
+      },
+      {
+        "date": "2026-08-30",
+        "index": 27,
+        "fatalities": 2,
+        "low": 2,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.7662529349327087,
+          "Victory": 0.9916102290153503,
+          "Diplomacy": 0.27369144558906555,
+          "Ceasefire / Ending": 0.674311101436615,
+          "Blame Allies": 0.00807327963411808,
+          "Media Criticism": 0.08372349292039871
+        }
+      }
+    ],
+    "n": 20,
+    "spearman": {
+      "Threat": -0.08922638756283892,
+      "Victory": 0.3727848226142338,
+      "Diplomacy": 0.2465067995380126,
+      "Ceasefire / Ending": 0.199625138276182,
+      "Blame Allies": 0.05746784283708269,
+      "Media Criticism": 0.17769661929887412
+    },
+    "without_largest_spearman": {
+      "Threat": -0.08922638756283892,
+      "Victory": 0.3727848226142338,
+      "Diplomacy": 0.2465067995380126,
+      "Ceasefire / Ending": 0.199625138276182,
+      "Blame Allies": 0.05746784283708269,
+      "Media Criticism": 0.17769661929887412
+    }
+  },
+  "0": {
+    "rows": [
+      {
+        "date": "2026-02-28",
+        "index": 0,
+        "fatalities": 162,
+        "low": 162,
+        "high": 175,
+        "count": 2,
+        "means": {
+          "Threat": 0.8182908892631531,
+          "Victory": 0.7978043854236603,
+          "Diplomacy": 0.012981237843632698,
+          "Ceasefire / Ending": 0.1844196654856205,
+          "Blame Allies": 0.0446703415364027,
+          "Media Criticism": 0.49984461069107056
+        }
+      },
+      {
+        "date": "2026-03-04",
+        "index": 1,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 1,
+        "means": {
+          "Threat": 0.17673583328723907,
+          "Victory": 0.6196945905685425,
+          "Diplomacy": 0.802966296672821,
+          "Ceasefire / Ending": 0.4647217094898224,
+          "Blame Allies": 0.0007572337635792792,
+          "Media Criticism": 0.070813849568367
+        }
+      },
+      {
+        "date": "2026-03-08",
+        "index": 2,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 1,
+        "means": {
+          "Threat": 0.032937705516815186,
+          "Victory": 0.6283805966377258,
+          "Diplomacy": 0.048978012055158615,
+          "Ceasefire / Ending": 0.33660632371902466,
+          "Blame Allies": 0.01367999892681837,
+          "Media Criticism": 0.14775033295154572
+        }
+      },
+      {
+        "date": "2026-03-20",
+        "index": 3,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 2,
+        "means": {
+          "Threat": 0.646808460354805,
+          "Victory": 0.9592220187187195,
+          "Diplomacy": 0.0035056837368756533,
+          "Ceasefire / Ending": 0.4275336265563965,
+          "Blame Allies": 0.5022549945861101,
+          "Media Criticism": 0.6939014196395874
+        }
+      },
+      {
+        "date": "2026-03-27",
+        "index": 4,
+        "fatalities": 8,
+        "low": 8,
+        "high": 8,
+        "count": 1,
+        "means": {
+          "Threat": 0.07073614746332169,
+          "Victory": 0.9915895462036133,
+          "Diplomacy": 0.3207983374595642,
+          "Ceasefire / Ending": 0.8019712567329407,
+          "Blame Allies": 0.015833808109164238,
+          "Media Criticism": 0.21610794961452484
+        }
+      },
+      {
+        "date": "2026-03-29",
+        "index": 5,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 1,
+        "means": {
+          "Threat": 0.826682984828949,
+          "Victory": 0.9948158860206604,
+          "Diplomacy": 0.0607040598988533,
+          "Ceasefire / Ending": 0.15918828547000885,
+          "Blame Allies": 0.010923916473984718,
+          "Media Criticism": 0.16255000233650208
+        }
+      },
+      {
+        "date": "2026-03-30",
+        "index": 6,
+        "fatalities": 11,
+        "low": 11,
+        "high": 11,
+        "count": 2,
+        "means": {
+          "Threat": 0.7306157052516937,
+          "Victory": 0.6134224385023117,
+          "Diplomacy": 0.3166128543089144,
+          "Ceasefire / Ending": 0.3468070924282074,
+          "Blame Allies": 0.014669741678517312,
+          "Media Criticism": 0.17336037568747997
+        }
+      },
+      {
+        "date": "2026-03-31",
+        "index": 7,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 2,
+        "means": {
+          "Threat": 0.6710660606622696,
+          "Victory": 0.968791663646698,
+          "Diplomacy": 0.06992270145565271,
+          "Ceasefire / Ending": 0.438730426132679,
+          "Blame Allies": 0.9447927176952362,
+          "Media Criticism": 0.5709646642208099
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "index": 8,
+        "fatalities": 13,
+        "low": 13,
+        "high": 13,
+        "count": 2,
+        "means": {
+          "Threat": 0.9930120408535004,
+          "Victory": 0.9874262809753418,
+          "Diplomacy": 0.4533553854562342,
+          "Ceasefire / Ending": 0.21769988909363747,
+          "Blame Allies": 0.0844578891992569,
+          "Media Criticism": 0.6211355924606323
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "index": 9,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 3,
+        "means": {
+          "Threat": 0.6687983411053816,
+          "Victory": 0.9752205610275269,
+          "Diplomacy": 0.4576535769738257,
+          "Ceasefire / Ending": 0.35240496198336285,
+          "Blame Allies": 0.03361580598478516,
+          "Media Criticism": 0.3291671499609947
+        }
+      },
+      {
+        "date": "2026-04-05",
+        "index": 10,
+        "fatalities": 10,
+        "low": 10,
+        "high": 10,
+        "count": 3,
+        "means": {
+          "Threat": 0.45205995440483093,
+          "Victory": 0.9265565872192383,
+          "Diplomacy": 0.05299568176269531,
+          "Ceasefire / Ending": 0.1309345836440722,
+          "Blame Allies": 0.1694352732350429,
+          "Media Criticism": 0.4561243951320648
+        }
+      },
+      {
+        "date": "2026-04-07",
+        "index": 12,
+        "fatalities": 2,
+        "low": 2,
+        "high": 2,
+        "count": 5,
+        "means": {
+          "Threat": 0.19850536564481444,
+          "Victory": 0.3656069093500264,
+          "Diplomacy": 0.23346224138513208,
+          "Ceasefire / Ending": 0.44776749759912493,
+          "Blame Allies": 0.02723085070028901,
+          "Media Criticism": 0.45367096066474916
+        }
+      },
+      {
+        "date": "2026-05-04",
+        "index": 13,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 1,
+        "means": {
+          "Threat": 0.9042803645133972,
+          "Victory": 0.969580888748169,
+          "Diplomacy": 0.0056308237835764885,
+          "Ceasefire / Ending": 0.11962331086397171,
+          "Blame Allies": 0.3110591471195221,
+          "Media Criticism": 0.4142480194568634
+        }
+      },
+      {
+        "date": "2026-07-08",
+        "index": 15,
+        "fatalities": 9,
+        "low": 9,
+        "high": 9,
+        "count": 1,
+        "means": {
+          "Threat": 0.9883502721786499,
+          "Victory": 0.3225049376487732,
+          "Diplomacy": 0.0002647912479005754,
+          "Ceasefire / Ending": 0.10018161684274673,
+          "Blame Allies": 0.08282288908958435,
+          "Media Criticism": 0.4147989749908447
+        }
+      },
+      {
+        "date": "2026-07-13",
+        "index": 18,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 1,
+        "means": {
+          "Threat": 0.05928885564208031,
+          "Victory": 0.7600816488265991,
+          "Diplomacy": 0.010527275502681732,
+          "Ceasefire / Ending": 0.040689703077077866,
+          "Blame Allies": 0.039624303579330444,
+          "Media Criticism": 0.2444433718919754
+        }
+      },
+      {
+        "date": "2026-07-14",
+        "index": 19,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 3,
+        "means": {
+          "Threat": 0.41023409614960354,
+          "Victory": 0.7709073126316071,
+          "Diplomacy": 0.3187300885717074,
+          "Ceasefire / Ending": 0.548383375008901,
+          "Blame Allies": 0.028362630575429648,
+          "Media Criticism": 0.36186276997129124
+        }
+      },
+      {
+        "date": "2026-07-15",
+        "index": 20,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 1,
+        "means": {
+          "Threat": 0.0006131006521172822,
+          "Victory": 0.4626886546611786,
+          "Diplomacy": 0.4043828248977661,
+          "Ceasefire / Ending": 0.4603613018989563,
+          "Blame Allies": 0.00208098697476089,
+          "Media Criticism": 0.13530200719833374
+        }
+      },
+      {
+        "date": "2026-07-20",
+        "index": 23,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 3,
+        "means": {
+          "Threat": 0.6843021909395853,
+          "Victory": 0.652077982823054,
+          "Diplomacy": 0.26983211166225374,
+          "Ceasefire / Ending": 0.45976167917251587,
+          "Blame Allies": 0.07130345438296597,
+          "Media Criticism": 0.4666987458864848
+        }
+      },
+      {
+        "date": "2026-07-22",
+        "index": 24,
+        "fatalities": 2,
+        "low": 2,
+        "high": 2,
+        "count": 1,
+        "means": {
+          "Threat": 0.9994822144508362,
+          "Victory": 0.9651946425437927,
+          "Diplomacy": 0.00027934988611377776,
+          "Ceasefire / Ending": 0.007259785663336515,
+          "Blame Allies": 0.010550477541983128,
+          "Media Criticism": 0.07489487528800964
+        }
+      },
+      {
+        "date": "2026-07-24",
+        "index": 25,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 2,
+        "means": {
+          "Threat": 0.18132413923740387,
+          "Victory": 0.530823141336441,
+          "Diplomacy": 0.25103630870580673,
+          "Ceasefire / Ending": 0.3565734997391701,
+          "Blame Allies": 0.19054477009922266,
+          "Media Criticism": 0.28794947639107704
+        }
+      },
+      {
+        "date": "2026-08-30",
+        "index": 27,
+        "fatalities": 2,
+        "low": 2,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.10646043717861176,
+          "Victory": 0.9351450800895691,
+          "Diplomacy": 0.23494498431682587,
+          "Ceasefire / Ending": 0.7059019207954407,
+          "Blame Allies": 0.4903584420681,
+          "Media Criticism": 0.9068198800086975
+        }
+      }
+    ],
+    "n": 21,
+    "spearman": {
+      "Threat": 0.2686331888602211,
+      "Victory": 0.15098361709662061,
+      "Diplomacy": 0.05490313348968022,
+      "Ceasefire / Ending": -0.36275284627110144,
+      "Blame Allies": 0.007843304784240031,
+      "Media Criticism": 0.026797958012820106
+    },
+    "without_largest_spearman": {
+      "Threat": 0.2098545069306134,
+      "Victory": 0.15985307206627952,
+      "Diplomacy": 0.13333715963822368,
+      "Ceasefire / Ending": -0.3394036790791148,
+      "Blame Allies": -0.00833357247738898,
+      "Media Criticism": -0.056062214847889494
+    }
+  },
+  "1": {
+    "rows": [
+      {
+        "date": "2026-02-28",
+        "index": 0,
+        "fatalities": 162,
+        "low": 162,
+        "high": 175,
+        "count": 5,
+        "means": {
+          "Threat": 0.9543991327285767,
+          "Victory": 0.9668501734733581,
+          "Diplomacy": 0.05916439965367317,
+          "Ceasefire / Ending": 0.3439748868346214,
+          "Blame Allies": 0.09422183195129037,
+          "Media Criticism": 0.36473061740398405
+        }
+      },
+      {
+        "date": "2026-03-04",
+        "index": 1,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 1,
+        "means": {
+          "Threat": 0.11353140324354172,
+          "Victory": 0.15011274814605713,
+          "Diplomacy": 0.17142245173454285,
+          "Ceasefire / Ending": 0.2860073745250702,
+          "Blame Allies": 0.017363857477903366,
+          "Media Criticism": 0.07623643428087234
+        }
+      },
+      {
+        "date": "2026-03-08",
+        "index": 2,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 4,
+        "means": {
+          "Threat": 0.5931317806243896,
+          "Victory": 0.7097785249352455,
+          "Diplomacy": 0.23449923392035998,
+          "Ceasefire / Ending": 0.33478908031247556,
+          "Blame Allies": 0.03402428445406258,
+          "Media Criticism": 0.22298894310370088
+        }
+      },
+      {
+        "date": "2026-03-20",
+        "index": 3,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 2,
+        "means": {
+          "Threat": 0.9446212351322174,
+          "Victory": 0.9667498171329498,
+          "Diplomacy": 0.38976405607536435,
+          "Ceasefire / Ending": 0.3889322584727779,
+          "Blame Allies": 0.05506615526974201,
+          "Media Criticism": 0.5673116520047188
+        }
+      },
+      {
+        "date": "2026-03-27",
+        "index": 4,
+        "fatalities": 8,
+        "low": 8,
+        "high": 8,
+        "count": 2,
+        "means": {
+          "Threat": 0.9586610794067383,
+          "Victory": 0.9216153025627136,
+          "Diplomacy": 0.11488039698451757,
+          "Ceasefire / Ending": 0.42570915818214417,
+          "Blame Allies": 0.03977555874735117,
+          "Media Criticism": 0.23626659065485
+        }
+      },
+      {
+        "date": "2026-03-29",
+        "index": 5,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 2,
+        "means": {
+          "Threat": 0.7306157052516937,
+          "Victory": 0.6134224385023117,
+          "Diplomacy": 0.3166128543089144,
+          "Ceasefire / Ending": 0.3468070924282074,
+          "Blame Allies": 0.014669741678517312,
+          "Media Criticism": 0.17336037568747997
+        }
+      },
+      {
+        "date": "2026-03-30",
+        "index": 6,
+        "fatalities": 11,
+        "low": 11,
+        "high": 11,
+        "count": 2,
+        "means": {
+          "Threat": 0.6710660606622696,
+          "Victory": 0.968791663646698,
+          "Diplomacy": 0.06992270145565271,
+          "Ceasefire / Ending": 0.438730426132679,
+          "Blame Allies": 0.9447927176952362,
+          "Media Criticism": 0.5709646642208099
+        }
+      },
+      {
+        "date": "2026-03-31",
+        "index": 7,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 2,
+        "means": {
+          "Threat": 0.6312546730041504,
+          "Victory": 0.9311299622058868,
+          "Diplomacy": 0.10276705189608037,
+          "Ceasefire / Ending": 0.7067960798740387,
+          "Blame Allies": 0.05312774237245321,
+          "Media Criticism": 0.30089031904935837
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "index": 8,
+        "fatalities": 13,
+        "low": 13,
+        "high": 13,
+        "count": 1,
+        "means": {
+          "Threat": 0.929825484752655,
+          "Victory": 0.973555862903595,
+          "Diplomacy": 0.7435215711593628,
+          "Ceasefire / Ending": 0.7417476177215576,
+          "Blame Allies": 0.20442190766334534,
+          "Media Criticism": 0.727604866027832
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "index": 9,
+        "fatalities": 7,
+        "low": 7,
+        "high": 7,
+        "count": 3,
+        "means": {
+          "Threat": 0.45205995440483093,
+          "Victory": 0.9265565872192383,
+          "Diplomacy": 0.05299568176269531,
+          "Ceasefire / Ending": 0.1309345836440722,
+          "Blame Allies": 0.1694352732350429,
+          "Media Criticism": 0.4561243951320648
+        }
+      },
+      {
+        "date": "2026-04-06",
+        "index": 11,
+        "fatalities": 35,
+        "low": 35,
+        "high": 35,
+        "count": 5,
+        "means": {
+          "Threat": 0.19850536564481444,
+          "Victory": 0.3656069093500264,
+          "Diplomacy": 0.23346224138513208,
+          "Ceasefire / Ending": 0.44776749759912493,
+          "Blame Allies": 0.02723085070028901,
+          "Media Criticism": 0.45367096066474916
+        }
+      },
+      {
+        "date": "2026-04-07",
+        "index": 12,
+        "fatalities": 2,
+        "low": 2,
+        "high": 2,
+        "count": 6,
+        "means": {
+          "Threat": 0.3240184804890305,
+          "Victory": 0.6348881510396799,
+          "Diplomacy": 0.5632806110661477,
+          "Ceasefire / Ending": 0.43944908988972503,
+          "Blame Allies": 0.08596955953786771,
+          "Media Criticism": 0.43043380479017895
+        }
+      },
+      {
+        "date": "2026-05-04",
+        "index": 13,
+        "fatalities": 5,
+        "low": 5,
+        "high": 5,
+        "count": 1,
+        "means": {
+          "Threat": 0.06344595551490784,
+          "Victory": 0.9718988537788391,
+          "Diplomacy": 0.8728080987930298,
+          "Ceasefire / Ending": 0.5593169927597046,
+          "Blame Allies": 0.00342518906109035,
+          "Media Criticism": 0.0974903404712677
+        }
+      },
+      {
+        "date": "2026-07-09",
+        "index": 16,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 2,
+        "means": {
+          "Threat": 0.758853942155838,
+          "Victory": 0.7200394570827484,
+          "Diplomacy": 0.4572623807180207,
+          "Ceasefire / Ending": 0.47418126318370923,
+          "Blame Allies": 0.03529922664165497,
+          "Media Criticism": 0.30974648892879486
+        }
+      },
+      {
+        "date": "2026-07-12",
+        "index": 17,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 1,
+        "means": {
+          "Threat": 0.05928885564208031,
+          "Victory": 0.7600816488265991,
+          "Diplomacy": 0.010527275502681732,
+          "Ceasefire / Ending": 0.040689703077077866,
+          "Blame Allies": 0.039624303579330444,
+          "Media Criticism": 0.2444433718919754
+        }
+      },
+      {
+        "date": "2026-07-13",
+        "index": 18,
+        "fatalities": 4,
+        "low": 4,
+        "high": 4,
+        "count": 3,
+        "means": {
+          "Threat": 0.41023409614960354,
+          "Victory": 0.7709073126316071,
+          "Diplomacy": 0.3187300885717074,
+          "Ceasefire / Ending": 0.548383375008901,
+          "Blame Allies": 0.028362630575429648,
+          "Media Criticism": 0.36186276997129124
+        }
+      },
+      {
+        "date": "2026-07-14",
+        "index": 19,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.0006131006521172822,
+          "Victory": 0.4626886546611786,
+          "Diplomacy": 0.4043828248977661,
+          "Ceasefire / Ending": 0.4603613018989563,
+          "Blame Allies": 0.00208098697476089,
+          "Media Criticism": 0.13530200719833374
+        }
+      },
+      {
+        "date": "2026-07-18",
+        "index": 22,
+        "fatalities": 3,
+        "low": 3,
+        "high": 3,
+        "count": 1,
+        "means": {
+          "Threat": 0.0608518086373806,
+          "Victory": 0.27021732926368713,
+          "Diplomacy": 0.19303569197654724,
+          "Ceasefire / Ending": 0.32586145401000977,
+          "Blame Allies": 0.03990912437438965,
+          "Media Criticism": 0.31740811467170715
+        }
+      },
+      {
+        "date": "2026-07-20",
+        "index": 23,
+        "fatalities": 1,
+        "low": 1,
+        "high": 1,
+        "count": 1,
+        "means": {
+          "Threat": 0.9298276305198669,
+          "Victory": 0.43677738308906555,
+          "Diplomacy": 0.011537205427885056,
+          "Ceasefire / Ending": 0.4061053693294525,
+          "Blame Allies": 0.08940259367227554,
+          "Media Criticism": 0.22070926427841187
+        }
+      },
+      {
+        "date": "2026-07-22",
+        "index": 24,
+        "fatalities": 2,
+        "low": 2,
+        "high": 2,
+        "count": 3,
+        "means": {
+          "Threat": 0.3279316753808719,
+          "Victory": 0.279481526153783,
+          "Diplomacy": 0.3231286498485133,
+          "Ceasefire / Ending": 0.13087483185033003,
+          "Blame Allies": 0.016186846769414842,
+          "Media Criticism": 0.1411304686528941
+        }
+      }
+    ],
+    "n": 20,
+    "spearman": {
+      "Threat": 0.30682698666750335,
+      "Victory": 0.49849915364744984,
+      "Diplomacy": -0.018182339950666863,
+      "Ceasefire / Ending": 0.34773725155650376,
+      "Blame Allies": 0.22046087190183572,
+      "Media Criticism": 0.4045570639023377
+    },
+    "without_largest_spearman": {
+      "Threat": 0.19735286070658487,
+      "Victory": 0.4345302897171891,
+      "Diplomacy": 0.07610917498101478,
+      "Ceasefire / Ending": 0.440725222564481,
+      "Blame Allies": 0.1070838392174743,
+      "Media Criticism": 0.38054587490507397
+    }
+  }
+}

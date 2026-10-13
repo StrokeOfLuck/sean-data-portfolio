@@ -13,6 +13,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from statistics import mean
+from iran_timeline_feedback import apply_feedback, severity_data
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'projects/assets/political-text-analysis'
@@ -47,15 +48,13 @@ def event_card(rows,level,label,reason,quality_flags,decisions):
     count=len(rows)
     same_day=sum(r['date_start']==r['date_end'] for r in rows)
     multi_day=count-same_day
-    noun='event' if count==1 else 'events'
-    title=f'{count} {noun} on this date' if not multi_day else f'{count} event '+('record' if count==1 else 'records')+' grouped at this start date'
-    timing=''
+    title=f'{count} event '+('record' if count==1 else 'records')
+    parts=[]
+    if same_day:
+        parts.append(f'{same_day} same-day '+('record' if same_day==1 else 'records'))
     if multi_day:
-        parts=[]
-        if same_day:
-            parts.append(f'{same_day} same-day '+('record' if same_day==1 else 'records'))
         parts.append(f'{multi_day} multi-day '+('record starts' if multi_day==1 else 'records start')+' here')
-        timing='<p class="event-card-timing">'+esc(' · '.join(parts))+'.</p>'
+    timing='<p class="event-card-timing">'+esc(' · '.join(parts))+'.</p>'
     entries=[]
     for e in rows:
         dates=e['date_start'] if e['date_start']==e['date_end'] else e['date_start']+' to '+e['date_end']+' (multi-day)'
@@ -66,7 +65,10 @@ def event_card(rows,level,label,reason,quality_flags,decisions):
         entries.append(f'<li data-ucdp-id="{esc(e["id"])}"><div class="event-record-meta"><strong>UCDP {esc(e["id"])}</strong> · {esc(e["where_coordinates"])}<br>{esc(dates)}</div><blockquote class="event-record-headline">{headline}</blockquote>{context}</li>')
     shared='<p class="event-card-note">A shared headline can support more than one UCDP record.</p>' if len({e['involvement_evidence'] for e in rows})<count else ''
     records=''.join(f'<li><strong>UCDP {esc(e["id"])} · {esc(e["us_involvement"])}</strong><br>{esc(e["date_start"])} to {esc(e["date_end"])} · date precision {esc(e["date_prec"])} · coding: {esc(e["code_status"])}<br>Source fatalities: best {e["best"]}, low {e["low"]}, high {e["high"]}.<br>{esc(quality_flags.get(e["id"],""))}<br>{esc(plain(e["source_headline"]))}</li>' for e in rows)
-    return f'<div class="event-card"><div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div><div class="event-card-title">{esc(title)}</div>{timing}<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<span class="sig-pill {level}">{label} event day</span><div class="event-card-meta">{esc(reason)}</div><details class="event-evidence"><summary>Event records &amp; source headlines</summary><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details></div>'
+    panel_id='event-records-'+rows[0]['date_start']
+    evidence=f'<p class="event-card-note">One entry per UCDP event record. Selected source headlines are quoted verbatim. Multi-day records start on this date but extend beyond it.</p><ol class="event-records">'+''.join(entries)+f'</ol>{shared}<details class="event-evidence"><summary>Source fields and fatality estimates</summary><p>{esc(reason)}.</p><p>Candidate records are provisional. Multi-day fatality totals are not assigned to the first day.</p><ul>{records}</ul></details>'
+    panel=f'<div id="{panel_id}" class="event-popover" role="region" aria-labelledby="{panel_id}-title" hidden><div class="event-popover-header"><strong id="{panel_id}-title">{esc(title)}</strong><button type="button" class="event-popover-close" aria-label="Close event details">Close <span aria-hidden="true">×</span></button></div><div class="event-popover-body">{evidence}</div></div>'
+    return f'<div class="event-card event-card-compact"><div class="event-card-label">UCDP · U.S. involvement</div><div class="event-card-summary"><div><div class="event-card-title">{esc(title)}</div>{timing}</div><span class="sig-pill {level}">{label}</span></div><div class="event-details-wrap"><button class="event-details-button" type="button" aria-expanded="false" aria-controls="{panel_id}">View event details <span aria-hidden="true">⌄</span></button>{panel}</div></div>'
 
 def post_card(row,scores):
     text=plain(row['content_text'])
@@ -143,7 +145,12 @@ def build():
         anchor=date.fromisoformat(day)
         level,label,reason=significance(by_date[day])
         subsets={k:grouped[(day,k)] for k in WINDOWS}
-        row={'date':day,'label':label,'reason':reason,'windows':{}}
+        exact=[r for r in by_date[day] if r['date_start']==r['date_end']]
+        row={'date':day,'label':label,'reason':reason,'windows':{},
+             'same_day_records':len(exact),
+             'same_day_fatalities':sum(int(r['best']) for r in exact) if exact else None,
+             'same_day_low':sum(int(r['low']) for r in exact) if exact else None,
+             'same_day_high':sum(int(r['high']) for r in exact) if exact else None}
         for offset,posts in subsets.items():
             is_partial=partial((anchor+timedelta(days=offset)).isoformat())
             values={f:mean(scores[p['truth_id']][f] for p in posts) for f in FRAMES} if posts else None
@@ -173,14 +180,14 @@ def build():
     text=replace_one(text,r'<(?:h3|p) class="subtitle">.*?</(?:h3|p)>','<p class="subtitle">Explore the posts before, during, and after U.S.-involved conflict events.</p>')
     text=replace_one(text,r'<p class="lede-question">.*?</p>','<p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p>')
     text=re.sub(r'<section id="refresh-overview"[^>]*>.*?</section>','',text,flags=re.S)
-    overview=f'''<section id="refresh-overview" aria-label="Timeline at a glance"><dl class="snapshot-stats"><div class="snapshot-stat"><dt>Dates to explore</dt><dd>{len(dates)}</dd></div><div class="snapshot-stat"><dt>Unique matched posts</dt><dd>{len(scores)}</dd></div></dl></section>'''
+    overview=''
     intro='''<header class="timeline-intro"><div class="intro-copy"><h1 class="title toc-ignore">Trump’s Iran Rhetoric Around U.S.-Involved Conflict Events</h1><p class="subtitle">Explore the posts before, during, and after U.S.-involved conflict events.</p></div><div class="writeup-cta"><a href="../../political-text-analysis.html" target="_top">Full write-up &amp; methodology →</a></div><p class="lede-question">How does Trump’s rhetoric differ before, during, and after recorded U.S.-involved lethal conflict events in Iran?</p><p class="intro-help">Choose a date with Previous/Next, the date selector, or the timeline below. Explore the posts from the day before, the event day, and the day after.</p></header>'''
     if '<header class="timeline-intro">' in text:
         text=replace_one(text,r'<header class="timeline-intro">.*?</header>',intro+overview)
     else:
         text=replace_one(text,r'<h1 class="title toc-ignore">.*?<div class="writeup-cta">.*?</div>',intro+overview)
     text=replace_one(text,r'<table class="summary-table">.*?</table>',table)
-    text=replace_one(text,r'<h2(?: id="rhetoric-comparison-title")?>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2 id="rhetoric-comparison-title">Rhetoric around event dates</h2><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
+    text=replace_one(text,r'<h2(?: id="rhetoric-comparison-title")?>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2 id="rhetoric-comparison-title">Rhetoric around event dates</h2><p><strong>Across dates with available posts, victory scores are highest on event days, threat scores before events, and diplomacy and ceasefire scores afterward.</strong></p><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
     text=re.sub(r'<details class="viewer-note usage-note">.*?</details>','',text,count=1,flags=re.S)
     text=re.sub(r'<details class="panel summary-panel"(?: open)?>\s*<summary>.*?</summary>','<section class="panel summary-panel" aria-labelledby="rhetoric-comparison-title">',text,count=1,flags=re.S)
     text=re.sub(r'</div>\s*</details>\s*(?=<div class="viewer")','</div>\n</section>\n',text,count=1)
@@ -188,9 +195,9 @@ def build():
     assert stages
     text=text[:stages[0].start()]+''.join(event_html)+text[stages[-1].end():]
     text=text.replace('<div class="event-card-label">UCDP · U.S. INVOLVEMENT</div>','<div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div>')
-    text=replace_one(text,r'<select id="eventSelect"[^>]*>.*?</select>','<select id="eventSelect" aria-label="Choose an event date">'+''.join(f'<option value="{i}">{date.fromisoformat(d):%B %d, %Y}</option>' for i,d in enumerate(dates))+'</select>')
+    text=re.sub(r'<select id="eventSelect"[^>]*>.*?</select>','',text,flags=re.S)
     text=replace_one(text,r'<strong class="event-counter" id="eventCounter"[^>]*>.*?</strong>',f'<strong class="event-counter" id="eventCounter" aria-live="polite">1 of {len(dates)}</strong>')
-    text=replace_one(text,r'<span class="toolbar-note">.*?</span>','<span class="toolbar-note">Size = same-day event severity; color window is selectable below</span>')
+    text=re.sub(r'<span class="toolbar-note">.*?</span>','',text,flags=re.S)
     text=text.replace('<div class="viewer">','<div class="viewer" id="event-explorer">',1) if 'id="event-explorer"' not in text else text
     markers=list(re.finditer(r'<button[^>]*class="timeline-node [^"]+".*?</button>',text,re.S))
     assert markers
@@ -199,9 +206,9 @@ def build():
     text=replace_one(text,r'<details class="rhetoric-color-note">.*?</details>','<details class="rhetoric-color-note"><summary>How to read the bubbles</summary><p>Color shows the highest mean category in the selected post window; it does not measure the chance of intervention. Gray means no matched posts. <span id="timelineTieExplanation" hidden>Exact ties split colors evenly. </span>Size describes same-day fatalities and record count; multi-day totals are not assigned to their start date.</p></details>')
     text=re.sub(r'<span[^>]*>(<i[^>]*></i>Tied leaders: split colors)</span>',r'<span id="timelineTieLegend" hidden>\1</span>',text,count=1)
     text=re.sub(r'<p class="timeline-source-note">.*?</p>','',text,flags=re.S)
-    text=replace_one(text,r'<div class="global-timeline-title">\s*<strong>(?:Event timeline|UCDP event timeline)</strong>\s*</div>','<div class="global-timeline-title"><strong>UCDP event timeline</strong></div><p class="timeline-source-note">The Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence. Its documented event dates anchor the before/event-day/after post comparison.</p>')
+    text=replace_one(text,r'<div class="global-timeline-title">.*?</div>',f'<div class="global-timeline-title"><strong>UCDP event timeline</strong><p class="timeline-inline-stats" aria-label="Timeline at a glance"><span><b>{len(dates)}</b> dates</span><span><b>{len(scores)}</b> unique matched posts</span></p></div><p class="timeline-source-note">The Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence. Its documented event dates anchor the before/event-day/after post comparison.</p>')
     text=re.sub(r'<div id="color-window-controls">.*?</div>','',text,flags=re.S)
-    text=text.replace('<div class="timeline-key-row">','<div id="color-window-controls"><label for="colorWindow">Color bubbles by posts from</label><select id="colorWindow"><option value="-1">Day before</option><option value="0">Event day</option><option value="1">Day after</option></select><span id="colorWindowNote" aria-live="polite"></span></div><div class="timeline-key-row">',1)
+    text=text.replace('<div class="timeline-key-row">','<div id="color-window-controls"><label for="colorWindow">Color bubbles by posts from</label><select id="colorWindow"><option value="-1">Day before</option><option value="0" selected>Event day</option><option value="1">Day after</option></select><span id="colorWindowNote" aria-live="polite"></span></div><div class="timeline-key-row">',1)
     # Open the before window by default on mobile as the first chronological window.
     text=text.replace('stage,\n      "dayof"','stage,\n      "before"')
     text=re.sub(r'<script id="timeline-reviewed-data".*?</script>','',text,flags=re.S)
@@ -210,10 +217,13 @@ def build():
     text=text.replace('</head>','<link rel="stylesheet" href="timeline-refresh.css"/>\n</head>',1)
     # The legacy template also has styles after its first head block.
     # Load our final stylesheet again last to ensure responsive overrides win.
-    data=json.dumps({'events':summaries,'frames':FRAMES,'overall':overall},ensure_ascii=False).replace('</','<\\/')
+    severity=severity_data(summaries,FRAMES)
+    data=json.dumps({'events':summaries,'frames':FRAMES,'overall':overall,'severity':severity},ensure_ascii=False).replace('</','<\\/')
     text=text.replace('</body>',f'<link rel="stylesheet" href="timeline-refresh.css"/><script id="timeline-reviewed-data" type="application/json">{data}</script><script src="timeline-refresh.js"></script>\n</body>',1)
     text=re.sub(r'\n{3,}','\n\n',text)
+    text=apply_feedback(text,summaries,overall,FRAMES,{k:len(means[k]) for k in WINDOWS},len(events),len(scores))
     PAGE.write_text(text,encoding='utf-8',newline='\n')
+    (ASSETS/'severity-results.json').write_text(json.dumps(severity,indent=2),encoding='utf-8')
     (ASSETS/'comparison-results.json').write_text(json.dumps({'overall':overall,'window_event_counts':{str(k):len(means[k]) for k in WINDOWS},'events':summaries},indent=2),encoding='utf-8')
     print(json.dumps({'events':len(events),'dates':len(dates),'posts':len(scores),'window_rows':len(windows),'mean_threat':{k:v['Threat'] for k,v in overall.items()},'denominators':{str(k):len(means[k]) for k in WINDOWS}},indent=2))
 
