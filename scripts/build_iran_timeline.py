@@ -208,7 +208,7 @@ def build():
     text=re.sub(r'<p class="timeline-source-note">.*?</p>','',text,flags=re.S)
     text=replace_one(text,r'<div class="global-timeline-title">.*?</div>',f'<div class="global-timeline-title"><strong>UCDP event timeline</strong><p class="timeline-inline-stats" aria-label="Timeline at a glance"><span><b>{len(dates)}</b> dates</span><span><b>{len(scores)}</b> unique matched posts</span></p></div><p class="timeline-source-note">The Uppsala Conflict Data Program (UCDP) Candidate Events Dataset records lethal organized violence. Its documented event dates anchor the before/event-day/after post comparison.</p>')
     text=re.sub(r'<div id="color-window-controls">.*?</div>','',text,flags=re.S)
-    text=text.replace('<div class="timeline-key-row">','<div id="color-window-controls"><label for="colorWindow">Color bubbles by posts from</label><select id="colorWindow"><option value="-1">Day before</option><option value="0">Event day</option><option value="1">Day after</option></select><span id="colorWindowNote" aria-live="polite"></span></div><div class="timeline-key-row">',1)
+    text=text.replace('<div class="timeline-key-row">','<div id="color-window-controls"><label for="colorWindow">Color bubbles by posts from</label><select id="colorWindow"><option value="-1">Day before</option><option value="0" selected>Event day</option><option value="1">Day after</option></select><span id="colorWindowNote" aria-live="polite"></span></div><div class="timeline-key-row">',1)
     # Open the before window by default on mobile as the first chronological window.
     text=text.replace('stage,\n      "dayof"','stage,\n      "before"')
     text=re.sub(r'<script id="timeline-reviewed-data".*?</script>','',text,flags=re.S)
