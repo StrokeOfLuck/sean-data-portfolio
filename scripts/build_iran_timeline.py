@@ -212,17 +212,28 @@ def build():
     # Open the before window by default on mobile as the first chronological window.
     text=text.replace('stage,\n      "dayof"','stage,\n      "before"')
     text=re.sub(r'<script id="timeline-reviewed-data".*?</script>','',text,flags=re.S)
-    text=re.sub(r'<script src="timeline-refresh.js"></script>','',text)
-    text=re.sub(r'\n?<link rel="stylesheet" href="timeline-refresh.css"/>','',text)
-    text=text.replace('</head>','<link rel="stylesheet" href="timeline-refresh.css"/>\n</head>',1)
+    text=re.sub(r'<script src="timeline-refresh\.js(?:\?v=[^"]*)?"></script>','',text)
+    text=re.sub(r'\n?<link rel="stylesheet" href="timeline-refresh\.css(?:\?v=[^"]*)?"/>','',text)
+    # Version every layer so a deployment cannot mix new markup with cached assets.
+    def asset_url(name):
+        version=hashlib.sha256((ASSETS/name).read_text(encoding='utf-8').encode('utf-8')).hexdigest()[:12]
+        return f'{name}?v={version}'
+    css_url=asset_url('timeline-refresh.css')
+    js_url=asset_url('timeline-refresh.js')
+    text=text.replace('</head>',f'<link rel="stylesheet" href="{css_url}"/>\n</head>',1)
     # The legacy template also has styles after its first head block.
     # Load our final stylesheet again last to ensure responsive overrides win.
     severity=severity_data(summaries,FRAMES)
     data=json.dumps({'events':summaries,'frames':FRAMES,'overall':overall,'severity':severity},ensure_ascii=False).replace('</','<\\/')
-    text=text.replace('</body>',f'<link rel="stylesheet" href="timeline-refresh.css"/><script id="timeline-reviewed-data" type="application/json">{data}</script><script src="timeline-refresh.js"></script>\n</body>',1)
+    text=text.replace('</body>',f'<link rel="stylesheet" href="{css_url}"/><script id="timeline-reviewed-data" type="application/json">{data}</script><script src="{js_url}"></script>\n</body>',1)
     text=re.sub(r'\n{3,}','\n\n',text)
     text=apply_feedback(text,summaries,overall,FRAMES,{k:len(means[k]) for k in WINDOWS},len(events),len(scores))
     PAGE.write_text(text,encoding='utf-8',newline='\n')
+    wrapper=ROOT/'projects/iran-timeline.qmd'
+    version=hashlib.sha256(text.encode('utf-8')).hexdigest()[:12]
+    wrapper_text,count=re.subn(r'src="assets/political-text-analysis/trump-iran-connected-timeline\.html(?:\?v=[^"]*)?"',f'src="assets/political-text-analysis/trump-iran-connected-timeline.html?v={version}"',wrapper.read_text(encoding='utf-8'))
+    assert count==1, 'Missing timeline iframe in wrapper'
+    wrapper.write_text(wrapper_text,encoding='utf-8',newline='\n')
     (ASSETS/'severity-results.json').write_text(json.dumps(severity,indent=2),encoding='utf-8')
     (ASSETS/'comparison-results.json').write_text(json.dumps({'overall':overall,'window_event_counts':{str(k):len(means[k]) for k in WINDOWS},'events':summaries},indent=2),encoding='utf-8')
     print(json.dumps({'events':len(events),'dates':len(dates),'posts':len(scores),'window_rows':len(windows),'mean_threat':{k:v['Threat'] for k,v in overall.items()},'denominators':{str(k):len(means[k]) for k in WINDOWS}},indent=2))

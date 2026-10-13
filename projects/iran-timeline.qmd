@@ -34,7 +34,7 @@ main.content,
 <iframe
   id="iran-timeline-frame"
   title="Trump rhetoric around U.S.-involved Iran events"
-  src="assets/political-text-analysis/trump-iran-connected-timeline.html"
+  src="assets/political-text-analysis/trump-iran-connected-timeline.html?v=4322e61f6043"
   style="width: 100%; height: calc(100vh - 64px); border: 0; display: block; overflow-anchor: none;"
   loading="lazy">
 </iframe>
