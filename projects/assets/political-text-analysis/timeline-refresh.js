@@ -7,6 +7,52 @@
   const names = {'-1':'Day before','0':'Event day','1':'Day after'};
   const style = document.createElement('style');
   document.head.appendChild(style);
+  // Reuse one compact navigator as the selected event's evidence changes.
+  const mini = document.createElement('nav');
+  mini.className = 'mini-event-nav';
+  mini.setAttribute('aria-label', 'Jump to event date');
+  const miniHeading = document.createElement('div');
+  miniHeading.className = 'mini-event-heading';
+  miniHeading.innerHTML = '<span>Jump to event</span><strong></strong>';
+  const miniScroll = document.createElement('div');
+  miniScroll.className = 'mini-event-scroll';
+  const miniTrack = document.createElement('div');
+  miniTrack.className = 'mini-event-track';
+  miniScroll.appendChild(miniTrack);
+  mini.append(miniHeading, miniScroll);
+  const miniButtons = data.events.map((event,index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mini-event-button';
+    button.dataset.eventIndex = index;
+    button.style.setProperty('--mini-dot-size', ({Major:22,High:17,Notable:13,Minor:9})[event.label] + 'px');
+    if (event.label === 'Multi-day Event') button.style.setProperty('--mini-dot-size', '9px');
+    const dot = document.createElement('span');
+    dot.className = 'mini-event-dot';
+    dot.setAttribute('aria-hidden','true');
+    const label = document.createElement('span');
+    label.className = 'mini-event-label';
+    label.textContent = new Date(event.date + 'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
+    label.setAttribute('aria-hidden','true');
+    if (index % 5 === 0 || index === data.events.length - 1) button.classList.add('has-date-label');
+    button.append(dot,label);
+    button.addEventListener('click', () => {
+      const top = mini.getBoundingClientRect().top;
+      document.querySelector(`.timeline-node[data-event-index="${index}"]`).click();
+      syncSelection();
+      // Keep this navigation point steady when the new post card has a different height.
+      requestAnimationFrame(() => {
+        window.scrollBy({top:mini.getBoundingClientRect().top-top,behavior:'instant'});
+        button.focus({preventScroll:true});
+      });
+    });
+    button.addEventListener('keydown', event => {
+      const next = {ArrowRight:Math.min(index+1,data.events.length-1),ArrowLeft:Math.max(index-1,0),Home:0,End:data.events.length-1}[event.key];
+      if (next !== undefined) { event.preventDefault(); miniButtons[next].click(); }
+    });
+    miniTrack.appendChild(button);
+    return button;
+  });
   function updateColors() {
     const rules = [];
     let hasTies = false;
@@ -42,13 +88,15 @@
       const legacy = document.querySelector(`.timeline-node[data-event-index="${index}"]`);
       legacy.title = description;
       legacy.setAttribute('aria-label',description);
+      miniButtons[index].title = description;
+      miniButtons[index].setAttribute('aria-label',description);
       const svg = document.querySelector(`.timeline-svg-event[data-event-index="${index}"]`);
       if (svg) {
         svg.setAttribute('aria-label',description);
         const title=svg.querySelector('title');
         if(title && title.textContent!==description) title.textContent=description;
       }
-      rules.push(`.timeline-node[data-event-index="${index}"] .timeline-dot{background:${background}!important}.svg-timeline .timeline-svg-event[data-event-index="${index}"] .timeline-svg-dot{fill:${fill}!important}`);
+      rules.push(`.timeline-node[data-event-index="${index}"] .timeline-dot,.mini-event-button[data-event-index="${index}"] .mini-event-dot{background:${background}!important}.svg-timeline .timeline-svg-event[data-event-index="${index}"] .timeline-svg-dot{fill:${fill}!important}`);
     });
     style.textContent=rules.join('\n');
     const tieLegend = document.getElementById('timelineTieLegend');
@@ -154,6 +202,15 @@
     heading.textContent = new Date(event.date + 'T12:00:00Z').toLocaleDateString('en-US', {
       timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric'
     });
+    const rail = active.querySelector('.rail-wrap');
+    if (mini.parentElement !== rail) rail.appendChild(mini);
+    miniHeading.querySelector('strong').textContent = heading.textContent;
+    miniButtons.forEach((button,i) => {
+      button.setAttribute('aria-current', i === index ? 'date' : 'false');
+      button.tabIndex = i === index ? 0 : -1;
+    });
+    const selected = miniButtons[index];
+    miniScroll.scrollTo({left:Math.max(0,selected.offsetLeft-miniScroll.clientWidth/2+selected.offsetWidth/2),behavior:'instant'});
     document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
       mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
     });

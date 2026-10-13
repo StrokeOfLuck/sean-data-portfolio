@@ -86,6 +86,31 @@
 html { scroll-behavior:smooth; }
 /* Changing date groups should not re-anchor the page to replaced post cards. */
 body { overflow-anchor:none; }
+/* Compact repeat navigation replaces the decorative before/event/after rail. */
+#event-explorer .rail-wrap { display:block!important; position:relative; height:auto!important; margin:16px 0 18px!important; }
+#event-explorer .rail-wrap > :not(.mini-event-nav) { display:none!important; }
+#event-explorer .event-top { padding-bottom:0!important; }
+#event-explorer .eventday-zone::after,
+#event-explorer .branch-area::before,
+#event-explorer .branch-area::after { display:none!important; }
+#event-explorer .branch { padding-top:0!important; }
+.mini-event-nav { padding:10px 12px 0; border:1px solid #dce3ea; border-radius:10px; background:#fff; }
+.mini-event-heading { display:flex; align-items:baseline; justify-content:space-between; gap:12px; font-size:11px; color:#526173; }
+.mini-event-heading strong { color:#17202a; font-size:12px; }
+.mini-event-scroll { overflow-x:auto; overflow-y:hidden; scrollbar-width:thin; position:relative; }
+.mini-event-track { display:flex; position:relative; min-width:896px; padding:2px 4px 8px; }
+.mini-event-track::before { content:''; position:absolute; top:24px; left:20px; right:20px; height:2px; background:#aeb8c3; }
+.mini-event-button { position:relative; flex:1 0 32px; height:54px; padding:0; border:0; background:transparent; cursor:pointer; color:#526173; font:inherit; }
+.mini-event-dot { display:block; position:absolute; top:22px; left:50%; width:var(--mini-dot-size); height:var(--mini-dot-size); transform:translate(-50%,-50%); border:2px solid white; border-radius:50%; box-sizing:content-box; }
+.mini-event-button[aria-current="date"] .mini-event-dot { outline:2px solid #64748b; outline-offset:2px; }
+.mini-event-button:hover .mini-event-dot { box-shadow:0 0 0 3px #cbd5e1; }
+.mini-event-label { display:none; position:absolute; top:40px; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:10px; }
+.mini-event-button.has-date-label .mini-event-label { display:block; }
+@media(max-width:900px) {
+  #event-explorer .rail-wrap { order:5; width:100%; }
+  .mini-event-track { min-width:1232px; }
+  .mini-event-button { flex-basis:44px; }
+}
 /* Keep legacy click targets and coordinates without adding invisible scroll area. */
 #timelineScroll > .timeline-bar.svg-legacy-timeline {
   width:0!important;
