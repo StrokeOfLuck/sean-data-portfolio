@@ -187,7 +187,7 @@ def build():
     else:
         text=replace_one(text,r'<h1 class="title toc-ignore">.*?<div class="writeup-cta">.*?</div>',intro+overview)
     text=replace_one(text,r'<table class="summary-table">.*?</table>',table)
-    text=replace_one(text,r'<h2(?: id="rhetoric-comparison-title")?>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2 id="rhetoric-comparison-title">Rhetoric around event dates</h2><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
+    text=replace_one(text,r'<h2(?: id="rhetoric-comparison-title")?>(?:Event-balanced rhetorical comparison|Rhetoric around event dates)</h2>.*?(?=<div class="summary-scroll">)','<h2 id="rhetoric-comparison-title">Rhetoric around event dates</h2><p><strong>Across dates with available posts, victory scores are highest on event days, threat scores before events, and diplomacy and ceasefire scores afterward.</strong></p><p>Each date’s posts are averaged first, then those date means are averaged. Windows with no matched posts have no score. The incomplete August 31 window is excluded.</p>')
     text=re.sub(r'<details class="viewer-note usage-note">.*?</details>','',text,count=1,flags=re.S)
     text=re.sub(r'<details class="panel summary-panel"(?: open)?>\s*<summary>.*?</summary>','<section class="panel summary-panel" aria-labelledby="rhetoric-comparison-title">',text,count=1,flags=re.S)
     text=re.sub(r'</div>\s*</details>\s*(?=<div class="viewer")','</div>\n</section>\n',text,count=1)
