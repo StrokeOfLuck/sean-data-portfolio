@@ -11,12 +11,9 @@
   const mini = document.createElement('nav');
   mini.className = 'mini-event-nav';
   mini.setAttribute('aria-label', 'Jump to event date');
-  const miniHeading = document.createElement('div');
-  miniHeading.className = 'mini-event-heading';
-  miniHeading.innerHTML = '<strong>Browse event dates</strong><span>Choose a circle to change the selected event.</span>';
   const miniTrack = document.createElement('div');
   miniTrack.className = 'mini-event-track';
-  mini.append(miniHeading,miniTrack);
+  mini.append(miniTrack);
   const miniButtons = data.events.map((event,index) => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -58,6 +55,19 @@
     marker.querySelector('.mini-event-label').textContent = text;
     miniTrack.appendChild(marker);
     return marker;
+  });
+  const endArrows = [-1,1].map(offset => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mini-event-arrow ' + (offset < 0 ? 'previous' : 'next');
+    button.setAttribute('aria-label', offset < 0 ? 'Previous event date' : 'Next event date');
+    button.innerHTML = '<svg viewBox="0 0 22 28" aria-hidden="true"><path d="M16 5 L7 14 L16 23"/></svg>';
+    button.addEventListener('click', () => {
+      const current = Number(document.querySelector('.event-view.is-active').dataset.eventIndex);
+      miniButtons[current+offset]?.click();
+    });
+    miniTrack.appendChild(button);
+    return button;
   });
   function updateColors() {
     const rules = [];
@@ -227,6 +237,8 @@
     });
     edgeMarkers[0].hidden = index !== 0;
     edgeMarkers[1].hidden = index !== data.events.length-1;
+    endArrows[0].disabled = index === 0;
+    endArrows[1].disabled = index === data.events.length-1;
     document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
       mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
     });

@@ -94,11 +94,16 @@ body { overflow-anchor:none; }
 #event-explorer .branch-area::before,
 #event-explorer .branch-area::after { display:none!important; }
 #event-explorer .branch { padding-top:0!important; }
-.mini-event-nav { max-width:720px; box-sizing:border-box; margin:0 auto; padding:12px 16px 4px; background:#fff; border:1px solid #dce3ea; border-radius:12px; }
-.mini-event-heading { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:4px 12px; margin-bottom:8px; color:#526173; font-size:11px; line-height:1.4; }
-.mini-event-heading strong { color:#334155; font-size:12px; }
-.mini-event-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); position:relative; padding:0; }
-.mini-event-track::before { content:''; position:absolute; top:28px; left:6%; right:6%; height:3px; background:#8997a5; }
+.mini-event-nav { padding:8px 0 4px; }
+.mini-event-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); position:relative; padding:0 12.5%; }
+.mini-event-track::before { content:''; position:absolute; top:28px; left:2%; right:2%; height:2px; background:#8997a5; }
+.mini-event-arrow { position:absolute; top:29px; transform:translateY(-50%); display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:6px; color:#64748b; background:transparent; cursor:pointer; z-index:2; }
+.mini-event-arrow.previous { left:0; }
+.mini-event-arrow.next { right:0; }
+.mini-event-arrow svg { width:22px; height:28px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.mini-event-arrow.next svg { transform:rotate(180deg); }
+.mini-event-arrow:hover:not(:disabled) { color:#243d53; background:#e8edf2; }
+.mini-event-arrow:disabled { opacity:.35; cursor:default; }
 .mini-event-button, .mini-event-edge { grid-row:1; position:relative; height:100px; min-width:0; padding:0; border:0; background:transparent; color:#526173; font:inherit; text-align:center; }
 .mini-event-button { cursor:pointer; }
 .mini-event-button[hidden], .mini-event-edge[hidden] { display:none!important; }
@@ -113,9 +118,8 @@ body { overflow-anchor:none; }
 .mini-event-edge .mini-event-label { font-size:11px; font-weight:400; }
 @media(max-width:900px) {
   #event-explorer .rail-wrap { order:5; width:100%; }
-  .mini-event-nav { padding:10px 8px 4px; }
   .mini-event-track { padding:0; }
-  .mini-event-track::before { left:10%; right:10%; }
+  .mini-event-track::before { left:6%; right:6%; }
   .mini-event-label { font-size:11px; }
   .mini-event-direction { top:91px; font-size:10px; }
   .mini-event-button, .mini-event-edge { height:110px; }
