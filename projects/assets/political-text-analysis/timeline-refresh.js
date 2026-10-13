@@ -7,26 +7,18 @@
   const names = {'-1':'Day before','0':'Event day','1':'Day after'};
   const style = document.createElement('style');
   document.head.appendChild(style);
-  // Reuse one compact navigator as the selected event's evidence changes.
+  // Keep the three-circle rail while browsing adjacent event dates.
   const mini = document.createElement('nav');
   mini.className = 'mini-event-nav';
   mini.setAttribute('aria-label', 'Jump to event date');
-  const miniHeading = document.createElement('div');
-  miniHeading.className = 'mini-event-heading';
-  miniHeading.innerHTML = '<span>Jump to event</span><strong></strong>';
-  const miniScroll = document.createElement('div');
-  miniScroll.className = 'mini-event-scroll';
   const miniTrack = document.createElement('div');
   miniTrack.className = 'mini-event-track';
-  miniScroll.appendChild(miniTrack);
-  mini.append(miniHeading, miniScroll);
+  mini.append(miniTrack);
   const miniButtons = data.events.map((event,index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'mini-event-button';
     button.dataset.eventIndex = index;
-    button.style.setProperty('--mini-dot-size', ({Major:22,High:17,Notable:13,Minor:9})[event.label] + 'px');
-    if (event.label === 'Multi-day Event') button.style.setProperty('--mini-dot-size', '9px');
     const dot = document.createElement('span');
     dot.className = 'mini-event-dot';
     dot.setAttribute('aria-hidden','true');
@@ -34,8 +26,10 @@
     label.className = 'mini-event-label';
     label.textContent = new Date(event.date + 'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
     label.setAttribute('aria-hidden','true');
-    if (index % 5 === 0 || index === data.events.length - 1) button.classList.add('has-date-label');
-    button.append(dot,label);
+    const direction = document.createElement('span');
+    direction.className = 'mini-event-direction';
+    direction.setAttribute('aria-hidden','true');
+    button.append(dot,label,direction);
     button.addEventListener('click', () => {
       const top = mini.getBoundingClientRect().top;
       document.querySelector(`.timeline-node[data-event-index="${index}"]`).click();
@@ -52,6 +46,15 @@
     });
     miniTrack.appendChild(button);
     return button;
+  });
+  const edgeMarkers = ['No previous event','No next event'].map((text,i) => {
+    const marker = document.createElement('div');
+    marker.className = 'mini-event-edge';
+    marker.style.gridColumn = i === 0 ? '1' : '3';
+    marker.innerHTML = '<span class="mini-event-dot" aria-hidden="true"></span><span class="mini-event-label"></span>';
+    marker.querySelector('.mini-event-label').textContent = text;
+    miniTrack.appendChild(marker);
+    return marker;
   });
   function updateColors() {
     const rules = [];
@@ -204,13 +207,17 @@
     });
     const rail = active.querySelector('.rail-wrap');
     if (mini.parentElement !== rail) rail.appendChild(mini);
-    miniHeading.querySelector('strong').textContent = heading.textContent;
     miniButtons.forEach((button,i) => {
+      const offset = i-index;
+      button.hidden = Math.abs(offset) > 1;
+      button.style.gridColumn = String(offset+2);
       button.setAttribute('aria-current', i === index ? 'date' : 'false');
       button.tabIndex = i === index ? 0 : -1;
+      button.querySelector('.mini-event-label').textContent = i === index ? heading.textContent : new Date(data.events[i].date+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
+      button.querySelector('.mini-event-direction').textContent = offset === -1 ? '← Previous event' : offset === 1 ? 'Next event →' : 'Selected event';
     });
-    const selected = miniButtons[index];
-    miniScroll.scrollTo({left:Math.max(0,selected.offsetLeft-miniScroll.clientWidth/2+selected.offsetWidth/2),behavior:'instant'});
+    edgeMarkers[0].hidden = index !== 0;
+    edgeMarkers[1].hidden = index !== data.events.length-1;
     document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
       mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
     });
