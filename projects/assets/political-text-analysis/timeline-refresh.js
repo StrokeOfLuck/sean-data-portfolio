@@ -7,10 +7,10 @@
   const names = {'-1':'Day before','0':'Event day','1':'Day after'};
   const style = document.createElement('style');
   document.head.appendChild(style);
-  // Keep the three-circle rail while browsing adjacent event dates.
+  // Outer circles browse events; inner circles identify the selected event's post windows.
   const mini = document.createElement('nav');
   mini.className = 'mini-event-nav';
-  mini.setAttribute('aria-label', 'Jump to event date');
+  mini.setAttribute('aria-label', 'Event navigation and before and after post windows');
   const miniTrack = document.createElement('div');
   miniTrack.className = 'mini-event-track';
   mini.append(miniTrack);
@@ -50,25 +50,48 @@
   const edgeMarkers = ['No previous event','No next event'].map((text,i) => {
     const marker = document.createElement('div');
     marker.className = 'mini-event-edge';
-    marker.style.gridColumn = i === 0 ? '1' : '3';
+    marker.dataset.position = i === 0 ? 'previous' : 'next';
     marker.innerHTML = '<span class="mini-event-dot" aria-hidden="true"></span><span class="mini-event-label"></span>';
     marker.querySelector('.mini-event-label').textContent = text;
     miniTrack.appendChild(marker);
     return marker;
   });
-  const endArrows = [-1,1].map(offset => {
+  const windowMarkers = ['before','after'].map((side,i) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'mini-event-arrow ' + (offset < 0 ? 'previous' : 'next');
-    button.setAttribute('aria-label', offset < 0 ? 'Previous event date' : 'Next event date');
-    button.innerHTML = '<svg viewBox="0 0 22 28" aria-hidden="true"><path d="M16 5 L7 14 L16 23"/></svg>';
+    button.className = 'mini-window-marker ' + side;
+    button.dataset.window = i === 0 ? '-1' : '1';
+    button.innerHTML = '<span class="mini-event-dot" aria-hidden="true"></span><span class="mini-event-label"></span><span class="mini-event-direction">'+(i === 0 ? 'Day before posts' : 'Day after posts')+'</span>';
     button.addEventListener('click', () => {
-      const current = Number(document.querySelector('.event-view.is-active').dataset.eventIndex);
-      miniButtons[current+offset]?.click();
+      const active = document.querySelector('.event-view.is-active');
+      if (window.matchMedia('(max-width:900px)').matches) active.querySelector(`.mobile-window-tab[data-window="${side}"]`)?.click();
+      const branch = active.querySelector(`.${side}-branch`);
+      branch.setAttribute('tabindex','-1');
+      branch.scrollIntoView({block:'start'});
+      branch.focus({preventScroll:true});
     });
     miniTrack.appendChild(button);
     return button;
   });
+  function updateWindowMarkers() {
+    const index = Number(document.querySelector('.event-view.is-active')?.dataset.eventIndex || 0);
+    const event = data.events[index];
+    windowMarkers.forEach(marker => {
+      const offset = marker.dataset.window;
+      const window = event.windows[offset];
+      const ranked = window.means ? data.frames.map((frame,i)=>({i,frame,value:window.means[frame]})).sort((a,b)=>b.value-a.value) : [];
+      const leaders = ranked.filter(item=>Math.abs(item.value-ranked[0].value)<1e-12);
+      const background = leaders.length > 1 ? `conic-gradient(${leaders.map((item,i)=>`${colors[item.i]} ${i*100/leaders.length}% ${(i+1)*100/leaders.length}%`).join(',')})` : leaders.length ? colors[leaders[0].i] : '#89919a';
+      marker.querySelector('.mini-event-dot').style.background = background;
+      const date = new Date(event.date+'T12:00:00Z');
+      date.setUTCDate(date.getUTCDate()+Number(offset));
+      const label = date.toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
+      marker.querySelector('.mini-event-label').textContent = label;
+      const description = `${names[offset]} · ${label}: ${ranked.length ? ranked[0].frame+' '+ranked[0].value.toFixed(3) : 'no matched posts'}; ${window.count} posts. View posts.`;
+      marker.title = description;
+      marker.setAttribute('aria-label',description);
+    });
+  }
   function updateColors() {
     const rules = [];
     let hasTies = false;
@@ -120,6 +143,7 @@
     if(tieLegend) tieLegend.hidden = !hasTies;
     if(tieExplanation) tieExplanation.hidden = !hasTies;
     document.getElementById('colorWindowNote').textContent=`${names[control.value]} category scores; colors are not intervention probabilities.`;
+    updateWindowMarkers();
   }
   control.addEventListener('change',updateColors);
   // SVG markers are rebuilt by the retained layout controller on resize.
@@ -229,7 +253,7 @@
     miniButtons.forEach((button,i) => {
       const offset = i-index;
       button.hidden = Math.abs(offset) > 1;
-      button.style.gridColumn = String(offset+2);
+      button.dataset.position = offset === -1 ? 'previous' : offset === 1 ? 'next' : 'current';
       button.setAttribute('aria-current', i === index ? 'date' : 'false');
       button.tabIndex = i === index ? 0 : -1;
       button.querySelector('.mini-event-label').textContent = i === index ? heading.textContent : new Date(data.events[i].date+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
@@ -237,8 +261,12 @@
     });
     edgeMarkers[0].hidden = index !== 0;
     edgeMarkers[1].hidden = index !== data.events.length-1;
-    endArrows[0].disabled = index === 0;
-    endArrows[1].disabled = index === data.events.length-1;
+    updateWindowMarkers();
+    const selected = miniButtons[index];
+    if (mini.scrollWidth > mini.clientWidth) {
+      const center = selected.getBoundingClientRect().left+selected.offsetWidth/2-mini.getBoundingClientRect().left+mini.scrollLeft;
+      mini.scrollLeft = center-mini.clientWidth/2;
+    }
     document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
       mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
     });

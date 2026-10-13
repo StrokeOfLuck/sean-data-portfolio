@@ -86,7 +86,7 @@
 html { scroll-behavior:smooth; }
 /* Changing date groups should not re-anchor the page to replaced post cards. */
 body { overflow-anchor:none; }
-/* Three-circle navigation keeps the original rail's visual shape. */
+/* Five circles distinguish adjacent events from the selected event's post windows. */
 #event-explorer .rail-wrap { display:block!important; position:relative; height:auto!important; margin:16px 0 18px!important; }
 #event-explorer .rail-wrap > :not(.mini-event-nav) { display:none!important; }
 #event-explorer .event-top { padding-bottom:0!important; }
@@ -94,22 +94,20 @@ body { overflow-anchor:none; }
 #event-explorer .branch-area::before,
 #event-explorer .branch-area::after { display:none!important; }
 #event-explorer .branch { padding-top:0!important; }
-.mini-event-nav { padding:8px 0 4px; }
-.mini-event-track { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); position:relative; padding:0 12.5%; }
-.mini-event-track::before { content:''; position:absolute; top:28px; left:2%; right:2%; height:2px; background:#8997a5; }
-.mini-event-arrow { position:absolute; top:29px; transform:translateY(-50%); display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:6px; color:#64748b; background:transparent; cursor:pointer; z-index:2; }
-.mini-event-arrow.previous { left:0; }
-.mini-event-arrow.next { right:0; }
-.mini-event-arrow svg { width:22px; height:28px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-.mini-event-arrow.next svg { transform:rotate(180deg); }
-.mini-event-arrow:hover:not(:disabled) { color:#243d53; background:#e8edf2; }
-.mini-event-arrow:disabled { opacity:.35; cursor:default; }
-.mini-event-button, .mini-event-edge { grid-row:1; position:relative; height:100px; min-width:0; padding:0; border:0; background:transparent; color:#526173; font:inherit; text-align:center; }
-.mini-event-button { cursor:pointer; }
+.mini-event-nav { padding:8px 0 4px; overflow-x:auto; scrollbar-width:thin; }
+.mini-event-track { position:relative; height:105px; min-width:680px; }
+.mini-event-track::before { content:''; position:absolute; top:28px; left:70px; right:70px; height:2px; background:#8997a5; }
+.mini-event-button, .mini-event-edge, .mini-window-marker { position:absolute; top:0; width:140px; height:100px; min-width:0; padding:0; border:0; background:transparent; color:#526173; font:inherit; text-align:center; }
+.mini-event-button, .mini-window-marker { cursor:pointer; }
+.mini-event-button[data-position="previous"], .mini-event-edge[data-position="previous"] { left:0; }
+.mini-event-button[data-position="next"], .mini-event-edge[data-position="next"] { right:0; }
+.mini-event-button[data-position="current"] { left:50%; width:220px; transform:translateX(-50%); }
+.mini-window-marker.before { left:calc(25% - 7px); transform:translateX(-50%); }
+.mini-window-marker.after { left:calc(75% + 7px); transform:translateX(-50%); }
 .mini-event-button[hidden], .mini-event-edge[hidden] { display:none!important; }
 .mini-event-dot { display:block; position:absolute; top:29px; left:50%; width:15px; height:15px; transform:translate(-50%,-50%); border:3px solid white; border-radius:50%; box-sizing:content-box; }
 .mini-event-button[aria-current="date"] .mini-event-dot { width:30px; height:30px; border-width:5px; outline:3px solid #526173; }
-.mini-event-button:hover .mini-event-dot { box-shadow:0 0 0 3px #cbd5e1; }
+.mini-event-button:hover .mini-event-dot, .mini-window-marker:hover .mini-event-dot { box-shadow:0 0 0 3px #cbd5e1; }
 .mini-event-label { display:block; position:absolute; top:58px; left:0; right:0; font-size:13px; font-weight:700; line-height:1.3; }
 .mini-event-button[aria-current="date"] .mini-event-label { color:#17202a; }
 .mini-event-direction { display:block; position:absolute; top:80px; left:0; right:0; font-size:11px; line-height:1.2; }
@@ -118,11 +116,8 @@ body { overflow-anchor:none; }
 .mini-event-edge .mini-event-label { font-size:11px; font-weight:400; }
 @media(max-width:900px) {
   #event-explorer .rail-wrap { order:5; width:100%; }
-  .mini-event-track { padding:0; }
-  .mini-event-track::before { left:6%; right:6%; }
   .mini-event-label { font-size:11px; }
-  .mini-event-direction { top:91px; font-size:10px; }
-  .mini-event-button, .mini-event-edge { height:110px; }
+  .mini-event-direction { font-size:10px; }
 }
 /* Keep legacy click targets and coordinates without adding invisible scroll area. */
 #timelineScroll > .timeline-bar.svg-legacy-timeline {
