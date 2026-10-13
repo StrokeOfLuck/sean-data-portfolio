@@ -103,9 +103,10 @@ body { overflow-anchor:none; }
     position:absolute;
     left:50%;
     top:-25px;
-    width:1px;
+    width:auto;
     height:22px;
-    background:#aab4bf;
+    border-left:1px solid #aab4bf;
+    background:none;
     transform:translateX(-50%);
     pointer-events:none;
   }
