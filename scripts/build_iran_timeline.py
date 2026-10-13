@@ -13,6 +13,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from statistics import mean
+from iran_timeline_feedback import apply_feedback, severity_data
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'projects/assets/political-text-analysis'
@@ -143,7 +144,12 @@ def build():
         anchor=date.fromisoformat(day)
         level,label,reason=significance(by_date[day])
         subsets={k:grouped[(day,k)] for k in WINDOWS}
-        row={'date':day,'label':label,'reason':reason,'windows':{}}
+        exact=[r for r in by_date[day] if r['date_start']==r['date_end']]
+        row={'date':day,'label':label,'reason':reason,'windows':{},
+             'same_day_records':len(exact),
+             'same_day_fatalities':sum(int(r['best']) for r in exact) if exact else None,
+             'same_day_low':sum(int(r['low']) for r in exact) if exact else None,
+             'same_day_high':sum(int(r['high']) for r in exact) if exact else None}
         for offset,posts in subsets.items():
             is_partial=partial((anchor+timedelta(days=offset)).isoformat())
             values={f:mean(scores[p['truth_id']][f] for p in posts) for f in FRAMES} if posts else None
@@ -188,9 +194,9 @@ def build():
     assert stages
     text=text[:stages[0].start()]+''.join(event_html)+text[stages[-1].end():]
     text=text.replace('<div class="event-card-label">UCDP · U.S. INVOLVEMENT</div>','<div class="event-card-label">Uppsala Conflict Data Program (UCDP) · U.S. involvement</div>')
-    text=replace_one(text,r'<select id="eventSelect"[^>]*>.*?</select>','<select id="eventSelect" aria-label="Choose an event date">'+''.join(f'<option value="{i}">{date.fromisoformat(d):%B %d, %Y}</option>' for i,d in enumerate(dates))+'</select>')
+    text=re.sub(r'<select id="eventSelect"[^>]*>.*?</select>','',text,flags=re.S)
     text=replace_one(text,r'<strong class="event-counter" id="eventCounter"[^>]*>.*?</strong>',f'<strong class="event-counter" id="eventCounter" aria-live="polite">1 of {len(dates)}</strong>')
-    text=replace_one(text,r'<span class="toolbar-note">.*?</span>','<span class="toolbar-note">Size = same-day event severity; color window is selectable below</span>')
+    text=re.sub(r'<span class="toolbar-note">.*?</span>','',text,flags=re.S)
     text=text.replace('<div class="viewer">','<div class="viewer" id="event-explorer">',1) if 'id="event-explorer"' not in text else text
     markers=list(re.finditer(r'<button[^>]*class="timeline-node [^"]+".*?</button>',text,re.S))
     assert markers
@@ -210,10 +216,13 @@ def build():
     text=text.replace('</head>','<link rel="stylesheet" href="timeline-refresh.css"/>\n</head>',1)
     # The legacy template also has styles after its first head block.
     # Load our final stylesheet again last to ensure responsive overrides win.
-    data=json.dumps({'events':summaries,'frames':FRAMES,'overall':overall},ensure_ascii=False).replace('</','<\\/')
+    severity=severity_data(summaries,FRAMES)
+    data=json.dumps({'events':summaries,'frames':FRAMES,'overall':overall,'severity':severity},ensure_ascii=False).replace('</','<\\/')
     text=text.replace('</body>',f'<link rel="stylesheet" href="timeline-refresh.css"/><script id="timeline-reviewed-data" type="application/json">{data}</script><script src="timeline-refresh.js"></script>\n</body>',1)
     text=re.sub(r'\n{3,}','\n\n',text)
+    text=apply_feedback(text,summaries,overall,FRAMES,{k:len(means[k]) for k in WINDOWS},len(events),len(scores))
     PAGE.write_text(text,encoding='utf-8',newline='\n')
+    (ASSETS/'severity-results.json').write_text(json.dumps(severity,indent=2),encoding='utf-8')
     (ASSETS/'comparison-results.json').write_text(json.dumps({'overall':overall,'window_event_counts':{str(k):len(means[k]) for k in WINDOWS},'events':summaries},indent=2),encoding='utf-8')
     print(json.dumps({'events':len(events),'dates':len(dates),'posts':len(scores),'window_rows':len(windows),'mean_threat':{k:v['Threat'] for k,v in overall.items()},'denominators':{str(k):len(means[k]) for k in WINDOWS}},indent=2))
 

@@ -1,4 +1,43 @@
 /* Final presentation rules for the October 2026 source refresh. */
+.comparison-grid, .severity-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px 24px; }
+.severity-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.comparison-small, .severity-small { margin:0; min-width:0; }
+.comparison-small figcaption, .severity-small figcaption { font-size:15px; font-weight:700; margin:8px 0; }
+.severity-small figcaption { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.severity-small figcaption span { font-size:12px; font-weight:400; color:#526173; }
+.comparison-small svg, .severity-small svg { display:block; width:100%; height:auto; overflow:visible; }
+.comparison-small svg text, .severity-small svg text { font-family:inherit; font-size:13px; fill:#526173; }
+.comparison-small svg .chart-value { font-size:14px; fill:#17202a; font-weight:650; }
+.chart-grid { stroke:#dde3e9; stroke-width:1; }
+.chart-axis { stroke:#526173; stroke-width:1; }
+.chart-footnote { font-size:12px; line-height:1.6; color:#526173; }
+.summary-scroll { overflow:visible!important; }
+.comparison-values { margin-top:16px; }
+.comparison-values summary, #severity-analysis summary { cursor:pointer; font-weight:650; color:#3f78b8; }
+.comparison-values .summary-table { margin-top:16px; }
+#event-explorer .global-timeline { margin:0 0 18px!important; }
+#event-explorer .viewer-toolbar { display:flex!important; flex-wrap:wrap; align-items:center; justify-content:flex-start; padding:10px 0 18px; }
+#eventCounter { margin-left:auto; }
+.selected-event-heading { font-size:20px; line-height:1.4; margin:12px 0 20px; scroll-margin-top:24px; }
+.severity-controls { display:flex; gap:12px 18px; align-items:center; flex-wrap:wrap; margin:18px 0; font-size:14px; }
+.severity-controls select { font:inherit; padding:8px 12px; min-height:42px; border:1px solid #b7c4d1; border-radius:8px; background:#fff; color:#17202a; }
+.severity-controls label:last-child { display:flex; align-items:center; gap:8px; }
+#severity-summary { font-size:13px; line-height:1.6; color:#526173; }
+.severity-point { cursor:pointer; stroke:white; stroke-width:1.5; }
+.severity-point:hover, .severity-point:focus, .severity-point[aria-pressed="true"] { stroke:#17202a; stroke-width:3; outline:none; }
+#severity-tooltip { position:fixed; z-index:999; width:280px; box-sizing:border-box; padding:12px; border:1px solid #b7c4d1; border-radius:8px; background:#fff; color:#17202a; box-shadow:0 3px 18px #17202a26; font-size:13px; pointer-events:none; }
+.severity-table-wrap { overflow-x:auto; margin-top:12px; }
+.severity-table-wrap table { min-width:660px; }
+#severity-analysis { margin-top:28px; }
+@media(max-width:900px) { .comparison-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) {
+  .comparison-grid, .severity-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
+  .comparison-small, .severity-small { max-width:430px; width:100%; margin:0 auto; }
+  .comparison-values { overflow-x:auto; }
+  .comparison-values .summary-table { min-width:450px; }
+  .severity-controls { align-items:flex-start; }
+  .severity-controls label:last-child { align-items:flex-start; }
+}
 html { scroll-behavior:smooth; }
 #refresh-overview { margin:0 0 20px; padding:4px 0 20px; border-bottom:1px solid var(--border,#cfd7e1); }
 .snapshot-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:600px; margin:0; }
@@ -69,6 +108,8 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
   .timeline-intro .writeup-cta { grid-column:1; grid-row:4; margin:2px 0 0; justify-self:start; }
   .timeline-intro .lede-question { grid-column:1; grid-row:2; }
   .intro-help { grid-column:1; grid-row:3; }
+  .timeline-intro .intro-help + .intro-help { grid-row:4; }
+  .timeline-intro .writeup-cta { grid-row:5; }
   .timeline-intro .writeup-cta a { white-space:normal; }
   .viewer-toolbar { display:grid!important; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important; gap:8px!important; }
   #prevEvent { grid-column:1!important; grid-row:1!important; }

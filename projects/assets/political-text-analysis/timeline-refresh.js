@@ -74,4 +74,89 @@
     tabs.addEventListener('click',sync);
     sync();
   });
+
+  const heading = document.getElementById('selected-event-heading');
+  function syncSelection() {
+    const active = document.querySelector('.event-view.is-active');
+    if (!active) return;
+    const index = Number(active.dataset.eventIndex);
+    const event = data.events[index];
+    heading.textContent = new Date(event.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+      timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric'
+    }) + ' · Event details and posts';
+    document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
+      mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
+    });
+  }
+  document.querySelectorAll('.event-view').forEach(view => {
+    new MutationObserver(syncSelection).observe(view, {attributes:true, attributeFilter:['class']});
+  });
+  if (host) new MutationObserver(syncSelection).observe(host, {childList:true});
+
+  const severityWindow = document.getElementById('severityWindow');
+  const excludeLargest = document.getElementById('severityExcludeLargest');
+  const charts = document.getElementById('severity-charts');
+  const tooltip = document.getElementById('severity-tooltip');
+  const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function rank(values) {
+    return values.map(value => 1 + values.filter(x => x < value).length + (values.filter(x => x === value).length - 1)/2);
+  }
+  function correlation(rows, frame) {
+    const x=rank(rows.map(r=>r.fatalities)), y=rank(rows.map(r=>r.means[frame]));
+    const mx=x.reduce((a,b)=>a+b,0)/x.length, my=y.reduce((a,b)=>a+b,0)/y.length;
+    const dx=x.map(v=>v-mx), dy=y.map(v=>v-my);
+    const denominator=Math.sqrt(dx.reduce((s,v)=>s+v*v,0)*dy.reduce((s,v)=>s+v*v,0));
+    return denominator ? dx.reduce((s,v,i)=>s+v*dy[i],0)/denominator : null;
+  }
+  function renderSeverity() {
+    const offset=severityWindow.value;
+    const rows=data.severity[offset].rows.filter(r=>!excludeLargest.checked || r.date!=='2026-02-28');
+    const frames=data.frames.slice(0,4);
+    // Keep a fixed log scale across panels and sensitivity states.
+    const x = value => 48 + Math.log10(value)/Math.log10(200)*262;
+    const y = value => 207 - value*166;
+    tooltip.hidden=true;
+    document.getElementById('severity-summary').textContent=`${names[offset]} · ${rows.length} dates with complete matched-post windows. Select or focus a point for its values; click or press Enter to open its event details.`;
+    charts.innerHTML=frames.map((frame,i)=>{
+      let marks=[0,.5,1].map(t=>`<line x1="48" x2="310" y1="${y(t)}" y2="${y(t)}" class="chart-grid"/><text x="37" y="${y(t)+4}" text-anchor="end">${t}</text>`).join('');
+      marks += [1,5,25,100,200].map(t=>`<line x1="${x(t)}" x2="${x(t)}" y1="207" y2="212" class="chart-axis"/><text x="${x(t)}" y="229" text-anchor="middle">${t}</text>`).join('');
+      marks += '<text x="179" y="255" text-anchor="middle">Same-day deaths · log scale</text><text x="48" y="24">Mean model score</text>';
+      rows.forEach(r=>{
+        marks += `<line x1="${x(Math.max(1,r.low))}" x2="${x(Math.max(1,r.high))}" y1="${y(r.means[frame])}" y2="${y(r.means[frame])}" stroke="${colors[i]}" stroke-width="2" opacity=".6"/><circle class="severity-point" data-event-index="${r.index}" data-frame="${escape(frame)}" cx="${x(r.fatalities)}" cy="${y(r.means[frame])}" r="6" fill="${colors[i]}" tabindex="0" role="button" aria-label="${escape(`${r.date}: ${r.fatalities} deaths (low–high ${r.low}–${r.high}), ${frame} ${r.means[frame].toFixed(3)}, ${r.count} posts. Open event details.`)}"/>`;
+      });
+      const rho=correlation(rows,frame);
+      return `<figure class="severity-small"><figcaption>${escape(frame)} <span>ρ = ${rho===null?'unavailable':rho.toFixed(2)} · n = ${rows.length}</span></figcaption><svg viewBox="0 0 350 274" aria-label="${escape(frame)} by same-day fatalities">${marks}</svg></figure>`;
+    }).join('');
+    document.getElementById('severity-values').innerHTML='<caption>Displayed dates only; scores are means within the selected post window.</caption><thead><tr><th scope="col">Date</th><th scope="col">Deaths (low–high)</th><th scope="col">Posts</th>'+frames.map(f=>`<th scope="col">${escape(f)}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>`<tr><th scope="row">${r.date}</th><td>${r.fatalities} (${r.low}–${r.high})</td><td>${r.count}</td>${frames.map(f=>`<td>${r.means[f].toFixed(3)}</td>`).join('')}</tr>`).join('')+'</tbody>';
+    charts.querySelectorAll('.severity-point').forEach(point=>{
+      const r=rows.find(row=>row.index===Number(point.dataset.eventIndex));
+      const show=()=>{
+        tooltip.textContent=`${r.date} · ${r.fatalities} deaths (low–high ${r.low}–${r.high}) · ${point.dataset.frame}: ${r.means[point.dataset.frame].toFixed(3)} · ${r.count} posts`;
+        tooltip.hidden=false;
+        const box=point.getBoundingClientRect();
+        tooltip.style.left=Math.max(8,Math.min(box.left,window.innerWidth-288))+'px';
+        tooltip.style.top=Math.max(8,Math.min(box.bottom+8,window.innerHeight-100))+'px';
+      };
+      const open=()=>{
+        document.querySelector(`.timeline-node[data-event-index="${r.index}"]`).click();
+        tooltip.hidden=true;
+        heading.scrollIntoView({block:'start'});
+        heading.focus({preventScroll:true});
+      };
+      point.addEventListener('mouseenter',show);
+      point.addEventListener('focus',show);
+      point.addEventListener('mouseleave',()=>{tooltip.hidden=true;});
+      point.addEventListener('blur',()=>{tooltip.hidden=true;});
+      point.addEventListener('click',open);
+      point.addEventListener('keydown',event=>{
+        if(event.key==='Enter'||event.key===' ') {event.preventDefault();open();}
+        if(event.key==='Escape') tooltip.hidden=true;
+      });
+    });
+    syncSelection();
+  }
+  severityWindow.addEventListener('change',renderSeverity);
+  excludeLargest.addEventListener('change',renderSeverity);
+  renderSeverity();
+  syncSelection();
 })();
