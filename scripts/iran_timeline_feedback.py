@@ -72,18 +72,11 @@ def apply_feedback(text, summaries, overall, frames, counts, record_count, post_
     timeline = text[start:end]
     text = text[:start] + text[end:]
     start,end = element_span(text, '<div class="viewer-toolbar">')
-    toolbar = text[start:end]
-    toolbar = re.sub(r'<select id="eventSelect".*?</select>', '', toolbar, flags=re.S)
-    toolbar = re.sub(r'<span class="toolbar-note">.*?</span>', '', toolbar, flags=re.S)
-    text = text[:start] + timeline + toolbar + '<h2 class="selected-event-heading" id="selected-event-heading" tabindex="-1">Selected event date</h2>' + text[end:]
-    # The selected heading is regenerated at the same stable location on rebuild.
-    text = re.sub(r'(<h2 class="selected-event-heading"[^>]*>.*?</h2>)(?:<h2 class="selected-event-heading"[^>]*>.*?</h2>)+', r'\1', text, flags=re.S)
+    toolbar = '<div class="viewer-toolbar"><div class="event-step-buttons"><button id="prevEvent" type="button">← Previous event</button><button id="nextEvent" type="button">Next event →</button></div><h2 class="selected-event-heading" id="selected-event-heading" tabindex="-1">Selected event date</h2><div id="event-record-controls"></div><strong class="event-counter" id="eventCounter" aria-live="polite">1 of '+str(len(summaries))+'</strong></div>'
+    text = text[:start] + timeline + toolbar + re.sub(r'<h2 class="selected-event-heading"[^>]*>.*?</h2>', '', text[end:], flags=re.S)
     # Remove prior severity section on a repeated build.
     text = re.sub(r'<section id="severity-analysis".*?</section>', '', text, flags=re.S)
     text = re.sub(r'<dialog id="event-records-dialog".*?</dialog>', '', text, flags=re.S)
-    dialog = '''<dialog id="event-records-dialog" aria-labelledby="event-records-title">
-<div class="event-dialog-header"><h2 id="event-records-title">Event records</h2><button type="button" class="event-dialog-close" aria-label="Close event details" autofocus>Close <span aria-hidden="true">×</span></button></div>
-<div id="event-records-content" class="event-dialog-content"></div></dialog>'''
     section = '''<section id="severity-analysis" class="panel" aria-labelledby="severity-title"><div class="panel-body">
 <h2 id="severity-title">Event severity and rhetoric</h2>
 <p>Do higher-fatality dates coincide with different rhetoric? Each dot is one date with same-day UCDP records and matched posts. The four panels share the same axes.</p>
@@ -96,5 +89,5 @@ def apply_feedback(text, summaries, overall, frames, counts, record_count, post_
 </div></section>'''
     # The first script after the viewer is the retained navigation controller.
     at = text.index('<script>', text.index('<div class="viewer"'))
-    text = text[:at] + dialog + section + text[at:]
+    text = text[:at] + section + text[at:]
     return text

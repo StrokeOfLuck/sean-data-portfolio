@@ -76,70 +76,84 @@
   });
 
   const heading = document.getElementById('selected-event-heading');
-  const recordsDialog = document.getElementById('event-records-dialog');
-  let recordsOpener = null;
-  let parentScrollStyle = null;
-  function positionRecordsDialog() {
-    let top = 12, height = window.innerHeight - 24;
-    // The portfolio expands this iframe to its full document height. Position
-    // its top-layer dialog inside the visible outer viewport, not that height.
-    try {
-      if (window.frameElement && window.parent !== window) {
-        const frame = window.frameElement.getBoundingClientRect();
-        const header = window.parent.document.querySelector('#quarto-header');
-        const visibleTop = Math.max(frame.top, 0, header?.getBoundingClientRect().bottom || 0);
-        top = visibleTop - frame.top + 12;
-        height = Math.min(window.parent.innerHeight, frame.bottom) - visibleTop - 24;
+  const recordsHost = document.getElementById('event-record-controls');
+  const recordControls = [];
+  let activeRecords = null;
+  document.querySelectorAll('.event-details-wrap').forEach(wrap => {
+    const card = wrap.closest('.event-card');
+    const index = Number(wrap.closest('.event-view').dataset.eventIndex);
+    const button = wrap.querySelector('.event-details-button');
+    const panel = wrap.querySelector('.event-popover');
+    button.innerHTML = card.querySelector('.event-card-title').textContent + ' <span aria-hidden="true">⌄</span>';
+    panel.querySelector('.event-popover-header strong').textContent = data.events[index].date + ' · ' + card.querySelector('.event-card-title').textContent;
+    const timing = document.createElement('p');
+    timing.className = 'event-card-note';
+    timing.textContent = card.querySelector('.event-card-timing').textContent;
+    panel.querySelector('.event-popover-body').prepend(timing);
+    wrap.appendChild(card.querySelector('.sig-pill'));
+    wrap.hidden = true;
+    recordControls[index] = wrap;
+    recordsHost.appendChild(wrap);
+    let pinned = false, openTimer, closeTimer, suppressFocusOpen = false;
+    const close = (restoreFocus = false) => {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+      pinned = false;
+      panel.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      wrap.classList.remove('records-open');
+      if (activeRecords?.wrap === wrap) activeRecords = null;
+      if (restoreFocus) {
+        suppressFocusOpen = true;
+        button.focus({preventScroll:true});
+        queueMicrotask(() => { suppressFocusOpen = false; });
       }
-    } catch (_) { /* Standalone or cross-origin embeds use their own viewport. */ }
-    recordsDialog.style.top = top + 'px';
-    recordsDialog.style.maxHeight = Math.max(120, height) + 'px';
-  }
-  document.querySelectorAll('.event-details-button').forEach(button => {
+    };
+    const open = () => {
+      clearTimeout(closeTimer);
+      if (activeRecords?.wrap !== wrap) activeRecords?.close();
+      panel.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      wrap.classList.add('records-open');
+      activeRecords = {wrap, close, index};
+    };
+    const scheduleClose = () => {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        if (!pinned && !wrap.contains(document.activeElement)) close();
+      }, 250);
+    };
+    wrap.addEventListener('pointerenter', event => {
+      clearTimeout(closeTimer);
+      if (event.pointerType === 'mouse') openTimer = setTimeout(open, 150);
+    });
+    wrap.addEventListener('pointerleave', scheduleClose);
+    panel.addEventListener('pointerenter', () => clearTimeout(closeTimer));
+    wrap.addEventListener('focusin', () => { if (!suppressFocusOpen) open(); });
+    wrap.addEventListener('focusout', event => { if (!wrap.contains(event.relatedTarget)) scheduleClose(); });
     button.addEventListener('click', () => {
-      recordsOpener = button;
-      const view = button.closest('.event-view');
-      const template = document.getElementById(button.dataset.eventTemplate);
-      const date = new Date(view.dataset.eventDate + 'T12:00:00Z').toLocaleDateString('en-US', {
-        timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric'
-      });
-      document.getElementById('event-records-title').textContent = date + ' · ' + button.closest('.event-card').querySelector('.event-card-title').textContent;
-      document.getElementById('event-records-content').replaceChildren(template.content.cloneNode(true));
-      positionRecordsDialog();
-      try {
-        if (window.parent !== window) {
-          parentScrollStyle = window.parent.document.documentElement.style.overflow;
-          window.parent.document.documentElement.style.overflow = 'hidden';
-        }
-      } catch (_) { /* No parent scroll lock is needed in standalone mode. */ }
-      recordsDialog.showModal();
+      if (pinned) close();
+      else { pinned = true; open(); }
+    });
+    panel.querySelector('.event-popover-close').addEventListener('click', () => close(true));
+    wrap.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); close(true); }
     });
   });
-  recordsDialog.querySelector('.event-dialog-close').addEventListener('click', () => recordsDialog.close());
-  recordsDialog.addEventListener('click', event => {
-    if (event.target !== recordsDialog) return;
-    const bounds = recordsDialog.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) recordsDialog.close();
+  document.addEventListener('pointerdown', event => {
+    if (activeRecords && !activeRecords.wrap.contains(event.target)) activeRecords.close();
   });
-  recordsDialog.addEventListener('close', () => {
-    if (parentScrollStyle !== null) {
-      window.parent.document.documentElement.style.overflow = parentScrollStyle;
-      parentScrollStyle = null;
-    }
-    if (recordsOpener?.isConnected) recordsOpener.focus({preventScroll:true});
-  });
-  window.addEventListener('resize', () => { if (recordsDialog.open) positionRecordsDialog(); });
-  try {
-    if (window.parent !== window) window.parent.addEventListener('resize', () => { if (recordsDialog.open) positionRecordsDialog(); });
-  } catch (_) { /* Cross-origin parent cannot be observed. */ }
   function syncSelection() {
     const active = document.querySelector('.event-view.is-active');
     if (!active) return;
     const index = Number(active.dataset.eventIndex);
+    if (activeRecords && activeRecords.index !== index) activeRecords.close();
+    recordControls.forEach((wrap,i) => { wrap.hidden = i !== index; });
     const event = data.events[index];
     heading.textContent = new Date(event.date + 'T12:00:00Z').toLocaleDateString('en-US', {
       timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric'
-    }) + ' · Event details and posts';
+    });
     document.querySelectorAll('.timeline-svg-event, .timeline-node, .severity-point').forEach(mark => {
       mark.setAttribute('aria-pressed', String(Number(mark.dataset.eventIndex) === index));
     });

@@ -1,26 +1,46 @@
 /* Final presentation rules for the October 2026 source refresh. */
-.event-card-compact { padding:18px 20px!important; }
+.event-card-compact { padding:18px 20px!important; position:relative; }
+.event-card-compact.records-open { z-index:30; }
 .event-card-summary { display:flex; justify-content:space-between; align-items:center; gap:16px; margin:8px 0 14px; }
 .event-card-summary .event-card-title { margin:0!important; font-size:20px!important; }
 .event-card-summary .event-card-timing { font-size:13px; font-weight:400; margin:4px 0 0; }
 .event-card-summary .sig-pill { margin:0!important; flex-shrink:0; }
 .event-details-button { display:inline-flex; align-items:center; gap:10px; padding:9px 13px; min-height:42px; background:#fff; border:1px solid #9aaec2; border-radius:8px; color:#244c73; font:inherit; font-size:13px; font-weight:650; cursor:pointer; }
 .event-details-button:hover { background:#edf3f8; }
-#event-records-dialog { box-sizing:border-box; width:min(760px,calc(100% - 32px)); max-height:calc(100dvh - 48px); top:12px; bottom:auto; margin:0 auto; padding:0; border:1px solid #b7c4d1; border-radius:16px; background:#fff; color:#17202a; box-shadow:0 20px 70px #0f203a40; overflow:auto; overscroll-behavior:contain; }
-#event-records-dialog::backdrop { background:rgba(15,32,58,.48); }
-body:has(#event-records-dialog[open]) { overflow:hidden; }
-.event-dialog-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 24px; border-bottom:1px solid #dce3ea; position:sticky; top:0; background:#fff; z-index:1; }
-.event-dialog-header h2 { margin:0!important; font-size:18px!important; line-height:1.4; }
-.event-dialog-close { flex-shrink:0; min-height:44px; padding:8px 12px; border:1px solid #b7c4d1; border-radius:8px; background:white; font:inherit; font-size:13px; cursor:pointer; }
-.event-dialog-close span { font-size:20px; margin-left:6px; }
-.event-dialog-content { padding:12px 24px 24px; }
-.event-dialog-content .event-record-headline { font-size:16px; font-weight:600; }
-.event-dialog-content .event-record-meta, .event-dialog-content .event-card-note, .event-dialog-content .event-evidence { font-size:13px; }
+.event-details-wrap { position:relative; }
+.event-details-wrap[hidden] { display:none!important; }
+.event-details-wrap.records-open { z-index:40; }
+#event-record-controls .event-details-wrap { display:flex; align-items:center; gap:10px; }
+#event-record-controls .sig-pill { margin:0; }
+.event-view .event-card-compact, .event-view .mobile-event-date { display:none!important; }
+.event-step-buttons { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+#event-explorer .viewer-toolbar { padding:12px 14px!important; gap:14px!important; overflow:visible; }
+#event-explorer { overflow:visible!important; }
+#event-explorer .selected-event-heading { margin:0!important; font-size:16px!important; line-height:1.35; flex:1; }
+#event-explorer .event-stage { padding-top:12px!important; }
+#event-record-controls .event-popover { width:min(650px,calc(100vw - 64px)); left:auto; right:0; }
+#eventCounter { margin-left:0!important; }
+.event-popover[hidden] { display:none!important; }
+.event-popover { position:absolute; top:calc(100% + 8px); left:0; width:100%; box-sizing:border-box; z-index:40; background:#fff; border:1px solid #b7c4d1; border-radius:12px; box-shadow:0 7px 24px #17202a26; color:#17202a; text-align:left; animation:records-appear 120ms ease-out; }
+.event-popover::before { content:""; position:absolute; left:0; right:0; height:10px; top:-10px; }
+.event-popover-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 16px; border-bottom:1px solid #dce3ea; }
+.event-popover-header strong { font-size:14px; }
+.event-popover-close { flex-shrink:0; min-height:36px; padding:5px 8px; border:0; border-radius:6px; background:#f1f5f9; color:#334155; font:inherit; font-size:12px; cursor:pointer; }
+.event-popover-close span { font-size:16px; margin-left:4px; }
+.event-popover-body { padding:6px 16px 16px; max-height:min(45vh,340px); overflow-y:auto; overscroll-behavior:contain; }
+.event-popover-body .event-record-headline { font-size:14px; font-weight:600; }
+.event-popover-body .event-record-meta, .event-popover-body .event-card-note, .event-popover-body .event-evidence { font-size:12px; }
+@keyframes records-appear { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
 @media(max-width:600px) {
-  #event-records-dialog { width:calc(100% - 16px); max-height:calc(100dvh - 24px); border-radius:12px; }
-  .event-dialog-header { padding:14px 16px; gap:10px; }
-  .event-dialog-header h2 { font-size:16px!important; }
-  .event-dialog-content { padding:10px 16px 20px; }
+  #event-explorer .viewer-toolbar { gap:10px!important; }
+  .event-step-buttons { order:0; }
+  #eventCounter { order:1; margin-left:auto!important; }
+  #event-explorer .selected-event-heading { order:2; flex:1 1 120px; font-size:13px!important; }
+  #event-record-controls { order:3; margin-left:auto; }
+  #event-record-controls .event-details-wrap { gap:6px; }
+  #event-record-controls .event-details-button { font-size:12px!important; padding:7px 9px!important; min-height:36px; }
+  .event-popover-body { max-height:300px; padding:6px 12px 12px; }
+  .event-popover-header { padding:8px 12px; }
   .event-card-summary { align-items:flex-start; }
   .event-card-summary .event-card-title { font-size:18px!important; }
 }
@@ -64,6 +84,8 @@ body:has(#event-records-dialog[open]) { overflow:hidden; }
   .severity-controls label:last-child { align-items:flex-start; }
 }
 html { scroll-behavior:smooth; }
+/* Changing date groups should not re-anchor the page to replaced post cards. */
+body { overflow-anchor:none; }
 #refresh-overview { margin:0 0 20px; padding:4px 0 20px; border-bottom:1px solid var(--border,#cfd7e1); }
 .snapshot-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:600px; margin:0; }
 .snapshot-stat { display:flex; align-items:baseline; gap:10px; min-width:0; }
@@ -148,5 +170,5 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 }
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
-  *, *::before, *::after { scroll-behavior:auto!important; transition:none!important; }
+  *, *::before, *::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; }
 }
