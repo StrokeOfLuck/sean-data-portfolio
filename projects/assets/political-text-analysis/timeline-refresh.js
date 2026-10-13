@@ -63,12 +63,7 @@
     button.dataset.window = i === 0 ? '-1' : '1';
     button.innerHTML = '<span class="mini-event-dot" aria-hidden="true"></span><span class="mini-event-label"></span><span class="mini-event-direction">'+(i === 0 ? 'Day before posts' : 'Day after posts')+'</span>';
     button.addEventListener('click', () => {
-      const active = document.querySelector('.event-view.is-active');
-      if (window.matchMedia('(max-width:900px)').matches) active.querySelector(`.mobile-window-tab[data-window="${side}"]`)?.click();
-      const branch = active.querySelector(`.${side}-branch`);
-      branch.setAttribute('tabindex','-1');
-      branch.scrollIntoView({block:'start'});
-      branch.focus({preventScroll:true});
+      if (!button.disabled) miniButtons[Number(button.dataset.eventIndex)].click();
     });
     miniTrack.appendChild(button);
     return button;
@@ -87,7 +82,10 @@
       date.setUTCDate(date.getUTCDate()+Number(offset));
       const label = date.toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
       marker.querySelector('.mini-event-label').textContent = label;
-      const description = `${names[offset]} · ${label}: ${ranked.length ? ranked[0].frame+' '+ranked[0].value.toFixed(3) : 'no matched posts'}; ${window.count} posts. View posts.`;
+      const eventIndex = data.events.findIndex(item=>item.date === date.toISOString().slice(0,10));
+      marker.disabled = eventIndex < 0;
+      marker.dataset.eventIndex = String(eventIndex);
+      const description = `${names[offset]} · ${label}: ${ranked.length ? ranked[0].frame+' '+ranked[0].value.toFixed(3) : 'no matched posts'}; ${window.count} posts. ${eventIndex < 0 ? 'No event on this date.' : 'Open this event date.'}`;
       marker.title = description;
       marker.setAttribute('aria-label',description);
     });
