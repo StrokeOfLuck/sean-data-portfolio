@@ -90,4 +90,12 @@ def apply_feedback(text, summaries, overall, frames, counts, record_count, post_
     # The first script after the viewer is the retained navigation controller.
     at = text.index('<script>', text.index('<div class="viewer"'))
     text = text[:at] + section + text[at:]
-    return text
+    # Let readers explore the selected events before the aggregate analysis.
+    comparison = re.search(r'<section class="panel summary-panel"[^>]*>.*?</section>', text, re.S)
+    if comparison is None:
+        raise ValueError('Missing rhetoric comparison section')
+    comparison_html = comparison.group()
+    text = text[:comparison.start()] + text[comparison.end():]
+    at = text.index('<section id="severity-analysis"')
+    text = text[:at] + comparison_html + '\n' + text[at:]
+    return re.sub(r'\n{3,}', '\n\n', text)
