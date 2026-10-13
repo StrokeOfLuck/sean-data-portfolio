@@ -152,7 +152,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#media-criticism" id="toc-media-criticism" class="nav-link" data-scroll-target="#media-criticism">Media Criticism</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-relationship-with-event-severity" id="toc-exploratory-relationship-with-event-severity" class="nav-link" data-scroll-target="#exploratory-relationship-with-event-severity">Exploratory relationship with event severity</a></li>
+  </ul></li>
   <li><a href="#further-research-testing-advance-warning" id="toc-further-research-testing-advance-warning" class="nav-link" data-scroll-target="#further-research-testing-advance-warning">Further research: testing advance warning</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#references-and-downloads" id="toc-references-and-downloads" class="nav-link" data-scroll-target="#references-and-downloads">References and downloads</a>
@@ -829,6 +832,12 @@ body.nav-fixed {
 </table>
 </div>
 <p>The paired before-minus-event-day difference is +0.068. An exploratory 95% interval from resampling chronological episodes spans approximately −0.166 to +0.352, including no difference. Episodes join event dates no more than three days apart; only eight episodes contribute to this comparison. Requiring all three windows changes the sample and removes the day-before advantage. This sensitivity check does not correct missingness. The evidence supports describing rhetoric around events, while the advance-warning hypothesis remains inconclusive. <a href="assets/political-text-analysis/indicator-check.json">Inspect the numerical checks</a>.</p>
+<section id="exploratory-relationship-with-event-severity" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-relationship-with-event-severity">Exploratory relationship with event severity</h3>
+<p>The timeline now includes four scatterplots comparing date-level rhetoric with summed UCDP best fatality estimates for records whose start and end dates are the same. Multi-day totals are excluded from this comparison because they cannot be assigned to one day. One dot represents one date with at least one same-day record and a complete, nonempty post window. Post scores are averaged within that window; a date with several posts still contributes one dot.</p>
+<p>For the <strong>21 event-day observations</strong>, Spearman rank correlations with fatalities are <strong>+0.27 for Threat, +0.15 for Victory, +0.05 for Diplomacy, and −0.36 for Ceasefire / Ending</strong>. Excluding February 28, the largest-fatality date, gives +0.21, +0.16, +0.13, and −0.34 respectively across 20 dates. The interactive controls also show the before and after windows (20 observations each), so the event-day result is not presented as a general relationship across all windows.</p>
+<p>The horizontal axis uses a logarithmic scale to keep smaller events readable alongside the largest date; tick labels show fatality counts. Whiskers show sums of UCDP low and high fatality estimates, not statistical confidence intervals. The timeline’s bubble-size categories also consider record counts and civilian deaths, while these scatterplots isolate total fatalities. The coefficients are descriptive: selected dates, sparse posts, shared posts across nearby windows, and differences between windows limit inference. They do not establish statistical significance, causality, or advance warning. <a href="assets/political-text-analysis/severity-results.json">Inspect all plotted values and sensitivity checks</a>.</p>
+</section>
 </section>
 <section id="further-research-testing-advance-warning" class="level2">
 <h2 class="anchored" data-anchor-id="further-research-testing-advance-warning">Further research: testing advance warning</h2>

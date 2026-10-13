@@ -65,7 +65,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 2,
+      "same_day_fatalities": 162,
+      "same_day_low": 162,
+      "same_day_high": 175
     },
     {
       "date": "2026-03-04",
@@ -108,7 +112,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 1,
+      "same_day_low": 1,
+      "same_day_high": 1
     },
     {
       "date": "2026-03-08",
@@ -151,7 +159,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 4,
+      "same_day_low": 4,
+      "same_day_high": 4
     },
     {
       "date": "2026-03-20",
@@ -194,7 +206,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 1,
+      "same_day_low": 1,
+      "same_day_high": 1
     },
     {
       "date": "2026-03-27",
@@ -237,7 +253,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 2,
+      "same_day_fatalities": 8,
+      "same_day_low": 8,
+      "same_day_high": 8
     },
     {
       "date": "2026-03-29",
@@ -280,7 +300,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 5,
+      "same_day_low": 5,
+      "same_day_high": 5
     },
     {
       "date": "2026-03-30",
@@ -323,7 +347,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 11,
+      "same_day_low": 11,
+      "same_day_high": 11
     },
     {
       "date": "2026-03-31",
@@ -366,7 +394,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 4,
+      "same_day_low": 4,
+      "same_day_high": 4
     },
     {
       "date": "2026-04-02",
@@ -409,7 +441,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 13,
+      "same_day_low": 13,
+      "same_day_high": 13
     },
     {
       "date": "2026-04-04",
@@ -452,7 +488,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 3,
+      "same_day_fatalities": 7,
+      "same_day_low": 7,
+      "same_day_high": 7
     },
     {
       "date": "2026-04-05",
@@ -488,7 +528,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 2,
+      "same_day_fatalities": 10,
+      "same_day_low": 10,
+      "same_day_high": 10
     },
     {
       "date": "2026-04-06",
@@ -524,7 +568,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 4,
+      "same_day_fatalities": 35,
+      "same_day_low": 35,
+      "same_day_high": 35
     },
     {
       "date": "2026-04-07",
@@ -560,7 +608,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 2,
+      "same_day_low": 2,
+      "same_day_high": 2
     },
     {
       "date": "2026-05-04",
@@ -603,7 +655,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 5,
+      "same_day_low": 5,
+      "same_day_high": 5
     },
     {
       "date": "2026-06-27",
@@ -646,7 +702,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 0,
+      "same_day_fatalities": null,
+      "same_day_low": null,
+      "same_day_high": null
     },
     {
       "date": "2026-07-08",
@@ -675,7 +735,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 3,
+      "same_day_fatalities": 9,
+      "same_day_low": 9,
+      "same_day_high": 9
     },
     {
       "date": "2026-07-09",
@@ -711,7 +775,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 3,
+      "same_day_low": 3,
+      "same_day_high": 3
     },
     {
       "date": "2026-07-12",
@@ -740,7 +808,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 1,
+      "same_day_low": 1,
+      "same_day_high": 1
     },
     {
       "date": "2026-07-13",
@@ -776,7 +848,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 2,
+      "same_day_fatalities": 4,
+      "same_day_low": 4,
+      "same_day_high": 4
     },
     {
       "date": "2026-07-14",
@@ -819,7 +895,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 3,
+      "same_day_low": 3,
+      "same_day_high": 3
     },
     {
       "date": "2026-07-15",
@@ -855,7 +935,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 7,
+      "same_day_low": 7,
+      "same_day_high": 7
     },
     {
       "date": "2026-07-16",
@@ -884,7 +968,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 7,
+      "same_day_low": 7,
+      "same_day_high": 7
     },
     {
       "date": "2026-07-18",
@@ -913,7 +1001,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 3,
+      "same_day_low": 3,
+      "same_day_high": 3
     },
     {
       "date": "2026-07-20",
@@ -956,7 +1048,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 1,
+      "same_day_low": 1,
+      "same_day_high": 1
     },
     {
       "date": "2026-07-22",
@@ -999,7 +1095,11 @@
           },
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 2,
+      "same_day_low": 2,
+      "same_day_high": 2
     },
     {
       "date": "2026-07-24",
@@ -1035,7 +1135,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 4,
+      "same_day_low": 4,
+      "same_day_high": 4
     },
     {
       "date": "2026-07-30",
@@ -1057,7 +1161,11 @@
           "means": null,
           "partial": false
         }
-      }
+      },
+      "same_day_records": 2,
+      "same_day_fatalities": 6,
+      "same_day_low": 6,
+      "same_day_high": 6
     },
     {
       "date": "2026-08-30",
@@ -1100,7 +1208,11 @@
           },
           "partial": true
         }
-      }
+      },
+      "same_day_records": 1,
+      "same_day_fatalities": 2,
+      "same_day_low": 2,
+      "same_day_high": 3
     }
   ]
 }
