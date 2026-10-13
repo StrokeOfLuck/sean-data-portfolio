@@ -86,6 +86,12 @@
 html { scroll-behavior:smooth; }
 /* Changing date groups should not re-anchor the page to replaced post cards. */
 body { overflow-anchor:none; }
+/* Keep legacy click targets and coordinates without adding invisible scroll area. */
+#timelineScroll > .timeline-bar.svg-legacy-timeline {
+  width:0!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
 #event-explorer .global-timeline-title { align-items:baseline!important; gap:8px 20px!important; }
 .timeline-inline-stats { display:flex; flex-wrap:wrap; gap:8px 18px; margin:0; font-size:12px; line-height:1.4; color:var(--muted,#667085); }
 .timeline-inline-stats span { white-space:nowrap; }
