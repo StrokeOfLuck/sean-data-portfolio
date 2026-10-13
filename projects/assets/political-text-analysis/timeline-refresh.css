@@ -88,6 +88,8 @@ html { scroll-behavior:smooth; }
 body { overflow-anchor:none; }
 /* Five circles distinguish adjacent events from the selected event's post windows. */
 #event-explorer .rail-wrap { display:block!important; position:relative; height:auto!important; margin:16px 0 18px!important; }
+/* Link event-day posts above to the selected circle without linking navigation dates. */
+#event-explorer .event-view:has(.eventday-zone .truth-card) .rail-wrap::before { content:''; position:absolute; left:50%; top:-12px; height:22px; border-left:2px dashed #aab4bf; transform:translateX(-50%); pointer-events:none; }
 #event-explorer .rail-wrap > :not(.mini-event-nav) { display:none!important; }
 #event-explorer .event-top { padding-bottom:0!important; }
 #event-explorer .eventday-zone::after,
@@ -117,6 +119,7 @@ body { overflow-anchor:none; }
 .mini-event-edge .mini-event-label { font-size:11px; font-weight:400; }
 @media(max-width:900px) {
   #event-explorer .rail-wrap { order:5; width:100%; }
+  #event-explorer .rail-wrap::before { display:none; }
   .mini-event-label { font-size:11px; }
   .mini-event-direction { font-size:10px; }
 }
