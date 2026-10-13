@@ -11,9 +11,12 @@
   const mini = document.createElement('nav');
   mini.className = 'mini-event-nav';
   mini.setAttribute('aria-label', 'Jump to event date');
+  const miniHeading = document.createElement('div');
+  miniHeading.className = 'mini-event-heading';
+  miniHeading.innerHTML = '<strong>Browse event dates</strong><span>Choose a circle to change the selected event.</span>';
   const miniTrack = document.createElement('div');
   miniTrack.className = 'mini-event-track';
-  mini.append(miniTrack);
+  mini.append(miniHeading,miniTrack);
   const miniButtons = data.events.map((event,index) => {
     const button = document.createElement('button');
     button.type = 'button';
@@ -207,6 +210,12 @@
     });
     const rail = active.querySelector('.rail-wrap');
     if (mini.parentElement !== rail) rail.appendChild(mini);
+    for (const [side,offset,label] of [['before',-1,'Day before'],['after',1,'Day after']]) {
+      const date = new Date(event.date+'T12:00:00Z');
+      date.setUTCDate(date.getUTCDate()+offset);
+      const dateLabel = date.toLocaleDateString('en-US',{timeZone:'UTC',month:'short',day:'numeric'});
+      active.querySelector(`.${side}-branch .branch-heading strong`).textContent = `${label} · ${dateLabel}`;
+    }
     miniButtons.forEach((button,i) => {
       const offset = i-index;
       button.hidden = Math.abs(offset) > 1;
