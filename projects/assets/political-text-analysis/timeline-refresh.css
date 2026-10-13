@@ -86,11 +86,10 @@
 html { scroll-behavior:smooth; }
 /* Changing date groups should not re-anchor the page to replaced post cards. */
 body { overflow-anchor:none; }
-#refresh-overview { margin:0 0 20px; padding:4px 0 20px; border-bottom:1px solid var(--border,#cfd7e1); }
-.snapshot-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:600px; margin:0; }
-.snapshot-stat { display:flex; align-items:baseline; gap:10px; min-width:0; }
-.snapshot-stat dt { font-size:14px; line-height:1.4; font-weight:400; color:var(--muted,#667085); }
-.snapshot-stat dd { order:-1; margin:0; font-size:28px; line-height:1.2; font-weight:750; color:var(--ink,#17202a); }
+#event-explorer .global-timeline-title { align-items:baseline!important; gap:8px 20px!important; }
+.timeline-inline-stats { display:flex; flex-wrap:wrap; gap:8px 18px; margin:0; font-size:12px; line-height:1.4; color:var(--muted,#667085); }
+.timeline-inline-stats span { white-space:nowrap; }
+.timeline-inline-stats b { color:var(--ink,#17202a); font-size:16px; margin-right:3px; }
 .coverage-note { font-size:12px!important; line-height:1.45; color:#526173; }
 .subtitle { margin:0 0 12px; color:#526173; }
 .lede-question { font-size:17px; line-height:1.5; margin-bottom:16px; }
@@ -136,11 +135,6 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 @media(max-width:600px) {
   body { padding:20px 14px 32px!important; }
   h1.title { font-size:26px; line-height:1.18; }
-  #refresh-overview { padding:0 0 16px; }
-  .snapshot-stats { gap:14px; }
-  .snapshot-stat { flex-direction:column; align-items:flex-start; gap:4px; }
-  .snapshot-stat dt { font-size:11px; }
-  .snapshot-stat dd { font-size:24px; }
   .summary-table th, .summary-table td { padding:9px 4px; font-size:11px; }
   .summary-table th:first-child { width:31%; }
   .summary-table th small { font-size:9px; }
