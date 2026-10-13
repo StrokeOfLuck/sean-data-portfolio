@@ -96,6 +96,20 @@ body { overflow-anchor:none; }
 #event-explorer .branch-area::before,
 #event-explorer .branch-area::after { display:none!important; }
 #event-explorer .branch { padding-top:0!important; }
+@media(min-width:901px) {
+  #event-explorer .branch-heading { position:relative; }
+  #event-explorer .branch:has(.truth-card) .branch-heading::before {
+    content:'';
+    position:absolute;
+    left:50%;
+    top:-25px;
+    width:2px;
+    height:22px;
+    background:repeating-linear-gradient(to bottom,#aab4bf 0 4px,transparent 4px 8px);
+    transform:translateX(-50%);
+    pointer-events:none;
+  }
+}
 .mini-event-nav { padding:8px 0 4px; overflow-x:auto; scrollbar-width:thin; }
 .mini-event-track { position:relative; height:105px; min-width:680px; }
 .mini-event-track::before { content:''; position:absolute; top:28px; left:70px; right:70px; height:2px; background:#8997a5; }
